@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cove & Lane Shopify Migration Case Study — React to Shopify, Core Web Vitals Fixed | Klickspell</title>
+<meta name="description" content="How Klickspell migrated Cove & Lane off a bolted-on React workaround and onto native Shopify — rebuilding every approved design, shipping new commerce features, and taking Core Web Vitals from Failed to Passed.">
+<link rel="canonical" href="https://klickspell.com/work/cove-and-lane.html">
+<meta name="theme-color" content="#F2F0EC">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Klickspell">
+<meta property="og:url" content="https://klickspell.com/work/cove-and-lane.html">
+<meta property="og:title" content="Cove & Lane Shopify Migration Case Study | Klickspell">
+<meta property="og:description" content="How Klickspell migrated Cove & Lane off a bolted-on React workaround and onto native Shopify — new commerce features and Core Web Vitals taken from Failed to Passed.">
+<meta property="og:image" content="https://klickspell.com/assets/projects/cove-and-lane.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cove & Lane Shopify Migration Case Study | Klickspell">
+<meta name="twitter:description" content="How Klickspell migrated Cove & Lane off a bolted-on React workaround and onto native Shopify — new commerce features and Core Web Vitals taken from Failed to Passed.">
+<meta name="twitter:image" content="https://klickspell.com/assets/projects/cove-and-lane.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233A5BE0'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-style='italic' font-size='38' fill='white' text-anchor='middle' dominant-baseline='middle'%3EK%3C/text%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cove & Lane Shopify Migration Case Study — From a React Workaround to Native Shopify, Core Web Vitals Fixed",
+  "description": "How Klickspell migrated Cove & Lane off a bolted-on React workaround and onto native Shopify — rebuilding every approved design, shipping new commerce features, and taking Core Web Vitals from Failed to Passed.",
+  "url": "https://klickspell.com/work/cove-and-lane.html",
+  "image": "https://klickspell.com/assets/projects/cove-and-lane.png",
+  "datePublished": "2026-07-07",
+  "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+  "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+  "about": { "@type": "Organization", "name": "Cove & Lane", "url": "https://coveandlane.in/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+    { "@type": "ListItem", "position": 3, "name": "Cove & Lane", "item": "https://klickspell.com/work/cove-and-lane.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">Klick<span>spell</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#tutorials">Tutorials</a></li>
+    <li><a href="../index.html#faq">FAQ</a></li>
+    <li><a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="nav-cta" style="cursor:pointer">Book a call</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html#services" class="mobile-link">Services</a>
+  <a href="../index.html#work" class="mobile-link">Work</a>
+  <a href="../index.html#about" class="mobile-link">About</a>
+  <a href="../index.html#tutorials" class="mobile-link">Tutorials</a>
+  <a href="../index.html#faq" class="mobile-link">FAQ</a>
+  <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank">💬 Chat on WhatsApp</a>
+</div>
+
+<!-- CASE STUDY HERO -->
+<div class="cs-hero">
+  <p class="cs-breadcrumb reveal"><a href="../index.html">Home</a> / <a href="../index.html#work">Work</a> / Cove &amp; Lane</p>
+  <p class="section-eyebrow reveal">Case Study · Fashion &amp; Apparel</p>
+  <h1 class="cs-title reveal reveal-delay-1">From a bolted-on React workaround<br>to a <em>fast, native</em> Shopify.</h1>
+  <p class="cs-sub reveal reveal-delay-2">Cove &amp; Lane's previous developers had embedded a single React/HTML file directly into the store instead of building on Shopify's own architecture. We migrated it onto native Shopify the right way, rebuilt every approved design, and shipped the features that came next.</p>
+  <div class="cs-actions reveal reveal-delay-2">
+    <a href="https://coveandlane.in/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
+    <a href="#" onclick="event.preventDefault();openYTModal('Ufh6W6h4Kqo')" class="btn-ghost">Watch video walkthrough ▶</a>
+  </div>
+  <div class="cs-meta-strip reveal reveal-delay-3">
+    <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Fashion &amp; Apparel</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Region</p><p class="cs-meta-value">India</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Platform</p><p class="cs-meta-value">Shopify (migrated from React)</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Partner since</p><p class="cs-meta-value">May 2025</p></div>
+  </div>
+  <div class="cs-hero-image reveal reveal-delay-3">
+    <img src="../assets/projects/cove-and-lane.png" alt="Cove &amp; Lane Shopify store built and maintained by Klickspell">
+  </div>
+</div>
+
+<!-- CASE STUDY BODY -->
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <p class="section-eyebrow">How it started</p>
+    <h2>The same referral, months later.</h2>
+    <p>Karan Dubey, who'd already introduced us to Jaxon Lane through Tealbox Digital, connected us with Cove &amp; Lane's team in May 2025 — with a simple note that he'd worked with us extensively and trusted our execution. A few weeks later we were signed on to migrate and optimize their store.</p>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="section-eyebrow">The challenge</p>
+    <h2>A workaround, not an architecture.</h2>
+    <p>Cove &amp; Lane's storefront wasn't running on Shopify Hydrogen or any deliberate headless setup. A previous team of developers had embedded a single React/HTML file directly into the Shopify store instead of building a proper theme — using a stack they were comfortable with rather than Shopify's own standards. It looked fine on the surface, but the store couldn't be edited through Shopify's native customizer, couldn't cleanly use the app ecosystem, and was failing Core Web Vitals outright.</p>
+    <p>They needed someone to actually migrate it onto Shopify the right way — without losing the design they'd already locked in — then keep shipping the feature requests that come with running a growing fashion brand.</p>
+    <p>The migration itself wasn't simple: the existing implementation was undocumented and full of hardcoded values, so the first job was reverse-engineering how it actually worked before anything could move — all while switching back and forth between urgent live-site requests and the performance work underneath.</p>
+  </div>
+
+  <div class="cs-section reveal" style="max-width:none">
+    <div class="about-stats" style="border-top:none; padding-top:0; justify-content:space-between; flex-wrap:wrap;">
+      <div class="stat"><p class="stat-num">40<span>%</span></p><p class="stat-label">GTmetrix score — up from 13%</p></div>
+      <div class="stat"><p class="stat-num">45<span>+</span></p><p class="stat-label">Features shipped &amp; bugs resolved</p></div>
+      <div class="stat"><p class="stat-num">Passed</p><p class="stat-label">Core Web Vitals — up from Failed</p></div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal" style="max-width:none">
+    <p class="section-eyebrow">What we built</p>
+    <h2 style="max-width:700px">A migration, a performance fix, and everything after.</h2>
+    <div class="cs-feature-grid" style="margin-top:2.5rem">
+      <div class="cs-feature">
+        <h3>Platform migration</h3>
+        <p>Rebuilt every client-approved design natively in Shopify — moving Cove &amp; Lane off the bolted-on React/HTML embed and onto a platform they could extend with apps, themes, and their own team going forward. Version-controlled on GitHub with branch-based theme previews, so every change shipped with a clear commit history.</p>
+      </div>
+      <div class="cs-feature">
+        <h3>Core Web Vitals, fixed</h3>
+        <p>Optimized site images and the Slick Carousel library powering the storefront. LCP dropped from 2.3s to 2.1s, INP from 109ms to 101ms, and FCP from 1.8s to 1.7s — while CLS stayed at a perfect 0 and TTFB held at 0.6s, even as new sections were added. Overall GTmetrix performance score rose from 13% to 40%, and the site's Core Web Vitals assessment moved from Failed to Passed for real users.</p>
+      </div>
+      <div class="cs-feature">
+        <h3>Speed &amp; conversion features</h3>
+        <p>Added clickable sliding banners on the homepage, a "Notify Me" flow for back-in-stock and coming-soon products, and sticky Buy Now / Add to Cart buttons — plus a Price Drop link feature with customizable styling, aimed squarely at reducing checkout drop-off.</p>
+      </div>
+      <div class="cs-feature">
+        <h3>Commerce &amp; retention features</h3>
+        <p>Shipped a testimonials section, out-of-stock email notifications, product reviews and ratings, a referral integration, wishlist functionality, Buy-X-Get-Y promotions, order tracking, and a gift box email template.</p>
+      </div>
+      <div class="cs-feature">
+        <h3>Navigation &amp; UX improvements</h3>
+        <p>Added breadcrumb navigation across collection and product pages, brought feature badges to the desktop view, enlarged product listing cards with smoother carousel behavior, added a dedicated offers section to the product page, and recreated the blog section that had gone missing in the migration.</p>
+      </div>
+      <div class="cs-feature">
+        <h3>Compliance, control &amp; ongoing capacity</h3>
+        <p>Implemented cookie consent to meet Cove &amp; Lane's compliance deadline, made sections customizable from the theme editor so the team isn't locked into calling a developer for routine updates, and stayed on as their monthly development capacity — running performance audits and picking up new requests as they come in, typically within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="section-eyebrow">The result</p>
+    <h2>A store that's easier to run — and faster.</h2>
+    <p>The speed and UX improvements translated directly into a measurable drop in checkout drop-offs — the kind of outcome that matters more to a growing fashion brand than any raw speed score on its own.</p>
+    <div class="cs-testimonial-wrap">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">It's been great working with Atul on our website maintenance and daily management! Thanks Atul.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><img src="../assets/testimonials/sanya-pradhan.jpg" alt="Sanya Pradhan"></div>
+          <div><p class="testimonial-name">Sanya Pradhan</p><p class="testimonial-role">Co-Founder, Cove &amp; Lane</p></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:2rem">Cove &amp; Lane moved off a hacked-together workaround, passed Core Web Vitals, and picked up a stack of new commerce features in the process — without ever taking the site offline.</p>
+  </div>
+
+  <div class="cs-section reveal" style="max-width:none">
+    <div class="cs-next">
+      <div>
+        <p class="cs-next-label">See more work</p>
+        <p class="cs-next-title">Explore the full portfolio</p>
+      </div>
+      <a href="../index.html#work" class="btn-secondary">Back to Work ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Got a store stuck<br>on the <em>wrong</em><br>foundation?</h2>
+    <h2 class="cta-title-mobile">Got a store on the<br><em>wrong</em> foundation?</h2>
+    <p class="cta-sub">Let's start with a free 30-minute call. No commitment, no templates, no compromises.</p>
+    <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
+    <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+    <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+    <p class="cta-stamp">The craft in every click.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Klick<span>spell</span></span>
+    <span class="footer-stamp">The craft in every click.</span>
+    <ul class="footer-links">
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+      <li><a href="https://wa.me/919259598769" target="_blank">Contact</a></li>
+      <li><a href="https://in.linkedin.com/in/mratulbhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL1p7vprQFvmus468rKCaHoQvHmaHopMyo" target="_blank" rel="noopener">YouTube</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Klickspell · Rudrapur, Uttarakhand, India</p>
+    <p class="footer-copy">klickspell.com</p>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div id="ytModal" class="yt-modal">
+  <div class="yt-modal-overlay" onclick="closeYTModal()"></div>
+  <div class="yt-modal-box">
+    <button class="yt-modal-close" onclick="closeYTModal()">✕</button>
+    <iframe id="ytModalIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+// Lenis smooth scroll
+const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+lenis.on('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
+});
+(function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+
+// Video modal
+function openYTModal(videoId) {
+  document.getElementById('ytModalIframe').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+  document.getElementById('ytModal').classList.add('open');
+  lenis.stop();
+}
+function closeYTModal() {
+  document.getElementById('ytModalIframe').src = '';
+  document.getElementById('ytModal').classList.remove('open');
+  lenis.start();
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeYTModal(); });
+
+// Cursor
+const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button,.service-card,.project-card,.diff-item,.stat,.cs-feature').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
+
+// Mobile menu
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');menu.classList.toggle('open');});
+document.querySelectorAll('.mobile-link,.mobile-cta-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');menu.classList.remove('open');}));
+
+// Mobile/desktop CTA swap
+function swapCTA(){
+  const m=innerWidth<=768;
+  document.getElementById('cta-d').style.display=m?'none':'inline-flex';
+  document.getElementById('cta-m').style.display=m?'inline-flex':'none';
+}
+swapCTA(); window.addEventListener('resize',swapCTA);
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<!-- Cal.com embed -->
+<script type="text/javascript">
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];typeof namespace==="string"?(cal.ns[namespace]=api)&&p(api,ar):p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","30min",{origin:"https://cal.com"});
+Cal.ns["30min"]("ui",{"styles":{"branding":{"brandColor":"#3A5BE0"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</body>
+</html>
