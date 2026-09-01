@@ -65,7 +65,8 @@ These are the messages which were on my device and when I opened WhatsApp web on
  
 ![image_2021-05-22_18-07-20](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/96tnt6as0f68be6ct02b.png)
  
-###I hope you enjoyed🤗 reading this article as much as I enjoyed writing.....I mean typing. `Please comment down any questions or your views on this article you have down in the comment section of the platform wherever you find the link to this article.`
+
+### I hope you enjoyed🤗 reading this article as much as I enjoyed writing.....I mean typing. `Please comment down any questions or your views on this article you have down in the comment section of the platform wherever you find the link to this article.`
 
 Before you leave here is something you can try. Whatsapp says in its privacy policy:
 
@@ -74,6 +75,3 @@ Before you leave here is something you can try. Whatsapp says in its privacy pol
 Now you can try to send a message to someone who is not using WhatsApp and ask them to install it after 30 days of sending that message. What will happen?
 
 Stay Curious🦝 .
-
-
-

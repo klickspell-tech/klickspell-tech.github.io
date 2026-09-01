@@ -435,3 +435,9 @@ footer { background:var(--text); padding:3rem 2rem; }
   .post-header { padding:7rem 1.5rem 1.5rem; }
   .post-body { padding:0 1.5rem 4rem; }
 }
+
+/* PROSE HEADINGS & EMBED ENHANCEMENTS */
+.prose h1 { font-family:'Instrument Serif',serif; font-size:clamp(30px,4.5vw,44px); font-weight:400; color:var(--text); margin:3.5rem 0 1.5rem; line-height:1.15; }
+.prose h5, .prose h6 { font-family:'Manrope',sans-serif; font-size:15px; font-weight:700; color:var(--text); margin:1.5rem 0 .5rem; line-height:1.4; }
+.prose h1 strong, .prose h2 strong, .prose h3 strong, .prose h4 strong, .prose h5 strong { color:inherit; font-weight:inherit; }
+.prose iframe { max-width:100%; border-radius:var(--radius-sm); border:.5px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,0.04); }

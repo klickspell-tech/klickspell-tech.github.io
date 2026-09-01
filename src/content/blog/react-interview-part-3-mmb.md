@@ -38,4 +38,3 @@ So let’s cut out the introductory crap and jump directly into some more React 
 _I'll be wrapping up this part of the article here. I'll be glad to read you answers to these question in the comment section._
 
 _And don't forget to mention your approach towards taking interviews. How you approach it? And I know there might be some flaws🥺 in asking these questions so you are free to point them out._
-

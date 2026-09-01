@@ -25,6 +25,7 @@ Yes folks, I'm talking about none other than `import React from "react";`
 Perhaps something might have changed so what can be a possibility for that. **This new warning makes sense as of now because we were always importing `React` even if it was not required.**
 
 _So as always let's divide our post into question with the first one being-_
+
 ### Why do we do `import React from "react";`?
 
 > As I had already assumed that you're a react developer so I also assume that you know that React uses JSX. 
@@ -83,9 +84,3 @@ I hope you enjoyed reading this article and was able to calm your curious mind f
 
 _Happy transforming into a curious reader. 
 Have a nice day folks._
-
-
-
-
-
-

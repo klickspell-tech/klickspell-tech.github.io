@@ -53,4 +53,3 @@ I have often seen people making the `mistake🥺 of installing multiple apps wit
 One of the important features which I consider is being able to use the `same app across multiple platforms `so that you can be on `sync across your multiple devices.` 
 
 For taking notes I used Google keep however now I’m using Notion, Spotify for music so that I can have my playlist access on my other devices too. `You should feel like you’re part of an ecosystem.`
-

@@ -98,10 +98,7 @@ console.log("newself", newSelf);
 
 > **Here is link to all the questions asked above with implementation, so that you don't feel slacking off with what will happen in each case.**
 
-{% replit @AtulBhatt/JSInterview2 %}
+<iframe src="https://replit.com/@AtulBhatt/JSInterview2?embed=true" width="100%" height="500px" style="border:0; border-radius:6px; margin: 1.5rem 0;"></iframe>
 
 `I will be ending this article here for now. I'll continue it in the next part with more questions that will cover more in-depth questions. So see you around here next time.👋
 Have an insightful day 😄.`
-
-
-

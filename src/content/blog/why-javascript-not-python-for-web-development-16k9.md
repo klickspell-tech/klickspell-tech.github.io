@@ -49,7 +49,7 @@ So in between I'll be throwing more images from 2020 Developer Survey by StackOv
 **Now let's jump🦘 into the Reasons:**
 
 
-####1.Jobs, Jobs, Jobs 💲💲💹.
+#### 1.Jobs, Jobs, Jobs 💲💲💹.
 
 >Majority of the people in this category are college students. And when it comes for the time of getting jobs `you won't find as many Job in Web Development through Python` as many you would get being a developer using a JS library.
 See for yourself who is the king.
@@ -57,13 +57,13 @@ See for yourself who is the king.
 ![most popular](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n29hlmomixuxhscbbphv.PNG)
 
 
-####2.Learning Curve
+#### 2.Learning Curve
 
 >As a developer who was always in awe with how `easy and cool` is Python. Believe me. JavaScript is not at all disappointing. You may find it even cooler😎.
 And don't you worry, `JavaScript won't ask you to put that Semi-colon` **;**
 
 
-####3.Web runs on browsers🌐.
+#### 3.Web runs on browsers🌐.
 
 >So if you are thinking of `web development as your future` then you shouldn't forget the fundamentals of Web. `Web browser understands JavaScript.` They don't❌ understand any other languages and that's a full stop🛑.
 In simple words `you can't escape learning JavaScript`.
@@ -71,7 +71,7 @@ And don't make me mention that, `"Everyone use web browsers to access the web."`
 Does that OOPS reminds you of something. Nevermind.
 
 
-####4.Be Choosy.
+#### 4.Be Choosy.
 
 >When I ask someone about doing web development in Python, the only terms I get to hear are Flask and Django and TBH now I don't get to hear it all🙄.
 You can `choose so many good frameworks and library in JavaScript` that are so good in what they do, that it will become difficult for you to decide which one to choose🤯.
@@ -82,12 +82,12 @@ And if you're confused then stackoverflow survey can give you a hint💡.
 >**Bonus point:** `You can even do backend with JavaScript.` `Node JS` is there waiting for you to try it out.-
 
 
-####5.From Web🌐 to Mobile📱.
+#### 5.From Web🌐 to Mobile📱.
 >You can even get into `Native Mobile app development via JS using React Native`. And not just Gimmicky mobile app development but a proper one.
 
 Below is the link to the sources of my Screenshot:
 [StackOverflow 2020 Survey](https://insights.stackoverflow.com/survey/2020)
 
-#####I hope you enjoyed🍿 reading this article. This article is my personal🙍 opinion but a strong one with facts and figures. I don't hate python but it's just that I moved on. It was hard😓 but I did.
+##### I hope you enjoyed🍿 reading this article. This article is my personal🙍 opinion but a strong one with facts and figures. I don't hate python but it's just that I moved on. It was hard😓 but I did.
 
-#####We should `treat languages like Crushes not life partners😜`. Shower some love if you read it till end. And `share it with someone who really need to read this`.
+##### We should `treat languages like Crushes not life partners😜`. Shower some love if you read it till end. And `share it with someone who really need to read this`.

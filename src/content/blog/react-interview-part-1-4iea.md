@@ -46,7 +46,7 @@ So the most common keywords are `"JS library"` and sometimes the candidates also
 `What are the different types of libraries you have used in your project?`
 `What are hooks? Can you name some hooks other than useState and useEffect?`
 
-#####Some questions goes beyond beginner level if the candidate keeps on answering the previous questions👌. I don't mind checking the depth of concepts the candidate is clear about.
+##### Some questions goes beyond beginner level if the candidate keeps on answering the previous questions👌. I don't mind checking the depth of concepts the candidate is clear about.
 
 **_I also keep mixing👨‍🍳 JS questions in between such as:_**
 
@@ -71,7 +71,7 @@ Why can't we use it as we do it in our native css.`
 
 >`Are you familiar with context or Redux? If yes, then why do we need them or when do we need them?`
 
-###Few UI questions:
+### Few UI questions:
 >`Explain Margin and Padding?`
 `What is CSS box?`
 `How many types of position are there?`
@@ -84,16 +84,3 @@ _I'll be wrapping up this first part of the article here. I'll be glad to read y
 _And don't forget to mention your approach towards taking interviews. How you approach it? And I know there might be some flaws🥺 in asking these questions so you are free to point them out._
 
 **Thanks for reading out. See you back in my next post.😀**
-
-
-
-
-
-
-
-
-
-
-
-
- 

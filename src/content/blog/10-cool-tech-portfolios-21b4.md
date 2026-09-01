@@ -51,4 +51,3 @@ These portfolios can be an inspiration for your tech portfolio. So let's jump in
 _I'm also looking more inspirations for creating my tech portfolio. So if you've a tech portfolio do not hesitate to comment that down. As always thank you for spending your time reading my posts._
 
 > Have an inspirational day :)
-

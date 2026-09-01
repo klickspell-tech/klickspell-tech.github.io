@@ -14,7 +14,7 @@ Hello🙋‍♂️ to all the curious devs🤓. Today in this post I'm going to 
 
 So let's start. I'll break this down in the form of questions, and below is the first.
 
-##What exactly is npx?
+## What exactly is npx?
 So all those who don't know and just kept on running the command `npx create-react-app`, know that **npx** is a **node package runner**😎.
 
 Oh! that was simple. **N**-node, **P**-package and **X**-???
@@ -26,7 +26,7 @@ We are going good😁 so far, now this article is not about npm but you might be
 
 Now let's break down what is the role of a package manager and a package runner.🤫
 
-#Node Package Manager
+# Node Package Manager
 
 > - **_npm_** is a `package manager` that helps💪 you in managing the `dependencies/packages` you as a developer want to have in your project. 
 > - It also helps you in managing🤏 whether you want to install those packages globally (for all the projects) or locally (for the current project).
@@ -42,12 +42,12 @@ _With now this sorted😼, it's time to hop back towards **npx**._
 
 So it's obvious that you installed a package and you wanna do something with it. Maybe uninstall it which you can easily do with **npm** or use it by running it.
 
-##There's a catch
+## There's a catch
 How to run a package or in other words execute it. Can't we do with the help of **npm**? And boy we can do it.
 
 So the answer to why we need **npx** in the very first place is just about to be revealed.🦹‍♂️
 
-####How to run a package with the help of npm?
+#### How to run a package with the help of npm?
 Now, for those who are thinking "I've run a package with npm before and aren't be always starting react server with the help of the command - `npm run start`"
 
 Yes, so if we are able to do it why in the world **npx**🥴🥴???
@@ -59,7 +59,7 @@ Yes, so if we are able to do it why in the world **npx**🥴🥴???
 > You see all those `inside scripts`. That's the `key` to `npm run` for various packages. Like `format` is for the `prettier`.
 > There are other `tedious way` to do so, such as specifying the local path:`_ npm run ./node_modules/.bin/your-package_`
 
-###Now, there comes our hero🦸‍♂️ into the picture - NPX.
+### Now, there comes our hero🦸‍♂️ into the picture - NPX.
 
 Let's explore what **npx** brings on the table🧙‍♂️ for us.
 
@@ -71,12 +71,12 @@ Let's explore what **npx** brings on the table🧙‍♂️ for us.
 >`npx react-scripts start`
 
 
-##It's time for CRA (create-react-app)👩🏻‍🎨
+## It's time for CRA (create-react-app)👩🏻‍🎨
 If you're a _**react-dev**_ like me. Then you might have used this command atleast once in your life - `npx create-react-app`
 
 Now we know what **npx** is and from all our discussion it's also clear that create-react-app is an executable, so let's find out what it does for us.
 
-####CRA is a toolchain. 
+#### CRA is a toolchain. 
 And now another term to breakdown🤦. What is a **toolchain**??
 
 > - Don't worry💆 it's a simple term which holds its meaning in its name. It's a chain of tools or a `collection of distinct tools` that `helps` in achieving the `process of completing` the `software development` and sometimes `deployment` too.
@@ -85,7 +85,8 @@ And now another term to breakdown🤦. What is a **toolchain**??
 ![CRA APP](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ywlsw5ijhjcbe1croiqf.png)
  
  
-#####So instead of reinventing the wheel again, I would add few content from React Docs:
+
+##### So instead of reinventing the wheel again, I would add few content from React Docs:
 
 > **A JavaScript build toolchain typically consists of:**
 > -  A `package manager`, such as `Yarn or npm`. It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.
@@ -97,4 +98,3 @@ And now another term to breakdown🤦. What is a **toolchain**??
 _Thank you folks for reading all through this article. I tried my best to breakdown the terms that would've otherwise made you feel like you are missing some context to this._
 
 **Keep reading, keep learning, and never stop being curious. See you until next time.**✌️✌️✌️
-

@@ -30,7 +30,7 @@ I'm writing this as an article here because it took me time to find the way to d
 
 > **Below is the embedded sandbox to demonstrate it:**
 
-{% codesandbox 79nux %}
+<iframe src="https://codesandbox.io/embed/79nux" style="width:100%; height:500px; border:0; border-radius: 6px; overflow:hidden; margin: 1.5rem 0;" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 > Check out the same in moment docs:
 [moment](https://momentjs.com/docs/#/durations/subtract/)
