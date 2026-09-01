@@ -1,0 +1,34 @@
+---
+interface Props {
+  isHome?: boolean;
+}
+
+const { isHome = false } = Astro.props;
+const prefix = isHome ? "" : "/";
+---
+
+<nav id="nav">
+  <a href="/" class="nav-logo">Klick<span>spell</span></a>
+  <ul class="nav-links">
+    <li><a href={`${prefix}#services`}>Services</a></li>
+    <li><a href={`${prefix}#work`}>Work</a></li>
+    <li><a href={`${prefix}#about`}>About</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href={`${prefix}#tutorials`}>Tutorials</a></li>
+    <li><a href={`${prefix}#faq`}>FAQ</a></li>
+    <li><a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="nav-cta" style="cursor:pointer">Book a call</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href={`${prefix}#services`}>Services</a>
+  <a href={`${prefix}#work`}>Work</a>
+  <a href={`${prefix}#about`}>About</a>
+  <a href="/blog">Blog</a>
+  <a href={`${prefix}#tutorials`}>Tutorials</a>
+  <a href={`${prefix}#faq`}>FAQ</a>
+  <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank">💬 Chat on WhatsApp</a>
+</div>

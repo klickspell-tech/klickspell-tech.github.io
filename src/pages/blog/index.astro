@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<BaseLayout
+  title="Technical Blog & Shopify Engineering Insights | Klickspell"
+  description="Technical deep dives, Shopify Liquid patterns, headless architecture, and e-commerce engineering guides by Klickspell."
+  canonical="https://klickspell.com/blog"
+>
+  <Nav />
+
+  <div class="blog-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Blog</p>
+    <p class="section-eyebrow reveal">Engineering &amp; Insights</p>
+    <h1 class="blog-title reveal reveal-delay-1">Technical writings<br><em>from the craft.</em></h1>
+    <p class="blog-sub reveal reveal-delay-2">Deep dives into Shopify architecture, custom Liquid workflows, headless engineering, and performance optimization.</p>
+
+    {sortedPosts.length === 0 ? (
+      <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:3rem; text-align:center; margin-top:2rem;">
+        <p style="font-family:'Instrument Serif',serif; font-size:24px; color:var(--text); margin-bottom:.75rem;">Syncing technical articles...</p>
+        <p style="font-size:15px; color:var(--text-mid); max-width:480px; margin:0 auto 1.5rem;">Run <code>npm run sync:devto &lt;username&gt;</code> to automatically import your Dev.to articles or create markdown files in <code>src/content/blog/</code>.</p>
+        <a href="/" class="btn-primary" style="display:inline-flex;">Back to Home</a>
+      </div>
+    ) : (
+      <div class="blog-grid reveal reveal-delay-2">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="blog-card">
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="blog-card-tags">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="blog-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            <h2 class="blog-card-title">{post.data.title}</h2>
+            <p class="blog-card-desc">{post.data.description}</p>
+            <div class="blog-card-meta">
+              <span>{formatDate(post.data.pubDate)}</span>
+              {post.data.readingTime && <span>· {post.data.readingTime}</span>}
+              <span class="blog-card-arrow">Read →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <Footer />
+</BaseLayout>

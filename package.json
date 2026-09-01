@@ -1,0 +1,17 @@
+{
+  "name": "klickspell-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync:devto": "node scripts/sync-devto.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.4.2"
+  }
+}
