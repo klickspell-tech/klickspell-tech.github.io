@@ -6,6 +6,7 @@ author: "Atul Bhatt"
 tags: ["productivity","android","writing"]
 devtoUrl: "https://dev.to/atulbhattsystem32/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-429j"
 canonicalUrl: "https://klickspell.com/blog/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-429j"
+mediumUrl: "https://atulbhatt98.medium.com/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-20990b7107c0"
 coverImage: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9rms43joxsb84nfca9g1.png"
 readingTime: "3 min read"
 ---

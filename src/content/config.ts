@@ -12,6 +12,7 @@ const blog = defineCollection({
     canonicalUrl: z.string().optional(),
     coverImage: z.string().optional(),
     devtoUrl: z.string().optional(),
+    mediumUrl: z.string().optional(),
     readingTime: z.string().optional(),
   }),
 });

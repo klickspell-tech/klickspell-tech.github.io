@@ -92,6 +92,15 @@ const articleSchema = {
           </div>
         </div>
       )}
+
+      {post.data.mediumUrl && (
+        <div class="canonical-banner reveal reveal-delay-2">
+          <span>💡</span>
+          <div>
+            <strong>Cross-posted content:</strong> This article is also published on Medium. View original on <a href={post.data.mediumUrl} target="_blank" rel="noopener">Medium ↗</a>
+          </div>
+        </div>
+      )}
     </header>
 
     <div class="post-body">
