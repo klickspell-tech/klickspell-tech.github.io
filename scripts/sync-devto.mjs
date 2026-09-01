@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BLOG_DIR = path.resolve(__dirname, '../src/content/blog');
 
-const username = process.argv[2] || process.env.DEVTO_USERNAME;
+const username = process.argv[2] || process.env.DEVTO_USERNAME || 'atulbhattsystem32';
 
 if (!username) {
   console.log(`
