@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Blissful Soul (Pragya Vijh) Case Study — Headless Commerce & Spiritual Wellness with Next.js 14, Medusa v2 & Cal.com",
+    "description": "How Klickspell engineered a high-performance headless commerce monorepo for The Blissful Soul (Master Pragya Vijh) — migrating from a heavy, plugin-bloated WordPress site onto Next.js 14, Medusa v2, and Strapi CMS.",
+    "url": "https://klickspell.com/work/pragya-vijh.html",
+    "image": "https://klickspell.com/assets/projects/pragya-vijh.png",
+    "datePublished": "2026-09-02",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "The Blissful Soul", "url": "https://pragyavijh.com/in" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "The Blissful Soul", "item": "https://klickspell.com/work/the-blissful-soul.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="The Blissful Soul Case Study — Next.js 14, Medusa v2 & Cal.com Headless Commerce | Klickspell"
+  description="How Klickspell engineered a high-performance headless commerce monorepo for The Blissful Soul (Master Pragya Vijh) — migrating from a heavy, plugin-bloated WordPress site onto Next.js 14, Medusa v2, and Strapi CMS."
+  canonical="https://klickspell.com/work/the-blissful-soul.html"
+  ogImage="https://klickspell.com/assets/projects/pragya-vijh.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / The Blissful Soul</p>
+    <p class="section-eyebrow reveal">Case Study · Headless Commerce &amp; Spiritual Wellness</p>
+    <h1 class="cs-title reveal reveal-delay-1">A unified headless ecosystem<br>for physical crystals &amp; <em>live Vedic consultations.</em></h1>
+    <p class="cs-sub reveal reveal-delay-2">The Blissful Soul by Master Pragya Vijh needed to merge physical healing crystal e-commerce with real-time astrologer consultations into a single, seamless checkout. We architected a modular headless monorepo with Next.js 14, Medusa v2, and Strapi CMS.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://pragyavijh.com/in" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
+      <a href="#architecture" class="btn-ghost">Explore architecture ↓</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Client / Founder</p><p class="cs-meta-value">The Blissful Soul (Master Pragya Vijh)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Spiritual Wellness &amp; Astrology</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">Headless Monorepo (migrated from WordPress)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Next.js 14 · Medusa v2 · Strapi · Cal.com</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/pragya-vijh.png" alt="The Blissful Soul - Pragya Vijh Headless E-Commerce Platform engineered by Klickspell">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. EXECUTIVE SUMMARY & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Measurable Results</p>
+      <h2>Engineering performance that powers dual-revenue growth.</h2>
+      <p>By replacing brittle WordPress plugins with custom event-driven TypeScript modules and a Next.js 14 App Router frontend, we achieved instant load times and eliminated 100% of manual booking overhead.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">95<span>+</span></p><p class="stat-label">Mobile Lighthouse performance score</p></div>
+        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Automated booking &amp; meet scheduling</p></div>
+        <div class="stat"><p class="stat-num">1<span> unified</span></p><p class="stat-label">Checkout for retail + live consultations</p></div>
+      </div>
+    </div>
+
+    <!-- 2. THE BRAND VISION -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Client &amp; Brand Vision</p>
+      <h2>Ancient Vedic wisdom meets modern digital craft.</h2>
+      <p><strong>The Blissful Soul</strong> is a luxury holistic wellness brand founded by acclaimed spiritual guide and astrologer <strong>Master Pragya Vijh</strong>. The platform bridges ancient Vedic wisdom, gemstone energy healing, and modern psychology across a dual-revenue business model:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><strong>Physical Retail:</strong> Curated healing crystals, energized bracelets, combo sets, and sacred spiritual artifacts categorized by emotional/life intent (<em>Love, Abundance, Health, Protection</em>).</li>
+        <li><strong>Spiritual Services &amp; Consultations:</strong> 1-on-1 personalized sessions including Kundali readings, Tarot guidance, birth chart analysis, and energy healing sessions.</li>
+      </ul>
+    </div>
+
+    <!-- 3. THE CHALLENGE: FROM WORDPRESS PLUGIN BLOAT TO HEADLESS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Challenge</p>
+      <h2>From WordPress plugin bloat to a fragile monolith.</h2>
+      <p>The platform was originally built on <strong>WordPress &amp; WooCommerce</strong>. As the brand grew, every new business requirement meant tacking on another plugin: an appointment booking plugin, third-party checkout extensions, invoice generators, SMTP mailers, multi-tier shipping calculators, and heavy visual page builders.</p>
+      <p>Before long, the site became sluggish and fragile:</p>
+      <p><strong>Severe Plugin Bloat &amp; Maintenance Drag:</strong> With dozens of third-party plugins competing for PHP execution and database queries, server response times suffered, plugin updates frequently broke checkout flows, and routine maintenance turned into high-risk firefighting.</p>
+      <p><strong>Disjointed Consultation &amp; Product Silos:</strong> The WordPress booking plugins couldn't cleanly integrate with physical product carts. Customers had to make separate purchases for crystals and consultations on disconnected third-party pages.</p>
+      <p><strong>Rigid Content vs. Custom Logic:</strong> The editorial team struggled with slow admin dashboards, while developers were hamstrung by monolithic theme constraints when implementing custom promotional gift rules and automated PDF tax invoices.</p>
+      <p>The brand didn't need another WordPress band-aid — they needed to decouple their entire stack onto a clean, modular headless architecture.</p>
+    </div>
+
+    <!-- 4. THE ARCHITECTURE -->
+    <div class="cs-section reveal" id="architecture" style="max-width:none">
+      <p class="section-eyebrow">The Headless Solution</p>
+      <h2 style="max-width:700px">An event-driven monorepo architecture.</h2>
+      <p style="max-width:700px; margin-bottom:2rem">We engineered a modular headless architecture orchestrated with <strong>Turborepo</strong> and <strong>pnpm workspaces</strong>, deployed with Docker and Nginx reverse proxy:</p>
+
+      <div class="cs-feature-grid" style="margin-top:1.5rem">
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Frontend Layer · Port 8001</div>
+          <h3>Next.js 14 App Router &amp; RSC</h3>
+          <p>Server-side rendered storefront using React Server Components for sub-second FCP, seamless URL localization (<code>/[countryCode]/...</code>), and a luxury spiritual design system built with Tailwind CSS.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Commerce Engine · Port 9000</div>
+          <h3>Medusa v2 Core &amp; Custom Modules</h3>
+          <p>Headless commerce engine managing product catalogs, customer accounts, multi-currency pricing, and custom event subscribers connecting payments, booking APIs, and notifications.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Editorial CMS · Port 1337</div>
+          <h3>Strapi Headless CMS</h3>
+          <p>Decoupled content hub empowering the marketing team to dynamically update hero banners, intent collections, founder bios, testimonials, and FAQs without touching code.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Integrations &amp; Infrastructure</div>
+          <h3>Cal.com v2 · Razorpay · Redis · Postgres</h3>
+          <p>Real-time slot locking with Cal.com v2 API, multi-currency Razorpay gateway, Redis job queue, PostgreSQL 16 persistence, and automated EasyInvoice PDF generation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ENGINEERING HIGHLIGHTS -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Engineering Highlights</p>
+      <h2 style="max-width:700px">Custom innovations built for high-touch commerce.</h2>
+      <div class="cs-feature-grid" style="margin-top:2.5rem">
+        <div class="cs-feature">
+          <h3>🔮 Unified Cart: Physical Crystals + Cal.com Bookings</h3>
+          <p>When consultation services are added to the cart, session metadata (<code>slot_iso_start</code>, <code>event_slug</code>) attaches to the line item. Upon checkout completion (<code>order.placed</code> event), Medusa triggers a subscriber that calls Cal.com v2 API to lock the appointment and generate Google Meet invites for both Master Pragya and the customer automatically.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>📜 Automated PDF Invoicing &amp; Transactional SMTP</h3>
+          <p>Engineered a dedicated Google SMTP notification module paired with <code>easyinvoice</code> within <code>order-invoice.ts</code> to programmatically generate branded, itemized PDF tax invoices with dynamic breakdowns, shipping fees, and order metadata attached directly to customer confirmation emails.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🎁 Intelligent Business Rule Automations</h3>
+          <p>Built <code>auto-add-gift.ts</code> to dynamically evaluate cart subtotal thresholds and inject eligible complimentary energized gifts into the order lifecycle. Added <code>low-stock-notifier.ts</code> to monitor inventory levels in real-time and alert administrators before high-demand gemstones sell out.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>⚖️ Custom Weight-Based Shipping Module</h3>
+          <p>Developed a custom <code>weight-shipping</code> module that dynamically aggregates line-item grammage and postal code zones to compute accurate multi-tier carrier rates during checkout.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🔄 Medusa ↔ Strapi Content Synchronization</h3>
+          <p>Created <code>sync-strapi.ts</code> subscribers ensuring categories, intent collections, and marketing tags stay synchronized between the commerce catalog and the headless CMS without duplicate manual data entry.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🌍 URL-Based Global Localization</h3>
+          <p>Configured edge-ready routing (<code>/in/en</code>, <code>/us/en</code>) with automatic geo-detection, currency conversions, and country-specific tax rules for international clients seeking Vedic astrology readings.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. UI/UX & DESIGN SYSTEM -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Visual Identity</p>
+      <h2>A luxury spiritual aesthetic crafted to convert.</h2>
+      <p>The visual identity was designed to convey reverence, divine energy, and high-end elegance:</p>
+      <div style="display:flex; flex-direction:column; gap:1.25rem; margin-top:1.5rem;">
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem 1.5rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.3rem; font-size:15px;">Deep Mystical Purple &amp; Champagne Gold Palette</p>
+          <p style="font-size:14px; color:var(--text-mid); line-height:1.6;">Deep Mystical Purple (<code>#1A0E22</code>) representing higher spiritual consciousness, paired with Champagne Gold (<code>#C5A059</code>) for divine illumination, grounded by warm Ivory Pearl (<code>#FAF9F6</code>).</p>
+        </div>
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem 1.5rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.3rem; font-size:15px;">"Shop by Intent" Experience</p>
+          <p style="font-size:14px; color:var(--text-mid); line-height:1.6;">Rather than generic product filters, customers discover stones and energized jewelry by emotional and spiritual objectives: <em>Love &amp; Relationships</em>, <em>Wealth &amp; Prosperity</em>, <em>Health &amp; Peace</em>, and <em>Evil Eye Protection</em>.</p>
+        </div>
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem 1.5rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.3rem; font-size:15px;">Interactive Consultation Cards</p>
+          <p style="font-size:14px; color:var(--text-mid); line-height:1.6;">Interactive flip-cards and modal drawers displaying Master Pragya's consultation offerings with color-coded intent metadata, duration tags, and instant slot availability.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. COMPLETE TECH STACK TABLE -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Technology Stack</p>
+      <h2 style="max-width:700px">Battle-tested tools and frameworks.</h2>
+      <div style="overflow-x:auto; margin-top:2rem;">
+        <table style="width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-sm); border:.5px solid var(--border); font-size:14px; overflow:hidden;">
+          <thead>
+            <tr style="background:var(--bg-card); border-bottom:.5px solid var(--border); text-align:left;">
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Layer</th>
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Technologies &amp; Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Monorepo Management</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Turborepo, pnpm Workspaces, Shared TypeScript Configs</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Frontend Framework</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Next.js 14 (App Router), React 18, React Server Components (RSC)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Styling &amp; Motion</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Tailwind CSS, Lucide Icons, Custom Micro-animations</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Commerce Backend</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Medusa v2 (Custom TypeScript Modules, Event Subscribers, Workflows)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Content Management</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Strapi Headless CMS (Dynamic Zones, Components, REST API)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Persistence &amp; Cache</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">PostgreSQL 16, Redis Cache &amp; Event Bus Queue</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Third-Party APIs</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Cal.com API v2 (Booking Engine), Razorpay Gateway, Google SMTP</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">PDF Invoicing</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">EasyInvoice (Programmatic dynamic tax &amp; order breakdown)</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">DevOps &amp; Hosting</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Multi-container Docker &amp; Docker Compose, Nginx Reverse Proxy, Automated Shell Backups</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 8. CONCLUSION & NAVIGATION -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Conclusion</p>
+      <h2>Freedom, performance, and complete brand control.</h2>
+      <p>The Blissful Soul demonstrates how headless commerce unlocks unmatched operational flexibility and technical speed. By decoupling the presentation layer from backend business logic and editorial workflows, the brand achieved high conversion rates, 100% automated service booking, and full autonomy over their ongoing content marketing.</p>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <div class="cs-next">
+        <div>
+          <p class="cs-next-label">See more work</p>
+          <p class="cs-next-title">Explore the full portfolio</p>
+        </div>
+        <a href="/#work" class="btn-secondary">Back to Work ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to build a<br><em>headless commerce</em><br>powerhouse?</h2>
+      <h2 class="cta-title-mobile">Ready for a<br><em>headless</em> store?</h2>
+      <p class="cta-sub">Let's discuss how Medusa, Next.js, and custom integrations can transform your e-commerce operations.</p>
+      <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
+      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <p class="cta-stamp">The craft in every click.</p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

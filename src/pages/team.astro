@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Team — Klickspell",
+  "description": "Meet the engineering team behind Klickspell. A specialized web and e-commerce engineering pod based in Uttarakhand, India.",
+  "url": "https://klickspell.com/team",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "founder": {
+      "@type": "Person",
+      "name": "Atul Bhatt"
+    },
+    "member": [
+      { "@type": "Person", "name": "Atul Bhatt", "jobTitle": "Founder & Lead Engineer" },
+      { "@type": "Person", "name": "Rohit Singh Rawat", "jobTitle": "Frontend & E-Commerce Solutions Developer" },
+      { "@type": "Person", "name": "Vivek Bhatt", "jobTitle": "Full-Stack & Systems Developer" },
+      { "@type": "Person", "name": "Kunal Risaanva", "jobTitle": "Web Architect & Full-Stack Developer" },
+      { "@type": "Person", "name": "Krishna Solanki", "jobTitle": "Frontend Developer & Integrations" },
+      { "@type": "Person", "name": "Ankit Soni", "jobTitle": "Product Designer", "sameAs": "https://www.oyedesigner.in/" }
+    ]
+  }
+};
+
+const teamMembers = [
+  {
+    name: "Atul Bhatt",
+    role: "Founder & Lead Engineer",
+    avatar: "/assets/founder.png",
+    initials: "AB",
+    bio: "Architecting custom e-commerce stores, ERP workflows, and high-performance digital products with a commitment to client independence.",
+    tags: ["Shopify Liquid", "Frappe/ERP", "DevOps", "Web Architecture"]
+  },
+  {
+    name: "Rohit Singh Rawat",
+    role: "Frontend & E-Commerce Solutions Developer",
+    avatar: "/assets/team/rohit-singh-rawat.jpg",
+    initials: "RR",
+    bio: "Builds custom Shopify themes from scratch, writes clean JavaScript and React, and optimizes store speed. Quick at picking up new tools to get stores launched fast and converting better.",
+    tags: ["Shopify Liquid", "React / Next.js", "Core Web Vitals", "Tailored Solutions"]
+  },
+  {
+    name: "Vivek Bhatt",
+    role: "Full-Stack & Systems Developer",
+    avatar: null,
+    initials: "VB",
+    bio: "Focusing on custom API pipelines, Medusa.js headless commerce logic, Frappe business automations, and server infrastructure.",
+    tags: ["Node.js", "Medusa.js", "Frappe", "APIs & Systems"]
+  },
+  {
+    name: "Kunal Risaanva",
+    role: "Web Architect & Full-Stack Developer",
+    avatar: "/assets/team/kunal-risaanva.jpg",
+    initials: "KR",
+    bio: "Designing scalable web architectures and building high-performance digital experiences from concept to deployment, with expertise across UI, frontend development, CMS, integrations, and production-ready delivery.",
+    tags: ["Web Architecture", "UI/UX", "Full-Stack Developer", "Build to Deploy"]
+  },
+  {
+    name: "Krishna Solanki",
+    role: "Frontend Developer & Integrations",
+    avatar: "/assets/team/krishna-solanki.jpg",
+    initials: "KS",
+    bio: "Building responsive and scalable frontend experiences with React and Next.js, implementing pixel-perfect UI from Figma, and integrating dynamic features and third-party services to meet complex business requirements.",
+    tags: ["React", "Next.js", "TypeScript", "Integrations", "Webflow"]
+  },
+  {
+    name: "Ankit Soni",
+    role: "Product Designer · AI & UX Strategy",
+    avatar: "/assets/team/ankit-soni.png",
+    initials: "AS",
+    portfolio: "https://www.oyedesigner.in/",
+    bio: "Passionate about creating engaging user experiences centered around empathizing with users and leveraging data-driven insights to design solutions that truly resonate.",
+    tags: ["Product Design", "AI Products", "UX Strategy", "Design Systems"]
+  }
+];
+---
+
+<BaseLayout
+  title="Team — Klickspell"
+  description="Meet the engineering team behind Klickspell. A specialized, direct-access web and e-commerce engineering pod based in Uttarakhand."
+  canonical="https://klickspell.com/team"
+  schema={schema}
+>
+  <Nav isHome={false} />
+
+  <!-- TEAM HERO -->
+  <section class="team-hero">
+    <p class="section-eyebrow">The Engineering Pod</p>
+    <h1 class="team-title">The builders behind<br><em>the craft.</em></h1>
+    <p class="team-sub">We are a lean, specialized engineering pod based in the foothills of Uttarakhand. You talk directly to the builders crafting your product — no account managers, no junior handoffs.</p>
+  </section>
+
+  <!-- TEAM GRID -->
+  <section class="team-grid">
+    {teamMembers.map((member, index) => (
+      <div class={`team-card reveal reveal-delay-${(index % 3) + 1}`}>
+        <div class="team-card-header">
+          <div class="team-avatar">
+            {member.avatar ? (
+              <img src={member.avatar} alt={member.name} />
+            ) : (
+              <span>{member.initials}</span>
+            )}
+          </div>
+          <div class="team-header-text">
+            <h2 class="team-name">{member.name}</h2>
+            <p class="team-role">{member.role}</p>
+          </div>
+        </div>
+        <p class="team-bio">{member.bio}</p>
+        <div class="team-stack">
+          {member.tags.map(tag => (
+            <span class="team-pill">{tag}</span>
+          ))}
+          {member.portfolio && (
+            <a href={member.portfolio} target="_blank" rel="noopener" class="team-pill team-pill-link" title={`Visit ${member.name}'s portfolio`}>
+              oyedesigner.in ↗
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- ENGINEERING PRINCIPLES -->
+  <section class="principles-section">
+    <div class="principles-inner">
+      <div class="reveal">
+        <p class="section-eyebrow" style="color:rgba(255,255,255,0.4)">How We Engineer</p>
+        <h2 class="section-title" style="color:var(--white)">Our Core <em>Principles</em></h2>
+      </div>
+      <div class="principles-grid reveal reveal-delay-1">
+        <div class="principle-card">
+          <p class="principle-num">01 —</p>
+          <h3 class="principle-title">Craft over templates</h3>
+          <p class="principle-desc">We never compromise your brand vision with off-the-shelf constraints. Every site and app is engineered to fit your exact business workflows.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">02 —</p>
+          <h3 class="principle-title">Client independence</h3>
+          <p class="principle-desc">We build modular systems so your team can edit headings, media, and layout blocks yourself without paying developer retainers for basic updates.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">03 —</p>
+          <h3 class="principle-title">Direct communication</h3>
+          <p class="principle-desc">No lost-in-translation briefs. You speak directly with the engineers designing and coding your application with high async clarity.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">04 —</p>
+          <h3 class="principle-title">Clean handover</h3>
+          <p class="principle-desc">Every build concludes with documented code and a complete video walkthrough so you own and understand every layer of your stack.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Want to build something<br><em>remarkable</em> with our team?</h2>
+      <p class="cta-sub">Let's start with a free 30-minute discovery call. We'll review your scope and give you an honest roadmap.</p>
+      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <p class="cta-stamp">The craft in every click.</p>
+    </div>
+  </section>
+
+  <Footer isHome={false} />
+</BaseLayout>

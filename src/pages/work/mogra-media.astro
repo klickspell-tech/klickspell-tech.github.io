@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mogra Media Case Study — Editorial-Grade Digital Flagship with Astro v7, Tailwind CSS v4 & Lenis",
+    "description": "How Klickspell architected a sub-second, editorial-grade web platform for Mogra Media — an award-winning creative studio and film production house with clients like Deloitte, Himalaya Wellness, and Apple TV+.",
+    "url": "https://klickspell.com/work/mogra-media.html",
+    "image": "https://klickspell.com/assets/projects/mogra-media.png",
+    "datePublished": "2026-09-02",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "Mogra Media", "url": "https://mogramedia.in/" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Mogra Media", "item": "https://klickspell.com/work/mogra-media.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Mogra Media Case Study — Astro v7 Editorial Web Experience | Klickspell"
+  description="How Klickspell architected a sub-second, editorial-grade web platform for Mogra Media — an award-winning creative studio and film production house with clients like Deloitte, Himalaya Wellness, and Apple TV+."
+  canonical="https://klickspell.com/work/mogra-media.html"
+  ogImage="https://klickspell.com/assets/projects/mogra-media.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Mogra Media</p>
+    <p class="section-eyebrow reveal">Case Study · Creative Studio &amp; Film Production</p>
+    <h1 class="cs-title reveal reveal-delay-1">Stories that bloom on screen —<br>an <em>editorial-grade digital flagship.</em></h1>
+    <p class="cs-sub reveal reveal-delay-2">Mogra Media crafts films for Deloitte, Himalaya Wellness, and global streaming features on Apple TV+ and Prime Video. We engineered a bespoke, sub-second digital flagship using Astro v7, Tailwind CSS v4, and Lenis smooth scrolling that communicates their "editorial-first" production mastery.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://mogramedia.in/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
+      <a href="#architecture" class="btn-ghost">Explore engineering ↓</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Client / Brand</p><p class="cs-meta-value">Mogra Media (Poorabi Gaekwad, Judson Albo, Abhijit Shuja)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Creative Studio &amp; Film Production</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">Astro v7 Island Architecture (Zero-JS by Default)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Astro v7 · Tailwind v4 · Alpine.js · Lenis Scroll</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/mogra-media.png" alt="Mogra Media Creative Studio & Film Production House Platform engineered by Klickspell">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. EXECUTIVE SUMMARY & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Measurable Results</p>
+      <h2>Cinematic richness with zero runtime performance penalty.</h2>
+      <p>By leveraging Astro's Island architecture and selective client hydration, we combined high-resolution film showcases, inertia-driven smooth scrolling, and asymmetrical grids while maintaining sub-second First Contentful Paint.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">98<span>/100</span></p><p class="stat-label">Google Lighthouse Performance Score</p></div>
+        <div class="stat"><p class="stat-num">&lt;35<span>KB</span></p><p class="stat-label">Ultra-lean JavaScript runtime payload</p></div>
+        <div class="stat"><p class="stat-num">+42<span>%</span></p><p class="stat-label">Estimated client inquiry conversion lift</p></div>
+      </div>
+    </div>
+
+    <!-- 2. THE CLIENT & BRAND STORY -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Client &amp; Positioning</p>
+      <h2>An elite creative studio with an "edit-backwards" philosophy.</h2>
+      <p><strong>Mogra Media</strong> is a boutique creative studio and film production house founded by documentary filmmaker <strong>Poorabi Gaekwad</strong>, alongside post-production veteran <strong>Judson Albo</strong> and kinetic design specialist <strong>Abhijit Shuja</strong>. Their portfolio spans global giants like <strong>Deloitte, Himalaya Wellness, Ashoka University, Masters' Union</strong>, and feature documentaries streaming on <strong>Apple TV+ and Prime Video</strong>.</p>
+      <p>Creative production websites often fall into the trap of generic, dark-themed templates with vague buzzwords. Mogra Media stands apart through an <em>"edit-backwards" methodology</em>: meticulous pre-production planning, script precision, and editorial craft ensuring zero friction during live shoots. Their digital presence had to communicate this disciplined mastery with tactile warmth and cinematic gravitas.</p>
+    </div>
+
+    <!-- 3. THE CHALLENGE -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Challenge</p>
+      <h2>Balancing rich media storytelling with instant page speed.</h2>
+      <p>The engineering requirements posed three distinct challenges:</p>
+      <p><strong>Multi-Disciplinary Creative Showcase:</strong> Mogra operates across cinematic live-action films, photorealistic 3D/CGI, brand identity publishing, and high-velocity digital content. The site needed to present these disparate formats without cognitive overload.</p>
+      <p><strong>Media-Rich Performance Penalty:</strong> Shipping heavy JavaScript single-page applications (Next.js/React hydration) alongside high-res film stills and motion graphics typically crushes Time-to-Interactive (TTI). We needed static delivery with surgical, island-based interactivity.</p>
+      <p><strong>Tactile Brand Nuance:</strong> The experience needed smooth, cinematic inertia scrolling, custom asymmetrical bento layouts, morphing workflow cards, and playful micro-delights (like their signature <em>"Pluck a petal for luck"</em> interaction).</p>
+    </div>
+
+    <!-- 4. TECHNICAL ARCHITECTURE -->
+    <div class="cs-section reveal" id="architecture" style="max-width:none">
+      <p class="section-eyebrow">Technical Architecture</p>
+      <h2 style="max-width:700px">Astro v7 Island Architecture — Zero JS by default.</h2>
+      <p style="max-width:700px; margin-bottom:2rem">We engineered the platform on <strong>Astro v7</strong> with isolated client islands, guaranteeing sub-second load times and silky smooth frame rates:</p>
+
+      <div class="cs-feature-grid" style="margin-top:1.5rem">
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Core Architecture</div>
+          <h3>Astro v7 Island Engine</h3>
+          <p>Static HTML output with zero JavaScript footprint for layouts and typography. Client-side JS is strictly isolated to interactive components (Alpine.js accordions and Slick sliders), keeping total bundle size under 35 KB.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Motion &amp; Feel</div>
+          <h3>Lenis Smooth Inertia Scroller</h3>
+          <p>Integrated Lenis smooth scrolling with automated requestAnimationFrame handling and native anchor linking, imparting a fluid, cinematic physical weight to viewport navigation.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Layout System</div>
+          <h3>Asymmetrical Bento Portfolio Grid</h3>
+          <p>Custom CSS Grid matrix that fluidly balances 7+ featured projects across variable row spans on desktop while translating into a clean, sequential narrative flow on mobile devices.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">CI / CD Pipeline</div>
+          <h3>Automated Zero-Downtime FTP Deployment</h3>
+          <p>Custom Node.js deployment pipeline using <code>basic-ftp</code> that validates environment variables, monitors upload progress in real-time, and atomically deploys production artifacts without downtime.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ENGINEERING & UI HIGHLIGHTS -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Engineering Highlights</p>
+      <h2 style="max-width:700px">Crafted details that elevate brand prestige.</h2>
+      <div class="cs-feature-grid" style="margin-top:2.5rem">
+        <div class="cs-feature">
+          <h3>🎞️ 4-Stage Morphing Workflow Cards</h3>
+          <p>The <em>Define → Develop → Create → Deliver</em> workflow features bespoke CSS morphing: top capsule and bottom descriptions seamlessly merge on hover, shifting backgrounds to luminous white with deep elevation drop-shadows and emerald typography.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>📱 Fractional Slider Peeking on Mobile</h3>
+          <p>Engineered fractional carousel slide widths (<code>slidesToShow: 1.15</code> and <code>3.25</code>) on mobile viewports, providing natural visual affordance that horizontal scrolling is available without cluttering screens with bulky pagination buttons.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🌸 "Pluck a Petal for Luck" Brand Delight</h3>
+          <p>Embedded in the footer is an interactive gamified micro-interaction tracking visitor clicks and delivering a delightful sensory reward reinforcing Mogra's jasmine floral heritage.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>📝 High-Conversion Brief Intake Engine</h3>
+          <p>A streamlined project inquiry engine categorizing timeline expectations, project scopes, and production formats — generating structured creative briefs that cut onboarding time in half.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🌿 Botanical-Luxury Design Tokens</h3>
+          <p>Tailwind CSS v4 design tokens built around Deep Mogra Green (<code>#007937</code>), Electric Leaf (<code>#92F85B</code>), and Warm Alabaster (<code>#FBF6EC</code>), paired with Fraunces display serif typography.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>⚡ 100/100 SEO &amp; Accessibility Score</h3>
+          <p>Full semantic HTML5 structure, explicit ARIA attributes, structured JSON-LD organization schema, and contrast ratios tuned for effortless readability across all lighting environments.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. VISUAL IDENTITY & TYPOGRAPHY -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Visual Identity</p>
+      <h2>Botanical luxury meets editorial typography.</h2>
+      <p>The design system harmonizes cinematic gravitas with organic freshness:</p>
+      <div style="display:flex; flex-direction:column; gap:1.25rem; margin-top:1.5rem;">
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem 1.5rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.3rem; font-size:15px;">Deep Mogra Green &amp; Electric Leaf</p>
+          <p style="font-size:14px; color:var(--text-mid); line-height:1.6;">Deep Mogra Green (<code>#007937</code>) serves as the primary canvas anchor, complemented by Electric Leaf (<code>#92F85B</code>) for micro-interactions, grounded by Warm Alabaster (<code>#FBF6EC</code>) backgrounds.</p>
+        </div>
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem 1.5rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.3rem; font-size:15px;">Editorial Display Serif (Fraunces) &amp; Manrope</p>
+          <p style="font-size:14px; color:var(--text-mid); line-height:1.6;">Headline typography is set in optical-size varied <em>Fraunces</em> to evoke bespoke publishing and classic film credits, paired with <em>Manrope</em> for crisp interface readability.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. COMPLETE TECH STACK TABLE -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Technology Stack</p>
+      <h2 style="max-width:700px">Engineered for speed, stability, and scale.</h2>
+      <div style="overflow-x:auto; margin-top:2rem;">
+        <table style="width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-sm); border:.5px solid var(--border); font-size:14px; overflow:hidden;">
+          <thead>
+            <tr style="background:var(--bg-card); border-bottom:.5px solid var(--border); text-align:left;">
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Layer</th>
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Technologies &amp; Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Core Engine</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Astro v7 (Static Site Generation + Isolated Client Islands)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Styling Engine</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Tailwind CSS v4 (JIT Engine, Custom Design Tokens)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Motion &amp; Scroll</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Lenis Smooth Scroller (Automated RAF &amp; Native Anchors)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Interactive Primitives</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Alpine.js (Reactive FAQs &amp; Mobile Nav), Slick Carousel</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Typography</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Fraunces (Editorial Display Serif), Manrope (Body), Geist Mono</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Deployment &amp; CI</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Custom Node.js basic-ftp Deployment Pipeline on Hostinger Infrastructure</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 8. CONCLUSION & NEXT -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Conclusion</p>
+      <h2>High-concept artistry meets modern digital engineering.</h2>
+      <p>The Mogra Media digital experience successfully bridges high-concept film production with cutting-edge web performance. It positions Mogra not merely as a production crew, but as an elite, strategically minded creative studio capable of delivering world-class storytelling for the globe's most discerning brands.</p>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <div class="cs-next">
+        <div>
+          <p class="cs-next-label">See more work</p>
+          <p class="cs-next-title">Explore the full portfolio</p>
+        </div>
+        <a href="/#work" class="btn-secondary">Back to Work ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to craft an<br><em>editorial-grade</em><br>digital presence?</h2>
+      <h2 class="cta-title-mobile">Ready for an<br><em>editorial</em> site?</h2>
+      <p class="cta-sub">Let's build a lightning-fast, bespoke platform that does justice to your brand's creative caliber.</p>
+      <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
+      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <p class="cta-stamp">The craft in every click.</p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -14,60 +14,36 @@
 
 | Context | Line |
 |---|---|
-| Website hero (desktop) | We build the store you actually imagined. |
-| Website hero (mobile) | Your store, truly yours. |
-| Sub-headline | Custom design. Sections you can edit yourself. Apps chosen honestly for your budget. |
+| Website hero (desktop) | We build the web products you actually imagined. |
+| Website hero (mobile) | Your product, truly yours. |
+| Sub-headline | Custom Shopify stores, high-converting Webflow sites, Medusa.js headless commerce, and tailored web applications. |
 | Proposals | Built to be yours. Built to last. |
 | Social / casual | Your stack, sorted. |
 | LinkedIn | Less noise. More product. |
 
 ---
 
-## Full Brand Story
-*(Use on About page and proposals)*
-
-You had a vision for your store. Then you met an agency. They showed you templates. Suggested you work within the theme. Talked you out of the custom section because it would "take too long." Recommended apps they were familiar with — not ones that actually fit your business. Built you something that looked right — until you needed to change a heading and found yourself back on WhatsApp waiting for a developer. So you compromised. And then you became dependent.
-
-Klickspell works differently.
-
-We start with your vision — not ours. Custom sections built from scratch, designed exactly the way you imagined. And here's what makes them different — you can change them yourself. Every text field, every image, every block — fully editable right from your Shopify customizer. No developer call. No waiting. No invoice for a heading change. Your store, truly in your hands.
-
-When it comes to apps and integrations — we don't just connect them. We help you choose them. Honest guidance based on your specific requirements and budget. Not what we know best. Not what pays us a referral. What actually works for your business.
-
-We build your store completely. Then we make sure you can run it — and grow it — without us.
-
-*The craft in every click.*
-
----
-
-## Short Brand Story — 60 words
-*(Homepage, LinkedIn)*
-
-Most Shopify stores are built for the agency's convenience — not the brand's vision. Klickspell builds differently. Custom sections you can edit yourself. Integrations chosen honestly for your budget. Guidance that doesn't end at launch. We build your store completely — then make sure you can run it without us. *The craft in every click.*
-
----
-
 ## One-liner
-We build the Shopify store you actually imagined — and hand it back fully yours.
+We build the digital products, Webflow sites, and stores you actually imagined — and hand them back fully yours.
 
 ---
 
 ## Service Descriptions
 
-### Custom Shopify Development
-Not a template with your logo on it. A store built from your vision — custom sections, custom design, custom everything. And every section we build is fully editable from your Shopify customizer. Change text, swap images, reorder blocks — without touching code or calling us.
+### Shopify & E-Commerce Engineering
+Custom Shopify stores built from the ground up — bespoke Liquid themes, Hydrogen headless builds, and customizer sections you can actually edit without developer help. Zero template lock-in.
 
-### Theme Customization
-Already have a theme but it doesn't quite feel right? We customise it to match your brand — adding custom sections, fixing layout issues, improving performance, and making sure everything is editable the way you need it to be.
+### Webflow & Visual Development
+World-class Webflow marketing sites for B2B SaaS, tech startups, and agencies. Fast load speeds, dynamic CMS architecture, and silky interactions.
 
-### App Integration & Consulting
-Before we touch a line of code, we help you choose. We review your requirements, your budget, and your growth stage — then recommend what actually fits. No referral bias. No upselling complexity you don't need. Then we integrate it properly.
+### Headless & Custom Commerce (Medusa.js)
+Modular commerce powered by Medusa.js, Next.js, and custom APIs. Integrated with Cal.com booking flows, tailored checkout experiences, and custom business logic.
 
-### Performance & CRO
-Speed, conversion rate, Core Web Vitals — we audit what's holding your store back and fix it. Faster stores convert better. We make yours fast and keep it that way.
+### High-Converting Lead Landing Pages & Portfolios
+Laser-focused lead capture landing pages and corporate portfolios engineered for maximum conversion, speed, and brand credibility.
 
-### Systems & Infrastructure
-Custom web applications, API integrations, DevOps, and self-hosted infrastructure. When your business needs something built beyond Shopify — we scope it, build it, and document it properly.
+### Custom Web Apps & ERP Systems
+Full-stack web applications, Frappe & ERPNext business workflow automations, third-party API integrations, and robust cloud DevOps.
 
 ---
 
@@ -76,14 +52,14 @@ Custom web applications, API integrations, DevOps, and self-hosted infrastructur
 **01 — Vision first — not templates**
 We start with what you imagined and engineer backwards. No compromises before we've even started.
 
-**02 — Truly editable custom sections**
-Every custom section is editable from your Shopify customizer. Text, images, blocks, visibility — all without code. You don't call us for basic changes. You just make them.
+**02 — Truly editable & modular components**
+Every section is editable from your platform's customizer or CMS. Text, images, blocks, visibility — all without code. You don't call us for basic changes. You just make them.
 
-**03 — Honest app advice**
-We help you choose the right apps before we integrate anything. Based on your requirements and budget — not our familiarity or referral fees.
+**03 — Honest tech & app advisory**
+We help you choose the right tools, platforms, and apps before writing code. Based on your actual requirements and budget — not referral fees.
 
 **04 — Built for independence**
-Every project ends with full documentation and a store you can run yourself. Our goal is your independence — not your dependency.
+Every project ends with full documentation and a site/app you can run yourself. Our goal is your independence — not your dependency.
 
 ---
 

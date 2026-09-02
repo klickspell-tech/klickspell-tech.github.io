@@ -18,22 +18,22 @@
 
 ## 2. What is Klickspell?
 
-Klickspell is a **Shopify development agency** based in Rudrapur, Uttarakhand.
+Klickspell is a **web engineering and digital product studio** based in Rudrapur, Uttarakhand.
 
 **Core positioning:**
-- We build custom Shopify stores — not templates
-- Every custom section is fully editable from the Shopify customizer (no developer needed for basic changes)
-- We advise on app integrations honestly — based on client needs and budget, not referral fees
-- We build for client independence, not dependency
+- We build custom Shopify stores, Webflow marketing sites, Medusa.js headless commerce, and tailored web applications.
+- Every section is fully editable by the client without developer dependency.
+- We advise on tech stacks and app integrations honestly — based on client needs and budget, not referral kickbacks.
+- We build for client independence, not dependency.
 
 **Primary stamp (never change this):**
 > "The craft in every click."
 
 **Hero line:**
-> "We build the store you actually imagined."
+> "We build the web products you actually imagined."
 
 **Mobile hero line:**
-> "Your store, truly yours."
+> "Your product, truly yours."
 
 ---
 
@@ -68,9 +68,7 @@ Klickspell is a **Shopify development agency** based in Rudrapur, Uttarakhand.
 
 ---
 
-## 4. Current Site Structure (index.html)
-
-The site is a **single HTML file** with embedded CSS and JS. All sections in order:
+## 4. Current Site Structure
 
 | Section | ID | Description |
 |---|---|---|
@@ -78,34 +76,40 @@ The site is a **single HTML file** with embedded CSS and JS. All sections in ord
 | Mobile menu | `#mobileMenu` | Slide-in mobile nav |
 | Hero | `.hero` | Concentric arc rings, floating cards, dual desktop/mobile copy |
 | Clients marquee | `.clients` | Scrolling brand names, pauses on hover |
-| Services | `#services` | 5 service cards in a grid |
+| Services | `#services` | 5 capability cards + 1 CTA card in grid |
 | Differentiators | `.diff-section` | Dark section, 4 key differentiators |
-| Portfolio | `#work` | 8 project cards, featured + regular + half grid |
+| Portfolio | `#work` | 18 project cards with category filter pills |
 | Process | `.process-section` | 4-step how we work |
-| About | `#about` | Photo + stats + bio |
-| Tutorials | `#tutorials` | 6 YouTube tutorial cards |
+| About | `#about` | Photo + stats (20+ projects) + bio |
+| Tutorials | `#tutorials` | YouTube tutorial cards |
+| FAQ | `#faq` | Accordion with questions on stacks & process |
 | CTA | `.cta-section` | Final call to action |
 | Footer | `footer` | Links, stamp, copyright |
 
 ---
 
-## 5. Portfolio Projects (all 8 live sites)
+## 5. Portfolio Projects (18 Live Sites)
 
-| Project | URL | Niche | Card type |
+| Project | URL | Category | Niche / Stack |
 |---|---|---|---|
-| Cove & Lane | https://coveandlane.in/ | Fashion & Apparel | Featured (hero card, 7 cols) |
-| Jaxon Lane | https://jaxonlane.com/ | Skincare | Regular (5 cols) |
-| Taarz | https://taarz.in/ | Fashion | Half (6 cols) |
-| Haycure Wellness | https://haycurewellness.com/ | Wellness & Beauty | Half |
-| Noukai Tokyo | https://noukaitokyo.com/ | Beauty Rituals | Half |
-| Under Design | https://store.weareunder.design/ | Creative Merch | Half |
-| Easy Rugs | https://easyrugs.in/ | Home Decor | Half |
-| Bounce Back Drinks | https://bouncebackdrinks.com/ | Food & Beverage | Half |
-
-**Note on screenshots:**
-- Cove & Lane (featured card) uses a live screenshot API — falls back to placeholder text if API fails
-- All other cards use styled italic placeholder text in `--text-light` color
-- Future task: add real OG image screenshots for all project cards
+| Jaxon Lane | https://jaxonlane.com/ | Shopify | Skincare · US Brand |
+| Tealbox Digital | https://tealbox.digital/ | Webflow | Performance Marketing Agency |
+| Skillbridge | https://skillbridge.net/ | Landing & Brand | EdTech & Career Platform |
+| DealShare | https://about.dealshare.in/ | Landing & Brand | Corporate & Investor Portfolio |
+| CallSara AI | https://www.callsara.ai/ | Webflow | AI Voice Agent SaaS |
+| Cove & Lane | https://coveandlane.in/ | Shopify | Fashion & Apparel |
+| Mogra Media | https://mogramedia.in/ | Landing & Brand | Lead Generation Landing Page |
+| Pragya Vijh | https://pragyavijh.com/in | Headless & Custom | Medusa.js + Cal.com Integration |
+| Bambrew | https://www.bambrew.in/ | Shopify | Sustainable Packaging · Shark Tank |
+| Nuva Gurukul | https://nuvagurukul.com/ | Landing & Brand | Education & Student Enrollment |
+| Noukai Tokyo | https://noukaitokyo.com/ | Headless & Custom | Shopify Hydrogen · Japan |
+| Easy Rugs | https://easyrugs.in/ | Shopify | Home Decor · Shark Tank India |
+| SourceBae | https://sourcebae.com/ | Landing & Brand | Talent Marketplace Platform |
+| ARBC | https://www.arbc.in/ | Landing & Brand | Corporate Consulting |
+| Bounce Back Drinks | https://bouncebackdrinks.com/ | Shopify | Food & Beverage · UK Brand |
+| Under Design | https://store.weareunder.design/ | Shopify | Creative Merch · Israel Brand |
+| Haycure Wellness | https://haycurewellness.com/ | Shopify | Wellness & Beauty |
+| Taarz | https://taarz.in/ | Shopify | Fashion & Apparel |
 
 ---
 
