@@ -1,0 +1,300 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Noukai Tokyo Case Study — Headless Shopify Hydrogen, Oxygen Edge Workers & Interactive 3D Skincare Rituals",
+    "description": "How Klickspell engineered a luxury headless Shopify Hydrogen e-commerce flagship for Noukai Tokyo deployed to Shopify Oxygen edge workers — featuring interactive 3D WebGL bottle exploration, 4K Cloudinary video streaming, and pre-launch Shopify Admin API lead capture.",
+    "url": "https://klickspell.com/work/noukai-tokyo.html",
+    "image": "https://klickspell.com/assets/projects/noukai-tokyo.png",
+    "datePublished": "2026-08-15",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "Noukai Tokyo", "url": "https://noukaitokyo.com/" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Noukai Tokyo", "item": "https://klickspell.com/work/noukai-tokyo.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Noukai Tokyo Case Study — Headless Shopify Hydrogen & 3D Skincare Rituals | Klickspell"
+  description="How Klickspell engineered a luxury headless Shopify Hydrogen e-commerce flagship for Noukai Tokyo deployed to Shopify Oxygen edge workers — featuring interactive 3D WebGL bottle exploration, 4K Cloudinary video streaming, and pre-launch Shopify Admin API lead capture."
+  canonical="https://klickspell.com/work/noukai-tokyo.html"
+  ogImage="https://klickspell.com/assets/projects/noukai-tokyo.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Noukai Tokyo</p>
+    <p class="section-eyebrow reveal">Case Study · Headless Shopify Hydrogen &amp; 3D Digital Craft</p>
+    <h1 class="cs-title reveal reveal-delay-1">Mindful hydration rituals meet<br><em>bleeding-edge headless commerce.</em></h1>
+    <p class="cs-sub reveal reveal-delay-2">Noukai Tokyo needed an e-commerce flagship matching the precision, calm, and tactile elegance of luxury Japanese skincare. We engineered a sub-second headless platform on Shopify Hydrogen 2025 and Shopify Oxygen edge workers, integrating interactive scroll-driven 3D WebGL bottle exploration, 4K streaming media, and dynamic Storefront API state management.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://noukaitokyo.com/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
+      <a href="#" onclick="event.preventDefault();openYTModal('sMlf7cl_L-o')" class="btn-ghost">Watch video walkthrough ▶</a>
+      <a href="#architecture" class="btn-ghost">Explore architecture ↓</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Client / Brand</p><p class="cs-meta-value">Noukai Tokyo (Tokyo, Japan)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Japanese Luxury Skincare &amp; Hydration</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">Shopify Hydrogen 2025 on Oxygen Edge</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Hydrogen 2025 · Remix / RR7 · WebGL · GSAP · Cloudinary</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <div class="yt-facade" onclick="event.preventDefault();openYTModal('sMlf7cl_L-o')" style="position:relative; cursor:pointer;" title="Click to watch video walkthrough">
+        <img src="/assets/projects/noukai-tokyo.png" alt="Noukai Tokyo Luxury Japanese Skincare Headless Storefront engineered by Klickspell">
+        <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. EXECUTIVE SUMMARY & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Executive Summary &amp; Results</p>
+      <h2>Sub-second luxury engineering at the global edge.</h2>
+      <p><strong>Noukai Tokyo</strong> is a high-end Japanese skincare atelier designed around the philosophy of mindful hydration rituals and botanical bio-science. To convey the poise and tactile calm of Japanese craftsmanship, the brand required a digital presence far beyond pre-built Liquid templates.</p>
+      <p>As lead full-stack engineer on the storefront architecture, we built an edge-native headless storefront running on <strong>Shopify Hydrogen 2025</strong> deployed directly to <strong>Shopify Oxygen edge workers</strong>. The architecture delivers 60 FPS interactive 3D bottle orbits, sub-second page transitions, and zero-layout-shift 4K video playback.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">60<span> FPS</span></p><p class="stat-label">Scroll-linked 3D WebGL bottle rotation</p></div>
+        <div class="stat"><p class="stat-num">&lt;0.9<span>s</span></p><p class="stat-label">Largest Contentful Paint (LCP) with 0.00 CLS</p></div>
+        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Edge-rendered SSR on Shopify Oxygen</p></div>
+        <div class="stat"><p class="stat-num">2<span> Phases</span></p><p class="stat-label">Strategic delivery lifecycle (Dec '25 &amp; Aug '26)</p></div>
+      </div>
+    </div>
+
+    <!-- 2. BRAND VISION & HERITAGE -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Brand Vision &amp; Philosophy</p>
+      <h2>Tactile minimalism, botanical bio-science, and Japanese calm.</h2>
+      <p>The brand philosophy honors the centuries-old Japanese tradition of seasonal renewal and deep dermal replenishment:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><strong>Aesthetic Harmony:</strong> A soothing visual language rooted in deep Japanese indigo (<code>#163860</code>), warm organic washi paper tones (<code>#e7e0d6</code>), frosted glass textures, and authentic bilingual typography pairing <strong>Kozuka Gothic</strong> for Japanese kanji/kana with <strong>Fieldwork Geo</strong> for clean architectural latin headings.</li>
+        <li><strong>Hero Botanical Formulation:</strong> "Haru Intense Hydration Serum" (Serum 22) — engineered with high-altitude Snow Mushroom (<em>Tremella</em>), multi-weight Sodium Hyaluronate, Ectoin, Madecassoside, and skin-identical multi-weight Ceramides.</li>
+        <li><strong>The Digital Objective:</strong> Craft a digital flagship that feels as tactile, fluid, and rejuvenating as applying the serum itself — eliminating choppy animations, clunky page reloads, and rigid e-commerce layouts.</li>
+      </ul>
+    </div>
+
+    <!-- 3. THE TWO-PHASE EVOLUTION -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">The Project Evolution &amp; Timeline</p>
+      <h2 style="max-width:700px">Delivered in two distinct strategic phases separated by a creative hiatus.</h2>
+      <p style="max-width:700px; margin-bottom:2rem">Rather than rushing compromised creative assets into production, the engineering and creative teams coordinated around a planned 5-month interval:</p>
+
+      <div class="cs-feature-grid" style="margin-top:1.5rem">
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Phase 1 · Dec 14, 2025 – Jan 17, 2026</div>
+          <h3>Headless Architecture &amp; Oxygen Edge Foundation</h3>
+          <p>Architected the core Shopify Hydrogen 2025 monorepo with Vite, TypeScript, and Tailwind CSS v4. Engineered custom Oxygen edge CI/CD deployment pipelines, resolved Cloudflare Worker Rollup polyfills, integrated GraphQL Storefront API schemas, and crafted the optimistic slide-over cart drawer and glassmorphic UI system.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Strategic Hiatus · Feb 2026 – Jun 2026</div>
+          <h3>3D CAD Synthesis &amp; Cinematic Production</h3>
+          <p>With a bulletproof headless foundation locked in, the industrial design and branding teams produced photorealistic 3D product CAD/Blender models (<code>serum22.blend</code>), captured 4K cinematic macro video footage of formulation droplets, iterated on physical bottle glass finishes, and perfected bilingual Japanese brand narratives.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Phase 2 · Jul 2026 – Aug 12, 2026</div>
+          <h3>Interactive 3D WebGL &amp; Pre-Launch Scale</h3>
+          <p>Integrated <code>@google/model-viewer</code> with GSAP ScrollTrigger for 360° scroll-linked camera orbits. Deployed 4K Cloudinary video streaming with zero-layout-shift poster preloading, configured strict cryptographic CSP nonces, and automated edge-native pre-launch lead capture using the Shopify Admin API.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Strategic Advantage</div>
+          <h3>Decoupled Speed Without Regression</h3>
+          <p>Because Phase 1 established a battle-tested headless engine, Phase 2 creative innovations were integrated smoothly into production in weeks without modifying, refactoring, or destabilizing the underlying checkout and commerce state.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. HEADLESS COMMERCE ARCHITECTURE -->
+    <div class="cs-section reveal" id="architecture" style="max-width:none">
+      <p class="section-eyebrow">The Technical Architecture</p>
+      <h2 style="max-width:700px">An edge-native stack engineered for performance.</h2>
+      <p style="max-width:700px; margin-bottom:2rem">Every layer of the platform was selected for minimal client overhead, deterministic styling, and extreme edge resilience:</p>
+
+      <div class="cs-feature-grid" style="margin-top:1.5rem">
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Edge Infrastructure · Global CDN</div>
+          <h3>Shopify Oxygen Edge Runtime</h3>
+          <p>Deployed across Cloudflare-powered Shopify Oxygen edge nodes worldwide. Server-rendered responses stream directly from the nearest edge datacenter with sub-50ms TTFB.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Framework &amp; Routing</div>
+          <h3>Shopify Hydrogen 2025 &amp; Remix / RR7</h3>
+          <p>React Router v7 / Remix streaming architecture with progressive hydration, React Server Components, and zero-runtime CSS via Tailwind CSS v4.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Interactive 3D &amp; Motion</div>
+          <h3>WebGL Model Viewer &amp; GSAP ScrollTrigger</h3>
+          <p>Client-side dynamically hydrated <code>@google/model-viewer</code> synchronized with GSAP ScrollTrigger, mapping vertical scroll depth directly into 3D bottle rotation and ingredient callouts.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Media &amp; Commerce APIs</div>
+          <h3>Cloudinary 4K Media &amp; Shopify APIs</h3>
+          <p>Adaptive bitrate 4K video delivery via Cloudinary paired with Shopify Storefront GraphQL queries and Shopify Admin API customer creation webhooks.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ENGINEERING HIGHLIGHTS -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Engineering Highlights</p>
+      <h2 style="max-width:700px">Custom innovations built for luxury digital storytelling.</h2>
+      <div class="cs-feature-grid" style="margin-top:2.5rem">
+        <div class="cs-feature">
+          <h3>🍶 Scroll-Driven 3D Formulation Reveal</h3>
+          <p>Engineered <code>ProductBlendScroll.tsx</code>, locking the viewport as users scroll vertically through the hero ritual section. The 3D bottle's camera orbit rotates continuously from <code>-30°</code> to <code>330°</code> while synchronizing staggered opacity and upward slide animations for Snow Mushroom, Ceramides, Madecassoside, and Ectoin.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>⚡ Edge-Safe WebGL Hydration</h3>
+          <p>Overcame fatal Shopify Oxygen worker crashes caused by <code>@google/model-viewer</code> extending <code>HTMLElement</code> at module load time. Configured Vite SSR externalization (<code>ssr.external: ['@google/model-viewer']</code>) and lazily mounted the WebGL runtime exclusively inside browser-side <code>useEffect</code> lifecycle hooks.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🎥 Zero-CLS 4K Cinematic Video Streaming</h3>
+          <p>Served macro serum video footage through Cloudinary with automated format and quality negotiation (<code>f_auto,q_auto:best</code>). Built an instant high-resolution poster preload strategy with a CSS crossfade transition, guaranteeing zero cumulative layout shift (<strong>CLS: 0.00</strong>) and an LCP under 0.9s.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>📬 Pre-Launch Lead Engine via Admin API</h3>
+          <p>Engineered an edge-rendered coming-soon portal (<code>app/routes/_index.tsx</code>) communicating directly with the <strong>Shopify Admin API</strong> (<code>/admin/api/2024-04/customers.json</code>). Automatically captures pre-launch leads with <code>accepts_marketing: true</code>, customer segmentation tags (<em>Newsletter, Coming Soon</em>), and graceful duplicate handling.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🛒 Optimistic Cart Drawer &amp; State Sync</h3>
+          <p>Developed an interactive slide-over cart drawer with real-time GraphQL line-item count synchronization, instant quantity modifiers, and direct checkout redirection while strictly preventing mounting state loops during rapid user interactions.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>✨ Glassmorphism &amp; Japanese Washi UI</h3>
+          <p>Crafted the modular <code>GlassButton</code> design system component with multi-layered backdrop filters (<code>backdrop-blur-xl</code>), subtle multi-directional rim lighting, liquid hover states, and smooth snap-scrolling ingredient carousels honoring Japanese tactile materials.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. DEEP TECHNICAL CHALLENGES & SOLUTIONS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Technical Challenges &amp; Solutions</p>
+      <h2>Solving complex edge runtime &amp; animation constraints.</h2>
+      
+      <div style="display:flex; flex-direction:column; gap:1.75rem; margin-top:1.75rem;">
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.5rem 1.75rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.5rem; font-size:16px;">Challenge 1: WebGL Custom Elements in an SSR Edge Worker</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7; margin-bottom:.75rem;"><strong>The Problem:</strong> <code>@google/model-viewer</code> and its underlying Lit dependency touch the global <code>window</code> and <code>HTMLElement</code> objects immediately upon evaluation. When Oxygen edge workers booted the server bundle, the missing DOM environment caused fatal SSR crashes.</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7;"><strong>The Solution:</strong> Marked the library as external in <code>vite.config.ts</code> so the server bundle completely skips evaluation. On the client, wrapped the custom element registration inside a dynamic <code>import('@google/model-viewer')</code> inside a React <code>useEffect</code> hook, keeping Oxygen SSR lightning fast while enabling full 60fps WebGL in the browser.</p>
+        </div>
+
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.5rem 1.75rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.5rem; font-size:16px;">Challenge 2: Streaming SSR with Cryptographic CSP Nonces</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7; margin-bottom:.75rem;"><strong>The Problem:</strong> Loading third-party 4K media from Cloudinary, 3D glTF/GLB models, and WebAssembly shaders required strict Content Security Policies (CSP) to prevent XSS without tripping security violations on edge workers.</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7;"><strong>The Solution:</strong> Implemented Hydrogen's <code>createContentSecurityPolicy</code> in <code>entry.server.jsx</code> paired with React's <code>renderToReadableStream</code>. Injected cryptographically secure request-scoped nonces via <code>NonceProvider</code>, explicitly authorizing Cloudinary video streams, Shopify CDN blobs, and WASM shaders without compromising security.</p>
+        </div>
+
+        <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); padding:1.5rem 1.75rem;">
+          <p style="font-weight:700; color:var(--text); margin-bottom:.5rem; font-size:16px;">Challenge 3: Seamless Scroll-Synchronized 3D Camera Math</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7; margin-bottom:.75rem;"><strong>The Problem:</strong> Standard scroll triggers produced stuttering camera motion and asynchronous timing when trying to keep narrative ingredient callouts aligned with the 3D bottle's front and back labels.</p>
+          <p style="font-size:14.5px; color:var(--text-mid); line-height:1.7;"><strong>The Solution:</strong> Built a parametric transformation function mapping normalized viewport scroll progress (<code>0.0</code> to <code>1.0</code>) into continuous camera azimuth angles from <code>-30°</code> to <code>330°</code>, with calibrated entrance/exit fractions (<code>ENTER_EXIT_FRACTION = 0.22</code>) that create an effortless, gallery-grade exhibition feel.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. COMPLETE TECH STACK TABLE -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Technology Stack</p>
+      <h2 style="max-width:700px">Battle-tested tools and frameworks.</h2>
+      <div style="overflow-x:auto; margin-top:2rem;">
+        <table style="width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-sm); border:.5px solid var(--border); font-size:14px; overflow:hidden;">
+          <thead>
+            <tr style="background:var(--bg-card); border-bottom:.5px solid var(--border); text-align:left;">
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Layer</th>
+              <th style="padding:1rem 1.25rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text);">Technologies &amp; Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Headless Framework</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Hydrogen (2025 Release), Remix / React Router v7, React Server Components</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Deployment &amp; Edge Runtime</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Oxygen (Global Cloudflare V8 Edge Workers), GitHub Actions CI/CD Pipeline</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Build Tooling &amp; Bundler</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Vite 5, TypeScript 5, Rollup Process Polyfills &amp; Custom SSR noExternal Rules</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Styling &amp; Design System</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Tailwind CSS v4 (Zero-runtime CSS engine), Custom Glassmorphic Backdrop Components</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">3D Graphics &amp; Animation</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);"><code>@google/model-viewer</code> (WebGL), GSAP ScrollTrigger, Custom Orbit Transformation Math</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Media &amp; CDN Streaming</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Cloudinary 4K Adaptive Video Delivery (<code>q_auto:best, f_auto</code>), Zero-CLS Poster Preload</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">E-Commerce APIs &amp; Webhooks</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Storefront GraphQL API (2024-04), Shopify Admin REST API (Customer Lead Capture)</td>
+            </tr>
+            <tr style="border-bottom:.5px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Typography</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Kozuka Gothic (Japanese Kanji/Kana), Fieldwork Geo (Architectural Headings)</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Edge Security</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Strict Cryptographic CSP Nonces (<code>createContentSecurityPolicy</code> + <code>NonceProvider</code>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 8. CONCLUSION & PORTFOLIO SUMMARY -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Result</p>
+      <h2>The pinnacle of modern e-commerce engineering.</h2>
+      <p>Noukai Tokyo represents what is possible when the delicate aesthetics of Japanese skincare rituals are paired with bleeding-edge web technologies. By unifying Shopify Hydrogen, Oxygen edge workers, GSAP-controlled 3D WebGL models, and 4K media streaming, we proved that high-fidelity luxury digital experiences can be delivered with sub-second performance, zero layout shift, and enterprise-grade reliability.</p>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <div class="cs-next">
+        <div>
+          <p class="cs-next-label">See more work</p>
+          <p class="cs-next-title">Explore the full portfolio</p>
+        </div>
+        <a href="/#work" class="btn-secondary">Back to Work ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to engineer a<br><em>headless commerce</em><br>flagship?</h2>
+      <h2 class="cta-title-mobile">Ready for a<br><em>headless</em> store?</h2>
+      <p class="cta-sub">Let's discuss how Shopify Hydrogen, 3D WebGL, and custom edge architectures can elevate your brand.</p>
+      <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
+      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <p class="cta-stamp">The craft in every click.</p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
