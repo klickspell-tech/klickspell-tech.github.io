@@ -107,8 +107,8 @@ const schemas = [webAppSchema, breadcrumbSchema];
 ---
 
 <BaseLayout
-  title="Shopify Speed & App Bloat Estimator — Free Core Web Vitals Calculator | Klickspell"
-  description="Calculate the real-world mobile speed penalty and revenue loss caused by your Shopify app stack. Select your apps to see estimated JavaScript bloat and conversion impact."
+  title="Website Speed & Third-Party Bloat Estimator — Free Core Web Vitals Calculator | Klickspell"
+  description="Scan any website or e-commerce store to audit mobile speed, detect third-party script bloat, and calculate the conversion impact of your app stack."
   canonical={canonical}
   ogImage="https://klickspell.com/assets/og-card.png"
   schema={schemas}
@@ -117,7 +117,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
   <main id="main-content">
     <header class="service-page-hero" style="padding-bottom: 2rem;">
-      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / Shopify Speed Estimator</p>
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / Website Speed Diagnostic</p>
 
       <div class="service-badge reveal">
         <span class="service-badge-dot"></span>
@@ -125,12 +125,12 @@ const schemas = [webAppSchema, breadcrumbSchema];
       </div>
 
       <h1 class="service-hero-title reveal reveal-delay-1">
-        How much revenue is your<br>
-        <em>Shopify app stack costing you?</em>
+        How much performance is your<br>
+        <em>third-party app stack costing you?</em>
       </h1>
 
       <p class="service-hero-sub reveal reveal-delay-2">
-        Every third-party Shopify app injects render-blocking JavaScript that freezes mobile processors. Select the apps your store currently runs below to calculate your estimated mobile CPU delay, Core Web Vitals penalty, and conversion loss in real time.
+        Every third-party widget, pixel, and tracking script injects render-blocking JavaScript that freezes mobile processors. Test your live website speed below, or select installed apps to calculate your estimated mobile CPU delay, Core Web Vitals penalty, and conversion impact.
       </p>
     </header>
 
@@ -142,13 +142,13 @@ const schemas = [webAppSchema, breadcrumbSchema];
           <div class="store-scanner-header">
             <div>
               <span class="store-scanner-badge">⚡ Live Mobile Diagnostic</span>
-              <h2 class="store-scanner-title">Scan your live Shopify store</h2>
-              <p class="store-scanner-sub">Enter your store URL to run an emulated 4G mobile Lighthouse audit and detect third-party app scripts in real time.</p>
+              <h2 class="store-scanner-title">Scan any live website</h2>
+              <p class="store-scanner-sub">Enter any website or store URL to run an emulated 4G mobile Lighthouse audit and inspect third-party script bloat in real time.</p>
             </div>
             <div class="scanner-demo-pills">
-              <span class="demo-pills-label">Portfolio demos:</span>
+              <span class="demo-pills-label">Speed benchmarks:</span>
+              <button type="button" class="demo-pill-btn" data-url="klickspell.com" style="border-color:rgba(37,211,102,0.4); color:#fff; background:rgba(37,211,102,0.08);">⚡ klickspell.com (Our Site)</button>
               <button type="button" class="demo-pill-btn" data-url="bambrew.in">bambrew.in</button>
-              <button type="button" class="demo-pill-btn" data-url="jaxonlane.com">jaxonlane.com</button>
               <button type="button" class="demo-pill-btn" data-url="coveandlane.in">coveandlane.in</button>
             </div>
           </div>
@@ -159,7 +159,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
               <input 
                 type="text" 
                 id="scannerStoreInput" 
-                placeholder="yourbrand.com or brand.myshopify.com" 
+                placeholder="yourbrand.com or any website URL" 
                 required 
                 autocomplete="off"
                 spellcheck="false"
@@ -284,7 +284,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
         <!-- APPS SELECTION COLUMN -->
         <div class="estimator-apps-col">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
-            <p style="font-size:14px; font-weight:600; color:var(--text);">Select the apps installed on your store:</p>
+            <p style="font-size:14px; font-weight:600; color:var(--text);">Select the apps, widgets, or tools installed on your site:</p>
             <button id="resetAppsBtn" type="button" style="background:none; border:none; color:var(--accent); font-family:'DM Mono',monospace; font-size:11.5px; cursor:pointer; text-decoration:underline;">Reset all</button>
           </div>
 
@@ -503,6 +503,17 @@ const schemas = [webAppSchema, breadcrumbSchema];
       // 2. LIVE STORE SCANNER & DIAGNOSTIC ENGINE
       // -------------------------------------------------------------
       const demoBenchmarks = {
+        'klickspell.com': {
+          score: 96,
+          tbt: '40 ms',
+          lcp: '1.6 s',
+          fcp: '1.4 s',
+          cls: '0.00',
+          status: 'good',
+          verdict: 'Sub-50ms Touch Delay · Engineered by Klickspell (Zero Third-Party Bloat)',
+          apps: [],
+          scripts: ['Self-Hosted Variable Fonts', 'Inlined Critical CSS', 'Zero Blocking Trackers', 'Modern Clean Architecture']
+        },
         'bambrew.in': {
           score: 40,
           tbt: '690 ms',
@@ -736,6 +747,18 @@ const schemas = [webAppSchema, breadcrumbSchema];
         // Update action links with store context
         psiBtn.href = `https://pagespeed.web.dev/analysis?url=https%3A%2F%2F${encodeURIComponent(domain)}`;
         waBtn.href = `https://wa.me/919259598769?text=${encodeURIComponent(`Hi Atul, I audited ${domain} on your Klickspell Speed Tool. Mobile score is ${data.score}/100 with ${data.tbt} TBT. Can we schedule a call to optimize it?`)}`;
+
+        const ctaTitle = document.querySelector('.scanner-cta-text h4');
+        const ctaSub = document.querySelector('.scanner-cta-text p');
+        if (ctaTitle && ctaSub) {
+          if (domain === 'klickspell.com') {
+            ctaTitle.textContent = "Want your website to achieve this exact 96+ mobile speed?";
+            ctaSub.textContent = "We eliminate render-blocking CSS, self-host variable fonts, and optimize third-party tags to guarantee sub-second mobile loading for your brand.";
+          } else {
+            ctaTitle.textContent = "Want Atul to fix these bottlenecks and guarantee a 90+ score?";
+            ctaSub.textContent = "We decouple heavy third-party scripts from the critical mobile paint without breaking your tracking or marketing stack.";
+          }
+        }
 
         resultsCard.style.display = 'block';
         resultsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
