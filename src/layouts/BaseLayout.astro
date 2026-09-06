@@ -50,7 +50,11 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" />
+  </noscript>
 
   <!-- Global Styles -->
   <link rel="stylesheet" href="/assets/css/style.css" />
@@ -75,20 +79,30 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <div id="ytModal" class="yt-modal">
     <div class="yt-modal-overlay" id="ytModalOverlay"></div>
     <div class="yt-modal-box">
-      <button class="yt-modal-close" id="ytModalClose">✕</button>
-      <iframe id="ytModalIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <button class="yt-modal-close" id="ytModalClose" aria-label="Close video modal">✕</button>
+      <iframe id="ytModalIframe" src="" title="Video Walkthrough Player" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
   </div>
 
-  <script is:inline src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script is:inline defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script is:inline>
-    // Lenis smooth scroll
-    const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-    lenis.on('scroll', () => {
-      const nav = document.getElementById('nav');
-      if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
-    });
-    (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+    // Initialize Lenis smoothly after DOM is ready
+    let lenis = null;
+    function initLenis() {
+      if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+        lenis.on('scroll', () => {
+          const nav = document.getElementById('nav');
+          if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
+        });
+        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(initLenis, 50));
+    } else {
+      setTimeout(initLenis, 50);
+    }
 
     // Video modal
     window.openYTModal = function(videoId) {
@@ -97,7 +111,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         modal.classList.add('open');
-        lenis.stop();
+        lenis?.stop();
       }
     };
     window.closeYTModal = function() {
@@ -106,7 +120,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = '';
         modal.classList.remove('open');
-        lenis.start();
+        lenis?.start();
       }
     };
 
@@ -179,7 +193,11 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         const t = document.querySelector(href);
         if (t) {
           e.preventDefault();
-          lenis.scrollTo(t, { offset: 0, duration: 1.2 });
+          if (lenis) {
+            lenis.scrollTo(t, { offset: 0, duration: 1.2 });
+          } else {
+            t.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       }
     }));

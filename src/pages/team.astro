@@ -88,6 +88,7 @@ const teamMembers = [
 >
   <Nav isHome={false} />
 
+  <main id="main-content">
   <!-- TEAM HERO -->
   <section class="team-hero">
     <p class="section-eyebrow">The Engineering Pod</p>
@@ -102,7 +103,7 @@ const teamMembers = [
         <div class="team-card-header">
           <div class="team-avatar">
             {member.avatar ? (
-              <img src={member.avatar} alt={member.name} />
+              <img src={member.avatar} alt={member.name} loading="lazy" decoding="async" />
             ) : (
               <span>{member.initials}</span>
             )}
@@ -164,11 +165,12 @@ const teamMembers = [
     <div class="cta-inner reveal">
       <h2 class="cta-title">Want to build something<br><em>remarkable</em> with our team?</h2>
       <p class="cta-sub">Let's start with a free 30-minute discovery call. We'll review your scope and give you an honest roadmap.</p>
-      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
       <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
       <p class="cta-stamp">The craft in every click.</p>
     </div>
   </section>
+  </main>
 
   <Footer isHome={false} />
 </BaseLayout>

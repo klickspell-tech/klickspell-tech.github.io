@@ -58,6 +58,7 @@ const articleSchema = {
 >
   <Nav />
 
+  <main id="main-content">
   <article>
     <header class="post-header">
       <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/blog">Blog</a> / {post.data.title}</p>
@@ -127,11 +128,12 @@ const articleSchema = {
       <h2 class="cta-title-mobile">Let's build<br>your store <em>right.</em></h2>
       <p class="cta-sub">Let's start with a free 30-minute call. No commitment, no templates, no compromises.</p>
       <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
-      <a data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
       <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
       <p class="cta-stamp">The craft in every click.</p>
     </div>
   </section>
+  </main>
 
   <Footer />
 </BaseLayout>
