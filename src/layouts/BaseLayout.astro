@@ -85,29 +85,33 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     </div>
   </div>
 
-  <script is:inline defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script is:inline>
-    // Initialize Lenis smoothly after DOM is ready
-    let lenis = null;
-    function initLenis() {
-      if (typeof Lenis !== 'undefined') {
-        lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-        lenis.on('scroll', () => {
-          const nav = document.getElementById('nav');
-          if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
-        });
-        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+  <script>
+    import Lenis from 'lenis';
+
+    let lenis: Lenis | null = null;
+    // Only initialize smooth scroll on desktop pointer devices
+    if (window.matchMedia('(pointer: fine)').matches) {
+      lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+      lenis.on('scroll', () => {
+        const nav = document.getElementById('nav');
+        if (nav) nav.classList.toggle('scrolled', lenis!.scroll > 40);
+      });
+      function raf(time: number) {
+        lenis?.raf(time);
+        requestAnimationFrame(raf);
       }
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => setTimeout(initLenis, 50));
+      requestAnimationFrame(raf);
     } else {
-      setTimeout(initLenis, 50);
+      // Native scroll on mobile for max 120fps performance and zero CPU overhead
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('nav');
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
     }
 
     // Video modal
-    window.openYTModal = function(videoId) {
-      const iframe = document.getElementById('ytModalIframe');
+    (window as any).openYTModal = function(videoId: string) {
+      const iframe = document.getElementById('ytModalIframe') as HTMLIFrameElement | null;
       const modal = document.getElementById('ytModal');
       if (iframe && modal) {
         iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
@@ -115,8 +119,8 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         lenis?.stop();
       }
     };
-    window.closeYTModal = function() {
-      const iframe = document.getElementById('ytModalIframe');
+    (window as any).closeYTModal = function() {
+      const iframe = document.getElementById('ytModalIframe') as HTMLIFrameElement | null;
       const modal = document.getElementById('ytModal');
       if (iframe && modal) {
         iframe.src = '';
@@ -125,14 +129,14 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       }
     };
 
-    document.getElementById('ytModalOverlay')?.addEventListener('click', window.closeYTModal);
-    document.getElementById('ytModalClose')?.addEventListener('click', window.closeYTModal);
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') window.closeYTModal(); });
+    document.getElementById('ytModalOverlay')?.addEventListener('click', () => (window as any).closeYTModal());
+    document.getElementById('ytModalClose')?.addEventListener('click', () => (window as any).closeYTModal());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') (window as any).closeYTModal(); });
 
     // Custom Cursor (Desktop mouse only to conserve mobile CPU)
     if (window.matchMedia('(pointer: fine)').matches) {
       const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
-      let mx=0, my=0, rx=0, ry=0;
+      let mx = 0, my = 0, rx = 0, ry = 0;
       document.addEventListener('mousemove', e => {
         mx = e.clientX; my = e.clientY;
         if (cur) { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; }
@@ -182,7 +186,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         if (t) {
           e.preventDefault();
           if (lenis) {
-            lenis.scrollTo(t, { offset: 0, duration: 1.2 });
+            lenis.scrollTo(t as HTMLElement, { offset: 0, duration: 1.2 });
           } else {
             t.scrollIntoView({ behavior: 'smooth' });
           }

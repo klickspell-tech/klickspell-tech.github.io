@@ -89,6 +89,8 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
   color:var(--text-mid); box-shadow:0 4px 20px rgba(0,0,0,0.06);
   display:flex; align-items:center; gap:8px;
   transition:border-color .3s, box-shadow .3s;
+  will-change: transform;
+  contain: layout style;
 }
 .float-card:hover { border-color:rgba(58,91,224,0.25); box-shadow:0 8px 32px rgba(58,91,224,0.1); }
 .fc-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; }
