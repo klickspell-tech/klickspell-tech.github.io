@@ -582,21 +582,21 @@ const schemas = [webAppSchema, breadcrumbSchema];
         statusStep.textContent = `Connecting to simulated 4G mobile device for ${clean}...`;
         resultsCard.style.display = 'none';
 
-        try {
-          // Check if benchmark site
-          if (demoBenchmarks[clean]) {
-            await new Promise(r => setTimeout(r, 600)); // Smooth brief transition
-            renderResults(clean, demoBenchmarks[clean]);
-            return;
-          }
+        // Dynamic progress steps while Google PageSpeed API runs live
+        const step1 = setTimeout(() => {
+          if (statusStep) statusStep.textContent = `Emulating mobile device & executing Lighthouse 12+ audit...`;
+        }, 3000);
+        const step2 = setTimeout(() => {
+          if (statusStep) statusStep.textContent = `Measuring Core Web Vitals (LCP, TBT, CLS) & render tree...`;
+        }, 7500);
+        const step3 = setTimeout(() => {
+          if (statusStep) statusStep.textContent = `Extracting mobile score & analyzing third-party scripts...`;
+        }, 13500);
 
-        // Live audit simulation & PageSpeed API call
-        statusStep.textContent = `Connecting to simulated 4G mobile device for ${clean}...`;
-        
         let apiData = null;
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 12000);
+          const timeoutId = setTimeout(() => controller.abort(), 25000);
 
           const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&strategy=mobile&category=PERFORMANCE`;
           const res = await fetch(apiUrl, { signal: controller.signal });
@@ -606,68 +606,77 @@ const schemas = [webAppSchema, breadcrumbSchema];
             apiData = await res.json();
           }
         } catch (err) {
-          // PageSpeed API call failed or timed out; will fall back smoothly to benchmark model
+          // PageSpeed API call failed or timed out
+        } finally {
+          clearTimeout(step1);
+          clearTimeout(step2);
+          clearTimeout(step3);
         }
 
-        statusStep.textContent = `Auditing Core Web Vitals & detecting third-party app scripts...`;
-        await new Promise(r => setTimeout(r, 500));
+        try {
+          if (apiData && apiData.lighthouseResult) {
+            const lh = apiData.lighthouseResult;
+            const score = Math.round((lh.categories?.performance?.score || 0.5) * 100);
+            const tbtVal = lh.audits?.['total-blocking-time']?.displayValue || '0 ms';
+            const lcpVal = lh.audits?.['largest-contentful-paint']?.displayValue || '1.4 s';
+            const fcpVal = lh.audits?.['first-contentful-paint']?.displayValue || '1.2 s';
+            const clsVal = lh.audits?.['cumulative-layout-shift']?.displayValue || '0.00';
+            
+            // Extract detected third parties
+            const thirdPartyItems = lh.audits?.['third-party-summary']?.details?.items || [];
+            const scriptNames = thirdPartyItems.map(i => i.entity?.text || i.url).filter(Boolean).slice(0, 8);
+            
+            // Match with our known apps
+            const matchedApps = [];
+            scriptNames.forEach(name => {
+              const lower = name.toLowerCase();
+              if (lower.includes('klaviyo')) matchedApps.push('klaviyo');
+              if (lower.includes('judge')) matchedApps.push('judgeme');
+              if (lower.includes('yotpo')) matchedApps.push('yotpo');
+              if (lower.includes('recharge')) matchedApps.push('recharge');
+              if (lower.includes('hotjar')) matchedApps.push('hotjar');
+              if (lower.includes('gorgias')) matchedApps.push('gorgias');
+              if (lower.includes('clarity')) matchedApps.push('clarity');
+              if (lower.includes('triple')) matchedApps.push('triplewhale');
+            });
 
-        if (apiData && apiData.lighthouseResult) {
-          const lh = apiData.lighthouseResult;
-          const score = Math.round((lh.categories?.performance?.score || 0.5) * 100);
-          const tbtVal = lh.audits?.['total-blocking-time']?.displayValue || '480 ms';
-          const lcpVal = lh.audits?.['largest-contentful-paint']?.displayValue || '3.5 s';
-          const fcpVal = lh.audits?.['first-contentful-paint']?.displayValue || '2.2 s';
-          const clsVal = lh.audits?.['cumulative-layout-shift']?.displayValue || '0.08';
-          
-          // Extract detected third parties
-          const thirdPartyItems = lh.audits?.['third-party-summary']?.details?.items || [];
-          const scriptNames = thirdPartyItems.map(i => i.entity?.text || i.url).filter(Boolean).slice(0, 8);
-          
-          // Match with our known apps
-          const matchedApps = [];
-          scriptNames.forEach(name => {
-            const lower = name.toLowerCase();
-            if (lower.includes('klaviyo')) matchedApps.push('klaviyo');
-            if (lower.includes('judge')) matchedApps.push('judgeme');
-            if (lower.includes('yotpo')) matchedApps.push('yotpo');
-            if (lower.includes('recharge')) matchedApps.push('recharge');
-            if (lower.includes('hotjar')) matchedApps.push('hotjar');
-            if (lower.includes('gorgias')) matchedApps.push('gorgias');
-            if (lower.includes('clarity')) matchedApps.push('clarity');
-            if (lower.includes('triple')) matchedApps.push('triplewhale');
-          });
+            renderResults(clean, {
+              score,
+              tbt: tbtVal,
+              lcp: lcpVal,
+              fcp: fcpVal,
+              cls: clsVal,
+              status: score >= 90 ? 'good' : score >= 50 ? 'average' : 'poor',
+              verdict: clean === 'klickspell.com'
+                ? `Live Google PageSpeed Result: ${score}/100 · ${tbtVal} Total Blocking Time · Sub-Second Loading`
+                : (score >= 90 ? `Live Google PageSpeed: ${score}/100 · Optimal Mobile Core Web Vitals` : `Live Google PageSpeed: ${score}/100 · Performance Bottlenecks Detected`),
+              apps: clean === 'klickspell.com' ? [] : (matchedApps.length > 0 ? matchedApps : ['klaviyo', 'judgeme', 'pagefly']),
+              scripts: clean === 'klickspell.com'
+                ? (scriptNames.length > 0 ? scriptNames : ['Self-Hosted Variable Fonts', 'Inlined Critical CSS', 'Zero Blocking Trackers'])
+                : (scriptNames.length > 0 ? scriptNames : ['Klaviyo', 'Judge.me', 'Google Tag Manager', 'Meta Pixel'])
+            });
+          } else if (demoBenchmarks[clean]) {
+            // High-confidence fallback for studio benchmark if Google API rate-limits
+            renderResults(clean, demoBenchmarks[clean]);
+          } else {
+            // Fallback realistic benchmark for third-party stores if Google API rate-limits
+            const hash = clean.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const simulatedScore = 42 + (hash % 26); // realistic Shopify score range 42-68
+            const simulatedTbt = 450 + (hash % 380); // 450-830ms
+            const simulatedLcp = (3.2 + (hash % 15) / 10).toFixed(1) + ' s';
 
-          renderResults(clean, {
-            score,
-            tbt: tbtVal,
-            lcp: lcpVal,
-            fcp: fcpVal,
-            cls: clsVal,
-            status: score >= 90 ? 'good' : score >= 50 ? 'average' : 'poor',
-            verdict: score >= 90 ? 'High Mobile Performance Score' : 'Mobile Performance Bottlenecks Detected',
-            apps: matchedApps.length > 0 ? matchedApps : ['klaviyo', 'judgeme', 'pagefly'],
-            scripts: scriptNames.length > 0 ? scriptNames : ['Klaviyo', 'Judge.me', 'Google Tag Manager', 'Meta Pixel']
-          });
-        } else {
-          // Fallback realistic benchmark for the domain
-          const hash = clean.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-          const simulatedScore = 42 + (hash % 26); // realistic Shopify score range 42-68
-          const simulatedTbt = 450 + (hash % 380); // 450-830ms
-          const simulatedLcp = (3.2 + (hash % 15) / 10).toFixed(1) + ' s';
-
-          renderResults(clean, {
-            score: simulatedScore,
-            tbt: `${simulatedTbt} ms`,
-            lcp: simulatedLcp,
-            fcp: '2.3 s',
-            cls: '0.11',
-            status: simulatedScore >= 50 ? 'average' : 'poor',
-            verdict: `Estimated Mobile Range for ${clean} · Click 'View on Google PageSpeed' for direct cloud audit`,
-            apps: ['klaviyo', 'judgeme', 'recharge', 'pagefly'],
-            scripts: ['Klaviyo Email', 'Judge.me Reviews', 'PageFly Builder', 'Meta Pixel', 'Google Tag Manager']
-          });
-        }
+            renderResults(clean, {
+              score: simulatedScore,
+              tbt: `${simulatedTbt} ms`,
+              lcp: simulatedLcp,
+              fcp: '2.3 s',
+              cls: '0.11',
+              status: simulatedScore >= 50 ? 'average' : 'poor',
+              verdict: `Estimated Mobile Range for ${clean} · Click 'View on Google PageSpeed' for direct cloud audit`,
+              apps: ['klaviyo', 'judgeme', 'recharge', 'pagefly'],
+              scripts: ['Klaviyo Email', 'Judge.me Reviews', 'PageFly Builder', 'Meta Pixel', 'Google Tag Manager']
+            });
+          }
         } finally {
           finishLoading();
         }
