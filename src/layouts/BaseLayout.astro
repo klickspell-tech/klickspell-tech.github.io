@@ -85,55 +85,32 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     </div>
   </div>
 
-  <script>
-    import Lenis from 'lenis';
-
-    let lenis: Lenis | null = null;
-    // Only initialize smooth scroll on desktop pointer devices
-    if (window.matchMedia('(pointer: fine)').matches) {
-      lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-      lenis.on('scroll', () => {
-        const nav = document.getElementById('nav');
-        if (nav) nav.classList.toggle('scrolled', lenis!.scroll > 40);
-      });
-      function raf(time: number) {
-        lenis?.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    } else {
-      // Native scroll on mobile for max 120fps performance and zero CPU overhead
-      window.addEventListener('scroll', () => {
-        const nav = document.getElementById('nav');
-        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
-      }, { passive: true });
-    }
-
+  <script is:inline>
     // Video modal
-    (window as any).openYTModal = function(videoId: string) {
-      const iframe = document.getElementById('ytModalIframe') as HTMLIFrameElement | null;
+    window.openYTModal = function(videoId) {
+      const iframe = document.getElementById('ytModalIframe');
       const modal = document.getElementById('ytModal');
       if (iframe && modal) {
         iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         modal.classList.add('open');
-        lenis?.stop();
+        window._lenis?.stop();
       }
     };
-    (window as any).closeYTModal = function() {
-      const iframe = document.getElementById('ytModalIframe') as HTMLIFrameElement | null;
+    window.closeYTModal = function() {
+      const iframe = document.getElementById('ytModalIframe');
       const modal = document.getElementById('ytModal');
       if (iframe && modal) {
         iframe.src = '';
         modal.classList.remove('open');
-        lenis?.start();
+        window._lenis?.start();
       }
     };
 
-    document.getElementById('ytModalOverlay')?.addEventListener('click', () => (window as any).closeYTModal());
-    document.getElementById('ytModalClose')?.addEventListener('click', () => (window as any).closeYTModal());
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') (window as any).closeYTModal(); });
+    document.getElementById('ytModalOverlay')?.addEventListener('click', window.closeYTModal);
+    document.getElementById('ytModalClose')?.addEventListener('click', window.closeYTModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeYTModal(); });
 
-    // Custom Cursor (Desktop mouse only to conserve mobile CPU)
+    // Desktop mouse devices: Custom Cursor & Smooth Scroll
     if (window.matchMedia('(pointer: fine)').matches) {
       const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
       let mx = 0, my = 0, rx = 0, ry = 0;
@@ -150,6 +127,23 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
       });
+
+      // Lazy load Lenis asynchronously on desktop
+      import('/assets/js/lenis.mjs').then(({ default: Lenis }) => {
+        const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+        window._lenis = lenis;
+        lenis.on('scroll', () => {
+          const nav = document.getElementById('nav');
+          if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
+        });
+        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+      }).catch(() => {});
+    } else {
+      // Mobile touch screens: native 120fps scroll listener
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('nav');
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
     }
 
     // Mobile menu
@@ -178,15 +172,15 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Smooth scroll via Lenis for internal hash links
+    // Smooth scroll for internal hash links
     document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
       const href = a.getAttribute('href');
       if (href && href !== '#') {
         const t = document.querySelector(href);
         if (t) {
           e.preventDefault();
-          if (lenis) {
-            lenis.scrollTo(t as HTMLElement, { offset: 0, duration: 1.2 });
+          if (window._lenis) {
+            window._lenis.scrollTo(t, { offset: 0, duration: 1.2 });
           } else {
             t.scrollIntoView({ behavior: 'smooth' });
           }
