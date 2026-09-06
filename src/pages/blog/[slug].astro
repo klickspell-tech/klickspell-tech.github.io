@@ -4,6 +4,7 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { getPostTopic } from '../../utils/topics';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -20,6 +21,7 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
+const topic = getPostTopic(post.data.tags || []);
 const canonical = post.data.canonicalUrl || `https://klickspell.com/blog/${post.slug}`;
 const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -42,6 +44,7 @@ const articleSchema = {
   "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
   "inLanguage": "en-US",
   "keywords": (post.data.tags || []).join(', '),
+  "about": topic.entities,
   "author": {
     "@type": "Person",
     "name": post.data.author || "Atul Bhatt",
@@ -56,6 +59,14 @@ const articleSchema = {
       "https://in.linkedin.com/in/mratulbhatt",
       "https://github.com/atulbhatt-system32",
       "https://www.youtube.com/@knowittodaykit"
+    ],
+    "knowsAbout": [
+      "Shopify Theme Architecture",
+      "Shopify Speed Optimization",
+      "Core Web Vitals",
+      "Liquid Templating",
+      "React",
+      "Headless Commerce"
     ]
   },
   "publisher": {
@@ -70,10 +81,6 @@ const articleSchema = {
     }
   }
 };
-
-import { getPostTopic } from '../../utils/topics';
-
-const topic = getPostTopic(post.data.tags || []);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
