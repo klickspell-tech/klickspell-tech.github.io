@@ -5,6 +5,7 @@ interface Props {
 
 const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
+const pathname = Astro.url.pathname;
 ---
 
 <nav id="nav">
@@ -13,9 +14,9 @@ const prefix = isHome ? "" : "/";
     <li><a href={`${prefix}#services`}>Services</a></li>
     <li><a href={`${prefix}#work`}>Work</a></li>
     <li><a href={`${prefix}#about`}>About</a></li>
-    <li><a href="/team">Team</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/speed" style="color:var(--accent); font-weight:600;">Speed Tool</a></li>
+    <li><a href="/team" class={pathname.startsWith('/team') ? "active" : ""}>Team</a></li>
+    <li><a href="/blog" class={pathname.startsWith('/blog') ? "active" : ""}>Blog</a></li>
+    <li><a href="/speed" class={pathname.startsWith('/speed') ? "active" : ""}>Speed Tool</a></li>
     <li><a href={`${prefix}#tutorials`}>Tutorials</a></li>
     <li><a href={`${prefix}#faq`}>FAQ</a></li>
     <li><a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="nav-cta" style="cursor:pointer">Book a call</a></li>
@@ -29,10 +30,11 @@ const prefix = isHome ? "" : "/";
   <a href={`${prefix}#services`}>Services</a>
   <a href={`${prefix}#work`}>Work</a>
   <a href={`${prefix}#about`}>About</a>
-  <a href="/team">Team</a>
-  <a href="/blog">Blog</a>
-  <a href="/speed" style="color:var(--accent); font-weight:700;">⚡ Speed &amp; App Estimator</a>
+  <a href="/team" class={pathname.startsWith('/team') ? "active" : ""}>Team</a>
+  <a href="/blog" class={pathname.startsWith('/blog') ? "active" : ""}>Blog</a>
+  <a href="/speed" class={pathname.startsWith('/speed') ? "active" : ""}>⚡ Speed &amp; App Estimator</a>
   <a href={`${prefix}#tutorials`}>Tutorials</a>
   <a href={`${prefix}#faq`}>FAQ</a>
   <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank">💬 Chat on WhatsApp</a>
 </div>
+
