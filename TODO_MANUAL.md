@@ -162,15 +162,101 @@ Real speed comes from cleaning zombie liquid code, route-specific app loading (e
 
 ---
 
-## 7. Summary of Automated Verification Commands
+## 7. Clutch.co Verified Agency Profile (Barnacle SEO)
+
+Google consistently ranks Clutch.co in the top 3 results for *"best shopify developers"* and *"shopify optimization agency"*. Having a free verified profile lets Klickspell capture high-ticket commercial leads directly from Google without waiting for domain ranking.
+
+- [ ] **Create Free Clutch Profile**:
+  1. Go to [clutch.co/get-listed](https://clutch.co/get-listed).
+  2. Company Name: `Klickspell`.
+  3. Website: `https://klickspell.com`.
+  4. Tagline: `High-Performance Shopify 2.0 & Headless Commerce Engineering`.
+  5. Primary Services:
+     - E-Commerce Development (Shopify, Liquid): 50%
+     - Web Development (Astro, Next.js): 30%
+     - Web Performance & Speed Optimization: 20%
+  6. Submit client references from your case studies (SourceBae, Under Design, Skillbridge) to earn a "Verified" badge.
+
+---
+
+## 8. Publish the Open-Source Speed Checklist to GitHub
+
+We prepared a complete, beautifully formatted open-source repository at `docs/shopify-speed-checklist/README.md`. Publishing this under your public GitHub account captures search traffic from GitHub and Google developer queries.
+
+- [ ] **Publish Public GitHub Repository**:
+  1. Open [github.com/new](https://github.com/new).
+  2. Repository name: `shopify-speed-checklist`.
+  3. Description: `⚡ The Complete Shopify Speed & Core Web Vitals Checklist (2026) — Maintained by Klickspell Studio`.
+  4. Public: Yes.
+  5. Initialize with README: No.
+  6. From your terminal, push the prepared directory:
+     ```bash
+     cd /Users/atul/Documents/Projects/KlickSpell-Site/docs/shopify-speed-checklist
+     git init
+     git add .
+     git commit -m "feat: initial release of 2026 Shopify speed checklist"
+     git branch -M main
+     git remote add origin https://github.com/atulbhatt-system32/shopify-speed-checklist.git
+     git push -u origin main
+     ```
+  7. Add repository topics: `shopify`, `core-web-vitals`, `pagespeed`, `web-performance`, `liquid`, `shopify-theme`.
+
+---
+
+## 9. Product Hunt Launch Kit for `/speed` (Tool-Led SEO)
+
+Launching your free tool on Product Hunt generates immediate backlinks, social buzz, and referral traffic.
+
+- [ ] **Submit to Product Hunt**:
+  1. Go to [producthunt.com/posts/new](https://www.producthunt.com/posts/new).
+  2. **Name**: `Shopify Speed & App Bloat Estimator`.
+  3. **Tagline**: `Calculate the hidden mobile CPU and revenue penalty of your Shopify apps`.
+  4. **Link**: `https://klickspell.com/speed`.
+  5. **First Maker Comment (Pre-written copy)**:
+     ```text
+     Hey Product Hunt! 👋
+
+     I'm Atul, lead engineer at Klickspell. Over the past 3 years building bespoke Shopify stores, we noticed an almost universal problem: merchants install apps for reviews, popups, and subscriptions, and their mobile site speed collapses into the 30s.
+
+     Most merchants don't know which specific app is destroying their Core Web Vitals.
+
+     We built the Shopify Speed & App Bloat Estimator as a 100% free tool to solve this. It benchmarks 25+ popular Shopify apps across 7 categories, showing:
+     - Real-world JavaScript payload weight (KB)
+     - Main-thread CPU blocking penalty (ms)
+     - Estimated conversion loss on throttled 4G mobile devices
+     - Option to request a free 5-minute video walkthrough of your store's bottlenecks
+
+     It's completely free with zero sign-up required. Would love to hear your feedback!
+     ```
+
+---
+
+## 10. Wikidata Entity Registration (Google Knowledge Graph)
+
+To solidify Klickspell as an official named entity in Google's Knowledge Graph, submit the brand to Wikidata:
+
+- [ ] **Create Wikidata Entity**:
+  1. Open [wikidata.org/wiki/Special:NewItem](https://www.wikidata.org/wiki/Special:NewItem).
+  2. **Label**: `Klickspell`.
+  3. **Description**: `Web engineering and performance studio founded by Atul Bhatt`.
+  4. Add statements:
+     - **instance of (P31)**: `business enterprise (Q4830453)`
+     - **official website (P856)**: `https://klickspell.com/`
+     - **founder (P112)**: `Atul Bhatt`
+     - **country (P17)**: `India (Q668)`
+     - **inception (P571)**: `2023`
+
+---
+
+## 11. Summary of Automated Verification Commands
 
 You can run these anytime locally to verify the health of your site:
 
 ```bash
-# Verify all 160 Schema.org blocks pass Google Rich Snippets standards:
+# Verify all 162 Schema.org blocks pass Google Rich Snippets standards:
 npm run audit:schemas
 
-# Re-submit all 79 site URLs to IndexNow (Bing, Yandex, Naver):
+# Re-submit all 80 site URLs to IndexNow (Bing, Yandex, Naver):
 npm run indexnow
 
 # Cross-post article to Dev.to with canonical backlink:

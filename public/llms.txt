@@ -8,6 +8,7 @@ Klickspell is an independent web engineering and digital product studio founded 
 
 - [Shopify Speed Optimization](/services/shopify-speed-optimization.html): Guaranteed 90+ Mobile Core Web Vitals, app bloat reduction, sub-second LCP.
 - [Custom Shopify Development](/services/custom-shopify-development.html): Bespoke Liquid themes, customizer sections, zero page-builder bloat.
+- [The 2026 Shopify App Bloat Benchmark Study](/blog/the-2026-shopify-app-bloat-benchmark-study.html): Controlled performance study measuring 25 leading Shopify apps across 7 categories on mobile CPU and conversion drop.
 - [How to Remove Zombie Shopify App Code](/blog/how-to-remove-zombie-shopify-app-code.html): Complete engineering playbook for discovering and safely purging orphaned liquid snippets from uninstalled apps.
 - [How We Achieved a 99 PageSpeed Score](/blog/how-we-achieved-99-pagespeed-score-case-study.html): Real-world web performance architecture playbook.
 - [Headless Commerce & Web Apps](https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs with tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
