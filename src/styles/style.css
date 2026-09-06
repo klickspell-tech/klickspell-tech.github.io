@@ -514,3 +514,12 @@ footer { background:var(--text); padding:3rem 2rem; }
   .team-grid { grid-template-columns:1fr; padding:0 1.5rem 4rem; }
   .principles-grid { grid-template-columns:1fr; }
 }
+
+/* RESPONSIVE CTA SWAP (ELIMINATES FORCED REFLOW JAVASCRIPT) */
+#hero-cta-d, #cta-d { display: inline-flex; }
+#hero-cta-m, #cta-m { display: none; }
+
+@media (max-width: 768px) {
+  #hero-cta-d, #cta-d { display: none !important; }
+  #hero-cta-m, #cta-m { display: inline-flex !important; }
+}
