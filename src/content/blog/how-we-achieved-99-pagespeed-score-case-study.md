@@ -6,6 +6,7 @@ author: "Atul Bhatt"
 tags: ["Web Performance", "Core Web Vitals", "Lighthouse", "Astro", "PageSpeed"]
 canonicalUrl: "https://klickspell.com/blog/how-we-achieved-99-pagespeed-score-case-study"
 readingTime: "7 min read"
+devtoUrl: "https://dev.to/atulbhattsystem32/how-we-achieved-a-99-pagespeed-score-a-real-world-web-performance-case-study-3e3n"
 ---
 
 Most web agencies and SaaS websites suffer from a silent conversion killer: **terrible mobile performance**.

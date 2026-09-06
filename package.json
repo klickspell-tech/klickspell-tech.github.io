@@ -10,8 +10,9 @@
     "astro": "astro",
     "sync:devto": "node scripts/sync-devto.mjs",
     "sync:medium": "node scripts/sync-medium.mjs",
-    "sync:all": "node scripts/sync-devto.mjs && node scripts/sync-medium.mjs",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "devto:canonicals": "node --env-file=.env scripts/update-devto-canonicals.mjs",
+    "devto:publish": "node --env-file=.env scripts/publish-to-devto.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
