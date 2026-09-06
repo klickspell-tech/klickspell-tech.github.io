@@ -912,9 +912,9 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
       let activeChannel = 'email';
 
-      // Supabase Configuration: Injected via window or environment
-      const SUPABASE_URL = (typeof window !== 'undefined' && window.__SUPABASE_URL__) || '';
-      const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.__SUPABASE_ANON_KEY__) || '';
+      // Supabase Configuration
+      const SUPABASE_URL = (typeof window !== 'undefined' && window.__SUPABASE_URL__) || 'https://uqdnisouonzvwvcipxbn.supabase.co';
+      const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.__SUPABASE_ANON_KEY__) || 'sb_publishable_Hbh8D_rSd_GVmqlRi_FgfA_rmCuvgmc';
 
       if (tabEmailBtn && tabWhatsAppBtn) {
         tabEmailBtn.addEventListener('click', () => {
@@ -988,14 +988,11 @@ const schemas = [webAppSchema, breadcrumbSchema];
           videoAuditSuccess.style.display = 'block';
 
           if (activeChannel === 'whatsapp') {
+            videoAuditSuccess.innerHTML = `✅ Connecting to WhatsApp... If it doesn't open automatically, <a href="https://wa.me/919259598769?text=${encodeURIComponent(`Hi Atul, I requested a 5-minute video code audit for ${targetDomain}`)}" target="_blank" style="color:var(--accent); font-weight:600; text-decoration:underline;">click here to chat</a>.`;
             const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}. Contact: ${contact}`;
             window.open(`https://wa.me/919259598769?text=${encodeURIComponent(msg)}`, '_blank');
           } else {
-            // If Supabase not yet configured by user, open mailto as fallback so no lead is lost
-            if (!SUPABASE_URL) {
-              const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}.\n\nPlease send the Loom breakdown to: ${contact}\n\nSelected Apps: ${detectedAppNames.join(', ') || 'None'}`;
-              window.open(`mailto:atul@klickspell.com?subject=${encodeURIComponent(`5-Minute Video Code Audit: ${targetDomain}`)}&body=${encodeURIComponent(msg)}`, '_blank');
-            }
+            videoAuditSuccess.innerHTML = `✅ Request recorded! Atul will inspect <strong>${targetDomain}</strong> and email your private 5-minute Loom breakdown to <strong>${contact}</strong> shortly.`;
           }
         });
       }
