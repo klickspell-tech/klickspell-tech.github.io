@@ -155,12 +155,20 @@ const schemas = [webAppSchema, breadcrumbSchema];
             </div>
           </div>
 
-          <form id="liveScannerForm" class="store-scanner-form">
+          <form 
+            id="liveScannerForm" 
+            class="store-scanner-form"
+            toolname="audit_mobile_speed"
+            tooldescription="Audits mobile Core Web Vitals, performance score, and third-party JavaScript bloat for any website or Shopify store URL."
+          >
             <div class="store-scanner-input-box">
               <span class="scanner-input-prefix">https://</span>
               <input 
                 type="text" 
                 id="scannerStoreInput" 
+                name="store_url"
+                aria-label="Target website or store domain to analyze"
+                title="Target website or store domain to analyze"
                 placeholder="yourbrand.com or any website URL" 
                 required 
                 autocomplete="off"
@@ -754,6 +762,62 @@ const schemas = [webAppSchema, breadcrumbSchema];
         btnSpinner.style.display = 'none';
         statusBox.style.display = 'none';
       }
+
+      // WebMCP (Web Model Context Protocol) Imperative Tool Registration for AI Browsing Agents
+      (function registerWebMCP() {
+        const mc = (typeof navigator !== 'undefined' && navigator.modelContext) || 
+                   (typeof window !== 'undefined' && window.modelContext);
+        if (mc && typeof mc.registerTool === 'function') {
+          try {
+            mc.registerTool({
+              name: 'audit_mobile_speed',
+              description: 'Audits mobile Core Web Vitals, performance score, and third-party JavaScript bloat for any website or Shopify store URL.',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  store_url: {
+                    type: 'string',
+                    description: 'Website domain or store URL (e.g. klickspell.com, jaxonlane.com)'
+                  }
+                },
+                required: ['store_url']
+              },
+              execute: async ({ store_url }) => {
+                if (storeInput) storeInput.value = store_url;
+                runAudit(store_url, true);
+                return { status: 'started', store_url };
+              }
+            });
+
+            mc.registerTool({
+              name: 'calculate_app_bloat',
+              description: 'Calculates mobile Core Web Vitals performance penalty and JavaScript weight across 25+ popular Shopify apps.',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  app_ids: {
+                    type: 'array',
+                    items: { type: 'string' },
+                    description: 'App IDs (e.g. klaviyo, judgeme, recharge, yotpo, pagefly)'
+                  }
+                },
+                required: ['app_ids']
+              },
+              execute: ({ app_ids }) => {
+                if (Array.isArray(app_ids)) {
+                  checkboxes.forEach(cb => {
+                    cb.checked = app_ids.includes(cb.getAttribute('data-id'));
+                  });
+                  calculate();
+                }
+                return { status: 'calculated', active_apps: app_ids };
+              }
+            });
+          } catch (e) {
+            console.debug('WebMCP registration:', e);
+          }
+        }
+      })();
     })();
   </script>
 
