@@ -80,33 +80,33 @@
 - **Client Site:** https://pragyavijh.com/in
 - **Scope:** Complete migration from a fragile, plugin-bloated WordPress site to a high-speed headless monorepo using Next.js 14, Medusa v2, and Strapi. Unified retail crystal purchases with automated live Vedic consultation bookings via Cal.com.
 
-### Noukai Tokyo (Japanese Cognitive Performance)
+### Noukai Tokyo (Japanese Skincare & Botanical Science)
 - **URL:** https://klickspell.com/work/noukai-tokyo.html
-- **Scope:** High-fidelity Webflow marketing site, custom interactive visual sections, and conversion funnel optimization.
+- **Scope:** Edge-rendered headless storefront running on Shopify Hydrogen 2025 and Shopify Oxygen workers, featuring 60 FPS scroll-linked 3D WebGL bottle rotations and a multi-phase strategic architecture.
 
-### Cove & Lane (Luxury Home Linens)
+### Cove & Lane (Fashion & Apparel Brand)
 - **URL:** https://klickspell.com/work/cove-and-lane.html
-- **Scope:** Custom Shopify 2.0 theme engineering, custom collection filters, and bundle builder workflows.
+- **Scope:** Migration from an undocumented raw React/HTML embed to a native Shopify 2.0 theme, delivering 45+ features, resolved production bugs, and full native Customizer editing for the client team.
 
-### Mogra Media (Digital Media & Publishing)
+### Mogra Media (Creative Studio & Film Production)
 - **URL:** https://klickspell.com/work/mogra-media.html
-- **Scope:** Sub-second editorial publishing site with custom CMS workflows and 98/100 Lighthouse performance.
+- **Scope:** High-concept creative studio platform engineered on Astro Island Architecture, delivering zero-JS editorial layouts by default and Lenis smooth inertia motion.
 
 ### Skillbridge (EdTech & Career Acceleration)
 - **URL:** https://klickspell.com/work/skillbridge.html
 - **Client Site:** https://skillbridge.net
 - **Founder:** Rajesh Durai (ex-VP upGrad, ex-HP)
-- **Scope:** Custom modular frontend architecture, responsive curriculum modules, frictionless student lead capture, sub-second mobile page loads.
+- **Scope:** Custom modular frontend architecture, interactive curriculum syllabus modules, frictionless admissions inquiry routing, and zero third-party page-builder bloat.
 
 ### DealShare (E-Commerce Unicorn Corporate & Investor Portal)
 - **URL:** https://klickspell.com/work/dealshare.html
 - **Client Site:** https://about.dealshare.in
-- **Scope:** Dedicated corporate relations and investor showcase architecture handling heavy global press traffic with 99.9% uptime and zero runtime crashes.
+- **Scope:** Dedicated corporate relations and investor showcase architecture decoupled from consumer retail shopping traffic with edge CDN delivery and zero database dependencies on the presentation layer.
 
 ### CallSara AI (Autonomous Voice Agent Platform)
 - **URL:** https://klickspell.com/work/callsara-ai.html
 - **Client Site:** https://callsara.ai
-- **Scope:** High-converting B2B SaaS marketing site with zero-latency HTML5 audio sample demo player, interactive vertical industry workflows, and automated CRM lead capture.
+- **Scope:** High-converting B2B SaaS marketing site with pre-buffered HTML5 audio phone call demo player, interactive vertical industry workflows, and automated CRM lead capture.
 
 ---
 

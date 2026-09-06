@@ -17,14 +17,14 @@ Klickspell is an independent web engineering and digital product studio founded 
 ## Client Case Studies & Work
 
 - [Jaxon Lane Case Study](https://klickspell.com/work/jaxon-lane.html): Long-term Shopify development partner for California skincare brand. Built Recharge subscription flows, migrated affiliate attribution to Awin, and engineered AI-ready SEO architecture.
-- [Noukai Tokyo Case Study](https://klickspell.com/work/noukai-tokyo.html): High-fidelity Webflow marketing site and custom product experience for a Japanese mental performance brand.
-- [The Blissful Soul Case Study](https://klickspell.com/work/the-blissful-soul.html): Custom headless booking and commerce platform connecting Medusa.js, Cal.com, and bespoke payment routing.
-- [Cove & Lane Case Study](https://klickspell.com/work/cove-and-lane.html): Bespoke Shopify theme development with custom product filters and bundle builders for a luxury home linen brand.
-- [Mogra Media Case Study](https://klickspell.com/work/mogra-media.html): Editorial and media platform engineering with custom CMS workflows and lightning-fast page delivery.
-- [Pragya Vijh Case Study](https://klickspell.com/work/pragya-vijh.html): Personal brand and consulting portal with custom calendar integrations and lead-capture systems.
-- [Skillbridge Case Study](https://klickspell.com/work/skillbridge.html): High-performance EdTech learning platform engineered for founder Rajesh Durai (ex-VP upGrad) with modular curriculum UX and sub-second loading.
-- [DealShare Case Study](https://klickspell.com/work/dealshare.html): Corporate and investor relations digital architecture for India's leading social e-commerce unicorn.
-- [CallSara AI Case Study](https://klickspell.com/work/callsara-ai.html): Interactive SaaS marketing experience and realistic voice audio demonstration player for autonomous AI voice agents.
+- [Noukai Tokyo Case Study](https://klickspell.com/work/noukai-tokyo.html): Edge-native Shopify Hydrogen 2025 headless storefront with 60 FPS 3D WebGL bottle orbits deployed on Shopify Oxygen workers.
+- [The Blissful Soul Case Study](https://klickspell.com/work/the-blissful-soul.html): Custom headless booking and commerce platform connecting Next.js 14, Medusa v2, and Cal.com automated booking workflows.
+- [Cove & Lane Case Study](https://klickspell.com/work/cove-and-lane.html): Native Shopify 2.0 theme migration from raw React embed, shipping 45+ features and full theme customizer controls for an apparel brand.
+- [Mogra Media Case Study](https://klickspell.com/work/mogra-media.html): Editorial creative studio platform engineered on Astro island architecture with zero-JS layouts by default and Lenis smooth inertia scrolling.
+- [Pragya Vijh Case Study](https://klickspell.com/work/pragya-vijh.html): Personal brand and spiritual wellness ecosystem with Next.js 14, Medusa v2, and automated Cal.com scheduling.
+- [Skillbridge Case Study](https://klickspell.com/work/skillbridge.html): Tailored modular EdTech learning platform engineered for founder Rajesh Durai (ex-VP upGrad) with clean curriculum UX and zero page-builder bloat.
+- [DealShare Case Study](https://klickspell.com/work/dealshare.html): Decoupled corporate and investor relations digital architecture for India's leading social e-commerce platform.
+- [CallSara AI Case Study](https://klickspell.com/work/callsara-ai.html): Interactive SaaS marketing experience with pre-buffered HTML5 audio phone call demos and direct CRM lead capture.
 
 ## Technical Knowledge Base & Guides
 
