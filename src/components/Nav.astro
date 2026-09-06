@@ -1,4 +1,6 @@
 ---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+
 interface Props {
   isHome?: boolean;
 }
@@ -35,6 +37,9 @@ const pathname = Astro.url.pathname;
   <a href="/speed" class={pathname.startsWith('/speed') ? "active" : ""}>⚡ Speed &amp; App Estimator</a>
   <a href={`${prefix}#tutorials`}>Tutorials</a>
   <a href={`${prefix}#faq`}>FAQ</a>
-  <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank">💬 Chat on WhatsApp</a>
+  <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:8px;">
+    <WhatsAppIcon size={18} fill="#25D366" />
+    <span>Chat on WhatsApp</span>
+  </a>
 </div>
 

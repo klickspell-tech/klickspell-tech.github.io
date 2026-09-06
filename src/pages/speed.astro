@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 
 const canonical = "https://klickspell.com/speed";
 
@@ -256,8 +257,10 @@ const schemas = [webAppSchema, breadcrumbSchema];
                   target="_blank" 
                   rel="noopener" 
                   class="btn-ghost"
+                  style="display:inline-flex; align-items:center; gap:8px;"
                 >
-                  💬 Chat on WhatsApp
+                  <WhatsAppIcon size={17} fill="#25D366" />
+                  <span>Chat on WhatsApp</span>
                 </a>
                 <a 
                   id="scannerPsiBtn" 
@@ -362,8 +365,10 @@ const schemas = [webAppSchema, breadcrumbSchema];
               target="_blank" 
               rel="noopener" 
               class="btn-ghost"
+              style="display:inline-flex; align-items:center; justify-content:center; gap:8px;"
             >
-              💬 WhatsApp Direct Consultation
+              <WhatsAppIcon size={17} fill="#25D366" />
+              <span>WhatsApp Direct Consultation</span>
             </a>
 
             <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
