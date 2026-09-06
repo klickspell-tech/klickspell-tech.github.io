@@ -1,50 +1,38 @@
 # Klickspell — Web Engineering & Digital Products Studio
 
-> The craft in every click.
+> The craft in every click. Independent web engineering studio specializing in high-performance Shopify stores, custom Headless commerce, Webflow sites, and web applications with guaranteed 90+ mobile Core Web Vitals.
 
-Klickspell is an independent web engineering and digital product studio founded by Atul Bhatt. We partner with ambitious founders, brands, and marketing teams to build bespoke web products with zero technical debt, high-converting architectures, and 99+ Core Web Vitals performance.
+Klickspell is an independent web engineering and digital product studio founded by Atul Bhatt. We partner with ambitious founders, brands, and marketing teams to build bespoke web products with zero technical debt, high-converting architectures, and sub-second mobile page loads.
 
-## Core Capabilities & Services
+## Core Services
 
-- **Shopify Speed Optimization & Core Web Vitals** (https://klickspell.com/services/shopify-speed-optimization): Guaranteed 90+ Mobile Google PageSpeed scores, sub-second LCP, zero layout shifts (CLS), and 0ms main-thread blocking (TBT) without breaking tracking apps or analytics.
-- **Custom Shopify Liquid & 2.0 Theme Development** (https://klickspell.com/services/custom-shopify-development): Bespoke Shopify stores built from the ground up — modular customizer sections, zero page-builder bloat, Recharge subscriptions, and complete client handover.
-- **Headless Commerce & Web Apps** (https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs. Tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
-- **Webflow SaaS & Marketing Sites**: High-converting, pixel-perfect Webflow marketing sites with custom JavaScript components and CMS architectures.
-- **Custom Web Applications & ERP Systems**: Custom business systems, client portals, and ERP deployments built on Frappe and ERPNext.
+- [Shopify Speed Optimization & Core Web Vitals](https://klickspell.com/services/shopify-speed-optimization): Guaranteed 90+ Mobile Google PageSpeed scores, sub-second LCP, zero layout shifts (CLS), and 0ms main-thread blocking (TBT) without breaking tracking apps or marketing pixels.
+- [Custom Shopify Theme Development](https://klickspell.com/services/custom-shopify-development): Bespoke Shopify 2.0 stores built from scratch with modular customizer sections, zero page-builder bloat, Recharge subscriptions, and complete client handover.
+- [Headless Commerce & Web Apps](https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs with tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
+- [Website Speed & App Bloat Estimator](https://klickspell.com/speed): Free interactive diagnostic tool that audits emulated 4G mobile Core Web Vitals and calculates performance penalties across 25+ third-party scripts.
 
-## Selected Case Studies
+## Client Case Studies & Work
 
-- **Jaxon Lane** (https://klickspell.com/work/jaxon-lane.html): Long-term Shopify engineering partner for California skincare brand. Built Recharge subscription architectures, Awin affiliate tracking, and AI-ready SEO.
-- **Noukai Tokyo** (https://klickspell.com/work/noukai-tokyo.html): High-fidelity Webflow marketing site and custom product experience for a Japanese mental performance brand.
-- **The Blissful Soul** (https://klickspell.com/work/the-blissful-soul.html): Custom headless booking and commerce platform connecting Medusa.js, Cal.com, and bespoke payment routing.
-- **Cove & Lane** (https://klickspell.com/work/cove-and-lane.html): High-converting Shopify theme development with custom product filters and bespoke bundle builder.
-- **Mogra Media** (https://klickspell.com/work/mogra-media.html): Editorial and media platform engineering with custom CMS workflows and lightning-fast page delivery.
-- **Pragya Vijh** (https://klickspell.com/work/pragya-vijh.html): Personal brand and consulting portal with custom calendar integrations and lead-capture systems.
+- [Jaxon Lane Case Study](https://klickspell.com/work/jaxon-lane.html): Long-term Shopify development partner for California skincare brand. Built Recharge subscription flows, migrated affiliate attribution to Awin, and engineered AI-ready SEO architecture.
+- [Noukai Tokyo Case Study](https://klickspell.com/work/noukai-tokyo.html): High-fidelity Webflow marketing site and custom product experience for a Japanese mental performance brand.
+- [The Blissful Soul Case Study](https://klickspell.com/work/the-blissful-soul.html): Custom headless booking and commerce platform connecting Medusa.js, Cal.com, and bespoke payment routing.
+- [Cove & Lane Case Study](https://klickspell.com/work/cove-and-lane.html): Bespoke Shopify theme development with custom product filters and bundle builders for a luxury home linen brand.
+- [Mogra Media Case Study](https://klickspell.com/work/mogra-media.html): Editorial and media platform engineering with custom CMS workflows and lightning-fast page delivery.
+- [Pragya Vijh Case Study](https://klickspell.com/work/pragya-vijh.html): Personal brand and consulting portal with custom calendar integrations and lead-capture systems.
 
-## Engineering Blog & Guides
+## Technical Knowledge Base & Guides
 
-Klickspell maintains an extensive technical knowledge base covering web engineering, e-commerce optimization, and frontend architecture:
+- [Shopify Tutorials & Liquid Architecture](https://klickspell.com/blog/topic/shopify): Deep-dive engineering guides on custom Shopify sections, app integrations, and theme architecture.
+- [Web Performance & Core Web Vitals](https://klickspell.com/blog/topic/web-performance): Real-world case studies and benchmarks on achieving 99+ Lighthouse scores, eliminating main-thread delays, and asset optimization.
+- [React & Frontend Architecture](https://klickspell.com/blog/topic/react): Modern frontend development patterns, state management (Zustand vs Context), and bundle optimization.
+- [DevOps, Docker & Cloud Infrastructure](https://klickspell.com/blog/topic/devops): Production deployment guides for Docker, Frappe/ERPNext, and cloud infrastructure.
+- [All Engineering Articles](https://klickspell.com/blog): Complete catalog of 57 technical articles and case studies.
+- [RSS Feed](https://klickspell.com/rss.xml): Real-time XML syndication feed for all technical publications.
 
-- **Shopify Tutorials & Architecture**: https://klickspell.com/blog/topic/shopify
-- **Web Performance & Core Web Vitals**: https://klickspell.com/blog/topic/web-performance
-- **React & Frontend Architecture**: https://klickspell.com/blog/topic/react
-- **DevOps, Docker & Cloud Infrastructure**: https://klickspell.com/blog/topic/devops
-- **Full Article Catalog**: https://klickspell.com/blog
-- **RSS Feed**: https://klickspell.com/rss.xml
+## Engineering Leadership & Contact
 
-## Interactive Tools & Calculators
-
-- **Shopify Speed & App Bloat Estimator** (https://klickspell.com/speed): Free interactive diagnostic calculator that estimates third-party JavaScript bloat, main-thread blocking time, and conversion rate penalty across common Shopify apps (Klaviyo, PageFly, Yotpo, Gorgias, Recharge).
-
-## Engineering Team & Leadership
-
-- **Founder & Lead Engineer**: Atul Bhatt (https://in.linkedin.com/in/mratulbhatt)
-- **Engineering Team**: https://klickspell.com/team
-
-## Contact & Discovery
-
-- **Website**: https://klickspell.com
-- **Book Discovery Call**: https://cal.com/atul-bhatt-klickspell/30min
-- **WhatsApp**: https://wa.me/919259598769
-- **LinkedIn**: https://in.linkedin.com/in/mratulbhatt
-- **GitHub**: https://github.com/atulbhatt-system32
+- [Founder LinkedIn](https://in.linkedin.com/in/mratulbhatt): Atul Bhatt, Founder & Lead Web Engineer.
+- [GitHub Profile](https://github.com/atulbhatt-system32): Open source repositories, agentic AI tooling, and engineering contributions.
+- [Book a Discovery Call](https://cal.com/atul-bhatt-klickspell/30min): Schedule a free 30-minute technical consultation.
+- [WhatsApp Direct Chat](https://wa.me/919259598769): Direct communication channel for urgent project inquiries.
+- [Engineering Team](https://klickspell.com/team): Studio engineering team and capabilities.
