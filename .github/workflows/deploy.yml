@@ -32,6 +32,8 @@ jobs:
 
       - name: Build static site with Astro
         run: npm run build
+        env:
+          SUBMIT_INDEXNOW: 'true'
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
