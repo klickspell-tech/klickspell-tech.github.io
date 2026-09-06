@@ -249,7 +249,7 @@ const schemas = [articleSchema, breadcrumbSchema];
                   <h4 class="blog-card-title" style="font-family:'Instrument Serif',serif; font-size:21px; line-height:1.25; margin-bottom:.5rem; color:var(--text);">{rPost.data.title}</h4>
                   <p class="blog-card-desc" style="font-size:13px; color:var(--text-mid); line-height:1.6; margin-bottom:1rem;">{rPost.data.description}</p>
                 </div>
-                <div class="blog-card-meta" style="display:flex; justify-content:space-between; align-items:center; font-family:'DM Mono',monospace; font-size:11px; color:var(--text-light); padding-top:.75rem; border-top:.5px solid var(--border);">
+                <div class="blog-card-meta" style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:11px; color:var(--text-light); padding-top:.75rem; border-top:.5px solid var(--border);">
                   <span>{rPost.data.readingTime || '5 min read'}</span>
                   <span class="blog-card-arrow" style="color:var(--accent); font-weight:700;">Read →</span>
                 </div>
