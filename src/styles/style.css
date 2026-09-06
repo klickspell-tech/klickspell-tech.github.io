@@ -204,6 +204,8 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .service-name { font-family:'Instrument Serif',serif; font-size:22px; font-weight:400; color:var(--text); margin-bottom:.75rem; line-height:1.2; }
 .service-desc { font-size:13.5px; color:var(--text-mid); line-height:1.7; flex-grow:1; }
 .service-desc strong { color:var(--text); font-weight:600; }
+.service-learn-more { display:inline-flex; align-items:center; gap:.35rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); text-decoration:none; margin-top:1.25rem; font-weight:500; transition:gap .2s; }
+.service-learn-more:hover { gap:.6rem; }
 
 /* DIFFERENTIATORS */
 .diff-section { background:var(--text); color:var(--white); padding:7rem 2rem; }
@@ -560,3 +562,63 @@ footer { background:var(--text); padding:3rem 2rem; }
   #hero-cta-d, #cta-d { display: none !important; }
   #hero-cta-m, #cta-m { display: inline-flex !important; }
 }
+
+/* ==========================================================================
+   SERVICE LANDING PAGES
+   ========================================================================== */
+.service-page-hero { padding:9rem 2rem 4rem; max-width:1200px; margin:0 auto; }
+.service-badge { display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .85rem; border-radius:100px; background:var(--accent-light); border:1px solid rgba(58,91,224,0.2); font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; margin-bottom:1.25rem; }
+.service-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; }
+.service-hero-title { font-family:'Instrument Serif',serif; font-size:clamp(38px,5.5vw,66px); font-weight:400; line-height:1.06; letter-spacing:-0.02em; color:var(--text); margin-bottom:1.5rem; max-width:920px; }
+.service-hero-title em { font-style:italic; color:var(--accent); }
+.service-hero-sub { font-size:17.5px; color:var(--text-mid); line-height:1.75; max-width:720px; margin-bottom:2.5rem; }
+.service-hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:3rem; }
+
+.service-metrics-bar { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding:2rem 0; border-top:.5px solid var(--border); border-bottom:.5px solid var(--border); margin-bottom:4rem; }
+.service-metric-item .metric-label { font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.35rem; }
+.service-metric-item .metric-val { font-family:'Instrument Serif',serif; font-size:clamp(26px,3vw,34px); font-weight:400; color:var(--text); line-height:1.1; margin-bottom:.25rem; }
+.service-metric-item .metric-note { font-size:12.5px; color:var(--text-mid); line-height:1.4; }
+
+.service-body-wrap { max-width:1200px; margin:0 auto; padding:2rem 2rem 6rem; }
+.service-section-header { max-width:700px; margin-bottom:3rem; }
+.service-section-header h2 { font-family:'Instrument Serif',serif; font-size:clamp(32px,4vw,44px); font-weight:400; line-height:1.15; letter-spacing:-0.01em; color:var(--text); margin-bottom:1rem; }
+.service-section-header h2 em { font-style:italic; color:var(--accent); }
+.service-section-header p { font-size:16px; color:var(--text-mid); line-height:1.7; }
+
+.service-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:5rem; }
+.service-deliverable-card { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:2rem; transition:border-color .3s, box-shadow .3s, transform .3s; display:flex; flex-direction:column; }
+.service-deliverable-card:hover { border-color:rgba(58,91,224,0.3); box-shadow:0 14px 36px rgba(0,0,0,0.06); transform:translateY(-2px); }
+.service-card-num { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.12em; color:var(--accent); margin-bottom:1rem; font-weight:500; }
+.service-card-title { font-family:'Instrument Serif',serif; font-size:24px; font-weight:400; color:var(--text); margin-bottom:.75rem; line-height:1.2; }
+.service-card-text { font-size:14.5px; color:var(--text-mid); line-height:1.7; flex-grow:1; }
+
+.service-proof-box { background:var(--bg-card); border:.5px solid var(--border); border-radius:var(--radius); padding:3rem; margin-bottom:5rem; }
+.service-proof-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:center; }
+.service-proof-text h3 { font-family:'Instrument Serif',serif; font-size:clamp(28px,3.5vw,38px); font-weight:400; line-height:1.15; color:var(--text); margin-bottom:1rem; }
+.service-proof-text h3 em { font-style:italic; color:var(--accent); }
+.service-proof-text p { font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:1.75rem; }
+.service-proof-media { border-radius:var(--radius-sm); overflow:hidden; border:.5px solid var(--border); box-shadow:0 20px 50px rgba(0,0,0,0.07); }
+.service-proof-media img { width:100%; display:block; object-fit:cover; }
+
+.service-box-cta { background:var(--text); color:var(--white); border-radius:var(--radius); padding:4rem 3rem; text-align:center; position:relative; overflow:hidden; margin-top:5rem; }
+.service-box-cta h2 { font-family:'Instrument Serif',serif; font-size:clamp(34px,5vw,52px); font-weight:400; color:var(--white); margin-bottom:1.25rem; line-height:1.1; }
+.service-box-cta h2 em { font-style:italic; color:rgba(255,255,255,0.7); }
+.service-box-cta p { font-size:16px; color:rgba(255,255,255,0.75); max-width:620px; margin:0 auto 2.5rem; line-height:1.7; }
+.service-box-cta-actions { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+
+@media (max-width:960px) {
+  .service-metrics-bar { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+  .service-grid-3 { grid-template-columns:repeat(2,1fr); }
+  .service-proof-inner { grid-template-columns:1fr; gap:2rem; }
+}
+@media (max-width:680px) {
+  .service-page-hero { padding:7rem 1.5rem 2.5rem; }
+  .service-metrics-bar { grid-template-columns:1fr 1fr; gap:1.25rem; }
+  .service-grid-3 { grid-template-columns:1fr; }
+  .service-body-wrap { padding:1rem 1.5rem 4rem; }
+  .service-proof-box { padding:2rem 1.5rem; }
+  .service-box-cta { padding:3rem 1.5rem; }
+  .service-hero-actions { flex-direction:column; align-items:stretch; }
+  .service-box-cta-actions { flex-direction:column; align-items:stretch; }
+}
+

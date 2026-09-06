@@ -1,0 +1,300 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://klickspell.com/services/custom-shopify-development";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Custom Shopify Theme & Liquid Development",
+  "serviceType": "E-Commerce Web Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  },
+  "description": "Bespoke Shopify Liquid themes and modular customizer sections. Engineered for maximum speed, seamless marketing team autonomy, and zero page-builder app bloat.",
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Shopify Engineering Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Shopify 2.0 Theme Architecture & Migration"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can our non-technical team edit content and layouts after handover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%. Every section we build connects directly into Shopify's native Theme Customizer. Your marketing and product teams can change banners, copy, product grids, testimonials, and colors without touching a single line of code or paying for page-builder apps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you use off-the-shelf templates or build custom?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We engineer custom themes tailored directly to your brand guidelines, product catalogs, and conversion goals. If you already have an existing theme (e.g. Dawn, Prestige, Empire), we refactor and build bespoke modular sections that integrate cleanly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle custom checkout, subscriptions, and app integrations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We have deep experience integrating Recharge subscription flows, Klaviyo segmentation, Judge.me/Yotpo reviews, custom bundle builders, and affiliate tracking systems like Awin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are we locked into an agency retainer after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Our core philosophy is building for complete client autonomy. We provide thorough documentation, clean Git repositories, and a personalized video handover so you are never held hostage by an agency retainer."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://klickspell.com/#services" },
+    { "@type": "ListItem", "position": 3, "name": "Custom Shopify Development", "item": canonical }
+  ]
+};
+
+const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Custom Shopify Theme Development Agency — Bespoke Liquid Engineering | Klickspell"
+  description="Bespoke Shopify Liquid themes built for brands that refuse to compromise. Zero page-builder bloat, native Theme Customizer sections, and complete handover."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <header class="service-page-hero">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#services">Services</a> / Custom Shopify Development</p>
+      
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Zero Page-Builder Bloat · 100% Native Customizer
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Custom Shopify stores engineered for<br>
+        <em>conversion, speed, and complete autonomy.</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        Stop fighting restrictive templates and paying $200/month for buggy drag-and-drop page builders. We build bespoke Shopify 2.0 themes with modular customizer sections your marketing team can effortlessly edit without ever calling a developer.
+      </p>
+
+      <div class="service-hero-actions reveal reveal-delay-2">
+        <a 
+          href="https://cal.com/atul-bhatt-klickspell/30min" 
+          data-cal-link="atul-bhatt-klickspell/30min" 
+          data-cal-namespace="30min" 
+          data-cal-config='{"layout":"month_view"}' 
+          class="btn-primary"
+          style="cursor:pointer"
+        >
+          Scope Your Shopify Project →
+        </a>
+        <a href="/work/jaxon-lane.html" class="btn-ghost">
+          See Jaxon Lane Case Study ↗
+        </a>
+      </div>
+
+      <!-- METRICS STRIP -->
+      <div class="service-metrics-bar reveal reveal-delay-3">
+        <div class="service-metric-item">
+          <p class="metric-label">Architecture</p>
+          <p class="metric-val">Shopify 2.0</p>
+          <p class="metric-note">Dynamic sections &amp; blocks everywhere</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Page-Builder Apps</p>
+          <p class="metric-val">0 Apps</p>
+          <p class="metric-note">Zero third-party code injection or recurring fees</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Client Handover</p>
+          <p class="metric-val">100% Yours</p>
+          <p class="metric-note">Clean Git repo, documentation, and video guide</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Engineering Access</p>
+          <p class="metric-val">Direct</p>
+          <p class="metric-note">Collaborate directly with senior developers</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="service-body-wrap">
+      
+      <!-- DELIVERABLES SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Our Capabilities</p>
+          <h2>Bespoke Shopify engineering<br><em>from the ground up.</em></h2>
+          <p>Everything your DTC brand needs to scale past $10M+ GMV with clean code, sub-second loading, and frictionless checkout flows.</p>
+        </div>
+
+        <div class="service-grid-3">
+          <div class="service-deliverable-card">
+            <p class="service-card-num">01 — BESPOKE LIQUID ARCHITECTURE</p>
+            <h3 class="service-card-title">Custom 2.0 Theme Engineering</h3>
+            <p class="service-card-text">Pixel-perfect implementation of your Figma or custom designs using modern Shopify Liquid, semantic HTML5, and scoped vanilla CSS. Lightweight, maintainable, and built without framework bloat.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">02 — MODULAR SECTIONS</p>
+            <h3 class="service-card-title">Drag-and-Drop Native Customizer</h3>
+            <p class="service-card-text">Every visual component—from hero banners and product comparison tables to interactive bundle builders—is built as a reusable Shopify 2.0 section editable right from the native Shopify admin.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">03 — SUBSCRIPTIONS &amp; CHECKOUT</p>
+            <h3 class="service-card-title">Recharge &amp; Custom Flows</h3>
+            <p class="service-card-text">We build seamless subscribe-and-save workflows, tiered volume discounts, bespoke bundle selectors, and frictionless checkout extensions that maximize Average Order Value (AOV).</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">04 — PRIVATE APPS &amp; APIS</p>
+            <h3 class="service-card-title">Custom Integrations &amp; Webhooks</h3>
+            <p class="service-card-text">Connect your ERP, warehouse 3PL, custom affiliate attribution systems (Awin), or bespoke CRM systems via Shopify Storefront and Admin GraphQL APIs.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">05 — PERFORMANCE-FIRST STACK</p>
+            <h3 class="service-card-title">Built-In 90+ Core Web Vitals</h3>
+            <p class="service-card-text">We build speed into every theme from day one: self-hosted variable typography, optimized WebP graphics, delayed script hydration, and zero layout shift.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">06 — UNBIASED APP AUDIT</p>
+            <h3 class="service-card-title">Clean App Stack Optimization</h3>
+            <p class="service-card-text">We audit your existing plugins and replace redundant monthly subscriptions with clean, lightweight custom Liquid sections. Save thousands per year on app fees.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF OF WORK CALLOUT -->
+      <section class="service-proof-box reveal">
+        <div class="service-proof-inner">
+          <div class="service-proof-text">
+            <p class="section-eyebrow">Client Case Study</p>
+            <h3>Jaxon Lane:<br><em>California Skincare Partner.</em></h3>
+            <p>We serve as the long-term Shopify engineering partner for California skincare brand Jaxon Lane—architecting custom Recharge subscription flows, migrating affiliate tracking to Awin, and building customizer sections that their marketing team operates daily.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="/work/jaxon-lane.html" class="btn-primary">Read Full Case Study →</a>
+              <a href="https://jaxonlane.com/" target="_blank" rel="noopener" class="btn-ghost">Visit Live Store ↗</a>
+            </div>
+          </div>
+          <div class="service-proof-media">
+            <img src="/assets/projects/jaxon-lane.webp" alt="Jaxon Lane Shopify custom theme development by Klickspell" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Frequently Asked Questions</p>
+          <h2>Clear answers for ambitious founders.</h2>
+          <p>Everything you need to know about our custom Shopify development process.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Can our non-technical team edit content and layouts after handover?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes, 100%. Every section we build connects directly into Shopify's native Theme Customizer. Your marketing and product teams can change banners, copy, product grids, testimonials, and colors without touching a single line of code or paying for page-builder apps.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Do you use off-the-shelf templates or build custom?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              We engineer custom themes tailored directly to your brand guidelines, product catalogs, and conversion goals. If you already have an existing theme (e.g. Dawn, Prestige, Empire), we refactor and build bespoke modular sections that integrate cleanly.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Do you handle custom checkout, subscriptions, and app integrations?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes. We have deep experience integrating Recharge subscription flows, Klaviyo segmentation, Judge.me/Yotpo reviews, custom bundle builders, and affiliate tracking systems like Awin.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Are we locked into an agency retainer after launch?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              No. Our core philosophy is building for complete client autonomy. We provide thorough documentation, clean Git repositories, and a personalized video handover so you are never held hostage by an agency retainer.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- CONVERSION CTA BOX -->
+      <section class="service-box-cta reveal">
+        <h2>Ready to build a high-converting store?<br><em>Let's scope your project.</em></h2>
+        <p>Book a free 30-minute discovery call directly with lead engineer Atul Bhatt. We will review your design concepts, audit your requirements, and provide a fixed-price roadmap.</p>
+        <div class="service-box-cta-actions">
+          <a 
+            href="https://cal.com/atul-bhatt-klickspell/30min" 
+            data-cal-link="atul-bhatt-klickspell/30min" 
+            data-cal-namespace="30min" 
+            data-cal-config='{"layout":"month_view"}' 
+            class="btn-primary"
+            style="background:#3A5BE0; color:#fff;"
+          >
+            Book Discovery Call →
+          </a>
+          <a href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.25);">
+            💬 Quick Chat on WhatsApp
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://klickspell.com/services/shopify-speed-optimization";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Shopify Speed Optimization & Core Web Vitals Engineering",
+  "serviceType": "Web Performance Optimization",
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  },
+  "description": "Guaranteed 90+ Mobile Google PageSpeed scores, sub-second LCP, zero layout shifts, and 0ms main-thread blocking for high-growth Shopify and DTC brands.",
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Shopify Speed Optimization Sprint",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full Shopify Core Web Vitals Audit & Remediation"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you guarantee a 90+ Mobile PageSpeed score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. For stores running custom or standard themes without unremovable third-party vendor hard-locks, we provide a contractual 90+ Mobile Google PageSpeed guarantee or we continue optimizing at zero additional cost until achieved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will optimizing store speed break our marketing or tracking apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we use intelligent script scheduling (requestIdleCallback and intersection-based delayed hydration) so tracking fires accurately without blocking the initial paint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work on our live production store?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All performance engineering, code refactoring, and benchmarking is executed in an unpublished duplicate preview theme. Your live customers and checkout will experience zero downtime or disruption until you personally inspect and approve the speed improvements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a Shopify speed sprint take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard speed sprint takes 7 to 14 business days from initial diagnostic audit to final production theme handover."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://klickspell.com/#services" },
+    { "@type": "ListItem", "position": 3, "name": "Shopify Speed Optimization", "item": canonical }
+  ]
+};
+
+const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Shopify Speed Optimization Agency — Guaranteed 90+ Mobile PageSpeed | Klickspell"
+  description="We engineer sluggish Shopify stores into sub-second revenue engines. Guaranteed 90+ Mobile Core Web Vitals, 0ms main-thread blocking, and zero app breaks."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <header class="service-page-hero">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#services">Services</a> / Shopify Speed Optimization</p>
+      
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Guaranteed 90+ Mobile PageSpeed · 0ms Blocking
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Slow stores lose 40% of sales.<br>
+        We fix the <em>code</em>, not just the symptoms.
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        Most speed "experts" install another optimizer app that makes your store slower. We dive directly into your Liquid templates, vendor scripts, and render trees to deliver lightning-fast paint times, zero layout shifts, and measurable conversion lifts.
+      </p>
+
+      <div class="service-hero-actions reveal reveal-delay-2">
+        <a 
+          href="https://cal.com/atul-bhatt-klickspell/30min" 
+          data-cal-link="atul-bhatt-klickspell/30min" 
+          data-cal-namespace="30min" 
+          data-cal-config='{"layout":"month_view"}' 
+          class="btn-primary"
+          style="cursor:pointer"
+        >
+          Book a Free Speed Audit →
+        </a>
+        <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">
+          Read our 99 PageSpeed Case Study ↗
+        </a>
+      </div>
+
+      <!-- METRICS STRIP -->
+      <div class="service-metrics-bar reveal reveal-delay-3">
+        <div class="service-metric-item">
+          <p class="metric-label">Mobile Guarantee</p>
+          <p class="metric-val">90+ / 100</p>
+          <p class="metric-note">Contractual benchmark or we keep optimizing</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Total Blocking Time</p>
+          <p class="metric-val">&lt; 50 ms</p>
+          <p class="metric-note">Smooth scrolling with zero main-thread freeze</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Delivery Timeline</p>
+          <p class="metric-val">7–14 Days</p>
+          <p class="metric-note">Staged duplicate theme with zero live downtime</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Safety Guarantee</p>
+          <p class="metric-val">100% Intact</p>
+          <p class="metric-note">Analytics, tracking, and vital apps preserved</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="service-body-wrap">
+      
+      <!-- DELIVERABLES SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">The Engineering Sprint</p>
+          <h2>What actually happens during<br><em>your speed optimization.</em></h2>
+          <p>No band-aids. We systematically deconstruct and refactor the front-end bottlenecks that drag down mobile user experience and checkout completion.</p>
+        </div>
+
+        <div class="service-grid-3">
+          <div class="service-deliverable-card">
+            <p class="service-card-num">01 — ASSET &amp; FONT TUNING</p>
+            <h3 class="service-card-title">Next-Gen Media &amp; Local Fonts</h3>
+            <p class="service-card-text">We convert oversized raster assets to modern WebP formats, eliminate layout shifts with explicit aspect ratios, and replace external render-blocking Google Font chains with self-hosted, preloaded variable fonts.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">02 — SCRIPT RESCHEDULING</p>
+            <h3 class="service-card-title">App Bloat &amp; Pixel Decoupling</h3>
+            <p class="service-card-text">Klaviyo, Gorgias, reviews, and ad pixels freeze mobile CPUs. We implement intelligent script scheduling that delays non-critical tags until user engagement, keeping tracking 100% accurate while freeing the main thread.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">03 — CRITICAL CSS &amp; DOM</p>
+            <h3 class="service-card-title">Eliminating Render-Blocking Chains</h3>
+            <p class="service-card-text">We extract and inline critical above-the-fold CSS styles, prune unused vendor styles, and streamline bloated DOM nesting so mobile browsers paint your hero section in under 1.2 seconds.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">04 — LAYOUT SHIFT ERADICATION</p>
+            <h3 class="service-card-title">CLS Zeroing &amp; Fluid Typography</h3>
+            <p class="service-card-text">Unexpected jumps during page load destroy user trust and fail Google's Core Web Vitals. We reserve space for banners, popups, and dynamic app widgets so the layout remains rock-solid.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">05 — ZERO DOWNTIME TESTING</p>
+            <h3 class="service-card-title">Staged QA &amp; Device Testing</h3>
+            <p class="service-card-text">Every change is implemented in an isolated theme environment. We audit your checkout, cart drawers, currency converters, and subscription flows on physical iOS and Android devices before anything touches production.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">06 — HANDOVER &amp; MONITORING</p>
+            <h3 class="service-card-title">Full Autonomy &amp; Best Practices</h3>
+            <p class="service-card-text">We provide a video walkthrough of every change and a checklist for your marketing team on how to upload future banners and install new apps without hurting your hard-earned 90+ score.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF OF WORK CALLOUT -->
+      <section class="service-proof-box reveal">
+        <div class="service-proof-inner">
+          <div class="service-proof-text">
+            <p class="section-eyebrow">Proven Authority</p>
+            <h3>We don't preach speed.<br><em>We engineer it daily.</em></h3>
+            <p>We recently audited and optimized Klickspell itself from the low 70s to a flawless <strong>98/100 on Mobile</strong> and <strong>99/100 on Desktop</strong> with 0ms Total Blocking Time and zero third-party dependencies.</p>
+            <p>The exact same principles applied to California skincare brand <strong>Jaxon Lane</strong> and modern DTC brands are deployed to supercharge your store.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="/work/jaxon-lane.html" class="btn-primary">View Jaxon Lane Case Study →</a>
+              <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">Read Technical Playbook ↗</a>
+            </div>
+          </div>
+          <div class="service-proof-media">
+            <img src="/assets/projects/jaxon-lane.webp" alt="Jaxon Lane Shopify performance case study" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Frequently Asked Questions</p>
+          <h2>Everything you need to know<br><em>before we start.</em></h2>
+          <p>Clear, direct answers about guarantees, app safety, and project workflows.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Do you guarantee a 90+ Mobile PageSpeed score?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes. For stores running custom or standard Shopify themes, we provide a contractual 90+ Mobile Google PageSpeed guarantee. If a store has unremovable third-party vendor restrictions, we identify the exact culprits and optimize everything within engineering control.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Will optimizing store speed break our marketing or tracking apps?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we use intelligent script scheduling so tracking fires accurately without blocking the critical initial paint of the page.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Do you work on our live production store?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Never. All engineering, refactoring, and benchmarking is executed in an unpublished duplicate preview theme. Your live customers and checkout will experience zero downtime or disruption until you personally test and approve the speed improvements.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">How long does a Shopify speed sprint take?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              A standard speed sprint takes between 7 to 14 business days from initial diagnostic audit to final production theme handover.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Why shouldn't I just use a Shopify speed optimization app?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Speed optimizer apps typically inject heavy JavaScript that hides DOM elements or preloads resources indiscriminately. They often "trick" desktop synthetic tests while worsening real-world mobile CPU load and charging you a monthly subscription. We fix the underlying source code cleanly with zero recurring app fees.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- CONVERSION CTA BOX -->
+      <section class="service-box-cta reveal">
+        <h2>Ready for a store that loads instantly?<br><em>Let's audit your speed.</em></h2>
+        <p>Book a 15-minute diagnostic call with lead engineer Atul Bhatt. We will inspect your live store, identify your biggest bottlenecks, and give you an exact speed roadmap.</p>
+        <div class="service-box-cta-actions">
+          <a 
+            href="https://cal.com/atul-bhatt-klickspell/30min" 
+            data-cal-link="atul-bhatt-klickspell/30min" 
+            data-cal-namespace="30min" 
+            data-cal-config='{"layout":"month_view"}' 
+            class="btn-primary"
+            style="background:#3A5BE0; color:#fff;"
+          >
+            Book Free Speed Audit →
+          </a>
+          <a href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.25);">
+            💬 Quick Chat on WhatsApp
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

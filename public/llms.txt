@@ -6,10 +6,10 @@ Klickspell is an independent web engineering and digital product studio founded 
 
 ## Core Capabilities & Services
 
-- **Shopify & Headless E-Commerce**: Custom Shopify Liquid theme development, Hydrogen headless storefronts, Recharge subscription flows, custom checkout extensions, and private Shopify apps.
-- **Headless Commerce**: Modern headless commerce backends built with Medusa.js, custom checkout workflows, and appointment/scheduling integrations (e.g., Cal.com).
+- **Shopify Speed Optimization & Core Web Vitals** (https://klickspell.com/services/shopify-speed-optimization): Guaranteed 90+ Mobile Google PageSpeed scores, sub-second LCP, zero layout shifts (CLS), and 0ms main-thread blocking (TBT) without breaking tracking apps or analytics.
+- **Custom Shopify Liquid & 2.0 Theme Development** (https://klickspell.com/services/custom-shopify-development): Bespoke Shopify stores built from the ground up — modular customizer sections, zero page-builder bloat, Recharge subscriptions, and complete client handover.
+- **Headless Commerce & Web Apps** (https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs. Tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
 - **Webflow SaaS & Marketing Sites**: High-converting, pixel-perfect Webflow marketing sites with custom JavaScript components and CMS architectures.
-- **Web Performance & Optimization**: Comprehensive audits and remediation to achieve 95–100 PageSpeed scores, sub-second LCP, zero layout shifts (CLS), and 0ms main-thread blocking (TBT).
 - **Custom Web Applications & ERP Systems**: Custom business systems, client portals, and ERP deployments built on Frappe and ERPNext.
 
 ## Selected Case Studies

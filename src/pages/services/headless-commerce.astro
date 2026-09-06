@@ -1,0 +1,300 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://klickspell.com/services/headless-commerce";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Headless Commerce & Custom Web App Engineering",
+  "serviceType": "Headless E-Commerce Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  },
+  "description": "Custom headless e-commerce platforms powered by Medusa.js, Next.js, and bespoke APIs. Tailored checkout architectures, multi-vendor portals, and integrated appointment booking systems.",
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Headless Commerce Engineering",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Medusa.js & Next.js Custom Commerce Architecture"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When should a brand choose headless commerce over standard Shopify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Headless commerce is ideal when your business model requires custom pricing rules, unique booking/appointment workflows (e.g. Cal.com integration), B2B client portals, multi-region database routing, or when you want zero transaction fees and full control over your backend using open-source engines like Medusa.js."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why Medusa.js instead of Shopify Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shopify Plus costs $2,000+/month in platform fees and restricts backend customizations. Medusa.js is a modern, open-source Node.js commerce engine that offers complete flexibility, self-hosting on cloud infrastructure (AWS/DigitalOcean/Hetzner), and zero recurring GMV transaction cuts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle checkout, payments, and shipping?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We integrate enterprise-grade payment providers (Stripe, Razorpay, PayPal) and automated shipping/tax calculation providers (ShipStation, TaxJar) directly into your custom React or Next.js storefront with end-to-end PCI compliance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can non-technical team members still manage products and orders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Medusa.js provides a clean, intuitive admin dashboard for managing inventory, orders, customer profiles, discount codes, and fulfillment. We also pair your headless frontend with CMS options like Sanity or Strapi if you require rich content marketing workflows."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://klickspell.com/#services" },
+    { "@type": "ListItem", "position": 3, "name": "Headless Commerce", "item": canonical }
+  ]
+};
+
+const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Headless Commerce Agency — Medusa.js & Next.js Custom Architecture | Klickspell"
+  description="Escape monolithic e-commerce limits. We engineer custom headless commerce backends and Next.js frontends powered by Medusa.js, bespoke APIs, and tailored booking flows."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <header class="service-page-hero">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#services">Services</a> / Headless Commerce</p>
+      
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Medusa.js · Next.js · Bespoke Checkout &amp; APIs
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Beyond monolithic limits.<br>
+        <em>Custom commerce built for complex visions.</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        When standard Shopify themes hit a ceiling with complex workflows, appointment booking, or bespoke database logic, we engineer headless commerce architectures that scale. Powered by open-source Medusa.js and Next.js with zero platform rent.
+      </p>
+
+      <div class="service-hero-actions reveal reveal-delay-2">
+        <a 
+          href="https://cal.com/atul-bhatt-klickspell/30min" 
+          data-cal-link="atul-bhatt-klickspell/30min" 
+          data-cal-namespace="30min" 
+          data-cal-config='{"layout":"month_view"}' 
+          class="btn-primary"
+          style="cursor:pointer"
+        >
+          Discuss Your Headless Architecture →
+        </a>
+        <a href="/work/the-blissful-soul.html" class="btn-ghost">
+          See Blissful Soul Case Study ↗
+        </a>
+      </div>
+
+      <!-- METRICS STRIP -->
+      <div class="service-metrics-bar reveal reveal-delay-3">
+        <div class="service-metric-item">
+          <p class="metric-label">Backend Engine</p>
+          <p class="metric-val">Medusa.js</p>
+          <p class="metric-note">Open-source modular Node.js architecture</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Platform Rent</p>
+          <p class="metric-val">$0 / Month</p>
+          <p class="metric-note">Zero GMV tax or $2k/mo enterprise lock-in</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Frontend Speed</p>
+          <p class="metric-val">&lt; 0.8s LCP</p>
+          <p class="metric-note">Next.js edge caching and instant page loads</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Integrations</p>
+          <p class="metric-val">Custom APIs</p>
+          <p class="metric-note">Cal.com, ERPs, Stripe, and bespoke webhooks</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="service-body-wrap">
+      
+      <!-- DELIVERABLES SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Headless Capabilities</p>
+          <h2>Engineered for businesses that need<br><em>more than a cookie-cutter cart.</em></h2>
+          <p>Decouple your customer experience from backend constraints to unlock speed, flexibility, and unique transactional flows.</p>
+        </div>
+
+        <div class="service-grid-3">
+          <div class="service-deliverable-card">
+            <p class="service-card-num">01 — CUSTOM BACKEND LOGIC</p>
+            <h3 class="service-card-title">Medusa.js Architecture</h3>
+            <p class="service-card-text">We build and deploy robust Medusa.js backends equipped with PostgreSQL, Redis caching, custom data models, automated fulfillment pipelines, and complete admin dashboard control.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">02 — TAILORED CHECKOUT FLOWS</p>
+            <h3 class="service-card-title">Custom Booking &amp; Commerce</h3>
+            <p class="service-card-text">Connect physical appointments, calendar bookings (Cal.com), tiered subscriptions, or deposit payments directly into a unified, high-converting checkout experience.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">03 — LIGHTNING FRONTENDS</p>
+            <h3 class="service-card-title">Next.js &amp; Astro Storefronts</h3>
+            <p class="service-card-text">Deliver instant page transitions and 99+ Core Web Vitals with server-side rendering (SSR), edge caching, and dynamic static regeneration. No slow theme renders.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">04 — ERP &amp; WORKFLOW INTEGRATION</p>
+            <h3 class="service-card-title">Frappe, ERPNext &amp; Webhooks</h3>
+            <p class="service-card-text">Connect your orders, customer ledger, and inventory sync in real time to custom enterprise systems (ERPNext/Frappe) or external logistics providers.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">05 — PAYMENT &amp; MULTI-CURRENCY</p>
+            <h3 class="service-card-title">Global Stripe &amp; Gateway Setup</h3>
+            <p class="service-card-text">Full integration of Stripe Payment Intents, Apple Pay, Google Pay, and localized currencies with zero forced intermediary conversion fees.</p>
+          </div>
+
+          <div class="service-deliverable-card">
+            <p class="service-card-num">06 — COMPLETE HANDOVER</p>
+            <h3 class="service-card-title">Cloud Infrastructure &amp; DevOps</h3>
+            <p class="service-card-text">We deploy your stack to reliable cloud infrastructure (Docker, DigitalOcean, Hetzner, or AWS) with automated CI/CD pipelines, SSL, and complete operational runbooks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF OF WORK CALLOUT -->
+      <section class="service-proof-box reveal">
+        <div class="service-proof-inner">
+          <div class="service-proof-text">
+            <p class="section-eyebrow">Real-World Case Study</p>
+            <h3>The Blissful Soul:<br><em>Medusa.js + Cal.com Platform.</em></h3>
+            <p>We engineered a bespoke headless booking and commerce platform for The Blissful Soul—integrating Medusa.js for product and session checkout, Cal.com for live schedule management, and custom payment routing with zero monthly SaaS bloat.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="/work/the-blissful-soul.html" class="btn-primary">View Blissful Soul Case Study →</a>
+              <a href="/work/noukai-tokyo.html" class="btn-ghost">View Noukai Tokyo Case Study ↗</a>
+            </div>
+          </div>
+          <div class="service-proof-media">
+            <img src="/assets/projects/blissful-soul.webp" alt="The Blissful Soul Headless Medusa.js platform built by Klickspell" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Frequently Asked Questions</p>
+          <h2>Headless engineering decoded.</h2>
+          <p>Answers to help you decide if headless architecture is the right technical investment.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">When should a brand choose headless commerce over standard Shopify?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Headless commerce is ideal when your business model requires custom pricing rules, unique booking/appointment workflows (e.g. Cal.com integration), B2B client portals, multi-region database routing, or when you want zero transaction fees and full control over your backend using open-source engines like Medusa.js.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Why Medusa.js instead of Shopify Plus?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Shopify Plus costs $2,000+/month in platform fees and restricts backend customizations. Medusa.js is a modern, open-source Node.js commerce engine that offers complete flexibility, self-hosting on cloud infrastructure (AWS/DigitalOcean/Hetzner), and zero recurring GMV transaction cuts.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">How do you handle checkout, payments, and shipping?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              We integrate enterprise-grade payment providers (Stripe, Razorpay, PayPal) and automated shipping/tax calculation providers (ShipStation, TaxJar) directly into your custom React or Next.js storefront with end-to-end PCI compliance.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Can non-technical team members still manage products and orders?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes. Medusa.js provides a clean, intuitive admin dashboard for managing inventory, orders, customer profiles, discount codes, and fulfillment. We also pair your headless frontend with CMS options like Sanity or Strapi if you require rich content marketing workflows.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- CONVERSION CTA BOX -->
+      <section class="service-box-cta reveal">
+        <h2>Have a custom commerce vision?<br><em>Let's architect the solution.</em></h2>
+        <p>Book a technical scoping call directly with lead engineer Atul Bhatt. We will evaluate your transactional model, API requirements, and infrastructure costs.</p>
+        <div class="service-box-cta-actions">
+          <a 
+            href="https://cal.com/atul-bhatt-klickspell/30min" 
+            data-cal-link="atul-bhatt-klickspell/30min" 
+            data-cal-namespace="30min" 
+            data-cal-config='{"layout":"month_view"}' 
+            class="btn-primary"
+            style="background:#3A5BE0; color:#fff;"
+          >
+            Schedule Architecture Call →
+          </a>
+          <a href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.25);">
+            💬 Quick Chat on WhatsApp
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
