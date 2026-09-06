@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "404 Page Not Found — Klickspell",
+  "description": "The page you are looking for does not exist or has been moved."
+};
+---
+
+<BaseLayout
+  title="Page Not Found (404) — Klickspell"
+  description="The requested page could not be found. Explore Klickspell's high-performance Shopify engineering services, case studies, or free speed diagnostic tool."
+  robots="noindex, follow"
+  schema={schema}
+>
+  <Nav />
+
+  <main id="main-content" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem 5rem;">
+    <div style="max-width: 640px; text-align: center; margin: 0 auto;">
+      <p class="section-eyebrow reveal" style="margin-bottom: .75rem;">Error 404 · Missing Page</p>
+      <h1 class="reveal reveal-delay-1" style="font-family:'Instrument Serif',serif; font-size: clamp(42px, 6vw, 68px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.25rem;">
+        Lost in <em>the craft.</em>
+      </h1>
+      <p class="reveal reveal-delay-2" style="font-size: 16px; color: var(--text-mid); line-height: 1.7; margin-bottom: 2.5rem;">
+        The link you followed may have been updated, moved, or no longer exists. Use the direct paths below to jump back to what you need:
+      </p>
+
+      <div class="reveal reveal-delay-2" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+        <a href="/" class="btn-primary">Back to Homepage →</a>
+        <a href="/speed" class="btn-ghost">⚡ Test Mobile Speed</a>
+        <a href="/blog" class="btn-ghost">Read Engineering Blog</a>
+      </div>
+
+      <div class="reveal reveal-delay-3" style="background: var(--white); border: .5px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; text-align: left;">
+        <p style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 1rem;">
+          Popular Destinations
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .75rem;">
+          <a href="/services/shopify-speed-optimization" style="font-size: 13.5px; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: .6rem .8rem; border-radius: 8px; background: var(--bg); transition: background .2s;">
+            <span>Shopify Speed Optimization</span>
+            <span style="color: var(--accent);">→</span>
+          </a>
+          <a href="/services/custom-shopify-development" style="font-size: 13.5px; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: .6rem .8rem; border-radius: 8px; background: var(--bg); transition: background .2s;">
+            <span>Custom Shopify 2.0</span>
+            <span style="color: var(--accent);">→</span>
+          </a>
+          <a href="/services/headless-commerce" style="font-size: 13.5px; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: .6rem .8rem; border-radius: 8px; background: var(--bg); transition: background .2s;">
+            <span>Headless &amp; Medusa.js</span>
+            <span style="color: var(--accent);">→</span>
+          </a>
+          <a href="/team" style="font-size: 13.5px; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: .6rem .8rem; border-radius: 8px; background: var(--bg); transition: background .2s;">
+            <span>Meet the Engineering Pod</span>
+            <span style="color: var(--accent);">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

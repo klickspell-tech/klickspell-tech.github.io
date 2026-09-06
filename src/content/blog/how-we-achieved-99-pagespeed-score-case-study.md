@@ -277,3 +277,11 @@ function loadCal() {
 5. **Keep mobile JS-free:** If an interaction (like smooth scrolling or mouse rings) doesn't apply to touchscreens, don't ship a single byte of it to mobile devices.
 
 Performance isn't an afterthought or a plugin you toggle on at the end—it’s an engineering discipline baked into every component, style, and asset.
+
+---
+
+### Audit Your Website or Store Speed
+
+Want to inspect your mobile Core Web Vitals under realistic 4G throttling and identify third-party script bloat? Test your live URL using our free [Website Speed & App Bloat Estimator](/speed).
+
+If you manage a high-traffic Shopify store or marketing website and want a guaranteed 90+ mobile PageSpeed score without sacrificing your analytics, pixels, or conversion apps, explore our [Shopify Speed Optimization Sprint](/services/shopify-speed-optimization) or [schedule a discovery call](https://cal.com/atul-bhatt-klickspell/30min).

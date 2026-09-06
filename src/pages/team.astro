@@ -3,29 +3,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "Team — Klickspell",
-  "description": "Meet the engineering team behind Klickspell. A specialized web and e-commerce engineering pod based in Uttarakhand, India.",
-  "url": "https://klickspell.com/team",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "Klickspell",
-    "founder": {
-      "@type": "Person",
-      "name": "Atul Bhatt"
-    },
-    "member": [
-      { "@type": "Person", "name": "Atul Bhatt", "jobTitle": "Founder & Lead Engineer" },
-      { "@type": "Person", "name": "Rohit Singh Rawat", "jobTitle": "Frontend & E-Commerce Solutions Developer" },
-      { "@type": "Person", "name": "Vivek Bhatt", "jobTitle": "Full-Stack Developer" },
-      { "@type": "Person", "name": "Kunal Risaanva", "jobTitle": "Web Architect & Full-Stack Developer" },
-      { "@type": "Person", "name": "Krishna Solanki", "jobTitle": "Frontend Developer & Integrations" },
-      { "@type": "Person", "name": "Ankit Soni", "jobTitle": "Product Designer", "sameAs": "https://www.oyedesigner.in/" }
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Team — Klickspell",
+    "description": "Meet the engineering team behind Klickspell. A specialized web and e-commerce engineering pod based in Uttarakhand, India.",
+    "url": "https://klickspell.com/team",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Klickspell",
+      "url": "https://klickspell.com/",
+      "founder": {
+        "@type": "Person",
+        "name": "Atul Bhatt",
+        "url": "https://in.linkedin.com/in/mratulbhatt"
+      },
+      "member": [
+        { "@type": "Person", "name": "Atul Bhatt", "jobTitle": "Founder & Lead Engineer", "sameAs": ["https://in.linkedin.com/in/mratulbhatt", "https://github.com/atulbhatt-system32"] },
+        { "@type": "Person", "name": "Rohit Singh Rawat", "jobTitle": "Frontend & E-Commerce Solutions Developer" },
+        { "@type": "Person", "name": "Vivek Bhatt", "jobTitle": "Full-Stack Developer" },
+        { "@type": "Person", "name": "Kunal Risaanva", "jobTitle": "Web Architect & Full-Stack Developer" },
+        { "@type": "Person", "name": "Krishna Solanki", "jobTitle": "Frontend Developer & Integrations" },
+        { "@type": "Person", "name": "Ankit Soni", "jobTitle": "Product Designer", "sameAs": "https://www.oyedesigner.in/" }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Team", "item": "https://klickspell.com/team" }
     ]
   }
-};
+];
 
 const teamMembers = [
   {
@@ -91,6 +103,7 @@ const teamMembers = [
   <main id="main-content">
   <!-- TEAM HERO -->
   <section class="team-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Team</p>
     <p class="section-eyebrow">The Engineering Pod</p>
     <h1 class="team-title">The builders behind<br><em>the craft.</em></h1>
     <p class="team-sub">We are a lean, specialized engineering pod based in the foothills of Uttarakhand. You talk directly to the builders crafting your product — no account managers, no junior handoffs.</p>

@@ -33,9 +33,15 @@ const articleSchema = {
   "headline": post.data.title,
   "description": post.data.description,
   "url": `https://klickspell.com/blog/${post.slug}`,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonical
+  },
   "image": post.data.coverImage || "https://klickspell.com/assets/og-card.png",
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
+  "inLanguage": "en-US",
+  "keywords": (post.data.tags || []).join(', '),
   "author": {
     "@type": "Person",
     "name": post.data.author || "Atul Bhatt",
@@ -55,7 +61,13 @@ const articleSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Klickspell",
-    "url": "https://klickspell.com/"
+    "url": "https://klickspell.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://klickspell.com/assets/og-card.png",
+      "width": 1200,
+      "height": 630
+    }
   }
 };
 

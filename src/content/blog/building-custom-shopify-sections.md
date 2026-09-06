@@ -75,4 +75,6 @@ When you build natively in Shopify Liquid:
 
 > "A store you cannot edit without code is not truly yours."
 
-When designing custom themes, we ensure every element—spacing, color schemes, block order, and typography—is exposed intuitively in the theme customizer so store owners never feel stranded after launch.
+When designing custom themes, we ensure every element—spacing, color schemes, block order, and typography—is exposed intuitively in the theme customizer so store owners never feel stranded after launch. 
+
+Learn more about our [Custom Shopify 2.0 Theme Development](/services/custom-shopify-development) or explore how we partnered with US skincare brand [Jaxon Lane](/work/jaxon-lane.html) to engineer scalable, custom Shopify architectures.
