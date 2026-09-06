@@ -145,10 +145,10 @@ const schemas = [webAppSchema, breadcrumbSchema];
               <p class="store-scanner-sub">Enter your store URL to run an emulated 4G mobile Lighthouse audit and detect third-party app scripts in real time.</p>
             </div>
             <div class="scanner-demo-pills">
-              <span class="demo-pills-label">Try demo:</span>
+              <span class="demo-pills-label">Portfolio demos:</span>
+              <button type="button" class="demo-pill-btn" data-url="bambrew.in">bambrew.in</button>
               <button type="button" class="demo-pill-btn" data-url="jaxonlane.com">jaxonlane.com</button>
-              <button type="button" class="demo-pill-btn" data-url="allbirds.com">allbirds.com</button>
-              <button type="button" class="demo-pill-btn" data-url="gymshark.com">gymshark.com</button>
+              <button type="button" class="demo-pill-btn" data-url="coveandlane.in">coveandlane.in</button>
             </div>
           </div>
 
@@ -498,38 +498,49 @@ const schemas = [webAppSchema, breadcrumbSchema];
       // 2. LIVE STORE SCANNER & DIAGNOSTIC ENGINE
       // -------------------------------------------------------------
       const demoBenchmarks = {
-        'jaxonlane.com': {
-          score: 94,
-          tbt: '110 ms',
-          lcp: '1.8 s',
-          fcp: '1.1 s',
-          cls: '0.02',
-          status: 'good',
-          verdict: 'Excellent Mobile Speed · Optimized by Klickspell',
-          apps: ['recharge', 'judgeme', 'klaviyo'],
-          scripts: ['Recharge Subscriptions', 'Judge.me Reviews', 'Klaviyo Email', 'Awin Affiliate Tracking', 'Google Tag Manager']
-        },
-        'allbirds.com': {
-          score: 48,
+        'bambrew.in': {
+          score: 40,
           tbt: '690 ms',
-          lcp: '3.9 s',
-          fcp: '2.4 s',
-          cls: '0.14',
+          lcp: '21.4 s',
+          fcp: '6.5 s',
+          cls: '0.04',
           status: 'poor',
-          verdict: 'Severe Mobile CPU Strain & Conversion Drop',
-          apps: ['klaviyo', 'yotpo', 'hotjar', 'triplewhale', 'attentive'],
-          scripts: ['Klaviyo Tracking', 'Yotpo Social Proof', 'Triple Whale Attribution', 'Hotjar Heatmaps', 'Meta Pixel', 'Attentive SMS']
+          verdict: 'Real Mobile Lighthouse: 690ms TBT · Heavy Third-Party Assets',
+          apps: [],
+          scripts: ['Gallabox WhatsApp Widget', 'Sentry Error Monitor', 'Google Tag Manager', 'Cloudflare Analytics', 'Meta Pixel', 'SiteWit Tracking']
         },
-        'gymshark.com': {
-          score: 54,
-          tbt: '580 ms',
-          lcp: '3.4 s',
-          fcp: '2.1 s',
-          cls: '0.09',
+        'jaxonlane.com': {
+          score: 33,
+          tbt: '2,860 ms',
+          lcp: '13.6 s',
+          fcp: '2.5 s',
+          cls: '0.00',
+          status: 'poor',
+          verdict: 'Real Mobile Lighthouse: 2,860ms TBT · Third-Party Tracker Delay',
+          apps: ['recharge', 'klaviyo', 'clarity'],
+          scripts: ['Recharge Subscriptions', 'LoyaltyLion Rewards', 'Klaviyo Marketing', 'Microsoft Clarity', 'Awin Affiliate Tracking', 'Heatmap Analytics', 'Google Tag Manager']
+        },
+        'coveandlane.in': {
+          score: 33,
+          tbt: '1,230 ms',
+          lcp: '11.9 s',
+          fcp: '4.1 s',
+          cls: '0.03',
+          status: 'poor',
+          verdict: 'Real Mobile Lighthouse: 1,230ms TBT · Checkout & Tracking Bottlenecks',
+          apps: ['clarity'],
+          scripts: ['GoKwik Fast Checkout', 'Microsoft Clarity', 'Verifast AI', 'YourToken Widget', 'Shop Pay', 'CAPI Automation']
+        },
+        'noukaitokyo.com': {
+          score: 79,
+          tbt: '0 ms',
+          lcp: '4.1 s',
+          fcp: '3.5 s',
+          cls: '0.00',
           status: 'average',
-          verdict: 'High Third-Party Script Delay on 4G Mobile',
-          apps: ['gorgias', 'klaviyo', 'hotjar', 'boost'],
-          scripts: ['Gorgias Chat', 'Klaviyo Marketing', 'Algolia Search', 'Hotjar Analytics', 'OneTrust CMP', 'Google Analytics 4']
+          verdict: 'Real Mobile Lighthouse: 0ms TBT · High Visual Stability',
+          apps: [],
+          scripts: ['Custom Next.js Engine', 'Self-Hosted Media', 'Clean Script Architecture']
         }
       };
 
@@ -586,7 +597,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
       });
 
       async function runAudit(rawDomain) {
-        let clean = rawDomain.toLowerCase().replace(/^https?:\/\//, '').replace(/\/+$/, '');
+        let clean = rawDomain.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
         const targetUrl = 'https://' + clean;
 
         // UI Loading State
@@ -677,7 +688,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
             fcp: '2.3 s',
             cls: '0.11',
             status: simulatedScore >= 50 ? 'average' : 'poor',
-            verdict: `Live 4G Mobile Benchmark for ${clean}`,
+            verdict: `Estimated Mobile Range for ${clean} · Click 'View on Google PageSpeed' for direct cloud audit`,
             apps: ['klaviyo', 'judgeme', 'recharge', 'pagefly'],
             scripts: ['Klaviyo Email', 'Judge.me Reviews', 'PageFly Builder', 'Meta Pixel', 'Google Tag Manager']
           });
