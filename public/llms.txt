@@ -32,6 +32,10 @@ Klickspell maintains an extensive technical knowledge base covering web engineer
 - **Full Article Catalog**: https://klickspell.com/blog
 - **RSS Feed**: https://klickspell.com/rss.xml
 
+## Interactive Tools & Calculators
+
+- **Shopify Speed & App Bloat Estimator** (https://klickspell.com/speed): Free interactive diagnostic calculator that estimates third-party JavaScript bloat, main-thread blocking time, and conversion rate penalty across common Shopify apps (Klaviyo, PageFly, Yotpo, Gorgias, Recharge).
+
 ## Engineering Team & Leadership
 
 - **Founder & Lead Engineer**: Atul Bhatt (https://in.linkedin.com/in/mratulbhatt)

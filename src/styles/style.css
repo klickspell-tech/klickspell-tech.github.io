@@ -453,6 +453,16 @@ footer { background:var(--text); padding:3rem 2rem; }
 .blog-title em { font-style:italic; color:var(--accent); }
 .blog-sub { font-size:17px; color:var(--text-mid); line-height:1.7; max-width:620px; margin-bottom:2.5rem; }
 
+.blog-search-wrap { margin: 1.75rem 0 1rem; max-width: 680px; }
+.blog-search-box { display:flex; align-items:center; background:var(--white); border:.5px solid var(--border); border-radius:100px; padding:.45rem 1.25rem; box-shadow:0 2px 10px rgba(0,0,0,0.03); transition:border-color .2s, box-shadow .2s; }
+.blog-search-box:focus-within { border-color:var(--accent); box-shadow:0 0 0 3px rgba(58,91,224,0.12); }
+.blog-search-icon { color:var(--text-light); flex-shrink:0; margin-right:.75rem; }
+.blog-search-input { width:100%; border:none; outline:none; background:transparent; font-family:'Manrope',sans-serif; font-size:14px; color:var(--text); padding:.35rem 0; }
+.blog-search-input::placeholder { color:var(--text-light); }
+.blog-search-clear { background:none; border:none; color:var(--text-light); cursor:pointer; padding:0 .35rem; font-size:14px; transition:color .2s; }
+.blog-search-clear:hover { color:var(--text); }
+.blog-search-count { font-family:'DM Mono',monospace; font-size:11.5px; color:var(--text-mid); margin-top:.65rem; padding-left:.5rem; }
+
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:1.75rem; margin-top:2rem; }
 .blog-card { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:2rem; display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:border-color .3s, box-shadow .3s, transform .3s; }
 .blog-card:hover { border-color:rgba(58,91,224,0.3); box-shadow:0 16px 40px rgba(0,0,0,0.06); transform:translateY(-3px); }
@@ -621,4 +631,47 @@ footer { background:var(--text); padding:3rem 2rem; }
   .service-hero-actions { flex-direction:column; align-items:stretch; }
   .service-box-cta-actions { flex-direction:column; align-items:stretch; }
 }
+
+/* ==========================================================================
+   SPEED & APP BLOAT ESTIMATOR
+   ========================================================================== */
+.estimator-layout { display:grid; grid-template-columns:1.35fr .85fr; gap:2.5rem; align-items:start; margin-bottom:5rem; }
+.estimator-apps-col { display:flex; flex-direction:column; gap:2rem; }
+.estimator-category-card { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; box-shadow:0 4px 16px rgba(0,0,0,0.02); }
+.estimator-category-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:.5px solid var(--border); padding-bottom:.75rem; }
+.estimator-category-title { font-family:'Instrument Serif',serif; font-size:20px; font-weight:400; color:var(--text); }
+.estimator-category-impact { font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
+
+.estimator-app-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:.75rem; }
+.estimator-app-label { cursor:pointer; user-select:none; }
+.estimator-app-label input { display:none; }
+.estimator-app-pill { display:flex; align-items:center; justify-content:space-between; padding:.65rem .85rem; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg); transition:all .2s var(--ease); font-size:13px; font-weight:500; color:var(--text-mid); }
+.estimator-app-label input:checked + .estimator-app-pill { background:var(--accent-light); border-color:var(--accent); color:var(--accent); font-weight:600; box-shadow:0 2px 8px rgba(58,91,224,0.15); }
+.estimator-app-pill .pill-check { width:16px; height:16px; border-radius:4px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:10px; color:transparent; background:var(--white); transition:all .2s; }
+.estimator-app-label input:checked + .estimator-app-pill .pill-check { background:var(--accent); border-color:var(--accent); color:var(--white); }
+
+.estimator-results-col { position:sticky; top:90px; }
+.estimator-results-card { background:var(--text); color:var(--white); border-radius:var(--radius); padding:2.25rem; box-shadow:0 20px 50px rgba(0,0,0,0.15); }
+.estimator-results-badge { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:1rem; }
+.estimator-results-title { font-family:'Instrument Serif',serif; font-size:28px; font-weight:400; color:var(--white); margin-bottom:.5rem; line-height:1.15; }
+.estimator-results-sub { font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:1.75rem; line-height:1.5; }
+
+.estimator-meters { display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2rem; padding:1.5rem 0; border-top:.5px solid rgba(255,255,255,0.12); border-bottom:.5px solid rgba(255,255,255,0.12); }
+.estimator-meter-item { display:flex; justify-content:space-between; align-items:center; }
+.estimator-meter-label { font-size:13.5px; color:rgba(255,255,255,0.75); }
+.estimator-meter-val { font-family:'DM Mono',monospace; font-size:15px; font-weight:600; color:var(--white); }
+.estimator-meter-val.warning { color:#F7B955; }
+.estimator-meter-val.critical { color:#FF6B6B; }
+
+.estimator-penalty-box { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.75rem; font-size:12.5px; color:rgba(255,255,255,0.8); line-height:1.6; }
+.estimator-penalty-box strong { color:#FF6B6B; }
+
+.estimator-results-card .btn-primary { width:100%; text-align:center; justify-content:center; background:#3A5BE0; color:#fff; font-size:14px; padding:.85rem 1.25rem; }
+.estimator-results-card .btn-ghost { width:100%; text-align:center; justify-content:center; color:#fff; border-color:rgba(255,255,255,0.25); font-size:13.5px; margin-top:.75rem; }
+
+@media (max-width:960px) {
+  .estimator-layout { grid-template-columns:1fr; }
+  .estimator-results-col { position:static; }
+}
+
 

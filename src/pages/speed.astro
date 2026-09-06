@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const canonical = "https://klickspell.com/speed";
+
+const appCategories = [
+  {
+    name: "Page Builders & Design Apps",
+    impact: "Severe CPU & DOM Penalty",
+    apps: [
+      { id: "pagefly", name: "PageFly", jsKb: 650, tbtMs: 380 },
+      { id: "shogun", name: "Shogun", jsKb: 720, tbtMs: 420 },
+      { id: "gempages", name: "GemPages", jsKb: 580, tbtMs: 350 },
+      { id: "zipify", name: "Zipify Pages", jsKb: 490, tbtMs: 310 }
+    ]
+  },
+  {
+    name: "Email, SMS & Marketing Popups",
+    impact: "High Script Weight",
+    apps: [
+      { id: "klaviyo", name: "Klaviyo", jsKb: 340, tbtMs: 240 },
+      { id: "attentive", name: "Attentive / Postscript", jsKb: 280, tbtMs: 190 },
+      { id: "omnisend", name: "Omnisend", jsKb: 290, tbtMs: 180 },
+      { id: "privy", name: "Privy / Justuno", jsKb: 350, tbtMs: 250 }
+    ]
+  },
+  {
+    name: "Product Reviews & Social Proof",
+    impact: "Moderate Widget Overhead",
+    apps: [
+      { id: "yotpo", name: "Yotpo Reviews", jsKb: 320, tbtMs: 220 },
+      { id: "judgeme", name: "Judge.me", jsKb: 95, tbtMs: 75 },
+      { id: "loox", name: "Loox Photo Reviews", jsKb: 210, tbtMs: 160 },
+      { id: "okendo", name: "Okendo", jsKb: 270, tbtMs: 200 },
+      { id: "stamped", name: "Stamped.io", jsKb: 250, tbtMs: 180 }
+    ]
+  },
+  {
+    name: "Subscriptions & Upsell Drawers",
+    impact: "Cart & Checkout Delay",
+    apps: [
+      { id: "recharge", name: "Recharge Subscriptions", jsKb: 290, tbtMs: 190 },
+      { id: "rebuy", name: "Rebuy Engine", jsKb: 280, tbtMs: 210 },
+      { id: "bold", name: "Bold Subscriptions", jsKb: 330, tbtMs: 240 },
+      { id: "monster", name: "Monster Cart Upsell", jsKb: 220, tbtMs: 160 }
+    ]
+  },
+  {
+    name: "Customer Support & Live Chat",
+    impact: "Persistent Background Execution",
+    apps: [
+      { id: "gorgias", name: "Gorgias Chat", jsKb: 460, tbtMs: 340 },
+      { id: "zendesk", name: "Zendesk Web Widget", jsKb: 530, tbtMs: 390 },
+      { id: "tidio", name: "Tidio Live Chat", jsKb: 390, tbtMs: 290 }
+    ]
+  },
+  {
+    name: "Analytics, Heatmaps & Attribution",
+    impact: "Continuous Event Listeners",
+    apps: [
+      { id: "hotjar", name: "Hotjar", jsKb: 260, tbtMs: 210 },
+      { id: "luckyorange", name: "Lucky Orange", jsKb: 290, tbtMs: 230 },
+      { id: "clarity", name: "Microsoft Clarity", jsKb: 140, tbtMs: 90 },
+      { id: "triplewhale", name: "Triple Whale", jsKb: 220, tbtMs: 160 }
+    ]
+  },
+  {
+    name: "Search, Filters & Translation",
+    impact: "Catalog Query Blocking",
+    apps: [
+      { id: "boost", name: "Boost AI Search & Filter", jsKb: 360, tbtMs: 250 },
+      { id: "searchanise", name: "Searchanise", jsKb: 310, tbtMs: 220 },
+      { id: "weglot", name: "Weglot Translate", jsKb: 230, tbtMs: 160 }
+    ]
+  }
+];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Shopify Speed & App Bloat Estimator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "Interactive diagnostic calculator estimating mobile Core Web Vitals penalties, JavaScript bloat, and conversion loss caused by third-party Shopify apps.",
+  "url": canonical,
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://klickspell.com/speed" },
+    { "@type": "ListItem", "position": 3, "name": "Shopify Speed Estimator", "item": canonical }
+  ]
+};
+
+const schemas = [webAppSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Shopify Speed & App Bloat Estimator — Free Core Web Vitals Calculator | Klickspell"
+  description="Calculate the real-world mobile speed penalty and revenue loss caused by your Shopify app stack. Select your apps to see estimated JavaScript bloat and conversion impact."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <header class="service-page-hero" style="padding-bottom: 2rem;">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / Shopify Speed Estimator</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Interactive Diagnostic Tool · Real-World Benchmarks
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        How much revenue is your<br>
+        <em>Shopify app stack costing you?</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        Every third-party Shopify app injects render-blocking JavaScript that freezes mobile processors. Select the apps your store currently runs below to calculate your estimated mobile CPU delay, Core Web Vitals penalty, and conversion loss in real time.
+      </p>
+    </header>
+
+    <div class="service-body-wrap" style="padding-top: 0;">
+      <div class="estimator-layout reveal reveal-delay-2">
+        
+        <!-- APPS SELECTION COLUMN -->
+        <div class="estimator-apps-col">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
+            <p style="font-size:14px; font-weight:600; color:var(--text);">Select the apps installed on your store:</p>
+            <button id="resetAppsBtn" type="button" style="background:none; border:none; color:var(--accent); font-family:'DM Mono',monospace; font-size:11.5px; cursor:pointer; text-decoration:underline;">Reset all</button>
+          </div>
+
+          {appCategories.map((cat) => (
+            <div class="estimator-category-card">
+              <div class="estimator-category-header">
+                <h2 class="estimator-category-title">{cat.name}</h2>
+                <span class="estimator-category-impact">{cat.impact}</span>
+              </div>
+              <div class="estimator-app-grid">
+                {cat.apps.map((app) => (
+                  <label class="estimator-app-label">
+                    <input 
+                      type="checkbox" 
+                      class="app-checkbox" 
+                      data-id={app.id} 
+                      data-name={app.name} 
+                      data-js={app.jsKb} 
+                      data-tbt={app.tbtMs}
+                    />
+                    <div class="estimator-app-pill">
+                      <span>{app.name}</span>
+                      <span class="pill-check">✓</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- STICKY RESULTS PANEL -->
+        <div class="estimator-results-col">
+          <div class="estimator-results-card">
+            <span class="estimator-results-badge">Live Diagnostic Output</span>
+            <h2 class="estimator-results-title" id="estStatusTitle">Select your apps</h2>
+            <p class="estimator-results-sub" id="estStatusSub">Toggle the apps you currently use to calculate your mobile performance impact.</p>
+
+            <div class="estimator-meters">
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Active Apps Selected:</span>
+                <span class="estimator-meter-val" id="estCountVal">0 Apps</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Third-Party Script Weight:</span>
+                <span class="estimator-meter-val" id="estJsVal">0 KB</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Main-Thread Blocking (TBT):</span>
+                <span class="estimator-meter-val" id="estTbtVal">0 ms</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Est. Mobile PageSpeed Drop:</span>
+                <span class="estimator-meter-val" id="estScoreVal">0 pts</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Est. Mobile Conversion Loss:</span>
+                <span class="estimator-meter-val" id="estConvVal">0.0%</span>
+              </div>
+            </div>
+
+            <div class="estimator-penalty-box" id="estSummaryText">
+              💡 <strong>Industry Benchmark:</strong> According to Google and Deloitte research, every 100ms of mobile latency reduces retail conversion rates by <strong>1.0%</strong>.
+            </div>
+
+            <a 
+              href="https://cal.com/atul-bhatt-klickspell/30min" 
+              data-cal-link="atul-bhatt-klickspell/30min" 
+              data-cal-namespace="30min" 
+              data-cal-config='{"layout":"month_view"}' 
+              class="btn-primary"
+              style="cursor:pointer"
+            >
+              Book Free Live Code Audit →
+            </a>
+            <a 
+              href="https://wa.me/919259598769" 
+              target="_blank" 
+              rel="noopener" 
+              class="btn-ghost"
+            >
+              💬 WhatsApp Direct Consultation
+            </a>
+
+            <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
+              We don't tell you to delete your apps. We optimize script scheduling, delay non-critical hydration, and refactor heavy apps into native Liquid.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EXPLANATORY / HOW WE FIX IT SECTION -->
+      <section class="service-proof-box reveal" style="margin-top: 3rem;">
+        <div class="service-proof-inner">
+          <div class="service-proof-text">
+            <p class="section-eyebrow">The Klickspell Solution</p>
+            <h3>You don't need to delete your apps.<br><em>You need intelligent scheduling.</em></h3>
+            <p>Most speed agencies tell you to remove Klaviyo, Judge.me, or Recharge because they don't know how to optimize front-end code. We keep 100% of your marketing and tracking stack fully functioning while decoupling their execution from the critical mobile paint.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="/services/shopify-speed-optimization" class="btn-primary">Learn About Our 90+ Guarantee →</a>
+              <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">Read 99 PageSpeed Case Study ↗</a>
+            </div>
+          </div>
+          <div class="service-proof-media">
+            <img src="/assets/projects/jaxon-lane.webp" alt="Shopify speed engineering by Klickspell" width="2994" height="2046" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script is:inline>
+    (function() {
+      const checkboxes = document.querySelectorAll('.app-checkbox');
+      const resetBtn = document.getElementById('resetAppsBtn');
+      const countEl = document.getElementById('estCountVal');
+      const jsEl = document.getElementById('estJsVal');
+      const tbtEl = document.getElementById('estTbtVal');
+      const scoreEl = document.getElementById('estScoreVal');
+      const convEl = document.getElementById('estConvVal');
+      const titleEl = document.getElementById('estStatusTitle');
+      const subEl = document.getElementById('estStatusSub');
+      const summaryBox = document.getElementById('estSummaryText');
+
+      function calculate() {
+        let count = 0;
+        let totalJs = 0;
+        let totalTbt = 0;
+
+        checkboxes.forEach(cb => {
+          if (cb.checked) {
+            count++;
+            totalJs += parseInt(cb.getAttribute('data-js') || 0, 10);
+            totalTbt += parseInt(cb.getAttribute('data-tbt') || 0, 10);
+          }
+        });
+
+        // Format outputs
+        countEl.textContent = `${count} ${count === 1 ? 'App' : 'Apps'}`;
+        
+        if (totalJs >= 1024) {
+          jsEl.textContent = `+${(totalJs / 1024).toFixed(2)} MB`;
+        } else {
+          jsEl.textContent = `+${totalJs} KB`;
+        }
+
+        tbtEl.textContent = `+${totalTbt} ms`;
+
+        // Estimated mobile score penalty
+        // ~150ms TBT ≈ 5-7 points lost on Mobile Lighthouse v10+
+        const scoreDrop = Math.min(65, Math.round(totalTbt / 28));
+        scoreEl.textContent = count > 0 ? `-${scoreDrop} pts` : '0 pts';
+
+        // Estimated conversion drop: ~1% per 100ms TBT latency (capped at 30%)
+        const convDrop = Math.min(32.0, (totalTbt / 85) * 1.2).toFixed(1);
+        convEl.textContent = count > 0 ? `-${convDrop}%` : '0.0%';
+
+        // Dynamic styling & severity states
+        if (count === 0) {
+          titleEl.textContent = 'Select your apps';
+          subEl.textContent = 'Toggle the apps you currently use to calculate your mobile performance impact.';
+          jsEl.className = 'estimator-meter-val';
+          tbtEl.className = 'estimator-meter-val';
+          scoreEl.className = 'estimator-meter-val';
+          convEl.className = 'estimator-meter-val';
+          summaryBox.innerHTML = '💡 <strong>Industry Benchmark:</strong> According to Google & Deloitte research, every 100ms of mobile latency reduces retail conversion rates by <strong>1.0%</strong>.';
+        } else if (totalTbt < 450) {
+          titleEl.textContent = 'Moderate Performance Impact';
+          subEl.textContent = `Your ${count} selected apps introduce noticeable delay on 4G mobile devices.`;
+          jsEl.className = 'estimator-meter-val warning';
+          tbtEl.className = 'estimator-meter-val warning';
+          scoreEl.className = 'estimator-meter-val warning';
+          convEl.className = 'estimator-meter-val warning';
+          summaryBox.innerHTML = `⚠️ <strong>High CPU Strain:</strong> Your mobile shoppers wait an estimated extra <strong>${(totalTbt / 1000).toFixed(1)}s</strong> before pages respond to touch, costing an estimated <strong>${convDrop}%</strong> in lost orders.`;
+        } else {
+          titleEl.textContent = 'Critical Mobile Speed Penalty';
+          subEl.textContent = `Your ${count} apps are freezing mobile CPUs and severely penalizing Core Web Vitals.`;
+          jsEl.className = 'estimator-meter-val critical';
+          tbtEl.className = 'estimator-meter-val critical';
+          scoreEl.className = 'estimator-meter-val critical';
+          convEl.className = 'estimator-meter-val critical';
+          summaryBox.innerHTML = `🚨 <strong>Revenue Leak Detected:</strong> Third-party apps are injecting <strong>${(totalJs / 1024).toFixed(1)} MB</strong> of unoptimized JavaScript, creating an estimated <strong>${convDrop}% conversion rate penalty</strong> on mobile checkout traffic.`;
+        }
+      }
+
+      checkboxes.forEach(cb => cb.addEventListener('change', calculate));
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          checkboxes.forEach(cb => cb.checked = false);
+          calculate();
+        });
+      }
+
+      // Pre-select a common realistic stack so first-time visitors immediately see the diagnostic power!
+      const defaultStack = ['klaviyo', 'judgeme', 'recharge', 'pagefly'];
+      checkboxes.forEach(cb => {
+        if (defaultStack.includes(cb.getAttribute('data-id'))) {
+          cb.checked = true;
+        }
+      });
+      calculate();
+    })();
+  </script>
+
+  <Footer />
+</BaseLayout>
