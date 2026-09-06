@@ -248,7 +248,45 @@ To solidify Klickspell as an official named entity in Google's Knowledge Graph, 
 
 ---
 
-## 11. Summary of Automated Verification Commands
+## 11. Supabase Lead Capture Setup (60-Second Database)
+
+We created a complete database schema file at [`supabase/schema.sql`](file:///Users/atul/Documents/Projects/KlickSpell-Site/supabase/schema.sql) with full Row-Level Security (RLS) policies allowing public anonymous submissions while keeping all lead rows 100% private to your dashboard.
+
+- [ ] **Run the Supabase SQL Setup**:
+  1. Open [database.new](https://database.new) (or log in to [app.supabase.com](https://app.supabase.com)).
+  2. Create a new free project (e.g. `klickspell-production`).
+  3. In the left sidebar, click **SQL Editor** (`>_`).
+  4. Copy and paste the contents of [`supabase/schema.sql`](file:///Users/atul/Documents/Projects/KlickSpell-Site/supabase/schema.sql):
+     ```sql
+     CREATE TABLE IF NOT EXISTS public.video_audits (
+         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+         created_at TIMESTAMPTZ DEFAULT now() NOT NULL,
+         store_url TEXT NOT NULL,
+         contact_info TEXT NOT NULL,
+         channel TEXT NOT NULL DEFAULT 'email',
+         detected_apps JSONB DEFAULT '[]'::jsonb,
+         performance_score INTEGER,
+         status TEXT DEFAULT 'pending'
+     );
+
+     ALTER TABLE public.video_audits ENABLE ROW LEVEL SECURITY;
+
+     CREATE POLICY "Allow public insert only" 
+     ON public.video_audits 
+     FOR INSERT 
+     TO anon 
+     WITH CHECK (true);
+     ```
+  5. Click **Run**.
+  6. Go to **Project Settings > API** in the sidebar.
+  7. Copy:
+     - **Project URL** (e.g. `https://xyzcompany.supabase.co`)
+     - **Project API Keys > `anon` `public`** (starts with `ey...`)
+  8. Paste them into `speed.astro` or send them here to activate live cloud database capture!
+
+---
+
+## 12. Summary of Automated Verification Commands
 
 You can run these anytime locally to verify the health of your site:
 

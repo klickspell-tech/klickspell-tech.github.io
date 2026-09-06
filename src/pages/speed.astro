@@ -293,8 +293,19 @@ const schemas = [webAppSchema, breadcrumbSchema];
                   <span>Personalized Video Review · 0 Cost</span>
                 </div>
                 <h3 class="video-audit-title">Want Atul to record a 5-minute video walkthrough of your store's bottlenecks?</h3>
-                <p class="video-audit-sub">Enter your email or WhatsApp below. We will personally inspect your store's network waterfalls, third-party apps, and liquid bottlenecks, and send you a private 5-minute Loom video with prioritized fixes.</p>
+                <p class="video-audit-sub">We will personally inspect your store's network waterfalls, third-party apps, and liquid bottlenecks, and send you a private 5-minute Loom video with prioritized fixes.</p>
               </div>
+
+              <!-- SPLIT CHANNEL TABS -->
+              <div class="audit-tabs-row">
+                <button type="button" class="audit-tab-btn active" id="tabEmailBtn" data-channel="email">
+                  ✉️ Email Me the Video
+                </button>
+                <button type="button" class="audit-tab-btn" id="tabWhatsAppBtn" data-channel="whatsapp">
+                  💬 Send via WhatsApp
+                </button>
+              </div>
+
               <form 
                 id="videoAuditForm" 
                 class="video-audit-form"
@@ -303,21 +314,21 @@ const schemas = [webAppSchema, breadcrumbSchema];
               >
                 <div class="video-audit-input-group">
                   <input 
-                    type="text" 
+                    type="email" 
                     id="auditContactInput" 
                     name="contact_info"
-                    placeholder="Enter work email or WhatsApp (e.g. founder@brand.com)" 
-                    aria-label="Work email or WhatsApp number for video audit"
-                    title="Work email or WhatsApp number for video audit"
+                    placeholder="Enter work email (e.g. founder@brand.com)" 
+                    aria-label="Contact information for video audit"
+                    title="Contact information for video audit"
                     required 
                   />
                   <button type="submit" id="videoAuditSubmitBtn" class="btn-primary" style="white-space:nowrap; padding:.85rem 1.5rem; font-size:14px; cursor:pointer;">
-                    <span id="auditBtnText">Get Video Audit →</span>
+                    <span id="auditBtnText">Email Me the Audit →</span>
                     <span id="auditBtnSpinner" class="scanner-spinner" style="display:none;"></span>
                   </button>
                 </div>
                 <div id="videoAuditSuccess" class="video-audit-success" style="display:none;">
-                  ✅ Request received! Atul will review your store's bottlenecks and send your private 5-minute Loom breakdown shortly.
+                  ✅ Request received! We've recorded your store audit request. Atul will review your store's bottlenecks and send your private 5-minute Loom breakdown shortly.
                 </div>
               </form>
             </div>
@@ -326,7 +337,8 @@ const schemas = [webAppSchema, breadcrumbSchema];
         </div>
       </div>
 
-      <div class="estimator-layout reveal reveal        <!-- APPS SELECTION COLUMN -->
+      <div class="estimator-layout reveal reveal-delay-2">
+        <!-- APPS SELECTION COLUMN -->
         <div class="estimator-apps-col">
           <!-- ONE-CLICK QUICK STACK PRESETS -->
           <div class="estimator-presets-bar">
@@ -889,12 +901,44 @@ const schemas = [webAppSchema, breadcrumbSchema];
         statusBox.style.display = 'none';
       }
 
-      // Video Code Audit Lead Submission Handler
+      // Video Code Audit Lead Submission Handler (Supabase & Split Channels)
       const videoAuditForm = document.getElementById('videoAuditForm');
       const auditContactInput = document.getElementById('auditContactInput');
       const auditBtnText = document.getElementById('auditBtnText');
       const auditBtnSpinner = document.getElementById('auditBtnSpinner');
       const videoAuditSuccess = document.getElementById('videoAuditSuccess');
+      const tabEmailBtn = document.getElementById('tabEmailBtn');
+      const tabWhatsAppBtn = document.getElementById('tabWhatsAppBtn');
+
+      let activeChannel = 'email';
+
+      // Supabase Configuration: Injected via window or environment
+      const SUPABASE_URL = (typeof window !== 'undefined' && window.__SUPABASE_URL__) || '';
+      const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.__SUPABASE_ANON_KEY__) || '';
+
+      if (tabEmailBtn && tabWhatsAppBtn) {
+        tabEmailBtn.addEventListener('click', () => {
+          activeChannel = 'email';
+          tabEmailBtn.classList.add('active');
+          tabWhatsAppBtn.classList.remove('active');
+          if (auditContactInput) {
+            auditContactInput.placeholder = 'Enter work email (e.g. founder@brand.com)';
+            auditContactInput.type = 'email';
+          }
+          if (auditBtnText) auditBtnText.textContent = 'Email Me the Audit →';
+        });
+
+        tabWhatsAppBtn.addEventListener('click', () => {
+          activeChannel = 'whatsapp';
+          tabWhatsAppBtn.classList.add('active');
+          tabEmailBtn.classList.remove('active');
+          if (auditContactInput) {
+            auditContactInput.placeholder = 'Enter WhatsApp phone (e.g. +1 555-0199)';
+            auditContactInput.type = 'tel';
+          }
+          if (auditBtnText) auditBtnText.textContent = 'Start WhatsApp Chat →';
+        });
+      }
 
       if (videoAuditForm) {
         videoAuditForm.addEventListener('submit', async (e) => {
@@ -906,19 +950,52 @@ const schemas = [webAppSchema, breadcrumbSchema];
           auditBtnText.style.display = 'none';
           auditBtnSpinner.style.display = 'inline-block';
 
-          await new Promise(r => setTimeout(r, 600));
+          // Gather active apps
+          const detectedAppNames = Array.from(document.querySelectorAll('.app-checkbox:checked'))
+            .map(cb => cb.getAttribute('data-name'))
+            .filter(Boolean);
+
+          const payload = {
+            store_url: targetDomain,
+            contact_info: contact,
+            channel: activeChannel,
+            detected_apps: detectedAppNames,
+            created_at: new Date().toISOString()
+          };
+
+          // Submit to Supabase if configured
+          if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+            try {
+              await fetch(`${SUPABASE_URL}/rest/v1/video_audits`, {
+                method: 'POST',
+                headers: {
+                  'apikey': SUPABASE_ANON_KEY,
+                  'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                  'Content-Type': 'application/json',
+                  'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify(payload)
+              });
+            } catch (err) {
+              console.warn('Supabase lead submission fallback:', err);
+            }
+          }
+
+          await new Promise(r => setTimeout(r, 450));
 
           auditBtnText.style.display = 'inline';
           auditBtnSpinner.style.display = 'none';
           videoAuditSuccess.style.display = 'block';
 
-          // Open pre-drafted WhatsApp consultation or mailto
-          const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}. Contact: ${contact}`;
-          const isEmail = contact.includes('@');
-          if (isEmail) {
-            window.open(`mailto:atul@klickspell.com?subject=${encodeURIComponent(`5-Minute Video Code Audit Request: ${targetDomain}`)}&body=${encodeURIComponent(msg)}`, '_blank');
-          } else {
+          if (activeChannel === 'whatsapp') {
+            const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}. Contact: ${contact}`;
             window.open(`https://wa.me/919259598769?text=${encodeURIComponent(msg)}`, '_blank');
+          } else {
+            // If Supabase not yet configured by user, open mailto as fallback so no lead is lost
+            if (!SUPABASE_URL) {
+              const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}.\n\nPlease send the Loom breakdown to: ${contact}\n\nSelected Apps: ${detectedAppNames.join(', ') || 'None'}`;
+              window.open(`mailto:atul@klickspell.com?subject=${encodeURIComponent(`5-Minute Video Code Audit: ${targetDomain}`)}&body=${encodeURIComponent(msg)}`, '_blank');
+            }
           }
         });
       }
