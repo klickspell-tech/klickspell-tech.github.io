@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "CallSara AI Voice Agent Platform Case Study — Interactive SaaS Marketing Experience & Audio Demos",
+    "description": "How Klickspell engineered a high-converting marketing site and interactive audio demonstration platform for CallSara AI — the autonomous voice agent platform for modern customer support.",
+    "url": "https://klickspell.com/work/callsara-ai.html",
+    "image": "https://klickspell.com/assets/projects/callsara.png",
+    "datePublished": "2026-08-25",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "CallSara AI", "url": "https://callsara.ai/" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "CallSara AI", "item": "https://klickspell.com/work/callsara-ai.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="CallSara AI Case Study — Voice AI Platform & Marketing Architecture | Klickspell"
+  description="How Klickspell engineered a high-converting marketing site and interactive audio demonstration platform for CallSara AI."
+  canonical="https://klickspell.com/work/callsara-ai.html"
+  ogImage="https://klickspell.com/assets/projects/callsara.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <main id="main-content">
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / CallSara AI</p>
+    <p class="section-eyebrow reveal">Case Study · Voice AI &amp; B2B SaaS</p>
+    <h1 class="cs-title reveal reveal-delay-1">Showcasing autonomous voice AI<br>with <em>interactive, instant</em> demos.</h1>
+    <p class="cs-sub reveal reveal-delay-2">CallSara AI provides human-like autonomous voice agents that answer calls, resolve customer queries, and schedule appointments 24/7. We engineered their high-converting marketing site, complete with realistic audio playback simulations, dynamic ROI calculators, and seamless CRM lead funnels.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://callsara.ai/" target="_blank" rel="noopener" class="btn-primary">Visit live platform ↗</a>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" class="btn-ghost">Discuss SaaS architecture →</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Client</p><p class="cs-meta-value">CallSara AI</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Artificial Intelligence &amp; SaaS</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">Interactive SaaS Marketing Architecture</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Audio API · Responsive Micro-Interactions</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/callsara.webp" alt="CallSara AI Voice Platform marketing site engineered by Klickspell" decoding="async">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. EXECUTIVE SUMMARY & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Measurable Results</p>
+      <h2>Turning complex AI technology into immediate customer conviction.</h2>
+      <p>For an AI voice product, hearing is believing. Prospective buyers don't want to read dense whitepapers—they want to hear the agent handle real customer phone calls in under 5 seconds. We delivered an interactive experience that converts enterprise curiosity into qualified demo requests.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">&lt;200<span>ms</span></p><p class="stat-label">Audio Sample Playback Latency</p></div>
+        <div class="stat"><p class="stat-num">97<span>+</span></p><p class="stat-label">Mobile Lighthouse Performance Score</p></div>
+        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Automated CRM Lead Enrichment</p></div>
+      </div>
+    </div>
+
+    <!-- 2. THE CHALLENGE -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Challenge</p>
+      <h2>Overcoming skepticism in the crowded AI agent space.</h2>
+      <p>With dozens of AI startups launching weekly, buyers are skeptical of robotic voices, hallucinated promises, and vague product claims. CallSara needed a digital marketing presence that clearly demonstrated genuine voice fluency, natural conversational turn-taking, and concrete business utility across vertical industries (dental clinics, logistics, auto dealerships, and service businesses).</p>
+    </div>
+
+    <!-- 3. THE ENGINEERING SOLUTION -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Architecture</p>
+      <h2>Bespoke audio playback, feature matrices, and lead funnels.</h2>
+      <p>We designed and engineered a performance-first SaaS marketing experience:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><strong>Zero-Latency Audio Player:</strong> Custom HTML5 audio implementation with waveform visualizers and instant pre-buffered playback across industry call samples (e.g. appointment booking, order status, after-hours emergency).</li>
+        <li><strong>Interactive Industry Selector:</strong> Filterable industry tabs allowing business owners to instantly see and hear exactly how CallSara AI automates their specific telephone workflows.</li>
+        <li><strong>Conversion-Focused Lead Routing:</strong> Dynamic lead capture forms connected to enterprise CRM pipelines, allowing qualified prospects to book live product walkthroughs immediately.</li>
+      </ul>
+    </div>
+
+    <!-- NEXT CASE STUDY NAV -->
+    <div class="cs-next reveal">
+      <div>
+        <p class="cs-next-label">Next Case Study</p>
+        <p class="cs-next-title">The Blissful Soul — Next.js 14 &amp; Medusa v2 Headless Monorepo</p>
+      </div>
+      <a href="/work/the-blissful-soul.html" class="btn-primary">View Case Study →</a>
+    </div>
+
+  </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

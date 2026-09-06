@@ -284,6 +284,43 @@ const schemas = [webAppSchema, breadcrumbSchema];
                 </a>
               </div>
             </div>
+
+            <!-- 5-MINUTE VIDEO AUDIT LEAD CAPTURE -->
+            <div class="video-audit-card">
+              <div class="video-audit-header">
+                <div class="video-audit-badge">
+                  <span class="benchmark-dot" style="background:#0CCE6B;"></span>
+                  <span>Personalized Video Review · 0 Cost</span>
+                </div>
+                <h3 class="video-audit-title">Want Atul to record a 5-minute video walkthrough of your store's bottlenecks?</h3>
+                <p class="video-audit-sub">Enter your email or WhatsApp below. We will personally inspect your store's network waterfalls, third-party apps, and liquid bottlenecks, and send you a private 5-minute Loom video with prioritized fixes.</p>
+              </div>
+              <form 
+                id="videoAuditForm" 
+                class="video-audit-form"
+                toolname="request_video_audit"
+                tooldescription="Request a free 5-minute personalized video code audit of website bottlenecks from Klickspell lead engineer Atul Bhatt."
+              >
+                <div class="video-audit-input-group">
+                  <input 
+                    type="text" 
+                    id="auditContactInput" 
+                    name="contact_info"
+                    placeholder="Enter work email or WhatsApp (e.g. founder@brand.com)" 
+                    aria-label="Work email or WhatsApp number for video audit"
+                    title="Work email or WhatsApp number for video audit"
+                    required 
+                  />
+                  <button type="submit" id="videoAuditSubmitBtn" class="btn-primary" style="white-space:nowrap; padding:.85rem 1.5rem; font-size:14px; cursor:pointer;">
+                    <span id="auditBtnText">Get Video Audit →</span>
+                    <span id="auditBtnSpinner" class="scanner-spinner" style="display:none;"></span>
+                  </button>
+                </div>
+                <div id="videoAuditSuccess" class="video-audit-success" style="display:none;">
+                  ✅ Request received! Atul will review your store's bottlenecks and send your private 5-minute Loom breakdown shortly.
+                </div>
+              </form>
+            </div>
           </div>
 
         </div>
@@ -763,6 +800,40 @@ const schemas = [webAppSchema, breadcrumbSchema];
         statusBox.style.display = 'none';
       }
 
+      // Video Code Audit Lead Submission Handler
+      const videoAuditForm = document.getElementById('videoAuditForm');
+      const auditContactInput = document.getElementById('auditContactInput');
+      const auditBtnText = document.getElementById('auditBtnText');
+      const auditBtnSpinner = document.getElementById('auditBtnSpinner');
+      const videoAuditSuccess = document.getElementById('videoAuditSuccess');
+
+      if (videoAuditForm) {
+        videoAuditForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const contact = auditContactInput.value.trim();
+          const targetDomain = storeInput.value.trim() || 'my website';
+          if (!contact) return;
+
+          auditBtnText.style.display = 'none';
+          auditBtnSpinner.style.display = 'inline-block';
+
+          await new Promise(r => setTimeout(r, 600));
+
+          auditBtnText.style.display = 'inline';
+          auditBtnSpinner.style.display = 'none';
+          videoAuditSuccess.style.display = 'block';
+
+          // Open pre-drafted WhatsApp consultation or mailto
+          const msg = `Hi Atul, I requested a 5-minute video code audit on Klickspell for ${targetDomain}. Contact: ${contact}`;
+          const isEmail = contact.includes('@');
+          if (isEmail) {
+            window.open(`mailto:atul@klickspell.com?subject=${encodeURIComponent(`5-Minute Video Code Audit Request: ${targetDomain}`)}&body=${encodeURIComponent(msg)}`, '_blank');
+          } else {
+            window.open(`https://wa.me/919259598769?text=${encodeURIComponent(msg)}`, '_blank');
+          }
+        });
+      }
+
       // WebMCP (Web Model Context Protocol) Imperative Tool Registration for AI Browsing Agents
       (function registerWebMCP() {
         const mc = (typeof navigator !== 'undefined' && navigator.modelContext) || 
@@ -811,6 +882,25 @@ const schemas = [webAppSchema, breadcrumbSchema];
                   calculate();
                 }
                 return { status: 'calculated', active_apps: app_ids };
+              }
+            });
+
+            mc.registerTool({
+              name: 'request_video_audit',
+              description: 'Requests a personalized 5-minute video walkthrough audit of website code bottlenecks from Klickspell lead engineer Atul Bhatt.',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  store_url: { type: 'string', description: 'Store domain or website URL' },
+                  contact_info: { type: 'string', description: 'Work email or WhatsApp number' }
+                },
+                required: ['store_url', 'contact_info']
+              },
+              execute: async ({ store_url, contact_info }) => {
+                if (storeInput) storeInput.value = store_url;
+                if (auditContactInput) auditContactInput.value = contact_info;
+                if (videoAuditSuccess) videoAuditSuccess.style.display = 'block';
+                return { status: 'submitted', store_url, contact_info };
               }
             });
           } catch (e) {

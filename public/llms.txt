@@ -19,6 +19,9 @@ Klickspell is an independent web engineering and digital product studio founded 
 - [Cove & Lane Case Study](https://klickspell.com/work/cove-and-lane.html): Bespoke Shopify theme development with custom product filters and bundle builders for a luxury home linen brand.
 - [Mogra Media Case Study](https://klickspell.com/work/mogra-media.html): Editorial and media platform engineering with custom CMS workflows and lightning-fast page delivery.
 - [Pragya Vijh Case Study](https://klickspell.com/work/pragya-vijh.html): Personal brand and consulting portal with custom calendar integrations and lead-capture systems.
+- [Skillbridge Case Study](https://klickspell.com/work/skillbridge.html): High-performance EdTech learning platform engineered for founder Rajesh Durai (ex-VP upGrad) with modular curriculum UX and sub-second loading.
+- [DealShare Case Study](https://klickspell.com/work/dealshare.html): Corporate and investor relations digital architecture for India's leading social e-commerce unicorn.
+- [CallSara AI Case Study](https://klickspell.com/work/callsara-ai.html): Interactive SaaS marketing experience and realistic voice audio demonstration player for autonomous AI voice agents.
 
 ## Technical Knowledge Base & Guides
 

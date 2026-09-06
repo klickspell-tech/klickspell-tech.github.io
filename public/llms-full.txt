@@ -92,6 +92,22 @@
 - **URL:** https://klickspell.com/work/mogra-media.html
 - **Scope:** Sub-second editorial publishing site with custom CMS workflows and 98/100 Lighthouse performance.
 
+### Skillbridge (EdTech & Career Acceleration)
+- **URL:** https://klickspell.com/work/skillbridge.html
+- **Client Site:** https://skillbridge.net
+- **Founder:** Rajesh Durai (ex-VP upGrad, ex-HP)
+- **Scope:** Custom modular frontend architecture, responsive curriculum modules, frictionless student lead capture, sub-second mobile page loads.
+
+### DealShare (E-Commerce Unicorn Corporate & Investor Portal)
+- **URL:** https://klickspell.com/work/dealshare.html
+- **Client Site:** https://about.dealshare.in
+- **Scope:** Dedicated corporate relations and investor showcase architecture handling heavy global press traffic with 99.9% uptime and zero runtime crashes.
+
+### CallSara AI (Autonomous Voice Agent Platform)
+- **URL:** https://klickspell.com/work/callsara-ai.html
+- **Client Site:** https://callsara.ai
+- **Scope:** High-converting B2B SaaS marketing site with zero-latency HTML5 audio sample demo player, interactive vertical industry workflows, and automated CRM lead capture.
+
 ---
 
 ## Technical Publications & Thought Leadership

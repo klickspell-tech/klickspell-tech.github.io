@@ -115,8 +115,8 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .hero-eyebrow:hover { border-color:rgba(58,91,224,0.3); box-shadow:0 4px 16px rgba(58,91,224,0.08); }
 .hero-eyebrow::before { content:'›'; color:var(--accent); font-size:14px; }
 .hero-eyebrow::after { content:'‹'; color:var(--accent); font-size:14px; }
-.hero-headline { font-family:'Instrument Serif',serif; font-size:clamp(52px,8vw,96px); font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:900px; margin-bottom:1.5rem; animation:fadeUp .7s .1s ease both; }
-.hero-headline-mobile { display:none; font-family:'Instrument Serif',serif; font-size:clamp(42px,10vw,60px); font-weight:400; line-height:1.05; letter-spacing:-0.02em; max-width:580px; margin-bottom:1.25rem; animation:fadeUp .7s .1s ease both; }
+.hero-headline { font-family:'Instrument Serif',serif; font-size:clamp(52px,8vw,96px); font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:900px; margin-bottom:1.5rem; will-change:transform; }
+.hero-headline-mobile { display:none; font-family:'Instrument Serif',serif; font-size:clamp(42px,10vw,60px); font-weight:400; line-height:1.05; letter-spacing:-0.02em; max-width:580px; margin-bottom:1.25rem; will-change:transform; }
 .accent { color:var(--accent); font-style:italic; }
 .dim { color:var(--text-light); }
 .hero-sub { font-size:17px; color:var(--text-mid); max-width:520px; line-height:1.7; margin-bottom:2.5rem; animation:fadeUp .7s .2s ease both; }
@@ -1050,6 +1050,92 @@ footer { background:var(--text); padding:3rem 2rem; }
   .store-scanner-form { flex-direction: column; }
   .scanner-submit-btn { width: 100%; }
   .scanner-metrics-grid { grid-template-columns: 1fr; }
+}
+
+/* VIDEO AUDIT LEAD CAPTURE CARD */
+.video-audit-card {
+  margin-top: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.video-audit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: .3rem .75rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: .25rem;
+}
+.video-audit-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: .35rem;
+}
+.video-audit-sub {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  max-width: 680px;
+}
+.video-audit-form {
+  margin-top: .25rem;
+}
+.video-audit-input-group {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.video-audit-input-group input {
+  flex: 1;
+  min-width: 260px;
+  padding: .85rem 1.15rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.video-audit-input-group input:focus {
+  border-color: var(--accent);
+}
+.video-audit-success {
+  margin-top: .75rem;
+  padding: .85rem 1.25rem;
+  background: #E6FBF0;
+  border: 1px solid #0CCE6B;
+  color: #047857;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+@media (max-width: 680px) {
+  .video-audit-card { padding: 1.25rem 1rem; }
+  .video-audit-input-group { flex-direction: column; }
+  .video-audit-input-group button { width: 100%; justify-content: center; }
+}
+
+/* BELOW-THE-FOLD RENDERING PERFORMANCE OPTIMIZATION */
+.diff-section,
+.tutorials-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }
 
 

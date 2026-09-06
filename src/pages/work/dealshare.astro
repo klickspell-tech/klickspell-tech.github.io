@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "DealShare Corporate & Investor Portal Case Study — High-Scale Digital Architecture for E-Commerce Unicorn",
+    "description": "How Klickspell engineered an authoritative corporate and investor relations web experience for DealShare — India's leading social e-commerce platform with sub-second global page loads and rock-solid reliability.",
+    "url": "https://klickspell.com/work/dealshare.html",
+    "image": "https://klickspell.com/assets/projects/dealshare.png",
+    "datePublished": "2026-08-20",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "DealShare", "url": "https://about.dealshare.in/" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "DealShare", "item": "https://klickspell.com/work/dealshare.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="DealShare Corporate Case Study — Investor Portal & Web Architecture | Klickspell"
+  description="How Klickspell engineered an authoritative corporate and investor relations web experience for DealShare — India's leading social e-commerce platform."
+  canonical="https://klickspell.com/work/dealshare.html"
+  ogImage="https://klickspell.com/assets/projects/dealshare.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <main id="main-content">
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / DealShare</p>
+    <p class="section-eyebrow reveal">Case Study · Corporate &amp; Enterprise Architecture</p>
+    <h1 class="cs-title reveal reveal-delay-1">Corporate digital presence<br>engineered for <em>unicorn scale.</em></h1>
+    <p class="cs-sub reveal reveal-delay-2">DealShare is one of India's largest social e-commerce platforms, backed by top-tier global venture firms. We engineered their dedicated corporate and investor relations web experience, delivering an authoritative digital home that handles millions of page requests with sub-second performance.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://about.dealshare.in/" target="_blank" rel="noopener" class="btn-primary">Visit corporate site ↗</a>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" class="btn-ghost">Book consultation →</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Client</p><p class="cs-meta-value">DealShare Corporate</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Social E-Commerce &amp; Retail</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">High-Availability Static Architecture</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Next-Gen Web · Edge Delivery</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/dealshare.webp" alt="DealShare Corporate and Investor Relations Website engineered by Klickspell" decoding="async">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. EXECUTIVE SUMMARY & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Measurable Results</p>
+      <h2>Zero downtime, high credibility, instant global delivery.</h2>
+      <p>When media outlets, institutional investors, and prospective executives research an e-commerce leader, the corporate web portal must convey institutional stability and perform flawlessly across all devices.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">99.9<span>%</span></p><p class="stat-label">Production Availability &amp; Uptime</p></div>
+        <div class="stat"><p class="stat-num">0.8<span>s</span></p><p class="stat-label">Global Median Response Time</p></div>
+        <div class="stat"><p class="stat-num">0<span>ms</span></p><p class="stat-label">Layout Shifts Across Devices</p></div>
+      </div>
+    </div>
+
+    <!-- 2. THE CHALLENGE -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Challenge</p>
+      <h2>Separating corporate brand narrative from daily retail traffic.</h2>
+      <p>Consumer e-commerce applications are optimized for quick checkout and flash sales. However, institutional stakeholders—shareholders, journalists, regulatory partners, and executive talent—require a dedicated, immaculate digital environment highlighting leadership, corporate governance, ESG initiatives, and press releases.</p>
+      <p>DealShare needed a dedicated portal that reflected their stature as a category leader while remaining decoupled from main application release cycles.</p>
+    </div>
+
+    <!-- 3. THE ENGINEERING SOLUTION -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Architecture</p>
+      <h2>Decoupled, edge-cached web architecture.</h2>
+      <p>We engineered a modern, ultra-clean web architecture focused on durability, speed, and brand authority:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><strong>Static Edge Delivery:</strong> Pre-rendered static assets distributed globally over edge CDN nodes, preventing server spikes during major press announcements or funding rounds.</li>
+        <li><strong>Interactive Press &amp; Leadership Showcases:</strong> Rich visual components designed to present key milestones, executive bios, and company values with fluid micro-interactions.</li>
+        <li><strong>Institutional Security:</strong> Decoupled from public databases, eliminating common security attack vectors and ensuring 100% compliance with enterprise security requirements.</li>
+      </ul>
+    </div>
+
+    <!-- NEXT CASE STUDY NAV -->
+    <div class="cs-next reveal">
+      <div>
+        <p class="cs-next-label">Next Case Study</p>
+        <p class="cs-next-title">Skillbridge — High-Performance Learning Portal</p>
+      </div>
+      <a href="/work/skillbridge.html" class="btn-primary">View Case Study →</a>
+    </div>
+
+  </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
