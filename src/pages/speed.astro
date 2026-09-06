@@ -552,34 +552,49 @@ const schemas = [webAppSchema, breadcrumbSchema];
         storeInput.focus();
       });
 
-      // 1-Click Demo Buttons
+      // 1-Click Demo Buttons (Shows saved verified benchmark instantly)
       demoPillBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const url = btn.getAttribute('data-url');
           storeInput.value = url;
           clearBtn.style.display = 'block';
-          runAudit(url);
+          runAudit(url, false); // false = show saved benchmark
         });
       });
 
-      // Form submit handler
+      // Form submit handler (User explicitly clicks "Analyze Mobile Speed" -> executes live Google API)
       scannerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const raw = storeInput.value.trim();
         if (!raw) return;
-        runAudit(raw);
+        runAudit(raw, true); // true = execute live Google PageSpeed API
       });
 
-      async function runAudit(rawDomain) {
+      async function runAudit(rawDomain, isLive = false) {
         let clean = rawDomain.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
         const targetUrl = 'https://' + clean;
 
-        // UI Loading State
+        // If pill was clicked and we have a saved verified benchmark, show it instantly
+        if (!isLive && demoBenchmarks[clean]) {
+          submitBtn.disabled = true;
+          btnText.style.display = 'none';
+          btnSpinner.style.display = 'inline-block';
+          statusBox.style.display = 'flex';
+          statusStep.textContent = `Loading verified benchmark report for ${clean}...`;
+          resultsCard.style.display = 'none';
+
+          await new Promise(r => setTimeout(r, 400));
+          finishLoading();
+          renderResults(clean, demoBenchmarks[clean]);
+          return;
+        }
+
+        // Live audit: UI Loading State & execution
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnSpinner.style.display = 'inline-block';
         statusBox.style.display = 'flex';
-        statusStep.textContent = `Connecting to simulated 4G mobile device for ${clean}...`;
+        statusStep.textContent = `Connecting to Google PageSpeed Insights for ${clean}...`;
         resultsCard.style.display = 'none';
 
         // Dynamic progress steps while Google PageSpeed API runs live
