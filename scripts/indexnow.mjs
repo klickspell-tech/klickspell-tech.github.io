@@ -7,7 +7,7 @@ const distDir = path.resolve(__dirname, '../dist');
 
 export async function submitToIndexNow() {
   const HOST = 'klickspell.com';
-  const KEY = '3a5be02498769c82b083584efd8c289d';
+  const KEY = 'fd4dfc0ead334bea837199b0e19f58aa';
   const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
   
   try {

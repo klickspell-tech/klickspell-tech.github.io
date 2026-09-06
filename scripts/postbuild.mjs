@@ -19,8 +19,10 @@ async function main() {
     console.warn('⚠️ Could not copy sitemap:', err.message);
   }
 
-  // Submit to IndexNow for instant search indexing
-  await submitToIndexNow();
+  // Submit to IndexNow for instant search indexing when explicitly enabled
+  if (process.env.SUBMIT_INDEXNOW === 'true') {
+    await submitToIndexNow();
+  }
 }
 
 main();
