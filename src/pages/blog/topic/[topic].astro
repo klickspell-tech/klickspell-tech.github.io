@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { TOPICS, type Topic } from '../../../utils/topics';
+
+export async function getStaticPaths() {
+  return Object.values(TOPICS).map((topic) => ({
+    params: { topic: topic.slug },
+    props: { topic },
+  }));
+}
+
+interface Props {
+  topic: Topic;
+}
+
+const { topic } = Astro.props;
+const allPosts = await getCollection('blog');
+
+// Filter posts matching this topic
+const matchingPosts = allPosts.filter((post) => {
+  const tags = (post.data.tags || []).map((t: string) => t.toLowerCase());
+  return tags.some((t: string) => topic.keywords.includes(t));
+});
+
+const sortedPosts = matchingPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+
+const canonical = `https://klickspell.com/blog/topic/${topic.slug}`;
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": topic.title,
+    "description": topic.description,
+    "url": canonical,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Klickspell",
+      "url": "https://klickspell.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://klickspell.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": topic.name, "item": canonical }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title={topic.title}
+  description={topic.description}
+  canonical={canonical}
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+  <div class="blog-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/blog">Blog</a> / {topic.shortName}</p>
+    <p class="section-eyebrow reveal">Topic Hub · {matchingPosts.length} Articles</p>
+    <h1 class="blog-title reveal reveal-delay-1">{topic.name}<br><em>engineering guides.</em></h1>
+    <p class="blog-sub reveal reveal-delay-2">{topic.description}</p>
+
+    <!-- Topic Navigation Pills -->
+    <div class="reveal reveal-delay-2" style="display:flex; gap:.6rem; flex-wrap:wrap; margin:2rem 0 3rem;">
+      <a href="/blog" class="team-pill-link" style="padding:.45rem 1rem; border-radius:100px; font-size:13px; text-decoration:none; background:var(--white); border:1px solid var(--border); color:var(--text-mid);">
+        All Topics ({allPosts.length})
+      </a>
+      {Object.values(TOPICS).map((t) => {
+        const isActive = t.slug === topic.slug;
+        return (
+          <a
+            href={`/blog/topic/${t.slug}`}
+            class="team-pill-link"
+            style={`padding:.45rem 1rem; border-radius:100px; font-size:13px; text-decoration:none; font-weight:600; ${
+              isActive
+                ? 'background:var(--accent); border:1px solid var(--accent); color:var(--white); pointer-events:none;'
+                : 'background:var(--white); border:1px solid var(--border); color:var(--text-mid);'
+            }`}
+          >
+            {t.shortName}
+          </a>
+        );
+      })}
+    </div>
+
+    {sortedPosts.length === 0 ? (
+      <div style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:3rem; text-align:center; margin-top:2rem;">
+        <p style="font-family:'Instrument Serif',serif; font-size:24px; color:var(--text); margin-bottom:.75rem;">Articles coming soon...</p>
+        <p style="font-size:15px; color:var(--text-mid); max-width:480px; margin:0 auto 1.5rem;">We are regularly updating our technical library.</p>
+        <a href="/blog" class="btn-primary" style="display:inline-flex;">View All Articles</a>
+      </div>
+    ) : (
+      <div class="blog-grid reveal reveal-delay-2">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="blog-card">
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="blog-card-tags">
+                {post.data.tags.slice(0, 3).map((tag: string) => (
+                  <span class="blog-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            <h2 class="blog-card-title">{post.data.title}</h2>
+            <p class="blog-card-desc">{post.data.description}</p>
+            <div class="blog-card-meta">
+              <span>{formatDate(post.data.pubDate)}</span>
+              {post.data.readingTime && <span>· {post.data.readingTime}</span>}
+              <span class="blog-card-arrow">Read →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

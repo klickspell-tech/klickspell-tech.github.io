@@ -47,6 +47,10 @@ const articleSchema = {
   }
 };
 
+import { getPostTopic } from '../../utils/topics';
+
+const topic = getPostTopic(post.data.tags || []);
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -66,6 +70,12 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 3,
+      "name": topic.name,
+      "item": `https://klickspell.com/blog/topic/${topic.slug}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
       "name": post.data.title,
       "item": `https://klickspell.com/blog/${post.slug}`
     }
@@ -101,7 +111,7 @@ const schemas = [articleSchema, breadcrumbSchema];
   <main id="main-content">
   <article>
     <header class="post-header">
-      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/blog">Blog</a> / {post.data.title}</p>
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/blog">Blog</a> / <a href={`/blog/topic/${topic.slug}`}>{topic.shortName}</a> / {post.data.title}</p>
       
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="blog-card-tags reveal">
