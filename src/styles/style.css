@@ -36,6 +36,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
 :root {
   --bg: #F2F0EC; --bg-card: #ECEAE5; --text: #141412; --text-mid: #4A4845;
   --text-light: #9A9790; --accent: #3A5BE0; --accent-hover: #2A47C0;
@@ -604,13 +605,16 @@ footer { background:var(--text); padding:3rem 2rem; }
 .service-card-title { font-family:'Instrument Serif',serif; font-size:24px; font-weight:400; color:var(--text); margin-bottom:.75rem; line-height:1.2; }
 .service-card-text { font-size:14.5px; color:var(--text-mid); line-height:1.7; flex-grow:1; }
 
-.service-proof-box { background:var(--bg-card); border:.5px solid var(--border); border-radius:var(--radius); padding:3rem; margin-bottom:5rem; }
-.service-proof-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:center; }
+.service-proof-box { background:var(--bg-card); border:.5px solid var(--border); border-radius:var(--radius); padding:3.5rem 3rem; margin-bottom:5rem; }
+.service-proof-inner { display:grid; grid-template-columns:1.15fr .85fr; gap:3.5rem; align-items:center; }
 .service-proof-text h3 { font-family:'Instrument Serif',serif; font-size:clamp(28px,3.5vw,38px); font-weight:400; line-height:1.15; color:var(--text); margin-bottom:1rem; }
 .service-proof-text h3 em { font-style:italic; color:var(--accent); }
 .service-proof-text p { font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:1.75rem; }
-.service-proof-media { border-radius:var(--radius-sm); overflow:hidden; border:.5px solid var(--border); box-shadow:0 20px 50px rgba(0,0,0,0.07); }
-.service-proof-media img { width:100%; display:block; object-fit:cover; }
+.service-proof-media { border-radius:var(--radius-sm); overflow:hidden; border:.5px solid var(--border); box-shadow:0 20px 50px rgba(0,0,0,0.07); background:var(--white); }
+.service-proof-media img { width:100%; height:auto; display:block; object-fit:cover; }
+.browser-mockup-bar { display:flex; align-items:center; gap:6px; padding:9px 14px; background:#E5E3DE; border-bottom:.5px solid var(--border); }
+.browser-dot { width:8px; height:8px; border-radius:50%; background:rgba(20,20,18,0.2); display:inline-block; }
+.browser-url { margin-left:8px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.03em; color:var(--text-mid); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
 .service-box-cta { background:var(--text); color:var(--white); border-radius:var(--radius); padding:4rem 3rem; text-align:center; position:relative; overflow:hidden; margin-top:5rem; }
 .service-box-cta h2 { font-family:'Instrument Serif',serif; font-size:clamp(34px,5vw,52px); font-weight:400; color:var(--white); margin-bottom:1.25rem; line-height:1.1; }
