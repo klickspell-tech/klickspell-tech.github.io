@@ -90,15 +90,87 @@ IndexNow is automated on every `git push origin main` via `.github/workflows/dep
 
 ---
 
-## 6. Summary of Automated Verification Commands
+## 6. Reddit Community Authority & Client Inbound (r/shopify & r/ecommerce)
+
+Based on developer community research, Reddit threads are heavily indexed by Google and AI engines (Perplexity/ChatGPT). Store founders actively look for authentic technical help rather than agency sales pitches.
+
+### Strict Reddit Rule:
+**Never post naked links or sales pitches in the original post.** Deliver 100% of the diagnostic value in plain text. Only share your `/speed` diagnostic tool or offer a private 5-minute Loom video audit when users ask for assistance in the comments.
+
+---
+
+### - [ ] **Action: Post Template #1 to r/shopify**
+- **Target Subreddit**: `r/shopify`
+- **Suggested Title**: *Why deleting an app from your Shopify Admin doesn't actually remove its code (The "Zombie App" speed killer)*
+- **Post Body**:
+```text
+Hey everyone,
+
+Wanted to share a common performance trap we see on almost every Shopify store that has been running for 1+ years.
+
+When you click "Delete app" in the Shopify admin, Shopify cancels the billing and removes the admin dashboard. But Shopify cannot automatically edit your custom theme files to remove injected liquid code.
+
+The result is "Zombie Code":
+1. Abandoned Liquid tags ({% include %} or {% render %}) that still compile on every page load.
+2. Dead JavaScript bundles still loading in the background, looking for DOM elements that no longer exist and failing silently.
+3. 404/403 network requests holding browser sockets open on mobile 4G connections.
+
+How to check if your store has zombie code in 2 minutes:
+1. Open your store in Chrome Incognito.
+2. Press F12 (Inspect) > Network tab > Check "Disable cache".
+3. Filter by "Fetch/XHR" or "JS" and refresh.
+4. Look for requests returning 404 or 403. If you see old apps you cancelled months ago (old review widgets, currency converters, popups), they are still eating your mobile battery and Core Web Vitals.
+
+How to clean it up safely:
+- ALWAYS duplicate your theme first (never edit live theme).
+- Inspect layout/theme.liquid (look for old snippet calls in <head> and </body>).
+- Check your snippets/ directory for orphan files with the app's name and delete them.
+- Preview the duplicate and test checkout + cart before publishing.
+
+Happy to answer any questions or help anyone identify what an orphan script belongs to if you drop the file name below!
+```
+
+---
+
+### - [ ] **Action: Post Template #2 to r/ecommerce (or r/shopify)**
+- **Target Subreddit**: `r/ecommerce` or `r/shopify`
+- **Suggested Title**: *PSA: How cheap "90+ PageSpeed in 24h" optimization gigs actually work (Bot Cloaking)*
+- **Post Body**:
+```text
+A quick heads-up for store owners paying freelancers on Fiverr or Upwork for "guaranteed 90+ Mobile PageSpeed in 24 hours":
+
+If a freelancer turned your score from 35 to 95 overnight without modifying your theme structure or replacing heavy apps, test your site carefully. 
+
+What many low-cost "speed optimizers" do is inject a bot-sniffing script:
+if (navigator.userAgent.includes('Chrome-Lighthouse')) {
+   // Don't load Klaviyo, Meta Pixel, TikTok, reviews, or chat
+}
+
+When Google Lighthouse runs its synthetic test, it sees a naked HTML page with no apps and awards a 95 score.
+
+The catch?
+- Real human shoppers on mobile phones don't have "Chrome-Lighthouse" in their user agent.
+- They still experience the exact same 6-second lag.
+- Your Google CrUX (real-user Core Web Vitals) field data will still fail, hurting your SEO.
+- Worst of all: cloaking can break your Meta/TikTok pixel attribution.
+
+How to verify:
+Run your store through WebPageTest.org or GTmetrix with a custom user agent, or inspect your real-world Core Web Vitals in Google Search Console under "Core Web Vitals". If your synthetic score is 95 but Search Console shows "Poor URLs", you have a cloaking script.
+
+Real speed comes from cleaning zombie liquid code, route-specific app loading (e.g. only loading reviews on product pages), and image optimization—not tricking bots.
+```
+
+---
+
+## 7. Summary of Automated Verification Commands
 
 You can run these anytime locally to verify the health of your site:
 
 ```bash
-# Verify all 158 Schema.org blocks pass Google Rich Snippets standards:
+# Verify all 160 Schema.org blocks pass Google Rich Snippets standards:
 npm run audit:schemas
 
-# Re-submit all 78 site URLs to IndexNow (Bing, Yandex, Naver):
+# Re-submit all 79 site URLs to IndexNow (Bing, Yandex, Naver):
 npm run indexnow
 
 # Cross-post article to Dev.to with canonical backlink:

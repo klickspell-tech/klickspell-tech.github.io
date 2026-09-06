@@ -231,6 +231,43 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
         </div>
       </section>
 
+      <!-- REAL CORE WEB VITALS VS CLOAKING SCAMS -->
+      <section class="reveal" style="margin-bottom:5rem;">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Engineering Integrity</p>
+          <h2>Real Core Web Vitals vs.<br><em>Cheap "90+ Score" Cloaking Scams</em></h2>
+          <p>A rampant issue on freelance marketplaces is speed "optimizers" who trick synthetic test bots rather than fixing actual store latency. Here is how to tell the difference:</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem;">
+          <div style="background:#FFF8F8; border:1px solid rgba(220,38,38,0.2); border-radius:var(--radius); padding:2.25rem;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:1.25rem;">
+              <span style="font-size:16px;">❌</span>
+              <h3 style="font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#DC2626; margin:0; font-weight:600;">What Cheap "90+ Speed" Services Do</h3>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem; font-size:14px; color:var(--text-mid); line-height:1.6;">
+              <li><strong style="color:#DC2626;">Bot Cloaking:</strong> Injects scripts that detect Google Lighthouse bots and disable Klaviyo, Meta Pixel, and apps exclusively during synthetic tests.</li>
+              <li><strong style="color:#DC2626;">Zero Real Speed:</strong> Real shoppers on 4G mobile devices still wait 5 to 8 seconds for pages to render.</li>
+              <li><strong style="color:#DC2626;">Broken Tracking:</strong> Often causes severe tracking drop-offs, misattributed revenue, and broken Meta/TikTok pixel events.</li>
+              <li><strong style="color:#DC2626;">CrUX Failure:</strong> Fails Google's real-user field data (Chrome UX Report), failing search ranking boosts.</li>
+            </ul>
+          </div>
+
+          <div style="background:#F4FDF7; border:1px solid rgba(12,206,107,0.3); border-radius:var(--radius); padding:2.25rem;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:1.25rem;">
+              <span style="font-size:16px;">✅</span>
+              <h3 style="font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#16A34A; margin:0; font-weight:600;">The Klickspell Architectural Standard</h3>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem; font-size:14px; color:var(--text-mid); line-height:1.6;">
+              <li><strong style="color:#16A34A;">Genuine Refactoring:</strong> Purges orphaned "zombie" Liquid snippets and dead asset requests left by uninstalled apps.</li>
+              <li><strong style="color:#16A34A;">Conditional Scheduling:</strong> Loads review widgets and chat widgets only on pages and interaction moments when needed.</li>
+              <li><strong style="color:#16A34A;">100% Tracking Integrity:</strong> All marketing pixels and analytics fire accurately without blocking critical initial paint.</li>
+              <li><strong style="color:#16A34A;">Passed Real-User CrUX:</strong> Delivers sub-second LCP and near-zero TBT for actual human customers on real mobile devices.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- FAQ SECTION -->
       <section class="reveal">
         <div class="service-section-header">
@@ -252,11 +289,21 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
 
           <details class="faq-item">
             <summary>
+              <span class="faq-question">How does Klickspell differ from cheap '90+ speed' optimization gigs on Fiverr?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              Cheap speed services often use bot cloaking scripts that detect Google Lighthouse bots and hide all apps from testing tools while real human visitors still experience 5+ seconds of lag. Klickspell never uses bot tricks: we perform genuine Liquid refactoring, purge zombie app scripts, conditionally load assets, and measure success through real-user Chrome UX Report (CrUX) Core Web Vitals.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
               <span class="faq-question">Will optimizing store speed break our marketing or tracking apps?</span>
               <span class="faq-icon">+</span>
             </summary>
             <div class="faq-answer">
-              No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we use intelligent script scheduling so tracking fires accurately without blocking the critical initial paint of the page.
+              No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we use intelligent script scheduling that delays non-critical tags until user engagement, keeping tracking 100% accurate while freeing the main thread.
             </div>
           </details>
 
