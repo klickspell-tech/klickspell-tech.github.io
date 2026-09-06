@@ -1,0 +1,46 @@
+# Klickspell — Web Engineering & Digital Products Studio
+
+> The craft in every click.
+
+Klickspell is an independent web engineering and digital product studio founded by Atul Bhatt. We partner with ambitious founders, brands, and marketing teams to build bespoke web products with zero technical debt, high-converting architectures, and 99+ Core Web Vitals performance.
+
+## Core Capabilities & Services
+
+- **Shopify & Headless E-Commerce**: Custom Shopify Liquid theme development, Hydrogen headless storefronts, Recharge subscription flows, custom checkout extensions, and private Shopify apps.
+- **Headless Commerce**: Modern headless commerce backends built with Medusa.js, custom checkout workflows, and appointment/scheduling integrations (e.g., Cal.com).
+- **Webflow SaaS & Marketing Sites**: High-converting, pixel-perfect Webflow marketing sites with custom JavaScript components and CMS architectures.
+- **Web Performance & Optimization**: Comprehensive audits and remediation to achieve 95–100 PageSpeed scores, sub-second LCP, zero layout shifts (CLS), and 0ms main-thread blocking (TBT).
+- **Custom Web Applications & ERP Systems**: Custom business systems, client portals, and ERP deployments built on Frappe and ERPNext.
+
+## Selected Case Studies
+
+- **Jaxon Lane** (https://klickspell.com/work/jaxon-lane.html): Long-term Shopify engineering partner for California skincare brand. Built Recharge subscription architectures, Awin affiliate tracking, and AI-ready SEO.
+- **Noukai Tokyo** (https://klickspell.com/work/noukai-tokyo.html): High-fidelity Webflow marketing site and custom product experience for a Japanese mental performance brand.
+- **The Blissful Soul** (https://klickspell.com/work/the-blissful-soul.html): Custom headless booking and commerce platform connecting Medusa.js, Cal.com, and bespoke payment routing.
+- **Cove & Lane** (https://klickspell.com/work/cove-and-lane.html): High-converting Shopify theme development with custom product filters and bespoke bundle builder.
+- **Mogra Media** (https://klickspell.com/work/mogra-media.html): Editorial and media platform engineering with custom CMS workflows and lightning-fast page delivery.
+- **Pragya Vijh** (https://klickspell.com/work/pragya-vijh.html): Personal brand and consulting portal with custom calendar integrations and lead-capture systems.
+
+## Engineering Blog & Guides
+
+Klickspell maintains an extensive technical knowledge base covering web engineering, e-commerce optimization, and frontend architecture:
+
+- **Shopify Tutorials & Architecture**: https://klickspell.com/blog/topic/shopify
+- **Web Performance & Core Web Vitals**: https://klickspell.com/blog/topic/web-performance
+- **React & Frontend Architecture**: https://klickspell.com/blog/topic/react
+- **DevOps, Docker & Cloud Infrastructure**: https://klickspell.com/blog/topic/devops
+- **Full Article Catalog**: https://klickspell.com/blog
+- **RSS Feed**: https://klickspell.com/rss.xml
+
+## Engineering Team & Leadership
+
+- **Founder & Lead Engineer**: Atul Bhatt (https://in.linkedin.com/in/mratulbhatt)
+- **Engineering Team**: https://klickspell.com/team
+
+## Contact & Discovery
+
+- **Website**: https://klickspell.com
+- **Book Discovery Call**: https://cal.com/atul-bhatt-klickspell/30min
+- **WhatsApp**: https://wa.me/919259598769
+- **LinkedIn**: https://in.linkedin.com/in/mratulbhatt
+- **GitHub**: https://github.com/atulbhatt-system32

@@ -32,13 +32,24 @@ const articleSchema = {
   "headline": post.data.title,
   "description": post.data.description,
   "url": `https://klickspell.com/blog/${post.slug}`,
-  "image": post.data.coverImage || "https://klickspell.com/assets/projects/jaxon-lane.png",
+  "image": post.data.coverImage || "https://klickspell.com/assets/og-card.png",
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
   "author": {
     "@type": "Person",
     "name": post.data.author || "Atul Bhatt",
-    "url": "https://in.linkedin.com/in/mratulbhatt"
+    "url": "https://in.linkedin.com/in/mratulbhatt",
+    "jobTitle": "Founder & Lead Web Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Klickspell",
+      "url": "https://klickspell.com/"
+    },
+    "sameAs": [
+      "https://in.linkedin.com/in/mratulbhatt",
+      "https://github.com/atulbhatt-system32",
+      "https://www.youtube.com/@knowittodaykit"
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -102,7 +113,7 @@ const schemas = [articleSchema, breadcrumbSchema];
   title={`${post.data.title} | Klickspell Blog`}
   description={post.data.description}
   canonical={canonical}
-  ogImage={post.data.coverImage || "https://klickspell.com/assets/projects/jaxon-lane.png"}
+  ogImage={post.data.coverImage || "https://klickspell.com/assets/og-card.png"}
   ogType="article"
   schema={schemas}
 >

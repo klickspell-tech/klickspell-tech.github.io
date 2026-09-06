@@ -2,10 +2,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { submitToIndexNow } from './indexnow.mjs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '../dist');
 
-async function copySitemap() {
+async function main() {
   try {
     const sitemap0 = path.join(distDir, 'sitemap-0.xml');
     const sitemapTarget = path.join(distDir, 'sitemap.xml');
@@ -16,6 +18,10 @@ async function copySitemap() {
   } catch (err) {
     console.warn('⚠️ Could not copy sitemap:', err.message);
   }
+
+  // Submit to IndexNow for instant search indexing
+  await submitToIndexNow();
 }
 
-copySitemap();
+main();
+
