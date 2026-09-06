@@ -912,9 +912,9 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
       let activeChannel = 'email';
 
-      // Supabase Configuration
-      const SUPABASE_URL = (typeof window !== 'undefined' && window.__SUPABASE_URL__) || 'https://uqdnisouonzvwvcipxbn.supabase.co';
-      const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.__SUPABASE_ANON_KEY__) || 'sb_publishable_Hbh8D_rSd_GVmqlRi_FgfA_rmCuvgmc';
+      // Supabase Configuration (reads from .env via Astro/Vite with fallback)
+      const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || 'https://uqdnisouonzvwvcipxbn.supabase.co';
+      const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Hbh8D_rSd_GVmqlRi_FgfA_rmCuvgmc';
 
       if (tabEmailBtn && tabWhatsAppBtn) {
         tabEmailBtn.addEventListener('click', () => {
