@@ -24,32 +24,20 @@ This checklist contains all external platform tasks that require your personal a
 
 ---
 
-## 2. Medium.com Cross-Posting Setup
+## 2. Medium.com Cross-Posting (1-Click Official Importer)
 
-All 17 articles on Dev.to already point canonical equity to Klickspell. To syndicate to Medium with canonical backlinks:
+Medium closed their API to new developers and removed "Integration tokens" from account settings. However, Medium provides an official, 1-click **"Import a story"** tool that **automatically preserves your canonical link equity**:
 
-- [ ] **Generate Medium Integration Token**:
-  1. Log into your [Medium.com](https://medium.com/) account.
-  2. Visit **Settings > Security and apps** (`https://medium.com/me/settings/security`).
-  3. Scroll to the **Integration tokens** section.
-  4. Enter description: `Klickspell Site Syndication` and click **Get token**.
-  5. Copy the generated token string.
-
-- [ ] **Add to Local `.env`**:
-  Open your project's `.env` file (which is gitignored) and add:
-  ```bash
-  MEDIUM_INTEGRATION_TOKEN=your_token_here
-  ```
-
-- [ ] **Publish Articles to Medium**:
-  Run the automated syndication script anytime:
-  ```bash
-  # Creates a draft in your Medium account with canonical URL pointing to Klickspell:
-  npm run medium:publish -- --slug=how-we-achieved-99-pagespeed-score-case-study
-
-  # Or publish immediately to public:
-  npm run medium:publish -- --slug=how-we-achieved-99-pagespeed-score-case-study --public
-  ```
+- [ ] **Import Article to Medium**:
+  1. Open Medium's official importer: **[medium.com/p/import](https://medium.com/p/import)** (or click your profile icon in the top right > **Stories > Import a story**).
+  2. Paste your live Klickspell article URL:
+     ```
+     https://klickspell.com/blog/how-we-achieved-99-pagespeed-score-case-study
+     ```
+  3. Click **Import**.
+  4. Medium will instantly pull the article, images, code blocks, and headline into your Medium editor.
+  5. **Crucial SEO Check**: Click the **...** menu in the top right of the editor > **More settings > Advanced settings > Customize canonical link**. You will see Medium has automatically set the canonical URL to `https://klickspell.com/blog/how-we-achieved-99-pagespeed-score-case-study`.
+  6. Click **Publish** to publish or schedule on Medium. All Google SEO rank and backlink authority will flow directly to Klickspell!
 
 ---
 
