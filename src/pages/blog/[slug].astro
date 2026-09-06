@@ -46,6 +46,46 @@ const articleSchema = {
     "url": "https://klickspell.com/"
   }
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://klickspell.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://klickspell.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.data.title,
+      "item": `https://klickspell.com/blog/${post.slug}`
+    }
+  ]
+};
+
+const allPosts = await getCollection('blog');
+const currentTags = post.data.tags || [];
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .map((p) => {
+    const pTags = p.data.tags || [];
+    const shared = pTags.filter((t: string) => currentTags.includes(t)).length;
+    return { post: p, score: shared };
+  })
+  .sort((a, b) => b.score - a.score || b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf())
+  .slice(0, 2)
+  .map((item) => item.post);
+
+const schemas = [articleSchema, breadcrumbSchema];
 ---
 
 <BaseLayout
@@ -54,7 +94,7 @@ const articleSchema = {
   canonical={canonical}
   ogImage={post.data.coverImage || "https://klickspell.com/assets/projects/jaxon-lane.png"}
   ogType="article"
-  schema={articleSchema}
+  schema={schemas}
 >
   <Nav />
 
@@ -109,11 +149,37 @@ const articleSchema = {
         <Content />
       </div>
 
-      <div class="cs-section reveal" style="max-width:none; margin-top:4rem; padding-top:2rem; border-top:.5px solid var(--border);">
+      {relatedPosts.length > 0 && (
+        <div class="reveal" style="margin-top:4rem; padding-top:2.5rem; border-top:.5px solid var(--border);">
+          <p class="section-eyebrow" style="margin-bottom:.75rem">Keep Reading</p>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3.5vw,34px); font-weight:400; margin-bottom:1.5rem; color:var(--text)">Related Engineering Articles</h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:2.5rem;">
+            {relatedPosts.map((rPost) => (
+              <a href={`/blog/${rPost.slug}`} class="blog-card" style="text-decoration:none; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
+                <div>
+                  <div style="display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:.75rem;">
+                    {(rPost.data.tags || []).slice(0, 2).map((tag: string) => (
+                      <span class="blog-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <h4 class="blog-card-title" style="font-family:'Instrument Serif',serif; font-size:21px; line-height:1.25; margin-bottom:.5rem; color:var(--text);">{rPost.data.title}</h4>
+                  <p class="blog-card-desc" style="font-size:13px; color:var(--text-mid); line-height:1.6; margin-bottom:1rem;">{rPost.data.description}</p>
+                </div>
+                <div class="blog-card-meta" style="display:flex; justify-content:space-between; align-items:center; font-family:'DM Mono',monospace; font-size:11px; color:var(--text-light); padding-top:.75rem; border-top:.5px solid var(--border);">
+                  <span>{rPost.data.readingTime || '5 min read'}</span>
+                  <span class="blog-card-arrow" style="color:var(--accent); font-weight:700;">Read →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="cs-section reveal" style="max-width:none; padding-top:1.5rem; border-top:.5px solid var(--border);">
         <div class="cs-next">
           <div>
             <p class="cs-next-label">Technical Blog</p>
-            <p class="cs-next-title">Explore more engineering articles</p>
+            <p class="cs-next-title">Explore all 50+ engineering tutorials</p>
           </div>
           <a href="/blog" class="btn-secondary">All Articles ↗</a>
         </div>
@@ -129,7 +195,7 @@ const articleSchema = {
       <p class="cta-sub">Let's start with a free 30-minute call. No commitment, no templates, no compromises.</p>
       <p class="cta-sub-mobile">Free 30-min call. No commitment. No templates.</p>
       <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
-      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem">💬 Chat on WhatsApp</a>
       <p class="cta-stamp">The craft in every click.</p>
     </div>
   </section>
