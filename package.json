@@ -12,7 +12,9 @@
     "sync:medium": "node scripts/sync-medium.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "devto:canonicals": "node --env-file=.env scripts/update-devto-canonicals.mjs",
-    "devto:publish": "node --env-file=.env scripts/publish-to-devto.mjs"
+    "devto:publish": "node --env-file=.env scripts/publish-to-devto.mjs",
+    "medium:publish": "node --env-file=.env scripts/publish-to-medium.mjs",
+    "audit:schemas": "node scripts/audit-schemas.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

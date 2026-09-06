@@ -118,6 +118,7 @@ const schemas = [articleSchema, breadcrumbSchema];
   schema={schemas}
 >
   <Nav />
+  <div id="readingProgressBar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
   <main id="main-content">
   <article>
@@ -163,12 +164,73 @@ const schemas = [articleSchema, breadcrumbSchema];
           </div>
         </div>
       )}
+
+      <div class="post-share-bar reveal reveal-delay-2">
+        <span class="share-bar-label">Share:</span>
+        <button type="button" class="share-btn" id="copyLinkBtn" aria-label="Copy article link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copyLinkText">Copy link</span>
+        </button>
+        <a 
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(canonical)}&via=klickspell`} 
+          target="_blank" 
+          rel="noopener" 
+          class="share-btn" 
+          aria-label="Share on X"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span>X (Twitter)</span>
+        </a>
+        <a 
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}`} 
+          target="_blank" 
+          rel="noopener" 
+          class="share-btn" 
+          aria-label="Share on LinkedIn"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.24c-.9 0-1.63.73-1.63 1.63 0 .9.73 1.63 1.63 1.63.9 0 1.63-.73 1.63-1.63 0-.9-.73-1.63-1.63-1.63Z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
     </header>
 
     <div class="post-body">
       <div class="prose reveal reveal-delay-3">
         <Content />
       </div>
+
+      {/* CONTEXTUAL IN-ARTICLE CONVERSION CTA */}
+      {topic.slug === 'web-performance' ? (
+        <div class="in-article-cta reveal">
+          <span class="in-article-cta-badge">Mobile Performance Guarantee</span>
+          <h3 class="in-article-cta-title">Losing mobile orders to slow page loads?<br><em>We guarantee a 90+ PageSpeed score.</em></h3>
+          <p class="in-article-cta-desc">Every 100ms of mobile latency costs real revenue. We audit your JavaScript bloat, decouple marketing trackers, and optimize critical rendering paths without deleting the apps you rely on.</p>
+          <div class="in-article-cta-actions">
+            <a href="/speed" class="btn-primary">⚡ Test App Bloat Estimator</a>
+            <a href="/services/shopify-speed-optimization" class="btn-ghost">View Speed Optimization →</a>
+          </div>
+        </div>
+      ) : topic.slug === 'shopify' ? (
+        <div class="in-article-cta reveal">
+          <span class="in-article-cta-badge">Custom Shopify Engineering</span>
+          <h3 class="in-article-cta-title">Scaling a high-growth Shopify brand?<br><em>Skip fragile apps. Build custom Liquid.</em></h3>
+          <p class="in-article-cta-desc">We engineer custom Shopify themes, bespoke sections, and high-converting store architectures for brands that refuse to compromise on design, speed, or autonomy.</p>
+          <div class="in-article-cta-actions">
+            <a href="/services/custom-shopify-development" class="btn-primary">Explore Custom Shopify Dev →</a>
+            <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-ghost" style="cursor:pointer">Book Free 30-Min Call ↗</a>
+          </div>
+        </div>
+      ) : (
+        <div class="in-article-cta reveal">
+          <span class="in-article-cta-badge">Bespoke Full-Stack Engineering</span>
+          <h3 class="in-article-cta-title">Need technical precision for your web stack?<br><em>Architected for performance &amp; scale.</em></h3>
+          <p class="in-article-cta-desc">From modern headless commerce to enterprise infrastructure and clean frontend state systems, Klickspell delivers senior engineering craft without agency bloat.</p>
+          <div class="in-article-cta-actions">
+            <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="cursor:pointer">Book Free Technical Call →</a>
+            <a href="/services/headless-commerce" class="btn-ghost">Explore Headless Engineering ↗</a>
+          </div>
+        </div>
+      )}
 
       {relatedPosts.length > 0 && (
         <div class="reveal" style="margin-top:4rem; padding-top:2.5rem; border-top:.5px solid var(--border);">
@@ -223,4 +285,62 @@ const schemas = [articleSchema, breadcrumbSchema];
   </main>
 
   <Footer />
+
+  <script is:inline>
+    (function() {
+      // Reading Progress Bar
+      const bar = document.getElementById('readingProgressBar');
+      const prose = document.querySelector('.prose');
+      if (bar && prose) {
+        let ticking = false;
+        function updateProgress() {
+          const rect = prose.getBoundingClientRect();
+          const totalHeight = rect.height;
+          const scrolled = Math.max(0, -rect.top);
+          const percent = Math.min(100, Math.max(0, (scrolled / (totalHeight - window.innerHeight * 0.4)) * 100));
+          bar.style.width = percent + '%';
+          bar.setAttribute('aria-valuenow', Math.round(percent));
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(updateProgress);
+            ticking = true;
+          }
+        }, { passive: true });
+        updateProgress();
+      }
+
+      // Copy Link Button with Visual Feedback
+      const copyBtn = document.getElementById('copyLinkBtn');
+      const copyText = document.getElementById('copyLinkText');
+      if (copyBtn && copyText) {
+        copyBtn.addEventListener('click', async function() {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            copyBtn.classList.add('copied');
+            copyText.textContent = '✓ Copied!';
+            setTimeout(function() {
+              copyBtn.classList.remove('copied');
+              copyText.textContent = 'Copy link';
+            }, 2200);
+          } catch (e) {
+            const temp = document.createElement('input');
+            temp.value = window.location.href;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            copyBtn.classList.add('copied');
+            copyText.textContent = '✓ Copied!';
+            setTimeout(function() {
+              copyBtn.classList.remove('copied');
+              copyText.textContent = 'Copy link';
+            }, 2200);
+          }
+        });
+      }
+    })();
+  </script>
 </BaseLayout>
