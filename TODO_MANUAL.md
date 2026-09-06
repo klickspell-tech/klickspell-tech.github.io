@@ -21,6 +21,9 @@ This checklist contains all external platform tasks that require your personal a
   - `https://klickspell.com/services/custom-shopify-development` (Custom Shopify Development)
   - `https://klickspell.com/services/headless-commerce` (Headless Commerce Service)
   - `https://klickspell.com/blog/how-we-achieved-99-pagespeed-score-case-study` (99 PageSpeed Case Study)
+  - `https://klickspell.com/work/skillbridge` (Skillbridge Case Study)
+  - `https://klickspell.com/work/dealshare` (DealShare Unicorn Case Study)
+  - `https://klickspell.com/work/callsara-ai` (CallSara AI Case Study)
 
 ---
 
@@ -41,7 +44,28 @@ Medium closed their API to new developers and removed "Integration tokens" from 
 
 ---
 
-## 3. Bing Webmaster Tools & IndexNow Verification
+## 3. Cloudflare Edge Cache Rule (Optional Performance Boost)
+
+By default, GitHub Pages serves static files with `Cache-Control: max-age=600` (10 minutes). While our local Service Worker already permanently caches fonts in the browser, configuring Cloudflare to cache `/assets/` at edge locations guarantees global sub-10ms delivery on repeat network requests:
+
+- [ ] **Configure Cloudflare Cache Rule**:
+  1. Log into [Cloudflare Dashboard](https://dash.cloudflare.com/) and select `klickspell.com`.
+  2. Navigate to **Caching > Cache Rules** (or **Rules > Cache Rules**) in the sidebar.
+  3. Click **Create rule**.
+  4. Rule name: `Cache Static Assets & Fonts 1 Year`.
+  5. Under **When incoming requests match...**:
+     - Field: `URI Path`
+     - Operator: `starts with`
+     - Value: `/assets/`
+  6. Under **Then... (Cache settings)**:
+     - **Cache status**: *Eligible for cache*
+     - **Edge TTL**: *Override origin* → Set TTL to **1 year** (or 1 month)
+     - **Browser TTL**: *Override origin* → Set TTL to **1 year**
+  7. Click **Deploy**.
+
+---
+
+## 4. Bing Webmaster Tools & IndexNow Verification
 
 IndexNow is automated on every `git push origin main` via `.github/workflows/deploy.yml`.
 
@@ -49,11 +73,11 @@ IndexNow is automated on every `git push origin main` via `.github/workflows/dep
   1. Go to [Bing Webmaster Tools](https://www.bing.com/webmasters).
   2. Click **Import from Google Search Console** (1-click verification).
   3. Under **IndexNow**, view the submitted URL history.
-  4. Confirm that all 74 URLs submitted with key `fd4dfc0ead334bea837199b0e19f58aa` show **Submitted / Accepted** (HTTP 202).
+  4. Confirm that all 78 URLs submitted with key `fd4dfc0ead334bea837199b0e19f58aa` show **Submitted / Accepted** (HTTP 202).
 
 ---
 
-## 4. Cal.com & Conversion Flow Verification
+## 5. Cal.com & Conversion Flow Verification
 
 - [ ] **Verify Cal.com Event Link**:
   1. Visit your Cal.com dashboard at [app.cal.com](https://app.cal.com/).
@@ -66,15 +90,15 @@ IndexNow is automated on every `git push origin main` via `.github/workflows/dep
 
 ---
 
-## 5. Summary of Automated Verification Commands
+## 6. Summary of Automated Verification Commands
 
 You can run these anytime locally to verify the health of your site:
 
 ```bash
-# Verify all 150 Schema.org blocks pass Google Rich Snippets standards:
+# Verify all 158 Schema.org blocks pass Google Rich Snippets standards:
 npm run audit:schemas
 
-# Re-submit all 74 site URLs to IndexNow (Bing, Yandex, Naver):
+# Re-submit all 78 site URLs to IndexNow (Bing, Yandex, Naver):
 npm run indexnow
 
 # Cross-post article to Dev.to with canonical backlink:
