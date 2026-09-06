@@ -326,10 +326,18 @@ const schemas = [webAppSchema, breadcrumbSchema];
         </div>
       </div>
 
-      <div class="estimator-layout reveal reveal-delay-2">
-        
-        <!-- APPS SELECTION COLUMN -->
+      <div class="estimator-layout reveal reveal        <!-- APPS SELECTION COLUMN -->
         <div class="estimator-apps-col">
+          <!-- ONE-CLICK QUICK STACK PRESETS -->
+          <div class="estimator-presets-bar">
+            <span class="presets-label">⚡ Quick Presets:</span>
+            <div class="presets-btns">
+              <button type="button" class="preset-pill-btn" data-preset="lean">🚀 Lean DTC</button>
+              <button type="button" class="preset-pill-btn active" data-preset="standard">📦 Standard Brand</button>
+              <button type="button" class="preset-pill-btn" data-preset="heavy">⚠️ Heavy Enterprise</button>
+            </div>
+          </div>
+
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem;">
             <p style="font-size:14px; font-weight:600; color:var(--text);">Select the apps, widgets, or tools installed on your site:</p>
             <button id="resetAppsBtn" type="button" style="background:none; border:none; color:var(--accent); font-family:var(--font-mono); font-size:11.5px; cursor:pointer; text-decoration:underline;">Reset all</button>
@@ -411,12 +419,28 @@ const schemas = [webAppSchema, breadcrumbSchema];
               href="https://wa.me/919259598769" 
               target="_blank" 
               rel="noopener" 
-              class="btn-ghost"
+              class="btn-ghost" 
               style="display:inline-flex; align-items:center; justify-content:center; gap:8px;"
             >
               <WhatsAppIcon size={17} fill="#25D366" />
               <span>WhatsApp Direct Consultation</span>
             </a>
+
+            <!-- VIRAL SOCIAL SHARE BOX -->
+            <div class="estimator-share-box">
+              <p class="share-box-title">Share Your Stack Result:</p>
+              <div class="share-btns-row">
+                <button type="button" id="shareTwitterBtn" class="share-action-btn" title="Share on X (Twitter)">
+                  <span>𝕏 Share on X</span>
+                </button>
+                <button type="button" id="shareLinkedInBtn" class="share-action-btn" title="Share on LinkedIn">
+                  <span>in Share</span>
+                </button>
+                <button type="button" id="copyResultBtn" class="share-action-btn" title="Copy result to clipboard">
+                  <span id="copyResultText">📋 Copy Summary</span>
+                </button>
+              </div>
+            </div>
 
             <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
               We don't tell you to delete your apps. We optimize script scheduling, delay non-critical hydration, and refactor heavy apps into native Liquid.
@@ -427,7 +451,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
       </div>
 
       <!-- EXPLANATORY / HOW WE FIX IT SECTION -->
-      <section class="service-proof-box reveal" style="margin-top: 3rem;">
+      <section class="service-proof-box reveal" style="margin-top: 3rem;"> style="margin-top: 3rem;">
         <div class="service-proof-inner">
           <div class="service-proof-text">
             <p class="section-eyebrow">The Klickspell Solution</p>
@@ -528,23 +552,88 @@ const schemas = [webAppSchema, breadcrumbSchema];
         }
       }
 
-      checkboxes.forEach(cb => cb.addEventListener('change', calculate));
+      // Event listeners for individual checkboxes
+      checkboxes.forEach(cb => cb.addEventListener('change', () => {
+        presetBtns.forEach(b => b.classList.remove('active'));
+        calculate();
+      }));
+
+      // Presets Handler
+      const presetBtns = document.querySelectorAll('.preset-pill-btn');
+      const presets = {
+        lean: ['judgeme', 'klaviyo'],
+        standard: ['pagefly', 'loox', 'recharge', 'klaviyo', 'hotjar'],
+        heavy: ['shogun', 'yotpo', 'gorgias', 'recharge', 'luckyorange', 'boost-search', 'privy']
+      };
+
+      presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-preset');
+          presetBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const activeIds = presets[type] || [];
+          checkboxes.forEach(cb => {
+            cb.checked = activeIds.includes(cb.getAttribute('data-id'));
+          });
+          calculate();
+        });
+      });
 
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
+          presetBtns.forEach(b => b.classList.remove('active'));
           checkboxes.forEach(cb => cb.checked = false);
           calculate();
         });
       }
 
-      // Pre-select a common realistic stack on first load
-      const defaultStack = ['klaviyo', 'judgeme', 'recharge', 'pagefly'];
+      // Pre-select Standard Brand stack on initial load
+      const defaultStack = ['pagefly', 'loox', 'recharge', 'klaviyo', 'hotjar'];
       checkboxes.forEach(cb => {
         if (defaultStack.includes(cb.getAttribute('data-id'))) {
           cb.checked = true;
         }
       });
       calculate();
+
+      // Viral Social Sharing
+      const shareTwitterBtn = document.getElementById('shareTwitterBtn');
+      const shareLinkedInBtn = document.getElementById('shareLinkedInBtn');
+      const copyResultBtn = document.getElementById('copyResultBtn');
+      const copyResultText = document.getElementById('copyResultText');
+
+      function getShareText() {
+        const count = document.getElementById('estCountVal')?.textContent || '5 Apps';
+        const js = document.getElementById('estJsVal')?.textContent || '2.1 MB';
+        const drop = document.getElementById('estConvVal')?.textContent || '-14%';
+        return `Our Shopify stack carries ${js} of third-party JS across ${count}, resulting in an estimated ${drop} mobile conversion penalty. Calculate your store app bloat free: https://klickspell.com/speed via @mratulbhatt`;
+      }
+
+      if (shareTwitterBtn) {
+        shareTwitterBtn.addEventListener('click', () => {
+          const text = encodeURIComponent(getShareText());
+          window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'noopener,noreferrer,width=600,height=400');
+        });
+      }
+
+      if (shareLinkedInBtn) {
+        shareLinkedInBtn.addEventListener('click', () => {
+          const url = encodeURIComponent('https://klickspell.com/speed');
+          window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer,width=600,height=500');
+        });
+      }
+
+      if (copyResultBtn) {
+        copyResultBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(getShareText()).then(() => {
+            if (copyResultText) copyResultText.textContent = '✓ Copied!';
+            setTimeout(() => {
+              if (copyResultText) copyResultText.textContent = '📋 Copy Summary';
+            }, 2500);
+          });
+        });
+      }
 
       // -------------------------------------------------------------
       // 2. LIVE STORE SCANNER & DIAGNOSTIC ENGINE
