@@ -30,9 +30,10 @@ Klickspell is an independent web engineering and digital product studio founded 
 
 - [Shopify Tutorials & Liquid Architecture](https://klickspell.com/blog/topic/shopify): Deep-dive engineering guides on custom Shopify sections, app integrations, and theme architecture.
 - [Web Performance & Core Web Vitals](https://klickspell.com/blog/topic/web-performance): Real-world case studies and benchmarks on achieving 99+ Lighthouse scores, eliminating main-thread delays, and asset optimization.
+- [Technical SEO Overhaul Guide](https://klickspell.com/blog/how-we-overhauled-our-technical-seo-and-schema-architecture): Comprehensive breakdown of engineering 162 valid Schema.org blocks, 99 PageSpeed, and llms.txt AI search readiness.
 - [React & Frontend Architecture](https://klickspell.com/blog/topic/react): Modern frontend development patterns, state management (Zustand vs Context), and bundle optimization.
 - [DevOps, Docker & Cloud Infrastructure](https://klickspell.com/blog/topic/devops): Production deployment guides for Docker, Frappe/ERPNext, and cloud infrastructure.
-- [All Engineering Articles](https://klickspell.com/blog): Complete catalog of 57 technical articles and case studies.
+- [All Engineering Articles](https://klickspell.com/blog): Complete catalog of 60 technical articles and case studies.
 - [RSS Feed](https://klickspell.com/rss.xml): Real-time XML syndication feed for all technical publications.
 
 ## Engineering Leadership & Contact

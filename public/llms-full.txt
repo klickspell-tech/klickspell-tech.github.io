@@ -112,7 +112,7 @@
 
 ## Technical Publications & Thought Leadership
 
-- **Full Catalog:** 57 in-depth technical guides available at https://klickspell.com/blog
+- **Full Catalog:** 60 in-depth technical guides available at https://klickspell.com/blog
 - **Core Topics:**
   - **Shopify & Liquid:** https://klickspell.com/blog/topic/shopify
   - **Web Performance & Core Web Vitals:** https://klickspell.com/blog/topic/web-performance
