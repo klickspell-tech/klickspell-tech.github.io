@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Klickspell Online Case Study — High-Performance Digital Menus, SSR Architecture & Local Discovery Platform",
+    "description": "How Klickspell engineered klickspell.online (Businesses Hub) — an ultra-lightweight, server-rendered local commerce platform delivering sub-50ms TTFB, automated Google JSON-LD schema across 230+ dishes, and frictionless QR-code mobile menus.",
+    "url": "https://klickspell.com/work/klickspell-online.html",
+    "image": "https://klickspell.com/assets/projects/klickspell-online.png",
+    "datePublished": "2026-09-10",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": {
+      "@type": "WebApplication",
+      "name": "Klickspell Online",
+      "url": "https://klickspell.online/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Verified digital menus and service catalogues for local cafes, restaurants, and hospitality businesses across top destinations."
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Klickspell Online", "item": "https://klickspell.com/work/klickspell-online.html" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Klickspell Online Case Study — High-Performance Digital Menus & Local Discovery | Klickspell"
+  description="How Klickspell engineered klickspell.online (Businesses Hub) — an ultra-lightweight, server-rendered local commerce directory delivering sub-50ms TTFB, automated Google JSON-LD schema, and instant QR menus."
+  canonical="https://klickspell.com/work/klickspell-online.html"
+  ogImage="https://klickspell.com/assets/projects/klickspell-online.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <main id="main-content">
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Klickspell Online</p>
+    <p class="section-eyebrow reveal">Case Study · In-House Studio Product &amp; Local Commerce Platform</p>
+    <h1 class="cs-title reveal reveal-delay-1">Sub-second digital menus &amp;<br>local discovery engineered for <em>zero friction.</em></h1>
+    <p class="cs-sub reveal reveal-delay-2">Most cafes and restaurants trap their menus inside unsearchable, blurry JPEG photos on Instagram and Google Maps. We engineered <strong>klickspell.online</strong> (Businesses Hub) — an ultra-fast, server-rendered web platform that turns physical dining catalogues into instant QR mobile experiences and crawlable Google Rich Snippets.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://klickspell.online/?utm_source=klickspell_com&utm_medium=case_study_hero&utm_campaign=studio_ecosystem" target="_blank" rel="noopener" class="btn-primary">Visit live platform ↗</a>
+      <a href="#architecture" class="btn-ghost">Explore architecture ↓</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Platform</p><p class="cs-meta-value">Klickspell Online (Businesses Hub)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Local Hospitality &amp; Digital Menus</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Architecture</p><p class="cs-meta-value">Server-Rendered SSR · TypeScript · Docker</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Key Stack</p><p class="cs-meta-value">Node.js · Express SSR · Schema.org JSON-LD · QR Engine</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/klickspell-online.webp" alt="Klickspell Online Digital Menus and Local Business Discovery Platform" decoding="async">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <!-- 1. KEY DELIVERABLES & STATS -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">Key Deliverables</p>
+      <h2>Engineered for instant table access and deep organic search indexing.</h2>
+      <p>By eliminating heavyweight client-side JavaScript frameworks in favor of clean, server-rendered HTML and semantic microdata, we built a digital menu ecosystem that loads instantaneously even on throttled mobile data in mountain destinations.</p>
+      <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">&lt;50<span>ms</span></p><p class="stat-label">Initial server response time (TTFB)</p></div>
+        <div class="stat"><p class="stat-num">230<span>+</span></p><p class="stat-label">Dishes &amp; catalogue items indexed</p></div>
+        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Google JSON-LD structured schema</p></div>
+        <div class="stat"><p class="stat-num">0<span> app</span></p><p class="stat-label">Zero install required for diners</p></div>
+      </div>
+    </div>
+
+    <!-- 2. THE PROBLEM -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Challenge</p>
+      <h2>The "trapped menu" bottleneck in local hospitality.</h2>
+      <p>Across vibrant travel destinations like Tapovan and Rishikesh, cafes serve world-class artisan sourdough, ceremonial cacao, high-protein smoothie bowls, and organic Ayurvedic meals. Yet their digital presence is almost universally crippled by three issues:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><strong>Un-Indexable Image Scans:</strong> Menus are uploaded as photographed JPEG sheets to Google Maps or Instagram Highlights. Search engines cannot parse dish names, dietary tags (vegan, gluten-free, pet-friendly), or prices.</li>
+        <li><strong>App Install Fatigue:</strong> Proprietary QR ordering platforms force hungry diners to download heavy native apps or create accounts just to view what a cafe serves.</li>
+        <li><strong>Spotty Mobile Connectivity:</strong> Single-page applications (SPAs) that download megabytes of bundled JavaScript often freeze on spotty 4G/3G connections in hillside localities.</li>
+      </ul>
+      <p>Local businesses were losing high-intent search traffic every single day, while guests experienced awkward friction when sitting down to order.</p>
+    </div>
+
+    <!-- 3. THE ARCHITECTURE -->
+    <div class="cs-section reveal" id="architecture" style="max-width:none">
+      <p class="section-eyebrow">The Architecture</p>
+      <h2 style="max-width:700px">An ultra-light, crawler-first SSR architecture.</h2>
+      <p style="max-width:700px; margin-bottom:2rem">We designed Klickspell Online from first principles as an agile, server-rendered Node.js and TypeScript application optimized for search bots and instantaneous mobile rendering:</p>
+
+      <div class="cs-feature-grid" style="margin-top:1.5rem">
+        <div class="cs-feature">
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Core Engine</div>
+          <h3>Lightweight Server-Rendered HTML</h3>
+          <p>Delivers complete semantic HTML directly on initial request. Diners get sub-second first contentful paint (FCP) without waiting for client-side JavaScript hydration.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Structured Data</div>
+          <h3>Automated Schema.org Generator</h3>
+          <p>Every venue and dish dynamically injects compliant <code>Restaurant</code> and <code>hasMenu</code> / <code>MenuItem</code> JSON-LD schemas with INR pricing, currency, and geo-coordinates.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Organic SEO</div>
+          <h3>Dynamic XML Sitemap Crawling</h3>
+          <p>Automated <code>/sitemap.xml</code> and <code>/sitemaps.xml</code> generation that instantly updates when new cafes or seasonal dishes are added, triggering immediate Googlebot re-crawling.</p>
+        </div>
+        <div class="cs-feature">
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Table Experience</div>
+          <h3>High-Density QR Mobile Flywheel</h3>
+          <p>Custom-generated QR codes on table tent cards open lightweight, category-filtered menus with real-time dietary badges (Pure Veg, WiFi, Work Friendly) in any mobile browser.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. LONG-TAIL DISH SEARCH & SEO FLYWHEEL -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The SEO Flywheel</p>
+      <h2>Turning specific food cravings into high-intent organic foot traffic.</h2>
+      <p>Because every single dish, ingredient, and price is stored in structured text rather than flattened pixels, Google indexes hundreds of long-tail hospitality search queries:</p>
+      <ul style="margin-top:1rem; padding-left:1.5rem; line-height:1.8; color:var(--text-mid); font-size:15.5px;">
+        <li><em>"Best smoothie bowl in Tapovan"</em> → ranks directly for curated venues like Café Aananda and Kappi Cup.</li>
+        <li><em>"Ceremonial cacao Rishikesh"</em> → indexes specialized beverage offerings with authentic origin details.</li>
+        <li><em>"Work friendly cafes with fast WiFi in Upper Tapovan"</em> → matches venue amenity attributes and speed tags.</li>
+        <li><em>"Pet friendly cafes in Rishikesh"</em> → surfaces dedicated pet-friendly menus like Max Says Dog Menu.</li>
+      </ul>
+      <p>When combined with direct daily scans from in-restaurant diners, this creates a virtuous traffic signal: high real-world mobile engagement, low bounce rates, and rapid topical authority gains across Google's local index.</p>
+    </div>
+
+    <!-- 5. SUMMARY TABLE & SPECS -->
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">Technical Specification</p>
+      <h2 style="max-width:700px">System performance overview.</h2>
+
+      <div style="overflow-x:auto; margin-top:1.5rem;">
+        <table style="width:100%; border-collapse:collapse; font-size:14.5px; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; background:var(--white);">
+          <thead>
+            <tr style="background:var(--bg-card); text-align:left; border-bottom:1px solid var(--border);">
+              <th style="padding:1rem 1.25rem; font-weight:700; color:var(--text); font-family:var(--font-mono); font-size:12px; text-transform:uppercase;">Architecture Pillar</th>
+              <th style="padding:1rem 1.25rem; font-weight:700; color:var(--text); font-family:var(--font-mono); font-size:12px; text-transform:uppercase;">Implementation Detail</th>
+              <th style="padding:1rem 1.25rem; font-weight:700; color:var(--text); font-family:var(--font-mono); font-size:12px; text-transform:uppercase;">Operational Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Rendering Model</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Server-Side Rendered (SSR) Node.js &amp; Express</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">&lt;50ms TTFB, 0kb client framework bloat</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Type Safety &amp; Logic</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">TypeScript Strict Mode &amp; Modular Routers</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Zero runtime parameter crashes, rapid feature scaling</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Search Schema</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Dynamic JSON-LD Restaurant &amp; MenuItem Schema</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Google Rich Results with pricing, ratings &amp; coordinates</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Deployment &amp; Edge</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Containerized Docker runtime with Nginx caching</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Predictable high-concurrency performance during peak hours</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Ecosystem Synergies</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Bidirectional attribution with klickspell.com</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Mutual PageRank distribution &amp; domain authority growth</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6. NEXT STEPS & CTA -->
+    <div class="cs-section reveal" style="background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:2.5rem 2rem; margin-top:2rem;">
+      <p class="section-eyebrow" style="margin-bottom:.5rem;">Launch With Klickspell</p>
+      <h2>Need an ultra-fast custom web platform or digital commerce ecosystem?</h2>
+      <p style="margin-top:.75rem; color:var(--text-mid); font-size:16px; line-height:1.7;">Whether you're building a high-performance hospitality directory, a custom headless commerce platform, or a conversion-focused web product, we engineer the digital architecture you actually imagined.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+        <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="font-size:15px; padding:.85rem 1.75rem;">Book a free 30-min discovery call →</a>
+        <a href="https://klickspell.online/?utm_source=klickspell_com&utm_medium=case_study_cta&utm_campaign=studio_ecosystem" target="_blank" rel="noopener" class="btn-ghost" style="font-size:15px; padding:.85rem 1.75rem;">Explore klickspell.online live ↗</a>
+      </div>
+    </div>
+
+  </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

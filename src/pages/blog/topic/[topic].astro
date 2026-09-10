@@ -73,13 +73,13 @@ const schemas = [
 
   <main id="main-content">
   <div class="blog-hero">
-    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/blog">Blog</a> / {topic.shortName}</p>
-    <p class="section-eyebrow reveal">Topic Hub · {matchingPosts.length} Articles</p>
-    <h1 class="blog-title reveal reveal-delay-1">{topic.name}<br><em>engineering guides.</em></h1>
-    <p class="blog-sub reveal reveal-delay-2">{topic.description}</p>
+    <p class="cs-breadcrumb"><a href="/">Home</a> / <a href="/blog">Blog</a> / {topic.shortName}</p>
+    <p class="section-eyebrow">Topic Hub · {matchingPosts.length} Articles</p>
+    <h1 class="blog-title">{topic.name}<br><em>engineering guides.</em></h1>
+    <p class="blog-sub">{topic.description}</p>
 
     <!-- Topic Navigation Pills -->
-    <div class="reveal reveal-delay-2" style="display:flex; gap:.6rem; flex-wrap:wrap; margin:2rem 0 3rem;">
+    <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin:2rem 0 3rem;">
       <a href="/blog" class="team-pill-link" style="padding:.45rem 1rem; border-radius:100px; font-size:13px; text-decoration:none; background:var(--white); border:1px solid var(--border); color:var(--text-mid);">
         All Topics ({allPosts.length})
       </a>
@@ -108,7 +108,7 @@ const schemas = [
         <a href="/blog" class="btn-primary" style="display:inline-flex;">View All Articles</a>
       </div>
     ) : (
-      <div class="blog-grid reveal reveal-delay-2">
+      <div class="blog-grid">
         {sortedPosts.map((post) => (
           <a href={`/blog/${post.slug}`} class="blog-card">
             {post.data.tags && post.data.tags.length > 0 && (

@@ -88,7 +88,7 @@ Klickspell is a **web engineering and digital product studio** based in Rudrapur
 
 ---
 
-## 5. Portfolio Projects (18 Live Sites)
+## 5. Portfolio Projects (19 Live Sites)
 
 | Project | URL | Category | Niche / Stack |
 |---|---|---|---|
@@ -110,6 +110,7 @@ Klickspell is a **web engineering and digital product studio** based in Rudrapur
 | Under Design | https://store.weareunder.design/ | Shopify | Creative Merch · Israel Brand |
 | Haycure Wellness | https://haycurewellness.com/ | Shopify | Wellness & Beauty |
 | Taarz | https://taarz.in/ | Shopify | Fashion & Apparel |
+| Klickspell Online | https://klickspell.online/ | Headless & Custom | Fast Digital Menus & Local Discovery Platform |
 
 ---
 

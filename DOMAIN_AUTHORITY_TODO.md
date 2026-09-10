@@ -19,6 +19,12 @@
 
 ## 🤝 Phase 2: Client Projects & Partner Reciprocal Links
 
+- [x] **In-House Studio Platform Reciprocal Authority Loop (`klickspell.online` / Businesses Hub)**
+  - [x] Link from `klickspell.online` footer to `klickspell.com`: `[⚡ Klickspell](https://klickspell.com/?utm_source=businesses_hub&utm_medium=directory_footer&utm_campaign=powered_by)`.
+  - [x] Dedicated flagship case study published on `klickspell.com`: [`/work/klickspell-online.html`](file:///Users/atul/Documents/Projects/KlickSpell-Site/src/pages/work/klickspell-online.astro).
+  - [x] Featured in homepage portfolio grid with `headless` filter and direct link to live platform.
+  - [x] Global footer link in `klickspell.com`: `🌐 Klickspell Online (Local Directory) ↗`.
+  - [x] Connected Knowledge Graph entity schemas (`sameAs` & `owns: WebApplication`) declaring official corporate ownership and transferring brand authority.
 - [ ] **Client Store Footer Attribution Strategy**
   - [ ] Audit all live client Shopify stores built or optimized by Klickspell.
   - [ ] For active clients with contractual agreement, add a subtle footer link:

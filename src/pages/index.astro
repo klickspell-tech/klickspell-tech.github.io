@@ -4,6 +4,15 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 
+// Dynamic career experience calculation (Started June 2020 at SheThink)
+const careerStartDate = new Date('2020-06-01');
+const now = new Date();
+let yearsExperience = now.getFullYear() - careerStartDate.getFullYear();
+const monthDiff = now.getMonth() - careerStartDate.getMonth();
+if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < careerStartDate.getDate())) {
+  yearsExperience--;
+}
+
 const schema = [
   {
     "@context": "https://schema.org",
@@ -25,10 +34,21 @@ const schema = [
       "name": "Atul Bhatt"
     },
     "sameAs": [
+      "https://klickspell.online/",
       "https://in.linkedin.com/in/mratulbhatt",
       "https://github.com/atulbhatt-system32",
       "https://www.youtube.com/@knowittodaykit",
       "https://www.youtube.com/playlist?list=PL1p7vprQFvmus468rKCaHoQvHmaHopMyo"
+    ],
+    "owns": [
+      {
+        "@type": "WebApplication",
+        "name": "Klickspell Online",
+        "url": "https://klickspell.online/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Verified digital menus and service catalogues for local cafes, restaurants, and hospitality businesses across top destinations."
+      }
     ],
     "knowsAbout": [
       "Shopify 2.0 Theme Architecture",
@@ -281,13 +301,13 @@ const schema = [
       <div class="portfolio-header reveal">
         <div>
           <p class="section-eyebrow">Selected Work</p>
-          <h2 class="section-title">18+ projects.<br><em>Built across modern stacks.</em></h2>
+          <h2 class="section-title">19+ projects.<br><em>Built across modern stacks.</em></h2>
         </div>
         <div class="portfolio-filters">
-          <button class="filter-btn active" data-filter="all">All (18)</button>
+          <button class="filter-btn active" data-filter="all">All (19)</button>
           <button class="filter-btn" data-filter="shopify">Shopify (9)</button>
           <button class="filter-btn" data-filter="webflow">Webflow (2)</button>
-          <button class="filter-btn" data-filter="headless">Headless &amp; Custom (2)</button>
+          <button class="filter-btn" data-filter="headless">Headless &amp; Custom (3)</button>
           <button class="filter-btn" data-filter="landing">Landing &amp; Brand (6)</button>
         </div>
       </div>
@@ -332,7 +352,16 @@ const schema = [
           <div class="project-body"><div><p class="project-name">DealShare</p><p class="project-niche">Corporate Portfolio · E-Grocery Unicorn</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 4. CALLSARA AI (Webflow) -->
+        <!-- 5. KLICKSPELL ONLINE (In-House Studio Product / Headless & Custom) -->
+        <a href="/work/klickspell-online.html" class="project-card featured reveal" data-category="headless">
+          <div class="project-thumb">
+            <img src="/assets/projects/klickspell-online.webp" alt="Klickspell Online" loading="lazy" decoding="async">
+            <span class="project-niche-tag" style="background:rgba(58,91,224,0.12); color:var(--accent); font-weight:700;">★ Studio Product · Local Discovery</span>
+          </div>
+          <div class="project-body"><div><p class="project-name">Klickspell Online</p><p class="project-niche">Fast Digital Menus &amp; Local Business Catalogues</p></div><div class="project-arrow">↗</div></div>
+        </a>
+
+        <!-- 6. CALLSARA AI (Webflow) -->
         <a href="/work/callsara-ai.html" class="project-card regular reveal reveal-delay-1" data-category="webflow">
           <div class="project-thumb">
             <img src="/assets/projects/callsara.webp" alt="CallSara AI" loading="lazy" decoding="async">
@@ -341,8 +370,8 @@ const schema = [
           <div class="project-body"><div><p class="project-name">CallSara AI</p><p class="project-niche">Webflow · Voice AI Agent Platform</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 5. COVE & LANE (Shopify) -->
-        <a href="/work/cove-and-lane.html" class="project-card regular reveal" data-category="shopify">
+        <!-- 7. COVE & LANE (Shopify) -->
+        <a href="/work/cove-and-lane.html" class="project-card featured reveal" data-category="shopify">
           <div class="project-thumb">
             <div class="yt-facade" onclick="event.preventDefault();openYTModal('Ufh6W6h4Kqo')">
               <img src="/assets/projects/cove-and-lane.webp" alt="Cove &amp; Lane" loading="lazy" decoding="async">
@@ -353,8 +382,8 @@ const schema = [
           <div class="project-body"><div><p class="project-name">Cove &amp; Lane</p><p class="project-niche">Shopify Theme &amp; Daily Store Management</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 6. MOGRA MEDIA (Landing Page & Brand Flagship) -->
-        <a href="/work/mogra-media.html" class="project-card half reveal reveal-delay-1" data-category="landing">
+        <!-- 8. MOGRA MEDIA (Landing Page & Brand Flagship) -->
+        <a href="/work/mogra-media.html" class="project-card regular reveal reveal-delay-1" data-category="landing">
           <div class="project-thumb">
             <img src="/assets/projects/mogra-media.webp" alt="Mogra Media" loading="lazy" decoding="async">
             <span class="project-niche-tag">Astro v7 · Film &amp; Creative Studio</span>
@@ -443,8 +472,8 @@ const schema = [
           <div class="project-body"><div><p class="project-name">Bounce Back Drinks</p><p class="project-niche">Shopify E-Commerce · UK Brand</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 15. UNDER DESIGN (Shopify) -->
-        <a href="https://store.weareunder.design/" target="_blank" rel="noopener" class="project-card half reveal" data-category="shopify">
+        <!-- 17. UNDER DESIGN (Shopify) -->
+        <a href="https://store.weareunder.design/" target="_blank" rel="noopener" class="project-card third reveal" data-category="shopify">
           <div class="project-thumb">
             <div class="yt-facade" onclick="event.preventDefault();openYTModal('4NaWXprt2Zo')">
               <img src="/assets/projects/store-weareunder.webp" alt="Under Design" loading="lazy" decoding="async">
@@ -455,8 +484,8 @@ const schema = [
           <div class="project-body"><div><p class="project-name">Under Design</p><p class="project-niche">Custom Shopify Store · Israel Brand</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 16. HAYCURE WELLNESS (Shopify) -->
-        <a href="https://haycurewellness.com/" target="_blank" rel="noopener" class="project-card half reveal reveal-delay-1" data-category="shopify">
+        <!-- 18. HAYCURE WELLNESS (Shopify) -->
+        <a href="https://haycurewellness.com/" target="_blank" rel="noopener" class="project-card third reveal reveal-delay-1" data-category="shopify">
           <div class="project-thumb">
             <div class="yt-facade" onclick="event.preventDefault();openYTModal('PyUQr6Zfiu8')">
               <img src="/assets/projects/haycure-wellness.webp" alt="Haycure Wellness" loading="lazy" decoding="async">
@@ -467,8 +496,8 @@ const schema = [
           <div class="project-body"><div><p class="project-name">Haycure Wellness</p><p class="project-niche">Shopify E-Commerce · Wellness &amp; Beauty</p></div><div class="project-arrow">↗</div></div>
         </a>
 
-        <!-- 17. TAARZ (Shopify) -->
-        <a href="https://taarz.in/" target="_blank" rel="noopener" class="project-card half reveal" data-category="shopify">
+        <!-- 19. TAARZ (Shopify) -->
+        <a href="https://taarz.in/" target="_blank" rel="noopener" class="project-card third reveal" data-category="shopify">
           <div class="project-thumb">
             <div class="yt-facade" onclick="event.preventDefault();openYTModal('JF39xGGsWcA')">
               <img src="/assets/projects/taarz.webp" alt="Taarz" loading="lazy" decoding="async">
@@ -573,7 +602,7 @@ const schema = [
           <p class="about-prose"><strong>Lean by choice, not by limitation.</strong> Every project receives our undivided attention. You work directly with the builder — no account managers, no junior handoffs. We scope honestly, build carefully, and hand over completely.</p>
           <div class="about-stats">
             <div class="stat"><p class="stat-num">20<span>+</span></p><p class="stat-label">Projects shipped</p></div>
-            <div class="stat"><p class="stat-num">3<span>+</span></p><p class="stat-label">Years experience</p></div>
+            <div class="stat"><p class="stat-num"><span id="expYears">{yearsExperience}</span><span>+</span></p><p class="stat-label">Years experience</p></div>
             <div class="stat"><p class="stat-num">6</p><p class="stat-label">Engineers &amp; builders</p></div>
           </div>
           <div class="team-teaser">
@@ -685,6 +714,17 @@ const schema = [
           });
         });
       });
+
+      // Dynamic Years of Experience update (June 2020)
+      const expEl = document.getElementById('expYears');
+      if (expEl) {
+        const start = new Date('2020-06-01');
+        const today = new Date();
+        let exp = today.getFullYear() - start.getFullYear();
+        const m = today.getMonth() - start.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < start.getDate())) exp--;
+        expEl.textContent = exp;
+      }
     });
   </script>
 </BaseLayout>
