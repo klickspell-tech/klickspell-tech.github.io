@@ -51,3 +51,6 @@ So without further adieu let's start with our list. This list is biased towards 
 I would like to keep this post short and would like to hear more about your top 5 picks. Of course there are other libraries which totally deserve to be in this list such as `redux, core-ui, react-bootstrap, font-awesome,` and many more. But let's keep them preserved for some other time. I'm really excited to know about your top picks from the comments.
 
 _Thanks for your time reading. Have a informatic day._
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/5-frequently-used-js-libraries-for-react-16g)*

@@ -19,7 +19,7 @@ Let's see the **symptoms** you're facing. Are they mentioned below:
  - Hot reload continues to work, but the page becomes unresponsive. **Can't click or do anything unless you do a manual refresh.**
  - process is not defined
 
-```
+```plaintext
 Uncaught ReferenceError: process is not defined
 at Object.4043 (<anonymous>:2:13168)
 at r (<anonymous>:2:306599)
@@ -42,3 +42,6 @@ You might have started facing this problem either after **updating your CRA or s
 > If this doesn't helps, check [this](https://github.com/facebook/create-react-app/issues/11880#issuecomment-1005409614) out.
 
 _If this solution solves your problem, do like this post or comment down so that others can also get the benefit by reaching to it as early as possible. Till then safe debugging👍_
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/hot-reload-fails-dom-adds-an-additional-iframe-45e7)*

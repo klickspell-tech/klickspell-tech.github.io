@@ -6,7 +6,6 @@ author: "Atul Bhatt"
 tags: ["javascript","webdev","productivity","tooling"]
 devtoUrl: "https://dev.to/atulbhattsystem32/useful-tips-for-web-dev-part1-5061"
 canonicalUrl: "https://klickspell.com/blog/useful-tips-for-web-dev-part1-5061"
-mediumUrl: "https://atulbhatt98.medium.com/useful-tips-for-web-dev-part1-09a1c9b9266f"
 coverImage: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff9yf71imv8z8jnb1z4k2.png"
 readingTime: "2 min read"
 ---
@@ -14,7 +13,7 @@ readingTime: "2 min read"
 A lot of time there are some problems which we face occasionally but the time when that occasion become too often it becomes frustrating to keep searching those occasional problem here and there on stack overflow or documentation of the libraries. So I'm starting this series of Problems and Solutions to have my those problems all curated at one place. Let's see how it goes. Some of these problems took me to get through a lot of stack overflow answers to find the right one. I wish it saves someone's time.
 
 ### 1. How to change port for NPM start? or Node JS change server port?
-```
+```batchfile
 SET PORT=8080 && npm start //windows
 export PORT=4000 && npm start //MAC
 ```
@@ -39,3 +38,6 @@ When you're frontend developer you often need to **integrate APIs.** And a lot o
 Instead, what you can do is **send the CURL url** to your backend developer which he can import in his **API test tool like POSTMAN** to check it.
 
 _These are few for now and I'll keep coming with more soon. Till then fast solving😁._
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/useful-tips-for-web-dev-part1-5061)*

@@ -75,3 +75,6 @@ Before you leave here is something you can try. Whatsapp says in its privacy pol
 Now you can try to send a message to someone who is not using WhatsApp and ask them to install it after 30 days of sending that message. What will happen?
 
 Stay Curious🦝 .
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/why-whatsapp-web-doesn-t-work-without-whatsapp-on-your-mobile-app-fh3)*

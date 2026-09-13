@@ -91,3 +91,6 @@ Below is the link to the sources of my Screenshot:
 ##### I hope you enjoyed🍿 reading this article. This article is my personal🙍 opinion but a strong one with facts and figures. I don't hate python but it's just that I moved on. It was hard😓 but I did.
 
 ##### We should `treat languages like Crushes not life partners😜`. Shower some love if you read it till end. And `share it with someone who really need to read this`.
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/why-javascript-not-python-for-web-development-16k9)*

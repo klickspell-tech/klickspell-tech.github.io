@@ -40,7 +40,7 @@ it will start making sense for the statement below:
 ## Examples
 Now, when I do:
 
-```
+```javascript
 const a = 12
 /* A memory address is assigned to a (ex: M121312)
 Now the value of "a" internally is "M121312")
@@ -58,7 +58,7 @@ This might feel vague for now. But hold on.
 Let's come to array.
 
 
-```
+```javascript
 const b = [1,23,45,56] 
 /* b is assigned a memory address (M131314)
 and when I do: */
@@ -79,3 +79,6 @@ This is just a **mental model** to think about **const** and **let** that I came
 Tell me in the comments if it makes sense!
 
 As always thanks for reading. Stay curious!
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/const-doesnt-prevent-immutability-21gc)*

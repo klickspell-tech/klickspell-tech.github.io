@@ -48,3 +48,6 @@ You can follow the packages below:
 *The goal🎯 of this article is primarily on giving the finishing touch to your React Web App before making it live in the production.*
 
 *I hope this article was helpful to you. I would be more than happy to receive your feedback on this article. Thanks for your precious time reading this. Stay tuned for more insightful reading by me.😊*
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/5-things-to-do-before-making-the-build-for-production-react-js-j8b)*

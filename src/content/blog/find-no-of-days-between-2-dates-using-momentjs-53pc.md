@@ -20,7 +20,7 @@ I'm writing this as an article here because it took me time to find the way to d
 ---
 > **Here's the code:**
 
-```
+```javascript
   let myDob = moment("19/12/1997", "DD/MM/YYYY");
   let today = moment();
   let myAge = today.diff(myDob, "years");
@@ -41,3 +41,6 @@ I'm writing this as an article here because it took me time to find the way to d
 
 You can read about the meaning of it in the article linked below.
 [MOMENT.JS OFFICIALLY BECOMES A LEGACY PROJECT IN MAINTENANCE MODE](https://ilikekillnerds.com/2020/09/moment-js-officially-becomes-a-legacy-project-in-maintenance-mode/)
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/find-no-of-days-between-2-dates-using-momentjs-53pc)*

@@ -32,7 +32,7 @@ So this is the `second blog post` where I'm sharing some more important question
 - `Is Javascript Object Oriented? If not then what type it is?`
 
 > **Some JS snippets to try:**
-```
+```javascript
 Snippet1
 
 let a = [1,2,3,4,5]
@@ -43,7 +43,7 @@ console.log(a,b,c)
 //Output: ??
 ```
 
-```
+```javascript
 Snippet2
 
 
@@ -55,7 +55,7 @@ delete obj2['hobbies']
 console.log(obj1, obj2)
 ```
 
-```
+```javascript
 Snippet3
 
 
@@ -68,7 +68,7 @@ bb[4] = 12
 cc['Age'] = 'greater than 18'
 ```
 
-```
+```javascript
 Snippet4
 
 
@@ -102,3 +102,6 @@ console.log("newself", newSelf);
 
 `I will be ending this article here for now. I'll continue it in the next part with more questions that will cover more in-depth questions. So see you around here next time.👋
 Have an insightful day 😄.`
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/react-js-interviewpart-2-41bm)*
