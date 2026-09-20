@@ -23,7 +23,7 @@ So let’s cut out the introductory crap and jump directly into some more React 
   <div className= “react-interview”>
   Hi! [dev.to](http://dev.to) 
   </div>
-  ```    
+  ```plaintext
 > **6-** Explain the `Redux lifecycle`.
 > **7-** What’s the output?
   ```
@@ -38,3 +38,6 @@ So let’s cut out the introductory crap and jump directly into some more React 
 _I'll be wrapping up this part of the article here. I'll be glad to read you answers to these question in the comment section._
 
 _And don't forget to mention your approach towards taking interviews. How you approach it? And I know there might be some flaws🥺 in asking these questions so you are free to point them out._
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/react-interview-part-3-mmb)*

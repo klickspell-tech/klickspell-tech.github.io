@@ -6,7 +6,6 @@ author: "Atul Bhatt"
 tags: ["productivity","android","writing"]
 devtoUrl: "https://dev.to/atulbhattsystem32/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-429j"
 canonicalUrl: "https://klickspell.com/blog/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-429j"
-mediumUrl: "https://atulbhatt98.medium.com/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-20990b7107c0"
 coverImage: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9rms43joxsb84nfca9g1.png"
 readingTime: "3 min read"
 ---
@@ -54,3 +53,6 @@ I have often seen people making the `mistake🥺 of installing multiple apps wit
 One of the important features which I consider is being able to use the `same app across multiple platforms `so that you can be on `sync across your multiple devices.` 
 
 For taking notes I used Google keep however now I’m using Notion, Spotify for music so that I can have my playlist access on my other devices too. `You should feel like you’re part of an ecosystem.`
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/3-easy-thoughtful-steps-to-really-be-smart-with-your-smartphone-429j)*
