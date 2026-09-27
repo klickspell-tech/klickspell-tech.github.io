@@ -51,3 +51,6 @@ However, if you are also someone who is `still in the path of learning HTML, CSS
 >I hope you already use these extensions but if you don't I would highly recommend you to give it a try. And as always thanks for reading.
 
 I will soon bringing another post with the extensions specifically helpful for the JavaScript developers. So stay tuned. Follow me for more good stuff.
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/5-vs-code-extensions-i-use-extensively-58ge)*

@@ -84,3 +84,6 @@ _I'll be wrapping up this first part of the article here. I'll be glad to read y
 _And don't forget to mention your approach towards taking interviews. How you approach it? And I know there might be some flaws🥺 in asking these questions so you are free to point them out._
 
 **Thanks for reading out. See you back in my next post.😀**
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/react-interview-part-1-4iea)*

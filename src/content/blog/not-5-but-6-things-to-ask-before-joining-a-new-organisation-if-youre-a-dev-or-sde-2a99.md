@@ -53,3 +53,6 @@ And Notice periods are also important I agree but make sure you don't sign off f
 `You feel me right?`
 
 `I guess that's all for now. Comment down what you folks feel is also important to look before choosing a job. Till then happy hunting🙂.`
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/not-5-but-6-things-to-ask-before-joining-a-new-organisation-if-youre-a-dev-or-sde-2a99)*
