@@ -24,7 +24,7 @@ In this guide, we break down why this happens and reveal the exact strategies an
 
 ## Why Does the "Out of Host Capacity" Error Occur?
 
-Oracle Cloud allocates a fixed pool of hardware resources to free-tier accounts in each data center (Availability Domain). When demand spikes—especially in popular regions like Ashburn, Frankfurt, Mumbai, or London—the pool of unallocated ARM compute blades is temporarily depleted.
+Oracle Cloud allocates a fixed pool of hardware resources to free-tier accounts in each data center (Availability Domain). When demand spikes, especially in popular regions like Ashburn, Frankfurt, Mumbai, or London, the pool of unallocated ARM compute blades is temporarily depleted.
 
 Whenever an existing user shuts down or terminates an instance, that slice of hardware goes back into the pool. If you try manually in the web console, the odds of clicking "Create" at the exact second a blade frees up are slim.
 

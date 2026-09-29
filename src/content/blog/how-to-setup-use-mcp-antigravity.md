@@ -12,9 +12,9 @@ readingTime: "5 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/auB8IxYOM0o" title="How to setup and use MCP in antigravity" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-**Model Context Protocol (MCP)** is the open standard that is revolutionizing how AI models and agentic IDEs interface with external data sources, local development environments, and third-party APIs.
+**Model Context Protocol (MCP)** is an open standard that simplifies how AI models and agentic IDEs connect with external data sources, local environments, and third-party APIs.
 
-Instead of writing brittle custom API adapters for every tool, MCP provides a unified JSON-RPC protocol allowing AI coding assistants like **Antigravity** to seamlessly read databases, inspect local Git repos, run terminal commands, and query live APIs.
+Instead of writing custom API adapters for every tool, MCP provides a unified JSON-RPC protocol allowing AI coding assistants like **Antigravity** to query databases directly, inspect local Git repos, run terminal commands, and call live APIs.
 
 In this guide, we cover how to install, configure, and use MCP servers inside Antigravity step-by-step.
 
@@ -84,7 +84,7 @@ The agent calls the PostgreSQL MCP server over `stdio`, retrieves the record pay
 
 ---
 
-## Security Best Practices for MCP
+## Security Guidelines for MCP
 
 1. **Read-Only Credentials:** Always connect database MCP servers using read-only database roles to prevent accidental drops or deletes.
 2. **Environment Variables:** Never commit raw API tokens or credentials into Git repositories. Store sensitive keys in local `.env` files referenced by your MCP config.

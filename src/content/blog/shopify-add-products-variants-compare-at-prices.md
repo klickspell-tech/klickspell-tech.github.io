@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/0EBASbgfVUg" title="How to Add Products, Create Variants & Set Compare-At Prices in Shopify | Full Tutorial" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Adding products to Shopify sounds straightforward until you encounter the real-world complexities of e-commerce: **multi-dimensional variants** (size, color, material), **inventory tracking**, **SKU naming conventions**, and setting up **compare-at prices** to trigger sale badges without breaking your analytics.
+Adding products to Shopify sounds straightforward until you run into common catalog requirements: **multi-dimensional variants** (size, color, material), **inventory tracking**, **SKU naming conventions**, and setting up **compare-at prices** to display sale badges correctly.
 
 Whether you are launching your first store or onboarding new catalog merchandise, this tutorial breaks down the exact workflow to create clean, high-converting product pages in Shopify.
 

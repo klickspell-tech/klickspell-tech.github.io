@@ -20,7 +20,7 @@ In this post and video walkthrough, I share key takeaways, technical architectur
 
 ## The 36-Hour Pressure Cooker: How ETHIndia Works
 
-Hackathons like ETHIndia aren't just coding sprints—they are tests of prioritization, rapid problem framing, and team synergy.
+Hackathons like ETHIndia test more than coding speed: they demand quick prioritization, clear problem framing, and tight team coordination.
 
 ### 1. The Power of Pre-Hackathon Ideation
 Starting from a blank sheet of paper when the timer starts is a rookie mistake. The most successful teams:

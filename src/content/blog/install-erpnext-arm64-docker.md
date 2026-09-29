@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/lBECptxlMPY" title="How to Install ERPNext on ARM arch64 using Docker" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-ARM64 architecture (`aarch64`) has taken over modern computing—from developer laptops powered by **Apple Silicon (M1, M2, M3, M4)** to cost-effective cloud servers like **Oracle Cloud Ampere A1** and **AWS Graviton**.
+ARM64 architecture (`aarch64`) is widely used across modern infrastructure, from developer laptops powered by **Apple Silicon (M1, M2, M3, M4)** to cloud servers like **Oracle Cloud Ampere A1** and **AWS Graviton**.
 
 Historically, installing ERPNext on ARM64 chips was frustrating: binary Python wheel incompatibilities, node compilation failures, and MariaDB architecture mismatch errors.
 

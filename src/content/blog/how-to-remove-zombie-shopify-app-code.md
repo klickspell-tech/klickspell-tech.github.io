@@ -14,7 +14,7 @@ Unfortunately, in the architecture of Shopify themes, that is almost never true.
 
 While Shopify's modern App Bridge and Theme App Extensions have made app installations cleaner, the vast majority of popular marketing, review, tracking, and countdown apps still inject permanent modifications directly into your theme’s code files (`theme.liquid`, `snippets/`, and `assets/`).
 
-When you uninstall the app, Shopify cuts off the app's billing and admin dashboard—**but it cannot automatically edit your custom theme files to undo the injected code.**
+When you uninstall the app, Shopify stops billing and removes the admin dashboard. However, it cannot edit your custom theme files to remove injected scripts and Liquid tags.
 
 The result? **Zombie App Code.**
 
@@ -85,7 +85,7 @@ Some apps bundle static JavaScript or stylesheet overrides directly into your th
 > **CRITICAL RULE**: Never edit your published live theme directly. Always work on a duplicate.
 
 ### Step 3.1: Create a Theme Duplicate
-In your Shopify Admin, navigate to **Online Store > Themes**. Click the **...** menu next to your current theme and click **Duplicate**. Rename the duplicate to `Clean Performance Audit — [Date]`.
+In your Shopify Admin, navigate to **Online Store > Themes**. Click the **...** menu next to your current theme and click **Duplicate**. Rename the duplicate to `Clean Performance Audit (Backup)`.
 
 ### Step 3.2: Search and Remove Injected Snippet Calls
 Open the code editor on your duplicate theme. Use the search bar in the left sidebar to search for the name of uninstalled apps.

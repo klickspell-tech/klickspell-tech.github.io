@@ -18,7 +18,7 @@ The most common culprit? **Abusing React Context for high-frequency or global ap
 
 While React Context is great for static dependency injection (like theme switching or current user auth), using it for e-commerce carts, form inputs, or complex dashboard filters causes massive performance regressions.
 
-In this deep dive, we compare React Context against **Zustand** and demonstrate how selector-based state management fixes re-rendering loops for good.
+Here, we compare React Context against **Zustand** and demonstrate how selector-based state management stops unnecessary re-renders.
 
 ---
 
@@ -96,7 +96,7 @@ function CartBadge() {
 
 ## When SHOULD You Still Use React Context?
 
-React Context isn't bad—it was simply never intended to be a high-frequency state manager. Context is perfect for:
+React Context is not inherently flawed; it was designed for low-frequency dependency injection rather than rapid state mutations. Context works well for:
 1. **Low-Frequency Values:** Dark/light theme mode, active language/locale, and authenticated user identity.
 2. **Component Composition:** Compound components like `<Tabs>`, `<Accordion>`, or `<Select>` where state is strictly local to a tiny isolated component tree.
 

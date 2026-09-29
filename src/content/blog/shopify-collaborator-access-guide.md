@@ -16,7 +16,7 @@ Whenever an e-commerce brand hires an agency, freelance developer, or SEO consul
 
 Too often, merchants resort to dangerous shortcuts:
 - Sending master admin email and password combinations over WhatsApp or Slack.
-- Adding contractors as standard staff members—which burns through their plan's limited staff account seats and creates billing overhead.
+- Adding contractors as standard staff members, which uses up limited staff account seats and adds unnecessary overhead.
 
 Shopify solved this completely with **Collaborator Accounts**. Collaborator accounts allow verified **Shopify Partners** to access a client's store without counting against staff limits, with granular permission boundaries, and zero password sharing.
 
@@ -38,7 +38,7 @@ Here is the exact workflow for both agencies requesting access and merchants app
 
 ---
 
-## Part 1: For Merchants — Securing Your Store with a Collaborator Code
+## Part 1: For Merchants: Securing Your Store with a Collaborator Code
 
 By default, anyone with a Shopify Partner account could technically send a collaborator request if they know your `.myshopify.com` domain. To prevent spam requests, Shopify provides a **Collaborator Request Code**.
 
@@ -52,7 +52,7 @@ By default, anyone with a Shopify Partner account could technically send a colla
 
 ---
 
-## Part 2: For Agencies / Partners — How to Request Access
+## Part 2: For Agencies and Partners: Requesting Access
 
 If you are an agency or freelance engineer:
 
@@ -71,7 +71,7 @@ If you are an agency or freelance engineer:
 
 ---
 
-## Part 3: For Merchants — Reviewing & Approving Access
+## Part 3: For Merchants: Reviewing and Approving Access
 
 Once the agency submits the request:
 
@@ -85,7 +85,7 @@ The agency now has direct, authenticated access through their Partner Dashboard.
 
 ---
 
-## Best Practices for Enterprise Security
+## Security Standards for Store Owners
 
 1. **Principle of Least Privilege:** Never grant *Full permissions* to outside consultants unless they are your lead technical director. Never give access to *Shopify Payments* or *Banking payout details*.
 2. **Periodic Audits:** Review **Settings → Users and permissions** every quarter. If a project concluded months ago, click the collaborator name and hit **Delete account** immediately.

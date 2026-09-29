@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/BUxyD-IXP1s" title="Setup Forever Free Oracle 24 GB RAM ARM-based Ampere Cloud | Forever Free VPS" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Most cloud providers (AWS, Google Cloud, DigitalOcean) offer free tiers that expire after 12 months or limit you to 1 GB of RAM and 1 tiny vCPU—barely enough to compile a modern Node.js application.
+Most cloud providers (AWS, Google Cloud, DigitalOcean) offer free tiers that expire after 12 months or limit you to 1 GB of RAM and 1 tiny vCPU, which is barely enough to compile a modern Node.js application.
 
 Oracle Cloud Infrastructure (OCI) completely disrupts the industry with their **Always Free Tier**:
 - **4 OCPU Cores** on high-frequency Ampere Altra ARM processors.

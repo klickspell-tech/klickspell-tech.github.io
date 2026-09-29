@@ -32,7 +32,7 @@ With multiple tiers, varying credit card transaction rates, and billing options,
 *\*Third-party fees only apply if you do NOT use Shopify Payments (e.g., using standalone external gateways).*
 
 ### The 25% Annual Billing Rule
-If you commit to paying annually instead of monthly, Shopify offers a **25% discount** across all standard tiers. For example, on the Basic plan, paying yearly drops your equivalent cost from $39/mo to $29/mo—saving you $120 every year.
+If you commit to paying annually instead of monthly, Shopify offers a **25% discount** across all standard tiers. For example, on the Basic plan, paying yearly drops your equivalent cost from $39/mo to $29/mo, saving you $120 every year.
 
 ---
 
@@ -84,7 +84,7 @@ Purchasing a plan immediately unlocks critical launch capabilities:
 No. Shopify honors the remaining days of your free trial. Your paid billing cycle only triggers once the trial window ends.
 
 ### Can I upgrade or downgrade later?
-Yes. Shopify handles upgrades seamlessly with automatic prorated invoicing. When your monthly revenue exceeds $15k–$20k, upgrading to the **Shopify** plan often pays for itself through reduced card processing fees.
+Yes. Shopify handles upgrades with automatic prorated invoicing. When your monthly revenue exceeds $15k–$20k, upgrading to the **Shopify** plan often pays for itself through lower card processing rates.
 
 ---
 

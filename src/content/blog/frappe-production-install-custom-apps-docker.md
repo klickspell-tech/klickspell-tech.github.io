@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/hbSMiJTooJI" title="Frappe: Production Install of Custom Apps with Docker - Easy Guide" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Moving from a local Frappe development environment to a live Docker production setup can feel daunting. In production, you aren't simply running `bench get-app` inside a live container—ephemeral containers mean any changes made inside an active container will disappear upon restart!
+Moving from a local Frappe setup to Docker in production involves a fundamental shift. You cannot simply run `bench get-app` inside a running container: because containers are ephemeral, any in-place modifications disappear whenever a container restarts.
 
 To deploy custom apps in production, your custom apps must be baked directly into the custom Docker image and orchestrated via **Docker Compose** alongside Redis, MariaDB, and Traefik reverse proxies.
 
@@ -90,6 +90,6 @@ docker compose restart backend frontend websocket
 
 ## Summary
 
-Containerizing Frappe apps for production ensures seamless horizontal scaling, instant rollbacks, and zero host dependency conflicts.
+Containerizing Frappe apps gives you predictable deployments: straightforward horizontal scaling, fast rollbacks, and no host-level Python dependency conflicts.
 
 *Looking for dedicated Frappe & ERPNext cloud deployment, server migration, or custom ERP development? [Connect with the engineers at Klickspell](https://klickspell.com/#contact).*

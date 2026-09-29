@@ -29,7 +29,7 @@ By default, Shopify assigns a single "Default Package" (usually a medium sample 
 When a customer checks out, Shopify's rate calculator checks:
 $$\text{Total Order Weight} = \text{Sum of Item Weights} + \text{Default Package Weight}$$
 
-If you sell items with drastically different form factors—such as jewelry, apparel, bottles, or large home decor—cramming every product into a single default box calculation creates inaccurate carrier quotes and shipping label discrepancies.
+If you sell items with drastically different form factors (such as jewelry, apparel, bottles, or large home decor), cramming every product into a single default box calculation creates inaccurate carrier quotes and shipping label discrepancies.
 
 ---
 

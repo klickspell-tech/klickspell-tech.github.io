@@ -88,7 +88,7 @@ Shopify will display the required A Record and CNAME target values. Keep this ta
 ## Step 4: Primary Domain & SSL Certificate Activation
 
 Once verified:
-1. Under **Primary domain**, ensure `yourbrand.com` (or `www.yourbrand.com` according to your preference) is set as the primary domain with **Domain redirection enabled**. This ensures all variations seamlessly route to one canonical URL.
+1. Under **Primary domain**, ensure `yourbrand.com` (or `www.yourbrand.com` according to your preference) is set as the primary domain with **Domain redirection enabled**. This routes all domain variations to one primary canonical URL.
 2. **SSL Certificate Provisioning:** Shopify will automatically issue a free Let's Encrypt / Cloudflare SSL certificate. Initially, it may show **"SSL Pending"**. This is completely normal and typically resolves to **"SSL Available" (HTTPS)** within 1 to 4 hours.
 
 ---
@@ -102,6 +102,6 @@ Once verified:
 
 ## Summary
 
-Pointing Hostinger to Shopify requires only two records, but getting them right ensures sub-second edge routing and seamless SSL encryption from day one.
+Pointing Hostinger to Shopify requires only two records. Configuring them correctly ensures reliable edge routing and automatic SSL encryption from day one.
 
 *Need help migrating complex corporate domains, configuring subfolder multi-regional routing, or custom DNS setups? [Book a discovery consultation with Klickspell](https://klickspell.com/#contact).*

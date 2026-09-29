@@ -16,7 +16,7 @@ Have you ever had your server randomly kill your MySQL database, Node.js process
 
 When a server's physical RAM fills up, the Linux kernel invokes the **OOM (Out of Memory) Killer**. The kernel identifies the process consuming the most memory and forcefully terminates it to prevent the entire operating system from freezing.
 
-By configuring a **Swap File**, your server uses a portion of its high-speed SSD storage as virtual memory when RAM is under pressure—acting as an essential safety net that prevents fatal downtime.
+By configuring a **Swap File**, your server uses a portion of its high-speed SSD storage as virtual memory when RAM is under pressure, acting as an essential safety net that prevents fatal downtime.
 
 Here is why you need swap space and how to create it on Ubuntu in under 2 minutes.
 
@@ -106,7 +106,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 The `vm.swappiness` parameter controls how aggressively the kernel swaps memory to disk (range: 0 to 100):
 - `100`: Aggressive swapping (slows down performance).
 - `60`: Ubuntu desktop default.
-- **`10 – 20`**: **Optimal for production web and database servers.** (Only swap when RAM is genuinely exhausted).
+- **`10 - 20`**: **Optimal for production web and database servers.** (Only swaps when physical RAM is fully allocated).
 
 Check current swappiness:
 ```bash

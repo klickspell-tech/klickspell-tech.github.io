@@ -16,7 +16,7 @@ Running Frappe and ERPNext inside Docker is the gold standard for reliable, repr
 
 However, one of the biggest friction points developers face is **installing custom Frappe apps** on top of the base image. Traditional multi-stage builds often take 15 to 25 minutes to recompile assets and resolve Python wheels every time you add or update an internal app.
 
-With the **Frappe Docker Quick Build Image**, Frappe introduced a streamlined build pipeline that slashes build times down to minutes by leveraging pre-compiled assets.
+With the **Frappe Docker Quick Build Image**, Frappe introduced a streamlined build pipeline that slashes build times down to minutes by using pre-compiled assets.
 
 Here is the exact step-by-step guide to installing custom apps using the Quick Build image.
 
@@ -26,7 +26,7 @@ Here is the exact step-by-step guide to installing custom apps using the Quick B
 
 1. **Drastically Faster CI/CD Builds:** Standard builds re-download base node dependencies and re-run yarn compilation from scratch. The quick build image pre-packages frontend tooling.
 2. **Deterministic Python Dependencies:** Avoids broken pip sub-dependency conflicts across disparate host machines.
-3. **Seamless Site Migration:** Produces production-ready OCI-compliant container images ready to push to GitHub Container Registry (GHCR) or Docker Hub.
+3. **Standardized Container Packaging:** Produces production-ready OCI-compliant container images ready to push to GitHub Container Registry (GHCR) or Docker Hub.
 
 ---
 

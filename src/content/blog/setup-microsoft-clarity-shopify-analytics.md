@@ -12,7 +12,7 @@ readingTime: "5 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/YYbcK9iRHBQ" title="Shopify Tutorial: Setup Microsoft Clarity in Minutes (2026 Edition)" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Most e-commerce analytics platforms tell you *what* happened on your Shopify store—how many visitors arrived, which pages had high bounce rates, and which products were viewed.
+Most e-commerce analytics platforms tell you *what* happened on your Shopify store: how many visitors arrived, which pages had high bounce rates, and which products were viewed.
 
 What they don't tell you is **why** visitors abandoned their carts or where they got frustrated.
 
@@ -74,7 +74,7 @@ To track conversion journeys through post-purchase:
 3. Paste the same Clarity snippet.
 4. Click **Save**.
 
-*Note: Due to Shopify's checkout sandboxing on non-Plus plans, third-party analytics scripts run in restricted contexts on `/checkout`, but full session capture functions seamlessly across all catalog, product, cart, and post-purchase pages.*
+*Note: Due to Shopify's checkout sandboxing on non-Plus plans, third-party analytics scripts run in restricted contexts on `/checkout`, while full session capture records standard catalog, product, cart, and post-purchase pages.*
 
 ---
 
@@ -89,7 +89,7 @@ To track conversion journeys through post-purchase:
 
 ## Key Metrics to Monitor in Clarity
 
-Once traffic flows into your dashboard, focus on these high-leverage insights:
+Once traffic flows into your dashboard, focus on these three patterns:
 
 ### 1. Rage Clicks
 A customer repeatedly clicking on an element within a fraction of a second. This usually signals a broken button, an unlinked banner, or a slow Add-to-Cart trigger.

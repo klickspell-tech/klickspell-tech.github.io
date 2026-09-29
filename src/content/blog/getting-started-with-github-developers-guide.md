@@ -16,7 +16,7 @@ Creating a GitHub account is the first rite of passage for every modern programm
 
 However, many beginner tutorials stop after showing you how to click "Sign Up" on the website. Then, the moment you open your terminal to push your code, you hit frustrating authentication errors: `Permission denied (publickey)` or `Support for password authentication was removed`.
 
-In this guide, we walk through setting up your GitHub account properly from day one—including **global Git credentials**, **SSH keys**, and **pushing your first project**.
+In this guide, we walk through setting up your GitHub account properly from day one, including **global Git credentials**, **SSH keys**, and **pushing your first project**.
 
 ---
 
@@ -46,7 +46,7 @@ git config --list
 
 ## Step 3: Setting Up SSH Authentication (No More Passwords!)
 
-GitHub no longer accepts account passwords when pushing code via the command line. Instead, use an **SSH key** for seamless, encrypted authentication.
+GitHub no longer accepts account passwords when pushing code via the command line. Instead, use an **SSH key** for passwordless, secure authentication.
 
 ### 1. Generate a New SSH Key
 Run this command in terminal (press Enter to accept default file location and add an optional passphrase):

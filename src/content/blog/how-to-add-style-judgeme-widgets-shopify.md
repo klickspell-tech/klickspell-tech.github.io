@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/c5eGyQqOBbg" title="How to Add Judge.me widgets and style them in Shopify" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Customer reviews and social proof are the lifeblood of e-commerce conversions. Among all Shopify review apps, **Judge.me** remains an industry favorite due to its generous free tier, fast loading speeds, and robust rich-snippet schema support.
+Customer reviews and social proof drive online store conversions. Among Shopify review apps, **Judge.me** remains popular for its generous free tier, fast script loading, and built-in rich-snippet schema support.
 
 However, out-of-the-box review widgets often look generic: bright yellow stars, clashing default fonts, and standard padding that can disrupt a carefully crafted custom Shopify theme.
 
@@ -25,7 +25,7 @@ In this guide, we cover how to install Judge.me using **Shopify Online Store 2.0
 Before touching any code or theme settings, know which widgets drive the highest conversion lift:
 
 1. **Star Rating Badge (Preview Badge):** Placed right under the product title on product pages and on collection grid cards. Builds instant credibility before the customer even scrolls.
-2. **Core Review Widget:** The main container showcasing customer ratings, verified buyer badges, user-submitted photos, and review text.
+2. **Core Review Widget:** The main container displaying customer ratings, verified buyer badges, buyer photos, and detailed review text.
 3. **Reviews Carousel / Verified Badge:** Displayed on the homepage or dedicated social proof landing pages to highlight standout feedback.
 
 ---
@@ -71,7 +71,7 @@ Before writing custom CSS, tweak the native settings inside the Judge.me app das
 
 ## Step 4: Styling Judge.me with Custom CSS Overrides
 
-To achieve a true luxury look that seamlessly matches your brand typography, add scoped CSS overrides to your theme's custom CSS file (e.g., `theme.css` or the Custom CSS block in the theme editor):
+To match your store's typography and color palette, add scoped CSS overrides to your theme's custom stylesheet (such as `theme.css` or the Custom CSS block in the Shopify theme editor):
 
 ```css
 /* Custom typography & color refinement for Judge.me */

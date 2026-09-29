@@ -12,7 +12,7 @@ readingTime: "5 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/CkhdqJdHLcQ" title="How to Duplicate a Product & Update Variants in Shopify (Step-by-Step Tutorial)" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Creating a new product listing from scratch in Shopify can be tedious—especially when configuring multi-tiered variants, metafield specifications, shipping dimensions, and detailed HTML formatting across dozens of similar products.
+Creating a new product listing from scratch in Shopify can be tedious, especially when configuring multi-tiered variants, metafield specifications, shipping dimensions, and detailed HTML formatting across dozens of similar products.
 
 Instead of starting with a blank canvas every time, smart e-commerce teams use Shopify's built-in **Duplicate Product** feature. 
 

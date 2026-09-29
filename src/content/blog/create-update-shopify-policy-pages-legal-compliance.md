@@ -40,11 +40,11 @@ Shopify includes pre-drafted legal policy templates that you can automatically p
 1. In your Shopify Admin, click **Settings** (gear icon) in the bottom-left corner.
 2. Select **Policies** from the settings menu.
 3. You will see dedicated editor blocks for each policy:
-   - *Refund policy*
-   - *Privacy policy*
-   - *Terms of service*
-   - *Shipping policy*
-   - *Contact information*
+   - *Refund policy*: define your return window and restocking terms.
+   - *Privacy policy*: detail how customer data and cookies are handled.
+   - *Terms of service*: establish governing rules and store liability limits.
+   - *Shipping policy*: outline handling speeds, domestic carriers, and international delivery.
+   - *Contact information*: list your official business address, phone, and support email.
 4. For Privacy, Refund, and Terms of Service, click **Create from template**.
 5. Shopify will automatically draft an industry-standard template with your store name and email address inserted.
 
@@ -54,7 +54,7 @@ Shopify includes pre-drafted legal policy templates that you can automatically p
 
 Never publish the auto-generated templates without reading and tailoring them:
 
-- **Bracketed Placeholders:** Look for text enclosed in `[brackets]` like `[INSERT RETURN ADDRESS]` or `[INSERT RESTOCKING FEE]`. If left unedited, it looks unprofessional and signals an unverified store.
+- **Bracketed Placeholders:** Look for uppercase template placeholders like `INSERT RETURN ADDRESS` or `INSERT RESTOCKING FEE`. If left unedited, they look unprofessional and signal an unverified store.
 - **Return Window:** Align the return period with your fulfillment reality (e.g., *“Unopened items may be returned within 30 days of delivery”*).
 - **Non-Returnable Items:** Explicitly list exceptions (e.g., perishable goods, personalized custom products, intimate/sanitary items, gift cards).
 - **Customer Support Hours:** Specify realistic response windows (e.g., *“Our team responds to inquiries Monday–Friday within 24 business hours”*).

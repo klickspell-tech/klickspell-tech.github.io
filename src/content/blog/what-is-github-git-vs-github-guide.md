@@ -67,4 +67,4 @@ A Pull Request is a formal proposal to merge code from one branch into another. 
 
 Git gives you local time-travel over your project history, while GitHub gives you global collaboration, security, and cloud deployment.
 
-*Looking for seasoned full-stack engineers who follow strict Git version control and modern CI/CD best practices? [Partner with Klickspell](https://klickspell.com/#contact).*
+*Looking for seasoned full-stack engineers who follow strict Git version control and modern CI/CD workflows? [Partner with Klickspell](https://klickspell.com/#contact).*
