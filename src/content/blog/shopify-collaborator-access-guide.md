@@ -26,12 +26,15 @@ Here is the exact workflow for both agencies requesting access and merchants app
 
 ## Why Collaborator Accounts are Superior to Staff Accounts
 
-| Feature | Regular Staff Account | Collaborator Account |
-| :--- | :--- | :--- |
-| **Plan Seat Limits** | Restricted (e.g., 2 on Basic, 5 on Shopify) | **Unlimited** (doesn't count against limit) |
-| **Password Security** | Separate credentials created by merchant | Partner uses their own secure SSO & 2FA |
-| **Revocation** | Manual deletion required | One-click revocation anytime |
-| **Partner Dashboard** | Disconnected | Centralized multi-store switcher |
+<div class="table-scroll"><table>
+<thead><tr><th>Feature</th><th>Regular Staff Account</th><th>Collaborator Account</th></tr></thead>
+<tbody>
+<tr><td><strong>Plan Seat Limits</strong></td><td>Restricted (e.g., 2 on Basic, 5 on Shopify)</td><td><strong>Unlimited</strong> (doesn't count against limit)</td></tr>
+<tr><td><strong>Password Security</strong></td><td>Separate credentials created by merchant</td><td>Partner uses their own secure SSO &amp; 2FA</td></tr>
+<tr><td><strong>Revocation</strong></td><td>Manual deletion required</td><td>One-click revocation anytime</td></tr>
+<tr><td><strong>Partner Dashboard</strong></td><td>Disconnected</td><td>Centralized multi-store switcher</td></tr>
+</tbody>
+</table></div>
 
 ---
 
