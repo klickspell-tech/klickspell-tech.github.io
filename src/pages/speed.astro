@@ -901,7 +901,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
         statusBox.style.display = 'none';
       }
 
-      // Video Code Audit Lead Submission Handler (Supabase & Split Channels)
+      // Video Code Audit Lead Submission Handler (Frappe CRM & Split Channels)
       const videoAuditForm = document.getElementById('videoAuditForm');
       const auditContactInput = document.getElementById('auditContactInput');
       const auditBtnText = document.getElementById('auditBtnText');
@@ -912,9 +912,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
       let activeChannel = 'email';
 
-      // Supabase Configuration (reads from .env via Astro/Vite with fallback)
-      const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || 'https://uqdnisouonzvwvcipxbn.supabase.co';
-      const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Hbh8D_rSd_GVmqlRi_FgfA_rmCuvgmc';
+      const FRAPPE_CRM_URL = 'https://erp.klickspell.com';
 
       if (tabEmailBtn && tabWhatsAppBtn) {
         tabEmailBtn.addEventListener('click', () => {
@@ -960,25 +958,17 @@ const schemas = [webAppSchema, breadcrumbSchema];
             contact_info: contact,
             channel: activeChannel,
             detected_apps: detectedAppNames,
-            created_at: new Date().toISOString()
           };
 
-          // Submit to Supabase if configured
-          if (SUPABASE_URL && SUPABASE_ANON_KEY) {
-            try {
-              await fetch(`${SUPABASE_URL}/rest/v1/video_audits`, {
-                method: 'POST',
-                headers: {
-                  'apikey': SUPABASE_ANON_KEY,
-                  'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                  'Content-Type': 'application/json',
-                  'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify(payload)
-              });
-            } catch (err) {
-              console.warn('Supabase lead submission fallback:', err);
-            }
+          // Submit to Frappe CRM
+          try {
+            await fetch(`${FRAPPE_CRM_URL}/api/method/klickspell_customizations.api.website.video_audit_lead`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          } catch (err) {
+            console.warn('CRM lead submission fallback:', err);
           }
 
           await new Promise(r => setTimeout(r, 450));

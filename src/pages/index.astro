@@ -674,6 +674,32 @@ const schema = [
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section">
+      <div class="reveal">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h2 class="section-title">Have a project<br><em>in mind?</em></h2>
+        <p class="section-sub">Send a few details and we'll get back within one business day — or book a call directly below.</p>
+      </div>
+      <form id="contactForm" class="contact-form reveal reveal-delay-1">
+        <div class="contact-form-row">
+          <input type="text" id="contactName" name="first_name" placeholder="Your name" aria-label="Your name" required />
+          <input type="email" id="contactEmail" name="email" placeholder="Work email" aria-label="Work email" required />
+        </div>
+        <input type="text" id="contactOrg" name="organization" placeholder="Company (optional)" aria-label="Company" />
+        <textarea id="contactMessage" name="message" placeholder="Tell us about your project..." aria-label="Message" rows="4"></textarea>
+        <input type="text" id="contactCompanyUrl" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" id="contactSubmitBtn" class="btn-primary">
+          <span id="contactBtnText">Send message →</span>
+          <span id="contactBtnSpinner" class="scanner-spinner" style="display:none;"></span>
+        </button>
+        <div id="contactSuccess" class="video-audit-success" style="display:none;">Thanks — we'll be in touch within one business day.</div>
+        <div id="contactErrorBox" class="contact-error" style="display:none;">Something went wrong. Please try WhatsApp or email instead.</div>
+      </form>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-inner reveal">
@@ -728,5 +754,57 @@ const schema = [
         expEl.textContent = exp;
       }
     });
+  </script>
+
+  <!-- Contact Form Submission Handler (Frappe CRM). Not is:inline, because
+       import.meta.env is only replaced by Vite in processed (module) scripts —
+       an is:inline script is emitted as a classic <script> and import.meta
+       throws a SyntaxError there. -->
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      const FRAPPE_CRM_URL = import.meta.env.PUBLIC_FRAPPE_CRM_URL || 'https://erp.klickspell.com';
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const btnText = document.getElementById('contactBtnText');
+      const btnSpinner = document.getElementById('contactBtnSpinner');
+      const successBox = document.getElementById('contactSuccess');
+      const errorBox = document.getElementById('contactErrorBox');
+
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+        successBox.style.display = 'none';
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnSpinner.style.display = 'inline-block';
+
+        const payload = {
+          first_name: document.getElementById('contactName').value.trim(),
+          email: document.getElementById('contactEmail').value.trim(),
+          organization: document.getElementById('contactOrg').value.trim(),
+          message: document.getElementById('contactMessage').value.trim(),
+          company_url: document.getElementById('contactCompanyUrl').value.trim(),
+        };
+
+        try {
+          const res = await fetch(`${FRAPPE_CRM_URL}/api/method/klickspell_customizations.api.website.contact_lead`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+          contactForm.reset();
+          successBox.style.display = 'block';
+        } catch (err) {
+          console.warn('Contact form submission failed:', err);
+          errorBox.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          btnText.style.display = 'inline';
+          btnSpinner.style.display = 'none';
+        }
+      });
+    }
   </script>
 </BaseLayout>
