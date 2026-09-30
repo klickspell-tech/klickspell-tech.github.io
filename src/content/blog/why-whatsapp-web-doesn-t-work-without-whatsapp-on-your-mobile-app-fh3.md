@@ -19,7 +19,7 @@ But worry not I am here with an answer to that which I realized while reading th
 
 The privacy policy and its concern is a topic for another article first let's talk about this mystery before you jump out of this article.
 
-![Screenshot_Privacy Policy and 8 more pages - Personal - Microsoft​ Edge Dev_1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nhjoqeo4cpbbqdia5ndc.png)
+![Screenshot_Privacy Policy and 8 more pages - Personal - Microsoft Edge Dev_1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nhjoqeo4cpbbqdia5ndc.png)
 
 
 

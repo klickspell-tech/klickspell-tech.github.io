@@ -84,18 +84,18 @@ The open sourcing of the JavaScript engine by Netscape played a significant role
 
 So, while JavaScript was initially a proprietary technology, it eventually became open source through the release of the JavaScript engine source code by Netscape.
 
-Sadly, Netscape couldn’t escape the competition by a free browser even with the creation of JavaScript. Internet Explorer was bundled free with windows which Microsoft sold while Netscape use to sell the license to their browsers. And Netscape Navigator were also slow in shipping with the features.
+Sadly, Netscape couldn’t escape the competition from a free browser, even with the creation of JavaScript. Internet Explorer came pre-installed on every Windows machine, while Netscape still tried to sell software licenses. On top of that, Netscape Navigator was slow to ship updates.
 
-> _But eventually 2 good things happened amidst all this business wars — JavaScript, and Mozilla._
+> _But eventually 2 good things happened amidst all this business wars — JavaScript, and Mozilla._
 
 ### Conclusion
 
-These 2 stories at first seem to be unrelated.
+These two stories might seem unrelated at first.
 
-However, they highlight a significant aspect of open-source projects: they often stem from the business needs and strategies of organizations.
+Yet both show something fundamental about modern software: open-source milestones often start from concrete, urgent organizational constraints.
 
-While B and C were developed at Bell Labs to address the need for portability in the Unix operating system. The business needs to make Unix adaptable across different hardware platforms led to the creation of B and its successor, C.
+Bell Labs built B and C because they needed the Unix operating system to run across completely different hardware architectures without rewriting everything from scratch.
 
-Netscape’s decision to create JavaScript was driven by the desire to differentiate, gain competitive advantage, and build an ecosystem around their browser. The subsequent release of the JavaScript engine’s source code paved the way for collaboration, contributions, and the evolution of JavaScript.
+Netscape created JavaScript because they needed to defend their browser against Microsoft and create an interactive platform users couldn't find anywhere else. Releasing the engine’s source code opened the door to global contributions and standard bodies like ECMAScript.
 
-The story of JavaScript exemplifies how business needs can unintentionally give rise to powerful open-source projects. The strategic choices made to address market challenges and foster growth have transformed the software development landscape. Today, open-source projects thrive as they tap into the collective power of developers worldwide, driving innovation, accessibility, and community-driven progress.
+The history of JavaScript shows how practical commercial pressure can unintentionally spark open-source ecosystems. Netscape was fighting for browser survival, but the tool they rushed out in ten days ended up shaping how the modern web runs today.

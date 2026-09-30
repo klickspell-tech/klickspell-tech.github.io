@@ -1,6 +1,6 @@
 ---
 title: "How We Achieved a 99 PageSpeed Score: A Real-World Web Performance Case Study"
-description: "How we optimized Klickspell from the low 70s to a 99/100 PageSpeed score on desktop and 98/100 on mobile—covering WebP conversion, CSS inlining, self-hosted variable fonts, and eliminating forced reflows."
+description: "How we optimized Klickspell from the low 70s to a 99/100 PageSpeed score on desktop and 98/100 on mobile, covering WebP conversion, CSS inlining, self-hosted variable fonts, and eliminating forced reflows."
 pubDate: 2026-09-06T10:21:32.000Z
 author: "Atul Bhatt"
 tags: ["webperf","corewebvitals","lighthouse","astro"]
@@ -12,7 +12,7 @@ readingTime: "7 min read"
 
 Most web agencies and SaaS websites suffer from a silent conversion killer: **terrible mobile performance**.
 
-It’s surprisingly easy to get a 95+ score on desktop when running Lighthouse on an M3 MacBook over high-speed fiber. But when you switch that toggle to **Mobile**—where Google simulates an emulated budget Android device throttled to a 1.6 Mbps 4G connection with 150ms round-trip latency—the score crumbles into the 40s–70s.
+It’s surprisingly easy to get a 95+ score on desktop when running Lighthouse on an M3 MacBook over high-speed fiber. But when you switch that toggle to **Mobile** (where Google simulates a budget Android device on a throttled 1.6 Mbps connection with 150ms latency), the score crumbles into the 40s–70s.
 
 When we audited the initial release of [Klickspell](https://klickspell.com), we hit a familiar plateau: our desktop score was 99, but mobile was lagging with sluggish paint times, render-blocking chains, and cumulative layout shifts.
 
@@ -54,7 +54,7 @@ done
 * **Dimensions:** Added explicit `width` and `height` attributes to all `<img>` tags to give the browser aspect-ratio context, eliminating Cumulative Layout Shift.
 * **Lazy Loading:** Added `loading="lazy"` and `decoding="async"` to every single below-the-fold image across the homepage, team page, and case studies.
 
-**Result:** Total image weight dropped from **49.08 MB down to 3.33 MB**—a **45.75 MB saving**.
+**Result:** Total image weight dropped from **49.08 MB down to 3.33 MB**, saving **45.75 MB**.
 
 ---
 
@@ -65,7 +65,7 @@ PageSpeed reported:
 > *“Use efficient cache lifetimes — Est savings of 8 KiB (Cache TTL: 10m)”*
 
 ### The Problem:
-Loading styles via an external link (`<link rel="stylesheet" href="/assets/css/style.css" />`) forces the browser to halt HTML parsing, initiate a new TCP connection, and download the stylesheet before painting the very first pixel. Furthermore, GitHub Pages enforces a default `Cache-Control: max-age=600` (10 minutes) on static files, which triggers Lighthouse caching warnings.
+Loading styles via an external link (`<link rel="stylesheet" href="/assets/css/style.css" />`) forces the browser to halt HTML parsing, initiate a new TCP connection, and download the stylesheet before painting the very first pixel. On top of that, GitHub Pages enforces a default `Cache-Control: max-age=600` (10 minutes) on static files, which triggers Lighthouse caching warnings.
 
 ### The Fix:
 Because our global stylesheet was compact (~9 KiB gzipped), we configured Astro to inline all CSS directly into the HTML document:
@@ -239,7 +239,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 }
 ```
 
-Additionally, we deferred our third-party Cal.com scheduling embed until first user interaction (`scroll`, `touchstart`, or idle):
+We also deferred our third-party Cal.com scheduling embed until first user interaction (`scroll`, `touchstart`, or idle):
 
 ```javascript
 function loadCal() {
@@ -279,4 +279,4 @@ function loadCal() {
 4. **Self-host your fonts:** Google Fonts is great for rapid prototyping, but self-hosting variable `.woff2` files eliminates external handshakes and saves 300–800ms.
 5. **Keep mobile JS-free:** If an interaction (like smooth scrolling or mouse rings) doesn't apply to touchscreens, don't ship a single byte of it to mobile devices.
 
-Performance isn't an afterthought or a plugin you toggle on at the end—it’s an engineering discipline baked into every component, style, and asset.
+Performance isn't an afterthought or a plugin you toggle on at the end; it’s an engineering discipline baked into every component, style, and asset.
