@@ -57,7 +57,7 @@ Neither publicly documents native A/B testing on discount variants the way GoKwi
 
 ## What we actually do
 
-If a client is choosing a gateway from scratch and doesn't have a strong existing relationship with either, the pricing structure alone often settles it — Cashfree for a newer or lower-volume store, Razorpay once volume is high enough that the gap narrows and the RTO Protection backstop becomes more valuable. If a client's already deep in one ecosystem (existing settlements, reconciliation, accounting integrations), switching gateways purely for checkout-layer features is rarely worth the migration cost — we'd sooner layer GoKwik or tune the existing checkout than move the underlying payment relationship.
+If a client is choosing a gateway from scratch, the pricing structure alone often settles it — Cashfree for a newer or lower-volume store, Razorpay once volume is high enough that the gap narrows and the RTO Protection backstop becomes more valuable. Unlike the checkout-layer comparisons elsewhere on this site, this one *is* a genuine payment-gateway migration (settlement accounts, reconciliation, accounting integrations), so it carries real one-time switching cost worth weighing against the ongoing savings — we'll lay out both sides of that math rather than default to "stay put," since the better gateway on merit is sometimes worth the move.
 
 ---
 

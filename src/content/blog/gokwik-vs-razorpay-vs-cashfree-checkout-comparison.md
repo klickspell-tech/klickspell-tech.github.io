@@ -29,12 +29,12 @@ Every number in that table is cross-checked against both sides' own public claim
 ## The three-sentence version of each
 
 - **GoKwik** is the deepest option for COD-heavy, lower-AOV brands where RTO is a real, measured cost, and it's the only one of the three that bundles a genuine engagement/support layer (Kwik Engage) into the same platform.
-- **Razorpay Magic Checkout** is the lowest-friction choice if you're already on Razorpay and mostly prepaid — and it's the only one with an actual insurance-style RTO reimbursement product, not just prevention.
+- **Razorpay Magic Checkout** is the strongest fit for prepaid-leaning brands who want an actual insurance-style RTO reimbursement product, not just prevention — a genuine capability edge, not just "it's what you already use."
 - **Cashfree Checkout 360** is the one to start with if pricing transparency matters more than squeezing the last few points of RTO reduction — it's the only one where you can find real numbers without a sales call.
 
 ## What we actually do
 
-We implement GoKwik for clients (disclosure below), but which platform actually fits depends on COD mix, AOV, volume, and whether bundled engagement matters to you — not which one we have a partnership with. For a prepaid-leaning brand already on Razorpay, or a price-sensitive lower-volume store, the honest recommendation is sometimes one of the other two.
+We implement GoKwik for clients (disclosure below), but which platform actually fits depends on COD mix, AOV, volume, and whether bundled engagement matters to you — not which one we have a partnership with, and not which gateway you happen to be on today. Switching gateways is a solved problem, not a tiebreaker — for a prepaid-leaning brand or a price-sensitive lower-volume store, the honest recommendation is sometimes one of the other two, regardless of what they're currently using.
 
 **Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Razorpay or Cashfree. Every claim in this post and its companion comparisons is sourced from each platform's own public documentation, cross-checked rather than taken from a single sales deck.
 

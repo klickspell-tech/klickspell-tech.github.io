@@ -16,7 +16,7 @@ We implement GoKwik for clients (disclosure at the bottom), but this isn't a GoK
 
 ## The short version
 
-- **Already on Razorpay as your payment gateway, mostly prepaid, want unified reconciliation?** Magic Checkout is the lower-friction choice — it's an extension of infrastructure you already have, not a new platform.
+- **Mostly prepaid, and you want an RTO reimbursement backstop rather than just prevention?** Magic Checkout fits — not because of which gateway you happen to be on already (we treat switching as a solved problem, not a reason to pick a worse fit), but because its RTO Protection product and prepaid-leaning tooling are genuinely the better match.
 - **COD-heavy, lower AOV (sub-₹1,500), RTO is a real line item on your P&L?** GoKwik's prevention tooling is built specifically around that problem, and its network's RTO risk data is the deepest differentiator that's hard to replicate.
 - **Need WhatsApp/omnichannel engagement and AI-driven customer support, not just checkout?** That's not really a Razorpay category at all — GoKwik bundles it (Kwik Engage), Razorpay doesn't.
 
@@ -66,7 +66,7 @@ Based on how both position themselves plus what we've seen in practice:
 
 | | GoKwik | Razorpay Magic Checkout |
 |---|---|---|
-| Best fit | COD-heavy, lower AOV, RTO is a real cost | Prepaid-leaning, already on Razorpay |
+| Best fit | COD-heavy, lower AOV, RTO is a real cost | Prepaid-leaning, want an RTO reimbursement backstop |
 | Standout strength | RTO-risk data + prevention tooling | Unified reconciliation, mature coupon suite |
 | Engagement/support bundled | Yes (Kwik Engage) | No — payments-first, not a marketing platform |
 | A/B testing | Native | Via third-party integration |
