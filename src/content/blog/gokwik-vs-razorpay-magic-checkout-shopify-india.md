@@ -77,6 +77,8 @@ We implement GoKwik specifically because most of our clients are COD-heavy D2C b
 
 **Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Razorpay — the comparison above is as neutral as we could make it, cross-checked against both platforms' own public claims rather than taken from either one's sales deck alone.
 
+If Cashfree is also on your shortlist, we've done the same fact-check against it: [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) and [Razorpay Magic Checkout vs Cashfree Checkout 360](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360).
+
 ---
 
 ### Not sure which fits your store?
