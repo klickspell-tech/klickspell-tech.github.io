@@ -208,17 +208,17 @@ You can also browse the live, always-current collection directly on Shopify: [th
 
 ## Which One Fits Your Store?
 
-- **Fashion & apparel:** Dawn, Horizon, Colorblock, Fabric
-- **Beauty & wellness:** Sense, Refresh, Ritual, Pitch
-- **Food & beverage:** Crave, Taste, Refresh, Savor
-- **Jewelry, artisan & luxury goods:** Craft, Heritage, Atelier, Vessel
-- **Home décor & lifestyle:** Origin, Dwell, Fabric
-- **Creators, publishers & portfolios:** Studio, Publisher, Tinker
-- **Sports & outdoor:** Ride
-- **Wholesale / B2B:** Trade
-- **"Just get me launched" default:** Dawn (Dawn family) or Horizon (Horizon family)
+- **Fashion & apparel:** [Dawn](https://themes.shopify.com/themes/dawn), [Horizon](https://themes.shopify.com/themes/horizon), [Colorblock](https://themes.shopify.com/themes/colorblock), [Fabric](https://themes.shopify.com/themes/fabric)
+- **Beauty & wellness:** [Sense](https://themes.shopify.com/themes/sense), [Refresh](https://themes.shopify.com/themes/refresh), [Ritual](https://themes.shopify.com/themes/ritual), [Pitch](https://themes.shopify.com/themes/pitch)
+- **Food & beverage:** [Crave](https://themes.shopify.com/themes/crave), [Taste](https://themes.shopify.com/themes/taste), [Refresh](https://themes.shopify.com/themes/refresh), [Savor](https://themes.shopify.com/themes/savor)
+- **Jewelry, artisan & luxury goods:** [Craft](https://themes.shopify.com/themes/craft), [Heritage](https://themes.shopify.com/themes/heritage), [Atelier](https://themes.shopify.com/themes/atelier), [Vessel](https://themes.shopify.com/themes/vessel)
+- **Home décor & lifestyle:** [Origin](https://themes.shopify.com/themes/origin), [Dwell](https://themes.shopify.com/themes/dwell), [Fabric](https://themes.shopify.com/themes/fabric)
+- **Creators, publishers & portfolios:** [Studio](https://themes.shopify.com/themes/studio), [Publisher](https://themes.shopify.com/themes/publisher), [Tinker](https://themes.shopify.com/themes/tinker)
+- **Sports & outdoor:** [Ride](https://themes.shopify.com/themes/ride)
+- **Wholesale / B2B:** [Trade](https://themes.shopify.com/themes/trade)
+- **"Just get me launched" default:** [Dawn](https://themes.shopify.com/themes/dawn) (Dawn family) or [Horizon](https://themes.shopify.com/themes/horizon) (Horizon family)
 
-If your store spans more than one category, default to **Dawn** or **Horizon**; they are neutral enough to not fight your branding.
+If your store spans more than one category, default to **[Dawn](https://themes.shopify.com/themes/dawn)** or **[Horizon](https://themes.shopify.com/themes/horizon)**; they are neutral enough to not fight your branding.
 
 ---
 
