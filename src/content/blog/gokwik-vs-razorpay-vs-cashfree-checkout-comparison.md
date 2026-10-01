@@ -10,6 +10,8 @@ readingTime: "5 min read"
 
 If you're evaluating a 1-click checkout for an Indian Shopify store, these are the three names you'll keep running into: **GoKwik (Kwik Checkout)**, **Razorpay (Magic Checkout)**, and **Cashfree (Checkout 360)**. We've written a fact-checked deep-dive on each pair — [GoKwik vs Razorpay](/blog/gokwik-vs-razorpay-magic-checkout-shopify-india), [GoKwik vs Cashfree](/blog/gokwik-vs-cashfree-checkout-360-shopify-india), [Razorpay vs Cashfree](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360) — this post is the single-page version: all three, side by side, plus a quiz if you'd rather skip the reading.
 
+Worth knowing upfront: we're a referral partner for all three platforms, so we earn a commission regardless of which one a merchant picks — there's no single-platform incentive shaping what follows.
+
 **[Take the 2-minute checkout quiz →](/checkout-quiz)** Answer 5 questions about your COD mix, AOV, and priorities, get an instant recommendation with reasons.
 
 ## The one-table version
