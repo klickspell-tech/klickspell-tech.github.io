@@ -2232,6 +2232,81 @@ footer { background:var(--text); padding:3rem 2rem; }
   color: #137333;
 }
 
+/* Audio Player ("Listen to this article") */
+.post-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: .85rem 1.1rem;
+  background: var(--bg-card);
+  border: .5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.audio-play-btn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .2s var(--ease), background .2s var(--ease);
+}
+.audio-play-btn:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+.audio-play-btn svg {
+  margin-left: 1px; /* optical centering for the play triangle */
+}
+.audio-play-btn .icon-pause {
+  margin-left: 0;
+}
+.audio-player-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.audio-player-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.audio-progress-track {
+  position: relative;
+  height: 5px;
+  border-radius: 100px;
+  background: var(--border);
+  cursor: pointer;
+}
+.audio-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 100px;
+  background: var(--accent);
+  transition: width .1s linear;
+}
+.audio-player-time {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-light);
+  min-width: 32px;
+  text-align: right;
+}
+
 /* ==========================================================================
    IN-ARTICLE CONVERSION CALLOUT CARD
    ========================================================================== */

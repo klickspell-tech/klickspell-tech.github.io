@@ -176,6 +176,23 @@ const audioUrl = `/audio/blog/${post.slug}.mp3`;
         )}
       </div>
 
+      {hasAudio && (
+        <div class="post-audio-player reveal reveal-delay-2">
+          <button type="button" class="audio-play-btn" id="audioPlayBtn" aria-label="Play audio version of this article">
+            <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          </button>
+          <div class="audio-player-info">
+            <span class="audio-player-label">Listen to this article</span>
+            <div class="audio-progress-track" id="audioProgressTrack">
+              <div class="audio-progress-fill" id="audioProgressFill"></div>
+            </div>
+          </div>
+          <span class="audio-player-time" id="audioPlayerTime">0:00</span>
+          <audio id="postAudioEl" preload="none" src={audioUrl}></audio>
+        </div>
+      )}
+
       {post.data.devtoUrl && (
         <div class="canonical-banner reveal reveal-delay-2">
           <span>💡</span>
@@ -342,6 +359,58 @@ const audioUrl = `/audio/blog/${post.slug}.mp3`;
           }
         }, { passive: true });
         updateProgress();
+      }
+
+      // Audio Player ("Listen to this article")
+      const audioEl = document.getElementById('postAudioEl');
+      const playBtn = document.getElementById('audioPlayBtn');
+      const progressTrack = document.getElementById('audioProgressTrack');
+      const progressFill = document.getElementById('audioProgressFill');
+      const timeLabel = document.getElementById('audioPlayerTime');
+      if (audioEl && playBtn) {
+        const iconPlay = playBtn.querySelector('.icon-play');
+        const iconPause = playBtn.querySelector('.icon-pause');
+        function formatTime(seconds) {
+          if (!isFinite(seconds)) return '0:00';
+          const m = Math.floor(seconds / 60);
+          const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+          return m + ':' + s;
+        }
+        playBtn.addEventListener('click', function() {
+          if (audioEl.paused) {
+            audioEl.play();
+          } else {
+            audioEl.pause();
+          }
+        });
+        audioEl.addEventListener('play', function() {
+          iconPlay.style.display = 'none';
+          iconPause.style.display = '';
+          playBtn.setAttribute('aria-label', 'Pause audio version of this article');
+        });
+        audioEl.addEventListener('pause', function() {
+          iconPlay.style.display = '';
+          iconPause.style.display = 'none';
+          playBtn.setAttribute('aria-label', 'Play audio version of this article');
+        });
+        audioEl.addEventListener('ended', function() {
+          progressFill.style.width = '0%';
+          timeLabel.textContent = formatTime(audioEl.duration);
+        });
+        audioEl.addEventListener('timeupdate', function() {
+          const pct = audioEl.duration ? (audioEl.currentTime / audioEl.duration) * 100 : 0;
+          progressFill.style.width = pct + '%';
+          timeLabel.textContent = formatTime(audioEl.currentTime);
+        });
+        audioEl.addEventListener('loadedmetadata', function() {
+          timeLabel.textContent = formatTime(audioEl.duration);
+        });
+        progressTrack.addEventListener('click', function(e) {
+          if (!audioEl.duration) return;
+          const rect = progressTrack.getBoundingClientRect();
+          const pct = (e.clientX - rect.left) / rect.width;
+          audioEl.currentTime = pct * audioEl.duration;
+        });
       }
 
       // Copy Link Button with Visual Feedback
