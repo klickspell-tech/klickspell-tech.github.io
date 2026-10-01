@@ -32,6 +32,10 @@ Every number in that table is cross-checked against both sides' own public claim
 - **Razorpay Magic Checkout** is the strongest fit for prepaid-leaning brands who want an actual insurance-style RTO reimbursement product, not just prevention — a genuine capability edge, not just "it's what you already use."
 - **Cashfree Checkout 360** is the one to start with if pricing transparency matters more than squeezing the last few points of RTO reduction — it's the only one where you can find real numbers without a sales call.
 
+## The point that applies equally to all three
+
+Shopify charges its own transaction fee (2% on Basic, down to 0.5-0.6% on Advanced) whenever you use a payment gateway other than Shopify Payments — which isn't available in India at all, so every Indian Shopify store pays it by default. All three quick-checkout tools sidestep this the same way: the completed order gets injected into Shopify via API as a "draft order marked as paid," which Shopify's fee policy classifies as a manual payment method and exempts entirely. On a ₹10L/month store on Shopify Basic, that's roughly **₹20,000/month (₹2.4L/year)** avoided — before counting any RTO or conversion benefit. It's not a reason to pick one of the three over another, but it is a reason to use one of them at all instead of a bare Shopify checkout + standard gateway.
+
 ## What we actually do
 
 We implement GoKwik for clients (disclosure below), but which platform actually fits depends on COD mix, AOV, volume, and whether bundled engagement matters to you — not which one we have a partnership with, and not which gateway you happen to be on today. Switching gateways is a solved problem, not a tiebreaker — for a prepaid-leaning brand or a price-sensitive lower-volume store, the honest recommendation is sometimes one of the other two, regardless of what they're currently using.

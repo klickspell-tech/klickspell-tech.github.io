@@ -75,6 +75,8 @@ Worth being upfront about, since it's easy to assume GoKwik is a drop-in free la
 
 None of this changes the conversion/RTO math above — it just means the honest pitch is "a checkout layer plus platform fee on top of what you already pay your gateway," not "replace your payment stack for free."
 
+**One real saving that offsets some of this, though:** Shopify charges its own transaction fee (2% on the Basic plan, scaling down to 0.5-0.6% on Advanced) whenever you use a payment gateway other than Shopify Payments — and Shopify Payments isn't available in India at all. Quick-checkout tools like Kwik Checkout sidestep this entirely: the order gets injected into Shopify via API as a "draft order marked as paid," which Shopify's own fee policy classifies as a manual payment method and exempts. On a ₹10L/month store on Shopify Basic, that's roughly **₹20,000/month (₹2.4L/year)** in Shopify fees you're not paying — on top of whatever RTO and conversion benefit the checkout itself delivers. Worth knowing this mechanism exists and isn't unique to GoKwik — Razorpay Magic Checkout and Cashfree Checkout 360 get the same exemption the same way.
+
 ## Who this makes sense for
 
 Realistically, this is worth implementing once a store has enough COD volume for RTO to be a real line item — not a pre-launch store with no order history yet. If you're seeing meaningful COD orders every week and you've never actually measured your RTO rate, that's usually the first sign it's worth a look.
