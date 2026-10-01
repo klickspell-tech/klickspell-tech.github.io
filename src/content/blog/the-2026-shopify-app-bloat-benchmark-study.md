@@ -38,7 +38,7 @@ Page builders provide drag-and-drop convenience at the cost of extreme DOM nesti
 | **Shogun Page Builder** | ~720 KB | 850 ms | -20 pts |
 | **GemPages** | ~580 KB | 650 ms | -15 pts |
 
-*Recommendation*: Replace page-builder landing pages with bespoke Shopify 2.0 sections built natively in Liquid and CSS Grid.
+*Recommendation*: Replace page-builder landing pages with native Shopify 2.0 sections built in Liquid and CSS Grid.
 
 ---
 

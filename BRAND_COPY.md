@@ -31,7 +31,7 @@ We build the digital products, Webflow sites, and stores you actually imagined �
 ## Service Descriptions
 
 ### Shopify & E-Commerce Engineering
-Custom Shopify stores built from the ground up — bespoke Liquid themes, Hydrogen headless builds, and customizer sections you can actually edit without developer help. Zero template lock-in.
+Custom Shopify stores built from the ground up — custom Liquid themes, Hydrogen headless builds, and customizer sections you can actually edit without developer help. Zero template lock-in.
 
 ### Webflow & Visual Development
 World-class Webflow marketing sites for B2B SaaS, tech startups, and agencies. Fast load speeds, dynamic CMS architecture, and silky interactions.

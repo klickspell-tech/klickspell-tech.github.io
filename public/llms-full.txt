@@ -45,7 +45,7 @@
 - **URL:** https://klickspell.com/services/custom-shopify-development
 - **The Problem:** Generic off-the-shelf themes and visual page builders (PageFly, Shogun, GemPages) introduce heavy JS bundles, break mobile responsiveness, and lock brands into monthly app subscriptions.
 - **The Solution:**
-  - 100% bespoke Liquid 2.0 themes crafted from custom Figma designs.
+  - 100% custom Liquid 2.0 themes crafted from Figma designs.
   - Granular theme customizer section blocks giving marketing teams complete control over copy, layouts, badges, and media.
   - Custom subscription flows (Recharge, Bold) and custom bundle builders.
   - Clean handover with video documentation and zero page-builder overhead.

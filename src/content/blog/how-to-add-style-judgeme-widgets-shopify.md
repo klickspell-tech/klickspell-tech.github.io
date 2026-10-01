@@ -16,7 +16,7 @@ Customer reviews and social proof drive online store conversions. Among Shopify 
 
 However, out-of-the-box review widgets often look generic: bright yellow stars, clashing default fonts, and standard padding that can disrupt a carefully crafted custom Shopify theme.
 
-In this guide, we cover how to install Judge.me using **Shopify Online Store 2.0 App Blocks**, place widgets in high-converting positions, and apply clean CSS overrides to make them look completely bespoke.
+In this guide, we cover how to install Judge.me using **Shopify Online Store 2.0 App Blocks**, place widgets in high-converting positions, and apply clean CSS overrides to match your custom theme.
 
 ---
 

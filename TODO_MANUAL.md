@@ -216,7 +216,7 @@ Launching your free tool on Product Hunt generates immediate backlinks, social b
      ```text
      Hey Product Hunt! 👋
 
-     I'm Atul, lead engineer at Klickspell. Over the past 3 years building bespoke Shopify stores, we noticed an almost universal problem: merchants install apps for reviews, popups, and subscriptions, and their mobile site speed collapses into the 30s.
+     I'm Atul, lead engineer at Klickspell. Over the past 3 years building custom Shopify stores, we noticed an almost universal problem: merchants install apps for reviews, popups, and subscriptions, and their mobile site speed collapses into the 30s.
 
      Most merchants don't know which specific app is destroying their Core Web Vitals.
 

@@ -22,7 +22,7 @@ In this guide, we cover how to install, configure, and use MCP servers inside An
 
 ## What is MCP and Why Does it Matter?
 
-Before MCP, if you wanted your AI coding assistant to query your local SQLite database or your team's GitHub issues, you had to manually copy-paste schema dumps or write bespoke plugins.
+Before MCP, if you wanted your AI coding assistant to query your local SQLite database or your team's GitHub issues, you had to manually copy-paste schema dumps or write custom plugins.
 
 MCP acts as a **USB-C port for AI applications**:
 - Any MCP-compliant server (PostgreSQL, filesystem, Brave Search, GitHub, Docker) plugs directly into any MCP-compliant AI client.

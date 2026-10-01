@@ -92,4 +92,4 @@ Want to use your own domain instead of `github.io`?
 
 GitHub Pages is the fastest, zero-cost method to get frontend code live on the web with enterprise-grade CDN distribution.
 
-*Need custom high-converting landing pages, Webflow builds, or bespoke web applications? [Explore Klickspell's services](https://klickspell.com/#services).*
+*Need high-converting landing pages, Webflow builds, or custom web applications? [Explore Klickspell's services](https://klickspell.com/#services).*

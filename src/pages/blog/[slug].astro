@@ -5,6 +5,8 @@ import Footer from '../../components/Footer.astro';
 import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getPostTopic } from '../../utils/topics';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -127,6 +129,13 @@ const relatedPosts = allPosts
   .map((item) => item.post);
 
 const schemas = [articleSchema, breadcrumbSchema];
+
+// Audio is pre-generated locally (scripts/tts/) and committed under
+// public/audio/blog/ - not every post has one, so check at build time
+// rather than assume.
+const audioPath = fileURLToPath(new URL(`../../../public/audio/blog/${post.slug}.mp3`, import.meta.url));
+const hasAudio = existsSync(audioPath);
+const audioUrl = `/audio/blog/${post.slug}.mp3`;
 ---
 
 <BaseLayout
@@ -234,7 +243,7 @@ const schemas = [articleSchema, breadcrumbSchema];
         <div class="in-article-cta reveal">
           <span class="in-article-cta-badge">Custom Shopify Engineering</span>
           <h3 class="in-article-cta-title">Scaling a high-growth Shopify brand?<br><em>Skip fragile apps. Build custom Liquid.</em></h3>
-          <p class="in-article-cta-desc">We engineer custom Shopify themes, bespoke sections, and high-converting store architectures for brands that refuse to compromise on design, speed, or autonomy.</p>
+          <p class="in-article-cta-desc">We engineer custom Shopify themes, tailored sections, and high-converting store architectures for brands that refuse to compromise on design, speed, or autonomy.</p>
           <div class="in-article-cta-actions">
             <a href="/services/custom-shopify-development" class="btn-primary">Explore Custom Shopify Dev →</a>
             <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-ghost" style="cursor:pointer">Book Free 30-Min Call ↗</a>
@@ -242,7 +251,7 @@ const schemas = [articleSchema, breadcrumbSchema];
         </div>
       ) : (
         <div class="in-article-cta reveal">
-          <span class="in-article-cta-badge">Bespoke Full-Stack Engineering</span>
+          <span class="in-article-cta-badge">Full-Stack Web Engineering</span>
           <h3 class="in-article-cta-title">Need technical precision for your web stack?<br><em>Architected for performance &amp; scale.</em></h3>
           <p class="in-article-cta-desc">From modern headless commerce to enterprise infrastructure and clean frontend state systems, Klickspell delivers senior engineering craft without agency bloat.</p>
           <div class="in-article-cta-actions">

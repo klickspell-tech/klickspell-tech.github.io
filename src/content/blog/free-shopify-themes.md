@@ -239,7 +239,7 @@ You can add several free themes to your library at once and compare them before 
 
 Free themes are production-ready. Plenty of funded brands launch on Dawn or Horizon and stay there for years. Where they start to limit you:
 
-- You need a **layout Shopify's editor can't produce** (non-standard product pages, unusual navigation, bespoke animations).
+- You need a **layout Shopify's editor can't produce** (non-standard product pages, unusual navigation, custom animations).
 - You're stacking **five or more apps** just to fake features a custom theme could build natively, which is usually what slows down your store in the first place.
 - Your brand identity needs to feel **unmistakably yours**, not "recognizably Dawn with a different font."
 
