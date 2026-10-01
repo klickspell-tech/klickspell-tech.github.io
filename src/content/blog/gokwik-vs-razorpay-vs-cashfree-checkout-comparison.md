@@ -22,7 +22,7 @@ If you're evaluating a 1-click checkout for an Indian Shopify store, these are t
 | Discount stacking | Native, tied to RTO risk engine | Coupon Suite — multicoupon, tiered, audience-targeted | Stacked discounts, BxGy, prepaid-specific, No Cost EMI |
 | A/B testing | Native (Kwik Flows) | Via third-party (CustomFit.ai) | Not publicly documented |
 | Engagement/support bundled | Yes — Kwik Engage (WhatsApp/AI chatbot, 80%+ autonomous resolution) | No | No |
-| Checkout-layer pricing | [₹3,000/mo + 3.5% COD fee](https://www.gokwik.co/pricing), up to 2,000 orders/month; Enterprise custom above that | Custom quote, enterprise sales (on top of [2%+GST gateway fee](https://razorpay.com/pricing/)) | Bundled into [standard 1.95% rate](https://www.cashfree.com/payment-gateway-charges/) (+ time-limited 0%-to-₹20L new-merchant promo through Mar 2027) |
+| Checkout-layer pricing | [₹3,000/mo + 3.5% COD fee](https://www.gokwik.co/pricing), up to 2,000 orders/month; Enterprise custom above that | Custom quote, enterprise sales (on top of [standard 2% gateway fee](https://razorpay.com/pricing/) + time-limited 0%-for-90-days new-merchant promo, under ₹5L/mo) | Bundled into [standard 1.95% rate](https://www.cashfree.com/payment-gateway-charges/) (+ time-limited 0%-to-₹20L new-merchant promo through Mar 2027) |
 
 Every number in that table is cross-checked against both sides' own public claims, not taken from any single vendor's sales deck — see the individual comparison posts for the sourcing on each row.
 
@@ -30,7 +30,7 @@ Every number in that table is cross-checked against both sides' own public claim
 
 - **GoKwik** is the deepest option for COD-heavy, lower-AOV brands where RTO is a real, measured cost, and it's the only one of the three that bundles a genuine engagement/support layer (Kwik Engage) into the same platform.
 - **Razorpay Magic Checkout** is the strongest fit for prepaid-leaning brands who want an actual insurance-style RTO reimbursement product, not just prevention — a genuine capability edge, not just "it's what you already use."
-- **Cashfree Checkout 360** is still the simplest to price out without a sales call — a flat [1.95% standard rate](https://www.cashfree.com/payment-gateway-charges/) (plus a time-limited 0%-up-to-₹20L new-merchant promo through March 2027) with no order-count ceiling, versus GoKwik's published rate being capped at 2,000 orders/month before it reverts to custom quotes. Razorpay remains the only one of the three with no published number at all.
+- **Cashfree Checkout 360** is still the simplest to price out without a sales call — a flat [1.95% standard rate](https://www.cashfree.com/payment-gateway-charges/) (plus a time-limited 0%-up-to-₹20L new-merchant promo through March 2027) with no order-count ceiling, versus GoKwik's published rate being capped at 2,000 orders/month before it reverts to custom quotes. Razorpay's *gateway* fee also now has a time-limited 0%-for-90-days promo under ₹5L/month, but Magic Checkout's own incremental fee stays completely unpublished regardless — it's the one checkout-layer price that's never public, promo or not.
 
 ## The point that applies equally to all three
 

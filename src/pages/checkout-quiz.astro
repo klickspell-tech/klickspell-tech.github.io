@@ -282,12 +282,16 @@ const schemas = [webAppSchema, breadcrumbSchema];
         },
         volume: {
           // GoKwik's published Emerging Plan rate (₹3,000/mo + 3.5% COD fee)
-          // specifically covers 0-2,000 orders/month, so it no longer makes
-          // sense to penalize GoKwik at low volume - that assumption predates
-          // GoKwik publishing this rate. Cashfree's flat 1.95% also applies
-          // at any volume with no order-count cap. Razorpay remains the one
-          // with no published number regardless of volume.
-          low:  { cashfree: 1, gokwik: 1, razorpay: -1 },
+          // specifically covers 0-2,000 orders/month - a standing published
+          // rate for the checkout product itself. Cashfree's Checkout 360
+          // appears bundled into its flat 1.95% standing gateway rate, no
+          // order-count cap. Razorpay's base gateway rate (2%, or a current
+          // time-limited 0%-for-90-days promo under Rs5L/mo) is published
+          // too, but Magic Checkout's own incremental fee stays unpublished
+          // regardless of volume or promo - so no penalty (it's not worse
+          // than before), but no credit either, since the actual checkout
+          // product being compared here is still opaque either way.
+          low:  { cashfree: 1, gokwik: 1 },
           mid:  { gokwik: 1, razorpay: 1, cashfree: 1 },
           high: { gokwik: 1, razorpay: 1 }
         },
@@ -297,8 +301,9 @@ const schemas = [webAppSchema, breadcrumbSchema];
           // volume. GoKwik now also publishes a real entry-tier rate (capped
           // at 2,000 orders/month), so it gets real but smaller credit here -
           // it's no longer accurate to say Cashfree is the only one with
-          // public pricing. Razorpay still publishes nothing for Magic
-          // Checkout itself.
+          // public pricing. Razorpay's base gateway rate is published (plus
+          // a time-limited promo), but Magic Checkout's own incremental fee
+          // - the actual product being compared - still isn't, regardless.
           cost:       { cashfree: 3, gokwik: 1 },
           rto:        { gokwik: 3 },
           engagement: { gokwik: 3 }
@@ -326,12 +331,12 @@ const schemas = [webAppSchema, breadcrumbSchema];
           high: "AOV above ₹3,000: Razorpay gets credit here for its RTO Protection reimbursement backstop — the rupee value at risk per failed delivery is higher, so a reimbursement product matters more."
         },
         volume: {
-          low:  "Under 500 orders/month: both GoKwik (its Emerging Plan rate is built for 0–2,000 orders/month) and Cashfree (flat 1.95%, no order-count cap) have real published pricing at this size. Razorpay has no published number at any volume, which is a bigger practical gap when you're small, so it gets a small penalty here.",
+          low:  "Under 500 orders/month: GoKwik's Emerging Plan is a standing published rate built for 0–2,000 orders/month, and Cashfree's flat 1.95% standing rate applies with no order-count cap — both get credit. Razorpay's base gateway rate is published too (plus a current time-limited 0%-for-90-days promo under ₹5L/month), but Magic Checkout's own incremental fee — the actual product being compared here — stays unpublished regardless of volume, so it gets neither a penalty nor credit.",
           mid:  "500–5,000 orders/month: no platform has a clear edge at this volume, so all three get an equal small nudge.",
           high: "5,000+ orders/month: GoKwik and Razorpay both get a small nudge here; we don't have an independently-verified reason to favor Cashfree specifically at this scale."
         },
         priority: {
-          cost:       "You prioritized pricing transparency: Cashfree's flat 1.95% standard rate has no order-count ceiling, the simplest of the three to compare, so it gets the most credit. GoKwik now also publishes a real entry-tier rate (capped at 2,000 orders/month), so it gets some credit too. Razorpay still publishes nothing for Magic Checkout itself, so it gets none here.",
+          cost:       "You prioritized pricing transparency: Cashfree's flat 1.95% standard rate has no order-count ceiling, the simplest of the three to compare, so it gets the most credit. GoKwik now also publishes a real entry-tier rate (capped at 2,000 orders/month), so it gets some credit too. Razorpay's base gateway rate is published (plus a time-limited new-merchant promo), but Magic Checkout's own incremental fee — the actual checkout product — still isn't, so it gets none here.",
           rto:        "You prioritized RTO prevention: GoKwik's network has the deepest RTO-specific data of the three against what we could independently verify, so it gets the strongest credit here.",
           engagement: "You prioritized bundled engagement/support: only GoKwik bundles this natively (Kwik Engage) — Razorpay and Cashfree are payments-first, not marketing platforms, so GoKwik gets full credit and the other two get none."
         }

@@ -54,7 +54,7 @@ What's still genuinely different:
 ## Pricing: GoKwik publishes a starting rate, Razorpay doesn't
 
 - **GoKwik**: publishes an actual entry-tier rate card on its own site — the **Emerging Plan** is ₹3,000/month + a 3.5% COD fee + applicable PA (payment aggregator) charges, for stores doing 0–2,000 orders/month. Above that, it's Enterprise/custom pricing, contact sales. (Worth confirming directly whether that 3.5% applies to COD orders specifically or across all transactions — GoKwik's own pricing page isn't fully explicit on that point.)
-- **Razorpay Magic Checkout**: still enterprise-only, contact sales, no published number — on top of Razorpay's standard ~2% gateway fee.
+- **Razorpay Magic Checkout**: still enterprise-only, contact sales, no published number for the checkout layer itself — on top of Razorpay's standard gateway fee ([razorpay.com/pricing](https://razorpay.com/pricing/)), which is currently running its own new-merchant promo too: **0% platform fee for the first 90 days** for merchants under ₹5L/month (same situation as Cashfree — a time-limited offer, not the standing rate, so confirm it's still live before quoting it). Magic Checkout's own incremental fee stays unpublished either way, promo or not.
 
 If you're a lower-volume store (under 2,000 orders/month), GoKwik is the one with an actual number you can do napkin math on before a sales call. If you're already a Razorpay merchant, Magic Checkout is at least a single vendor relationship and one invoice; GoKwik is a second platform on top of whatever gateway you use. Either way, get the real number for your specific volume before assuming either is the cheaper path.
 
