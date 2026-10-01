@@ -286,7 +286,30 @@ We created a complete database schema file at [`supabase/schema.sql`](file:///Us
 
 ---
 
-## 12. Summary of Automated Verification Commands
+## 12. Cartesia Voice Cloning Setup (Blog "Listen to this Article" Audio)
+
+The blog audio player (`src/pages/blog/[slug].astro`) and generation script (`scripts/tts/generate.py`) are already built and working, using a local open-source model (Kokoro) — but pronunciation on jargon/acronyms/brand names wasn't good enough to leave live, so the generated audio was pulled down. Decision: switch to **Cartesia** (cloned to your own voice) instead of a generic TTS voice — better quality, and it's actually you narrating.
+
+Chosen over ElevenLabs: same $5/month entry price, but Cartesia's Pro plan gives **100,000 credits/month vs ElevenLabs' 30,000** (~6 posts/month at our typical post length vs ~2-5), and voice cloning only needs a 10-second sample vs ElevenLabs' 1-3 minutes.
+
+- [ ] **Sign up for Cartesia and get the Pro plan**:
+  1. Open [cartesia.ai](https://cartesia.ai) and create an account.
+  2. Upgrade to the **Pro plan ($5/month)** — this unlocks instant voice cloning and commercial usage rights (the free tier doesn't include either).
+
+- [ ] **Clone your voice**:
+  1. Record (or find) a clean ~10-30 second audio sample of yourself speaking clearly, no background noise.
+  2. In the Cartesia dashboard, use **Voice Cloning → Instant Clone**, upload the sample, and give it a name (e.g. "Atul - Klickspell Blog").
+  3. Note the resulting **Voice ID** — you'll need to send this over.
+
+- [ ] **Get an API key**:
+  1. In the Cartesia dashboard, go to **API Keys** and generate one.
+  2. Send the key over (or add it directly as an environment variable — never commit it to git) so the generation script can be wired up against it, replacing the local Kokoro step.
+
+Once these three are done, the existing `scripts/tts/generate.py` gets rewritten to call Cartesia's API with your cloned voice instead of running Kokoro locally — same workflow otherwise (generate → commit the MP3 → it shows up on the post automatically).
+
+---
+
+## 13. Summary of Automated Verification Commands
 
 You can run these anytime locally to verify the health of your site:
 
