@@ -201,16 +201,16 @@ const schemas = [webAppSchema, breadcrumbSchema];
             <p class="estimator-results-sub" id="quizResultSub">Answer the questions on the left to see your recommendation update live.</p>
 
             <div class="estimator-meters">
-              <div class="estimator-meter-item">
-                <span class="estimator-meter-label">GoKwik Kwik Checkout:</span>
+              <div class="estimator-meter-item" id="rowGokwik">
+                <span class="estimator-meter-label" id="labelGokwik">GoKwik Kwik Checkout:</span>
                 <span class="estimator-meter-val" id="scoreGokwik">0%</span>
               </div>
-              <div class="estimator-meter-item">
-                <span class="estimator-meter-label">Razorpay Magic Checkout:</span>
+              <div class="estimator-meter-item" id="rowRazorpay">
+                <span class="estimator-meter-label" id="labelRazorpay">Razorpay Magic Checkout:</span>
                 <span class="estimator-meter-val" id="scoreRazorpay">0%</span>
               </div>
-              <div class="estimator-meter-item">
-                <span class="estimator-meter-label">Cashfree Checkout 360:</span>
+              <div class="estimator-meter-item" id="rowCashfree">
+                <span class="estimator-meter-label" id="labelCashfree">Cashfree Checkout 360:</span>
                 <span class="estimator-meter-val" id="scoreCashfree">0%</span>
               </div>
             </div>
@@ -364,6 +364,8 @@ const schemas = [webAppSchema, breadcrumbSchema];
       const reasonsBox = document.getElementById('quizReasonsBox');
       const readMoreLink = document.getElementById('quizReadMoreLink');
       const meterEls = { gokwik: document.getElementById('scoreGokwik'), razorpay: document.getElementById('scoreRazorpay'), cashfree: document.getElementById('scoreCashfree') };
+      const rowEls = { gokwik: document.getElementById('rowGokwik'), razorpay: document.getElementById('rowRazorpay'), cashfree: document.getElementById('rowCashfree') };
+      const labelEls = { gokwik: document.getElementById('labelGokwik'), razorpay: document.getElementById('labelRazorpay'), cashfree: document.getElementById('labelCashfree') };
 
       function getAnswers() {
         const answers = {};
@@ -410,6 +412,22 @@ const schemas = [webAppSchema, breadcrumbSchema];
         // questions worth 1-3 points each, so a gap of 1 or less is a
         // genuine near-tie, not just "slightly ahead."
         const isClose = gap <= 1;
+
+        // Highlight the winning row (or both top rows, if it's a near-tie -
+        // highlighting only one would misrepresent a coin-flip as a clear
+        // pick) so the winner is visually obvious, not just a bigger number
+        // in an otherwise-identical list.
+        const highlighted = isClose ? [winner, runnerUp] : [winner];
+        Object.keys(rowEls).forEach((platform) => {
+          const isHighlighted = highlighted.includes(platform);
+          rowEls[platform].style.background = isHighlighted ? 'rgba(74,222,128,0.1)' : 'transparent';
+          rowEls[platform].style.borderRadius = isHighlighted ? '8px' : '0';
+          rowEls[platform].style.padding = isHighlighted ? '0.4rem 0.6rem' : '0';
+          rowEls[platform].style.margin = isHighlighted ? '0 -0.6rem' : '0';
+          labelEls[platform].style.color = isHighlighted ? '#fff' : 'rgba(255,255,255,0.75)';
+          labelEls[platform].style.fontWeight = isHighlighted ? '600' : '500';
+          meterEls[platform].style.color = isHighlighted ? '#4ADE80' : '#fff';
+        });
 
         // Show the full reasoning for every answered question, not just the
         // bullets that happen to name the winner - this is what explains HOW
