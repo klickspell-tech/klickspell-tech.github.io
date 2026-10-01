@@ -521,14 +521,41 @@ footer { background:var(--text); padding:3rem 2rem; }
 .prose td strong { color:var(--text); }
 
 @media (max-width:768px) {
-  /* Markdown-generated tables have no wrapper div to apply .table-scroll's
-     overflow-x to (nothing in the build pipeline wraps raw <table> output),
-     so the bare .prose table rule (width:100%) was forcing cell content to
-     crush-wrap into unreadable single-word lines and, in some cases, push
-     the table wider than the viewport. Making the table itself the scroll
-     container avoids needing a wrapper element. */
-  .prose table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; width:auto; max-width:100%; }
-  .prose td, .prose th { white-space:nowrap; min-width:140px; }
+  /* Each table row becomes a labeled card instead of a table a reader has
+     to swipe sideways through - horizontal scroll made content technically
+     reachable but still hard to actually read. The rehype plugin
+     (src/lib/rehype-responsive-tables.mjs) tags every <td> except the row's
+     own first cell with data-label from its column header at build time,
+     so each field can render as a "LABEL / value" stack. Desktop is
+     untouched - data-label is inert there, this block only applies here. */
+  .prose table, .prose tbody, .prose tr, .prose td { display: block; width: auto; }
+  .prose thead { display: none; }
+  .prose table { border: none; margin: 1.75rem 0; }
+  .prose tbody tr {
+    margin-bottom: 1rem;
+    border: .5px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .prose tbody tr:last-child { margin-bottom: 0; }
+  .prose td {
+    padding: .75rem 1rem;
+    border-bottom: .5px solid var(--border);
+    line-height: 1.55;
+  }
+  .prose tbody tr td:last-child { border-bottom: none; }
+  .prose tbody td:first-child { background: var(--bg-card); font-weight: 700; }
+  .prose tbody td:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .3rem;
+    font-weight: 600;
+  }
   .blog-hero { padding:7rem 1.5rem 2rem; }
   .blog-grid { grid-template-columns:1fr; }
   .post-header { padding:7rem 1.5rem 1.5rem; }
@@ -2143,7 +2170,13 @@ footer { background:var(--text); padding:3rem 2rem; }
 /* Responsive Breakpoints */
 @media (max-width: 980px) {
   .quote-layout {
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr), not bare 1fr - a bare 1fr track defaults to
+       minmax(auto, 1fr), which refuses to shrink below the content's
+       natural min-content width. That's what was causing the mobile
+       overflow: whichever page's card content had the widest intrinsic
+       minimum (longest unbreakable run of pill labels, etc.) forced the
+       whole grid wider than the viewport instead of wrapping to fit it. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
   }
   .quote-sidebar-col {
