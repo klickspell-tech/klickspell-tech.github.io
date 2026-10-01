@@ -16,6 +16,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 import soundfile as sf
@@ -78,8 +79,24 @@ def generate(slug: str, pipeline) -> Path:
 
     import numpy as np
 
-    chunks = [audio for _, _, audio in pipeline(narration, voice=VOICE, speed=SPEED)]
+    gen_start = time.monotonic()
+    chunks = []
+    for i, (_, _, audio) in enumerate(pipeline(narration, voice=VOICE, speed=SPEED), start=1):
+        chunks.append(audio)
+        chunk_s = len(audio) / 24000
+        elapsed = time.monotonic() - gen_start
+        print(f"  chunk {i}: {chunk_s:.1f}s audio ({elapsed:.0f}s elapsed)", end="\r", flush=True)
+    print()  # move past the \r-updated line once streaming is done
+    gen_elapsed = time.monotonic() - gen_start
     full_audio = np.concatenate(chunks)
+
+    audio_duration = len(full_audio) / 24000
+    rtf = gen_elapsed / audio_duration if audio_duration else 0
+    print(
+        f"  Generated {audio_duration:.0f}s of audio in {gen_elapsed:.0f}s "
+        f"({rtf:.2f}x realtime - i.e. {1/rtf:.1f}s of audio per second of generation)"
+        if rtf else "  (no audio generated)"
+    )
     # Kokoro outputs 24kHz float32 PCM - write that raw (always supported),
     # then transcode to MP3 via ffmpeg. Relying on soundfile to write MP3
     # directly depends on the installed libsndfile build supporting it,
