@@ -521,6 +521,14 @@ footer { background:var(--text); padding:3rem 2rem; }
 .prose td strong { color:var(--text); }
 
 @media (max-width:768px) {
+  /* Markdown-generated tables have no wrapper div to apply .table-scroll's
+     overflow-x to (nothing in the build pipeline wraps raw <table> output),
+     so the bare .prose table rule (width:100%) was forcing cell content to
+     crush-wrap into unreadable single-word lines and, in some cases, push
+     the table wider than the viewport. Making the table itself the scroll
+     container avoids needing a wrapper element. */
+  .prose table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; width:auto; max-width:100%; }
+  .prose td, .prose th { white-space:nowrap; min-width:140px; }
   .blog-hero { padding:7rem 1.5rem 2rem; }
   .blog-grid { grid-template-columns:1fr; }
   .post-header { padding:7rem 1.5rem 1.5rem; }
