@@ -264,7 +264,12 @@ const schemas = [webAppSchema, breadcrumbSchema];
         cod_share: {
           high:  { gokwik: 3, cashfree: 1 },
           mixed: { gokwik: 1, razorpay: 1, cashfree: 1 },
-          low:   { razorpay: 2, cashfree: 1 }
+          // GoKwik's core differentiator (RTO/COD network data) genuinely
+          // matters less below 30% COD - that part is defensible. Giving
+          // Razorpay a bigger bonus than Cashfree here isn't: we have no
+          // verified evidence either processes prepaid payments better
+          // than the other, so both get the same small nudge.
+          low:   { razorpay: 1, cashfree: 1 }
         },
         aov: {
           low:  { gokwik: 2 },
@@ -292,7 +297,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
       const REASONS = {
         cod_share: {
           high:  { gokwik: "Your COD-heavy mix is exactly what GoKwik's RTO prevention network is built for.", cashfree: "High COD volume gives Cashfree's AI RTO prediction real signal to work with." },
-          low:   { razorpay: "Mostly-prepaid order mix plays to Razorpay's strength as a payments-first platform." }
+          low:   { razorpay: "Mostly-prepaid order mix means GoKwik's COD-specific RTO tooling has less to work with here.", cashfree: "Mostly-prepaid order mix means GoKwik's COD-specific RTO tooling has less to work with here." }
         },
         aov: {
           low:  { gokwik: "GoKwik's own published best-fit is lower-AOV, COD-heavy brands." },

@@ -16,7 +16,7 @@ We implement GoKwik for clients (disclosure at the bottom), but this isn't a GoK
 
 ## The short version
 
-- **Mostly prepaid, and you want an RTO reimbursement backstop rather than just prevention?** Magic Checkout fits — not because of which gateway you happen to be on already (we treat switching as a solved problem, not a reason to pick a worse fit), but because its RTO Protection product and prepaid-leaning tooling are genuinely the better match.
+- **Want an RTO reimbursement backstop rather than just prevention?** Magic Checkout is the only one of the two with an actual insurance-style product for that — not because of which gateway you happen to be on already (we treat switching as a solved problem), but because that specific capability doesn't exist on GoKwik.
 - **COD-heavy, lower AOV (sub-₹1,500), RTO is a real line item on your P&L?** GoKwik's prevention tooling is built specifically around that problem, and its network's RTO risk data is the deepest differentiator that's hard to replicate.
 - **Need WhatsApp/omnichannel engagement and AI-driven customer support, not just checkout?** That's not really a Razorpay category at all — GoKwik bundles it (Kwik Engage), Razorpay doesn't.
 
