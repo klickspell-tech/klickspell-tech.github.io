@@ -61,7 +61,7 @@ We'd still confirm all three directly before assuming they hold at your volume �
 
 For lower-volume stores, "which one is transparent" isn't really the deciding factor — both publish real numbers, so it's "which structure fits your order profile." A high-order-count, lower-AOV store can hit GoKwik's 2,000-order cap fast and fall into custom pricing; Cashfree's sales-value cap scales differently. For COD-heavy brands where RTO is already a measured, meaningful cost and the client also wants WhatsApp/support automation in the same implementation, GoKwik's bundled scope still tends to win out regardless of pricing structure. We'd rather point a client at whichever actually fits their order profile and priorities than always default to the platform we have a partnership with.
 
-**Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Cashfree — this comparison is built from both platforms' public claims, not either one's sales deck.
+**Disclosure:** Klickspell is a referral partner for GoKwik, Razorpay, and Cashfree, and may earn a commission regardless of which one a merchant ends up choosing — so there's no single-platform financial incentive behind this comparison. It's built from both platforms' public claims, not either one's sales deck.
 
 ---
 

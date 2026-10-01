@@ -10,7 +10,7 @@ readingTime: "5 min read"
 
 Rounding out the comparisons we keep getting asked about — [GoKwik vs Razorpay Magic Checkout](/blog/gokwik-vs-razorpay-magic-checkout-shopify-india) and [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) — here's the one between the two payment gateways directly: **Razorpay Magic Checkout vs Cashfree Checkout 360**. Unlike GoKwik, both of these are full payment gateways with a one-click checkout layer built on top, not standalone checkout platforms — which makes the gateway pricing itself part of the real comparison, not just the checkout features.
 
-We have no commercial relationship with either company; we set up whichever gateway a client is already using or prefers.
+**Disclosure:** Klickspell is a referral partner for Razorpay, Cashfree, and GoKwik, and may earn a commission regardless of which gateway a merchant ends up choosing — so there's no single-platform financial incentive behind this comparison.
 
 **Rather skip to an answer?** [Take our 2-minute checkout quiz](/checkout-quiz) — it scores both of these plus GoKwik against your actual COD mix, AOV, and priorities.
 

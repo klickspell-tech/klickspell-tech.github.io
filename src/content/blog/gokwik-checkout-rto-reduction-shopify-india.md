@@ -91,7 +91,7 @@ It's also not an all-or-nothing decision. We typically implement this in stages:
 
 As a Shopify development agency, our job in this is the implementation: integrating GoKwik's checkout into your existing theme without breaking your tracking, pixels, or analytics setup; configuring RTO risk rules sensibly for your product category and price point; and making sure the whole thing is measurable from day one — not just "it's live, hope it works."
 
-**Disclosure:** Klickspell is a GoKwik implementation partner, and we may earn a referral commission when we bring a merchant onto their platform. That doesn't change our recommendation — we only suggest this where the economics actually make sense for your order volume, and we'll tell you plainly if they don't.
+**Disclosure:** Klickspell is a GoKwik implementation partner, and we may earn a referral commission when we bring a merchant onto their platform — we're also a referral partner for Razorpay and Cashfree, so this isn't a case of one platform being the only one we have a stake in. That doesn't change our recommendation — we only suggest this where the economics actually make sense for your order volume, and we'll tell you plainly if they don't.
 
 ---
 

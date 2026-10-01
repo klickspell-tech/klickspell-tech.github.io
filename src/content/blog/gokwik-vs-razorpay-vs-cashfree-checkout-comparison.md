@@ -40,7 +40,7 @@ Shopify charges its own transaction fee (2% on Basic, down to 0.5-0.6% on Advanc
 
 We implement GoKwik for clients (disclosure below), but which platform actually fits depends on COD mix, AOV, volume, and whether bundled engagement matters to you — not which one we have a partnership with, and not which gateway you happen to be on today. Switching gateways is a solved problem, not a tiebreaker — for a prepaid-leaning brand or a price-sensitive lower-volume store, the honest recommendation is sometimes one of the other two, regardless of what they're currently using.
 
-**Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Razorpay or Cashfree. Every claim in this post and its companion comparisons is sourced from each platform's own public documentation, cross-checked rather than taken from a single sales deck.
+**Disclosure:** Klickspell is a referral partner for GoKwik, Razorpay, and Cashfree, and may earn a commission regardless of which one a merchant ends up choosing — so there's no single-platform financial incentive behind this comparison. Every claim in this post and its companion comparisons is sourced from each platform's own public documentation, cross-checked rather than taken from a single sales deck.
 
 ---
 

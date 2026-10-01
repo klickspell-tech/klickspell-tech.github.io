@@ -75,7 +75,7 @@ Both are a poor fit for very low-volume stores (under roughly 500 orders/month) 
 
 We implement GoKwik specifically because most of our clients are COD-heavy D2C brands where RTO is the real problem, and because the engagement/support layer (Kwik Engage) solves a second problem — customer communication — in the same implementation. If a client is prepaid-leaning and already deep in the Razorpay ecosystem, the honest answer is sometimes "stay on Magic Checkout and let us build the engagement/support layer separately" rather than ripping out a checkout that's already working fine.
 
-**Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Razorpay — the comparison above is as neutral as we could make it, cross-checked against both platforms' own public claims rather than taken from either one's sales deck alone.
+**Disclosure:** Klickspell is a referral partner for GoKwik, Razorpay, and Cashfree, and may earn a commission regardless of which one a merchant ends up choosing — so there's no single-platform financial incentive behind this comparison. It's built from both platforms' own public claims, cross-checked rather than taken from either one's sales deck alone.
 
 If Cashfree is also on your shortlist, we've done the same fact-check against it: [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) and [Razorpay Magic Checkout vs Cashfree Checkout 360](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360). Or see all three side by side in [one table](/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison).
 
