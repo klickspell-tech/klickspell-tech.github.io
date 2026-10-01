@@ -225,7 +225,12 @@ const schemas = [breadcrumbSchema, serviceSchema];
                     <span>Services &amp; Integrations</span>
                   </div>
                   <h2 class="quote-card-title">Select required services &amp; add-ons</h2>
-                  <p class="quote-card-sub">Toggle the technical features, analytics tracking, and operational integrations required for your store:</p>
+                  <p class="quote-card-sub">Toggle the technical features, analytics tracking, and operational integrations required for your store. Click a category to expand it, or search across all of them:</p>
+                </div>
+
+                <div class="addon-search-box">
+                  <span class="addon-search-icon">🔍</span>
+                  <input type="text" id="addonSearch" class="addon-search-input" placeholder="Search services — e.g. loyalty, returns, search…" autocomplete="off" />
                 </div>
 
                 <div id="addonGroups" class="quote-addon-groups">
@@ -428,11 +433,33 @@ const schemas = [breadcrumbSchema, serviceSchema];
     const FRAPPE_CRM_URL = import.meta.env.PUBLIC_FRAPPE_CRM_URL || 'https://erp.klickspell.com';
     const THEME_GROUP = 'Theme Development';
 
-    // Production-ready curated catalog fallback
+    // Backend Item Group name -> display label. The live catalog API and the
+    // fallback below are both keyed by the short backend group name (e.g.
+    // "Analytics") so a new Item Group only needs an entry here, not a
+    // frontend/backend naming sync.
+    const GROUP_LABELS = {
+      'Analytics': 'Analytics & Conversion Tracking',
+      'Reviews': 'Reviews, UGC & Social Proof',
+      'Payments': 'Checkout, Payments & Markets',
+      'Shipping': 'Shipping, Logistics & Operations',
+      'Marketing': 'Marketing & Lifecycle Automation',
+      'Customer Experience': 'Customer Experience & Loyalty',
+      'SEO & Performance': 'Speed & Technical SEO',
+      'Legal & Compliance': 'Legal & Compliance',
+      'Subscriptions': 'Subscriptions & Recurring Revenue',
+      'Post-Purchase Support': 'Post-Purchase & Support',
+      'Search & Personalization': 'Search & Personalization',
+      'Marketplace & Omnichannel': 'Marketplace & Omnichannel'
+    };
+
+    // Curated fallback, rendered instantly and used if the live catalog fetch
+    // fails. Every item_code here must match a real Item in the backend
+    // catalog (klickspell_customizations patches) - a fallback-only code that
+    // doesn't exist there would silently vanish from the resulting Quotation.
     const DEFAULT_CATALOG = {
       [THEME_GROUP]: [
         {
-          item_code: 'custom-shopify-2-0',
+          item_code: 'QSVC-THEME-CUSTOM',
           item_name: 'Custom Shopify 2.0 Theme',
           badge: 'Recommended',
           desc: 'Bespoke Liquid architecture engineered directly from your Figma designs. Zero page-builder bloat, native OS 2.0 blocks, and guaranteed 90+ mobile PageSpeed.',
@@ -440,7 +467,7 @@ const schemas = [breadcrumbSchema, serviceSchema];
           tag: 'Max Performance'
         },
         {
-          item_code: 'premium-theme-customization',
+          item_code: 'QSVC-THEME-PAID',
           item_name: 'Premium Theme Customization',
           badge: 'Fast Launch',
           desc: 'Tailored setup and enhancement of a verified Shopify Theme Store template (Dawn, Prestige, Enterprise, Impulse) with bespoke section development.',
@@ -448,7 +475,7 @@ const schemas = [breadcrumbSchema, serviceSchema];
           tag: 'Fastest Launch'
         },
         {
-          item_code: 'headless-commerce-storefront',
+          item_code: 'QSVC-THEME-HEADLESS',
           item_name: 'Headless Commerce Storefront',
           badge: 'Enterprise DTC',
           desc: 'Hydrogen, Next.js, or Medusa headless architecture powered by the Storefront API for sub-second page transitions and global edge delivery.',
@@ -456,7 +483,7 @@ const schemas = [breadcrumbSchema, serviceSchema];
           tag: 'Maximum Scale'
         },
         {
-          item_code: 'theme-migration-os2',
+          item_code: 'QSVC-THEME-MIGRATION',
           item_name: 'Theme Migration & Code Audit',
           badge: 'Code Health',
           desc: 'Migrate legacy vintage theme to modern Shopify OS 2.0 architecture, purge orphan tracking scripts, and restore clean mobile performance.',
@@ -464,32 +491,66 @@ const schemas = [breadcrumbSchema, serviceSchema];
           tag: 'Refactor & Clean'
         }
       ],
-      'Analytics & Conversion Tracking': [
-        { item_code: 'gtm-ga4-ecommerce', item_name: 'Google Tag Manager & GA4 E-commerce' },
-        { item_code: 'meta-pixel-capi', item_name: 'Meta Pixel + Conversions API (CAPI)' },
-        { item_code: 'google-ads-tracking', item_name: 'Google Ads & TikTok / Pinterest Pixel' },
-        { item_code: 'custom-datalayer', item_name: 'Custom E-Commerce DataLayer Setup' }
+      'Analytics': [
+        { item_code: 'QSVC-GA4', item_name: 'Google Analytics Integration' },
+        { item_code: 'QSVC-CLARITY', item_name: 'Microsoft Clarity Integration' },
+        { item_code: 'QSVC-METAPIXEL', item_name: 'Meta Pixel Setup' },
+        { item_code: 'QSVC-TIKTOKPIXEL', item_name: 'TikTok Pixel Setup' },
+        { item_code: 'QSVC-GADS', item_name: 'Google Ads Conversion Tracking' },
+        { item_code: 'QSVC-GA4EVENTS', item_name: 'GA4 Enhanced Ecommerce Events' }
       ],
-      'Reviews, UGC & Social Proof': [
-        { item_code: 'reviews-integration', item_name: 'Judge.me / Okendo / Yotpo Reviews Setup' },
-        { item_code: 'ugc-video-reels', item_name: 'Shoppable UGC Reels & Video Player' },
-        { item_code: 'review-widgets', item_name: 'Custom Product Badges & Review Carousels' }
+      'Reviews': [
+        { item_code: 'QSVC-JUDGEME', item_name: 'Judge.me Reviews Setup' },
+        { item_code: 'QSVC-LOOX', item_name: 'Loox Reviews Setup' },
+        { item_code: 'QSVC-STAMPED', item_name: 'Stamped.io Reviews Setup' }
       ],
-      'Checkout, Payments & Markets': [
-        { item_code: 'shopify-markets-multicurrency', item_name: 'Shopify Markets & Multi-Currency Setup' },
-        { item_code: 'payment-gateways', item_name: 'Payment Gateways (Stripe, Razorpay, Cashfree)' },
-        { item_code: 'slide-cart-upsells', item_name: 'Slide Cart In-Cart Upsells & Free Shipping Goal' },
-        { item_code: 'checkout-extensibility', item_name: 'Shopify Plus Custom Checkout Extensibility' }
+      'Payments': [
+        { item_code: 'QSVC-CASHFREE', item_name: 'Cashfree Integration' },
+        { item_code: 'QSVC-RAZORPAY', item_name: 'Razorpay Integration' },
+        { item_code: 'QSVC-PAYPAL', item_name: 'PayPal Integration' },
+        { item_code: 'QSVC-BNPL', item_name: 'Buy Now Pay Later Integration (Klarna/Simpl)' }
       ],
-      'Shipping, Logistics & Operations': [
-        { item_code: 'logistics-api', item_name: 'Automated 3PL Logistics API (Shiprocket / Bluedart)' },
-        { item_code: 'klaviyo-automation', item_name: 'Klaviyo Email & SMS Lifecycle Automations' },
-        { item_code: 'erp-inventory-sync', item_name: 'Custom ERP / Inventory Webhook Sync' }
+      'Shipping': [
+        { item_code: 'QSVC-SHIPCARRIER', item_name: 'Shipping Carrier Integration' },
+        { item_code: 'QSVC-SHIPROCKET', item_name: 'Shiprocket/Delhivery Integration' },
+        { item_code: 'QSVC-SHIPCALC', item_name: 'Real-Time Shipping Rate Calculator' }
       ],
-      'Speed & Technical SEO': [
-        { item_code: 'speed-optimization-95', item_name: 'Mobile Core Web Vitals 90+ Speed Optimization' },
-        { item_code: 'app-bloat-removal', item_name: 'App Bloat Removal & Script Pruning' },
-        { item_code: 'schema-markup-seo', item_name: 'JSON-LD Structured Data & Rich Snippets' }
+      'Marketing': [
+        { item_code: 'QSVC-KLAVIYO', item_name: 'Klaviyo Email Flow Setup' },
+        { item_code: 'QSVC-WHATSAPP', item_name: 'WhatsApp Marketing Integration' },
+        { item_code: 'QSVC-CARTRECOVERY', item_name: 'Abandoned Cart Recovery Setup' }
+      ],
+      'Customer Experience': [
+        { item_code: 'QSVC-LIVECHAT', item_name: 'Live Chat Widget Setup' },
+        { item_code: 'QSVC-LOYALTY', item_name: 'Loyalty & Rewards Program Setup' },
+        { item_code: 'QSVC-WISHLIST', item_name: 'Wishlist Feature' },
+        { item_code: 'QSVC-SIZEGUIDE', item_name: 'Size Guide Integration' }
+      ],
+      'SEO & Performance': [
+        { item_code: 'QSVC-SEOSETUP', item_name: 'Technical SEO Setup' },
+        { item_code: 'QSVC-COREWEBVITALS', item_name: 'Core Web Vitals Optimization' }
+      ],
+      'Legal & Compliance': [
+        { item_code: 'QSVC-COOKIECONSENT', item_name: 'Cookie Consent Banner Setup' },
+        { item_code: 'QSVC-POLICYDRAFT', item_name: 'Policy Page Drafting (T&C, Privacy, Refund)' }
+      ],
+      'Subscriptions': [
+        { item_code: 'QSVC-SUBSCRIPTION', item_name: 'Subscription Program Setup (Recharge/Seal)' }
+      ],
+      'Post-Purchase Support': [
+        { item_code: 'QSVC-ORDERTRACKING', item_name: 'Branded Order Tracking Page' },
+        { item_code: 'QSVC-RETURNSPORTAL', item_name: 'Returns & Exchange Portal (Loop/AfterShip)' },
+        { item_code: 'QSVC-HELPDESK', item_name: 'Gorgias Helpdesk Setup' }
+      ],
+      'Search & Personalization': [
+        { item_code: 'QSVC-SMARTSEARCH', item_name: 'Smart Search & Filtering (Algolia/Searchanise)' },
+        { item_code: 'QSVC-RECOMMEND', item_name: 'AI Product Recommendations Engine' },
+        { item_code: 'QSVC-BUNDLEBUILDER', item_name: 'Bundle Builder & Mix-and-Match Kits' }
+      ],
+      'Marketplace & Omnichannel': [
+        { item_code: 'QSVC-AMAZONSYNC', item_name: 'Amazon/Walmart Marketplace Sync' },
+        { item_code: 'QSVC-SOCIALSHOP', item_name: 'TikTok Shop & Instagram/Facebook Shop Sync' },
+        { item_code: 'QSVC-POS', item_name: 'Shopify POS Retail Setup' }
       ]
     };
 
@@ -523,25 +584,25 @@ const schemas = [breadcrumbSchema, serviceSchema];
 
     // Metadata details for theme cards
     const THEME_META = {
-      'custom-shopify-2-0': {
+      'QSVC-THEME-CUSTOM': {
         badge: 'Recommended',
         desc: 'Bespoke Liquid architecture engineered directly from your Figma designs. Zero page-builder bloat, native OS 2.0 blocks, and guaranteed 90+ mobile PageSpeed.',
         turnaround: '~3–4 Weeks',
         short: 'Custom Shopify 2.0'
       },
-      'premium-theme-customization': {
+      'QSVC-THEME-PAID': {
         badge: 'Fast Launch',
         desc: 'Tailored setup and enhancement of a verified Shopify Theme Store template (Dawn, Prestige, Enterprise, Impulse) with bespoke section development.',
         turnaround: '~1–2 Weeks',
         short: 'Premium Theme Setup'
       },
-      'headless-commerce-storefront': {
+      'QSVC-THEME-HEADLESS': {
         badge: 'Enterprise DTC',
         desc: 'Hydrogen, Next.js, or Medusa headless architecture powered by the Storefront API for sub-second page transitions and global edge delivery.',
         turnaround: '~4–6 Weeks',
         short: 'Headless Storefront'
       },
-      'theme-migration-os2': {
+      'QSVC-THEME-MIGRATION': {
         badge: 'Code Health',
         desc: 'Migrate legacy vintage theme to modern Shopify OS 2.0 architecture, purge orphan tracking scripts, and restore clean mobile performance.',
         turnaround: '~2–3 Weeks',
@@ -594,26 +655,29 @@ const schemas = [breadcrumbSchema, serviceSchema];
         }).join('');
       }
 
-      // Render Addon Groups
+      // Render Addon Groups as a collapsible accordion - open by default only
+      // for the first group so 12 groups' worth of checkboxes don't turn Step
+      // 3 into an intimidating wall on first paint.
       const groupKeys = Object.keys(catalog).filter((group) => group !== THEME_GROUP);
       if (addonGroupsEl) {
-        addonGroupsEl.innerHTML = groupKeys.map((group) => {
+        addonGroupsEl.innerHTML = groupKeys.map((group, i) => {
           const items = catalog[group] || [];
+          const label = GROUP_LABELS[group] || group;
           return `
-            <div class="addon-group-section">
-              <div class="addon-group-header">
+            <details class="addon-group-section" data-group="${group}" data-search-text="${label.toLowerCase()}" ${i === 0 ? 'open' : ''}>
+              <summary class="addon-group-header">
                 <h3 class="addon-group-title">
-                  <span>📁</span>
-                  <span>${group}</span>
+                  <span class="addon-group-chevron">+</span>
+                  <span>${label}</span>
                 </h3>
-                <span class="addon-group-count">${items.length} options</span>
-              </div>
+                <span class="addon-group-count" data-count-for="${group}">${items.length} options</span>
+              </summary>
               <div class="addon-items-grid">
                 ${items.map((item) => `
-                  <label class="addon-checkbox-label">
-                    <input 
-                      type="checkbox" 
-                      name="addon_item_codes" 
+                  <label class="addon-checkbox-label" data-search-text="${item.item_name.toLowerCase()}">
+                    <input
+                      type="checkbox"
+                      name="addon_item_codes"
                       value="${item.item_code}"
                       data-name="${item.item_name}"
                       data-group="${group}"
@@ -625,13 +689,45 @@ const schemas = [breadcrumbSchema, serviceSchema];
                   </label>
                 `).join('')}
               </div>
-            </div>
+              <label class="addon-unsure-label">
+                <input type="checkbox" name="unsure_group_flag" value="${group}" />
+                <span>Not sure what I need here — flag this for our scoping call</span>
+              </label>
+            </details>
           `;
         }).join('');
       }
 
       attachLiveListeners();
       updateLiveSummary();
+    }
+
+    function updateGroupCounts() {
+      document.querySelectorAll('.addon-group-section').forEach((section) => {
+        const group = section.getAttribute('data-group');
+        const total = section.querySelectorAll('input[name="addon_item_codes"]').length;
+        const checked = section.querySelectorAll('input[name="addon_item_codes"]:checked').length;
+        const countEl = section.querySelector(`[data-count-for="${group}"]`);
+        if (countEl) {
+          countEl.textContent = checked > 0 ? `${checked} of ${total} selected` : `${total} options`;
+          countEl.classList.toggle('has-selection', checked > 0);
+        }
+      });
+    }
+
+    function filterAddons(query) {
+      const q = query.trim().toLowerCase();
+      document.querySelectorAll('.addon-group-section').forEach((section) => {
+        let groupHasMatch = !q || (section.getAttribute('data-search-text') || '').includes(q);
+        const labels = section.querySelectorAll('.addon-checkbox-label');
+        labels.forEach((label) => {
+          const matches = !q || (label.getAttribute('data-search-text') || '').includes(q);
+          label.style.display = matches ? '' : 'none';
+          if (matches) groupHasMatch = true;
+        });
+        section.style.display = groupHasMatch ? '' : 'none';
+        if (q && groupHasMatch) section.setAttribute('open', '');
+      });
     }
 
     function attachLiveListeners() {
@@ -657,6 +753,12 @@ const schemas = [breadcrumbSchema, serviceSchema];
       // Timeline radios
       const timelineRadios = document.querySelectorAll('input[name="project_timeline"]');
       timelineRadios.forEach(r => r.addEventListener('change', updateLiveSummary));
+
+      // Addon search
+      const searchInput = document.getElementById('addonSearch');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => filterAddons((e.target as HTMLInputElement).value));
+      }
     }
 
     function updateLiveSummary() {
@@ -710,6 +812,8 @@ const schemas = [breadcrumbSchema, serviceSchema];
           });
         }
       }
+
+      updateGroupCounts();
 
       // Update WhatsApp URL
       updateWhatsAppLinks();
@@ -818,30 +922,20 @@ const schemas = [breadcrumbSchema, serviceSchema];
         const stageRadio = quoteForm.querySelector('input[name="store_stage"]:checked') as HTMLInputElement | null;
         const timelineRadio = quoteForm.querySelector('input[name="project_timeline"]:checked') as HTMLInputElement | null;
         const notesInput = document.getElementById('quoteNotes') as HTMLTextAreaElement | null;
-
-        const stageVal = stageRadio ? stageRadio.value : 'live';
-        const timelineVal = timelineRadio ? timelineRadio.value : 'standard';
-        const notesVal = notesInput ? notesInput.value.trim() : '';
-        const orgVal = (document.getElementById('quoteOrg') as HTMLInputElement)?.value.trim() || '';
-
-        // Combine metadata safely
-        let orgDetails = orgVal;
-        const extraMeta: string[] = [];
-        if (stageVal) extraMeta.push(`Stage: ${stageVal}`);
-        if (timelineVal) extraMeta.push(`Timeline: ${timelineVal}`);
-        if (notesVal) extraMeta.push(`Notes: ${notesVal}`);
-        if (extraMeta.length > 0) {
-          orgDetails = orgDetails ? `${orgDetails} (${extraMeta.join(' | ')})` : extraMeta.join(' | ');
-        }
+        const unsureInputs = quoteForm.querySelectorAll('input[name="unsure_group_flag"]:checked');
 
         const payload = {
           first_name: nameInput.value.trim(),
           email: emailInput.value.trim(),
-          organization: orgDetails,
+          organization: (document.getElementById('quoteOrg') as HTMLInputElement)?.value.trim() || '',
           mobile_no: (document.getElementById('quoteMobile') as HTMLInputElement)?.value.trim() || '',
           store_url: (document.getElementById('quoteStoreUrl') as HTMLInputElement)?.value.trim() || '',
           theme_item_code: themeInput ? themeInput.value : '',
           addon_item_codes: JSON.stringify(Array.from(addonInputs).map((el) => (el as HTMLInputElement).value)),
+          store_stage: stageRadio ? stageRadio.value : 'live',
+          project_timeline: timelineRadio ? timelineRadio.value : 'standard',
+          notes: notesInput ? notesInput.value.trim() : '',
+          unsure_groups: JSON.stringify(Array.from(unsureInputs).map((el) => GROUP_LABELS[(el as HTMLInputElement).value] || (el as HTMLInputElement).value)),
           company_url: (document.getElementById('quoteCompanyUrl') as HTMLInputElement)?.value.trim() || '',
         };
 

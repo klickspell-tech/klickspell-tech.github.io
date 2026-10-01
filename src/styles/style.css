@@ -1591,18 +1591,32 @@ footer { background:var(--text); padding:3rem 2rem; }
   color: var(--accent);
 }
 
-/* Categorized Addons */
+/* Categorized Addons (accordion - <details>/<summary>, same pattern as .faq-item) */
 .addon-group-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 1rem;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
 .addon-group-section:last-child {
   margin-bottom: 0;
 }
+.addon-group-section[open] {
+  background: var(--bg-card);
+  border-color: rgba(58, 91, 224, 0.25);
+}
 .addon-group-header {
+  list-style: none;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  gap: 1rem;
+  padding: 0.9rem 0;
+}
+.addon-group-header::-webkit-details-marker {
+  display: none;
 }
 .addon-group-title {
   font-size: 14px;
@@ -1610,17 +1624,96 @@ footer { background:var(--text); padding:3rem 2rem; }
   color: var(--text);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+.addon-group-chevron {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--text-mid);
+  transition: transform 0.3s var(--ease), background 0.3s, color 0.3s, border-color 0.3s;
+}
+.addon-group-section:hover .addon-group-chevron {
+  border-color: rgba(58, 91, 224, 0.4);
+  color: var(--accent);
+}
+.addon-group-section[open] .addon-group-chevron {
+  transform: rotate(45deg);
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
 }
 .addon-group-count {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-light);
+  white-space: nowrap;
+}
+.addon-group-count.has-selection {
+  color: var(--accent);
+  font-weight: 600;
 }
 .addon-items-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 0.65rem;
+  padding-bottom: 0.9rem;
+}
+.addon-unsure-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 0.1rem 0.9rem;
+  font-size: 12.5px;
+  color: var(--text-light);
+  cursor: pointer;
+  border-top: 1px dashed var(--border);
+  user-select: none;
+}
+.addon-unsure-label input {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+}
+.addon-unsure-label:has(input:checked) {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Addon search box */
+.addon-search-box {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.addon-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.addon-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-size: 13.5px;
+  color: var(--text);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.addon-search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 .addon-checkbox-label {
   position: relative;
