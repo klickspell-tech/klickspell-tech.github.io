@@ -305,38 +305,49 @@ const schemas = [webAppSchema, breadcrumbSchema];
         // weighting "already on X" would recommend familiarity over fit.
       };
 
-      // Human-readable reason shown when this (question, answer) pairing
-      // contributed to the WINNING platform specifically.
+      // One explanation per (question, answer), describing the FULL effect on
+      // scoring - every platform it helps, hurts, or leaves neutral, with why.
+      // Shown for every answered question regardless of which platform ends up
+      // winning overall, so the sidebar explains how the whole score was built,
+      // not just a cherry-picked bullet naming the winner.
       const REASONS = {
         cod_share: {
-          high:  { gokwik: "Your COD-heavy mix is exactly what GoKwik's RTO prevention network is built for.", cashfree: "High COD volume gives Cashfree's AI RTO prediction real signal to work with." },
-          low:   { razorpay: "Mostly-prepaid order mix means GoKwik's COD-specific RTO tooling has less to work with here.", cashfree: "Mostly-prepaid order mix means GoKwik's COD-specific RTO tooling has less to work with here." }
+          high:  "Mostly-COD (70%+): GoKwik's RTO-prevention network is built specifically for this, and Cashfree's AI RTO prediction also gets stronger signal from COD volume — GoKwik gets the bigger credit since COD/RTO is its core specialty, Cashfree a smaller one.",
+          mixed: "Mixed COD/prepaid (30–70%): no platform has a clear edge at this mix, so all three get an equal small nudge.",
+          low:   "Mostly-prepaid (&lt;30% COD): GoKwik's COD-specific RTO tooling has less to work with here. We found no verified evidence either Razorpay or Cashfree handles prepaid orders better than the other, so both get the same small nudge instead of favoring one."
         },
         aov: {
-          low:  { gokwik: "GoKwik's own published best-fit is lower-AOV, COD-heavy brands." },
-          high: { razorpay: "Higher AOV orders benefit from Razorpay's RTO Protection reimbursement backstop." }
+          low:  "AOV under ₹1,500: this is GoKwik's own published best-fit segment (lower-AOV, COD-heavy brands), so it gets credit here.",
+          mid:  "AOV ₹1,500–3,000: no platform has a clear edge at this AOV, so all three get an equal small nudge.",
+          high: "AOV above ₹3,000: Razorpay gets credit here for its RTO Protection reimbursement backstop — the rupee value at risk per failed delivery is higher, so a reimbursement product matters more."
         },
         volume: {
-          low: {
-            cashfree: "Lower order volume means Cashfree's flat 1.95% standard rate applies directly, with no order-count cap.",
-            gokwik: "Lower order volume (under 2,000/month) falls right within GoKwik's published Emerging Plan rate — that tier is built specifically for stores your size."
-          }
+          low:  "Under 500 orders/month: both GoKwik (its Emerging Plan rate is built for 0–2,000 orders/month) and Cashfree (flat 1.95%, no order-count cap) have real published pricing at this size. Razorpay has no published number at any volume, which is a bigger practical gap when you're small, so it gets a small penalty here.",
+          mid:  "500–5,000 orders/month: no platform has a clear edge at this volume, so all three get an equal small nudge.",
+          high: "5,000+ orders/month: GoKwik and Razorpay both get a small nudge here; we don't have an independently-verified reason to favor Cashfree specifically at this scale."
         },
         priority: {
-          cost:       {
-            cashfree: "You said pricing transparency matters most — Cashfree's flat 1.95% rate has no order-count ceiling, the simplest of the three to compare.",
-            gokwik: "You said pricing transparency matters most — GoKwik now publishes a real entry-tier rate too (₹3,000/mo + 3.5% COD fee, up to 2,000 orders/month), though Cashfree's flat-rate structure is simpler to compare."
-          },
-          rto:        { gokwik: "You said RTO prevention matters most — GoKwik's network has the deepest RTO-specific data of the three." },
-          engagement: { gokwik: "You need bundled engagement/support — only GoKwik bundles this natively (Kwik Engage)." }
+          cost:       "You prioritized pricing transparency: Cashfree's flat 1.95% standard rate has no order-count ceiling, the simplest of the three to compare, so it gets the most credit. GoKwik now also publishes a real entry-tier rate (capped at 2,000 orders/month), so it gets some credit too. Razorpay still publishes nothing for Magic Checkout itself, so it gets none here.",
+          rto:        "You prioritized RTO prevention: GoKwik's network has the deepest RTO-specific data of the three against what we could independently verify, so it gets the strongest credit here.",
+          engagement: "You prioritized bundled engagement/support: only GoKwik bundles this natively (Kwik Engage) — Razorpay and Cashfree are payments-first, not marketing platforms, so GoKwik gets full credit and the other two get none."
         }
       };
 
       const PLATFORM_META = {
-        gokwik:   { name: "GoKwik Kwik Checkout", link: "/blog/gokwik-vs-razorpay-magic-checkout-shopify-india", short: "GoKwik" },
-        razorpay: { name: "Razorpay Magic Checkout", link: "/blog/gokwik-vs-razorpay-magic-checkout-shopify-india", short: "Razorpay" },
-        cashfree: { name: "Cashfree Checkout 360", link: "/blog/gokwik-vs-cashfree-checkout-360-shopify-india", short: "Cashfree" }
+        gokwik:   { name: "GoKwik Kwik Checkout", short: "GoKwik" },
+        razorpay: { name: "Razorpay Magic Checkout", short: "Razorpay" },
+        cashfree: { name: "Cashfree Checkout 360", short: "Cashfree" }
       };
+
+      // Which comparison post to point to, keyed by the two closest platforms
+      // (order-independent) so a Razorpay/Cashfree near-tie links the actual
+      // Razorpay-vs-Cashfree post instead of defaulting to a GoKwik pairing.
+      const PAIR_LINKS = {
+        'gokwik,razorpay': { href: '/blog/gokwik-vs-razorpay-magic-checkout-shopify-india', label: 'GoKwik vs Razorpay' },
+        'cashfree,gokwik': { href: '/blog/gokwik-vs-cashfree-checkout-360-shopify-india', label: 'GoKwik vs Cashfree' },
+        'cashfree,razorpay': { href: '/blog/razorpay-magic-checkout-vs-cashfree-checkout-360', label: 'Razorpay vs Cashfree' }
+      };
+      const PILLAR_LINK = { href: '/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison', label: 'the full 3-way comparison' };
 
       const form = document.getElementById('quizForm');
       const titleEl = document.getElementById('quizResultTitle');
@@ -381,22 +392,47 @@ const schemas = [webAppSchema, breadcrumbSchema];
           meterEls[platform].textContent = pct + '%';
         });
 
-        const winner = Object.keys(totals).reduce((a, b) => (totals[b] > totals[a] ? b : a));
+        // Rank by raw totals (not the floored display values) so a tie is
+        // detected correctly even if someone's totals went negative.
+        const ranked = Object.keys(totals).sort((a, b) => totals[b] - totals[a]);
+        const winner = ranked[0];
+        const runnerUp = ranked[1];
+        const gap = totals[winner] - totals[runnerUp];
+        // Scores here are small integers (roughly 0-10) built from 4
+        // questions worth 1-3 points each, so a gap of 1 or less is a
+        // genuine near-tie, not just "slightly ahead."
+        const isClose = gap <= 1;
 
+        // Show the full reasoning for every answered question, not just the
+        // bullets that happen to name the winner - this is what explains HOW
+        // a close score (or an exact tie) actually got built.
         Object.keys(SCORES).forEach((question) => {
           const answer = answers[question];
-          const reasonText = REASONS[question] && REASONS[question][answer] && REASONS[question][answer][winner];
+          const reasonText = REASONS[question] && REASONS[question][answer];
           if (reasonText) firedReasons.push(reasonText);
         });
 
         const meta = PLATFORM_META[winner];
-        titleEl.textContent = meta.name;
-        subEl.textContent = "Based on your answers, this is the strongest fit for your store right now.";
-        readMoreLink.href = meta.link;
-        readMoreLink.textContent = `Read the full ${meta.short} comparison →`;
+        const runnerMeta = PLATFORM_META[runnerUp];
+
+        if (isClose) {
+          titleEl.textContent = `${meta.short} or ${runnerMeta.short} — too close to call`;
+          subEl.textContent = `Your answers score these two almost identically (${gap === 0 ? 'an exact tie' : 'within a point'}) — worth reading both comparisons rather than treating either as a clear winner.`;
+          const pairKey = [winner, runnerUp].sort().join(',');
+          const link = PAIR_LINKS[pairKey] || PILLAR_LINK;
+          readMoreLink.href = link.href;
+          readMoreLink.textContent = `Read ${link.label} →`;
+        } else {
+          titleEl.textContent = meta.name;
+          subEl.textContent = "Based on your answers, this is the strongest fit for your store right now.";
+          const pairKey = [winner, runnerUp].sort().join(',');
+          const link = PAIR_LINKS[pairKey] || PILLAR_LINK;
+          readMoreLink.href = link.href;
+          readMoreLink.textContent = `Read ${link.label} →`;
+        }
 
         if (firedReasons.length > 0) {
-          reasonsBox.innerHTML = '💡 <strong>Why:</strong> ' + firedReasons.slice(0, 3).map((r) => `<br>• ${r}`).join('');
+          reasonsBox.innerHTML = '💡 <strong>How this was scored:</strong>' + firedReasons.map((r) => `<br>• ${r}`).join('');
         } else {
           reasonsBox.innerHTML = `💡 ${meta.name} is a reasonable, balanced default for your answers so far.`;
         }
