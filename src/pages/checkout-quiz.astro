@@ -372,7 +372,6 @@ const schemas = [webAppSchema, breadcrumbSchema];
       function compute() {
         const answers = getAnswers();
         const totals = { gokwik: 0, razorpay: 0, cashfree: 0 };
-        const firedReasons = [];
 
         Object.keys(SCORES).forEach((question) => {
           const answer = answers[question];
@@ -409,11 +408,25 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
         // Show the full reasoning for every answered question, not just the
         // bullets that happen to name the winner - this is what explains HOW
-        // a close score (or an exact tie) actually got built.
+        // a close score (or an exact tie) actually got built. But not every
+        // question is equally informative: some answers nudge all three
+        // platforms by the same amount (a wash), while others are what
+        // actually separated the winner from the rest. Classify each so the
+        // real deciding factor doesn't get lost next to three "no edge"
+        // bullets with identical visual weight.
+        const keyReasons = [];
+        const neutralReasons = [];
         Object.keys(SCORES).forEach((question) => {
           const answer = answers[question];
           const reasonText = REASONS[question] && REASONS[question][answer];
-          if (reasonText) firedReasons.push(reasonText);
+          if (!reasonText) return;
+          const contrib = SCORES[question][answer] || {};
+          const vals = { gokwik: contrib.gokwik || 0, razorpay: contrib.razorpay || 0, cashfree: contrib.cashfree || 0 };
+          const allEqual = vals.gokwik === vals.razorpay && vals.razorpay === vals.cashfree;
+          const maxVal = Math.max(vals.gokwik, vals.razorpay, vals.cashfree);
+          const favoredWinner = !allEqual && vals[winner] === maxVal;
+          if (favoredWinner) keyReasons.push(reasonText);
+          else neutralReasons.push(reasonText);
         });
 
         const meta = PLATFORM_META[winner];
@@ -435,8 +448,20 @@ const schemas = [webAppSchema, breadcrumbSchema];
           readMoreLink.textContent = `Read ${link.label} →`;
         }
 
-        if (firedReasons.length > 0) {
-          reasonsBox.innerHTML = '💡 <strong>How this was scored:</strong>' + firedReasons.map((r) => `<br>• ${r}`).join('');
+        if (keyReasons.length > 0 || neutralReasons.length > 0) {
+          let html = '';
+          if (keyReasons.length > 0) {
+            html += '💡 <strong>What actually decided this:</strong>' + keyReasons.map((r) => `<br>• ${r}`).join('');
+          } else {
+            html += `💡 Nothing you answered strongly favored one platform — it's a reasonable, balanced default rather than a decisive fit.`;
+          }
+          if (neutralReasons.length > 0) {
+            html += '<div style="margin-top:0.75rem; padding-top:0.6rem; border-top:1px solid rgba(255,255,255,0.12); font-size:11.5px; opacity:0.7;">'
+              + '<strong>Also considered (no clear edge either way):</strong>'
+              + neutralReasons.map((r) => `<br>• ${r}`).join('')
+              + '</div>';
+          }
+          reasonsBox.innerHTML = html;
         } else {
           reasonsBox.innerHTML = `💡 ${meta.name} is a reasonable, balanced default for your answers so far.`;
         }

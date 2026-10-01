@@ -210,12 +210,16 @@ const schemas = [webAppSchema, breadcrumbSchema];
             <h2 class="estimator-results-title" id="gkResultTitle">Calculating…</h2>
             <p class="estimator-results-sub" id="gkResultSub">Answer the questions on the left — this updates live.</p>
 
-            <div class="gk-product-list" id="gkCoreList"></div>
+            <div class="gk-product-list" id="gkActionableList"></div>
 
-            <div class="gk-newer-note">
+            <div class="gk-newer-note" id="gkNewerNote" style="display:none;">
               Newer products — limited public documentation beyond GoKwik's own one-line description, so these are capped at "worth evaluating," never an automatic "start now." Confirm scope directly before committing.
             </div>
-            <div class="gk-product-list" id="gkNewerList"></div>
+
+            <details class="gk-rest-details">
+              <summary class="gk-rest-summary" id="gkRestSummary">Not a priority right now</summary>
+              <div class="gk-product-list" id="gkRestList" style="margin-top:0.5rem;"></div>
+            </details>
 
             <a href="/checkout-quiz" class="btn-ghost" style="margin-bottom: .75rem; margin-top: 1rem;">
               Comparing checkout vendors too? →
@@ -321,6 +325,41 @@ const schemas = [webAppSchema, breadcrumbSchema];
       padding: 0.7rem 0.85rem;
       margin-bottom: 0.75rem;
     }
+    .gk-rest-details {
+      margin-bottom: 1rem;
+    }
+    .gk-rest-summary {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      list-style: none;
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      user-select: none;
+    }
+    .gk-rest-summary::-webkit-details-marker { display: none; }
+    .gk-rest-summary::before {
+      content: '▸';
+      display: inline-block;
+      margin-right: 6px;
+      transition: transform 0.15s;
+    }
+    .gk-rest-details[open] .gk-rest-summary::before {
+      transform: rotate(90deg);
+    }
+    #gkRestList .gk-product-row {
+      padding: 0.4rem 0.6rem;
+      background: transparent;
+    }
+    #gkRestList .gk-product-reason {
+      display: none;
+    }
+    #gkRestList .gk-product-name {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
   </style>
 
   <script is:inline>
@@ -352,8 +391,10 @@ const schemas = [webAppSchema, breadcrumbSchema];
       const form = document.getElementById('gkQuizForm');
       const titleEl = document.getElementById('gkResultTitle');
       const subEl = document.getElementById('gkResultSub');
-      const coreListEl = document.getElementById('gkCoreList');
-      const newerListEl = document.getElementById('gkNewerList');
+      const actionableListEl = document.getElementById('gkActionableList');
+      const restListEl = document.getElementById('gkRestList');
+      const newerNoteEl = document.getElementById('gkNewerNote');
+      const restSummaryEl = document.getElementById('gkRestSummary');
 
       // "None of these" is mutually exclusive with every other pain checkbox.
       form.querySelectorAll('input[name="pains"]').forEach((cb) => {
@@ -485,29 +526,49 @@ const schemas = [webAppSchema, breadcrumbSchema];
         const answers = getAnswers();
         const results = evaluate(answers);
 
-        coreListEl.innerHTML = '';
-        newerListEl.innerHTML = '';
+        actionableListEl.innerHTML = '';
+        restListEl.innerHTML = '';
 
-        let startNowCount = 0;
-        // Sort each group so "start now" floats to the top and "lower
-        // priority" sinks to the bottom - the point of the list is to tell
-        // you what to act on first, not just list all 10 products in a
-        // fixed order every time.
+        // Only "start now" / "worth evaluating" get a full row up top - this
+        // is the list that should actually be short. "wait" / "lower
+        // priority" collapse behind a toggle so the actionable list doesn't
+        // get buried under 10 fixed rows every time, and so a product that
+        // newly becomes relevant (e.g. checking "shipping is messy" lights
+        // up Kwik Ship) visibly JUMPS into the short list instead of just
+        // changing color somewhere in a long one.
         const ids = Object.keys(PRODUCTS).sort((a, b) => STATUS_ORDER[results[a].status] - STATUS_ORDER[results[b].status]);
+        let startNowCount = 0;
+        let actionableCount = 0;
+        let restCount = 0;
+        let actionableHasNewer = false;
+
         ids.forEach((id) => {
           const result = results[id];
+          const isActionable = result.status === 'start_now' || result.status === 'worth_evaluating';
           if (result.status === 'start_now') startNowCount++;
           const row = renderRow(id, result);
-          if (PRODUCTS[id].group === 'core') coreListEl.appendChild(row);
-          else newerListEl.appendChild(row);
+          if (isActionable) {
+            actionableCount++;
+            if (PRODUCTS[id].group === 'newer') actionableHasNewer = true;
+            actionableListEl.appendChild(row);
+          } else {
+            restCount++;
+            restListEl.appendChild(row);
+          }
         });
 
-        if (startNowCount === 0) {
+        newerNoteEl.style.display = actionableHasNewer ? '' : 'none';
+        restSummaryEl.textContent = restCount + (restCount === 1 ? ' product not a priority right now' : ' products not a priority right now');
+
+        if (actionableCount === 0) {
           titleEl.textContent = "Nothing urgent yet";
-          subEl.textContent = "Based on your answers, no product is a clear 'start now' — that's a fine place to be if you're pre-launch or still finding your pain points.";
+          subEl.textContent = "Based on your answers, nothing stands out as worth starting now — that's a fine place to be if you're pre-launch or still finding your pain points. See all 10 below.";
+        } else if (startNowCount === 0) {
+          titleEl.textContent = actionableCount + (actionableCount === 1 ? " product worth evaluating" : " products worth evaluating");
+          subEl.textContent = "Nothing's a clear 'start now' yet, but these are worth a closer look based on your answers.";
         } else {
           titleEl.textContent = startNowCount + (startNowCount === 1 ? " product worth starting now" : " products worth starting now");
-          subEl.textContent = "See the full breakdown below — \"start now\" means it directly addresses something you flagged, not just that GoKwik sells it.";
+          subEl.textContent = "\"Start now\" means it directly addresses something you flagged, not just that GoKwik sells it.";
         }
       }
 
