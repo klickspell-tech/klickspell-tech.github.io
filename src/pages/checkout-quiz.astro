@@ -397,21 +397,33 @@ const schemas = [webAppSchema, breadcrumbSchema];
         };
         const sum = display.gokwik + display.razorpay + display.cashfree || 1;
 
+        const pctByPlatform = {};
         Object.keys(display).forEach((platform) => {
           const pct = Math.round((display[platform] / sum) * 100);
+          pctByPlatform[platform] = pct;
           meterEls[platform].textContent = pct + '%';
         });
+
+        // Reorder the rows themselves (not just the highlight) so the
+        // leader is always on top - highest displayed percentage first,
+        // alphabetical by name as the tiebreak when percentages match.
+        const metersContainer = rowEls.gokwik.parentElement;
+        Object.keys(rowEls)
+          .sort((a, b) => pctByPlatform[b] - pctByPlatform[a] || PLATFORM_META[a].short.localeCompare(PLATFORM_META[b].short))
+          .forEach((platform) => metersContainer.appendChild(rowEls[platform]));
 
         // Rank by raw totals (not the floored display values) so a tie is
         // detected correctly even if someone's totals went negative.
         const ranked = Object.keys(totals).sort((a, b) => totals[b] - totals[a]);
         const winner = ranked[0];
         const runnerUp = ranked[1];
-        const gap = totals[winner] - totals[runnerUp];
-        // Scores here are small integers (roughly 0-10) built from 4
-        // questions worth 1-3 points each, so a gap of 1 or less is a
-        // genuine near-tie, not just "slightly ahead."
-        const isClose = gap <= 1;
+        // "Close" has to be judged by the displayed PERCENTAGE gap, not the
+        // raw internal score gap - totals here are small integers, so a
+        // raw gap of 1 point can normalize to a 10+ percentage-point spread
+        // (e.g. 5 vs 4 vs 1 -> 50% vs 40% vs 10%) depending on the total sum,
+        // which doesn't look close at all to someone reading percentages.
+        const pctGap = pctByPlatform[winner] - pctByPlatform[runnerUp];
+        const isClose = pctGap <= 5;
 
         // Highlight the winning row (or both top rows, if it's a near-tie -
         // highlighting only one would misrepresent a coin-flip as a clear
@@ -457,7 +469,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
         if (isClose) {
           titleEl.textContent = `${meta.short} or ${runnerMeta.short} — too close to call`;
-          subEl.textContent = `Your answers score these two almost identically (${gap === 0 ? 'an exact tie' : 'within a point'}) — worth reading both comparisons rather than treating either as a clear winner.`;
+          subEl.textContent = `Your answers score these two almost identically (${pctGap === 0 ? 'an exact tie' : pctGap + '% apart'}) — worth reading both comparisons rather than treating either as a clear winner.`;
           const pairKey = [winner, runnerUp].sort().join(',');
           const link = PAIR_LINKS[pairKey] || PILLAR_LINK;
           readMoreLink.href = link.href;
