@@ -50,17 +50,18 @@ One real result, not just a published benchmark: True Elements' Co-Founder & CEO
 
 ## How this compares to the alternatives
 
-We get asked "why not just use [Shopify's checkout / Razorpay Magic Checkout / a cheaper option]" a lot. The honest comparison, based on GoKwik's own published capability matrix against the main alternatives Indian merchants consider:
+Against Shopify's own native checkout, the comparison is clean and not seriously contestable:
 
-| Capability | Kwik Checkout | Shopify (native) | Razorpay Magic |
-| :--- | :---: | :---: | :---: |
-| 200M+ network address prefill | ✅ | ❌ | ❌ |
-| COD risk scoring & RTO interventions | ✅ (70+) | ❌ | ❌ |
-| Zero-cost funded payment offers | ✅ | ❌ | Limited |
-| Discount stacking / A/B testing engine | ✅ | ❌ | Limited |
-| WhatsApp/Email engagement suite bundled | ✅ (Kwik Engage) | ❌ | ❌ |
+| Capability | Kwik Checkout | Shopify (native) |
+| :--- | :---: | :---: |
+| 200M+ network address prefill | ✅ | ❌ |
+| COD risk scoring & RTO interventions | ✅ (70+) | ❌ |
+| India-specific payment nudges (COD → prepaid) | ✅ | ❌ |
+| WhatsApp/Email engagement suite bundled | ✅ (Kwik Engage) | ❌ |
 
-The pattern is consistent: generic checkouts (Shopify's own, and most payment-gateway "checkout" add-ons) aren't built around India-specific COD risk and address friction. GoKwik is, because that's the only problem it was built to solve.
+Shopify's checkout wasn't built for this market, and it shows — there's no real argument that it covers any of this today.
+
+**Razorpay Magic Checkout is a different story**, and worth a more careful look if that's already in your stack — it's closer to GoKwik on several fronts than vendor decks on either side tend to admit (address prefill and discount stacking are both roughly at parity, for instance). We wrote a separate, fact-checked [GoKwik vs Razorpay Magic Checkout comparison](/blog/gokwik-vs-razorpay-magic-checkout-shopify-india) rather than squeeze a fair treatment of it into a table here — read that one if Razorpay is your actual alternative under consideration, not Shopify's default checkout.
 
 ## What this actually costs
 
