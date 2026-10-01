@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const canonical = "https://klickspell.com/quote";
+---
+
+<BaseLayout
+  title="Get a Quote — Shopify Store Development | Klickspell"
+  description="Tell us what your Shopify store needs — theme approach, analytics, reviews, payments, shipping — and get a detailed quote back from Klickspell."
+  canonical={canonical}
+>
+  <Nav />
+
+  <main id="main-content">
+    <header class="service-page-hero" style="padding-bottom: 2rem;">
+      <div class="section">
+        <div class="reveal">
+          <p class="section-eyebrow">Get a Quote</p>
+          <h1 class="section-title">Tell us what your store<br><em>needs.</em></h1>
+          <p class="section-sub">Pick your theme approach and the services you need — we'll send a detailed quote back within one business day.</p>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section">
+        <form id="quoteForm" class="quote-form reveal">
+          <div class="quote-step">
+            <h3 class="quote-step-title">Your details</h3>
+            <div class="contact-form-row">
+              <input type="text" id="quoteName" name="first_name" placeholder="Your name" aria-label="Your name" required />
+              <input type="email" id="quoteEmail" name="email" placeholder="Email" aria-label="Email" required />
+            </div>
+            <div class="contact-form-row">
+              <input type="text" id="quoteOrg" name="organization" placeholder="Company (optional)" aria-label="Company" />
+              <input type="tel" id="quoteMobile" name="mobile_no" placeholder="Phone (optional)" aria-label="Phone" />
+            </div>
+            <input type="url" id="quoteStoreUrl" name="store_url" placeholder="Store URL (if you have one)" aria-label="Store URL" />
+          </div>
+
+          <div class="quote-step">
+            <h3 class="quote-step-title">Theme approach</h3>
+            <div id="themeOptions" class="quote-tabs-row" role="radiogroup" aria-label="Theme approach">
+              <p class="quote-loading">Loading options…</p>
+            </div>
+          </div>
+
+          <div id="addonGroups" class="quote-addon-groups"></div>
+
+          <div class="quote-step quote-prereqs">
+            <h3 class="quote-step-title">What you'll need ready</h3>
+            <p class="quote-step-sub">A few common examples — we'll flag anything else specific to your setup during discovery.</p>
+            <ul>
+              <li>Terms &amp; Conditions</li>
+              <li>Privacy Policy</li>
+              <li>Refund Policy</li>
+            </ul>
+          </div>
+
+          <input type="text" id="quoteCompanyUrl" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <button type="submit" id="quoteSubmitBtn" class="btn-primary">
+            <span id="quoteBtnText">Request quote →</span>
+            <span id="quoteBtnSpinner" class="scanner-spinner" style="display:none;"></span>
+          </button>
+          <div id="quoteSuccess" class="video-audit-success" style="display:none;">Thanks — we'll send your detailed quote within one business day.</div>
+          <div id="quoteErrorBox" class="contact-error" style="display:none;">Something went wrong. Please try WhatsApp or email instead.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Quote form logic (catalog fetch + submission). Not is:inline, because
+       import.meta.env is only replaced by Vite in processed (module) scripts. -->
+  <script>
+    const FRAPPE_CRM_URL = import.meta.env.PUBLIC_FRAPPE_CRM_URL || 'https://erp.klickspell.com';
+    const THEME_GROUP = 'Theme Development';
+
+    const themeOptions = document.getElementById('themeOptions');
+    const addonGroups = document.getElementById('addonGroups');
+    const quoteForm = document.getElementById('quoteForm');
+
+    async function loadCatalog() {
+      try {
+        const res = await fetch(`${FRAPPE_CRM_URL}/api/method/klickspell_customizations.api.quotation.get_service_catalog`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        const data = await res.json();
+        renderCatalog(data.message || {});
+      } catch (err) {
+        console.warn('Failed to load service catalog:', err);
+        themeOptions.innerHTML = '<p class="quote-loading">Could not load options. Please refresh or contact us directly.</p>';
+      }
+    }
+
+    function renderCatalog(catalog) {
+      const themeItems = catalog[THEME_GROUP] || [];
+      themeOptions.innerHTML = themeItems.map((item, i) => `
+        <label class="quote-tab-btn">
+          <input type="radio" name="theme_item_code" value="${item.item_code}" ${i === 0 ? 'checked' : ''} required />
+          <span>${item.item_name}</span>
+        </label>
+      `).join('');
+
+      addonGroups.innerHTML = Object.keys(catalog)
+        .filter((group) => group !== THEME_GROUP)
+        .map((group) => `
+          <div class="quote-step">
+            <h3 class="quote-step-title">${group}</h3>
+            <div class="quote-checkbox-group">
+              ${catalog[group].map((item) => `
+                <label class="quote-checkbox">
+                  <input type="checkbox" name="addon_item_codes" value="${item.item_code}" />
+                  <span>${item.item_name}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+    }
+
+    loadCatalog();
+
+    if (quoteForm) {
+      const submitBtn = document.getElementById('quoteSubmitBtn');
+      const btnText = document.getElementById('quoteBtnText');
+      const btnSpinner = document.getElementById('quoteBtnSpinner');
+      const successBox = document.getElementById('quoteSuccess');
+      const errorBox = document.getElementById('quoteErrorBox');
+
+      quoteForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+        successBox.style.display = 'none';
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnSpinner.style.display = 'inline-block';
+
+        const themeInput = quoteForm.querySelector('input[name="theme_item_code"]:checked');
+        const addonInputs = quoteForm.querySelectorAll('input[name="addon_item_codes"]:checked');
+
+        const payload = {
+          first_name: document.getElementById('quoteName').value.trim(),
+          email: document.getElementById('quoteEmail').value.trim(),
+          organization: document.getElementById('quoteOrg').value.trim(),
+          mobile_no: document.getElementById('quoteMobile').value.trim(),
+          store_url: document.getElementById('quoteStoreUrl').value.trim(),
+          theme_item_code: themeInput ? themeInput.value : '',
+          addon_item_codes: JSON.stringify(Array.from(addonInputs).map((el) => el.value)),
+          company_url: document.getElementById('quoteCompanyUrl').value.trim(),
+        };
+
+        try {
+          const res = await fetch(`${FRAPPE_CRM_URL}/api/method/klickspell_customizations.api.quotation.request_quotation`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+          quoteForm.reset();
+          successBox.style.display = 'block';
+        } catch (err) {
+          console.warn('Quote form submission failed:', err);
+          errorBox.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          btnText.style.display = 'inline';
+          btnSpinner.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</BaseLayout>

@@ -1312,6 +1312,76 @@ footer { background:var(--text); padding:3rem 2rem; }
   .contact-form .btn-primary { align-self: stretch; justify-content: center; }
 }
 
+/* QUOTE FORM */
+.quote-form { max-width: 640px; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+.quote-form input,
+.quote-form .contact-form-row input {
+  width: 100%;
+  flex: 1;
+  min-width: 220px;
+  padding: .85rem 1.15rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.quote-form input:focus { border-color: var(--accent); }
+.quote-form .btn-primary { align-self: flex-start; }
+.quote-step-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: .4rem; }
+.quote-step-sub { font-size: 13px; color: var(--text-mid); margin-bottom: .6rem; }
+.quote-loading { font-size: 13.5px; color: var(--text-mid); }
+.quote-tabs-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.quote-tab-btn {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: .4rem .9rem;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all .2s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.quote-tab-btn input { position: absolute; opacity: 0; pointer-events: none; }
+.quote-tab-btn:has(input:checked) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(58,91,224,0.25);
+}
+.quote-tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.quote-tab-btn:has(input:checked):hover { color: var(--white); }
+.quote-checkbox-group { display: flex; gap: .6rem; flex-wrap: wrap; }
+.quote-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .55rem .9rem;
+  font-size: 13.5px;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.quote-checkbox:has(input:checked) { border-color: var(--accent); color: var(--accent); }
+.quote-prereqs ul { margin: 0; padding-left: 1.2rem; font-size: 13.5px; color: var(--text-mid); line-height: 1.8; }
+@media (max-width: 680px) {
+  .quote-form .contact-form-row { flex-direction: column; }
+  .quote-form .btn-primary { align-self: stretch; justify-content: center; }
+}
+
 /* BELOW-THE-FOLD RENDERING PERFORMANCE OPTIMIZATION */
 .diff-section,
 .tutorials-section,
