@@ -448,17 +448,20 @@ const schemas = [webAppSchema, breadcrumbSchema];
           readMoreLink.textContent = `Read ${link.label} →`;
         }
 
+        const LIST_STYLE = 'margin:0.6rem 0 0; padding-left:1.1rem; display:flex; flex-direction:column; gap:0.55rem; line-height:1.55;';
+
         if (keyReasons.length > 0 || neutralReasons.length > 0) {
           let html = '';
           if (keyReasons.length > 0) {
-            html += '💡 <strong>What actually decided this:</strong>' + keyReasons.map((r) => `<br>• ${r}`).join('');
+            html += '💡 <strong style="color:#8FA8FF;">What actually decided this:</strong>'
+              + `<ul style="${LIST_STYLE}">` + keyReasons.map((r) => `<li>${r}</li>`).join('') + '</ul>';
           } else {
             html += `💡 Nothing you answered strongly favored one platform — it's a reasonable, balanced default rather than a decisive fit.`;
           }
           if (neutralReasons.length > 0) {
-            html += '<div style="margin-top:0.75rem; padding-top:0.6rem; border-top:1px solid rgba(255,255,255,0.12); font-size:11.5px; opacity:0.7;">'
-              + '<strong>Also considered (no clear edge either way):</strong>'
-              + neutralReasons.map((r) => `<br>• ${r}`).join('')
+            html += '<div style="margin-top:0.85rem; padding-top:0.7rem; border-top:1px solid rgba(255,255,255,0.12); font-size:11.5px; opacity:0.7;">'
+              + '<strong style="color:rgba(255,255,255,0.85);">Also considered (no clear edge either way):</strong>'
+              + `<ul style="${LIST_STYLE}">` + neutralReasons.map((r) => `<li>${r}</li>`).join('') + '</ul>'
               + '</div>';
           }
           reasonsBox.innerHTML = html;
