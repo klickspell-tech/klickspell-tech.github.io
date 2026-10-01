@@ -1,6 +1,6 @@
 ---
 title: "GoKwik Kwik Checkout vs Cashfree Checkout 360: An Honest Comparison"
-description: "Cashfree's one-click checkout is the one that doesn't need a sales call to find out the price. Here's how it actually compares to GoKwik on address prefill, RTO handling, and discounting for an Indian Shopify store."
+description: "Both publish real pricing for lower-volume stores. Here's how Cashfree Checkout 360 actually compares to GoKwik on pricing, address prefill, RTO handling, and discounting for an Indian Shopify store."
 pubDate: 2026-10-02T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Shopify", "E-Commerce", "Checkout", "Cashfree", "COD", "RTO", "India"]
@@ -14,7 +14,7 @@ We already wrote a fact-checked [GoKwik vs Razorpay Magic Checkout comparison](/
 
 ## The short version
 
-- **Price-sensitive, lower volume, want to know the cost before a sales call?** Cashfree is the only one of the three where the checkout layer's pricing is actually public — bundled into their standard gateway rate, not a separate enterprise quote.
+- **Price-sensitive, lower volume, want to know the cost before a sales call?** Both publish real numbers — Cashfree's is simpler (a flat % of sales, no order-count cap), GoKwik's is capped at 2,000 orders/month before it reverts to a custom Enterprise quote.
 - **COD-heavy with RTO as a real P&L line item, want the deepest network RTO data?** GoKwik's network is larger and its RTO tooling (70+ interventions) is more granular than what Cashfree publishes.
 - **Need engagement/support (WhatsApp, AI chatbot) bundled, not just checkout?** That's GoKwik territory again — Cashfree, like Razorpay, is a payments company, not a marketing/engagement platform.
 
@@ -38,28 +38,28 @@ Cashfree Checkout 360 supports stacked discounts, automatic Shopify-native disco
 
 What we could **not** find public evidence of for Cashfree: native A/B testing on discounts/checkout variants, the way GoKwik's Kwik Flows or Razorpay's CustomFit.ai integration provide. That doesn't mean it doesn't exist — it means it isn't publicly documented the way the discount-stacking features are, so ask directly if that's a requirement for you.
 
-## Pricing: this is where Cashfree genuinely looks different
+## Pricing: both publish real numbers, structured very differently
 
-This is the most concrete differentiator we found across all three platforms:
+GoKwik lists an actual entry-tier rate card on its own pricing page, not just a custom quote:
 
-- **GoKwik**: custom quote only, enterprise sales process.
-- **Razorpay Magic Checkout**: also enterprise pricing, contact sales — on top of Razorpay's standard ~2% gateway fee.
-- **Cashfree**: standard gateway pricing is **0% platform fee on sales up to ₹20L, 1.95% after** — and the publicly available information indicates Checkout 360 is included in that, not a separate line item requiring its own sales conversation.
+- **GoKwik**: **Emerging Plan** ([gokwik.co/pricing](https://www.gokwik.co/pricing)) — ₹3,000/month + 3.5% COD fee + applicable PA charges, for stores doing 0–2,000 orders/month. Above that, Enterprise/custom pricing, contact sales. It's an order-count cap, not a sales-value cap — a lower-AOV, high-order-count store hits the ceiling faster than a high-AOV one.
+- **Razorpay Magic Checkout**: still enterprise-only, contact sales — on top of Razorpay's standard 2%+GST gateway fee ([razorpay.com/pricing](https://razorpay.com/pricing/)). The one of the three with no published number at all.
+- **Cashfree**: standard/permanent rate is a flat **1.95% + applicable taxes** on domestic transactions ([cashfree.com/payment-gateway-charges](https://www.cashfree.com/payment-gateway-charges/)), with Checkout 360 appearing included rather than a separate line item. There's also a **limited-time new-merchant promo** — 0% platform fee up to ₹20L GMV, through 31 March 2027 or the GMV cap, whichever hits first — but that's a promotional offer for merchants who sign up during the campaign window, not the standing rate.
 
-We'd still confirm this directly with Cashfree before assuming it holds at your volume — enterprise-tier features sometimes get gated even when the base product is self-serve — but it's the only one of the three where you can get a real pricing number without a call first.
+We'd still confirm all three directly before assuming they hold at your volume — enterprise-tier features sometimes get gated even when the base product is self-serve, and it's worth asking GoKwik whether that 3.5% COD fee applies to COD orders only or all transactions, since their own page doesn't make that fully explicit. On permanent standing rates, Cashfree (1.95%) is cheaper than Razorpay (2%+GST), and GoKwik's flat ₹3,000/month plus 3.5% COD fee is a different shape entirely — Razorpay is the one outlier with no published number at all.
 
 ## Who each is actually built for
 
 | | GoKwik | Cashfree Checkout 360 |
 |---|---|---|
-| Best fit | COD-heavy, RTO is a real cost, want deepest network data | Price-sensitive, want transparent pricing before committing |
-| Standout strength | RTO-risk data + prevention tooling, bundled engagement layer | Pricing transparency, AI RTO prediction trained on large logistics dataset |
+| Best fit | COD-heavy, RTO is a real cost, want deepest network data | Price-sensitive, want the simplest pricing to compare, no order-count cap |
+| Standout strength | RTO-risk data + prevention tooling, bundled engagement layer | Lower flat standard rate (1.95% vs GoKwik's order-capped structure), AI RTO prediction trained on large logistics dataset |
 | Engagement/support bundled | Yes (Kwik Engage) | No |
 | A/B testing | Native | Not publicly documented |
 
 ## What we actually do
 
-For clients where cost predictability matters more than squeezing the last few points of RTO reduction, Cashfree's transparent pricing is a legitimate reason to start there rather than GoKwik. For COD-heavy brands where RTO is already a measured, meaningful cost and the client also wants WhatsApp/support automation in the same implementation, GoKwik's bundled scope tends to win out. We'd rather point a client at the cheaper, transparent option when it fits than always default to the platform we have a partnership with.
+For lower-volume stores, "which one is transparent" isn't really the deciding factor — both publish real numbers, so it's "which structure fits your order profile." A high-order-count, lower-AOV store can hit GoKwik's 2,000-order cap fast and fall into custom pricing; Cashfree's sales-value cap scales differently. For COD-heavy brands where RTO is already a measured, meaningful cost and the client also wants WhatsApp/support automation in the same implementation, GoKwik's bundled scope still tends to win out regardless of pricing structure. We'd rather point a client at whichever actually fits their order profile and priorities than always default to the platform we have a partnership with.
 
 **Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Cashfree — this comparison is built from both platforms' public claims, not either one's sales deck.
 

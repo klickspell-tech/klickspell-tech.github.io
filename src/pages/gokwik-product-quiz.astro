@@ -1,0 +1,497 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+
+const canonical = "https://klickspell.com/gokwik-product-quiz";
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GoKwik Product Fit Quiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "GoKwik has 10 products, not just checkout. A 5-question quiz that maps your store's stage, COD mix, traffic, and pain points to which of GoKwik's products actually fit right now — and which to skip for now.",
+  "url": canonical,
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://klickspell.com/gokwik-product-quiz" },
+    { "@type": "ListItem", "position": 3, "name": "GoKwik Product Fit Quiz", "item": canonical }
+  ]
+};
+
+const schemas = [webAppSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Which GoKwik Products Does Your Store Actually Need? | Klickspell"
+  description="GoKwik has 10 products — Kwik Checkout, Kwik Engage, Kwik Pass, Return Prime, and more. Answer 5 quick questions to see which ones fit your store right now, and which to skip for later."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <header class="service-page-hero" style="padding-bottom: 1.5rem;">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / GoKwik Product Fit</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        2-Minute Quiz · 10 Products Checked
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        GoKwik isn't just checkout.<br>
+        <em>Which parts do you actually need?</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2" style="max-width: 680px;">
+        GoKwik now sells 10 separate products — checkout, engagement, returns, ads, visitor ID, and more ([full list on gokwik.co](https://www.gokwik.co/)). Most stores need two or three of them, not all ten. Answer 5 questions about your store and we'll tell you which ones fit now, which to wait on, and why — not a generic "buy everything" list.
+      </p>
+    </header>
+
+    <div class="section" style="padding-top: 1rem; padding-bottom: 5rem;">
+      <div class="quote-layout reveal">
+
+        <!-- LEFT: QUESTIONS -->
+        <div class="quote-main-col">
+          <form id="gkQuizForm" novalidate>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q1</span>
+                  <span>Store Stage</span>
+                </div>
+                <h2 class="quote-card-title">What stage is your store at?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Store stage">
+                <label class="quote-pill-label">
+                  <input type="radio" name="stage" value="not_launched" />
+                  <span class="quote-pill-ui">🚀 Not launched yet</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="stage" value="live_low" />
+                  <span class="quote-pill-ui">Live, under 500 orders/mo</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="stage" value="live_mid" checked />
+                  <span class="quote-pill-ui">Live, 500–5,000 orders/mo</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="stage" value="live_high" />
+                  <span class="quote-pill-ui">Live, 5,000+ orders/mo</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q2</span>
+                  <span>Order Mix</span>
+                </div>
+                <h2 class="quote-card-title">What share of your orders are (or will be) COD?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="COD share">
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="high" />
+                  <span class="quote-pill-ui">🟠 Mostly COD (70%+)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="mixed" checked />
+                  <span class="quote-pill-ui">🔵 Mixed (30–70%)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="low" />
+                  <span class="quote-pill-ui">🟢 Mostly Prepaid (&lt;30% COD)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="none" />
+                  <span class="quote-pill-ui">No COD / international only</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q3</span>
+                  <span>Traffic</span>
+                </div>
+                <h2 class="quote-card-title">Roughly how much monthly traffic (current or expected at launch)?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Monthly traffic">
+                <label class="quote-pill-label">
+                  <input type="radio" name="traffic" value="under5k" />
+                  <span class="quote-pill-ui">Under 5,000 visitors</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="traffic" value="mid" checked />
+                  <span class="quote-pill-ui">5,000 – 50,000</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="traffic" value="high" />
+                  <span class="quote-pill-ui">50,000+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q4</span>
+                  <span>Pain Points</span>
+                </div>
+                <h2 class="quote-card-title">What's actually costing you money or time right now?</h2>
+                <p class="quote-card-sub">Pick as many as apply — this is what drives most of the recommendation below.</p>
+              </div>
+              <div class="quote-pill-options" role="group" aria-label="Pain points">
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="rto" /><span class="quote-pill-ui">High RTO / failed COD deliveries</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="drop_off" /><span class="quote-pill-ui">Checkout drop-off / low conversion</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="aov" /><span class="quote-pill-ui">AOV could be higher</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="abandoned_cart" /><span class="quote-pill-ui">Abandoned carts, no recovery flow</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="returns" /><span class="quote-pill-ui">High return/exchange volume</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="support" /><span class="quote-pill-ui">Support query volume is overwhelming</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="ads_roas" /><span class="quote-pill-ui">Meta Ads ROAS is underwhelming</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="anonymous" /><span class="quote-pill-ui">Can't identify anonymous/repeat visitors</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="login_friction" /><span class="quote-pill-ui">Login/account creation friction</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="leadcapture" /><span class="quote-pill-ui">Popups/lead capture aren't converting</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="ai_geo" /><span class="quote-pill-ui">Want visibility in AI search (ChatGPT, etc.)</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="shipping" /><span class="quote-pill-ui">Shipping/fulfillment ops are messy</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="finance" /><span class="quote-pill-ui">Need working capital / inventory financing</span></label>
+                <label class="quote-pill-label"><input type="checkbox" name="pains" value="none" checked /><span class="quote-pill-ui">None of these yet / not sure</span></label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q5</span>
+                  <span>Current Setup</span>
+                </div>
+                <h2 class="quote-card-title">Do you already have WhatsApp/retention marketing automation?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Existing retention automation">
+                <label class="quote-pill-label">
+                  <input type="radio" name="automation" value="none" checked />
+                  <span class="quote-pill-ui">No, nothing in place</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="automation" value="basic" />
+                  <span class="quote-pill-ui">Basic (manual broadcasts)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="automation" value="advanced" />
+                  <span class="quote-pill-ui">Yes, already automated</span>
+                </label>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: STICKY LIVE RESULT -->
+        <div class="quote-sidebar-col">
+          <div class="estimator-results-card">
+            <span class="estimator-results-badge">Live Recommendation</span>
+            <h2 class="estimator-results-title" id="gkResultTitle">Calculating…</h2>
+            <p class="estimator-results-sub" id="gkResultSub">Answer the questions on the left — this updates live.</p>
+
+            <div class="gk-product-list" id="gkCoreList"></div>
+
+            <div class="gk-newer-note">
+              Newer products — limited public documentation beyond GoKwik's own one-line description, so these are capped at "worth evaluating," never an automatic "start now." Confirm scope directly before committing.
+            </div>
+            <div class="gk-product-list" id="gkNewerList"></div>
+
+            <a href="/checkout-quiz" class="btn-ghost" style="margin-bottom: .75rem; margin-top: 1rem;">
+              Comparing checkout vendors too? →
+            </a>
+
+            <a
+              href="https://cal.com/atul-bhatt-klickspell/30min"
+              data-cal-link="atul-bhatt-klickspell/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
+              class="btn-primary"
+              style="cursor:pointer"
+            >
+              Book Free 20-Min Call →
+            </a>
+            <a
+              href="https://wa.me/919259598769"
+              target="_blank"
+              rel="noopener"
+              class="btn-ghost"
+              style="display:inline-flex; align-items:center; justify-content:center; gap:8px;"
+            >
+              <WhatsAppIcon size={17} fill="#25D366" />
+              <span>Discuss on WhatsApp</span>
+            </a>
+
+            <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
+              Based on <a href="https://www.gokwik.co/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);">GoKwik's own published product descriptions</a> and <a href="https://www.gokwik.co/pricing" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);">pricing page</a> — a starting point, not a verdict.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <style>
+    .gk-product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .gk-product-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .gk-product-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .gk-product-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .gk-product-reason {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+    .gk-product-main { flex: 1; min-width: 0; }
+    .gk-badge {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .gk-badge.start_now { background: rgba(12,206,107,0.18); color: #4ADE80; }
+    .gk-badge.worth_evaluating { background: rgba(58,91,224,0.25); color: #93A9FF; }
+    .gk-badge.wait { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
+    .gk-badge.lower_priority { background: rgba(247,185,85,0.18); color: #F7B955; }
+    .gk-newer-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+
+  <script is:inline>
+    (function() {
+      // Product metadata - name/link sourced from gokwik.co (homepage + specific
+      // product pages where confirmed). "core" products have a documented
+      // feature set on GoKwik's own site; "newer" products currently only have
+      // a one-line tagline publicly - see gk-newer-note in the markup.
+      const PRODUCTS = {
+        checkout:    { name: 'Kwik Checkout', link: 'https://www.gokwik.co/en_gb/product/kwikcheckout', group: 'core' },
+        engage:      { name: 'Kwik Engage', link: 'https://www.gokwik.co/', group: 'core' },
+        returnPrime: { name: 'Return Prime', link: 'https://www.gokwik.co/', group: 'core' },
+        cart:        { name: 'GoKwik Cart', link: 'https://www.gokwik.co/', group: 'core' },
+        ads:         { name: 'Kwik Ads', link: 'https://www.gokwik.co/', group: 'core' },
+        pass:        { name: 'Kwik Pass', link: 'https://www.gokwik.co/kwikpass', group: 'core' },
+        geo:         { name: 'Kwik GEO', link: 'https://www.gokwik.co/', group: 'newer' },
+        ship:        { name: 'Kwik Ship', link: 'https://www.gokwik.co/', group: 'newer' },
+        finance:     { name: 'Kwik Finance', link: 'https://www.gokwik.co/', group: 'newer' },
+        popups:      { name: 'Kwik AI Popups', link: 'https://www.gokwik.co/', group: 'newer' }
+      };
+
+      const STATUS_LABEL = {
+        start_now: 'Start now',
+        worth_evaluating: 'Worth evaluating',
+        wait: 'Not yet',
+        lower_priority: 'Lower priority'
+      };
+
+      const form = document.getElementById('gkQuizForm');
+      const titleEl = document.getElementById('gkResultTitle');
+      const subEl = document.getElementById('gkResultSub');
+      const coreListEl = document.getElementById('gkCoreList');
+      const newerListEl = document.getElementById('gkNewerList');
+
+      // "None of these" is mutually exclusive with every other pain checkbox.
+      form.querySelectorAll('input[name="pains"]').forEach((cb) => {
+        cb.addEventListener('change', () => {
+          const painBoxes = form.querySelectorAll('input[name="pains"]');
+          if (cb.value === 'none' && cb.checked) {
+            painBoxes.forEach((o) => { if (o.value !== 'none') o.checked = false; });
+          } else if (cb.value !== 'none' && cb.checked) {
+            const noneBox = form.querySelector('input[name="pains"][value="none"]');
+            if (noneBox) noneBox.checked = false;
+          }
+        });
+      });
+
+      function getAnswers() {
+        const stage = form.querySelector('input[name="stage"]:checked')?.value || 'live_mid';
+        const cod = form.querySelector('input[name="cod_share"]:checked')?.value || 'mixed';
+        const traffic = form.querySelector('input[name="traffic"]:checked')?.value || 'mid';
+        const automation = form.querySelector('input[name="automation"]:checked')?.value || 'none';
+        const pains = Array.from(form.querySelectorAll('input[name="pains"]:checked')).map((el) => el.value);
+        return { stage, cod, traffic, automation, pains };
+      }
+
+      function evaluate(a) {
+        const r = {};
+
+        // Kwik Checkout
+        if (a.cod === 'none') {
+          r.checkout = { status: 'lower_priority', reason: "Fully prepaid means GoKwik's core COD/RTO engine has little to work with — the conversion boost is still real, but not the clear win it is for COD-heavy stores." };
+        } else if (a.stage === 'not_launched') {
+          r.checkout = { status: 'start_now', reason: "Perfect timing — integrate before launch so you start with RTO prevention and address prefill from order #1." };
+        } else if (a.pains.includes('rto')) {
+          r.checkout = { status: 'start_now', reason: "You flagged RTO — this is purpose-built for exactly that." };
+        } else if (a.pains.includes('drop_off')) {
+          r.checkout = { status: 'start_now', reason: "You flagged checkout drop-off — 1-click checkout with saved addresses is the direct fix." };
+        } else {
+          r.checkout = { status: 'start_now', reason: "You're live and carrying COD — every month without RTO prevention is COD losses going uncaught." };
+        }
+
+        // Kwik Engage
+        if (a.stage === 'not_launched') {
+          r.engage = { status: 'wait', reason: "No traffic or customers yet to run retention flows against — revisit once you're live." };
+        } else if (a.traffic === 'under5k' && !a.pains.includes('abandoned_cart') && !a.pains.includes('support')) {
+          r.engage = { status: 'wait', reason: "Traffic is still low and neither abandonment nor support volume is flagged — revisit as traffic grows." };
+        } else if (a.automation === 'advanced') {
+          r.engage = { status: 'lower_priority', reason: "You already have sophisticated retention automation — the edge here is incremental, not foundational." };
+        } else if (a.pains.includes('abandoned_cart')) {
+          r.engage = { status: 'start_now', reason: "You flagged abandoned carts with no recovery flow — this is exactly the gap it fills." };
+        } else if (a.pains.includes('support')) {
+          r.engage = { status: 'start_now', reason: "You flagged support volume as overwhelming — the automated WhatsApp/AI layer is built for this." };
+        } else {
+          r.engage = { status: 'worth_evaluating', reason: "Enough traffic for retention automation to matter, but no specific pain point flagged — worth a closer look, not a default yes." };
+        }
+
+        // Return Prime
+        if (a.pains.includes('returns')) {
+          r.returnPrime = { status: 'start_now', reason: "You flagged return/exchange volume as a cost — this is built specifically to recover revenue from that." };
+        } else if (a.stage === 'not_launched') {
+          r.returnPrime = { status: 'wait', reason: "No order history yet to generate returns." };
+        } else {
+          r.returnPrime = { status: 'lower_priority', reason: "Not flagged as a cost right now — track your return rate before adding a tool for it." };
+        }
+
+        // GoKwik Cart
+        if (a.pains.includes('aov') || a.pains.includes('drop_off')) {
+          r.cart = { status: 'start_now', reason: a.pains.includes('aov') ? "You flagged AOV — this is built for cart-stage upsells and discount triggers." : "Drop-off often starts upstream at the cart — worth pairing with Kwik Checkout." };
+        } else if (a.stage === 'not_launched') {
+          r.cart = { status: 'wait', reason: "Nothing to optimize yet — revisit once you have real cart data." };
+        } else {
+          r.cart = { status: 'worth_evaluating', reason: "No AOV or drop-off pain flagged, but a low-risk add once checkout is live." };
+        }
+
+        // Kwik Ads
+        if (a.stage === 'not_launched') {
+          r.ads = { status: 'wait', reason: "No ad spend yet to optimize." };
+        } else if (a.pains.includes('ads_roas')) {
+          r.ads = { status: 'start_now', reason: "You flagged Meta Ads ROAS — built specifically to improve targeting and attribution there." };
+        } else {
+          r.ads = { status: 'lower_priority', reason: "Ad performance wasn't flagged as a problem." };
+        }
+
+        // Kwik Pass
+        if ((a.pains.includes('anonymous') || a.pains.includes('login_friction')) && a.traffic !== 'under5k') {
+          r.pass = { status: 'start_now', reason: "You flagged visitor ID or login friction, and you have enough traffic for network-based ID to have real signal." };
+        } else if (a.traffic === 'under5k' || a.stage === 'not_launched') {
+          r.pass = { status: 'wait', reason: "Low traffic means little anonymous-visitor volume for this to work on yet." };
+        } else {
+          r.pass = { status: 'lower_priority', reason: "Not flagged as a pain point right now." };
+        }
+
+        // Newer, thinly-documented products - capped at worth_evaluating/lower_priority/wait,
+        // never start_now, since we only have a one-line tagline to go on for these.
+        r.geo = a.pains.includes('ai_geo')
+          ? { status: 'worth_evaluating', reason: "You flagged AI-search visibility as relevant." }
+          : { status: 'lower_priority', reason: "Not flagged as a priority right now." };
+
+        r.ship = a.pains.includes('shipping')
+          ? { status: 'worth_evaluating', reason: "You flagged shipping/fulfillment as messy." }
+          : { status: 'lower_priority', reason: "Not flagged as a pain point right now." };
+
+        r.finance = a.pains.includes('finance')
+          ? { status: 'worth_evaluating', reason: "You flagged a need for growth financing." }
+          : { status: 'lower_priority', reason: "Not flagged as a current need." };
+
+        r.popups = a.pains.includes('leadcapture')
+          ? { status: 'worth_evaluating', reason: "You flagged lead capture/popups as underperforming." }
+          : { status: 'lower_priority', reason: "Not flagged as a pain point right now." };
+
+        return r;
+      }
+
+      function renderRow(id, result) {
+        const meta = PRODUCTS[id];
+        const row = document.createElement('div');
+        row.className = 'gk-product-row';
+        row.innerHTML = `
+          <div class="gk-product-main">
+            <a href="${meta.link}" target="_blank" rel="noopener" class="gk-product-name" style="text-decoration:none;">${meta.name}</a>
+            <div class="gk-product-reason">${result.reason}</div>
+          </div>
+          <span class="gk-badge ${result.status}">${STATUS_LABEL[result.status]}</span>
+        `;
+        return row;
+      }
+
+      function compute() {
+        const answers = getAnswers();
+        const results = evaluate(answers);
+
+        coreListEl.innerHTML = '';
+        newerListEl.innerHTML = '';
+
+        let startNowCount = 0;
+        Object.keys(PRODUCTS).forEach((id) => {
+          const result = results[id];
+          if (result.status === 'start_now') startNowCount++;
+          const row = renderRow(id, result);
+          if (PRODUCTS[id].group === 'core') coreListEl.appendChild(row);
+          else newerListEl.appendChild(row);
+        });
+
+        if (startNowCount === 0) {
+          titleEl.textContent = "Nothing urgent yet";
+          subEl.textContent = "Based on your answers, no product is a clear 'start now' — that's a fine place to be if you're pre-launch or still finding your pain points.";
+        } else {
+          titleEl.textContent = startNowCount + (startNowCount === 1 ? " product worth starting now" : " products worth starting now");
+          subEl.textContent = "See the full breakdown below — \"start now\" means it directly addresses something you flagged, not just that GoKwik sells it.";
+        }
+      }
+
+      form.addEventListener('change', compute);
+      compute();
+    })();
+  </script>
+</BaseLayout>

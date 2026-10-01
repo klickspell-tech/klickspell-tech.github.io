@@ -277,12 +277,25 @@ const schemas = [webAppSchema, breadcrumbSchema];
           high: { razorpay: 2 }
         },
         volume: {
-          low:  { cashfree: 2, gokwik: -1, razorpay: -1 },
+          // GoKwik's published Emerging Plan rate (₹3,000/mo + 3.5% COD fee)
+          // specifically covers 0-2,000 orders/month, so it no longer makes
+          // sense to penalize GoKwik at low volume - that assumption predates
+          // GoKwik publishing this rate. Cashfree's flat 1.95% also applies
+          // at any volume with no order-count cap. Razorpay remains the one
+          // with no published number regardless of volume.
+          low:  { cashfree: 1, gokwik: 1, razorpay: -1 },
           mid:  { gokwik: 1, razorpay: 1, cashfree: 1 },
           high: { gokwik: 1, razorpay: 1 }
         },
         priority: {
-          cost:       { cashfree: 3 },
+          // Cashfree's flat 1.95% standard rate has no order-count ceiling,
+          // which still makes it the simplest of the three to compare at any
+          // volume. GoKwik now also publishes a real entry-tier rate (capped
+          // at 2,000 orders/month), so it gets real but smaller credit here -
+          // it's no longer accurate to say Cashfree is the only one with
+          // public pricing. Razorpay still publishes nothing for Magic
+          // Checkout itself.
+          cost:       { cashfree: 3, gokwik: 1 },
           rto:        { gokwik: 3 },
           engagement: { gokwik: 3 }
         }
@@ -304,10 +317,16 @@ const schemas = [webAppSchema, breadcrumbSchema];
           high: { razorpay: "Higher AOV orders benefit from Razorpay's RTO Protection reimbursement backstop." }
         },
         volume: {
-          low: { cashfree: "Lower order volume means Cashfree's 0%-fee-to-₹20L tier likely applies directly to you." }
+          low: {
+            cashfree: "Lower order volume means Cashfree's flat 1.95% standard rate applies directly, with no order-count cap.",
+            gokwik: "Lower order volume (under 2,000/month) falls right within GoKwik's published Emerging Plan rate — that tier is built specifically for stores your size."
+          }
         },
         priority: {
-          cost:       { cashfree: "You said pricing transparency matters most — Cashfree is the only one of the three with public pricing." },
+          cost:       {
+            cashfree: "You said pricing transparency matters most — Cashfree's flat 1.95% rate has no order-count ceiling, the simplest of the three to compare.",
+            gokwik: "You said pricing transparency matters most — GoKwik now publishes a real entry-tier rate too (₹3,000/mo + 3.5% COD fee, up to 2,000 orders/month), though Cashfree's flat-rate structure is simpler to compare."
+          },
           rto:        { gokwik: "You said RTO prevention matters most — GoKwik's network has the deepest RTO-specific data of the three." },
           engagement: { gokwik: "You need bundled engagement/support — only GoKwik bundles this natively (Kwik Engage)." }
         }

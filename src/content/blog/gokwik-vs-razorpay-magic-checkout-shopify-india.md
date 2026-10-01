@@ -51,14 +51,12 @@ What's still genuinely different:
 - **RTO-risk-linked discount triggers.** GoKwik can condition an offer on a shopper's risk score (e.g., a prepaid-only freebie shown just to flagged-risky COD shoppers) — because the discount engine and the RTO engine are the same system. Razorpay's coupon targeting is behavioral/list-based, not RTO-risk-based.
 - **Cart-stage discounting bundled in.** GoKwik Cart (slide cart with upsells/free-gift unlock bars) is part of the same ecosystem as Kwik Checkout. Magic Checkout is checkout-only — it doesn't touch the cart experience before checkout starts.
 
-## Pricing: both are custom quotes, neither is free
+## Pricing: GoKwik publishes a starting rate, Razorpay doesn't
 
-Worth being direct about this since it's easy to assume whichever one you're already paying for (your payment gateway, if it's Razorpay) is "free" and the other is an added cost. Neither actually publishes pricing:
+- **GoKwik**: publishes an actual entry-tier rate card on its own site — the **Emerging Plan** is ₹3,000/month + a 3.5% COD fee + applicable PA (payment aggregator) charges, for stores doing 0–2,000 orders/month. Above that, it's Enterprise/custom pricing, contact sales. (Worth confirming directly whether that 3.5% applies to COD orders specifically or across all transactions — GoKwik's own pricing page isn't fully explicit on that point.)
+- **Razorpay Magic Checkout**: still enterprise-only, contact sales, no published number — on top of Razorpay's standard ~2% gateway fee.
 
-- **GoKwik**: custom quote, typically structured as a flat per-order fee, a percentage take-rate, or a success-fee tied to COD conversion — on top of whatever payment gateway you're already using underneath it.
-- **Razorpay Magic Checkout**: also listed as enterprise pricing, contact sales — separate from (and in addition to) Razorpay's standard ~2% gateway fee.
-
-If you're already a Razorpay merchant, Magic Checkout is at least a single vendor relationship and one invoice. GoKwik is a second platform on top of whatever gateway you use — which is exactly the "what this actually costs" point worth getting a real quote on before assuming either is the cheaper path.
+If you're a lower-volume store (under 2,000 orders/month), GoKwik is the one with an actual number you can do napkin math on before a sales call. If you're already a Razorpay merchant, Magic Checkout is at least a single vendor relationship and one invoice; GoKwik is a second platform on top of whatever gateway you use. Either way, get the real number for your specific volume before assuming either is the cheaper path.
 
 ## Who each is actually built for
 

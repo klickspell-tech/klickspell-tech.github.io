@@ -18,10 +18,10 @@ We have no commercial relationship with either company; we set up whichever gate
 
 This is the most concrete, verifiable difference between the two:
 
-- **Razorpay**: flat **~2% + GST** per domestic transaction, no setup or annual maintenance fee. Magic Checkout itself is separately enterprise-priced — contact sales.
-- **Cashfree**: **0% platform fee on sales up to ₹20L, 1.95% after** — and Checkout 360 appears to be included in standard pricing rather than gated behind a separate enterprise quote.
+- **Razorpay**: flat **2% + GST** per domestic transaction ([Razorpay pricing](https://razorpay.com/pricing/)), no setup or annual maintenance fee. Magic Checkout itself is separately enterprise-priced — contact sales.
+- **Cashfree**: standard/permanent rate is a flat **1.95% + applicable taxes** on domestic transactions ([Cashfree pricing](https://www.cashfree.com/payment-gateway-charges/)), and Checkout 360 appears to be included in standard pricing rather than gated behind a separate enterprise quote. Cashfree is also currently running a **limited-time new-merchant promo** — 0% platform fee up to ₹20L cumulative GMV — through 31 March 2027 or until the GMV cap is hit, whichever comes first. That's a promotional offer for merchants signing up during the campaign window, not the standing rate.
 
-For a smaller or mid-volume store, Cashfree's structure is meaningfully cheaper, especially under the ₹20L threshold where it's free. For a high-volume store already past that threshold, the gap narrows (1.95% vs 2%) but doesn't disappear. Razorpay's flat-rate simplicity is easier to forecast; Cashfree's tiered structure rewards lower-volume or newer stores specifically.
+Even on the permanent standard rates, Cashfree is slightly cheaper (1.95% vs 2%+GST), though the gap is narrower than it first looks once you strip out the promo. For a new store that qualifies for the current campaign, the effective cost is lower still while it lasts — but build your pricing model around the 1.95% standing rate, not the promo, since the promo has a hard expiry and a GMV cap. Razorpay's flat-rate simplicity is easier to forecast long-term; Cashfree's rate is lower on paper but worth re-confirming the promo is still live before you factor it into a pitch.
 
 ## Address prefill and network size
 
@@ -51,7 +51,7 @@ Neither publicly documents native A/B testing on discount variants the way GoKwi
 | | Razorpay Magic Checkout | Cashfree Checkout 360 |
 |---|---|---|
 | Best fit | Higher-volume stores, want a financial backstop on RTO | Lower/mid-volume stores, want transparent pricing from day one |
-| Gateway pricing | Flat ~2% + GST | 0% to ₹20L, then 1.95% |
+| Gateway pricing | Flat 2% + GST | Flat 1.95% standard (+ time-limited 0%-to-₹20L new-merchant promo through Mar 2027) |
 | Checkout layer pricing | Separate enterprise quote | Appears bundled into standard pricing |
 | RTO safety net | RTO Protection (reimbursement) | Prevention only |
 
