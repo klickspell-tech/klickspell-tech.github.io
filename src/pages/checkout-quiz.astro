@@ -1,0 +1,399 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+
+const canonical = "https://klickspell.com/checkout-quiz";
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Shopify Checkout Recommender — GoKwik vs Razorpay vs Cashfree",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "A 5-question quiz that recommends GoKwik Kwik Checkout, Razorpay Magic Checkout, or Cashfree Checkout 360 for an Indian Shopify store based on COD mix, AOV, order volume, and priorities.",
+  "url": canonical,
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://klickspell.com/checkout-quiz" },
+    { "@type": "ListItem", "position": 3, "name": "Checkout Recommender", "item": canonical }
+  ]
+};
+
+const schemas = [webAppSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="GoKwik vs Razorpay vs Cashfree — Which Checkout Fits Your Store? | Klickspell"
+  description="Answer 5 quick questions about your COD mix, AOV, and order volume — get an instant recommendation between GoKwik Kwik Checkout, Razorpay Magic Checkout, and Cashfree Checkout 360."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <header class="service-page-hero" style="padding-bottom: 1.5rem;">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / Checkout Recommender</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        2-Minute Quiz · Instant Recommendation
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Which checkout should<br>
+        <em>your store actually use?</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2" style="max-width: 680px;">
+        GoKwik, Razorpay Magic Checkout, and Cashfree Checkout 360 all claim similar numbers. The right one depends on your COD mix, order value, and what you actually need — answer 5 quick questions and we'll tell you which, with reasons, not just a vendor logo.
+      </p>
+    </header>
+
+    <div class="section" style="padding-top: 1rem; padding-bottom: 5rem;">
+      <div class="quote-layout reveal">
+
+        <!-- LEFT: QUESTIONS -->
+        <div class="quote-main-col">
+          <form id="quizForm" novalidate>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q1</span>
+                  <span>Order Mix</span>
+                </div>
+                <h2 class="quote-card-title">What share of your orders are COD?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="COD share">
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="high" />
+                  <span class="quote-pill-ui">🟠 Mostly COD (70%+)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="mixed" checked />
+                  <span class="quote-pill-ui">🔵 Mixed (30–70%)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="cod_share" value="low" />
+                  <span class="quote-pill-ui">🟢 Mostly Prepaid (&lt;30% COD)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q2</span>
+                  <span>Average Order Value</span>
+                </div>
+                <h2 class="quote-card-title">What's your typical AOV?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Average order value">
+                <label class="quote-pill-label">
+                  <input type="radio" name="aov" value="low" />
+                  <span class="quote-pill-ui">Under ₹1,500</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="aov" value="mid" checked />
+                  <span class="quote-pill-ui">₹1,500 – ₹3,000</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="aov" value="high" />
+                  <span class="quote-pill-ui">Above ₹3,000</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q3</span>
+                  <span>Order Volume</span>
+                </div>
+                <h2 class="quote-card-title">Roughly how many orders a month?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Monthly order volume">
+                <label class="quote-pill-label">
+                  <input type="radio" name="volume" value="low" />
+                  <span class="quote-pill-ui">Under 500</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="volume" value="mid" checked />
+                  <span class="quote-pill-ui">500 – 5,000</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="volume" value="high" />
+                  <span class="quote-pill-ui">5,000+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q4</span>
+                  <span>Priority</span>
+                </div>
+                <h2 class="quote-card-title">What matters most right now?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Top priority">
+                <label class="quote-pill-label">
+                  <input type="radio" name="priority" value="cost" />
+                  <span class="quote-pill-ui">💰 Lowest, transparent pricing</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="priority" value="rto" checked />
+                  <span class="quote-pill-ui">🛡️ Deepest RTO prevention</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="priority" value="engagement" />
+                  <span class="quote-pill-ui">💬 Bundled WhatsApp/AI support</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="priority" value="gateway" />
+                  <span class="quote-pill-ui">🔗 Sticking with my existing gateway</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q5</span>
+                  <span>Current Setup</span>
+                </div>
+                <h2 class="quote-card-title">Which payment gateway do you use today?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Existing payment gateway">
+                <label class="quote-pill-label">
+                  <input type="radio" name="existing_gateway" value="razorpay" />
+                  <span class="quote-pill-ui">Razorpay</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="existing_gateway" value="cashfree" />
+                  <span class="quote-pill-ui">Cashfree</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="existing_gateway" value="other" checked />
+                  <span class="quote-pill-ui">Another / Not sure yet</span>
+                </label>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: STICKY LIVE RESULT -->
+        <div class="quote-sidebar-col">
+          <div class="estimator-results-card">
+            <span class="estimator-results-badge">Live Recommendation</span>
+            <h2 class="estimator-results-title" id="quizResultTitle">Calculating…</h2>
+            <p class="estimator-results-sub" id="quizResultSub">Answer the questions on the left to see your recommendation update live.</p>
+
+            <div class="estimator-meters">
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">GoKwik Kwik Checkout:</span>
+                <span class="estimator-meter-val" id="scoreGokwik">0%</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Razorpay Magic Checkout:</span>
+                <span class="estimator-meter-val" id="scoreRazorpay">0%</span>
+              </div>
+              <div class="estimator-meter-item">
+                <span class="estimator-meter-label">Cashfree Checkout 360:</span>
+                <span class="estimator-meter-val" id="scoreCashfree">0%</span>
+              </div>
+            </div>
+
+            <div class="estimator-penalty-box" id="quizReasonsBox">
+              💡 Your reasons will appear here as you answer.
+            </div>
+
+            <a id="quizReadMoreLink" href="/blog/gokwik-vs-razorpay-magic-checkout-shopify-india" class="btn-ghost" style="margin-bottom: .75rem;">
+              Read the full comparison →
+            </a>
+
+            <a
+              href="https://cal.com/atul-bhatt-klickspell/30min"
+              data-cal-link="atul-bhatt-klickspell/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
+              class="btn-primary"
+              style="cursor:pointer"
+            >
+              Book Free 20-Min Call →
+            </a>
+            <a
+              href="https://wa.me/919259598769"
+              target="_blank"
+              rel="noopener"
+              class="btn-ghost"
+              style="display:inline-flex; align-items:center; justify-content:center; gap:8px;"
+            >
+              <WhatsAppIcon size={17} fill="#25D366" />
+              <span>Discuss on WhatsApp</span>
+            </a>
+
+            <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
+              A recommendation, not a verdict — we'll validate against your real order data on a call before you commit to anything.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script is:inline>
+    (function() {
+      // Points each answer contributes per platform. Only positive/negative
+      // signal worth showing is listed here - omitted = 0 contribution.
+      const SCORES = {
+        cod_share: {
+          high:  { gokwik: 3, cashfree: 1 },
+          mixed: { gokwik: 1, razorpay: 1, cashfree: 1 },
+          low:   { razorpay: 2, cashfree: 1 }
+        },
+        aov: {
+          low:  { gokwik: 2 },
+          mid:  { gokwik: 1, razorpay: 1, cashfree: 1 },
+          high: { razorpay: 2 }
+        },
+        volume: {
+          low:  { cashfree: 2, gokwik: -1, razorpay: -1 },
+          mid:  { gokwik: 1, razorpay: 1, cashfree: 1 },
+          high: { gokwik: 1, razorpay: 1 }
+        },
+        priority: {
+          cost:       { cashfree: 3 },
+          rto:        { gokwik: 3 },
+          engagement: { gokwik: 3 },
+          gateway:    {} // handled via existing_gateway, amplified below
+        },
+        existing_gateway: {
+          razorpay: { razorpay: 3 },
+          cashfree: { cashfree: 3 },
+          other:    {}
+        }
+      };
+
+      // Human-readable reason shown when this (question, answer) pairing
+      // contributed to the WINNING platform specifically.
+      const REASONS = {
+        cod_share: {
+          high:  { gokwik: "Your COD-heavy mix is exactly what GoKwik's RTO prevention network is built for.", cashfree: "High COD volume gives Cashfree's AI RTO prediction real signal to work with." },
+          low:   { razorpay: "Mostly-prepaid order mix plays to Razorpay's strength as a payments-first platform." }
+        },
+        aov: {
+          low:  { gokwik: "GoKwik's own published best-fit is lower-AOV, COD-heavy brands." },
+          high: { razorpay: "Higher AOV orders benefit from Razorpay's RTO Protection reimbursement backstop." }
+        },
+        volume: {
+          low: { cashfree: "Lower order volume means Cashfree's 0%-fee-to-₹20L tier likely applies directly to you." }
+        },
+        priority: {
+          cost:       { cashfree: "You said pricing transparency matters most — Cashfree is the only one of the three with public pricing." },
+          rto:        { gokwik: "You said RTO prevention matters most — GoKwik's network has the deepest RTO-specific data of the three." },
+          engagement: { gokwik: "You need bundled engagement/support — only GoKwik bundles this natively (Kwik Engage)." }
+        },
+        existing_gateway: {
+          razorpay: { razorpay: "You're already on Razorpay — Magic Checkout is the lowest-friction extension of what you have." },
+          cashfree: { cashfree: "You're already on Cashfree — Checkout 360 extends your existing setup with no new vendor relationship." }
+        }
+      };
+
+      const PLATFORM_META = {
+        gokwik:   { name: "GoKwik Kwik Checkout", link: "/blog/gokwik-vs-razorpay-magic-checkout-shopify-india", short: "GoKwik" },
+        razorpay: { name: "Razorpay Magic Checkout", link: "/blog/gokwik-vs-razorpay-magic-checkout-shopify-india", short: "Razorpay" },
+        cashfree: { name: "Cashfree Checkout 360", link: "/blog/gokwik-vs-cashfree-checkout-360-shopify-india", short: "Cashfree" }
+      };
+
+      const form = document.getElementById('quizForm');
+      const titleEl = document.getElementById('quizResultTitle');
+      const subEl = document.getElementById('quizResultSub');
+      const reasonsBox = document.getElementById('quizReasonsBox');
+      const readMoreLink = document.getElementById('quizReadMoreLink');
+      const meterEls = { gokwik: document.getElementById('scoreGokwik'), razorpay: document.getElementById('scoreRazorpay'), cashfree: document.getElementById('scoreCashfree') };
+
+      function getAnswers() {
+        const answers = {};
+        ['cod_share', 'aov', 'volume', 'priority', 'existing_gateway'].forEach((name) => {
+          const checked = form.querySelector(`input[name="${name}"]:checked`);
+          answers[name] = checked ? checked.value : null;
+        });
+        return answers;
+      }
+
+      function compute() {
+        const answers = getAnswers();
+        const totals = { gokwik: 0, razorpay: 0, cashfree: 0 };
+        const firedReasons = [];
+
+        Object.keys(SCORES).forEach((question) => {
+          const answer = answers[question];
+          if (!answer || !SCORES[question][answer]) return;
+          const contrib = SCORES[question][answer];
+          Object.keys(contrib).forEach((platform) => {
+            totals[platform] += contrib[platform];
+          });
+        });
+
+        // "Stick with existing gateway" priority amplifies whichever gateway is already in use.
+        if (answers.priority === 'gateway' && (answers.existing_gateway === 'razorpay' || answers.existing_gateway === 'cashfree')) {
+          totals[answers.existing_gateway] += 2;
+        }
+
+        // Floor at 0 for display purposes (volume penalties can go negative).
+        const display = {
+          gokwik: Math.max(0, totals.gokwik),
+          razorpay: Math.max(0, totals.razorpay),
+          cashfree: Math.max(0, totals.cashfree)
+        };
+        const sum = display.gokwik + display.razorpay + display.cashfree || 1;
+
+        Object.keys(display).forEach((platform) => {
+          const pct = Math.round((display[platform] / sum) * 100);
+          meterEls[platform].textContent = pct + '%';
+        });
+
+        const winner = Object.keys(totals).reduce((a, b) => (totals[b] > totals[a] ? b : a));
+
+        Object.keys(SCORES).forEach((question) => {
+          const answer = answers[question];
+          const reasonText = REASONS[question] && REASONS[question][answer] && REASONS[question][answer][winner];
+          if (reasonText) firedReasons.push(reasonText);
+        });
+
+        const meta = PLATFORM_META[winner];
+        titleEl.textContent = meta.name;
+        subEl.textContent = "Based on your answers, this is the strongest fit for your store right now.";
+        readMoreLink.href = meta.link;
+        readMoreLink.textContent = `Read the full ${meta.short} comparison →`;
+
+        if (firedReasons.length > 0) {
+          reasonsBox.innerHTML = '💡 <strong>Why:</strong> ' + firedReasons.slice(0, 3).map((r) => `<br>• ${r}`).join('');
+        } else {
+          reasonsBox.innerHTML = `💡 ${meta.name} is a reasonable, balanced default for your answers so far.`;
+        }
+      }
+
+      form.addEventListener('change', compute);
+      compute();
+    })();
+  </script>
+</BaseLayout>

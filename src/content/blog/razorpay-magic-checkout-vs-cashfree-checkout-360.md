@@ -12,6 +12,8 @@ Rounding out the comparisons we keep getting asked about — [GoKwik vs Razorpay
 
 We have no commercial relationship with either company; we set up whichever gateway a client is already using or prefers.
 
+**Rather skip to an answer?** [Take our 2-minute checkout quiz](/checkout-quiz) — it scores both of these plus GoKwik against your actual COD mix, AOV, and priorities.
+
 ## Gateway pricing: the actual headline difference
 
 This is the most concrete, verifiable difference between the two:
@@ -58,6 +60,8 @@ Neither publicly documents native A/B testing on discount variants the way GoKwi
 If a client is choosing a gateway from scratch and doesn't have a strong existing relationship with either, the pricing structure alone often settles it — Cashfree for a newer or lower-volume store, Razorpay once volume is high enough that the gap narrows and the RTO Protection backstop becomes more valuable. If a client's already deep in one ecosystem (existing settlements, reconciliation, accounting integrations), switching gateways purely for checkout-layer features is rarely worth the migration cost — we'd sooner layer GoKwik or tune the existing checkout than move the underlying payment relationship.
 
 ---
+
+See all three platforms side by side in [one table](/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison), or [take the 2-minute quiz](/checkout-quiz) for an instant recommendation.
 
 ### Choosing a gateway for a new or existing store?
 

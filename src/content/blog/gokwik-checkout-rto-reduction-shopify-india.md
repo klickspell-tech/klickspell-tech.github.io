@@ -16,6 +16,8 @@ On top of that, Shopify's native checkout — built for a US/EU, card-first mark
 
 This is the exact problem we now solve for clients by implementing **[GoKwik](https://gokwik.co)** — a checkout and post-purchase platform built specifically for Indian D2C, already running on 15,000+ stores including boAt, Mamaearth, Levi's India, and Noise.
 
+**Want the short version instead of reading all of this?** [Take our 2-minute checkout quiz](/checkout-quiz) — answer 5 questions about your COD mix and priorities, get an instant recommendation between GoKwik, Razorpay Magic Checkout, and Cashfree Checkout 360.
+
 ---
 
 ## The problem, in numbers

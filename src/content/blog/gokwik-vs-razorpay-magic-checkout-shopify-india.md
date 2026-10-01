@@ -12,6 +12,8 @@ If you're evaluating a 1-click checkout for an Indian Shopify store, you'll land
 
 We implement GoKwik for clients (disclosure at the bottom), but this isn't a GoKwik-vs-the-world piece — it's specifically about where these two actually differ, since that's the comparison that keeps coming up.
 
+**Rather skip to an answer?** [Take our 2-minute checkout quiz](/checkout-quiz) — it scores all three platforms (this pair plus Cashfree) against your actual COD mix, AOV, and priorities.
+
 ## The short version
 
 - **Already on Razorpay as your payment gateway, mostly prepaid, want unified reconciliation?** Magic Checkout is the lower-friction choice — it's an extension of infrastructure you already have, not a new platform.
@@ -77,7 +79,7 @@ We implement GoKwik specifically because most of our clients are COD-heavy D2C b
 
 **Disclosure:** Klickspell is a GoKwik implementation partner and may earn a referral commission when we bring a merchant onto their platform. We have no commercial relationship with Razorpay — the comparison above is as neutral as we could make it, cross-checked against both platforms' own public claims rather than taken from either one's sales deck alone.
 
-If Cashfree is also on your shortlist, we've done the same fact-check against it: [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) and [Razorpay Magic Checkout vs Cashfree Checkout 360](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360).
+If Cashfree is also on your shortlist, we've done the same fact-check against it: [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) and [Razorpay Magic Checkout vs Cashfree Checkout 360](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360). Or see all three side by side in [one table](/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison).
 
 ---
 
