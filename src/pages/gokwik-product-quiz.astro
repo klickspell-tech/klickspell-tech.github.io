@@ -315,6 +315,17 @@ const schemas = [webAppSchema, breadcrumbSchema];
     .gk-badge.worth_evaluating { background: rgba(58,91,224,0.28); color: #93A9FF; }
     .gk-badge.wait { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
     .gk-badge.lower_priority { background: rgba(247,185,85,0.2); color: #F7B955; }
+    @media (max-width: 480px) {
+      /* Tighter padding/gaps and a stacked badge-below-title layout for
+         narrow screens - the side-by-side title+badge row and generous
+         desktop-scaled padding ate too much vertical space when every
+         card requires a full-width screen's worth of scrolling anyway. */
+      .gk-product-row { flex-direction: column; gap: 0.35rem; padding: 0.6rem 0.65rem; }
+      .gk-badge { align-self: flex-start; }
+      .gk-product-name { font-size: 13px; }
+      .gk-product-reason { font-size: 11px; line-height: 1.45; }
+      .gk-product-list { gap: 0.4rem; }
+    }
     .gk-newer-note {
       font-size: 11px;
       color: rgba(255,255,255,0.55);
