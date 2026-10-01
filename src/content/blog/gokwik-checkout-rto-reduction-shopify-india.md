@@ -60,6 +60,16 @@ We get asked "why not just use [Shopify's checkout / Razorpay Magic Checkout / a
 
 The pattern is consistent: generic checkouts (Shopify's own, and most payment-gateway "checkout" add-ons) aren't built around India-specific COD risk and address friction. GoKwik is, because that's the only problem it was built to solve.
 
+## What this actually costs
+
+Worth being upfront about, since it's easy to assume GoKwik is a drop-in free layer: **it isn't a replacement for your payment gateway, and it isn't free.**
+
+- **Your existing payment gateway charges still apply.** GoKwik doesn't process payments itself — Kwik Checkout sits in front of your existing gateway relationships (PayU, Worldline, Easebuzz, and others) and dynamically routes each transaction to whichever is performing best. The standard PG transaction fee you already pay (typically 1.5-2.5% depending on your contract) is unchanged — GoKwik's checkout layer is additive, not a substitute.
+- **GoKwik's own platform fee isn't a published rate card.** Their plans are tiered (their "Pro" tier, for example, is what unlocks A/B testing via Kwik Flows) and priced based on your store's volume — not a flat number we can quote here. We get exact pricing during the GoKwik discovery call, before you commit to anything.
+- **COD handling fees are a lever you control, not a cost GoKwik imposes on you.** The platform lets you optionally charge shoppers a small COD fee to nudge them toward prepaid — that's a setting you configure, not something deducted from your revenue.
+
+None of this changes the conversion/RTO math above — it just means the honest pitch is "a checkout layer plus platform fee on top of what you already pay your gateway," not "replace your payment stack for free."
+
 ## Who this makes sense for
 
 Realistically, this is worth implementing once a store has enough COD volume for RTO to be a real line item — not a pre-launch store with no order history yet. If you're seeing meaningful COD orders every week and you've never actually measured your RTO rate, that's usually the first sign it's worth a look.
