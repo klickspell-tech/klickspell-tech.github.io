@@ -4,156 +4,845 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
 const canonical = "https://klickspell.com/quote";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://klickspell.com/#services" },
+    { "@type": "ListItem", "position": 3, "name": "Get a Quote", "item": canonical }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Shopify Store Scope Configurator & Quotation",
+  "serviceType": "Shopify Development & Consulting",
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  },
+  "description": "Configure bespoke Shopify 2.0 theme architecture, analytics, review systems, payment gateways, and shipping logistics to receive an itemized project proposal within 24 hours.",
+  "areaServed": "Worldwide"
+};
+
+const schemas = [breadcrumbSchema, serviceSchema];
 ---
 
 <BaseLayout
-  title="Get a Quote — Shopify Store Development | Klickspell"
-  description="Tell us what your Shopify store needs — theme approach, analytics, reviews, payments, shipping — and get a detailed quote back from Klickspell."
+  title="Get a Quote — Shopify Store Development & Architecture | Klickspell"
+  description="Configure your Shopify store requirements — theme architecture, tracking, reviews, payments, and shipping — and get a detailed itemized quote within 24 hours."
   canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
 >
   <Nav />
 
   <main id="main-content">
-    <header class="service-page-hero" style="padding-bottom: 2rem;">
-      <div class="section">
-        <div class="reveal">
-          <p class="section-eyebrow">Get a Quote</p>
-          <h1 class="section-title">Tell us what your store<br><em>needs.</em></h1>
-          <p class="section-sub">Pick your theme approach and the services you need — we'll send a detailed quote back within one business day.</p>
+    <!-- HERO HEADER -->
+    <header class="service-page-hero" style="padding-bottom: 1.5rem;">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#services">Services</a> / Project Quote</p>
+      
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Fixed Scope · Itemized Line-Item Pricing · 24h Turnaround
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Tell us what your store<br>
+        <em>needs.</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2" style="max-width: 680px;">
+        Pick your theme architecture and the technical integrations you need. Our interactive configurator calculates scope in real-time, and we deliver an itemized fixed proposal within 24 hours.
+      </p>
+
+      <!-- METRICS BAR -->
+      <div class="service-metrics-bar reveal reveal-delay-3" style="margin-top: 2rem;">
+        <div class="service-metric-item">
+          <p class="metric-label">Proposal Speed</p>
+          <p class="metric-val">24 Hours</p>
+          <p class="metric-note">Fixed line-item quotation &amp; Loom</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Mobile PageSpeed</p>
+          <p class="metric-val">90+ Score</p>
+          <p class="metric-note">Guaranteed on custom builds</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Code Autonomy</p>
+          <p class="metric-val">100% Native</p>
+          <p class="metric-note">0 page builders · Clean Git repo</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Communication</p>
+          <p class="metric-val">Direct</p>
+          <p class="metric-note">Slack or WhatsApp with engineers</p>
         </div>
       </div>
     </header>
 
-    <section>
-      <div class="section">
-        <form id="quoteForm" class="quote-form reveal">
-          <div class="quote-step">
-            <h3 class="quote-step-title">Your details</h3>
-            <div class="contact-form-row">
-              <input type="text" id="quoteName" name="first_name" placeholder="Your name" aria-label="Your name" required />
-              <input type="email" id="quoteEmail" name="email" placeholder="Email" aria-label="Email" required />
+    <!-- CONFIGURATOR & QUOTE SECTION -->
+    <section style="padding-top: 0;">
+      <div class="section" style="padding-top: 1rem; padding-bottom: 5rem;">
+        
+        <!-- SUCCESS CARD (Initially Hidden) -->
+        <div id="quoteSuccessCard" class="quote-success-card reveal" style="display: none; max-width: 800px; margin: 0 auto 3rem;">
+          <div class="quote-success-icon">✓</div>
+          <h2 class="quote-success-title">Quotation Request Received!</h2>
+          <p class="quote-success-sub" id="successSummaryText">
+            Thank you! We've recorded your project scope. Atul and the Klickspell engineering team will review your requirements and send a comprehensive line-item proposal to your email within 24 hours.
+          </p>
+
+          <div class="quote-timeline-steps">
+            <div>
+              <p class="quote-tl-step-num">Step 01</p>
+              <h4 class="quote-tl-step-title">Scope Review</h4>
+              <p class="quote-tl-step-desc">We audit your store URL, requirements, and selected integrations.</p>
             </div>
-            <div class="contact-form-row">
-              <input type="text" id="quoteOrg" name="organization" placeholder="Company (optional)" aria-label="Company" />
-              <input type="tel" id="quoteMobile" name="mobile_no" placeholder="Phone (optional)" aria-label="Phone" />
+            <div>
+              <p class="quote-tl-step-num">Step 02</p>
+              <h4 class="quote-tl-step-title">Line-Item Quote</h4>
+              <p class="quote-tl-step-desc">You receive an itemized proposal with fixed timelines and milestones.</p>
             </div>
-            <input type="url" id="quoteStoreUrl" name="store_url" placeholder="Store URL (if you have one)" aria-label="Store URL" />
+            <div>
+              <p class="quote-tl-step-num">Step 03</p>
+              <h4 class="quote-tl-step-title">Kickoff Call</h4>
+              <p class="quote-tl-step-desc">Optional 20-min strategy alignment &amp; Git repository setup.</p>
+            </div>
           </div>
 
-          <div class="quote-step">
-            <h3 class="quote-step-title">Theme approach</h3>
-            <div id="themeOptions" class="quote-tabs-row" role="radiogroup" aria-label="Theme approach">
-              <p class="quote-loading">Loading options…</p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a id="successWhatsAppBtn" href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-primary">
+              💬 Discuss Immediately on WhatsApp →
+            </a>
+            <a href="/" class="btn-ghost">
+              Back to Home
+            </a>
+          </div>
+        </div>
+
+        <!-- 2-COLUMN INTERACTIVE CONFIGURATOR LAYOUT -->
+        <div id="quoteBuilderLayout" class="quote-layout reveal">
+          
+          <!-- LEFT COLUMN: CONFIGURATOR FORM -->
+          <div class="quote-main-col">
+            <form id="quoteForm" novalidate>
+              
+              <!-- STEP 1: BRAND & CONTACT INFORMATION -->
+              <div class="quote-card">
+                <div class="quote-card-header">
+                  <div class="quote-card-eyebrow">
+                    <span class="step-tag">Step 01</span>
+                    <span>Contact &amp; Store Details</span>
+                  </div>
+                  <h2 class="quote-card-title">Where should we send your quote?</h2>
+                  <p class="quote-card-sub">We review every store individually and email an itemized line-item proposal within 1 business day.</p>
+                </div>
+
+                <div class="quote-fields-grid">
+                  <div class="quote-field-group">
+                    <label for="quoteName" class="quote-label">
+                      <span>Your Name <span class="required-mark">*</span></span>
+                    </label>
+                    <input type="text" id="quoteName" name="first_name" class="quote-input" placeholder="e.g. Alex Morgan" required />
+                  </div>
+
+                  <div class="quote-field-group">
+                    <label for="quoteEmail" class="quote-label">
+                      <span>Work Email <span class="required-mark">*</span></span>
+                    </label>
+                    <input type="email" id="quoteEmail" name="email" class="quote-input" placeholder="alex@brand.com" required />
+                  </div>
+
+                  <div class="quote-field-group">
+                    <label for="quoteOrg" class="quote-label">
+                      <span>Company / Brand <span class="opt-tag">(Optional)</span></span>
+                    </label>
+                    <input type="text" id="quoteOrg" name="organization" class="quote-input" placeholder="e.g. Atelier DTC" />
+                  </div>
+
+                  <div class="quote-field-group">
+                    <label for="quoteMobile" class="quote-label">
+                      <span>Phone / WhatsApp <span class="opt-tag">(Optional)</span></span>
+                    </label>
+                    <input type="tel" id="quoteMobile" name="mobile_no" class="quote-input" placeholder="+1 (555) 000-0000 or +91" />
+                  </div>
+
+                  <div class="quote-field-group quote-field-full">
+                    <label for="quoteStoreUrl" class="quote-label">
+                      <span>Current Store URL or Target Domain <span class="opt-tag">(If available)</span></span>
+                    </label>
+                    <input type="url" id="quoteStoreUrl" name="store_url" class="quote-input" placeholder="https://yourstore.com or yourbrand.myshopify.com" />
+                  </div>
+
+                  <div class="quote-field-group quote-field-full">
+                    <label class="quote-label">
+                      <span>Store Stage:</span>
+                    </label>
+                    <div class="quote-pill-options" role="radiogroup" aria-label="Store Stage">
+                      <label class="quote-pill-label">
+                        <input type="radio" name="store_stage" value="live" checked />
+                        <span class="quote-pill-ui">🟢 Existing Live Store</span>
+                      </label>
+                      <label class="quote-pill-label">
+                        <input type="radio" name="store_stage" value="new" />
+                        <span class="quote-pill-ui">✦ New Store Launch</span>
+                      </label>
+                      <label class="quote-pill-label">
+                        <input type="radio" name="store_stage" value="migration" />
+                        <span class="quote-pill-ui">↻ Platform Migration</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 2: THEME ARCHITECTURE & APPROACH -->
+              <div class="quote-card">
+                <div class="quote-card-header">
+                  <div class="quote-card-eyebrow">
+                    <span class="step-tag">Step 02</span>
+                    <span>Theme Architecture</span>
+                  </div>
+                  <h2 class="quote-card-title">Select your theme foundation</h2>
+                  <p class="quote-card-sub">Every theme we build connects 100% natively into Shopify's Theme Customizer with zero monthly page-builder dependencies.</p>
+                </div>
+
+                <div id="themeOptions" class="theme-cards-grid" role="radiogroup" aria-label="Theme Approach">
+                  <!-- Rendered dynamically by script with instant default fallback -->
+                </div>
+              </div>
+
+              <!-- STEP 3: TECHNICAL INTEGRATIONS & SERVICES -->
+              <div class="quote-card">
+                <div class="quote-card-header">
+                  <div class="quote-card-eyebrow">
+                    <span class="step-tag">Step 03</span>
+                    <span>Services &amp; Integrations</span>
+                  </div>
+                  <h2 class="quote-card-title">Select required services &amp; add-ons</h2>
+                  <p class="quote-card-sub">Toggle the technical features, analytics tracking, and operational integrations required for your store:</p>
+                </div>
+
+                <div id="addonGroups" class="quote-addon-groups">
+                  <!-- Rendered dynamically by script with categorized instant fallback -->
+                </div>
+              </div>
+
+              <!-- STEP 4: TIMELINE & NOTES -->
+              <div class="quote-card">
+                <div class="quote-card-header">
+                  <div class="quote-card-eyebrow">
+                    <span class="step-tag">Step 04</span>
+                    <span>Timeline &amp; Notes</span>
+                  </div>
+                  <h2 class="quote-card-title">Target launch window &amp; details</h2>
+                  <p class="quote-card-sub">Help us gauge urgency and understand any bespoke design or functionality needs.</p>
+                </div>
+
+                <div class="quote-fields-grid">
+                  <div class="quote-field-group quote-field-full">
+                    <label class="quote-label">
+                      <span>Target Launch Timeline:</span>
+                    </label>
+                    <div class="quote-pill-options" role="radiogroup" aria-label="Target Timeline">
+                      <label class="quote-pill-label">
+                        <input type="radio" name="project_timeline" value="asap" />
+                        <span class="quote-pill-ui">🚀 Urgent (&lt; 2 weeks)</span>
+                      </label>
+                      <label class="quote-pill-label">
+                        <input type="radio" name="project_timeline" value="standard" checked />
+                        <span class="quote-pill-ui">📅 Standard (3–4 weeks)</span>
+                      </label>
+                      <label class="quote-pill-label">
+                        <input type="radio" name="project_timeline" value="flexible" />
+                        <span class="quote-pill-ui">⏳ Flexible (1–2 months)</span>
+                      </label>
+                      <label class="quote-pill-label">
+                        <input type="radio" name="project_timeline" value="scoping" />
+                        <span class="quote-pill-ui">💡 Exploring / Initial Scoping</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="quote-field-group quote-field-full">
+                    <label for="quoteNotes" class="quote-label">
+                      <span>Additional notes or reference links <span class="opt-tag">(Optional)</span></span>
+                    </label>
+                    <textarea id="quoteNotes" name="notes" class="quote-textarea" placeholder="Tell us about any specific reference stores, Figma links, custom features, or technical questions..."></textarea>
+                  </div>
+                </div>
+
+                <!-- PREREQS CHECKLIST -->
+                <div class="quote-prereqs-box" style="margin-top: 1.5rem;">
+                  <h4 class="quote-prereqs-title">
+                    <span>📋 What you'll need ready for kickoff:</span>
+                  </h4>
+                  <ul class="quote-prereqs-list">
+                    <li>Shopify collaborator or dev store access (we provide request instructions)</li>
+                    <li>Brand assets, logos, and high-res product photos or Figma files</li>
+                    <li>Store policies (Terms, Privacy, and Refund policies)</li>
+                  </ul>
+                  <p style="font-size: 12px; color: var(--text-light); margin-top: .5rem; margin-bottom: 0;">
+                    <em>Don't have all assets yet? No worries — we guide you through each deliverable during discovery.</em>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Honeypot Field -->
+              <input type="text" id="quoteCompanyUrl" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none;" />
+
+              <!-- ERROR / FALLBACK BOX (Hidden Initially) -->
+              <div id="quoteErrorBox" class="quote-fallback-box" style="display: none;">
+                <p style="font-weight: 600; color: #B45309; margin-bottom: .4rem;">
+                  ⚠️ Server Sync Notice
+                </p>
+                <p style="margin-bottom: .85rem; font-size: 13px;">
+                  We couldn't connect to our CRM automatically. Your configured scope is completely preserved below. Click to dispatch it straight to Atul via WhatsApp or Email:
+                </p>
+                <div style="display: flex; gap: .75rem; flex-wrap: wrap;">
+                  <a id="fallbackWhatsAppBtn" href="#" target="_blank" rel="noopener" class="btn-primary" style="font-size: 13px; padding: .6rem 1.1rem;">
+                    💬 Send Scope via WhatsApp →
+                  </a>
+                  <a id="fallbackEmailBtn" href="#" class="btn-ghost" style="font-size: 13px; padding: .6rem 1.1rem;">
+                    ✉️ Send Scope via Email →
+                  </a>
+                </div>
+              </div>
+
+              <!-- FORM ACTIONS -->
+              <div style="margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <button type="submit" id="formSubmitBtn" class="btn-primary" style="padding: .95rem 1.75rem;">
+                  <span id="formBtnText">Request Detailed Proposal →</span>
+                  <span id="formBtnSpinner" class="scanner-spinner" style="display:none;"></span>
+                </button>
+                <span style="font-size: 13px; color: var(--text-mid);">Fixed line-item quote emailed within 24 hours.</span>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- RIGHT COLUMN: STICKY LIVE SCOPE SUMMARY CARD -->
+          <div class="quote-sidebar-col">
+            <div class="quote-summary-card">
+              
+              <div class="quote-summary-header">
+                <span class="quote-summary-badge">
+                  <span class="pulse-dot"></span>
+                  Live Scope Breakdown
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.6);">24H QUOTE</span>
+              </div>
+
+              <h3 class="quote-summary-title" id="summaryThemeTitle">Custom Shopify 2.0 Theme</h3>
+              <p class="quote-summary-desc" id="summaryThemeDesc">
+                Bespoke Liquid architecture engineered from Figma with zero page-builder bloat and guaranteed 90+ mobile PageSpeed.
+              </p>
+
+              <!-- SCOPE METERS -->
+              <div class="quote-summary-meters">
+                <div class="quote-meter-row">
+                  <span class="quote-meter-label">Theme Foundation:</span>
+                  <span class="quote-meter-value" id="summaryThemeVal">Shopify OS 2.0</span>
+                </div>
+                <div class="quote-meter-row">
+                  <span class="quote-meter-label">Selected Services:</span>
+                  <span class="quote-meter-value" id="summaryAddonCount" style="color: #7B98FF;">0 Add-ons</span>
+                </div>
+                <div class="quote-meter-row">
+                  <span class="quote-meter-label">Est. Delivery Window:</span>
+                  <span class="quote-meter-value" id="summaryTimeline">~3–4 Weeks</span>
+                </div>
+                <div class="quote-meter-row">
+                  <span class="quote-meter-label">Proposal Type:</span>
+                  <span class="quote-meter-value" style="color: #10B981;">Fixed Line-Item</span>
+                </div>
+              </div>
+
+              <!-- SELECTED CHIPS LIST -->
+              <div class="quote-selected-chips-box">
+                <span class="quote-selected-label">Configured Add-ons:</span>
+                <div id="summaryChipsList" class="quote-chips-list">
+                  <span id="summaryEmptyHint" class="quote-empty-addons-hint">Select add-ons on the left to include them in your scope.</span>
+                </div>
+              </div>
+
+              <!-- GUARANTEES LIST -->
+              <div class="quote-guarantees-list">
+                <div class="quote-guarantee-item">
+                  <span class="icon">✓</span>
+                  <span>100% Theme Customizer autonomy (0 page builders)</span>
+                </div>
+                <div class="quote-guarantee-item">
+                  <span class="icon">✓</span>
+                  <span>Guaranteed 90+ Mobile PageSpeed on custom code</span>
+                </div>
+                <div class="quote-guarantee-item">
+                  <span class="icon">✓</span>
+                  <span>Clean Git repository &amp; full IP code ownership</span>
+                </div>
+                <div class="quote-guarantee-item">
+                  <span class="icon">✓</span>
+                  <span>Direct communication with engineers (Slack/WhatsApp)</span>
+                </div>
+              </div>
+
+              <!-- ACTIONS -->
+              <div class="quote-sidebar-actions">
+                <button type="button" id="sidebarSubmitBtn" class="btn-primary">
+                  <span id="sidebarBtnText">Request Detailed Proposal →</span>
+                  <span id="sidebarBtnSpinner" class="scanner-spinner" style="display:none;"></span>
+                </button>
+
+                <p class="quote-sidebar-note">
+                  No upfront payment required. We review your store &amp; send an itemized quotation within 1 business day.
+                </p>
+
+                <a id="sidebarWhatsAppBtn" href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost">
+                  💬 Or Send Scope on WhatsApp
+                </a>
+              </div>
+
+              <!-- TRUST STRIP -->
+              <div class="quote-trust-strip">
+                <span>⭐️⭐️⭐️⭐️⭐️ 5.0 Rating · 30+ DTC Stores · NDA Protected</span>
+              </div>
+
             </div>
           </div>
 
-          <div id="addonGroups" class="quote-addon-groups"></div>
+        </div>
 
-          <div class="quote-step quote-prereqs">
-            <h3 class="quote-step-title">What you'll need ready</h3>
-            <p class="quote-step-sub">A few common examples — we'll flag anything else specific to your setup during discovery.</p>
-            <ul>
-              <li>Terms &amp; Conditions</li>
-              <li>Privacy Policy</li>
-              <li>Refund Policy</li>
-            </ul>
-          </div>
-
-          <input type="text" id="quoteCompanyUrl" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-          <button type="submit" id="quoteSubmitBtn" class="btn-primary">
-            <span id="quoteBtnText">Request quote →</span>
-            <span id="quoteBtnSpinner" class="scanner-spinner" style="display:none;"></span>
-          </button>
-          <div id="quoteSuccess" class="video-audit-success" style="display:none;">Thanks — we'll send your detailed quote within one business day.</div>
-          <div id="quoteErrorBox" class="contact-error" style="display:none;">Something went wrong. Please try WhatsApp or email instead.</div>
-        </form>
       </div>
     </section>
   </main>
 
   <Footer />
 
-  <!-- Quote form logic (catalog fetch + submission). Not is:inline, because
-       import.meta.env is only replaced by Vite in processed (module) scripts. -->
+  <!-- Quote Configurator Script -->
   <script>
     const FRAPPE_CRM_URL = import.meta.env.PUBLIC_FRAPPE_CRM_URL || 'https://erp.klickspell.com';
     const THEME_GROUP = 'Theme Development';
 
-    const themeOptions = document.getElementById('themeOptions');
-    const addonGroups = document.getElementById('addonGroups');
-    const quoteForm = document.getElementById('quoteForm');
+    // Production-ready curated catalog fallback
+    const DEFAULT_CATALOG = {
+      [THEME_GROUP]: [
+        {
+          item_code: 'custom-shopify-2-0',
+          item_name: 'Custom Shopify 2.0 Theme',
+          badge: 'Recommended',
+          desc: 'Bespoke Liquid architecture engineered directly from your Figma designs. Zero page-builder bloat, native OS 2.0 blocks, and guaranteed 90+ mobile PageSpeed.',
+          turnaround: '~3–4 Weeks',
+          tag: 'Max Performance'
+        },
+        {
+          item_code: 'premium-theme-customization',
+          item_name: 'Premium Theme Customization',
+          badge: 'Fast Launch',
+          desc: 'Tailored setup and enhancement of a verified Shopify Theme Store template (Dawn, Prestige, Enterprise, Impulse) with bespoke section development.',
+          turnaround: '~1–2 Weeks',
+          tag: 'Fastest Launch'
+        },
+        {
+          item_code: 'headless-commerce-storefront',
+          item_name: 'Headless Commerce Storefront',
+          badge: 'Enterprise DTC',
+          desc: 'Hydrogen, Next.js, or Medusa headless architecture powered by the Storefront API for sub-second page transitions and global edge delivery.',
+          turnaround: '~4–6 Weeks',
+          tag: 'Maximum Scale'
+        },
+        {
+          item_code: 'theme-migration-os2',
+          item_name: 'Theme Migration & Code Audit',
+          badge: 'Code Health',
+          desc: 'Migrate legacy vintage theme to modern Shopify OS 2.0 architecture, purge orphan tracking scripts, and restore clean mobile performance.',
+          turnaround: '~2–3 Weeks',
+          tag: 'Refactor & Clean'
+        }
+      ],
+      'Analytics & Conversion Tracking': [
+        { item_code: 'gtm-ga4-ecommerce', item_name: 'Google Tag Manager & GA4 E-commerce' },
+        { item_code: 'meta-pixel-capi', item_name: 'Meta Pixel + Conversions API (CAPI)' },
+        { item_code: 'google-ads-tracking', item_name: 'Google Ads & TikTok / Pinterest Pixel' },
+        { item_code: 'custom-datalayer', item_name: 'Custom E-Commerce DataLayer Setup' }
+      ],
+      'Reviews, UGC & Social Proof': [
+        { item_code: 'reviews-integration', item_name: 'Judge.me / Okendo / Yotpo Reviews Setup' },
+        { item_code: 'ugc-video-reels', item_name: 'Shoppable UGC Reels & Video Player' },
+        { item_code: 'review-widgets', item_name: 'Custom Product Badges & Review Carousels' }
+      ],
+      'Checkout, Payments & Markets': [
+        { item_code: 'shopify-markets-multicurrency', item_name: 'Shopify Markets & Multi-Currency Setup' },
+        { item_code: 'payment-gateways', item_name: 'Payment Gateways (Stripe, Razorpay, Cashfree)' },
+        { item_code: 'slide-cart-upsells', item_name: 'Slide Cart In-Cart Upsells & Free Shipping Goal' },
+        { item_code: 'checkout-extensibility', item_name: 'Shopify Plus Custom Checkout Extensibility' }
+      ],
+      'Shipping, Logistics & Operations': [
+        { item_code: 'logistics-api', item_name: 'Automated 3PL Logistics API (Shiprocket / Bluedart)' },
+        { item_code: 'klaviyo-automation', item_name: 'Klaviyo Email & SMS Lifecycle Automations' },
+        { item_code: 'erp-inventory-sync', item_name: 'Custom ERP / Inventory Webhook Sync' }
+      ],
+      'Speed & Technical SEO': [
+        { item_code: 'speed-optimization-95', item_name: 'Mobile Core Web Vitals 90+ Speed Optimization' },
+        { item_code: 'app-bloat-removal', item_name: 'App Bloat Removal & Script Pruning' },
+        { item_code: 'schema-markup-seo', item_name: 'JSON-LD Structured Data & Rich Snippets' }
+      ]
+    };
 
+    // DOM Elements
+    const themeOptionsEl = document.getElementById('themeOptions');
+    const addonGroupsEl = document.getElementById('addonGroups');
+    const quoteForm = document.getElementById('quoteForm');
+    const sidebarSubmitBtn = document.getElementById('sidebarSubmitBtn');
+    const sidebarBtnText = document.getElementById('sidebarBtnText');
+    const sidebarBtnSpinner = document.getElementById('sidebarBtnSpinner');
+    const formSubmitBtn = document.getElementById('formSubmitBtn');
+    const formBtnText = document.getElementById('formBtnText');
+    const formBtnSpinner = document.getElementById('formBtnSpinner');
+    const summaryThemeTitle = document.getElementById('summaryThemeTitle');
+    const summaryThemeDesc = document.getElementById('summaryThemeDesc');
+    const summaryThemeVal = document.getElementById('summaryThemeVal');
+    const summaryAddonCount = document.getElementById('summaryAddonCount');
+    const summaryTimeline = document.getElementById('summaryTimeline');
+    const summaryChipsList = document.getElementById('summaryChipsList');
+    const summaryEmptyHint = document.getElementById('summaryEmptyHint');
+    const sidebarWhatsAppBtn = document.getElementById('sidebarWhatsAppBtn');
+    const quoteSuccessCard = document.getElementById('quoteSuccessCard');
+    const quoteBuilderLayout = document.getElementById('quoteBuilderLayout');
+    const successSummaryText = document.getElementById('successSummaryText');
+    const successWhatsAppBtn = document.getElementById('successWhatsAppBtn');
+    const quoteErrorBox = document.getElementById('quoteErrorBox');
+    const fallbackWhatsAppBtn = document.getElementById('fallbackWhatsAppBtn');
+    const fallbackEmailBtn = document.getElementById('fallbackEmailBtn');
+
+    let currentCatalog = { ...DEFAULT_CATALOG };
+
+    // Metadata details for theme cards
+    const THEME_META = {
+      'custom-shopify-2-0': {
+        badge: 'Recommended',
+        desc: 'Bespoke Liquid architecture engineered directly from your Figma designs. Zero page-builder bloat, native OS 2.0 blocks, and guaranteed 90+ mobile PageSpeed.',
+        turnaround: '~3–4 Weeks',
+        short: 'Custom Shopify 2.0'
+      },
+      'premium-theme-customization': {
+        badge: 'Fast Launch',
+        desc: 'Tailored setup and enhancement of a verified Shopify Theme Store template (Dawn, Prestige, Enterprise, Impulse) with bespoke section development.',
+        turnaround: '~1–2 Weeks',
+        short: 'Premium Theme Setup'
+      },
+      'headless-commerce-storefront': {
+        badge: 'Enterprise DTC',
+        desc: 'Hydrogen, Next.js, or Medusa headless architecture powered by the Storefront API for sub-second page transitions and global edge delivery.',
+        turnaround: '~4–6 Weeks',
+        short: 'Headless Storefront'
+      },
+      'theme-migration-os2': {
+        badge: 'Code Health',
+        desc: 'Migrate legacy vintage theme to modern Shopify OS 2.0 architecture, purge orphan tracking scripts, and restore clean mobile performance.',
+        turnaround: '~2–3 Weeks',
+        short: 'OS 2.0 Migration'
+      }
+    };
+
+    function renderCatalog(catalog) {
+      currentCatalog = catalog;
+
+      // Render Themes
+      const themeItems = catalog[THEME_GROUP] || DEFAULT_CATALOG[THEME_GROUP];
+      if (themeOptionsEl) {
+        themeOptionsEl.innerHTML = themeItems.map((item, i) => {
+          const meta = THEME_META[item.item_code] || {
+            badge: item.badge || 'Popular',
+            desc: item.desc || 'Tailored Shopify architecture engineered for performance and clean customizer autonomy.',
+            turnaround: item.turnaround || '~2–3 Weeks',
+            short: item.item_name
+          };
+
+          return `
+            <label class="theme-card-label" data-code="${item.item_code}">
+              <input 
+                type="radio" 
+                name="theme_item_code" 
+                value="${item.item_code}" 
+                data-name="${item.item_name}"
+                data-turnaround="${meta.turnaround}"
+                data-desc="${meta.desc}"
+                ${i === 0 ? 'checked' : ''} 
+                required 
+              />
+              <div class="theme-card-box">
+                <div>
+                  <div class="theme-card-top">
+                    <span class="theme-card-badge">${meta.badge}</span>
+                    <span class="theme-card-radio-circle"></span>
+                  </div>
+                  <h3 class="theme-card-name">${item.item_name}</h3>
+                  <p class="theme-card-desc">${meta.desc}</p>
+                </div>
+                <div class="theme-card-footer">
+                  <span>⏱️ ${meta.turnaround}</span>
+                  <span style="font-weight: 600;">100% Autonomy</span>
+                </div>
+              </div>
+            </label>
+          `;
+        }).join('');
+      }
+
+      // Render Addon Groups
+      const groupKeys = Object.keys(catalog).filter((group) => group !== THEME_GROUP);
+      if (addonGroupsEl) {
+        addonGroupsEl.innerHTML = groupKeys.map((group) => {
+          const items = catalog[group] || [];
+          return `
+            <div class="addon-group-section">
+              <div class="addon-group-header">
+                <h3 class="addon-group-title">
+                  <span>📁</span>
+                  <span>${group}</span>
+                </h3>
+                <span class="addon-group-count">${items.length} options</span>
+              </div>
+              <div class="addon-items-grid">
+                ${items.map((item) => `
+                  <label class="addon-checkbox-label">
+                    <input 
+                      type="checkbox" 
+                      name="addon_item_codes" 
+                      value="${item.item_code}"
+                      data-name="${item.item_name}"
+                      data-group="${group}"
+                    />
+                    <div class="addon-checkbox-pill">
+                      <span class="addon-custom-check">✓</span>
+                      <span class="addon-item-text">${item.item_name}</span>
+                    </div>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      attachLiveListeners();
+      updateLiveSummary();
+    }
+
+    function attachLiveListeners() {
+      // Theme radios
+      const themeRadios = document.querySelectorAll('input[name="theme_item_code"]');
+      themeRadios.forEach(radio => {
+        radio.addEventListener('change', updateLiveSummary);
+      });
+
+      // Addon checkboxes
+      const addonCheckboxes = document.querySelectorAll('input[name="addon_item_codes"]');
+      addonCheckboxes.forEach(cb => {
+        cb.addEventListener('change', updateLiveSummary);
+      });
+
+      // Form inputs for dynamic WhatsApp link
+      const liveInputs = ['quoteName', 'quoteOrg', 'quoteStoreUrl'];
+      liveInputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateLiveSummary);
+      });
+
+      // Timeline radios
+      const timelineRadios = document.querySelectorAll('input[name="project_timeline"]');
+      timelineRadios.forEach(r => r.addEventListener('change', updateLiveSummary));
+    }
+
+    function updateLiveSummary() {
+      // Selected theme
+      const checkedTheme = document.querySelector('input[name="theme_item_code"]:checked');
+      if (checkedTheme) {
+        const themeName = checkedTheme.getAttribute('data-name') || checkedTheme.value;
+        const themeDesc = checkedTheme.getAttribute('data-desc') || '';
+        const themeTurnaround = checkedTheme.getAttribute('data-turnaround') || '~3–4 Weeks';
+
+        if (summaryThemeTitle) summaryThemeTitle.textContent = themeName;
+        if (summaryThemeDesc) summaryThemeDesc.textContent = themeDesc;
+        if (summaryThemeVal) summaryThemeVal.textContent = themeName.replace(' Theme', '').replace(' Storefront', '');
+        if (summaryTimeline) summaryTimeline.textContent = themeTurnaround;
+      }
+
+      // Selected addons
+      const checkedAddons = document.querySelectorAll('input[name="addon_item_codes"]:checked');
+      const addonCount = checkedAddons.length;
+
+      if (summaryAddonCount) {
+        summaryAddonCount.textContent = `${addonCount} ${addonCount === 1 ? 'Add-on' : 'Add-ons'} Selected`;
+      }
+
+      // Update Chips
+      if (summaryChipsList) {
+        if (addonCount === 0) {
+          summaryChipsList.innerHTML = '<span id="summaryEmptyHint" class="quote-empty-addons-hint">Toggle add-ons on the left to include them in your scope.</span>';
+        } else {
+          summaryChipsList.innerHTML = Array.from(checkedAddons).map(cb => {
+            const name = cb.getAttribute('data-name') || cb.value;
+            const code = cb.value;
+            return `
+              <span class="quote-scope-chip">
+                <span>${name}</span>
+                <button type="button" class="chip-remove-btn" data-code="${code}" aria-label="Remove ${name}">×</button>
+              </span>
+            `;
+          }).join('');
+
+          // Attach chip remove handlers
+          summaryChipsList.querySelectorAll('.chip-remove-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const code = (e.currentTarget as HTMLElement).getAttribute('data-code');
+              const targetCb = document.querySelector(`input[name="addon_item_codes"][value="${code}"]`) as HTMLInputElement | null;
+              if (targetCb) {
+                targetCb.checked = false;
+                updateLiveSummary();
+              }
+            });
+          });
+        }
+      }
+
+      // Update WhatsApp URL
+      updateWhatsAppLinks();
+    }
+
+    function updateWhatsAppLinks() {
+      const checkedTheme = document.querySelector('input[name="theme_item_code"]:checked') as HTMLInputElement | null;
+      const checkedAddons = document.querySelectorAll('input[name="addon_item_codes"]:checked');
+      const name = (document.getElementById('quoteName') as HTMLInputElement)?.value?.trim() || '';
+      const storeUrl = (document.getElementById('quoteStoreUrl') as HTMLInputElement)?.value?.trim() || '';
+      const org = (document.getElementById('quoteOrg') as HTMLInputElement)?.value?.trim() || '';
+      const timelineRadio = document.querySelector('input[name="project_timeline"]:checked') as HTMLInputElement | null;
+
+      const themeName = checkedTheme ? (checkedTheme.getAttribute('data-name') || checkedTheme.value) : 'Custom Shopify 2.0 Theme';
+      const addonNames = Array.from(checkedAddons).map(cb => cb.getAttribute('data-name') || (cb as HTMLInputElement).value);
+      const timeline = timelineRadio?.value || 'Standard';
+
+      const storeRef = storeUrl || org || 'our store';
+      const greeting = name ? `Hi Atul, this is ${name}.` : 'Hi Atul,';
+
+      let msg = `${greeting} I configured a scope quotation on Klickspell for ${storeRef}:\n\n`;
+      msg += `• Architecture: ${themeName}\n`;
+      if (addonNames.length > 0) {
+        msg += `• Integrations (${addonNames.length}): ${addonNames.join(', ')}\n`;
+      }
+      msg += `• Target Timeline: ${timeline}\n\n`;
+      msg += `Could we discuss an itemized quote and next steps?`;
+
+      const waUrl = `https://wa.me/919259598769?text=${encodeURIComponent(msg)}`;
+      if (sidebarWhatsAppBtn) (sidebarWhatsAppBtn as HTMLAnchorElement).href = waUrl;
+      if (fallbackWhatsAppBtn) (fallbackWhatsAppBtn as HTMLAnchorElement).href = waUrl;
+      if (successWhatsAppBtn) (successWhatsAppBtn as HTMLAnchorElement).href = waUrl;
+
+      // Mailto link for fallback
+      const emailSubject = encodeURIComponent(`Shopify Project Scope Quotation — ${storeRef}`);
+      const emailBody = encodeURIComponent(msg);
+      if (fallbackEmailBtn) (fallbackEmailBtn as HTMLAnchorElement).href = `mailto:atul@klickspell.com?subject=${emailSubject}&body=${emailBody}`;
+    }
+
+    // Try fetching live catalog, fallback silently to default catalog
     async function loadCatalog() {
       try {
         const res = await fetch(`${FRAPPE_CRM_URL}/api/method/klickspell_customizations.api.quotation.get_service_catalog`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
         });
-        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-        const data = await res.json();
-        renderCatalog(data.message || {});
+        if (res.ok) {
+          const data = await res.json();
+          if (data.message && Object.keys(data.message).length > 0) {
+            renderCatalog(data.message);
+            return;
+          }
+        }
       } catch (err) {
-        console.warn('Failed to load service catalog:', err);
-        themeOptions.innerHTML = '<p class="quote-loading">Could not load options. Please refresh or contact us directly.</p>';
+        // Silently use the robust default catalog
       }
+      // Render curated instant default catalog
+      renderCatalog(DEFAULT_CATALOG);
     }
 
-    function renderCatalog(catalog) {
-      const themeItems = catalog[THEME_GROUP] || [];
-      themeOptions.innerHTML = themeItems.map((item, i) => `
-        <label class="quote-tab-btn">
-          <input type="radio" name="theme_item_code" value="${item.item_code}" ${i === 0 ? 'checked' : ''} required />
-          <span>${item.item_name}</span>
-        </label>
-      `).join('');
-
-      addonGroups.innerHTML = Object.keys(catalog)
-        .filter((group) => group !== THEME_GROUP)
-        .map((group) => `
-          <div class="quote-step">
-            <h3 class="quote-step-title">${group}</h3>
-            <div class="quote-checkbox-group">
-              ${catalog[group].map((item) => `
-                <label class="quote-checkbox">
-                  <input type="checkbox" name="addon_item_codes" value="${item.item_code}" />
-                  <span>${item.item_name}</span>
-                </label>
-              `).join('')}
-            </div>
-          </div>
-        `).join('');
-    }
-
+    // Initial render
+    renderCatalog(DEFAULT_CATALOG);
     loadCatalog();
 
-    if (quoteForm) {
-      const submitBtn = document.getElementById('quoteSubmitBtn');
-      const btnText = document.getElementById('quoteBtnText');
-      const btnSpinner = document.getElementById('quoteBtnSpinner');
-      const successBox = document.getElementById('quoteSuccess');
-      const errorBox = document.getElementById('quoteErrorBox');
+    // Trigger submit from sidebar button
+    if (sidebarSubmitBtn && quoteForm) {
+      sidebarSubmitBtn.addEventListener('click', () => {
+        if (quoteForm.requestSubmit) {
+          quoteForm.requestSubmit();
+        } else {
+          quoteForm.dispatchEvent(new Event('submit', { cancelable: true }));
+        }
+      });
+    }
 
+    // Form Submission Handler
+    if (quoteForm) {
       quoteForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        errorBox.style.display = 'none';
-        successBox.style.display = 'none';
-        submitBtn.disabled = true;
-        btnText.style.display = 'none';
-        btnSpinner.style.display = 'inline-block';
 
-        const themeInput = quoteForm.querySelector('input[name="theme_item_code"]:checked');
+        const nameInput = document.getElementById('quoteName') as HTMLInputElement;
+        const emailInput = document.getElementById('quoteEmail') as HTMLInputElement;
+
+        // Simple validation
+        if (!nameInput.value.trim()) {
+          nameInput.focus();
+          return;
+        }
+        if (!emailInput.value.trim() || !emailInput.checkValidity()) {
+          emailInput.focus();
+          return;
+        }
+
+        if (quoteErrorBox) quoteErrorBox.style.display = 'none';
+
+        // Button state
+        if (sidebarSubmitBtn) (sidebarSubmitBtn as HTMLButtonElement).disabled = true;
+        if (sidebarBtnText) sidebarBtnText.style.display = 'none';
+        if (sidebarBtnSpinner) sidebarBtnSpinner.style.display = 'inline-block';
+        if (formSubmitBtn) (formSubmitBtn as HTMLButtonElement).disabled = true;
+        if (formBtnText) formBtnText.style.display = 'none';
+        if (formBtnSpinner) formBtnSpinner.style.display = 'inline-block';
+
+        const themeInput = quoteForm.querySelector('input[name="theme_item_code"]:checked') as HTMLInputElement | null;
         const addonInputs = quoteForm.querySelectorAll('input[name="addon_item_codes"]:checked');
+        const stageRadio = quoteForm.querySelector('input[name="store_stage"]:checked') as HTMLInputElement | null;
+        const timelineRadio = quoteForm.querySelector('input[name="project_timeline"]:checked') as HTMLInputElement | null;
+        const notesInput = document.getElementById('quoteNotes') as HTMLTextAreaElement | null;
+
+        const stageVal = stageRadio ? stageRadio.value : 'live';
+        const timelineVal = timelineRadio ? timelineRadio.value : 'standard';
+        const notesVal = notesInput ? notesInput.value.trim() : '';
+        const orgVal = (document.getElementById('quoteOrg') as HTMLInputElement)?.value.trim() || '';
+
+        // Combine metadata safely
+        let orgDetails = orgVal;
+        const extraMeta: string[] = [];
+        if (stageVal) extraMeta.push(`Stage: ${stageVal}`);
+        if (timelineVal) extraMeta.push(`Timeline: ${timelineVal}`);
+        if (notesVal) extraMeta.push(`Notes: ${notesVal}`);
+        if (extraMeta.length > 0) {
+          orgDetails = orgDetails ? `${orgDetails} (${extraMeta.join(' | ')})` : extraMeta.join(' | ');
+        }
 
         const payload = {
-          first_name: document.getElementById('quoteName').value.trim(),
-          email: document.getElementById('quoteEmail').value.trim(),
-          organization: document.getElementById('quoteOrg').value.trim(),
-          mobile_no: document.getElementById('quoteMobile').value.trim(),
-          store_url: document.getElementById('quoteStoreUrl').value.trim(),
+          first_name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          organization: orgDetails,
+          mobile_no: (document.getElementById('quoteMobile') as HTMLInputElement)?.value.trim() || '',
+          store_url: (document.getElementById('quoteStoreUrl') as HTMLInputElement)?.value.trim() || '',
           theme_item_code: themeInput ? themeInput.value : '',
-          addon_item_codes: JSON.stringify(Array.from(addonInputs).map((el) => el.value)),
-          company_url: document.getElementById('quoteCompanyUrl').value.trim(),
+          addon_item_codes: JSON.stringify(Array.from(addonInputs).map((el) => (el as HTMLInputElement).value)),
+          company_url: (document.getElementById('quoteCompanyUrl') as HTMLInputElement)?.value.trim() || '',
         };
 
         try {
@@ -162,17 +851,34 @@ const canonical = "https://klickspell.com/quote";
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
-          if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
-          quoteForm.reset();
-          successBox.style.display = 'block';
+          if (!res.ok) throw new Error(`Server returned ${res.status}`);
+
+          // Show Success Card
+          if (quoteBuilderLayout) quoteBuilderLayout.style.display = 'none';
+          if (quoteSuccessCard) {
+            quoteSuccessCard.style.display = 'block';
+            if (successSummaryText) {
+              const clientName = payload.first_name || 'there';
+              const targetStore = payload.store_url || 'your store';
+              successSummaryText.textContent = `Thank you ${clientName}! We've recorded your project scope for ${targetStore}. Atul and the Klickspell engineering team are reviewing your architecture and will deliver an itemized line-item proposal within 24 hours.`;
+            }
+            quoteSuccessCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         } catch (err) {
-          console.warn('Quote form submission failed:', err);
-          errorBox.style.display = 'block';
+          console.warn('Quote form submission fallback triggered:', err);
+          updateWhatsAppLinks();
+          if (quoteErrorBox) {
+            quoteErrorBox.style.display = 'block';
+            quoteErrorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         } finally {
-          submitBtn.disabled = false;
-          btnText.style.display = 'inline';
-          btnSpinner.style.display = 'none';
+          if (sidebarSubmitBtn) (sidebarSubmitBtn as HTMLButtonElement).disabled = false;
+          if (sidebarBtnText) sidebarBtnText.style.display = 'inline';
+          if (sidebarBtnSpinner) sidebarBtnSpinner.style.display = 'none';
+          if (formSubmitBtn) (formSubmitBtn as HTMLButtonElement).disabled = false;
+          if (formBtnText) formBtnText.style.display = 'inline';
+          if (formBtnSpinner) formBtnSpinner.style.display = 'none';
         }
       });
     }
