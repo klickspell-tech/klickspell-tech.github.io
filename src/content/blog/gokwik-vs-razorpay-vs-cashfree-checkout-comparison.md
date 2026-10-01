@@ -47,3 +47,5 @@ We implement GoKwik for clients (disclosure below), but which platform actually 
 ### Still not sure?
 
 [Take the 2-minute checkout quiz](/checkout-quiz) for an instant, reasoned recommendation, or [configure a project scope](/quote) and mention checkout in your notes — we'll look at your actual order data on a [20-minute call](https://cal.com/atul-bhatt-klickspell/30min) before recommending anything.
+
+Already leaning GoKwik? Checkout is one of 10 products they now sell — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the other nine (if any) are actually worth adding.

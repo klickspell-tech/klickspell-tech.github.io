@@ -67,6 +67,8 @@ For lower-volume stores, "which one is transparent" isn't really the deciding fa
 
 See all three platforms side by side in [one table](/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison), or [take the 2-minute quiz](/checkout-quiz) for an instant recommendation.
 
+Already leaning GoKwik? Checkout is one of 10 products they now sell — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the other nine (if any) are actually worth adding.
+
 ### Not sure which fits your store?
 
 Pricing model, COD mix, and whether you need engagement/support bundled in all change the answer. [Configure a project scope](/quote) and mention checkout in your notes, or [book a 20-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll look at your actual numbers before recommending one.

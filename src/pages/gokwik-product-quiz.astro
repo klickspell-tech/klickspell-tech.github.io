@@ -254,32 +254,46 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
   <Footer />
 
-  <style>
+  <style is:global>
+    /* is:global: these rows are created client-side via innerHTML after the
+       quiz loads, so Astro's default scoped-CSS attribute (added only to
+       elements present in the static template at build time) never reaches
+       them - scoped rules here would silently match nothing. */
     .gk-product-list {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
       margin-bottom: 1rem;
     }
     .gk-product-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
       gap: 0.75rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      background: rgba(255,255,255,0.03);
+      transition: background 0.15s;
     }
-    .gk-product-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .gk-product-row.start_now {
+      border-left-color: #4ADE80;
+      background: rgba(12,206,107,0.1);
+    }
+    .gk-product-row.worth_evaluating { border-left-color: #93A9FF; }
+    .gk-product-row.wait { border-left-color: rgba(255,255,255,0.3); }
+    .gk-product-row.lower_priority { border-left-color: #F7B955; }
     .gk-product-name {
       font-size: 13.5px;
       font-weight: 600;
       color: #fff;
+      text-decoration: none;
     }
     .gk-product-reason {
       font-size: 11.5px;
       color: rgba(255,255,255,0.6);
       line-height: 1.5;
-      margin-top: 2px;
+      margin-top: 3px;
     }
     .gk-product-main { flex: 1; min-width: 0; }
     .gk-badge {
@@ -288,15 +302,15 @@ const schemas = [webAppSchema, breadcrumbSchema];
       font-size: 10px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
       padding: 3px 8px;
       border-radius: 100px;
       white-space: nowrap;
     }
-    .gk-badge.start_now { background: rgba(12,206,107,0.18); color: #4ADE80; }
-    .gk-badge.worth_evaluating { background: rgba(58,91,224,0.25); color: #93A9FF; }
+    .gk-badge.start_now { background: rgba(12,206,107,0.22); color: #4ADE80; }
+    .gk-badge.worth_evaluating { background: rgba(58,91,224,0.28); color: #93A9FF; }
     .gk-badge.wait { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
-    .gk-badge.lower_priority { background: rgba(247,185,85,0.18); color: #F7B955; }
+    .gk-badge.lower_priority { background: rgba(247,185,85,0.2); color: #F7B955; }
     .gk-newer-note {
       font-size: 11px;
       color: rgba(255,255,255,0.55);
@@ -451,10 +465,12 @@ const schemas = [webAppSchema, breadcrumbSchema];
         return r;
       }
 
+      const STATUS_ORDER = { start_now: 0, worth_evaluating: 1, wait: 2, lower_priority: 3 };
+
       function renderRow(id, result) {
         const meta = PRODUCTS[id];
         const row = document.createElement('div');
-        row.className = 'gk-product-row';
+        row.className = 'gk-product-row ' + result.status;
         row.innerHTML = `
           <div class="gk-product-main">
             <a href="${meta.link}" target="_blank" rel="noopener" class="gk-product-name" style="text-decoration:none;">${meta.name}</a>
@@ -473,7 +489,12 @@ const schemas = [webAppSchema, breadcrumbSchema];
         newerListEl.innerHTML = '';
 
         let startNowCount = 0;
-        Object.keys(PRODUCTS).forEach((id) => {
+        // Sort each group so "start now" floats to the top and "lower
+        // priority" sinks to the bottom - the point of the list is to tell
+        // you what to act on first, not just list all 10 products in a
+        // fixed order every time.
+        const ids = Object.keys(PRODUCTS).sort((a, b) => STATUS_ORDER[results[a].status] - STATUS_ORDER[results[b].status]);
+        ids.forEach((id) => {
           const result = results[id];
           if (result.status === 'start_now') startNowCount++;
           const row = renderRow(id, result);

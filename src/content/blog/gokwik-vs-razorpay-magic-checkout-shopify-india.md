@@ -79,6 +79,8 @@ We implement GoKwik specifically because most of our clients are COD-heavy D2C b
 
 If Cashfree is also on your shortlist, we've done the same fact-check against it: [GoKwik vs Cashfree Checkout 360](/blog/gokwik-vs-cashfree-checkout-360-shopify-india) and [Razorpay Magic Checkout vs Cashfree Checkout 360](/blog/razorpay-magic-checkout-vs-cashfree-checkout-360). Or see all three side by side in [one table](/blog/gokwik-vs-razorpay-vs-cashfree-checkout-comparison).
 
+Already leaning GoKwik? Checkout is one of 10 products they now sell — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the other nine (if any) are actually worth adding.
+
 ---
 
 ### Not sure which fits your store?

@@ -98,3 +98,5 @@ As a Shopify development agency, our job in this is the implementation: integrat
 ### Curious what this would look like for your store?
 
 If you're running meaningful COD volume and have never measured your actual RTO rate, that's the first thing worth finding out. [Configure a project scope](/quote) and mention checkout/RTO in your notes, or [book a 20-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll walk through your numbers directly.
+
+GoKwik sells 10 products now, not just checkout — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the others (Engage, Return Prime, Cart, and more) actually fit your store, and which to skip for now.
