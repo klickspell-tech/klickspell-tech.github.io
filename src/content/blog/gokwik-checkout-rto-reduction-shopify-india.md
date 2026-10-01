@@ -44,7 +44,9 @@ A 1-click checkout that replaces Shopify's default flow:
 - Self-serve returns/exchange portal that converts a return into a store-credit exchange instead of a pure loss.
 
 ### Kwik Engage (the easy add-on)
-Automated WhatsApp/SMS flows for cart recovery and order confirmation — published numbers of **85% open rates** and **20%+ recovered carts**, with no checkout changes required. This is usually where we start with clients who want to see results before touching their core checkout flow.
+This one's undersold by calling it just "cart recovery WhatsApp flows" — it's an omnichannel engagement *and* support platform (WhatsApp, Email, SMS, Instagram, Facebook, RCS, all in one inbox), with an AI chatbot that resolves **80%+ of customer queries autonomously**, plus AI voice calling for COD/cart/failed-payment recovery. Published numbers: **85% open rates**, **20%+ recovered carts**, 90% message delivery via AI-powered retries. No checkout changes required, which is usually where we start with clients who want to see results before touching their core checkout flow.
+
+One real result, not just a published benchmark: True Elements' Co-Founder & CEO Puru Gupta on Kwik Engage — *"it has helped us solve many of our pressing issues. In just a couple of months, we've seen a jump of 134% in abandonment cart recovery rate."*
 
 ## How this compares to the alternatives
 
