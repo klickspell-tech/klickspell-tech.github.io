@@ -230,7 +230,7 @@ const schemas = [breadcrumbSchema, serviceSchema];
 
                 <div class="addon-search-box">
                   <span class="addon-search-icon">🔍</span>
-                  <input type="text" id="addonSearch" class="addon-search-input" placeholder="Search services — e.g. loyalty, returns, search…" autocomplete="off" />
+                  <input type="text" id="addonSearch" class="addon-search-input" placeholder="Search services — e.g. loyalty, returns, search…" aria-label="Search services and add-ons" autocomplete="off" />
                 </div>
 
                 <div id="addonGroups" class="quote-addon-groups">
@@ -577,6 +577,14 @@ const schemas = [breadcrumbSchema, serviceSchema];
 
     let currentCatalog = { ...DEFAULT_CATALOG };
 
+    // Catalog strings can come from the live CRM fetch, not just the trusted
+    // local fallback, so escape before building innerHTML with them.
+    function escapeHtml(str) {
+      return String(str ?? '').replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[ch]));
+    }
+
     // Metadata details for theme cards
     const THEME_META = {
       'QSVC-THEME-CUSTOM': {
@@ -620,28 +628,28 @@ const schemas = [breadcrumbSchema, serviceSchema];
           };
 
           return `
-            <label class="theme-card-label" data-code="${item.item_code}">
-              <input 
-                type="radio" 
-                name="theme_item_code" 
-                value="${item.item_code}" 
-                data-name="${item.item_name}"
-                data-turnaround="${meta.turnaround}"
-                data-desc="${meta.desc}"
-                ${i === 0 ? 'checked' : ''} 
-                required 
+            <label class="theme-card-label" data-code="${escapeHtml(item.item_code)}">
+              <input
+                type="radio"
+                name="theme_item_code"
+                value="${escapeHtml(item.item_code)}"
+                data-name="${escapeHtml(item.item_name)}"
+                data-turnaround="${escapeHtml(meta.turnaround)}"
+                data-desc="${escapeHtml(meta.desc)}"
+                ${i === 0 ? 'checked' : ''}
+                required
               />
               <div class="theme-card-box">
                 <div>
                   <div class="theme-card-top">
-                    <span class="theme-card-badge">${meta.badge}</span>
+                    <span class="theme-card-badge">${escapeHtml(meta.badge)}</span>
                     <span class="theme-card-radio-circle"></span>
                   </div>
-                  <h3 class="theme-card-name">${item.item_name}</h3>
-                  <p class="theme-card-desc">${meta.desc}</p>
+                  <h3 class="theme-card-name">${escapeHtml(item.item_name)}</h3>
+                  <p class="theme-card-desc">${escapeHtml(meta.desc)}</p>
                 </div>
                 <div class="theme-card-footer">
-                  <span>⏱️ ${meta.turnaround}</span>
+                  <span>⏱️ ${escapeHtml(meta.turnaround)}</span>
                   <span style="font-weight: 600;">100% Autonomy</span>
                 </div>
               </div>
@@ -659,33 +667,33 @@ const schemas = [breadcrumbSchema, serviceSchema];
           const items = catalog[group] || [];
           const label = GROUP_LABELS[group] || group;
           return `
-            <details class="addon-group-section" data-group="${group}" data-search-text="${label.toLowerCase()}" ${i === 0 ? 'open' : ''}>
+            <details class="addon-group-section" data-group="${escapeHtml(group)}" data-search-text="${escapeHtml(label.toLowerCase())}" ${i === 0 ? 'open' : ''}>
               <summary class="addon-group-header">
                 <h3 class="addon-group-title">
                   <span class="addon-group-chevron">+</span>
-                  <span>${label}</span>
+                  <span>${escapeHtml(label)}</span>
                 </h3>
-                <span class="addon-group-count" data-count-for="${group}">${items.length} options</span>
+                <span class="addon-group-count" data-count-for="${escapeHtml(group)}">${items.length} options</span>
               </summary>
               <div class="addon-items-grid">
                 ${items.map((item) => `
-                  <label class="addon-checkbox-label" data-search-text="${item.item_name.toLowerCase()}">
+                  <label class="addon-checkbox-label" data-search-text="${escapeHtml(item.item_name.toLowerCase())}">
                     <input
                       type="checkbox"
                       name="addon_item_codes"
-                      value="${item.item_code}"
-                      data-name="${item.item_name}"
-                      data-group="${group}"
+                      value="${escapeHtml(item.item_code)}"
+                      data-name="${escapeHtml(item.item_name)}"
+                      data-group="${escapeHtml(group)}"
                     />
                     <div class="addon-checkbox-pill">
                       <span class="addon-custom-check">✓</span>
-                      <span class="addon-item-text">${item.item_name}</span>
+                      <span class="addon-item-text">${escapeHtml(item.item_name)}</span>
                     </div>
                   </label>
                 `).join('')}
               </div>
               <label class="addon-unsure-label">
-                <input type="checkbox" name="unsure_group_flag" value="${group}" />
+                <input type="checkbox" name="unsure_group_flag" value="${escapeHtml(group)}" />
                 <span>Not sure what I need here — flag this for our scoping call</span>
               </label>
             </details>
@@ -749,10 +757,15 @@ const schemas = [breadcrumbSchema, serviceSchema];
       const timelineRadios = document.querySelectorAll('input[name="project_timeline"]');
       timelineRadios.forEach(r => r.addEventListener('change', updateLiveSummary));
 
-      // Addon search
+      // Addon search (debounced so a growing catalog doesn't re-filter on every keystroke)
       const searchInput = document.getElementById('addonSearch');
       if (searchInput) {
-        searchInput.addEventListener('input', (e) => filterAddons((e.target as HTMLInputElement).value));
+        let searchDebounce: ReturnType<typeof setTimeout>;
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(searchDebounce);
+          const value = (e.target as HTMLInputElement).value;
+          searchDebounce = setTimeout(() => filterAddons(value), 150);
+        });
       }
     }
 
@@ -783,26 +796,26 @@ const schemas = [breadcrumbSchema, serviceSchema];
         if (addonCount === 0) {
           summaryChipsList.innerHTML = '<span id="summaryEmptyHint" class="quote-empty-addons-hint">Toggle add-ons on the left to include them in your scope.</span>';
         } else {
-          summaryChipsList.innerHTML = Array.from(checkedAddons).map(cb => {
+          const addonList = Array.from(checkedAddons) as HTMLInputElement[];
+          summaryChipsList.innerHTML = addonList.map(cb => {
             const name = cb.getAttribute('data-name') || cb.value;
-            const code = cb.value;
             return `
               <span class="quote-scope-chip">
-                <span>${name}</span>
-                <button type="button" class="chip-remove-btn" data-code="${code}" aria-label="Remove ${name}">×</button>
+                <span>${escapeHtml(name)}</span>
+                <button type="button" class="chip-remove-btn" aria-label="Remove ${escapeHtml(name)}">×</button>
               </span>
             `;
           }).join('');
 
-          // Attach chip remove handlers
-          summaryChipsList.querySelectorAll('.chip-remove-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              const code = (e.currentTarget as HTMLElement).getAttribute('data-code');
-              const targetCb = document.querySelector(`input[name="addon_item_codes"][value="${code}"]`) as HTMLInputElement | null;
-              if (targetCb) {
-                targetCb.checked = false;
-                updateLiveSummary();
-              }
+          // Bind each remove button directly to its checkbox reference rather
+          // than re-querying by value, since item_codes aren't guaranteed
+          // unique across groups in a live/edited catalog.
+          const chipButtons = summaryChipsList.querySelectorAll('.chip-remove-btn');
+          chipButtons.forEach((btn, i) => {
+            const targetCb = addonList[i];
+            btn.addEventListener('click', () => {
+              targetCb.checked = false;
+              updateLiveSummary();
             });
           });
         }
