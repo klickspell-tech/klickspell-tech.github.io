@@ -42,7 +42,7 @@ The support for a New Version Of JSX Transform._
 
 _So before when we were doing:_
 
-```
+```jsx
 import React from 'react';
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
 
 _The Old JSX transform used to do:_
 
-```
+```javascript
 import React from 'react';
 
 function App() {
@@ -84,3 +84,6 @@ I hope you enjoyed reading this article and was able to calm your curious mind f
 
 _Happy transforming into a curious reader. 
 Have a nice day folks._
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/no-import-react-from-react-heres-why-hom)*

@@ -98,3 +98,6 @@ And now another term to breakdown🤦. What is a **toolchain**??
 _Thank you folks for reading all through this article. I tried my best to breakdown the terms that would've otherwise made you feel like you are missing some context to this._
 
 **Keep reading, keep learning, and never stop being curious. See you until next time.**✌️✌️✌️
+
+---
+*Originally published at [Klickspell Engineering](https://klickspell.com/blog/breaking-down-npx-create-react-app-from-npm-to-npx-4ah9)*
