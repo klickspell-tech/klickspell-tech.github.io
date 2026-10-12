@@ -98,7 +98,7 @@ Klickspell is a **web engineering and digital product studio** based in Rudrapur
 | DealShare | https://about.dealshare.in/ | Landing & Brand | Corporate & Investor Portfolio |
 | CallSara AI | https://www.callsara.ai/ | Webflow | AI Voice Agent SaaS |
 | Cove & Lane | https://coveandlane.in/ | Shopify | Fashion & Apparel |
-| Mogra Media | https://mogramedia.in/ | Landing & Brand | Lead Generation Landing Page |
+| Mogra Media | https://mogramedia.com/ | Landing & Brand | Lead Generation Landing Page |
 | Pragya Vijh | https://pragyavijh.com/in | Headless & Custom | Medusa.js + Cal.com Integration |
 | Bambrew | https://www.bambrew.in/ | Shopify | Sustainable Packaging · Shark Tank |
 | Nuva Gurukul | https://nuvagurukul.com/ | Landing & Brand | Education & Student Enrollment |
