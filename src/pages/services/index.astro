@@ -1,0 +1,617 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
+
+const canonical = "https://klickspell.com/services";
+
+const serviceCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Klickspell E-Commerce & Web Engineering Services",
+  "serviceType": "Web & E-Commerce Engineering",
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  },
+  "description": "Custom Shopify Liquid themes, headless commerce architectures, guaranteed 90+ mobile speed optimization, and ongoing performance and accessibility retainers.",
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "E-Commerce Engineering & Development Capabilities",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Shopify Theme & Liquid Development",
+          "url": "https://klickspell.com/services/custom-shopify-development"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Shopify Speed Optimization (Guaranteed 90+ Mobile PageSpeed)",
+          "url": "https://klickspell.com/services/shopify-speed-optimization"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Headless & Custom Commerce (Medusa.js, Hydrogen & Next.js)",
+          "url": "https://klickspell.com/services/headless-commerce"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Performance, Accessibility & Privacy Retainer",
+          "url": "https://klickspell.com/services/performance-accessibility-retainer"
+        }
+      }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What makes Klickspell different from typical Shopify agencies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most agencies use heavy off-the-shelf templates and page-builder apps that slow down your store, then lock you into ongoing retainers for simple edits. We engineer custom Liquid themes and modular sections connected directly into Shopify's native Theme Customizer. You get sub-second speed, complete code ownership, and full independence to edit content without a developer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does your 90+ Mobile Speed Guarantee work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We guarantee a 90+ Mobile Google PageSpeed score and green Core Web Vitals on standard product and collection pages. If we don't hit the target due to code we wrote or audit recommendations, we continue optimizing at zero additional cost until the contractual benchmark is met."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can non-technical team members edit layouts and copy after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%. Every banner, text block, product carousel, and layout element is configured into Shopify's visual theme customizer. You can edit content, rearrange sections, and update imagery without writing code or paying for third-party page builders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a typical custom Shopify or headless build take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A custom Shopify 2.0 build typically takes 3 to 6 weeks from approved Figma designs to production launch. Speed optimizations are completed in 5 to 10 business days. Headless architectures take 6 to 10 weeks depending on custom API and ERP requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we get full access to code and documentation at handover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every project ends with a clean Git repository, recorded video walkthroughs for your team, and full administrative handover. We build for your independence, not your dependency."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": canonical }
+  ]
+};
+
+const schemas = [serviceCatalogSchema, faqSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Services & Capabilities — Custom Shopify, Speed Optimization & Headless Commerce | Klickspell"
+  description="Explore Klickspell's full suite of web & e-commerce engineering services: Custom Shopify Theme Development, Guaranteed 90+ Speed Optimization, Headless Commerce, and Performance Retainers."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <header class="service-page-hero">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Services &amp; Capabilities</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        Engineering Studio · Zero Bloat · Complete Handover
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Built for your vision,<br>
+        <em>not our convenience.</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        We engineer custom Shopify stores, headless commerce setups, guaranteed 90+ mobile speed optimizations, and robust business web applications. Every project is built for complete client autonomy — no bloated templates, no unnecessary app subscriptions, and zero agency lock-in.
+      </p>
+
+      <div class="service-hero-actions reveal reveal-delay-2">
+        <a 
+          href="https://cal.com/atul-bhatt-klickspell/30min" 
+          data-cal-link="atul-bhatt-klickspell/30min" 
+          data-cal-namespace="30min" 
+          data-cal-config='{"layout":"month_view"}' 
+          class="btn-primary"
+          style="cursor:pointer"
+        >
+          Book a Free Scoping Call →
+        </a>
+        <a href="/speed" class="btn-ghost" style="border-color:rgba(58,91,224,0.3); color:var(--accent);">
+          ⚡ Test Your App Bloat
+        </a>
+        <a href="/#work" class="btn-ghost">
+          View Selected Work ↗
+        </a>
+      </div>
+
+      <!-- METRICS STRIP -->
+      <div class="service-metrics-bar reveal reveal-delay-3">
+        <div class="service-metric-item">
+          <p class="metric-label">Mobile Performance</p>
+          <p class="metric-val">90+ / 100</p>
+          <p class="metric-note">Guaranteed Core Web Vitals on mobile devices</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Team Autonomy</p>
+          <p class="metric-val">100%</p>
+          <p class="metric-note">Native visual customizer controls — zero code edits needed</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Page-Builder Apps</p>
+          <p class="metric-val">0 Apps</p>
+          <p class="metric-note">Zero PageFly/Shogun dependency, saving monthly SaaS fees</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Client Handover</p>
+          <p class="metric-val">Full Git</p>
+          <p class="metric-note">Clean repo, Loom walkthroughs &amp; admin independence</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN SERVICES CATALOG -->
+    <div class="service-body-wrap">
+      <div class="service-section-header reveal">
+        <p class="section-eyebrow">Core Engineering Capabilities</p>
+        <h2>Specialized services for <em>ambitious brands.</em></h2>
+        <p>Whether you need a bespoke Shopify flagship, a guaranteed speed turnaround, or a decoupled headless commerce engine, here is how we can collaborate.</p>
+      </div>
+
+      <div class="services-hub-grid">
+        <!-- 01: Custom Shopify Development -->
+        <article class="services-hub-card featured reveal">
+          <div class="hub-card-header">
+            <span class="hub-card-num">01 — Flagship</span>
+            <span class="hub-card-tag">Shopify 2.0 &amp; Liquid</span>
+          </div>
+          <h3 class="hub-card-title">Custom Shopify Theme &amp; Liquid Development</h3>
+          <p class="hub-card-desc">
+            Bespoke Shopify stores built from approved designs. Handcrafted Liquid architecture, modular Theme Customizer sections your marketing team can edit without code, and high-converting checkout flows.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>100% native Theme Customizer controls (no page builders)</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Sub-second mobile loading with clean semantic Liquid</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Custom product bundles, slide-out carts &amp; upsells</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Complete Git handover &amp; non-technical team training</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="/services/custom-shopify-development" class="hub-card-link">
+              Explore Custom Shopify Development →
+            </a>
+            <span class="hub-card-timing">3 – 6 weeks typical delivery</span>
+          </div>
+        </article>
+
+        <!-- 02: Shopify Speed Optimization -->
+        <article class="services-hub-card featured reveal reveal-delay-1">
+          <div class="hub-card-header">
+            <span class="hub-card-num">02 — Performance</span>
+            <span class="hub-badge-pill">90+ Mobile Guarantee</span>
+          </div>
+          <h3 class="hub-card-title">Shopify Speed Optimization</h3>
+          <p class="hub-card-desc">
+            We turn slow, app-heavy Shopify stores into sub-second conversion engines. Deep Liquid refactoring, script deferral, critical CSS inlining, and image pipeline tuning without breaking tracking pixels or analytics.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Guaranteed 90+ Mobile PageSpeed score or we keep optimizing</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Sub-1.2s Largest Contentful Paint (LCP) &amp; 0ms CLS layout shifts</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Zero broken apps, analytics, Klaviyo flows, or ad pixels</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Comprehensive before/after audit report &amp; ongoing guidance</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="/services/shopify-speed-optimization" class="hub-card-link">
+              Explore Guaranteed 90+ Speed →
+            </a>
+            <span class="hub-card-timing">5 – 10 business days</span>
+          </div>
+        </article>
+
+        <!-- 03: Headless Commerce -->
+        <article class="services-hub-card reveal">
+          <div class="hub-card-header">
+            <span class="hub-card-num">03 — Modern Stacks</span>
+            <span class="hub-card-tag">Next.js &amp; Medusa.js</span>
+          </div>
+          <h3 class="hub-card-title">Headless &amp; Custom Commerce</h3>
+          <p class="hub-card-desc">
+            Modular commerce architectures powered by Next.js, Medusa.js, and Shopify Hydrogen. Perfect for brands with complex product configurators, international multi-currency setups, or custom booking flows.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Ultra-fast edge rendering via Cloudflare / Vercel</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Tailored checkout logic, B2B wholesale pricing &amp; custom APIs</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Freedom from monolithic SaaS e-commerce constraints</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="/services/headless-commerce" class="hub-card-link">
+              Explore Headless Architecture →
+            </a>
+            <span class="hub-card-timing">6 – 10 weeks</span>
+          </div>
+        </article>
+
+        <!-- 04: Retainer & Care -->
+        <article class="services-hub-card reveal reveal-delay-1">
+          <div class="hub-card-header">
+            <span class="hub-card-num">04 — Continuous Care</span>
+            <span class="hub-card-tag">CWV &amp; WCAG 2.2</span>
+          </div>
+          <h3 class="hub-card-title">Performance, Accessibility &amp; Privacy Retainer</h3>
+          <p class="hub-card-desc">
+            Continuous technical governance for stores that cannot afford regressions. Monthly real-user Core Web Vitals surveillance, manual screen-reader accessibility audits, and third-party script triage.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Monthly CrUX and lab Core Web Vitals verification</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>WCAG 2.2 AA audits tested with screen readers (NVDA/VoiceOver)</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Third-party app governance &amp; privacy consent order verification</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="/services/performance-accessibility-retainer" class="hub-card-link">
+              Explore Retainers &amp; Pricing →
+            </a>
+            <span class="hub-card-timing">Monthly / Cancel anytime</span>
+          </div>
+        </article>
+
+        <!-- 05: Webflow & Visual Development -->
+        <article class="services-hub-card reveal">
+          <div class="hub-card-header">
+            <span class="hub-card-num">05 — Marketing Sites</span>
+            <span class="hub-card-tag">Webflow CMS</span>
+          </div>
+          <h3 class="hub-card-title">Webflow &amp; Visual Development</h3>
+          <p class="hub-card-desc">
+            World-class Webflow marketing sites for B2B SaaS, startups, and creative agencies. Dynamic CMS architecture, silky micro-interactions, clean semantic HTML, and rapid time-to-market.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Dynamic CMS collections built for marketing autonomy</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Lightweight interactions with zero animation stutter</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>SEO-optimized heading structures &amp; clean metadata</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="hub-card-link">
+              Discuss Webflow Project →
+            </a>
+            <span class="hub-card-timing">2 – 4 weeks</span>
+          </div>
+        </article>
+
+        <!-- 06: Custom Web Apps & ERP -->
+        <article class="services-hub-card reveal reveal-delay-1">
+          <div class="hub-card-header">
+            <span class="hub-card-num">06 — Full-Stack</span>
+            <span class="hub-card-tag">Frappe &amp; React</span>
+          </div>
+          <h3 class="hub-card-title">Custom Web Apps &amp; ERP Workflows</h3>
+          <p class="hub-card-desc">
+            Full-stack web applications, custom Frappe &amp; ERPNext business workflow automations, third-party API sync engines, and robust DevOps deployments engineered for operational scaling.
+          </p>
+
+          <div class="hub-card-features">
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Custom Frappe apps, DocTypes, and business process automations</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Tailored React/Next.js client portals &amp; dashboards</span>
+            </div>
+            <div class="hub-feature-item">
+              <span class="hub-feature-check">✓</span>
+              <span>Secure API pipelines &amp; cloud server management</span>
+            </div>
+          </div>
+
+          <div class="hub-card-footer">
+            <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="hub-card-link">
+              Discuss Custom App Architecture →
+            </a>
+            <span class="hub-card-timing">Custom scope</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- FREE INTERACTIVE TOOLS STRIP -->
+      <div class="hub-tools-section reveal">
+        <div class="hub-tools-header">
+          <span class="section-eyebrow">Interactive Studio Tools</span>
+          <h2 class="tools-title">Free calculators built by <em>our engineers.</em></h2>
+          <p class="tools-sub">Audit your Shopify speed overhead or find the ideal checkout flow in under 2 minutes.</p>
+        </div>
+
+        <div class="hub-tools-grid">
+          <div class="hub-tool-card">
+            <div class="tool-badge-pill">Free Estimator</div>
+            <div class="tool-icon-large">⚡</div>
+            <h3 class="tool-card-title">Shopify App &amp; Speed Estimator</h3>
+            <p class="tool-card-desc">Select the apps currently installed on your store and see their real impact on JavaScript payload, main-thread blocking time, and conversion rate.</p>
+            <a href="/speed" class="btn-primary" style="margin-top:auto;">Launch Speed Estimator →</a>
+          </div>
+
+          <div class="hub-tool-card">
+            <div class="tool-badge-pill">Interactive Quiz</div>
+            <div class="tool-icon-large">🛒</div>
+            <h3 class="tool-card-title">Checkout Architecture Quiz</h3>
+            <p class="tool-card-desc">Answer 5 quick questions about your store's average order value, payment gateways, and COD ratios to receive a custom checkout recommendation.</p>
+            <a href="/checkout-quiz" class="btn-ghost" style="margin-top:auto;">Take Checkout Quiz →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARISON SECTION -->
+      <div class="services-compare-section reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">The Klickspell Standard</p>
+          <h2>How we compare to <em>typical agencies.</em></h2>
+          <p>We built Klickspell around one founding principle: we succeed when you don't need us for basic updates.</p>
+        </div>
+
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Standard</th>
+                <th class="highlight-col">Klickspell</th>
+                <th>Traditional Agencies</th>
+                <th>Freelance Marketplaces</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Code Architecture</strong></td>
+                <td class="highlight-col">Custom Liquid themes &amp; native sections</td>
+                <td>Pre-bought bloated themes ($350) + PageFly</td>
+                <td>Patchwork code &amp; copied snippets</td>
+              </tr>
+              <tr>
+                <td><strong>Speed Benchmark</strong></td>
+                <td class="highlight-col"><span class="table-tag-green">Guaranteed 90+ Mobile CWV</span></td>
+                <td>"Speed is fine on desktop"</td>
+                <td>Rarely measured on mobile</td>
+              </tr>
+              <tr>
+                <td><strong>Client Autonomy</strong></td>
+                <td class="highlight-col">100% editable in native Customizer</td>
+                <td>Locked down — pay per section change</td>
+                <td>Unclear code, breaks on theme updates</td>
+              </tr>
+              <tr>
+                <td><strong>Third-Party App Advice</strong></td>
+                <td class="highlight-col">Honest, unbiased (we accept zero kickbacks)</td>
+                <td>Apps chosen based on partner referral cuts</td>
+                <td>Whatever app solves the issue fastest</td>
+              </tr>
+              <tr>
+                <td><strong>Handover Process</strong></td>
+                <td class="highlight-col">Clean Git repo + recorded Loom video training</td>
+                <td>Agency holds repo &amp; assets hostage</td>
+                <td>Zip file with zero documentation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PROCESS / HOW WE DELIVER -->
+      <div class="services-process-section reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Delivery Process</p>
+          <h2>From scope to launch in <em>four clear phases.</em></h2>
+        </div>
+
+        <div class="process-grid-4">
+          <div class="process-step-card">
+            <span class="process-step-num">01</span>
+            <h4 class="process-step-title">Discovery &amp; Blueprint</h4>
+            <p class="process-step-text">We audit your existing tech stack, review Figma designs, map out required custom sections, and agree on contractual performance metrics before writing code.</p>
+          </div>
+          <div class="process-step-card">
+            <span class="process-step-num">02</span>
+            <h4 class="process-step-title">Performance-First Build</h4>
+            <p class="process-step-text">We engineer clean Liquid, React, or Medusa.js components with zero unnecessary script bloat, inline critical assets, and connect schema controls.</p>
+          </div>
+          <div class="process-step-card">
+            <span class="process-step-num">03</span>
+            <h4 class="process-step-title">Cross-Device &amp; Speed QA</h4>
+            <p class="process-step-text">Rigorous testing across real iOS and Android devices, screen readers for accessibility, checkout test orders, and Google PageSpeed verification.</p>
+          </div>
+          <div class="process-step-card">
+            <span class="process-step-num">04</span>
+            <h4 class="process-step-title">Complete Handover</h4>
+            <p class="process-step-text">Production deployment, DNS cutover, Git repository transfer, and recorded Loom tutorials so your non-technical team can run the store independently.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ SECTION -->
+      <div class="services-faq-section reveal">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Frequently Asked Questions</p>
+          <h2>Clear answers to <em>common questions.</em></h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-accordion-item" open>
+            <summary class="faq-summary">
+              <span>What makes Klickspell different from typical Shopify agencies?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>Most agencies use heavy pre-made themes and page-builder apps (like PageFly or Shogun) that slow down your store, then lock you into ongoing monthly retainers for simple banner edits. We engineer custom Liquid themes and modular sections connected directly into Shopify's native Theme Customizer. You get sub-second speed, complete code ownership, and full independence to edit content without a developer.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion-item">
+            <summary class="faq-summary">
+              <span>How does your 90+ Mobile Speed Guarantee work?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>We guarantee a 90+ Mobile Google PageSpeed score and green Core Web Vitals on standard product and collection pages. If we don't hit the target due to code we wrote or audit recommendations, we continue optimizing at zero additional cost until the contractual benchmark is met.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion-item">
+            <summary class="faq-summary">
+              <span>Can non-technical team members edit layouts and copy after launch?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes, 100%. Every banner, text block, product carousel, and layout element is configured into Shopify's visual theme customizer. You can edit content, rearrange sections, and update imagery without writing code or paying for third-party page builders.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion-item">
+            <summary class="faq-summary">
+              <span>How long does a typical custom Shopify or headless build take?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>A custom Shopify 2.0 build typically takes 3 to 6 weeks from approved Figma designs to production launch. Speed optimizations are completed in 5 to 10 business days. Headless architectures take 6 to 10 weeks depending on custom API and ERP requirements.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion-item">
+            <summary class="faq-summary">
+              <span>Are we locked into an agency retainer after launch?</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>No. Our core philosophy is building for complete client autonomy. We provide thorough documentation, clean Git repositories, and a personalized video handover so you are never held hostage. If you do want ongoing Core Web Vitals and accessibility monitoring, we offer optional monthly retainers with no lock-in.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- CTA BOX -->
+      <section class="service-box-cta reveal">
+        <h2>Ready to build the store you <em>actually imagined?</em></h2>
+        <p>Book a 30-minute discovery call with our lead engineer. We'll review your current tech stack, scope out your requirements, and give you an honest appraisal before you commit.</p>
+        <div class="service-box-cta-actions">
+          <a 
+            href="https://cal.com/atul-bhatt-klickspell/30min" 
+            data-cal-link="atul-bhatt-klickspell/30min" 
+            data-cal-namespace="30min" 
+            data-cal-config='{"layout":"month_view"}' 
+            class="btn-primary"
+            style="background:var(--accent); color:var(--white); cursor:pointer;"
+          >
+            Book a 30-Min Discovery Call →
+          </a>
+          <a 
+            href="https://wa.me/919259598769" 
+            target="_blank" 
+            rel="noopener" 
+            class="btn-ghost"
+            style="color:var(--white); border-color:rgba(255,255,255,0.3); display:inline-flex; align-items:center; gap:8px;"
+          >
+            <WhatsAppIcon size={16} fill="#25D366" />
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

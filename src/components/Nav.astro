@@ -8,38 +8,194 @@ interface Props {
 const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
 const pathname = Astro.url.pathname;
+const isServicesActive = pathname.startsWith('/services') || pathname.startsWith('/speed') || pathname.startsWith('/checkout-quiz');
 ---
 
 <nav id="nav">
   <a href="/" class="nav-logo">Klick<span>spell</span></a>
   <ul class="nav-links">
-    <li><a href={`${prefix}#services`}>Services</a></li>
+    <!-- SERVICES DROPDOWN -->
+    <li class="nav-dropdown-item">
+      <a 
+        href="/services" 
+        class={`nav-link-dropdown ${isServicesActive ? "active" : ""}`}
+        id="servicesDropdownTrigger"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span>Services</span>
+        <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <div class="nav-dropdown-menu" id="servicesDropdownMenu" role="menu" aria-labelledby="servicesDropdownTrigger">
+        <div class="nav-dropdown-grid">
+          <!-- Main Services Column -->
+          <div class="dropdown-col-main">
+            <div class="dropdown-section-header">
+              <span class="dropdown-label">Engineering Capabilities</span>
+              <a href="/services" class="dropdown-view-all">All Services Hub →</a>
+            </div>
+
+            <div class="dropdown-services-list">
+              <a href="/services/custom-shopify-development" class="dropdown-service-item" role="menuitem">
+                <span class="service-item-num">01</span>
+                <div class="service-item-info">
+                  <div class="service-item-title">Custom Shopify Themes</div>
+                  <div class="service-item-desc">Bespoke Liquid architecture &amp; native customizer sections</div>
+                </div>
+              </a>
+
+              <a href="/services/shopify-speed-optimization" class="dropdown-service-item" role="menuitem">
+                <span class="service-item-num">02</span>
+                <div class="service-item-info">
+                  <div class="service-item-title">
+                    <span>Shopify Speed Optimization</span>
+                    <span class="dropdown-pill">90+ Guarantee</span>
+                  </div>
+                  <div class="service-item-desc">Sub-second LCP, 0ms blocking &amp; app bloat removal</div>
+                </div>
+              </a>
+
+              <a href="/services/headless-commerce" class="dropdown-service-item" role="menuitem">
+                <span class="service-item-num">03</span>
+                <div class="service-item-info">
+                  <div class="service-item-title">Headless &amp; Custom Commerce</div>
+                  <div class="service-item-desc">Hydrogen, Medusa.js, Next.js &amp; bespoke API logic</div>
+                </div>
+              </a>
+
+              <a href="/services/performance-accessibility-retainer" class="dropdown-service-item" role="menuitem">
+                <span class="service-item-num">04</span>
+                <div class="service-item-info">
+                  <div class="service-item-title">Performance &amp; Retainers</div>
+                  <div class="service-item-desc">Monthly Core Web Vitals &amp; WCAG 2.2 AA accessibility</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Free Tools & Scoping Side Column -->
+          <div class="dropdown-col-side">
+            <div class="dropdown-section-header">
+              <span class="dropdown-label">Free Studio Tools</span>
+            </div>
+
+            <div class="dropdown-tools-list">
+              <a href="/speed" class="dropdown-tool-item" role="menuitem">
+                <span class="tool-icon">⚡</span>
+                <div class="tool-item-info">
+                  <div class="tool-item-title">App &amp; Speed Estimator</div>
+                  <div class="tool-item-desc">Calculate your real third-party script bloat</div>
+                </div>
+              </a>
+
+              <a href="/checkout-quiz" class="dropdown-tool-item" role="menuitem">
+                <span class="tool-icon">🛒</span>
+                <div class="tool-item-info">
+                  <div class="tool-item-title">Checkout Recommender</div>
+                  <div class="tool-item-desc">5-question stack &amp; flow recommendation</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="dropdown-side-box">
+              <span class="side-box-hint">Not sure which stack fits?</span>
+              <a 
+                href="https://cal.com/atul-bhatt-klickspell/30min" 
+                data-cal-link="atul-bhatt-klickspell/30min" 
+                data-cal-namespace="30min" 
+                data-cal-config='{"layout":"month_view"}' 
+                class="dropdown-scoping-btn"
+              >
+                Book a scoping call →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- PRIMARY NAV LINKS -->
     <li><a href={`${prefix}#work`}>Work</a></li>
     <li><a href={`${prefix}#about`}>About</a></li>
     <li><a href="/team" class={pathname.startsWith('/team') ? "active" : ""}>Team</a></li>
     <li><a href="/blog" class={pathname.startsWith('/blog') ? "active" : ""}>Blog</a></li>
-    <li><a href="/speed" class={pathname.startsWith('/speed') ? "active" : ""}>Speed Tool</a></li>
-    <li><a href={`${prefix}#tutorials`}>Tutorials</a></li>
-    <li><a href={`${prefix}#faq`}>FAQ</a></li>
-    <li><a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="nav-cta" style="cursor:pointer">Book a call</a></li>
+    <li>
+      <a 
+        href="https://cal.com/atul-bhatt-klickspell/30min" 
+        data-cal-link="atul-bhatt-klickspell/30min" 
+        data-cal-namespace="30min" 
+        data-cal-config='{"layout":"month_view"}' 
+        class="nav-cta" 
+        style="cursor:pointer"
+      >
+        Book a call
+      </a>
+    </li>
   </ul>
-  <button class="nav-burger" id="burger" aria-label="Menu">
+
+  <button class="nav-burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href={`${prefix}#services`}>Services</a>
-  <a href={`${prefix}#work`}>Work</a>
-  <a href={`${prefix}#about`}>About</a>
-  <a href="/team" class={pathname.startsWith('/team') ? "active" : ""}>Team</a>
-  <a href="/blog" class={pathname.startsWith('/blog') ? "active" : ""}>Blog</a>
-  <a href="/speed" class={pathname.startsWith('/speed') ? "active" : ""}>⚡ Speed &amp; App Estimator</a>
-  <a href={`${prefix}#tutorials`}>Tutorials</a>
-  <a href={`${prefix}#faq`}>FAQ</a>
-  <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-    <WhatsAppIcon size={18} fill="#25D366" />
-    <span>Chat on WhatsApp</span>
-  </a>
+  <div class="mobile-menu-section">
+    <div class="mobile-section-label">Services &amp; Capabilities</div>
+    <div class="mobile-services-grid">
+      <a href="/services" class="mobile-link mobile-all-services">
+        <span>All Services Overview</span>
+        <span class="mobile-arrow">→</span>
+      </a>
+      <a href="/services/custom-shopify-development" class="mobile-link mobile-sublink">
+        <span>Custom Shopify Themes</span>
+        <span class="mobile-pill">Liquid</span>
+      </a>
+      <a href="/services/shopify-speed-optimization" class="mobile-link mobile-sublink">
+        <span>Shopify Speed Optimization</span>
+        <span class="mobile-pill">90+ CWV</span>
+      </a>
+      <a href="/services/headless-commerce" class="mobile-link mobile-sublink">
+        <span>Headless &amp; Custom Commerce</span>
+        <span class="mobile-pill">Medusa / Next</span>
+      </a>
+      <a href="/services/performance-accessibility-retainer" class="mobile-link mobile-sublink">
+        <span>Performance &amp; Retainers</span>
+        <span class="mobile-pill">Care</span>
+      </a>
+      <a href="/speed" class="mobile-link mobile-sublink">
+        <span>⚡ Speed &amp; App Estimator</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-menu-section mobile-main-nav">
+    <a href={`${prefix}#work`} class="mobile-link">Work</a>
+    <a href={`${prefix}#about`} class="mobile-link">About</a>
+    <a href="/team" class={`mobile-link ${pathname.startsWith('/team') ? "active" : ""}`}>Team</a>
+    <a href="/blog" class={`mobile-link ${pathname.startsWith('/blog') ? "active" : ""}`}>Blog</a>
+    <a href={`${prefix}#tutorials`} class="mobile-link mobile-muted-link">Tutorials</a>
+    <a href={`${prefix}#faq`} class="mobile-link mobile-muted-link">FAQ</a>
+  </div>
+
+  <div class="mobile-actions">
+    <a 
+      href="https://cal.com/atul-bhatt-klickspell/30min" 
+      data-cal-link="atul-bhatt-klickspell/30min" 
+      data-cal-namespace="30min" 
+      data-cal-config='{"layout":"month_view"}' 
+      class="mobile-btn-book"
+    >
+      Book a discovery call →
+    </a>
+    <a href="https://wa.me/919259598769" class="mobile-cta-link" target="_blank" rel="noopener">
+      <WhatsAppIcon size={18} fill="#25D366" />
+      <span>Chat on WhatsApp</span>
+    </a>
+  </div>
 </div>
+
 

@@ -52,3 +52,22 @@
 *(Log your changes here)*
 
 ---
+
+## 2026-10-14 · Claude (Anthropic)
+
+### Added
+- `src/pages/services/performance-accessibility-retainer.astro` — service page for the monthly Performance & Accessibility retainer (speed, WCAG 2.2 AA, privacy)
+  - Sections: drift problem, three areas, "ADA, honestly", process, testing tools, plan builder, FAQ, CTA
+  - Plan builder: presets, areas, coverage level, term, one-time projects; live USD price ranges in a sticky summary, mobile price bar, shareable plan link (query params), WhatsApp/email hand-off with the plan prefilled
+  - All prices live in the `CARE` object at the top of the file
+  - Service + FAQPage + BreadcrumbList schema
+- Footer and `public/llms.txt` link to the new page
+
+### Why
+- Pitch the retainer bundle publicly and let clients choose their own scope before a call
+
+### Notes
+- Builder hands off via WhatsApp/email/Cal rather than the Frappe `request_quotation` endpoint, which only accepts catalog item codes
+- Page scores Lighthouse 100 accessibility; it overrides the shared `.service-badge` colour, which fails 4.5:1 contrast site-wide (also on the speed-optimization page)
+
+---

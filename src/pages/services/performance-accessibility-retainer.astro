@@ -1,0 +1,984 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://klickspell.com/services/performance-accessibility-retainer";
+
+// Pricing model (USD). Every number the builder shows comes from here, so
+// changing a range only needs an edit in this one object.
+const CARE = {
+  areas: [
+    {
+      id: 'perf',
+      name: 'Performance',
+      tagline: 'Core Web Vitals, page weight, app & tag bloat',
+      points: ['Real-user and lab Core Web Vitals', 'Script & app change tracking', 'Speed checks on new pages'],
+      essentials: { min: 300, max: 450, hours: 9 },
+      growth: { min: 600, max: 900, hours: 18 },
+      baseline: { min: 500, max: 700 },
+      includes: {
+        essentials: ['Monthly Core Web Vitals report (real-user + lab)', 'Log of scripts and apps added since last month', 'Speed check on up to 2 new pages a month'],
+        growth: ['Monthly Core Web Vitals report (real-user + lab)', 'Tag & app governance, implemented by us', 'Speed review of every new page and template']
+      }
+    },
+    {
+      id: 'a11y',
+      name: 'Accessibility',
+      tagline: 'WCAG 2.2 AA, tested by people with screen readers',
+      points: ['Manual keyboard & screen-reader testing', 'Automated WCAG scans', 'Accessibility statement & records'],
+      essentials: { min: 350, max: 500, hours: 11 },
+      growth: { min: 700, max: 1000, hours: 24 },
+      baseline: { min: 800, max: 1100 },
+      includes: {
+        essentials: ['Monthly automated WCAG scan and triage', 'Manual screen-reader pass every quarter', 'Accessibility statement kept current'],
+        growth: ['Monthly automated WCAG scan and triage', 'Manual screen-reader test of one shopping journey every month', 'Full manual pass every quarter', 'Accessibility statement and conformance report kept current']
+      }
+    },
+    {
+      id: 'privacy',
+      name: 'Privacy & security',
+      tagline: 'Consent order, third-party scripts, data exposure',
+      points: ['Consent fires before tracking', 'Third-party script review', 'Data exposure checks'],
+      essentials: { min: 100, max: 150, hours: 3 },
+      growth: { min: 150, max: 250, hours: 7 },
+      baseline: { min: 200, max: 300 },
+      includes: {
+        essentials: ['Quarterly check that consent loads before tracking', 'Quarterly third-party script review'],
+        growth: ['Monthly check that consent loads before tracking', 'Third-party script and data-exposure review', 'Review of new apps before they are installed']
+      }
+    }
+  ],
+  levels: [
+    {
+      id: 'essentials',
+      name: 'Essentials',
+      badge: 'Watch & maintain',
+      desc: 'For stores that change a few times a month. We keep watch, fix what drifts, and test by hand every quarter.',
+      includes: ['Fix hours from your priority list', 'Response within 3 business days', 'Monthly written report']
+    },
+    {
+      id: 'growth',
+      name: 'Growth',
+      badge: 'Most stores',
+      desc: 'For stores shipping campaigns, pages or apps every week. Hands-on testing every month and reviews before anything launches.',
+      includes: ['More fix hours from your priority list', 'Response within 1 business day', 'Monthly call and quarterly review']
+    }
+  ],
+  terms: [
+    { id: '3', label: '3 months', note: 'Baseline audit at full price', baselineFactor: 1 },
+    { id: '6', label: '6 months', note: 'Baseline audit 50% off', baselineFactor: 0.5 },
+    { id: '12', label: '12 months', note: 'Baseline audit included', baselineFactor: 0 }
+  ],
+  projects: [
+    { id: 'wcag', name: 'WCAG 2.2 AA conformance program', desc: 'Full audit of every template, remediation of theme code, app configuration and vendor escalation, plus your accessibility statement and conformance report.', min: 3000, max: 5000, time: '8–10 weeks', badge: 'Pairs with Accessibility' },
+    { id: 'speed', name: 'Speed sprint', desc: 'A focused push on Core Web Vitals: script scheduling, image delivery, render-blocking CSS and app clean-up, staged in a duplicate theme.', min: 1000, max: 2000, time: '7–14 days', badge: 'Pairs with Performance' },
+    { id: 'content', name: 'Content accessibility pass', desc: 'Alt text for product and editorial images, video captions, heading structure and link text, plus a short guide for your team.', min: 500, max: 1000, time: '2–4 weeks', badge: 'Content' },
+    { id: 'tags', name: 'Tag & app clean-up', desc: 'Inventory every tag and app script, remove duplicates and leftovers, and load the rest at the right moment.', min: 300, max: 600, time: '1 week', badge: 'Quick win' }
+  ],
+  presets: [
+    { id: 'speed', label: 'Speed only', areas: ['perf'], level: 'essentials', term: '3', projects: ['speed'] },
+    { id: 'ada', label: 'ADA readiness', areas: ['a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag', 'content'] },
+    { id: 'complete', label: 'Complete care', areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'], recommended: true }
+  ],
+  defaults: { areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'] }
+};
+
+const money = (n: number) => '$' + n.toLocaleString('en-US');
+// Headline price uses the core areas; privacy on its own is an add-on-sized plan.
+const fromPrice = Math.min(...CARE.areas.filter((a) => a.id !== 'privacy').map((a) => a.essentials.min));
+
+const faqs = [
+  {
+    q: 'Will this make my store "ADA compliant"?',
+    a: 'There is no official ADA certification for websites, so nobody can honestly promise that. What we deliver is WCAG 2.2 AA conformance on the pages in scope, with the testing documented and kept current. WCAG 2.1/2.2 AA is the standard that demand letters and settlements measure against, and documented, maintained conformance is the most defensible position a store can have.'
+  },
+  {
+    q: 'Do you use accessibility overlay widgets?',
+    a: 'No. Overlays sit on top of the page and do not fix the code underneath. Stores using them still receive demand letters, and many screen-reader users actively avoid them. We fix the theme code itself.'
+  },
+  {
+    q: 'What about apps we don’t control, like reviews or loyalty?',
+    a: 'We configure them for accessibility and speed, work around issues where it is safe to, and raise tickets with the vendor where it is not, keeping the record as part of your documentation. If an app has a serious issue its vendor won’t fix, we tell you plainly so you can decide whether to keep it.'
+  },
+  {
+    q: 'Why ranges instead of a fixed price?',
+    a: 'The work depends on how many templates, apps and integrations your store has. After a free 30-minute review of your store we send a fixed monthly quote inside the range, with no surprises afterwards.'
+  },
+  {
+    q: 'Can we switch plans later?',
+    a: 'Yes. You can move between Essentials and Growth, or add and remove areas, at any month boundary. The term only sets how long the retainer runs and what the baseline audit costs.'
+  },
+  {
+    q: 'What happens to fix hours we don’t use?',
+    a: 'Unused fix hours roll over for one month, then expire. Your monthly report shows exactly how they were spent.'
+  },
+  {
+    q: 'Do you work on our live theme?',
+    a: 'Never. Every change is built and tested in a duplicate theme. Nothing reaches your customers until you have reviewed it and approved it.'
+  },
+  {
+    q: 'Who does the manual testing?',
+    a: 'Our engineers test by hand with a keyboard, NVDA with Chrome on Windows, and VoiceOver with Safari on macOS and iOS, alongside automated scans. JAWS testing is available on request.'
+  }
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Shopify Performance & Accessibility Retainer",
+  "serviceType": "Website Performance and Accessibility Maintenance",
+  "provider": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+  "description": "A monthly retainer that keeps Shopify stores fast, WCAG 2.2 AA accessible and privacy-safe, with manual screen-reader testing, Core Web Vitals monitoring and fix hours.",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Performance & Accessibility Retainer",
+    "itemListElement": CARE.levels.map((level) => ({
+      "@type": "Offer",
+      "itemOffered": { "@type": "Service", "name": `${level.name} retainer` },
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "USD",
+        "minPrice": Math.min(...CARE.areas.map((a) => a[level.id as 'essentials' | 'growth'].min)),
+        "maxPrice": CARE.areas.reduce((sum, a) => sum + a[level.id as 'essentials' | 'growth'].max, 0),
+        "unitText": "MONTH"
+      }
+    }))
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://klickspell.com/services" },
+    { "@type": "ListItem", "position": 3, "name": "Performance & Accessibility Retainer", "item": canonical }
+  ]
+};
+
+const calAttrs = {
+  href: 'https://cal.com/atul-bhatt-klickspell/30min',
+  'data-cal-link': 'atul-bhatt-klickspell/30min',
+  'data-cal-namespace': '30min',
+  'data-cal-config': '{"layout":"month_view"}'
+};
+---
+
+<BaseLayout
+  title="Shopify Performance & Accessibility Retainer — WCAG 2.2 AA & Core Web Vitals | Klickspell"
+  description="A monthly retainer that keeps your Shopify store fast, accessible and privacy-safe. Manual screen-reader testing, Core Web Vitals monitoring and fix hours. Build your plan and see the price range."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
+>
+  <Nav />
+
+  <main id="main-content" class="care-page">
+    <!-- HERO -->
+    <header class="service-page-hero">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/services">Services</a> / Performance &amp; Accessibility Retainer</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot" aria-hidden="true"></span>
+        Monthly retainer · Speed · WCAG 2.2 AA · Privacy
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Fast, accessible stores don't<br>
+        stay that way <em>on their own.</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2">
+        Every app install, campaign page and new tag chips away at speed and accessibility. We audit your store, fix what's broken, and keep watch every month, with real manual testing rather than just automated scores.
+      </p>
+
+      <div class="service-hero-actions reveal reveal-delay-2">
+        <a href="#build" class="btn-primary">Build your plan ↓</a>
+        <a {...calAttrs} class="btn-ghost" style="cursor:pointer">Book a free 30-min review</a>
+      </div>
+
+      <div class="service-metrics-bar reveal reveal-delay-3">
+        <div class="service-metric-item">
+          <p class="metric-label">Plans from</p>
+          <p class="metric-val">{money(fromPrice)}/mo</p>
+          <p class="metric-note">Speed or accessibility, Essentials</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Standard</p>
+          <p class="metric-val">WCAG 2.2 AA</p>
+          <p class="metric-note">Manual and automated testing</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Screen readers</p>
+          <p class="metric-val">NVDA · VoiceOver</p>
+          <p class="metric-note">Tested by people, not only scanners</p>
+        </div>
+        <div class="service-metric-item">
+          <p class="metric-label">Your live store</p>
+          <p class="metric-val">Untouched</p>
+          <p class="metric-note">Changes staged in a duplicate theme</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="service-body-wrap">
+
+      <!-- WHY A RETAINER -->
+      <section class="reveal" aria-labelledby="drift-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">The drift problem</p>
+          <h2 id="drift-title">Most stores weren't built slow.<br><em>They got slow.</em></h2>
+          <p>Speed and accessibility rarely break in one bad release. They wear down a little with every change, which is why a one-off fix doesn't last and a monthly check does.</p>
+        </div>
+
+        <div class="service-grid-3">
+          <div class="service-deliverable-card">
+            <p class="service-card-num">01 · APPS</p>
+            <h3 class="service-card-title">Every install adds weight</h3>
+            <p class="service-card-text">Review widgets, loyalty programs, chat and upsell apps each bring their own scripts, and many load media before a shopper ever scrolls to them. Uninstalled apps often leave code behind.</p>
+          </div>
+          <div class="service-deliverable-card">
+            <p class="service-card-num">02 · MARKETING</p>
+            <h3 class="service-card-title">Tags multiply quietly</h3>
+            <p class="service-card-text">A second analytics property here, a heatmap tool there. It's common to find several overlapping trackers on every page, sometimes firing before cookie consent is even set.</p>
+          </div>
+          <div class="service-deliverable-card">
+            <p class="service-card-num">03 · CONTENT</p>
+            <h3 class="service-card-title">New pages skip the checks</h3>
+            <p class="service-card-text">Landing pages, guides and campaign sections ship fast, usually without anyone checking headings, alt text, contrast, keyboard access or load time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT WE LOOK AFTER -->
+      <section class="reveal" aria-labelledby="pillars-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">What we look after</p>
+          <h2 id="pillars-title">Three areas. Pick one,<br><em>or let us handle all of them.</em></h2>
+          <p>Each area has a clear monthly routine and its own share of fix hours. Combine them in the plan builder below.</p>
+        </div>
+
+        <div class="service-grid-3">
+          {CARE.areas.map((area, i) => (
+            <div class="service-deliverable-card">
+              <p class="service-card-num">{String(i + 1).padStart(2, '0')} · {area.name.toUpperCase()}</p>
+              <h3 class="service-card-title">{area.tagline}</h3>
+              <ul class="care-list">
+                {area.includes.growth.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ADA HONESTY -->
+      <section class="reveal care-honest" aria-labelledby="ada-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">ADA, honestly</p>
+          <h2 id="ada-title">There's no ADA certificate.<br><em>Here's what actually protects you.</em></h2>
+          <p>A lot of accessibility marketing sells certainty that doesn't exist. This is how we approach it instead.</p>
+        </div>
+
+        <div class="care-compare">
+          <div class="care-compare-col care-compare-col--no">
+            <h3 class="care-compare-title">What we won't tell you</h3>
+            <ul>
+              <li><strong>That your store is "ADA certified".</strong> No official certification exists for websites.</li>
+              <li><strong>That an overlay widget makes you compliant.</strong> Overlays don't fix the code underneath, and stores using them still receive demand letters.</li>
+              <li><strong>That you're lawsuit-proof.</strong> Anyone can file. What matters is how well you can show the work.</li>
+            </ul>
+          </div>
+          <div class="care-compare-col care-compare-col--yes">
+            <h3 class="care-compare-title">What we will do</h3>
+            <ul>
+              <li><strong>Bring in-scope pages to WCAG 2.2 AA,</strong> the standard demand letters and settlements measure against.</li>
+              <li><strong>Test by hand</strong> with a keyboard and real screen readers, not just automated scanners.</li>
+              <li><strong>Document everything:</strong> an accessibility statement, a conformance report and a dated log of every issue and fix.</li>
+              <li><strong>Keep it current</strong> as your store, apps and content change.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="care-footnote">We're engineers, not lawyers. Have your legal counsel review your accessibility statement before it's published.</p>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="reveal" aria-labelledby="process-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">How it works</p>
+          <h2 id="process-title">Audit once.<br><em>Then keep it that way.</em></h2>
+        </div>
+
+        <ol class="care-steps">
+          <li class="care-step">
+            <p class="service-card-num">STEP 01 · WEEKS 1–3</p>
+            <h3 class="service-card-title">Baseline audit</h3>
+            <p class="service-card-text">Every template tested: automated scans, manual screen-reader passes on your key shopping journeys, real-user speed data and a full inventory of scripts and apps.</p>
+          </li>
+          <li class="care-step">
+            <p class="service-card-num">STEP 02 · WEEKS 2–10</p>
+            <h3 class="service-card-title">Fix the priorities</h3>
+            <p class="service-card-text">A ranked fix list, worked through in a duplicate theme. Theme code, app settings and vendor tickets, each with before and after evidence.</p>
+          </li>
+          <li class="care-step">
+            <p class="service-card-num">STEP 03 · MONTHLY</p>
+            <h3 class="service-card-title">Watch every change</h3>
+            <p class="service-card-text">New pages and apps get checked before launch. Scans run monthly, and manual testing follows the schedule in your plan.</p>
+          </li>
+          <li class="care-step">
+            <p class="service-card-num">STEP 04 · QUARTERLY</p>
+            <h3 class="service-card-title">Report & review</h3>
+            <p class="service-card-text">Clear reports on what improved, what was fixed and what's next, measured against the numbers we agreed at the start.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- HOW WE TEST -->
+      <section class="service-proof-box reveal" aria-labelledby="testing-title">
+        <div class="service-section-header" style="margin-bottom:2rem;">
+          <p class="section-eyebrow">How we test</p>
+          <h2 id="testing-title">The tools behind<br><em>every report.</em></h2>
+        </div>
+        <div class="care-testing">
+          <div>
+            <h3 class="care-testing-title">Accessibility</h3>
+            <ul class="care-list">
+              <li>Keyboard only: focus order, visible focus, no traps</li>
+              <li>NVDA with Chrome on Windows</li>
+              <li>VoiceOver with Safari on macOS and iOS</li>
+              <li>200% and 400% zoom, text reflow at 320px</li>
+              <li>Colour contrast, motion and reduced-motion settings</li>
+              <li>Automated scans with axe, WAVE and Lighthouse</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="care-testing-title">Performance & privacy</h3>
+            <ul class="care-list">
+              <li>Google's real-user Core Web Vitals data (CrUX)</li>
+              <li>Lighthouse lab runs on every template, mobile and desktop</li>
+              <li>Page weight and request breakdown by third party</li>
+              <li>Main-thread time per script and app</li>
+              <li>Consent mode order: what fires before consent is set</li>
+              <li>Data exposed in page source and public endpoints</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAN BUILDER -->
+      <section id="build" class="care-build" aria-labelledby="build-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Plan builder</p>
+          <h2 id="build-title">Build your plan.<br><em>See the price range as you go.</em></h2>
+          <p>Start from a common plan or pick each part yourself. Prices are in USD. You get a fixed quote inside the range after a free 30-minute review of your store.</p>
+        </div>
+
+        <script type="application/json" id="careData" set:html={JSON.stringify(CARE)} />
+
+        <div class="quote-layout">
+          <div class="quote-main-col">
+            <form id="careForm" novalidate>
+
+              <!-- PRESETS -->
+              <div class="quote-card">
+                <div class="quote-card-header">
+                  <p class="quote-card-eyebrow"><span class="step-tag">Start here</span><span>Common plans</span></p>
+                  <h3 class="quote-card-title">Start from a common plan</h3>
+                  <p class="quote-card-sub">Pick the one closest to what you need, then adjust any step below.</p>
+                </div>
+                <div class="care-presets">
+                  {CARE.presets.map((p) => (
+                    <button type="button" class="care-preset" data-preset={p.id} aria-pressed="false">
+                      <span class="care-preset-label">{p.label}</span>
+                      {p.recommended && <span class="care-preset-tag">Recommended</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <!-- STEP 1: AREAS -->
+              <fieldset class="quote-card care-fieldset">
+                <legend class="care-legend">
+                  <span class="quote-card-eyebrow"><span class="step-tag">Step 01</span><span>Areas</span></span>
+                  <span class="quote-card-title">What should we look after?</span>
+                </legend>
+                <p class="quote-card-sub care-fieldset-sub">Choose one or more. Each adds its own monthly routine.</p>
+                <div class="theme-cards-grid care-grid-3">
+                  {CARE.areas.map((area) => (
+                    <label class="theme-card-label">
+                      <input type="checkbox" name="area" value={area.id} checked={CARE.defaults.areas.includes(area.id)} />
+                      <div class="theme-card-box">
+                        <div>
+                          <div class="theme-card-top">
+                            <span class="theme-card-name">{area.name}</span>
+                            <span class="care-check" aria-hidden="true"></span>
+                          </div>
+                          <p class="theme-card-desc">{area.tagline}</p>
+                          <ul class="care-mini-list">
+                            {area.points.map((pt) => <li>{pt}</li>)}
+                          </ul>
+                        </div>
+                        <div class="theme-card-footer">
+                          <span>{money(area.essentials.min)}–{money(area.growth.max)}/mo</span>
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                <p id="areaError" class="care-inline-note" hidden>Pick at least one area to see a monthly range.</p>
+              </fieldset>
+
+              <!-- STEP 2: LEVEL -->
+              <fieldset class="quote-card care-fieldset">
+                <legend class="care-legend">
+                  <span class="quote-card-eyebrow"><span class="step-tag">Step 02</span><span>Coverage</span></span>
+                  <span class="quote-card-title">How closely should we watch?</span>
+                </legend>
+                <p class="quote-card-sub care-fieldset-sub">Ranges update for the areas you've picked.</p>
+                <div class="theme-cards-grid">
+                  {CARE.levels.map((level) => (
+                    <label class="theme-card-label">
+                      <input type="radio" name="level" value={level.id} checked={CARE.defaults.level === level.id} />
+                      <div class="theme-card-box">
+                        <div>
+                          <div class="theme-card-top">
+                            <span class="theme-card-badge">{level.badge}</span>
+                            <span class="theme-card-radio-circle" aria-hidden="true"></span>
+                          </div>
+                          <span class="theme-card-name">{level.name}</span>
+                          <p class="theme-card-desc">{level.desc}</p>
+                          <ul class="care-mini-list">
+                            {level.includes.map((item) => <li>{item}</li>)}
+                          </ul>
+                        </div>
+                        <div class="theme-card-footer">
+                          <span data-level-range={level.id}>&nbsp;</span>
+                          <span data-level-hours={level.id}>&nbsp;</span>
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <!-- STEP 3: TERM -->
+              <fieldset class="quote-card care-fieldset">
+                <legend class="care-legend">
+                  <span class="quote-card-eyebrow"><span class="step-tag">Step 03</span><span>Term</span></span>
+                  <span class="quote-card-title">How long should we start with?</span>
+                </legend>
+                <p class="quote-card-sub care-fieldset-sub">Real-user speed data takes about 28 days to reflect a change, so we start at 3 months. Longer terms reduce the baseline audit fee.</p>
+                <div class="quote-pill-options care-term-options">
+                  {CARE.terms.map((term) => (
+                    <label class="quote-pill-label">
+                      <input type="radio" name="term" value={term.id} checked={CARE.defaults.term === term.id} />
+                      <span class="quote-pill-ui care-term-ui">
+                        <span class="care-term-label">{term.label}</span>
+                        <span class="care-term-note">{term.note}</span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <!-- STEP 4: PROJECTS -->
+              <fieldset class="quote-card care-fieldset">
+                <legend class="care-legend">
+                  <span class="quote-card-eyebrow"><span class="step-tag">Step 04</span><span>One-time projects</span></span>
+                  <span class="quote-card-title">Want a head start? <span class="care-optional">(optional)</span></span>
+                </legend>
+                <p class="quote-card-sub care-fieldset-sub">One-time projects that get you to a strong baseline faster. The retainer then keeps you there.</p>
+                <div class="theme-cards-grid">
+                  {CARE.projects.map((project) => (
+                    <label class="theme-card-label">
+                      <input type="checkbox" name="project" value={project.id} checked={CARE.defaults.projects.includes(project.id)} />
+                      <div class="theme-card-box">
+                        <div>
+                          <div class="theme-card-top">
+                            <span class="theme-card-badge">{project.badge}</span>
+                            <span class="care-check" aria-hidden="true"></span>
+                          </div>
+                          <span class="theme-card-name">{project.name}</span>
+                          <p class="theme-card-desc">{project.desc}</p>
+                        </div>
+                        <div class="theme-card-footer">
+                          <span>{money(project.min)}–{money(project.max)}</span>
+                          <span>{project.time}</span>
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <!-- STEP 5: STORE -->
+              <fieldset class="quote-card care-fieldset">
+                <legend class="care-legend">
+                  <span class="quote-card-eyebrow"><span class="step-tag">Step 05</span><span>Your store</span></span>
+                  <span class="quote-card-title">Tell us about your store <span class="care-optional">(optional)</span></span>
+                </legend>
+                <p class="quote-card-sub care-fieldset-sub">Added to the plan you send us, so we can review your store before we talk.</p>
+                <div class="quote-fields-grid">
+                  <div class="quote-field-group">
+                    <label for="careName" class="quote-label">Your name</label>
+                    <input type="text" id="careName" class="quote-input" autocomplete="name" />
+                  </div>
+                  <div class="quote-field-group">
+                    <label for="careStore" class="quote-label">Store URL</label>
+                    <input type="url" id="careStore" class="quote-input" autocomplete="url" placeholder="https://yourstore.com" />
+                  </div>
+                  <div class="quote-field-group quote-field-full">
+                    <label for="careNotes" class="quote-label">Anything we should know?</label>
+                    <textarea id="careNotes" class="quote-textarea" placeholder="Apps you rely on, a deadline, a demand letter you've received, pages that feel slow…"></textarea>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <!-- SUMMARY -->
+          <aside class="quote-sidebar-col" aria-labelledby="careSummaryTitle">
+            <div class="quote-summary-card" id="careSummary">
+              <div class="quote-summary-header">
+                <span class="quote-summary-badge"><span class="pulse-dot" aria-hidden="true"></span>Your plan</span>
+                <span class="care-summary-currency">USD</span>
+              </div>
+
+              <h3 class="quote-summary-title" id="careSummaryTitle">Growth · Complete care</h3>
+
+              <p class="care-price">
+                <span class="care-price-val" id="careMonthly">&nbsp;</span>
+                <span class="care-price-unit">/month</span>
+              </p>
+              <p class="quote-summary-desc" id="careMonthlyNote">Fixed quote inside this range after a free review.</p>
+
+              <dl class="quote-summary-meters">
+                <div class="quote-meter-row">
+                  <dt class="quote-meter-label">Coverage per month</dt>
+                  <dd class="quote-meter-value" id="careHours">&nbsp;</dd>
+                </div>
+                <div class="quote-meter-row">
+                  <dt class="quote-meter-label">Term</dt>
+                  <dd class="quote-meter-value" id="careTerm">&nbsp;</dd>
+                </div>
+                <div class="quote-meter-row">
+                  <dt class="quote-meter-label">Baseline audit</dt>
+                  <dd class="quote-meter-value" id="careBaseline">&nbsp;</dd>
+                </div>
+                <div class="quote-meter-row">
+                  <dt class="quote-meter-label">One-time projects</dt>
+                  <dd class="quote-meter-value" id="careProjects">&nbsp;</dd>
+                </div>
+              </dl>
+
+              <div class="quote-selected-chips-box">
+                <span class="quote-selected-label">Included every month</span>
+                <ul class="care-summary-list" id="careIncludes"></ul>
+              </div>
+
+              <div class="quote-sidebar-actions">
+                <a id="careWhatsApp" href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-primary">
+                  Send this plan on WhatsApp<span class="sr-only"> (opens in a new tab)</span>
+                </a>
+                <a id="careEmail" href="mailto:atul@klickspell.com" class="btn-ghost">Email this plan</a>
+                <a {...calAttrs} class="btn-ghost" style="cursor:pointer">Book a free 30-min review</a>
+                <button type="button" id="careShare" class="care-share">Copy a link to this plan</button>
+                <p class="quote-sidebar-note">Share the link with your team. It opens this page with your choices already selected.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div id="careLive" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="reveal" aria-labelledby="faq-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Frequently asked questions</p>
+          <h2 id="faq-title">Straight answers<br><em>before we start.</em></h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>
+                <span class="faq-question">{f.q}</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="service-box-cta reveal" aria-labelledby="cta-title">
+        <h2 id="cta-title">Not sure where your store stands?<br><em>Let's scope this.</em></h2>
+        <p>Book a free 30-minute review. We'll look at your store's real speed data and a quick accessibility pass, and tell you honestly which plan, if any, makes sense.</p>
+        <div class="service-box-cta-actions">
+          <a {...calAttrs} class="btn-primary" style="background:#3A5BE0; color:#fff; cursor:pointer">Book a free review →</a>
+          <a href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.25);">
+            Chat on WhatsApp<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Mobile: keeps the running total in view while choosing -->
+    <a href="#careSummary" class="care-mobile-bar" id="careMobileBar" hidden>
+      <span>
+        <span class="care-mobile-label">Your plan</span>
+        <span class="care-mobile-val" id="careMobileVal">&nbsp;</span>
+      </span>
+      <span class="care-mobile-cta">Review ↓</span>
+    </a>
+  </main>
+
+  <Footer />
+
+  <style is:global>
+    .care-page .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* Visible keyboard focus for every control on this page, including the
+       visually hidden inputs behind the card and pill UIs. */
+    .care-page a:focus-visible,
+    .care-page button:focus-visible,
+    .care-page summary:focus-visible,
+    .care-page .quote-input:focus-visible,
+    .care-page .quote-textarea:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .care-page input:focus-visible + .theme-card-box,
+    .care-page input:focus-visible + .quote-pill-ui { outline:3px solid var(--accent); outline-offset:3px; }
+    .care-page .quote-summary-card a:focus-visible,
+    .care-page .quote-summary-card button:focus-visible,
+    .care-page .service-box-cta a:focus-visible { outline-color:var(--accent-on-dark); }
+    .care-page .quote-pill-label { position:relative; }
+    /* The shared badge colour misses 4.5:1 on its tinted background. */
+    .care-page .service-badge { color:var(--accent-hover); }
+    .care-page .service-badge-dot { background:var(--accent-hover); }
+
+    .care-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; margin-top:.25rem; }
+    .care-list li { position:relative; padding-left:1.4rem; font-size:14.5px; color:var(--text-mid); line-height:1.6; }
+    .care-list li::before { content:'✓'; position:absolute; left:0; top:0; color:var(--accent); font-weight:700; font-size:13px; }
+
+    .care-compare { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; }
+    .care-compare-col { border-radius:var(--radius); padding:2.25rem; border:1px solid var(--border); background:var(--white); }
+    .care-compare-col--no { background:#FFF8F8; border-color:rgba(220,38,38,0.2); }
+    .care-compare-col--yes { background:#F4FDF7; border-color:rgba(22,163,74,0.3); }
+    .care-compare-title { font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1.25rem; font-weight:600; }
+    .care-compare-col--no .care-compare-title { color:#B91C1C; }
+    .care-compare-col--yes .care-compare-title { color:#15803D; }
+    .care-compare-col ul { list-style:none; display:flex; flex-direction:column; gap:1rem; font-size:14.5px; color:var(--text-mid); line-height:1.65; }
+    .care-compare-col strong { color:var(--text); }
+    .care-footnote { margin-top:1.25rem; font-size:13px; color:var(--text-light); }
+    .care-honest { margin-bottom:5rem; }
+
+    .care-steps { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-bottom:5rem; }
+    .care-step { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; }
+
+    .care-testing { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; }
+    .care-testing-title { font-family:'Instrument Serif',serif; font-size:24px; font-weight:400; margin-bottom:1rem; color:var(--text); }
+
+    .care-build { scroll-margin-top:90px; }
+    .care-build .quote-layout { margin-top:0; }
+    #careForm { display:flex; flex-direction:column; gap:1.25rem; }
+    .care-fieldset { border:1px solid var(--border); min-width:0; }
+    .care-legend { display:flex; flex-direction:column; float:left; width:100%; padding:0; margin-bottom:.35rem; }
+    .care-legend + * { clear:both; }
+    .care-legend .quote-card-title { display:block; }
+    .care-fieldset-sub { margin-bottom:1.5rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border); }
+    .care-optional { font-family:'Manrope',sans-serif; font-size:14px; color:var(--text-light); }
+    .care-grid-3 { grid-template-columns:repeat(3,1fr); }
+    .care-mini-list { list-style:none; display:flex; flex-direction:column; gap:.3rem; margin-top:.75rem; }
+    .care-mini-list li { font-size:12.5px; color:var(--text-mid); padding-left:1rem; position:relative; line-height:1.45; }
+    .care-mini-list li::before { content:'·'; position:absolute; left:.2rem; color:var(--accent); font-weight:700; }
+    .care-inline-note { margin-top:1rem; font-size:13px; color:#B45309; font-weight:600; }
+
+    .care-check { width:20px; height:20px; border-radius:5px; border:1.5px solid var(--border); background:var(--white); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .2s var(--ease); }
+    .theme-card-label input:checked + .theme-card-box .care-check { background:var(--accent); border-color:var(--accent); }
+    .theme-card-label input:checked + .theme-card-box .care-check::after { content:'✓'; color:var(--white); font-size:12px; font-weight:700; }
+
+    .care-presets { display:flex; flex-wrap:wrap; gap:.6rem; }
+    .care-preset { display:inline-flex; align-items:center; gap:.5rem; padding:.65rem 1.1rem; border-radius:100px; border:1px solid var(--border); background:var(--bg); font-family:inherit; font-size:14px; font-weight:600; color:var(--text); cursor:pointer; transition:all .2s var(--ease); }
+    .care-preset:hover { border-color:rgba(58,91,224,0.4); background:var(--white); }
+    .care-preset[aria-pressed="true"] { background:var(--accent-light); border-color:var(--accent); color:var(--accent); }
+    .care-preset-tag { font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; background:var(--accent); color:var(--white); padding:2px 7px; border-radius:100px; }
+
+    .care-term-options { gap:.6rem; }
+    .care-term-ui { flex-direction:column; align-items:flex-start; gap:2px; border-radius:var(--radius-sm); padding:.7rem 1rem; }
+    .care-term-label { font-size:14px; font-weight:600; color:var(--text); }
+    .care-term-note { font-size:12px; color:var(--text-mid); font-weight:400; }
+    .quote-pill-label input:checked + .care-term-ui .care-term-label { color:var(--accent); }
+
+    .care-summary-currency { font-family:var(--font-mono); font-size:10px; color:rgba(255,255,255,0.7); letter-spacing:.1em; }
+    .care-price { display:flex; align-items:baseline; gap:.4rem; flex-wrap:wrap; margin-bottom:.35rem; }
+    .care-price-val { font-family:'Instrument Serif',serif; font-size:clamp(30px,3.2vw,38px); line-height:1.1; color:var(--white); }
+    .care-price-unit { font-size:13px; color:rgba(255,255,255,0.7); }
+    .care-page .quote-summary-meters { margin:0 0 1.25rem; }
+    .care-page .quote-meter-row dd { margin:0; }
+    .care-summary-list { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
+    .care-summary-list li { position:relative; padding-left:1.2rem; font-size:12.5px; color:rgba(255,255,255,0.85); line-height:1.45; }
+    .care-summary-list li::before { content:'✓'; position:absolute; left:0; color:var(--accent-on-dark); font-weight:700; }
+    .care-share { background:none; border:none; color:var(--accent-on-dark); font-family:inherit; font-size:13.5px; font-weight:600; text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:.35rem 0; align-self:center; }
+    .care-share:hover { color:var(--white); }
+
+    .care-mobile-bar { display:none; }
+    @media (max-width:980px) {
+      .care-mobile-bar:not([hidden]) { display:flex; position:fixed; left:12px; right:12px; bottom:12px; z-index:90; align-items:center; justify-content:space-between; gap:1rem; padding:.85rem 1.1rem; background:var(--text); color:var(--white); border-radius:14px; box-shadow:0 12px 32px rgba(0,0,0,0.25); text-decoration:none; }
+      .care-mobile-label { display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+      .care-mobile-val { display:block; font-size:15px; font-weight:700; }
+      .care-mobile-cta { font-size:14px; font-weight:600; color:var(--accent-on-dark); white-space:nowrap; }
+      .care-grid-3 { grid-template-columns:1fr; }
+      .care-steps { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:680px) {
+      .care-steps { grid-template-columns:1fr; }
+      .care-testing { grid-template-columns:1fr; gap:1.5rem; }
+      .care-compare-col { padding:1.5rem; }
+      .care-term-options .quote-pill-label { flex:1 1 100%; }
+      .care-term-ui { width:100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .care-page .reveal { opacity:1; transform:none; transition:none; }
+      .care-page *, .care-page *::before, .care-page *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+    }
+  </style>
+
+  <script>
+    type Range = { min: number; max: number; hours?: number };
+    type Area = { id: string; name: string; essentials: Range; growth: Range; baseline: Range; includes: Record<string, string[]> };
+    type Level = { id: string; name: string; includes: string[] };
+    type Term = { id: string; label: string; baselineFactor: number };
+    type Project = { id: string; name: string; min: number; max: number; time: string };
+    type Preset = { id: string; label: string; areas: string[]; level: string; term: string; projects: string[] };
+    type Care = { areas: Area[]; levels: Level[]; terms: Term[]; projects: Project[]; presets: Preset[] };
+
+    const DATA: Care = JSON.parse(document.getElementById('careData')!.textContent || '{}');
+    const form = document.getElementById('careForm') as HTMLFormElement;
+    const $ = (id: string) => document.getElementById(id)!;
+
+    const money = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+    const range = (min: number, max: number) => (max <= 0 ? '$0' : `${money(min)}–${money(max)}`);
+    const roundTo50 = (n: number) => Math.round(n / 50) * 50;
+
+    function readState() {
+      const checked = (name: string) =>
+        Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((i) => i.value);
+      return {
+        areas: checked('area'),
+        level: checked('level')[0] || 'growth',
+        term: checked('term')[0] || '6',
+        projects: checked('project')
+      };
+    }
+
+    function applyState(state: { areas: string[]; level: string; term: string; projects: string[] }) {
+      form.querySelectorAll<HTMLInputElement>('input[name="area"]').forEach((i) => (i.checked = state.areas.includes(i.value)));
+      form.querySelectorAll<HTMLInputElement>('input[name="level"]').forEach((i) => (i.checked = i.value === state.level));
+      form.querySelectorAll<HTMLInputElement>('input[name="term"]').forEach((i) => (i.checked = i.value === state.term));
+      form.querySelectorAll<HTMLInputElement>('input[name="project"]').forEach((i) => (i.checked = state.projects.includes(i.value)));
+    }
+
+    function compute(state: ReturnType<typeof readState>) {
+      const areas = DATA.areas.filter((a) => state.areas.includes(a.id));
+      const level = state.level as 'essentials' | 'growth';
+      const term = DATA.terms.find((t) => t.id === state.term) || DATA.terms[1];
+      const projects = DATA.projects.filter((p) => state.projects.includes(p.id));
+      const sum = (list: Range[], key: 'min' | 'max' | 'hours') => list.reduce((s, r) => s + (r[key] || 0), 0);
+
+      const monthly = { min: sum(areas.map((a) => a[level]), 'min'), max: sum(areas.map((a) => a[level]), 'max') };
+      const hours = sum(areas.map((a) => a[level]), 'hours');
+      const baselineFull = { min: sum(areas.map((a) => a.baseline), 'min'), max: sum(areas.map((a) => a.baseline), 'max') };
+      const baseline = { min: roundTo50(baselineFull.min * term.baselineFactor), max: roundTo50(baselineFull.max * term.baselineFactor) };
+      const oneTime = { min: projects.reduce((s, p) => s + p.min, 0), max: projects.reduce((s, p) => s + p.max, 0) };
+
+      const levelMeta = DATA.levels.find((l) => l.id === level)!;
+      const includes = [...areas.flatMap((a) => a.includes[level]), ...levelMeta.includes];
+
+      return { areas, level: levelMeta, term, projects, monthly, hours, baseline, baselineFull, oneTime, includes };
+    }
+
+    function planName(state: ReturnType<typeof readState>) {
+      const preset = DATA.presets.find((p) => sameState(p, state));
+      if (preset) return preset.label;
+      const names = DATA.areas.filter((a) => state.areas.includes(a.id)).map((a) => a.name);
+      return names.length ? names.join(' + ') : 'No areas yet';
+    }
+
+    function sameState(p: Preset, s: ReturnType<typeof readState>) {
+      const eq = (a: string[], b: string[]) => a.length === b.length && a.every((x) => b.includes(x));
+      return eq(p.areas, s.areas) && p.level === s.level && p.term === s.term && eq(p.projects, s.projects);
+    }
+
+    function setText(id: string, text: string) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    let announceTimer: ReturnType<typeof setTimeout> | undefined;
+    let ready = false;
+
+    function update() {
+      const state = readState();
+      const r = compute(state);
+      const hasAreas = r.areas.length > 0;
+
+      setText('careSummaryTitle', `${r.level.name} · ${planName(state)}`);
+      setText('careMonthly', hasAreas ? range(r.monthly.min, r.monthly.max) : '—');
+      setText('careMonthlyNote', hasAreas ? 'Fixed quote inside this range after a free review.' : 'Pick at least one area in step 1.');
+      setText('careHours', hasAreas ? `~${r.hours} hrs incl. fixes` : '—');
+      setText('careTerm', r.term.label);
+      if (!hasAreas) setText('careBaseline', '—');
+      else if (r.term.baselineFactor === 0) setText('careBaseline', `Included (was ${range(r.baselineFull.min, r.baselineFull.max)})`);
+      else setText('careBaseline', range(r.baseline.min, r.baseline.max) + (r.term.baselineFactor < 1 ? ' (50% off)' : ''));
+      setText('careProjects', r.projects.length ? range(r.oneTime.min, r.oneTime.max) : 'None');
+      setText('careMobileVal', hasAreas ? `${range(r.monthly.min, r.monthly.max)}/mo` : 'Pick an area');
+      $('areaError').hidden = hasAreas;
+
+      const list = $('careIncludes');
+      list.replaceChildren(...(hasAreas ? r.includes : ['Pick at least one area to see what’s included.']).map((text) => {
+        const li = document.createElement('li');
+        li.textContent = text;
+        return li;
+      }));
+
+      // Per-level ranges on the coverage cards, for the areas picked so far.
+      DATA.levels.forEach((level) => {
+        const alt = compute({ ...state, level: level.id });
+        document.querySelectorAll(`[data-level-range="${level.id}"]`).forEach((el) => {
+          el.textContent = hasAreas ? `${range(alt.monthly.min, alt.monthly.max)}/mo` : 'Pick an area';
+        });
+        document.querySelectorAll(`[data-level-hours="${level.id}"]`).forEach((el) => {
+          el.textContent = hasAreas ? `~${alt.hours} hrs/mo` : '';
+        });
+      });
+
+      document.querySelectorAll<HTMLButtonElement>('.care-preset').forEach((btn) => {
+        const preset = DATA.presets.find((p) => p.id === btn.dataset.preset);
+        btn.setAttribute('aria-pressed', String(!!preset && sameState(preset, state)));
+      });
+
+      updateLinks(state, r);
+      syncUrl(state);
+
+      if (ready) {
+        clearTimeout(announceTimer);
+        announceTimer = setTimeout(() => {
+          setText('careLive', hasAreas
+            ? `Estimate updated: ${range(r.monthly.min, r.monthly.max)} per month, about ${r.hours} hours.`
+            : 'No areas selected. Pick at least one area to see an estimate.');
+        }, 700);
+      }
+    }
+
+    function planMessage(state: ReturnType<typeof readState>, r: ReturnType<typeof compute>) {
+      const name = (($('careName') as HTMLInputElement).value || '').trim();
+      const store = (($('careStore') as HTMLInputElement).value || '').trim();
+      const notes = (($('careNotes') as HTMLTextAreaElement).value || '').trim();
+
+      const lines = [
+        name ? `Hi Atul, this is ${name}.` : 'Hi Atul,',
+        `I built a performance & accessibility retainer plan${store ? ` for ${store}` : ''}:`,
+        '',
+        `• Plan: ${r.level.name} · ${r.areas.map((a) => a.name).join(' + ') || 'no areas yet'}`,
+        `• Estimate: ${r.areas.length ? range(r.monthly.min, r.monthly.max) + '/month' : '—'} (~${r.hours} hrs)`,
+        `• Term: ${r.term.label}`,
+        `• Baseline audit: ${r.term.baselineFactor === 0 ? 'included' : range(r.baseline.min, r.baseline.max)}`,
+      ];
+      if (r.projects.length) lines.push(`• One-time: ${r.projects.map((p) => p.name).join(', ')} (${range(r.oneTime.min, r.oneTime.max)})`);
+      if (notes) lines.push('', `Notes: ${notes}`);
+      lines.push('', `Plan link: ${shareUrl(state)}`, '', 'Could we set up a review call?');
+      return lines.join('\n');
+    }
+
+    function updateLinks(state: ReturnType<typeof readState>, r: ReturnType<typeof compute>) {
+      const msg = planMessage(state, r);
+      const store = (($('careStore') as HTMLInputElement).value || '').trim();
+      ($('careWhatsApp') as HTMLAnchorElement).href = `https://wa.me/919259598769?text=${encodeURIComponent(msg)}`;
+      const subject = `Retainer plan — ${r.level.name}${store ? ` — ${store}` : ''}`;
+      ($('careEmail') as HTMLAnchorElement).href = `mailto:atul@klickspell.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
+    }
+
+    function shareUrl(state: ReturnType<typeof readState>) {
+      const url = new URL(window.location.href);
+      url.search = '';
+      url.hash = 'build';
+      url.searchParams.set('areas', state.areas.join(','));
+      url.searchParams.set('level', state.level);
+      url.searchParams.set('term', state.term);
+      url.searchParams.set('projects', state.projects.join(','));
+      return url.toString();
+    }
+
+    function syncUrl(state: ReturnType<typeof readState>) {
+      if (!ready) return;
+      const url = new URL(shareUrl(state));
+      url.hash = window.location.hash;
+      history.replaceState(null, '', url);
+    }
+
+    function stateFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('level')) return null;
+      const pick = (key: string, valid: string[]) =>
+        (params.get(key) || '').split(',').filter((v) => valid.includes(v));
+      const level = params.get('level') || '';
+      const term = params.get('term') || '';
+      return {
+        areas: pick('areas', DATA.areas.map((a) => a.id)),
+        level: DATA.levels.some((l) => l.id === level) ? level : 'growth',
+        term: DATA.terms.some((t) => t.id === term) ? term : '6',
+        projects: pick('projects', DATA.projects.map((p) => p.id))
+      };
+    }
+
+    // Wire up
+    const fromUrl = stateFromUrl();
+    if (fromUrl) applyState(fromUrl);
+
+    form.addEventListener('change', update);
+    form.addEventListener('submit', (e) => e.preventDefault());
+    ['careName', 'careStore', 'careNotes'].forEach((id) =>
+      $(id).addEventListener('input', () => updateLinks(readState(), compute(readState())))
+    );
+
+    document.querySelectorAll<HTMLButtonElement>('.care-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const preset = DATA.presets.find((p) => p.id === btn.dataset.preset);
+        if (!preset) return;
+        applyState(preset);
+        update();
+      });
+    });
+
+    $('careShare').addEventListener('click', async () => {
+      const link = shareUrl(readState());
+      try {
+        await navigator.clipboard.writeText(link);
+        setText('careShare', 'Link copied ✓');
+        setText('careLive', 'Link to this plan copied to the clipboard.');
+      } catch {
+        window.prompt('Copy this link to your plan:', link);
+      }
+      setTimeout(() => setText('careShare', 'Copy a link to this plan'), 2500);
+    });
+
+    // Mobile bar: shown while choosing in the builder, hidden once the summary is on screen.
+    const bar = $('careMobileBar');
+    let builderVisible = false;
+    let summaryVisible = false;
+    const toggleBar = () => { bar.hidden = !(builderVisible && !summaryVisible); };
+    new IntersectionObserver(([e]) => { builderVisible = e.isIntersecting; toggleBar(); }).observe(form);
+    new IntersectionObserver(([e]) => { summaryVisible = e.isIntersecting; toggleBar(); }).observe($('careSummary'));
+
+    update();
+    ready = true;
+  </script>
+</BaseLayout>

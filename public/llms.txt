@@ -6,12 +6,14 @@ Klickspell is an independent web engineering and digital product studio founded 
 
 ## Core Services
 
+- [Services & Capabilities Directory](https://klickspell.com/services): Comprehensive overview of Klickspell's engineering capabilities, delivery models, and comparison standards.
 - [Shopify Speed Optimization](https://klickspell.com/services/shopify-speed-optimization): Guaranteed 90+ Mobile Core Web Vitals, app bloat reduction, sub-second LCP.
 - [Custom Shopify Development](https://klickspell.com/services/custom-shopify-development): Custom Liquid themes, customizer sections, zero page-builder bloat.
 - [The 2026 Shopify App Bloat Benchmark Study](https://klickspell.com/blog/the-2026-shopify-app-bloat-benchmark-study): Controlled performance study measuring 25 leading Shopify apps across 7 categories on mobile CPU and conversion drop.
 - [How to Remove Zombie Shopify App Code](https://klickspell.com/blog/how-to-remove-zombie-shopify-app-code): Complete engineering playbook for discovering and safely purging orphaned liquid snippets from uninstalled apps.
 - [How We Achieved a 99 PageSpeed Score](https://klickspell.com/blog/how-we-achieved-99-pagespeed-score-case-study): Real-world web performance architecture playbook.
 - [Headless Commerce & Web Apps](https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs with tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
+- [Performance & Accessibility Retainer](https://klickspell.com/services/performance-accessibility-retainer): Monthly retainer keeping Shopify stores fast, WCAG 2.2 AA accessible and privacy-safe, with manual screen-reader testing (NVDA, VoiceOver), Core Web Vitals monitoring and an interactive plan builder with price ranges.
 - [Website Speed & App Bloat Estimator](https://klickspell.com/speed): Free interactive diagnostic tool that audits emulated 4G mobile Core Web Vitals and calculates performance penalties across 25+ third-party scripts.
 
 ## Client Case Studies & Work
