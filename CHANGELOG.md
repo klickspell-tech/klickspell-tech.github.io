@@ -86,4 +86,18 @@
 ### Why
 - Give clients enough evidence and comparison to choose a plan without a call
 
+### Repriced (same day)
+- All prices now derive from estimated hours × a `RATE` band ($25–35/hr) via `priced()`, positioned as an India-based studio rather than US-agency pricing
+- Hero shows the effective hourly rate; builder shows it next to hours; new FAQ "Why do you cost less than a US or UK agency?"
+
 ---
+
+## 2026-10-15 (later) · Claude (Anthropic)
+
+### Changed — retainer page pricing
+- `RATE` lowered to $20–30/hr
+- New **Lite** level (monitor & report, ~13 hrs/mo for all three areas); Essentials is now the default and "Most stores"; Growth relabelled "Fast-moving stores"
+- Presets: added "Starter watch" (Lite) and "Scale-up care" (Growth); "Complete care" and "ADA readiness" now use Essentials; "Plans from" is now $100/mo
+
+### Why
+- Price for an offshore studio: clients choose us because we cost less than US/UK agencies

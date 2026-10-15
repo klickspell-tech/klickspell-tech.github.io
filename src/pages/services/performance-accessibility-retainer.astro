@@ -5,19 +5,26 @@ import Footer from '../../components/Footer.astro';
 
 const canonical = "https://klickspell.com/services/performance-accessibility-retainer";
 
-// Pricing model (USD). Every number the builder shows comes from here, so
-// changing a range only needs an edit in this one object.
+// Pricing model (USD). Every price is estimated hours × the RATE band, so
+// repricing the whole page only needs RATE (or an hours figure) changed.
+const RATE = { min: 20, max: 30 };
+const to25 = (n: number) => Math.round(n / 25) * 25;
+const priced = (hours: number) => ({ min: to25(hours * RATE.min), max: to25(hours * RATE.max), hours });
+
 const CARE = {
+  rate: RATE,
   areas: [
     {
       id: 'perf',
       name: 'Performance',
       tagline: 'Speed & code governance: Core Web Vitals, apps, tags',
       points: ['Real-user and lab Core Web Vitals', 'Every new app and tag reviewed', 'Speed checks on new pages'],
-      essentials: { min: 300, max: 450, hours: 9 },
-      growth: { min: 600, max: 900, hours: 18 },
-      baseline: { min: 600, max: 900 },
+      lite: priced(5),
+      essentials: priced(9),
+      growth: priced(18),
+      baseline: priced(20),
       includes: {
+        lite: ['Monthly Core Web Vitals report (real-user data)', 'Alert when a new app or tag slows the store'],
         essentials: ['Monthly Core Web Vitals report (real-user + lab)', 'Log of scripts and apps added since last month', 'Speed check on up to 2 new pages a month'],
         growth: ['Monthly Core Web Vitals report (real-user + lab)', 'Tag & app governance, implemented by us', 'Speed review of every new page and template']
       }
@@ -27,10 +34,12 @@ const CARE = {
       name: 'Accessibility',
       tagline: 'WCAG 2.2 AA, tested by people with screen readers',
       points: ['Manual keyboard & screen-reader testing', 'Automated WCAG scans', 'Accessibility statement & records'],
-      essentials: { min: 450, max: 650, hours: 12 },
-      growth: { min: 800, max: 1200, hours: 25 },
-      baseline: { min: 1500, max: 2500 },
+      lite: priced(6),
+      essentials: priced(12),
+      growth: priced(25),
+      baseline: priced(40),
       includes: {
+        lite: ['Monthly automated WCAG scan with a prioritised fix list', 'Manual keyboard and screen-reader check twice a year'],
         essentials: ['Monthly automated WCAG scan and triage', 'Manual screen-reader pass every quarter', 'Accessibility statement kept current'],
         growth: ['Monthly automated WCAG scan and triage', 'Manual screen-reader test of one shopping journey every month', 'Full manual pass every quarter', 'Accessibility statement and conformance report kept current']
       }
@@ -40,10 +49,12 @@ const CARE = {
       name: 'Privacy & security',
       tagline: 'Consent order, third-party scripts, data exposure',
       points: ['Consent fires before tracking', 'Third-party script review', 'Data exposure checks'],
-      essentials: { min: 100, max: 150, hours: 3 },
-      growth: { min: 150, max: 250, hours: 7 },
-      baseline: { min: 200, max: 300 },
+      lite: priced(2),
+      essentials: priced(3),
+      growth: priced(7),
+      baseline: priced(8),
       includes: {
+        lite: ['Consent and tracking check twice a year'],
         essentials: ['Quarterly check that consent loads before tracking', 'Quarterly third-party script review'],
         growth: ['Monthly check that consent loads before tracking', 'Third-party script and data-exposure review', 'Review of new apps before they are installed']
       }
@@ -51,16 +62,23 @@ const CARE = {
   ],
   levels: [
     {
+      id: 'lite',
+      name: 'Lite',
+      badge: 'Monitor & report',
+      desc: 'For smaller stores that change rarely. We watch, report and fix small issues. Bigger fixes are quoted separately.',
+      includes: ['A few fix hours for small issues', 'Response within 5 business days', 'Monthly written report']
+    },
+    {
       id: 'essentials',
       name: 'Essentials',
-      badge: 'Watch & maintain',
+      badge: 'Most stores',
       desc: 'For stores that change a few times a month. We keep watch, fix what drifts, and test by hand every quarter.',
       includes: ['Fix hours from your priority list', 'Response within 3 business days', 'Monthly written report']
     },
     {
       id: 'growth',
       name: 'Growth',
-      badge: 'Most stores',
+      badge: 'Fast-moving stores',
       desc: 'For stores shipping campaigns, pages or apps every week. Hands-on testing every month and reviews before anything launches.',
       includes: ['More fix hours from your priority list', 'Response within 1 business day', 'Monthly call and quarterly review']
     }
@@ -71,22 +89,24 @@ const CARE = {
     { id: '12', label: '12 months', note: 'Baseline audit included', baselineFactor: 0 }
   ],
   projects: [
-    { id: 'wcag', name: 'WCAG 2.2 AA conformance program', desc: 'Full audit of every template, remediation of theme code, app configuration and vendor escalation, plus your accessibility statement and conformance report.', min: 3000, max: 5000, time: '8–10 weeks', badge: 'Pairs with Accessibility' },
-    { id: 'speed', name: 'Speed sprint', desc: 'A focused push on Core Web Vitals: script scheduling, image delivery, render-blocking CSS and app clean-up, staged in a duplicate theme.', min: 1500, max: 3000, time: '2–3 weeks', badge: 'Pairs with Performance' },
-    { id: 'content', name: 'Content accessibility pass', desc: 'Alt text for product and editorial images, video captions, heading structure and link text, plus a short guide for your team.', min: 500, max: 1000, time: '2–4 weeks', badge: 'Content' },
-    { id: 'tags', name: 'Tag & app clean-up', desc: 'Inventory every tag and app script, remove duplicates and leftovers, and load the rest at the right moment.', min: 300, max: 600, time: '1 week', badge: 'Quick win' }
+    { id: 'wcag', name: 'WCAG 2.2 AA conformance program', desc: 'Full audit of every template, remediation of theme code, app configuration and vendor escalation, plus your accessibility statement and conformance report.', ...priced(100), time: '8–10 weeks', badge: 'Pairs with Accessibility' },
+    { id: 'speed', name: 'Speed sprint', desc: 'A focused push on Core Web Vitals: script scheduling, image delivery, render-blocking CSS and app clean-up, staged in a duplicate theme.', ...priced(50), time: '2–3 weeks', badge: 'Pairs with Performance' },
+    { id: 'content', name: 'Content accessibility pass', desc: 'Alt text for product and editorial images, video captions, heading structure and link text, plus a short guide for your team.', ...priced(25), time: '2–4 weeks', badge: 'Content' },
+    { id: 'tags', name: 'Tag & app clean-up', desc: 'Inventory every tag and app script, remove duplicates and leftovers, and load the rest at the right moment.', ...priced(12), time: '1 week', badge: 'Quick win' }
   ],
   presets: [
-    { id: 'speed', label: 'Speed sprint + watch', areas: ['perf'], level: 'essentials', term: '3', projects: ['speed'] },
-    { id: 'ada', label: 'ADA readiness', areas: ['a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag', 'content'] },
-    { id: 'complete', label: 'Complete care', areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'], recommended: true }
+    { id: 'starter', label: 'Starter watch', areas: ['perf', 'a11y', 'privacy'], level: 'lite', term: '3', projects: [] },
+    { id: 'speed', label: 'Speed sprint + watch', areas: ['perf'], level: 'lite', term: '3', projects: ['speed'] },
+    { id: 'ada', label: 'ADA readiness', areas: ['a11y', 'privacy'], level: 'essentials', term: '6', projects: ['wcag', 'content'] },
+    { id: 'complete', label: 'Complete care', areas: ['perf', 'a11y', 'privacy'], level: 'essentials', term: '6', projects: ['wcag'], recommended: true },
+    { id: 'scale', label: 'Scale-up care', areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'] }
   ],
-  defaults: { areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'] }
+  defaults: { areas: ['perf', 'a11y', 'privacy'], level: 'essentials', term: '6', projects: ['wcag'] }
 };
 
 const money = (n: number) => '$' + n.toLocaleString('en-US');
-// Headline price uses the core areas; privacy on its own is an add-on-sized plan.
-const fromPrice = Math.min(...CARE.areas.filter((a) => a.id !== 'privacy').map((a) => a.essentials.min));
+// Headline price uses the core areas on Lite; privacy on its own is an add-on-sized plan.
+const fromPrice = Math.min(...CARE.areas.filter((a) => a.id !== 'privacy').map((a) => a.lite.min));
 
 // Every figure quoted on the page links back to one of these.
 const SOURCES = {
@@ -152,8 +172,8 @@ const scenarios = [
   {
     tag: 'Shipping weekly',
     title: 'We launch pages, campaigns and apps every week.',
-    text: 'This is where drift is fastest. Complete care checks every launch for speed, accessibility and consent before your customers see it.',
-    preset: 'complete'
+    text: 'This is where drift is fastest. Growth coverage checks every launch for speed, accessibility and consent before your customers see it.',
+    preset: 'scale'
   }
 ];
 
@@ -171,12 +191,16 @@ const faqs = [
     a: 'We configure them for accessibility and speed, work around issues where it is safe to, and raise tickets with the vendor where it is not, keeping the record as part of your documentation. If an app has a serious issue its vendor won’t fix, we tell you plainly so you can decide whether to keep it.'
   },
   {
+    q: 'Why do you cost less than a US or UK agency?',
+    a: `We're an engineering studio based in India, so our costs are lower. Our standard isn't: the same WCAG 2.2 AA criteria, the same screen readers and the same speed tooling, with every change staged in a duplicate theme. Every plan works out to about ${money(RATE.min)}–${money(RATE.max)} an hour, where specialist accessibility consultants in the US and UK often bill $100 or more. Your monthly report shows how every hour was spent.`
+  },
+  {
     q: 'Why ranges instead of a fixed price?',
     a: 'The work depends on how many templates, apps and integrations your store has. After a free 30-minute review of your store we send a fixed monthly quote inside the range, with no surprises afterwards.'
   },
   {
     q: 'Can we switch plans later?',
-    a: 'Yes. You can move between Essentials and Growth, or add and remove areas, at any month boundary. The term only sets how long the retainer runs and what the baseline audit costs.'
+    a: 'Yes. You can move between Lite, Essentials and Growth, or add and remove areas, at any month boundary. The term only sets how long the retainer runs and what the baseline audit costs.'
   },
   {
     q: 'What happens to fix hours we don’t use?',
@@ -225,8 +249,8 @@ const serviceSchema = {
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
         "priceCurrency": "USD",
-        "minPrice": Math.min(...CARE.areas.map((a) => a[level.id as 'essentials' | 'growth'].min)),
-        "maxPrice": CARE.areas.reduce((sum, a) => sum + a[level.id as 'essentials' | 'growth'].max, 0),
+        "minPrice": Math.min(...CARE.areas.map((a) => a[level.id as 'lite' | 'essentials' | 'growth'].min)),
+        "maxPrice": CARE.areas.reduce((sum, a) => sum + a[level.id as 'lite' | 'essentials' | 'growth'].max, 0),
         "unitText": "MONTH"
       }
     }))
@@ -297,9 +321,9 @@ const calAttrs = {
           <p class="metric-note">Speed or accessibility, Essentials</p>
         </div>
         <div class="service-metric-item">
-          <p class="metric-label">Standard</p>
-          <p class="metric-val">WCAG 2.2 AA</p>
-          <p class="metric-note">Manual and automated testing</p>
+          <p class="metric-label">Effective rate</p>
+          <p class="metric-val">{money(RATE.min)}–{money(RATE.max)}/hr</p>
+          <p class="metric-note">Engineers in India, WCAG 2.2 AA standard</p>
         </div>
         <div class="service-metric-item">
           <p class="metric-label">Screen readers</p>
@@ -589,7 +613,7 @@ const calAttrs = {
                           </ul>
                         </div>
                         <div class="theme-card-footer">
-                          <span>{money(area.essentials.min)}–{money(area.growth.max)}/mo</span>
+                          <span>{money(area.lite.min)}–{money(area.growth.max)}/mo</span>
                         </div>
                       </div>
                     </label>
@@ -605,7 +629,7 @@ const calAttrs = {
                   <span class="quote-card-title">How closely should we watch?</span>
                 </legend>
                 <p class="quote-card-sub care-fieldset-sub">Ranges update for the areas you've picked.</p>
-                <div class="theme-cards-grid">
+                <div class="theme-cards-grid care-grid-3">
                   {CARE.levels.map((level) => (
                     <label class="theme-card-label">
                       <input type="radio" name="level" value={level.id} checked={CARE.defaults.level === level.id} />
@@ -714,7 +738,7 @@ const calAttrs = {
                 <span class="care-summary-currency">USD</span>
               </div>
 
-              <h3 class="quote-summary-title" id="careSummaryTitle">Growth · Complete care</h3>
+              <h3 class="quote-summary-title" id="careSummaryTitle">Essentials · Complete care</h3>
 
               <p class="care-price">
                 <span class="care-price-val" id="careMonthly">&nbsp;</span>
@@ -956,12 +980,12 @@ const calAttrs = {
 
   <script>
     type Range = { min: number; max: number; hours?: number };
-    type Area = { id: string; name: string; essentials: Range; growth: Range; baseline: Range; includes: Record<string, string[]> };
+    type Area = { id: string; name: string; lite: Range; essentials: Range; growth: Range; baseline: Range; includes: Record<string, string[]> };
     type Level = { id: string; name: string; includes: string[] };
     type Term = { id: string; label: string; baselineFactor: number };
     type Project = { id: string; name: string; min: number; max: number; time: string };
     type Preset = { id: string; label: string; areas: string[]; level: string; term: string; projects: string[] };
-    type Care = { areas: Area[]; levels: Level[]; terms: Term[]; projects: Project[]; presets: Preset[] };
+    type Care = { rate: { min: number; max: number }; areas: Area[]; levels: Level[]; terms: Term[]; projects: Project[]; presets: Preset[] };
 
     const DATA: Care = JSON.parse(document.getElementById('careData')!.textContent || '{}');
     const form = document.getElementById('careForm') as HTMLFormElement;
@@ -976,7 +1000,7 @@ const calAttrs = {
         Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((i) => i.value);
       return {
         areas: checked('area'),
-        level: checked('level')[0] || 'growth',
+        level: checked('level')[0] || 'essentials',
         term: checked('term')[0] || '6',
         projects: checked('project')
       };
@@ -991,7 +1015,7 @@ const calAttrs = {
 
     function compute(state: ReturnType<typeof readState>) {
       const areas = DATA.areas.filter((a) => state.areas.includes(a.id));
-      const level = state.level as 'essentials' | 'growth';
+      const level = state.level as 'lite' | 'essentials' | 'growth';
       const term = DATA.terms.find((t) => t.id === state.term) || DATA.terms[1];
       const projects = DATA.projects.filter((p) => state.projects.includes(p.id));
       const sum = (list: Range[], key: 'min' | 'max' | 'hours') => list.reduce((s, r) => s + (r[key] || 0), 0);
@@ -1042,7 +1066,7 @@ const calAttrs = {
       setText('careSummaryTitle', `${r.level.name} · ${planName(state)}`);
       setText('careMonthly', hasAreas ? range(r.monthly.min, r.monthly.max) : '—');
       setText('careMonthlyNote', hasAreas ? 'Fixed quote inside this range after a free review.' : 'Pick at least one area in step 1.');
-      setText('careHours', hasAreas ? `~${r.hours} hrs incl. fixes` : '—');
+      setText('careHours', hasAreas ? `~${r.hours} hrs incl. fixes (${money(DATA.rate.min)}–${money(DATA.rate.max)}/hr)` : '—');
       setText('careTerm', r.term.label);
       if (!hasAreas) setText('careBaseline', '—');
       else if (r.term.baselineFactor === 0) setText('careBaseline', `Included (was ${range(r.baselineFull.min, r.baselineFull.max)})`);
@@ -1145,7 +1169,7 @@ const calAttrs = {
       const term = params.get('term') || '';
       return {
         areas: pick('areas', DATA.areas.map((a) => a.id)),
-        level: DATA.levels.some((l) => l.id === level) ? level : 'growth',
+        level: DATA.levels.some((l) => l.id === level) ? level : 'essentials',
         term: DATA.terms.some((t) => t.id === term) ? term : '6',
         projects: pick('projects', DATA.projects.map((p) => p.id))
       };
