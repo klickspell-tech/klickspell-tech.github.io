@@ -45,6 +45,7 @@ const teamMembers = [
     role: "Founder & Lead Engineer",
     avatar: "/assets/founder.webp",
     initials: "AB",
+    profile: "/atul-bhatt",
     bio: "Architecting custom e-commerce stores, ERP workflows, and high-performance digital products with a commitment to client independence.",
     tags: ["Shopify Liquid", "Frappe/ERP", "DevOps", "Web Architecture"]
   },
@@ -122,7 +123,7 @@ const teamMembers = [
             )}
           </div>
           <div class="team-header-text">
-            <h2 class="team-name">{member.name}</h2>
+            <h2 class="team-name">{member.profile ? <a href={member.profile} style="color:inherit;text-decoration:none">{member.name} ↗</a> : member.name}</h2>
             <p class="team-role">{member.role}</p>
           </div>
         </div>
