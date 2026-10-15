@@ -1,11 +1,11 @@
 ---
 title: "Antigravity Was Draining My Laptop Battery, So I Went Back to Plain VS Code"
-description: "Antigravity was eating my battery and RAM. Here's the lighter setup I use instead: plain VS Code, Continue with a free Gemini Flash key, and Claude Code (CLI and VS Code extension) on a subscription I already pay for."
+description: "Antigravity was eating my battery and RAM. Here's the lighter setup I use instead: plain VS Code, Continue with Gemini Flash, Claude Code, and the Antigravity extension to utilize a Google AI Pro subscription."
 pubDate: 2026-10-15T00:00:00.000Z
 author: "Atul Bhatt"
-tags: ["VS Code", "AI", "Claude Code", "Gemini", "Continue", "Developer Tools", "Productivity"]
+tags: ["VS Code", "AI", "Claude Code", "Gemini", "Continue", "Google Antigravity", "Developer Tools", "Productivity"]
 canonicalUrl: "https://klickspell.com/blog/vs-code-ai-setup-without-battery-drain"
-readingTime: "7 min read"
+readingTime: "8 min read"
 ---
 
 I moved a lot of my work into Google Antigravity, and two things got noticeably worse straight away. My battery drained much faster than it did with plain VS Code, and RAM usage went way up.
@@ -25,7 +25,7 @@ These are individual reports, not benchmarks, and your machine will behave diffe
 I stopped trying to make one model do everything. Now I split the work:
 
 - **Chat and small edits:** the [Continue](https://www.continue.dev/) extension, pointed at Gemini 3.8 Flash using a free Google AI Studio key. It's fast, and nothing runs until I ask it something.
-- **Big tasks** (refactors, "go figure out why this test is flaky", changes across many files): [Claude Code](https://code.claude.com/docs/en/overview). I use both the CLI in the VS Code terminal and the Claude Code VS Code extension, depending on the task. Both sign in with my Claude Pro account, so I don't pay per token on top of the subscription.
+- **Big tasks** (refactors, "go figure out why this test is flaky", changes across many files): [Claude Code](https://code.claude.com/docs/en/overview) using a Claude Pro subscription (via CLI or extension), or the **Google Antigravity extension for VS Code** if you already pay for Google AI Pro.
 
 The editor stays lightweight, and the expensive model only runs when I've deliberately given it a job.
 
@@ -57,7 +57,9 @@ This one is more confusing. I pay for Google AI Pro, so I assumed I'd have acces
 
 That isn't how it works. Google's own [AI plans page](https://ai.google.dev/gemini-api/docs/google-ai-plans) says the subscription only raises your limits inside the AI Studio website, and that using the Gemini API with a key "is billed and managed separately." The [pricing page](https://ai.google.dev/gemini-api/docs/pricing) lists no free tier at all for `gemini-3.1-pro-preview` or `gemini-4-argon`. On a key with no billing attached, your quota for those models is zero. It isn't a rate limit you can wait out.
 
-**The fix:** use Gemini 3.8 Flash, which does have a free tier. It's fast and good enough for the quick questions and edits I send it from the editor.
+**The fix for Continue:** use Gemini 3.8 Flash, which does have a free tier. It's fast and good enough for the quick questions and edits I send it from the editor.
+
+**How to actually use your Google AI Pro subscription in VS Code:** If you want to use the Pro model without setting up pay-as-you-go API billing, don't use an API key in Continue. Instead, install the official **Google Antigravity extension for VS Code** and sign in with your Google account. Account-level authentication taps directly into your Google AI Pro subscription quota right inside plain VS Code (covered in step 5 below).
 
 ## Setting it up
 
@@ -140,6 +142,27 @@ What I like about the extension compared to the terminal:
 
 My rough rule: the extension when I want to watch and review changes as they happen, the terminal when I'm handing off a bigger job and checking back later.
 
+### 5. Option: Use the Google Antigravity extension to utilize Google AI Pro
+
+If you subscribe to Google AI Pro (or Google One with Gemini Advanced) rather than Claude Pro, you don't need to leave VS Code or pay for API credits to use Gemini Pro. You can install the official **Google Antigravity extension for VS Code**.
+
+This gives you a middle ground: you get Google's agentic harness, implementation plans, and access to Gemini Pro, but inside your standard VS Code installation rather than running the standalone Antigravity IDE with all its heavy background services.
+
+Here is how to set it up:
+
+1. In VS Code, open Extensions (`Cmd+Shift+X` / `Ctrl+Shift+X`).
+2. Search for **Google Antigravity** (published by Google) and install it.
+3. Click the **Antigravity** icon in the Activity Bar on the left.
+4. Click **Sign In with Google** and choose the account tied to your Google AI Pro subscription.
+
+Once signed in:
+
+- **Subscription-backed quota:** It uses your Google AI Pro subscription allowance directly instead of requiring an API key with credit card billing.
+- **Agent mode & implementation plans:** You can ask it to tackle multi-step coding tasks across your repo. It drafts a plan, shows you diffs, and asks for approval before modifying code.
+- **Better on battery:** Because it runs as a standard extension in stock VS Code rather than the standalone Antigravity IDE, your editor doesn't spin up full background browser previews or heavy language server indexing while you're just typing or reading code.
+
+If you already pay for Google AI Pro, this is the most seamless way to put it to work in your editor without getting hit by the `limit: 0` API wall.
+
 ## What changes if you turn on billing?
 
 If you attach a billing account to your AI Studio project, you move to the paid tiers ([Tier 1 and up](https://ai.google.dev/gemini-api/docs/rate-limits)):
@@ -154,6 +177,6 @@ Even with billing on, I'd keep everyday editor questions on Flash. At the time o
 
 I don't think AI-native editors are bad. If you're plugged in at a desk all day, the extra power use may not matter to you. But if you're on battery a lot and you already pay for Google AI Pro or Claude Pro, you don't need another subscription or an editor that runs your laptop hot.
 
-Plain VS Code, Continue with Gemini Flash, and Claude Code in the terminal and the extension. It's a much lighter setup than Antigravity, and the AI only does work when I ask it to.
+Plain VS Code, Continue with Gemini Flash, and Claude Code or the Antigravity VS Code extension for the heavy lifting. It's a much lighter setup than running the standalone Antigravity IDE, you make full use of the subscriptions you already pay for, and the AI only does work when I ask it to.
 
 *Model names, prices and limits change often. Everything here was checked against Google's and Anthropic's docs in October 2026.*
