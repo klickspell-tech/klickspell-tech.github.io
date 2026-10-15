@@ -77,8 +77,22 @@ async function syncDevto() {
     const articles = await listRes.json();
     console.log(`Found ${articles.length} article(s). Downloading & formatting full markdown...`);
 
+    // Posts first published on klickspell.com already carry their devtoUrl; skip those so they aren't duplicated
+    const existingFiles = (await fs.readdir(BLOG_DIR)).filter(f => f.endsWith('.md'));
+    const knownDevtoUrls = new Map();
+    for (const f of existingFiles) {
+      const match = (await fs.readFile(path.join(BLOG_DIR, f), 'utf-8')).match(/^devtoUrl:\s*"([^"]+)"/m);
+      if (match) knownDevtoUrls.set(match[1], f);
+    }
+
     let syncedCount = 0;
     for (const item of articles) {
+      const ownerFile = knownDevtoUrls.get(item.url);
+      if (ownerFile && ownerFile !== `${item.slug}.md`) {
+        console.log(`⏭️  Skipped: ${item.title} (already published as ${ownerFile})`);
+        continue;
+      }
+
       const detailRes = await fetch(`https://dev.to/api/articles/${item.id}`);
       if (!detailRes.ok) {
         console.warn(`⚠️ Could not fetch article #${item.id}: ${item.title}`);

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const workstreams = [
+  {
+    title: "ERP on Frappe/ERPNext",
+    desc: "We sit with the team, map how the company actually runs, and set it up as one system: sales, inventory, purchasing and accounts in one place instead of five spreadsheets."
+  },
+  {
+    title: "Internal portals & management systems",
+    desc: "Custom tools for the parts of the business an off-the-shelf ERP doesn't cover, like approvals, field teams, vendor portals or reporting."
+  },
+  {
+    title: "Connecting the pieces",
+    desc: "Getting data to move between the ERP, the website or store, and the tools the team already uses, so nobody copies numbers by hand."
+  },
+  {
+    title: "Customer-facing web",
+    desc: "Sites, stores and web apps when the project needs them. This is where Klickspell started, and it's still most of what we build."
+  }
+];
+
+const steps = [
+  "Look Beyond leads the engagement and reviews the client's workflows.",
+  "We map the workstreams that need to become software and build the systems.",
+  "Look Beyond's AI work runs on top of clean processes and data.",
+  "The client's team is trained and runs it day to day, without depending on either of us."
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Klickspell × Look Beyond — Partnership",
+    "url": "https://klickspell.com/partners/look-beyond",
+    "about": [
+      { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+      { "@type": "Organization", "name": "Look Beyond", "url": "https://lookbeyond.sg/", "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" } }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Partners", "item": "https://klickspell.com/partners" },
+      { "@type": "ListItem", "position": 3, "name": "Look Beyond", "item": "https://klickspell.com/partners/look-beyond" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Klickspell × Look Beyond — Partnership"
+  description="Klickspell partners with Look Beyond, a Singapore AI consultancy. We turn a company's workstreams into ERP and digital systems that AI can build on."
+  canonical="https://klickspell.com/partners/look-beyond"
+  schema={schema}
+>
+  <Nav isHome={false} />
+
+  <main id="main-content">
+    <section class="team-hero">
+      <p class="cs-breadcrumb"><a href="/">Home</a> / <a href="/partners">Partners</a> / Look Beyond</p>
+      <p class="section-eyebrow">Partnership</p>
+      <h1 class="team-title">Klickspell × <em>Look Beyond</em></h1>
+      <p class="team-sub">Look Beyond helps companies put AI to work. Before AI can help, a company's workstreams usually need to become real software. That part is ours.</p>
+
+      <dl class="pb-meta">
+        <div><dt>Partner</dt><dd><a href="https://lookbeyond.sg/" target="_blank" rel="noopener">Look Beyond ↗</a></dd></div>
+        <div><dt>Based in</dt><dd>Singapore</dd></div>
+        <div><dt>Our role</dt><dd>ERP &amp; workflow systems</dd></div>
+        <div><dt>Leads</dt><dd>Julien Look &amp; <a href="/atul-bhatt">Atul Bhatt</a></dd></div>
+      </dl>
+    </section>
+
+    <section class="pb-body">
+      <div class="pb-block">
+        <h2 class="pb-heading">About Look Beyond</h2>
+        <p class="pb-prose">Look Beyond is an AI consultancy in Singapore, founded by Julien Look. They take companies from the first workflow review to AI systems running in production. When a project needs regional presence or specialist skills, they bring in partners from Europe, South Asia and South East Asia.</p>
+      </div>
+
+      <div class="pb-block">
+        <h2 class="pb-heading">Klickspell's lead</h2>
+        <a href="/atul-bhatt" class="pb-lead">
+          <img src="/assets/atul-bhatt-avatar.webp" alt="Atul Bhatt" width="72" height="72" loading="lazy" decoding="async" />
+          <div>
+            <p class="pb-lead-name">Atul Bhatt <span>Founder, Klickspell · ERP &amp; workflow systems</span></p>
+            <p class="pb-lead-quote">&ldquo;I turn the way a company actually works into software it can run on, usually ERPNext plus the custom tools around it. That gives the AI work clean processes and data to build on.&rdquo;</p>
+            <p class="pb-lead-more">Full profile →</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="pb-block">
+        <h2 class="pb-heading">Where Klickspell fits</h2>
+        <p class="pb-prose">AI only works when there are clear processes and clean data underneath. Plenty of companies still run on spreadsheets, email threads and tools that don't talk to each other. Our job in the partnership is to turn those workstreams into proper digital systems, so the AI work has something solid to build on.</p>
+      </div>
+
+      <div class="pb-block">
+        <h2 class="pb-heading">In practice: a Berlin textile printer</h2>
+        <div>
+          <p class="pb-prose">Our first project together is for a Berlin textile printer. Their quotes came out of a standalone browser calculator, and their products and customers lived in Lexware. We moved them onto ERPNext, with a custom app built around how they actually price a job.</p>
+          <ul class="pb-list">
+            <li><strong>Quotes that price themselves.</strong> Textile, print, screen and separation costs, surcharges and tax are worked out as the quote is built, and it comes out as a ready-to-send PDF in German or English.</li>
+            <li><strong>Prices the team controls.</strong> Every price table lives in ERPNext with its own editor and CSV backup, so prices can change without a developer.</li>
+            <li><strong>Clean data to start from.</strong> More than 1,900 products and the full customer list moved over from Lexware.</li>
+            <li><strong>AI controlling inside the ERP.</strong> A tool that reads purchase and sales invoices and sorts every line item. It started as a separate app; we rebuilt it inside ERPNext so there is one system of record.</li>
+          </ul>
+          <p class="pb-prose pb-next">Next up: email history on customer records, supplier price lists, UPS shipping and a link to production planning.</p>
+        </div>
+      </div>
+
+      <div class="pb-block">
+        <h2 class="pb-heading">What we take on</h2>
+        <div class="pb-grid">
+          {workstreams.map(w => (
+            <article class="pb-card">
+              <h3 class="pb-card-title">{w.title}</h3>
+              <p class="pb-card-desc">{w.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="pb-block">
+        <h2 class="pb-heading">How a project runs</h2>
+        <ol class="pb-steps">
+          {steps.map((step, i) => (
+            <li><span class="pb-step-num">0{i + 1}</span><p>{step}</p></li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-inner">
+        <h2 class="cta-title">Working with<br><em>Look Beyond?</em></h2>
+        <p class="cta-sub">If your project needs its workstreams turned into software, talk to Atul directly.</p>
+        <a href="mailto:atul.bhatt@klickspell.com" class="btn-primary" style="font-size:16px;padding:1rem 2rem">Email Atul →</a>
+        <p class="cta-stamp"><a href="/atul-bhatt" style="color:inherit">About Atul</a> · <a href="/partners" style="color:inherit">All partners</a></p>
+      </div>
+    </section>
+  </main>
+
+  <Footer isHome={false} />
+</BaseLayout>
+
+<style>
+  .pb-meta { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1.5rem; border-top:.5px solid var(--border); padding-top:1.75rem; max-width:900px; }
+  .pb-meta dt { font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.4rem; }
+  .pb-meta dd { font-size:15px; color:var(--text); }
+  .pb-meta a, .pb-prose a { color:var(--accent); text-decoration:none; }
+  .pb-meta a:hover { color:var(--accent-hover); text-decoration:underline; }
+
+  .pb-body { max-width:1200px; margin:0 auto; padding:1rem 2rem 4rem; }
+  .pb-block { border-top:.5px solid var(--border); padding:2.5rem 0; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:1rem 3rem; }
+  .pb-heading { font-family:'Instrument Serif',serif; font-size:clamp(28px,3.2vw,36px); font-weight:400; line-height:1.15; color:var(--text); }
+  .pb-prose { font-size:17px; line-height:1.8; color:var(--text-mid); max-width:68ch; }
+
+  .pb-lead { display:grid; grid-template-columns:72px 1fr; gap:1.25rem; align-items:start; text-decoration:none; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.5rem; transition:border-color .3s, box-shadow .3s; }
+  .pb-lead:hover { border-color:rgba(58,91,224,0.3); box-shadow:0 16px 40px rgba(0,0,0,0.07); }
+  .pb-lead img { width:72px; height:72px; border-radius:50%; object-fit:cover; }
+  .pb-lead-name { font-size:17px; font-weight:700; color:var(--text); }
+  .pb-lead-name span { display:block; font-size:13px; font-weight:400; color:var(--text-light); margin-top:2px; }
+  .pb-lead-quote { font-family:'Instrument Serif',serif; font-style:italic; font-size:21px; line-height:1.45; color:var(--text); margin-top:1rem; }
+  .pb-lead-more { font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-top:1rem; }
+
+  .pb-list { list-style:none; display:flex; flex-direction:column; gap:.9rem; margin:1.5rem 0; max-width:68ch; }
+  .pb-list li { font-size:16px; line-height:1.75; color:var(--text-mid); padding-left:1.25rem; position:relative; }
+  .pb-list li::before { content:''; position:absolute; left:0; top:.75em; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .pb-list strong { color:var(--text); font-weight:700; }
+  .pb-next { font-size:15px; color:var(--text-light); }
+
+  .pb-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.25rem; }
+  .pb-card { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.5rem 1.6rem; }
+  .pb-card-title { font-size:17px; font-weight:700; color:var(--text); margin-bottom:.5rem; }
+  .pb-card-desc { font-size:15px; line-height:1.7; color:var(--text-mid); }
+
+  .pb-steps { list-style:none; display:flex; flex-direction:column; gap:1rem; }
+  .pb-steps li { display:grid; grid-template-columns:44px 1fr; gap:1rem; align-items:baseline; font-size:17px; line-height:1.7; color:var(--text-mid); }
+  .pb-step-num { font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--accent); }
+
+  @media (max-width:900px) {
+    .pb-meta { grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .pb-block { grid-template-columns:1fr; }
+  }
+  @media (max-width:600px) {
+    .pb-body { padding:0 1rem 3rem; }
+    .pb-grid { grid-template-columns:1fr; }
+  }
+</style>

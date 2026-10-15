@@ -75,8 +75,8 @@
 - **Client Site:** https://jaxonlane.com
 - **Scope:** Long-term Shopify development partnership, custom theme enhancements, Recharge subscription flow optimization, migration of affiliate tracking to Awin, and structured data architecture.
 
-### The Blissful Soul / Master Pragya Vijh (Spiritual Wellness & E-Commerce)
-- **URL:** https://klickspell.com/work/the-blissful-soul.html and https://klickspell.com/work/pragya-vijh.html
+### Pragya Vijh / The Blissful Soul (Spiritual Wellness & E-Commerce)
+- **URL:** https://klickspell.com/work/pragya-vijh.html
 - **Client Site:** https://pragyavijh.com/in
 - **Scope:** Complete migration from a fragile, plugin-bloated WordPress site to a high-speed headless monorepo using Next.js 14, Medusa v2, and Strapi. Unified retail crystal purchases with automated live Vedic consultation bookings via Cal.com.
 
