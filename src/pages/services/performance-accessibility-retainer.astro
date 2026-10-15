@@ -12,11 +12,11 @@ const CARE = {
     {
       id: 'perf',
       name: 'Performance',
-      tagline: 'Core Web Vitals, page weight, app & tag bloat',
-      points: ['Real-user and lab Core Web Vitals', 'Script & app change tracking', 'Speed checks on new pages'],
+      tagline: 'Speed & code governance: Core Web Vitals, apps, tags',
+      points: ['Real-user and lab Core Web Vitals', 'Every new app and tag reviewed', 'Speed checks on new pages'],
       essentials: { min: 300, max: 450, hours: 9 },
       growth: { min: 600, max: 900, hours: 18 },
-      baseline: { min: 500, max: 700 },
+      baseline: { min: 600, max: 900 },
       includes: {
         essentials: ['Monthly Core Web Vitals report (real-user + lab)', 'Log of scripts and apps added since last month', 'Speed check on up to 2 new pages a month'],
         growth: ['Monthly Core Web Vitals report (real-user + lab)', 'Tag & app governance, implemented by us', 'Speed review of every new page and template']
@@ -27,9 +27,9 @@ const CARE = {
       name: 'Accessibility',
       tagline: 'WCAG 2.2 AA, tested by people with screen readers',
       points: ['Manual keyboard & screen-reader testing', 'Automated WCAG scans', 'Accessibility statement & records'],
-      essentials: { min: 350, max: 500, hours: 11 },
-      growth: { min: 700, max: 1000, hours: 24 },
-      baseline: { min: 800, max: 1100 },
+      essentials: { min: 450, max: 650, hours: 12 },
+      growth: { min: 800, max: 1200, hours: 25 },
+      baseline: { min: 1500, max: 2500 },
       includes: {
         essentials: ['Monthly automated WCAG scan and triage', 'Manual screen-reader pass every quarter', 'Accessibility statement kept current'],
         growth: ['Monthly automated WCAG scan and triage', 'Manual screen-reader test of one shopping journey every month', 'Full manual pass every quarter', 'Accessibility statement and conformance report kept current']
@@ -72,12 +72,12 @@ const CARE = {
   ],
   projects: [
     { id: 'wcag', name: 'WCAG 2.2 AA conformance program', desc: 'Full audit of every template, remediation of theme code, app configuration and vendor escalation, plus your accessibility statement and conformance report.', min: 3000, max: 5000, time: '8–10 weeks', badge: 'Pairs with Accessibility' },
-    { id: 'speed', name: 'Speed sprint', desc: 'A focused push on Core Web Vitals: script scheduling, image delivery, render-blocking CSS and app clean-up, staged in a duplicate theme.', min: 1000, max: 2000, time: '7–14 days', badge: 'Pairs with Performance' },
+    { id: 'speed', name: 'Speed sprint', desc: 'A focused push on Core Web Vitals: script scheduling, image delivery, render-blocking CSS and app clean-up, staged in a duplicate theme.', min: 1500, max: 3000, time: '2–3 weeks', badge: 'Pairs with Performance' },
     { id: 'content', name: 'Content accessibility pass', desc: 'Alt text for product and editorial images, video captions, heading structure and link text, plus a short guide for your team.', min: 500, max: 1000, time: '2–4 weeks', badge: 'Content' },
     { id: 'tags', name: 'Tag & app clean-up', desc: 'Inventory every tag and app script, remove duplicates and leftovers, and load the rest at the right moment.', min: 300, max: 600, time: '1 week', badge: 'Quick win' }
   ],
   presets: [
-    { id: 'speed', label: 'Speed only', areas: ['perf'], level: 'essentials', term: '3', projects: ['speed'] },
+    { id: 'speed', label: 'Speed sprint + watch', areas: ['perf'], level: 'essentials', term: '3', projects: ['speed'] },
     { id: 'ada', label: 'ADA readiness', areas: ['a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag', 'content'] },
     { id: 'complete', label: 'Complete care', areas: ['perf', 'a11y', 'privacy'], level: 'growth', term: '6', projects: ['wcag'], recommended: true }
   ],
@@ -87,6 +87,75 @@ const CARE = {
 const money = (n: number) => '$' + n.toLocaleString('en-US');
 // Headline price uses the core areas; privacy on its own is an add-on-sized plan.
 const fromPrice = Math.min(...CARE.areas.filter((a) => a.id !== 'privacy').map((a) => a.essentials.min));
+
+// Every figure quoted on the page links back to one of these.
+const SOURCES = {
+  usablenet: { label: 'UsableNet, 2025 lawsuit report', url: 'https://blog.usablenet.com/ada-web-lawsuit-trends-2026' },
+  webaim: { label: 'WebAIM Million, 2026', url: 'https://webaim.org/projects/million/' },
+  cdc: { label: 'CDC, 2024', url: 'https://www.cdc.gov/media/releases/2024/s0716-Adult-disability.html' },
+  deloitte: { label: 'Deloitte & Google, Milliseconds Make Millions', url: 'https://web.dev/case-studies/milliseconds-make-millions' },
+  vodafone: { label: 'web.dev, Vodafone case study', url: 'https://web.dev/case-studies/vodafone' },
+  ftc: { label: 'FTC, April 2025', url: 'https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million' },
+  eaa: { label: 'Directive (EU) 2019/882', url: 'https://eur-lex.europa.eu/eli/dir/2019/882/oj' },
+  overlays: { label: 'Overlay Fact Sheet', url: 'https://overlayfactsheet.com/' }
+};
+
+const stats = [
+  { val: '5,000+', text: 'digital accessibility lawsuits were filed in the US in 2025.', src: SOURCES.usablenet },
+  { val: '~70%', text: 'of those lawsuits were against e-commerce sites.', src: SOURCES.usablenet },
+  { val: '64%', text: 'of companies sued had under $25M in annual revenue. This isn’t only a big-brand problem.', src: SOURCES.usablenet },
+  { val: '95.9%', text: 'of the top million home pages fail automated WCAG checks, averaging 56 errors each.', src: SOURCES.webaim },
+  { val: '1 in 4', text: 'US adults, over 70 million people, live with a disability. They are customers.', src: SOURCES.cdc },
+  { val: '+8.4%', text: 'retail conversions from a 0.1-second faster mobile site, across 37 brands.', src: SOURCES.deloitte }
+];
+
+// Options a store owner is usually weighing. Market ranges, not our prices.
+const compare = {
+  cols: ['Do nothing', 'Overlay widget', 'One-off audit', 'This retainer'],
+  rows: [
+    { label: 'Typical cost', cells: ['$0 until a demand letter arrives', '~$50–350/mo', '$1,000–7,500 once', `From ${money(fromPrice)}/mo + baseline audit`] },
+    { label: 'Fixes the theme code', cells: ['No', 'No, it sits on top of the page', 'Lists issues; fixing is extra', 'Yes, fix hours every month'] },
+    { label: 'Manual screen-reader testing', cells: ['No', 'No', 'Usually', 'Yes, on your plan’s schedule'] },
+    { label: 'Stays current as the store changes', cells: ['No', 'No', 'No, it’s a snapshot', 'Yes, new pages and apps checked'] },
+    { label: 'Records if a letter arrives', cells: ['None', 'A subscription receipt', 'A report dated the day of the audit', 'Dated log, statement and conformance report'] },
+    { label: 'Speed', cells: ['Drifts with every app', 'Adds another script', 'Not covered', 'Monitored and fixed monthly'] }
+  ]
+};
+
+// "?areas=…" links reload the page with a preset already applied in the builder.
+const presetHref = (id: string) => {
+  const p = CARE.presets.find((x) => x.id === id)!;
+  const q = new URLSearchParams({ areas: p.areas.join(','), level: p.level, term: p.term, projects: p.projects.join(',') });
+  return `?${q.toString()}#build`;
+};
+const presetLabel = (id: string) => CARE.presets.find((x) => x.id === id)!.label;
+
+const scenarios = [
+  {
+    tag: 'Received a letter',
+    title: 'We’ve had a demand letter or a complaint.',
+    text: 'Talk to your lawyer first. Then we audit the issues the letter cites, fix them in a duplicate theme and give you a dated record of the work, followed by a full WCAG 2.2 AA program.',
+    preset: 'ada'
+  },
+  {
+    tag: 'Slow store',
+    title: 'Our store feels slow, or ad costs keep rising.',
+    text: 'Start with a speed sprint to get Core Web Vitals into the green, then light monthly monitoring so new apps and tags don’t undo it.',
+    preset: 'speed'
+  },
+  {
+    tag: 'Selling in the EU',
+    title: 'We sell to customers in the EU.',
+    text: 'The European Accessibility Act has applied to online stores selling to EU consumers since 28 June 2025, including stores based outside the EU. Accessibility coverage plus a WCAG program is the place to start.',
+    preset: 'ada'
+  },
+  {
+    tag: 'Shipping weekly',
+    title: 'We launch pages, campaigns and apps every week.',
+    text: 'This is where drift is fastest. Complete care checks every launch for speed, accessibility and consent before your customers see it.',
+    preset: 'complete'
+  }
+];
 
 const faqs = [
   {
@@ -119,7 +188,23 @@ const faqs = [
   },
   {
     q: 'Who does the manual testing?',
-    a: 'Our engineers test by hand with a keyboard, NVDA with Chrome on Windows, and VoiceOver with Safari on macOS and iOS, alongside automated scans. JAWS testing is available on request.'
+    a: 'Our engineers test by hand with a keyboard, NVDA with Chrome on Windows, and VoiceOver with Safari on macOS and iOS, alongside automated scans. JAWS testing is available on request. Together these cover the screen readers most people use: in WebAIM’s latest survey, NVDA and JAWS lead on desktop and VoiceOver on mobile.'
+  },
+  {
+    q: 'We’ve received a demand letter. Can you help?',
+    a: 'Yes, alongside your lawyer, not instead of one. We don’t give legal advice. What we can do quickly is audit the specific issues the letter cites, fix them in a duplicate theme, and give you a dated record of the testing and fixes, which your counsel can use. Then we move on to full WCAG 2.2 AA coverage so the same gaps don’t reappear.'
+  },
+  {
+    q: 'Does the European Accessibility Act apply to us?',
+    a: 'If you sell to consumers in the EU, probably yes, even if your business is based elsewhere. It has applied to e-commerce since 28 June 2025. Microenterprises (fewer than 10 staff and no more than €2 million in annual turnover or balance sheet) are exempt for services. Its technical standard, EN 301 549, is built on WCAG 2.1 AA, which our WCAG 2.2 AA testing covers. Confirm your position with legal counsel.'
+  },
+  {
+    q: 'We already had an accessibility audit. Do we need the baseline again?',
+    a: 'Not always. If it’s recent and tested against WCAG 2.1 or 2.2 AA, we review it, re-test the key journeys and reduce the baseline accordingly. We’ll tell you on the review call.'
+  },
+  {
+    q: 'Why does the accessibility baseline cost more than the others?',
+    a: 'Because it’s done by hand. Every template is tested with a keyboard and two screen readers across desktop and mobile, and every issue is written up with steps to reproduce and a fix. Automated scanners only catch part of WCAG; the rest needs a person.'
   }
 ];
 
@@ -243,7 +328,7 @@ const calAttrs = {
           <div class="service-deliverable-card">
             <p class="service-card-num">01 · APPS</p>
             <h3 class="service-card-title">Every install adds weight</h3>
-            <p class="service-card-text">Review widgets, loyalty programs, chat and upsell apps each bring their own scripts, and many load media before a shopper ever scrolls to them. Uninstalled apps often leave code behind.</p>
+            <p class="service-card-text">Review widgets, pop-ups, search and upsell apps each bring their own scripts and markup. They're among the most common sources of both slow pages and accessibility failures we find, and uninstalled apps often leave code behind.</p>
           </div>
           <div class="service-deliverable-card">
             <p class="service-card-num">02 · MARKETING</p>
@@ -256,6 +341,26 @@ const calAttrs = {
             <p class="service-card-text">Landing pages, guides and campaign sections ship fast, usually without anyone checking headings, alt text, contrast, keyboard access or load time.</p>
           </div>
         </div>
+      </section>
+
+      <!-- THE NUMBERS -->
+      <section class="reveal care-numbers" aria-labelledby="numbers-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Why it matters</p>
+          <h2 id="numbers-title">The numbers behind<br><em>the decision.</em></h2>
+          <p>Every figure here links to its source, so you can check it yourself.</p>
+        </div>
+
+        <ul class="care-stats">
+          {stats.map((s) => (
+            <li class="care-stat">
+              <p class="care-stat-val">{s.val}</p>
+              <p class="care-stat-text">{s.text}</p>
+              <a class="care-source" href={s.src.url}>{s.src.label}</a>
+            </li>
+          ))}
+        </ul>
+        <p class="care-footnote">Speed pays off in sales, too: when Vodafone improved Largest Contentful Paint by 31% in an A/B test, sales rose 8% (<a class="care-source" href={SOURCES.vodafone.url}>{SOURCES.vodafone.label}</a>).</p>
       </section>
 
       <!-- WHAT WE LOOK AFTER -->
@@ -292,7 +397,7 @@ const calAttrs = {
             <h3 class="care-compare-title">What we won't tell you</h3>
             <ul>
               <li><strong>That your store is "ADA certified".</strong> No official certification exists for websites.</li>
-              <li><strong>That an overlay widget makes you compliant.</strong> Overlays don't fix the code underneath, and stores using them still receive demand letters.</li>
+              <li><strong>That an overlay widget makes you compliant.</strong> Overlays don't fix the code underneath, and stores using them are still sued every month. In 2025 the FTC fined one overlay vendor $1 million for claiming its widget made sites compliant (<a class="care-source" href={SOURCES.ftc.url}>{SOURCES.ftc.label}</a>; see also the <a class="care-source" href={SOURCES.overlays.url}>{SOURCES.overlays.label}</a>).</li>
               <li><strong>That you're lawsuit-proof.</strong> Anyone can file. What matters is how well you can show the work.</li>
             </ul>
           </div>
@@ -307,6 +412,34 @@ const calAttrs = {
           </div>
         </div>
         <p class="care-footnote">We're engineers, not lawyers. Have your legal counsel review your accessibility statement before it's published.</p>
+      </section>
+
+      <!-- COMPARE OPTIONS -->
+      <section class="reveal care-options" aria-labelledby="options-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Your options</p>
+          <h2 id="options-title">Four ways stores handle this.<br><em>Compared honestly.</em></h2>
+          <p>Costs for the first three are typical market ranges, not our prices.</p>
+        </div>
+
+        <div class="care-table-wrap" role="region" aria-labelledby="options-title" tabindex="0">
+          <table class="care-table">
+            <thead>
+              <tr>
+                <td></td>
+                {compare.cols.map((c, i) => <th scope="col" class={i === compare.cols.length - 1 ? 'is-ours' : undefined}>{c}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {compare.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.label}</th>
+                  {row.cells.map((cell, i) => <td class={i === row.cells.length - 1 ? 'is-ours' : undefined}>{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- HOW IT WORKS -->
@@ -370,6 +503,36 @@ const calAttrs = {
             </ul>
           </div>
         </div>
+      </section>
+
+      <!-- WHERE ARE YOU STARTING FROM -->
+      <section class="reveal care-start" aria-labelledby="start-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Where to start</p>
+          <h2 id="start-title">Not sure what you need?<br><em>Start from your situation.</em></h2>
+          <p>Each one opens the plan builder with a sensible starting point that you can adjust.</p>
+        </div>
+
+        <div class="care-scenarios">
+          {scenarios.map((s) => (
+            <div class="care-scenario">
+              <p class="service-card-num">{s.tag.toUpperCase()}</p>
+              <h3 class="service-card-title">{s.title}</h3>
+              <p class="service-card-text">{s.text}</p>
+              <a class="care-scenario-link" href={presetHref(s.preset)}>Start with “{presetLabel(s.preset)}” →</a>
+            </div>
+          ))}
+        </div>
+
+        <div class="care-notfit">
+          <h3 class="care-compare-title">Probably not the right fit if…</h3>
+          <ul class="care-list care-list--muted">
+            <li>Your store is being rebuilt or re-themed in the next three months. Do it after the rebuild, or bring us into the rebuild instead.</li>
+            <li>You need a certificate or a guarantee against lawsuits. Nobody can honestly sell either.</li>
+            <li>Your store rarely changes. A one-time WCAG program and content pass may be all you need, with a check-up once a year.</li>
+          </ul>
+        </div>
+        <p class="care-footnote">European Accessibility Act: <a class="care-source" href={SOURCES.eaa.url}>{SOURCES.eaa.label}</a>.</p>
       </section>
 
       <!-- PLAN BUILDER -->
@@ -576,6 +739,10 @@ const calAttrs = {
                   <dt class="quote-meter-label">One-time projects</dt>
                   <dd class="quote-meter-value" id="careProjects">&nbsp;</dd>
                 </div>
+                <div class="quote-meter-row care-total-row">
+                  <dt class="quote-meter-label" id="careTotalLabel">Total over the term</dt>
+                  <dd class="quote-meter-value" id="careTotal">&nbsp;</dd>
+                </div>
               </dl>
 
               <div class="quote-selected-chips-box">
@@ -659,6 +826,7 @@ const calAttrs = {
     .care-page .quote-summary-card button:focus-visible,
     .care-page .service-box-cta a:focus-visible { outline-color:var(--accent-on-dark); }
     .care-page .quote-pill-label { position:relative; }
+    .care-page .care-table-wrap:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
     /* The shared badge colour misses 4.5:1 on its tinted background. */
     .care-page .service-badge { color:var(--accent-hover); }
     .care-page .service-badge-dot { background:var(--accent-hover); }
@@ -678,6 +846,38 @@ const calAttrs = {
     .care-compare-col strong { color:var(--text); }
     .care-footnote { margin-top:1.25rem; font-size:13px; color:var(--text-light); }
     .care-honest { margin-bottom:5rem; }
+
+    .care-source { color:var(--accent-hover); font-size:12.5px; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+    .care-source:hover { color:var(--accent); }
+
+    .care-numbers { margin-bottom:5rem; }
+    .care-stats { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+    .care-stat { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; gap:.6rem; }
+    .care-stat-val { font-family:'Instrument Serif',serif; font-size:clamp(38px,4vw,48px); line-height:1; color:var(--accent); }
+    .care-stat-text { font-size:14.5px; color:var(--text-mid); line-height:1.6; flex:1; }
+
+    .care-options { margin-bottom:5rem; }
+    .care-table-wrap { overflow-x:auto; border:.5px solid var(--border); border-radius:var(--radius); background:var(--white); }
+    .care-table { width:100%; min-width:760px; border-collapse:collapse; font-size:14px; line-height:1.5; }
+    .care-table th, .care-table td { padding:1rem 1.1rem; text-align:left; vertical-align:top; border-bottom:.5px solid var(--border); color:var(--text-mid); }
+    .care-table thead th { font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--text); font-weight:600; }
+    .care-table tbody th { color:var(--text); font-weight:600; width:20%; }
+    .care-table tbody tr:last-child > * { border-bottom:none; }
+    .care-table .is-ours { background:var(--accent-light); color:var(--text); }
+    .care-table thead .is-ours { color:var(--accent-hover); }
+
+    .care-start { margin-bottom:5rem; }
+    .care-scenarios { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
+    .care-scenario { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; }
+    .care-scenario .service-card-text { flex:1; }
+    .care-scenario-link { margin-top:1.25rem; color:var(--accent-hover); font-weight:600; font-size:14.5px; text-decoration:none; }
+    .care-scenario-link:hover { text-decoration:underline; text-underline-offset:3px; }
+    .care-notfit { margin-top:1.5rem; border:1px dashed var(--border); border-radius:var(--radius); padding:1.75rem 2rem; }
+    .care-notfit .care-compare-title { color:var(--text-mid); }
+    .care-list--muted li::before { content:'–'; color:var(--text-light); }
+
+    .care-total-row { border-top:1px solid rgba(255,255,255,0.18); padding-top:.75rem; }
+    .care-total-row .quote-meter-value { color:var(--white); font-weight:700; }
 
     .care-steps { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-bottom:5rem; }
     .care-step { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; }
@@ -736,8 +936,11 @@ const calAttrs = {
       .care-mobile-cta { font-size:14px; font-weight:600; color:var(--accent-on-dark); white-space:nowrap; }
       .care-grid-3 { grid-template-columns:1fr; }
       .care-steps { grid-template-columns:repeat(2,1fr); }
+      .care-stats { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width:680px) {
+      .care-stats, .care-scenarios { grid-template-columns:1fr; }
+      .care-notfit { padding:1.5rem; }
       .care-steps { grid-template-columns:1fr; }
       .care-testing { grid-template-columns:1fr; gap:1.5rem; }
       .care-compare-col { padding:1.5rem; }
@@ -798,11 +1001,17 @@ const calAttrs = {
       const baselineFull = { min: sum(areas.map((a) => a.baseline), 'min'), max: sum(areas.map((a) => a.baseline), 'max') };
       const baseline = { min: roundTo50(baselineFull.min * term.baselineFactor), max: roundTo50(baselineFull.max * term.baselineFactor) };
       const oneTime = { min: projects.reduce((s, p) => s + p.min, 0), max: projects.reduce((s, p) => s + p.max, 0) };
+      // Everything the client would pay across the whole term, for a like-for-like comparison.
+      const months = Number(term.id);
+      const total = {
+        min: monthly.min * months + baseline.min + oneTime.min,
+        max: monthly.max * months + baseline.max + oneTime.max
+      };
 
       const levelMeta = DATA.levels.find((l) => l.id === level)!;
       const includes = [...areas.flatMap((a) => a.includes[level]), ...levelMeta.includes];
 
-      return { areas, level: levelMeta, term, projects, monthly, hours, baseline, baselineFull, oneTime, includes };
+      return { areas, level: levelMeta, term, projects, monthly, hours, baseline, baselineFull, oneTime, total, includes };
     }
 
     function planName(state: ReturnType<typeof readState>) {
@@ -839,6 +1048,8 @@ const calAttrs = {
       else if (r.term.baselineFactor === 0) setText('careBaseline', `Included (was ${range(r.baselineFull.min, r.baselineFull.max)})`);
       else setText('careBaseline', range(r.baseline.min, r.baseline.max) + (r.term.baselineFactor < 1 ? ' (50% off)' : ''));
       setText('careProjects', r.projects.length ? range(r.oneTime.min, r.oneTime.max) : 'None');
+      setText('careTotalLabel', `Total over ${r.term.label}`);
+      setText('careTotal', hasAreas ? range(r.total.min, r.total.max) : '—');
       setText('careMobileVal', hasAreas ? `${range(r.monthly.min, r.monthly.max)}/mo` : 'Pick an area');
       $('areaError').hidden = hasAreas;
 
@@ -893,6 +1104,7 @@ const calAttrs = {
         `• Baseline audit: ${r.term.baselineFactor === 0 ? 'included' : range(r.baseline.min, r.baseline.max)}`,
       ];
       if (r.projects.length) lines.push(`• One-time: ${r.projects.map((p) => p.name).join(', ')} (${range(r.oneTime.min, r.oneTime.max)})`);
+      if (r.areas.length) lines.push(`• Total over ${r.term.label}: ${range(r.total.min, r.total.max)}`);
       if (notes) lines.push('', `Notes: ${notes}`);
       lines.push('', `Plan link: ${shareUrl(state)}`, '', 'Could we set up a review call?');
       return lines.join('\n');

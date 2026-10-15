@@ -71,3 +71,19 @@
 - Page scores Lighthouse 100 accessibility; it overrides the shared `.service-badge` colour, which fails 4.5:1 contrast site-wide (also on the speed-optimization page)
 
 ---
+
+## 2026-10-15 · Claude (Anthropic)
+
+### Changed — `services/performance-accessibility-retainer.astro`
+- Prices re-based on market research (freelancer guides, agency pricing, WebAIM/UsableNet data): accessibility Essentials $450–650, Growth $800–1,200, baseline $1,500–2,500; performance baseline $600–900; speed sprint $1,500–3,000 (2–3 weeks)
+- Performance area reframed as "speed & code governance"; "Speed only" preset renamed "Speed sprint + watch"
+- Added "Why it matters" stats (UsableNet, WebAIM Million 2026, CDC, Deloitte/Google, Vodafone), each linked to its source via the `SOURCES` object
+- Added "Your options" table: do nothing vs overlay vs one-off audit vs retainer
+- Added "Where to start" scenarios (demand letter, slow store, EU/EAA, weekly launches) that open the builder pre-filled, plus a "not the right fit if" list
+- Builder summary and WhatsApp/email message now show the total over the chosen term
+- FAQ: demand letters, European Accessibility Act, existing audits, why the accessibility baseline costs more; FTC/accessiBe order cited in "ADA, honestly"
+
+### Why
+- Give clients enough evidence and comparison to choose a plan without a call
+
+---
