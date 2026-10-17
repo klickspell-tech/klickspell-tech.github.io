@@ -136,10 +136,14 @@ const schemas = [articleSchema, breadcrumbSchema];
 const audioPath = fileURLToPath(new URL(`../../../public/audio/blog/${post.slug}.mp3`, import.meta.url));
 const hasAudio = existsSync(audioPath);
 const audioUrl = `/audio/blog/${post.slug}.mp3`;
+
+// Google truncates titles past ~60 chars, so only append the brand when it fits.
+const brandedTitle = `${post.data.title} | Klickspell`;
+const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
 ---
 
 <BaseLayout
-  title={`${post.data.title} | Klickspell Blog`}
+  title={pageTitle}
   description={post.data.description}
   canonical={canonical}
   ogImage={post.data.coverImage || "https://klickspell.com/assets/og-card.png"}

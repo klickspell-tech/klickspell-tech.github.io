@@ -42,10 +42,50 @@ let totalSchemas = 0;
 let errors = 0;
 let warnings = 0;
 const typeCounts = {};
+const canonicals = new Map();
+
+// Google ignores review stars a business publishes about itself on its own site.
+const SELF_SERVING_TYPES = ['Organization', 'LocalBusiness', 'ProfessionalService', 'Person'];
+
+const decodeEntities = (text) => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+// Walks the whole schema tree, so nested Review/AggregateRating objects get checked too.
+function auditReviews(node, relPath, parentType) {
+  if (Array.isArray(node)) return node.forEach((n) => auditReviews(n, relPath, parentType));
+  if (!node || typeof node !== 'object') return;
+  const type = node['@type'];
+  if ((type === 'Review' || type === 'AggregateRating') && parentType && node.itemReviewed) {
+    console.error('\x1b[31m%s\x1b[0m', `❌ ${relPath}: ${type} nested in ${parentType} must not have "itemReviewed" (Search Console directional conflict)`);
+    errors++;
+  }
+  if ((node.aggregateRating || node.review) && SELF_SERVING_TYPES.includes(type)) {
+    console.warn('\x1b[33m%s\x1b[0m', `⚠️ ${relPath}: ${type} has reviews/ratings about itself; not eligible for review stars`);
+    warnings++;
+  }
+  for (const [key, value] of Object.entries(node)) {
+    if (key !== '@context' && typeof value === 'object') auditReviews(value, relPath, type || parentType);
+  }
+}
 
 htmlFiles.forEach((file) => {
   const relPath = path.relative(distDir, file);
   const html = fs.readFileSync(file, 'utf-8');
+
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i);
+  if (canonical) canonicals.set(relPath, canonical[1]);
+
+  const title = html.match(/<title>([^<]*)<\/title>/i);
+  const titleText = title ? decodeEntities(title[1]) : '';
+  if (titleText.length > 65) {
+    console.warn('\x1b[33m%s\x1b[0m', `⚠️ ${relPath}: <title> is ${titleText.length} chars; Google truncates past ~60`);
+    warnings++;
+  }
+  const description = html.match(/<meta name="description" content="([^"]*)"/i);
+  const descriptionText = description ? decodeEntities(description[1]) : '';
+  if (descriptionText.length > 160) {
+    console.warn('\x1b[33m%s\x1b[0m', `⚠️ ${relPath}: meta description is ${descriptionText.length} chars (>160)`);
+    warnings++;
+  }
 
   // Match all JSON-LD scripts
   const matches = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
@@ -66,6 +106,7 @@ htmlFiles.forEach((file) => {
     }
 
     const schemasToValidate = Array.isArray(schema) ? schema : [schema];
+    auditReviews(schemasToValidate, relPath, null);
 
     schemasToValidate.forEach((s) => {
       const type = s['@type'] || 'Unknown';
@@ -128,6 +169,18 @@ htmlFiles.forEach((file) => {
     });
   });
 });
+
+// Every sitemap URL should be some page's canonical, or Google gets mixed signals
+// (e.g. sitemap says /work/x while the page claims /work/x.html).
+const sitemapPath = path.join(distDir, 'sitemap-0.xml');
+if (fs.existsSync(sitemapPath)) {
+  const canonicalSet = new Set(canonicals.values());
+  const sitemapUrls = [...fs.readFileSync(sitemapPath, 'utf-8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  sitemapUrls.filter((url) => !canonicalSet.has(url)).forEach((url) => {
+    console.error('\x1b[31m%s\x1b[0m', `❌ sitemap: ${url} is not the canonical URL of any page`);
+    errors++;
+  });
+}
 
 console.log('📊 Schema Type Breakdown:');
 Object.entries(typeCounts).forEach(([type, count]) => {

@@ -1,5 +1,5 @@
 ---
-title: "Setup Forever Free 24 GB RAM ARM-Based Cloud Server on Oracle (Free VPS Guide)"
+title: "Free Oracle Cloud ARM VPS: 4 Cores & 24 GB RAM Setup Guide"
 description: "How to set up a forever free cloud VPS with 4 OCPU cores, 24 GB RAM, and 200 GB SSD storage on Oracle Cloud Infrastructure Ampere ARM architecture."
 pubDate: 2026-08-19T00:00:00.000Z
 author: "Atul Bhatt"

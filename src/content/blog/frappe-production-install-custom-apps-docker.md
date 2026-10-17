@@ -1,6 +1,6 @@
 ---
-title: "Frappe: Production Install of Custom Apps with Docker (Easy Step-by-Step Guide)"
-description: "How to safely install and deploy custom Frappe and ERPNext applications in a multi-container Docker production environment using Docker Compose and Traefik/Nginx."
+title: "Frappe Production: Install Custom Apps with Docker (Guide)"
+description: "How to install and deploy custom Frappe and ERPNext apps in a multi-container Docker production setup using Docker Compose and Traefik or Nginx."
 pubDate: 2026-08-12T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Frappe", "ERPNext", "Docker", "Production", "DevOps", "Tutorial"]

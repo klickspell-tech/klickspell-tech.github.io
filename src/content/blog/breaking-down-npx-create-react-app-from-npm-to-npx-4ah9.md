@@ -26,7 +26,7 @@ We are going good😁 so far, now this article is not about npm but you might be
 
 Now let's break down what is the role of a package manager and a package runner.🤫
 
-# Node Package Manager
+## Node Package Manager
 
 > - **_npm_** is a `package manager` that helps💪 you in managing the `dependencies/packages` you as a developer want to have in your project. 
 > - It also helps you in managing🤏 whether you want to install those packages globally (for all the projects) or locally (for the current project).

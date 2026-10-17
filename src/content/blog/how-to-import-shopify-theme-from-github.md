@@ -1,6 +1,6 @@
 ---
 title: "How to Connect and Import a Shopify Theme from GitHub"
-description: "A complete step-by-step developer guide on connecting GitHub repositories to Shopify admin for automatic theme deployments, branch staging, and safe team collaboration."
+description: "Step-by-step guide to connecting a GitHub repository to your Shopify theme for automatic deployments, branch-based staging and team collaboration."
 pubDate: 2026-08-27T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Shopify", "GitHub", "DevOps", "Version Control", "Liquid", "Tutorial"]

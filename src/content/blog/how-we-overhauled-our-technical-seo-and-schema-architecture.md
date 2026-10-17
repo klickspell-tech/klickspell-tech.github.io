@@ -1,6 +1,6 @@
 ---
-title: "The Complete Technical SEO Overhaul: How We Engineered 162 Valid Schema Blocks, 99 PageSpeed, and AI-Ready Indexing"
-description: "A behind-the-scenes engineering breakdown of how we overhauled Klickspell's technical SEO: nested Schema.org entity graphs, 99 mobile PageSpeed optimization, canonical integrity, WCAG AA compliance, and llms.txt AI search readiness."
+title: "Our Technical SEO Overhaul: 162 Schema Blocks & 99 PageSpeed"
+description: "How we overhauled Klickspell's technical SEO: nested Schema.org entity graphs, a 99 mobile PageSpeed score, canonical integrity, WCAG AA and llms.txt."
 pubDate: 2026-09-06T22:45:00.000Z
 author: "Atul Bhatt"
 tags: ["Web Performance", "Core Web Vitals", "SEO", "Astro", "PageSpeed"]

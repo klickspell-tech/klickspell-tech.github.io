@@ -1,6 +1,6 @@
 ---
-title: "How to Choose and Purchase a Shopify Store Plan: A Step-by-Step Guide"
-description: "A clear, transparent breakdown of Shopify pricing plans (Basic vs Shopify vs Advanced), annual discount savings, transaction fees, and how to purchase your plan step-by-step."
+title: "How to Choose and Buy the Right Shopify Plan (Step-by-Step)"
+description: "Shopify plans compared (Basic vs Shopify vs Advanced): annual savings, transaction fees, and how to buy, upgrade or downgrade your plan."
 pubDate: 2026-08-31T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Shopify", "E-Commerce", "Store Setup", "Billing", "Tutorial"]

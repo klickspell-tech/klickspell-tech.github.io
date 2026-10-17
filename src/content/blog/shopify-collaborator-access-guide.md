@@ -1,6 +1,6 @@
 ---
-title: "Shopify Collaborator Access Explained: Requesting & Giving Access Easily"
-description: "A complete security and operational guide for merchants and agencies on using Shopify Collaborator accounts, collaborator codes, and granular permission scoping."
+title: "Shopify Collaborator Access: How to Request & Give Access"
+description: "How to request and give Shopify collaborator access, use collaborator request codes and scope permissions safely, for merchants and agencies."
 pubDate: 2026-08-29T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Shopify", "Security", "Agencies", "Store Management", "Tutorial"]
