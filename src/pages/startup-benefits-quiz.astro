@@ -1,0 +1,583 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+
+const canonical = "https://klickspell.com/startup-benefits-quiz";
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Startup Benefits & Credits Eligibility Checker",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "An interactive 5-question tool that determines which free cloud credits, DPIIT startup recognitions, MSME legal protections, and state subsidies your Indian company is eligible for.",
+  "url": canonical,
+  "provider": {
+    "@type": "Organization",
+    "name": "Klickspell",
+    "url": "https://klickspell.com/"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://klickspell.com/startup-benefits-quiz" },
+    { "@type": "ListItem", "position": 3, "name": "Startup Benefits Checker", "item": canonical }
+  ]
+};
+
+const schemas = [webAppSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title="Startup Benefits & Credits Eligibility Checker | Klickspell"
+  description="Answer 5 quick questions about your company entity, age, and stack to get a customized roadmap of free cloud credits, DPIIT perks, and MSME benefits."
+  canonical={canonical}
+  ogImage="https://klickspell.com/assets/og-card.png"
+  schema={schemas}
+>
+  <Nav />
+
+  <main id="main-content">
+    <header class="service-page-hero" style="padding-bottom: 1.5rem;">
+      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / Tools / Startup Benefits Checker</p>
+
+      <div class="service-badge reveal">
+        <span class="service-badge-dot"></span>
+        2-Minute Eligibility Check · Instant Roadmap
+      </div>
+
+      <h1 class="service-hero-title reveal reveal-delay-1">
+        Which startup benefits &amp; credits<br>
+        <em>is your team actually eligible for?</em>
+      </h1>
+
+      <p class="service-hero-sub reveal reveal-delay-2" style="max-width: 720px;">
+        Between Microsoft Founders Hub, AWS Activate, DPIIT recognition, MSME delayed-payment protections, and state grants, Indian founders can unlock lakhs in runway. Answer 5 questions about your entity, business model, and location to see your personalized eligibility breakdown and exact application sequence.
+      </p>
+    </header>
+
+    <div class="section" style="padding-top: 1rem; padding-bottom: 5rem;">
+      <div class="quote-layout reveal">
+
+        <!-- LEFT: QUESTIONS -->
+        <div class="quote-main-col">
+          <form id="startupQuizForm" novalidate>
+
+            <!-- Q1: Entity Type -->
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q1</span>
+                  <span>Legal Structure</span>
+                </div>
+                <h2 class="quote-card-title">How is your business registered in India?</h2>
+                <p class="quote-card-sub">Different schemes enforce strict entity requirements under the Companies Act and MSMED Act.</p>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Legal structure">
+                <label class="quote-pill-label">
+                  <input type="radio" name="entity" value="pvt_ltd" checked />
+                  <span class="quote-pill-ui">🏢 Private Limited Company (Pvt Ltd)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="entity" value="llp" />
+                  <span class="quote-pill-ui">🤝 Limited Liability Partnership (LLP)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="entity" value="proprietorship" />
+                  <span class="quote-pill-ui">👤 Sole Proprietorship / Partnership</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="entity" value="unregistered" />
+                  <span class="quote-pill-ui">🌱 Not registered yet (Idea / Prototype)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q2: Age of Business -->
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q2</span>
+                  <span>Company Age</span>
+                </div>
+                <h2 class="quote-card-title">How long has the entity been incorporated?</h2>
+                <p class="quote-card-sub">DPIIT benefits and seed grants have strict age ceilings.</p>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Company age">
+                <label class="quote-pill-label">
+                  <input type="radio" name="age" value="under_2" checked />
+                  <span class="quote-pill-ui">⚡ Less than 2 years</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="age" value="two_to_five" />
+                  <span class="quote-pill-ui">🌱 2 to 5 years</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="age" value="five_to_ten" />
+                  <span class="quote-pill-ui">📈 5 to 10 years</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="age" value="ten_plus" />
+                  <span class="quote-pill-ui">🏛️ 10+ years</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q3: Nature of Business -->
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q3</span>
+                  <span>Core Business</span>
+                </div>
+                <h2 class="quote-card-title">What is your primary offering?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Core business">
+                <label class="quote-pill-label">
+                  <input type="radio" name="business" value="tech_agency" checked />
+                  <span class="quote-pill-ui">💻 Web Agency / Dev Studio / IT Services</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="business" value="saas_product" />
+                  <span class="quote-pill-ui">🚀 SaaS Product / AI Application</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="business" value="ecommerce_d2c" />
+                  <span class="quote-pill-ui">🛍️ E-Commerce / D2C Brand</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="business" value="consulting" />
+                  <span class="quote-pill-ui">📑 Consulting / Freelance Work</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q4: Funding Stage -->
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q4</span>
+                  <span>Funding &amp; Runway</span>
+                </div>
+                <h2 class="quote-card-title">What is your current funding stage?</h2>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="Funding stage">
+                <label class="quote-pill-label">
+                  <input type="radio" name="funding" value="bootstrapped" checked />
+                  <span class="quote-pill-ui">🛡️ Bootstrapped / Self-Funded</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="funding" value="incubated" />
+                  <span class="quote-pill-ui">🎓 Incubated / Government Grant / Angel</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="funding" value="vc_funded" />
+                  <span class="quote-pill-ui">💼 VC-Funded (Seed / Series A)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q5: State -->
+            <div class="quote-card">
+              <div class="quote-card-header">
+                <div class="quote-card-eyebrow">
+                  <span class="step-tag">Q5</span>
+                  <span>Operating Base</span>
+                </div>
+                <h2 class="quote-card-title">Where is your registered office or main operation?</h2>
+                <p class="quote-card-sub">State startup policies offer additional local sustenance allowances and patent grants.</p>
+              </div>
+              <div class="quote-pill-options" role="radiogroup" aria-label="State location">
+                <label class="quote-pill-label">
+                  <input type="radio" name="state" value="uttar_pradesh" />
+                  <span class="quote-pill-ui">📍 Uttar Pradesh (StartInUP)</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="state" value="uttarakhand" />
+                  <span class="quote-pill-ui">📍 Uttarakhand</span>
+                </label>
+                <label class="quote-pill-label">
+                  <input type="radio" name="state" value="other_state" checked />
+                  <span class="quote-pill-ui">📍 Other Indian State / UT</span>
+                </label>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: LIVE RESULTS SIDEBAR -->
+        <div class="quote-sidebar-col">
+          <div class="estimator-results-card">
+            <span class="estimator-results-badge">Custom Eligibility Breakdown</span>
+            <h2 class="estimator-results-title" id="checkerResultTitle">Calculating…</h2>
+            <p class="estimator-results-sub" id="checkerResultSub">Answer the questions on the left to see your eligibility update live.</p>
+
+            <div class="sb-value-highlight" id="checkerValueBox">
+              <span class="sb-value-label">Estimated Value Unlocked:</span>
+              <span class="sb-value-amount" id="checkerValueAmount">₹4,50,000 – ₹12,00,000+</span>
+            </div>
+
+            <div class="sb-section-label">Your Immediate Eligibility Status</div>
+            <div class="sb-status-list" id="checkerStatusList"></div>
+
+            <div class="sb-section-label" style="margin-top: 1rem;">Recommended 3-Step Sequence</div>
+            <div class="estimator-penalty-box" id="checkerActionRoadmap"></div>
+
+            <a href="/blog/startup-benefits-free-credits-india-guide" class="btn-ghost" style="margin-bottom: .75rem; margin-top: 1rem;">
+              Read the Complete Deep Dive →
+            </a>
+
+            <a
+              href="https://cal.com/atul-bhatt-klickspell/30min"
+              data-cal-link="atul-bhatt-klickspell/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
+              class="btn-primary"
+              style="cursor:pointer"
+            >
+              Book Free 30-Min Tech Call →
+            </a>
+            <a
+              href="https://wa.me/919259598769"
+              target="_blank"
+              rel="noopener"
+              class="btn-ghost"
+              style="display:inline-flex; align-items:center; justify-content:center; gap:8px;"
+            >
+              <WhatsAppIcon size={17} fill="#25D366" />
+              <span>Discuss Setup on WhatsApp</span>
+            </a>
+
+            <p style="font-size:11.5px; color:rgba(255,255,255,0.5); text-align:center; margin-top:1.25rem; line-height:1.5;">
+              Verified against current guidelines for DPIIT, Ministry of MSME, Microsoft Founders Hub, and AWS Activate (October 2026).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <style is:global>
+    .sb-value-highlight {
+      background: rgba(58,91,224,0.15);
+      border: 1px solid rgba(58,91,224,0.3);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin: 1rem 0 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sb-value-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    .sb-value-amount {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #7B98FF;
+      letter-spacing: -0.01em;
+    }
+    .sb-section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .sb-status-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .sb-status-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid transparent;
+    }
+    .sb-status-row.eligible {
+      border-left-color: #4ADE80;
+      background: rgba(74,222,128,0.07);
+    }
+    .sb-status-row.conditional {
+      border-left-color: #F7B955;
+      background: rgba(247,185,85,0.07);
+    }
+    .sb-status-row.ineligible {
+      border-left-color: rgba(255,255,255,0.25);
+    }
+    .sb-row-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+    .sb-row-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .sb-badge {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .sb-badge.eligible { background: rgba(74,222,128,0.22); color: #4ADE80; }
+    .sb-badge.conditional { background: rgba(247,185,85,0.22); color: #F7B955; }
+    .sb-badge.ineligible { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+    .sb-row-desc {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.45;
+    }
+    .roadmap-step-list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById('startupQuizForm');
+      const titleEl = document.getElementById('checkerResultTitle');
+      const subEl = document.getElementById('checkerResultSub');
+      const valueAmountEl = document.getElementById('checkerValueAmount');
+      const statusListEl = document.getElementById('checkerStatusList');
+      const roadmapEl = document.getElementById('checkerActionRoadmap');
+
+      function getValues() {
+        const data = {};
+        ['entity', 'age', 'business', 'funding', 'state'].forEach((name) => {
+          const checked = form.querySelector(`input[name="${name}"]:checked`);
+          data[name] = checked ? checked.value : null;
+        });
+        return data;
+      }
+
+      function evaluate() {
+        const v = getValues();
+        const items = [];
+        let minVal = 0;
+        let maxVal = 0;
+
+        // 1. MSME / Udyam Registration
+        if (v.entity === 'unregistered') {
+          items.push({
+            title: "MSME / Udyam Registration",
+            status: "conditional",
+            badge: "Register First",
+            desc: "Once you register your entity (even as a sole proprietor), Udyam is free and takes 10 mins. Gives instant 45-day payment protection."
+          });
+        } else {
+          items.push({
+            title: "MSME / Udyam Registration",
+            status: "eligible",
+            badge: "100% Eligible (Day 1)",
+            desc: "Zero cost. Unlocks the MSMED Act 45-day payment rule & Section 43B(h) deduction block against late-paying clients, plus 50% trademark fee concession."
+          });
+          minVal += 150000;
+          maxVal += 400000;
+        }
+
+        // 2. DPIIT Startup India Recognition
+        const isDpiitEntity = v.entity === 'pvt_ltd' || v.entity === 'llp';
+        const isDpiitAge = v.age !== 'ten_plus';
+        if (isDpiitEntity && isDpiitAge) {
+          items.push({
+            title: "DPIIT Startup India Recognition",
+            status: "eligible",
+            badge: "Eligible (Free)",
+            desc: "80% patent rebate, 50% trademark rebate, 5-yr labour law self-certification, and public procurement exemptions on the GeM portal."
+          });
+          minVal += 80000;
+          maxVal += 300000;
+        } else if (!isDpiitEntity) {
+          items.push({
+            title: "DPIIT Startup India Recognition",
+            status: "ineligible",
+            badge: "Entity Ineligible",
+            desc: "DPIIT requires a registered Private Limited Company or LLP. Sole proprietorships and partnerships cannot obtain DPIIT recognition."
+          });
+        } else {
+          items.push({
+            title: "DPIIT Startup India Recognition",
+            status: "ineligible",
+            badge: "Age Limit Exceeded",
+            desc: "DPIIT startup status is limited to companies incorporated within the last 10 years."
+          });
+        }
+
+        // 3. Microsoft for Startups Founders Hub
+        items.push({
+          title: "Microsoft for Startups Founders Hub",
+          status: "eligible",
+          badge: "Open / No VC Needed",
+          desc: "Start with $1,000 Azure credits (scaling to $150k), 20 free GitHub Enterprise seats for 1 year, Microsoft 365, and Azure OpenAI access."
+        });
+        minVal += 180000; // ~$2k in Azure + GitHub
+        maxVal += 500000;
+
+        // 4. AWS Activate
+        if (v.funding === 'bootstrapped') {
+          items.push({
+            title: "AWS Activate (Founders Tier)",
+            status: "eligible",
+            badge: "Eligible ($1k USD)",
+            desc: "$1,000 promotional credits + $350 Developer Support. (Tip: Join Razorpay Rize to upgrade to the $5,000 Portfolio tier without a VC)."
+          });
+          minVal += 85000;
+          maxVal += 400000;
+        } else {
+          items.push({
+            title: "AWS Activate (Portfolio Tier)",
+            status: "eligible",
+            badge: "High Credits Tier",
+            desc: "$5,000 to $25,000+ in AWS promotional credits via your incubator or partner network."
+          });
+          minVal += 400000;
+          maxVal += 1500000;
+        }
+
+        // 5. Oracle Always Free & Google Cloud
+        items.push({
+          title: "Oracle Cloud Always Free VPS",
+          status: "eligible",
+          badge: "Forever Free",
+          desc: "2 ARM Ampere OCPUs, 12 GB RAM, 200 GB storage, and 10 TB monthly bandwidth. Zero charges forever."
+        });
+        minVal += 35000;
+        maxVal += 75000;
+
+        // 6. State Startup Incentives
+        if (v.state === 'uttar_pradesh') {
+          items.push({
+            title: "StartInUP (Uttar Pradesh Startup Policy)",
+            status: "eligible",
+            badge: "State Grant",
+            desc: "₹20,000/month sustenance allowance for up to 2 years for early idea/prototype startups, plus up to ₹5 Lakhs marketing support."
+          });
+          minVal += 240000;
+          maxVal += 480000;
+        } else if (v.state === 'uttarakhand') {
+          items.push({
+            title: "Uttarakhand Startup Policy",
+            status: "eligible",
+            badge: "State Grant",
+            desc: "Incubation support, prototype development grants, and marketing reimbursements through the Directorate of Industries."
+          });
+          minVal += 100000;
+          maxVal += 300000;
+        }
+
+        // 7. Startup India Seed Fund (SISFS)
+        if (isDpiitEntity && v.age === 'under_2' && (v.business === 'saas_product' || v.business === 'tech_agency')) {
+          items.push({
+            title: "Startup India Seed Fund Scheme (SISFS)",
+            status: "conditional",
+            badge: "Apply via Incubator",
+            desc: "Startups under 2 years can apply through empanelled incubators for up to ₹20 Lakhs grant or ₹50 Lakhs convertible debt."
+          });
+        }
+
+        // 8. Section 80-IAC Tax Exemption (Realist Note)
+        if (isDpiitEntity && isDpiitAge) {
+          items.push({
+            title: "Section 80-IAC 3-Year Tax Holiday",
+            status: "conditional",
+            badge: "Requires IMB Clearance",
+            desc: "Honest reality: requires separate Inter-Ministerial Board clearance (<2% approval rate). Hard for services/agencies; build runway around cloud perks instead."
+          });
+        }
+
+        // Render Status Rows
+        statusListEl.innerHTML = items.map((it) => `
+          <div class="sb-status-row ${it.status}">
+            <div class="sb-row-header">
+              <span class="sb-row-title">${it.title}</span>
+              <span class="sb-badge ${it.status}">${it.badge}</span>
+            </div>
+            <div class="sb-row-desc">${it.desc}</div>
+          </div>
+        `).join('');
+
+        // Format Currency
+        function formatINR(amt) {
+          return '₹' + (amt / 100000).toFixed(1) + ' Lakhs';
+        }
+        valueAmountEl.textContent = `${formatINR(minVal)} – ${formatINR(maxVal)}+`;
+
+        // Title and roadmap
+        if (v.entity === 'pvt_ltd' || v.entity === 'llp') {
+          titleEl.textContent = "High Eligibility: Prime Candidate";
+          subEl.textContent = "Your entity structure allows full access to Central Government DPIIT benefits, MSME legal protections, and all cloud credit tiers.";
+          roadmapEl.innerHTML = `
+            <strong>🎯 Your Recommended Action Sequence:</strong>
+            <ol class="roadmap-step-list">
+              <li><strong>Day 1:</strong> Complete zero-cost Udyam registration (<a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener" style="color:#7B98FF;">udyamregistration.gov.in</a>) to lock in 45-day invoice payment protection.</li>
+              <li><strong>Week 1:</strong> Submit DPIIT recognition via NSWS (<a href="https://www.nsws.gov.in/" target="_blank" rel="noopener" style="color:#7B98FF;">nsws.gov.in</a>) for 50% trademark and 80% patent fee discounts.</li>
+              <li><strong>Week 2:</strong> Apply to <a href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener" style="color:#7B98FF;">Microsoft Founders Hub</a> for Azure credits and 20 free GitHub Enterprise seats.</li>
+              <li><strong>Week 3:</strong> Join <a href="https://razorpay.com/rize/" target="_blank" rel="noopener" style="color:#7B98FF;">Razorpay Rize</a> to unlock AWS Activate Portfolio partner codes ($5k–$10k) without giving away equity.</li>
+            </ol>
+          `;
+        } else if (v.entity === 'proprietorship') {
+          titleEl.textContent = "Strong MSME & Cloud Eligibility";
+          subEl.textContent = "While DPIIT requires Pvt Ltd / LLP incorporation, you can immediately leverage MSME invoice payment protections and full cloud developer perks.";
+          roadmapEl.innerHTML = `
+            <strong>🎯 Your Recommended Action Sequence:</strong>
+            <ol class="roadmap-step-list">
+              <li><strong>Today:</strong> Register for Udyam under MSME (<a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener" style="color:#7B98FF;">udyamregistration.gov.in</a>) with your Aadhaar and PAN. Print your number on all client invoices.</li>
+              <li><strong>This Week:</strong> Apply for <a href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener" style="color:#7B98FF;">Microsoft Founders Hub</a> using your domain email to secure 20 GitHub Enterprise seats and Azure credits.</li>
+              <li><strong>Next:</strong> Deploy internal scripts and staging sites on <a href="/blog/setup-free-oracle-cloud-24gb-ram-vps" style="color:#7B98FF;">Oracle Always Free ARM VPS</a> to eliminate hosting overhead.</li>
+              <li><strong>Future:</strong> If you plan to patent technology or pitch for central government tenders, consider incorporating as a Private Limited Company.</li>
+            </ol>
+          `;
+        } else {
+          titleEl.textContent = "Pre-Incorporation Builder Track";
+          subEl.textContent = "Even before incorporation, you can start building with zero-dollar infrastructure tools.";
+          roadmapEl.innerHTML = `
+            <strong>🎯 Your Recommended Action Sequence:</strong>
+            <ol class="roadmap-step-list">
+              <li><strong>Start Building:</strong> Provision an <a href="/blog/setup-free-oracle-cloud-24gb-ram-vps" style="color:#7B98FF;">Oracle Cloud Always Free ARM VPS</a> (2 OCPUs, 12GB RAM) for free staging and prototypes.</li>
+              <li><strong>Set Up Domain:</strong> Buy your domain, set up Google Workspace or Microsoft 365, and launch a simple landing page.</li>
+              <li><strong>Incorporate:</strong> Register as a Pvt Ltd or LLP to unlock DPIIT, MSME 45-day payment shields, and larger cloud grants.</li>
+            </ol>
+          `;
+        }
+      }
+
+      form.addEventListener('change', evaluate);
+      evaluate();
+    })();
+  </script>
+</BaseLayout>
+

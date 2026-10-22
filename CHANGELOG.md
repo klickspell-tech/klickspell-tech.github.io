@@ -173,3 +173,32 @@
 - `src/pages/index.astro`: removed the 3-item `review` array from the ProfessionalService schema to fix Search Console "Multiple reviews without aggregateRating". Self-serving reviews on a business's own site are not eligible for review rich results, so no aggregateRating was added; visible testimonials unchanged
 - `work/noukai-tokyo.astro`: checked against the Noukai repo (git history + code). Phase 1 (14 Dec 2025 – 17 Jan 2026) confirmed; Phase 2 corrected to 13 Jun – 24 Aug 2026 (was Jul – 12 Aug); hiatus "late Jan – mid-Jun". Stack fixes: Vite 5 → 6, Hydrogen 2025.7, React 18; removed "React Server Components" (not used); Cloudinary "f_auto,q_auto:best / adaptive bitrate" → separate desktop/mobile 4K files (no transformations in code); lead-capture route `_index.tsx` → `coming-soon.tsx`; Admin API 2024-04 kept, Storefront version dropped; "monorepo" → "codebase" (no workspaces). Confirmed as-is: model-viewer SSR externalization, -30°→330° orbit, ENTER_EXIT_FRACTION 0.22, CSP nonces, Oxygen GitHub Actions deploy
 - `work/klickspell-online.astro`: "230+ dishes" (one café's menu, Café Aananda = 233) → "2,000+ menu items across 64 venues" (2,015 MenuItem entries in live JSON-LD, cross-checked against the database). Ranking claims removed: live India SERP (22 Oct 2026) shows klickspell.online outside the top ~27 for "best smoothie bowl in Tapovan", "ceremonial cacao Rishikesh" and "pet friendly cafes in Rishikesh"; section reframed as target searches, with an honest "still early" note. "Mutual PageRank distribution" → "cross-links"
+
+---
+
+## 2026-10-23 · Antigravity
+
+### Added
+- `src/content/blog/startup-benefits-free-credits-india-guide.md`: Comprehensive, grounded guide on free cloud credits (Microsoft Founders Hub, AWS Activate, Google for Startups, Oracle Always Free), DPIIT Startup India benefits and tax exemption reality, MSME Udyam registration protections (MSMED Act 45-day payment rule & Section 43B(h)), Razorpay Rize perks, essential SaaS startup discounts, and state startup policies (UP & Uttarakhand). Written in Atul's personal first-person voice with interactive tooltips, complete glossary definitions, and zero AI cliches.
+- Every claim, program figure, and statutory rule is cited with inline official links (checked Oct 2026), plus a dedicated "Sources & Official Portals" index before the glossary.
+
+### Why
+- Authored a detailed, practical guide outlining all the free credits, grants, legal protections, and startup programs that a bootstrapped tech company in India (like Klickspell) can avail without VC backing, fully backed by verified official sources.
+
+---
+
+## 2026-10-23 · Claude
+
+### Changed
+- Brand logo: text wordmark in `Nav.astro` and `Footer.astro` replaced with the new icon + wordmark WebP (`public/assets/klickspell-logo.webp`, transparent, 564×128). Nav shows it at 34px tall; footer uses `klickspell-logo-dark.webp` (30px), a copy with the black "Klick" recoloured white and the blue icon/"spell" left as-is
+
+---
+
+## 2026-10-23 · Antigravity
+
+### Added
+- `src/pages/startup-benefits-quiz.astro` (`/startup-benefits-quiz`): Interactive 5-question tool that determines which free cloud credits, DPIIT startup recognition perks, MSME legal protections (MSMED Act 45-day payment rule & Section 43B(h)), and state grants an Indian company is eligible for. Features live real-time scorecards, estimated rupee values unlocked, and a customized 3-step action sequence.
+- `src/content/blog/startup-benefits-free-credits-india-guide.md`: Integrated an inline interactive quick-checker component and jump banner linking directly to the full eligibility tool.
+
+### Why
+- Enable readers to interactively test their specific company structure, age, and location to immediately see their exact eligibility and avoid application guesswork.
