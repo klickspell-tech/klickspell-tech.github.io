@@ -77,7 +77,7 @@ const schema = [
         <div class="stat"><p class="stat-num">60<span> FPS</span></p><p class="stat-label">Scroll-linked 3D WebGL bottle rotation</p></div>
         <div class="stat"><p class="stat-num">Hydrogen</p><p class="stat-label">Shopify headless stack &amp; Storefront API</p></div>
         <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Edge-rendered SSR on Shopify Oxygen</p></div>
-        <div class="stat"><p class="stat-num">2<span> Phases</span></p><p class="stat-label">Strategic delivery lifecycle (Dec '25 &amp; Aug '26)</p></div>
+        <div class="stat"><p class="stat-num">2<span> Phases</span></p><p class="stat-label">Strategic delivery lifecycle (Dec '25 – Jan '26 &amp; Jun – Aug '26)</p></div>
       </div>
     </div>
 
@@ -103,15 +103,15 @@ const schema = [
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Phase 1 · Dec 14, 2025 – Jan 17, 2026</div>
           <h3>Headless Architecture &amp; Oxygen Edge Foundation</h3>
-          <p>Architected the core Shopify Hydrogen 2025 monorepo with Vite, TypeScript, and Tailwind CSS v4. Engineered custom Oxygen edge CI/CD deployment pipelines, resolved Cloudflare Worker Rollup polyfills, integrated GraphQL Storefront API schemas, and crafted the optimistic slide-over cart drawer and glassmorphic UI system.</p>
+          <p>Architected the core Shopify Hydrogen 2025 codebase with Vite, TypeScript, and Tailwind CSS v4. Engineered custom Oxygen edge CI/CD deployment pipelines, resolved Cloudflare Worker Rollup polyfills, integrated GraphQL Storefront API schemas, and crafted the optimistic slide-over cart drawer and glassmorphic UI system.</p>
         </div>
         <div class="cs-feature">
-          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Strategic Hiatus · Feb 2026 – Jun 2026</div>
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Strategic Hiatus · Late Jan – mid-Jun 2026</div>
           <h3>3D CAD Synthesis &amp; Cinematic Production</h3>
           <p>With a bulletproof headless foundation locked in, the industrial design and branding teams produced photorealistic 3D product CAD/Blender models (<code>serum22.blend</code>), captured 4K cinematic macro video footage of formulation droplets, iterated on physical bottle glass finishes, and perfected bilingual Japanese brand narratives.</p>
         </div>
         <div class="cs-feature">
-          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Phase 2 · Jul 2026 – Aug 12, 2026</div>
+          <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Phase 2 · Jun 13 – Aug 24, 2026</div>
           <h3>Interactive 3D WebGL &amp; Pre-Launch Scale</h3>
           <p>Integrated <code>@google/model-viewer</code> with GSAP ScrollTrigger for 360° scroll-linked camera orbits. Deployed 4K Cloudinary video streaming with zero-layout-shift poster preloading, configured strict cryptographic CSP nonces, and automated edge-native pre-launch lead capture using the Shopify Admin API.</p>
         </div>
@@ -138,7 +138,7 @@ const schema = [
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Framework &amp; Routing</div>
           <h3>Shopify Hydrogen 2025 &amp; Remix / RR7</h3>
-          <p>React Router v7 / Remix streaming architecture with progressive hydration, React Server Components, and zero-runtime CSS via Tailwind CSS v4.</p>
+          <p>React Router v7 streaming SSR with progressive hydration, and zero-runtime CSS via Tailwind CSS v4.</p>
         </div>
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Interactive 3D &amp; Motion</div>
@@ -148,7 +148,7 @@ const schema = [
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Media &amp; Commerce APIs</div>
           <h3>Cloudinary 4K Media &amp; Shopify APIs</h3>
-          <p>Adaptive bitrate 4K video delivery via Cloudinary paired with Shopify Storefront GraphQL queries and Shopify Admin API customer creation webhooks.</p>
+          <p>4K video hosted on Cloudinary (separate desktop and mobile cuts) paired with Shopify Storefront GraphQL queries and Shopify Admin API customer creation webhooks.</p>
         </div>
       </div>
     </div>
@@ -168,11 +168,11 @@ const schema = [
         </div>
         <div class="cs-feature">
           <h3>🎥 Fluid 4K Cinematic Video Streaming</h3>
-          <p>Served macro serum video footage through Cloudinary with automated format and quality negotiation (<code>f_auto,q_auto:best</code>). Built an instant high-resolution poster preload strategy with a CSS crossfade transition, eliminating layout jumps while the video stream initializes.</p>
+          <p>Served macro serum video footage from Cloudinary, with separate desktop and mobile files so phones don't download the full desktop cut. Built an instant high-resolution poster preload strategy with a CSS crossfade transition, eliminating layout jumps while the video stream initializes.</p>
         </div>
         <div class="cs-feature">
           <h3>📬 Pre-Launch Lead Engine via Admin API</h3>
-          <p>Engineered an edge-rendered coming-soon portal (<code>app/routes/_index.tsx</code>) communicating directly with the <strong>Shopify Admin API</strong> (<code>/admin/api/2024-04/customers.json</code>). Automatically captures pre-launch leads with <code>accepts_marketing: true</code>, customer segmentation tags (<em>Newsletter, Coming Soon</em>), and graceful duplicate handling.</p>
+          <p>Engineered an edge-rendered coming-soon portal (<code>app/routes/coming-soon.tsx</code>) communicating directly with the <strong>Shopify Admin API</strong> (<code>/admin/api/2024-04/customers.json</code>). Automatically captures pre-launch leads with <code>accepts_marketing: true</code>, customer segmentation tags (<em>Newsletter, Coming Soon</em>), and graceful duplicate handling.</p>
         </div>
         <div class="cs-feature">
           <h3>🛒 Optimistic Cart Drawer &amp; State Sync</h3>
@@ -226,7 +226,7 @@ const schema = [
           <tbody>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Headless Framework</td>
-              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Hydrogen (2025 Release), Remix / React Router v7, React Server Components</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Hydrogen 2025.7, React Router v7, React 18</td>
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Deployment &amp; Edge Runtime</td>
@@ -234,7 +234,7 @@ const schema = [
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Build Tooling &amp; Bundler</td>
-              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Vite 5, TypeScript 5, Rollup Process Polyfills &amp; Custom SSR noExternal Rules</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Vite 6, TypeScript 5, Rollup Process Polyfills &amp; Custom SSR noExternal Rules</td>
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Styling &amp; Design System</td>
@@ -246,11 +246,11 @@ const schema = [
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Media &amp; CDN Streaming</td>
-              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Cloudinary 4K Adaptive Video Delivery (<code>q_auto:best, f_auto</code>), Zero-CLS Poster Preload</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Cloudinary-hosted 4K video (desktop and mobile cuts), Zero-CLS Poster Preload</td>
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">E-Commerce APIs &amp; Webhooks</td>
-              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Storefront GraphQL API (2024-04), Shopify Admin REST API (Customer Lead Capture)</td>
+              <td style="padding:1rem 1.25rem; color:var(--text-mid);">Shopify Storefront GraphQL API, Shopify Admin REST API 2024-04 (Customer Lead Capture)</td>
             </tr>
             <tr style="border-bottom:.5px solid var(--border);">
               <td style="padding:1rem 1.25rem; font-weight:600; color:var(--text);">Typography</td>
