@@ -170,3 +170,4 @@
 - `partners/look-beyond.astro`: removed the "1,900+ products" figure (unconfirmed), per Atul
 - `work/pragya-vijh.astro`: added "First six months live" results from the Medusa order export (17 Apr–22 Oct 2026, test orders ≤₹10 excluded): 273 paid orders, ₹1,082 AOV, 15% repeat customers; revenue deliberately not published
 - `src/pages/speed.astro`: PageSpeed API calls now use a dedicated, domain-restricted browser API key (own 25k/day quota) instead of the shared anonymous quota
+- `src/pages/index.astro`: removed the 3-item `review` array from the ProfessionalService schema to fix Search Console "Multiple reviews without aggregateRating". Self-serving reviews on a business's own site are not eligible for review rich results, so no aggregateRating was added; visible testimonials unchanged
