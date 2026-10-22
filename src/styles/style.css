@@ -706,6 +706,30 @@ footer { background:var(--text); padding:3rem 2rem; }
 .prose tbody tr:hover td { background:rgba(58,91,224,0.035); }
 .prose td strong { color:var(--text); }
 
+/* Jargon terms: <a class="term" href="#g-slug" data-tip="Short definition">Term</a>.
+   Hover/focus shows the short definition; a click or tap (touch devices have
+   no hover) jumps to the full entry in the post's <dl class="glossary">. */
+.prose a.term { color:inherit; text-decoration:underline dotted; text-decoration-color:var(--accent); text-decoration-thickness:1.5px; text-underline-offset:4px; cursor:help; position:relative; }
+.prose a.term:hover { color:var(--text); }
+@media (hover:hover) {
+  .prose a.term::after {
+    content:attr(data-tip); position:absolute; left:50%; bottom:calc(100% + 10px); z-index:20;
+    transform:translateX(-50%) translateY(4px); width:max-content; max-width:min(300px, 80vw);
+    padding:.7rem .9rem; border-radius:8px; background:var(--text); color:var(--bg);
+    font-family:'Manrope',sans-serif; font-size:13px; font-weight:500; font-style:normal; line-height:1.5;
+    letter-spacing:0; text-transform:none; text-align:left; white-space:normal;
+    box-shadow:0 8px 24px rgba(0,0,0,0.18); opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .15s, transform .15s, visibility .15s;
+  }
+  .prose a.term:hover::after, .prose a.term:focus-visible::after { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+}
+.prose .glossary { margin:2rem 0; border:.5px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+.prose .glossary dt { scroll-margin-top:100px; padding:1rem 1.25rem .25rem; font-weight:700; color:var(--text); border-top:.5px solid var(--border); }
+.prose .glossary dt:first-child { border-top:none; }
+.prose .glossary dt:target { background:var(--accent-light); }
+.prose .glossary dt:target + dd { background:var(--accent-light); }
+.prose .glossary dd { margin:0; padding:0 1.25rem 1rem; font-size:15px; line-height:1.7; }
+
 @media (max-width:768px) {
   /* Each table row becomes a labeled card instead of a table a reader has
      to swipe sideways through - horizontal scroll made content technically
@@ -1384,6 +1408,25 @@ footer { background:var(--text); padding:3rem 2rem; }
   color: #9B1C1C;
   font-size: 13.5px;
   margin-top: 1rem;
+}
+.scanner-error-info { flex: 1; min-width: 0; }
+.scanner-error-title { font-weight: 600; }
+.scanner-error-reason { margin-top: .25rem; overflow-wrap: anywhere; }
+.scanner-retry-btn {
+  flex-shrink: 0;
+  padding: .5rem 1rem;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s var(--ease);
+}
+.scanner-retry-btn:hover { background: rgba(155,28,28,0.08); }
+@media (max-width: 768px) {
+  .scanner-error-box { flex-direction: column; align-items: flex-start; }
 }
 
 /* RESULTS CARD */

@@ -1,13 +1,13 @@
 # Klickspell — Web Engineering & Digital Products Studio
 
-> The craft in every click. Independent web engineering studio specializing in high-performance Shopify stores, custom Headless commerce, Webflow sites, and web applications with guaranteed 90+ mobile Core Web Vitals.
+> The craft in every click. Independent web engineering studio specializing in high-performance Shopify stores, custom Headless commerce, Webflow sites, and web applications built for fast mobile Core Web Vitals.
 
 Klickspell is an independent web engineering and digital product studio founded by Atul Bhatt. We partner with ambitious founders, brands, and marketing teams to build custom web products with zero technical debt, high-converting architectures, and sub-second mobile page loads.
 
 ## Core Services
 
 - [Services & Capabilities Directory](https://klickspell.com/services): Comprehensive overview of Klickspell's engineering capabilities, delivery models, and comparison standards.
-- [Shopify Speed Optimization](https://klickspell.com/services/shopify-speed-optimization): Guaranteed 90+ Mobile Core Web Vitals, app bloat reduction, sub-second LCP.
+- [Shopify Speed Optimization](https://klickspell.com/services/shopify-speed-optimization): 90+ mobile PageSpeed target agreed after a free audit, passing Core Web Vitals, app bloat reduction.
 - [Custom Shopify Development](https://klickspell.com/services/custom-shopify-development): Custom Liquid themes, customizer sections, zero page-builder bloat.
 - [The 2026 Shopify App Bloat Benchmark Study](https://klickspell.com/blog/the-2026-shopify-app-bloat-benchmark-study): Controlled performance study measuring 25 leading Shopify apps across 7 categories on mobile CPU and conversion drop.
 - [How to Remove Zombie Shopify App Code](https://klickspell.com/blog/how-to-remove-zombie-shopify-app-code): Complete engineering playbook for discovering and safely purging orphaned liquid snippets from uninstalled apps.

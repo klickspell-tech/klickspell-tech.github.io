@@ -16,7 +16,7 @@ If you are stepping into software engineering, web design, or tech product manag
 
 Beginners often confuse the two or assume they are the same thing. In reality, they are completely different technologies that work together.
 
-In this guide, we break down what GitHub actually is, how it works with Git, and why it powers over 100 million developers worldwide.
+In this guide, we break down what GitHub actually is, how it works with Git, and why it powers over 180 million developers worldwide ([GitHub Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/)).
 
 ---
 

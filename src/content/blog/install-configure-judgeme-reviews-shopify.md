@@ -12,7 +12,7 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/sQTov44RTQU" title="Install & Configure Judge.me in Shopify – Collect & Show Customer Reviews" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-E-commerce conversion rates are directly proportional to consumer trust. Studies consistently show that products with **at least 5 verified customer reviews** experience a **270% increase in purchase likelihood** compared to products with zero reviews.
+E-commerce conversion rates are directly proportional to consumer trust. Northwestern's [Spiegel Research Center](https://spiegel.medill.northwestern.edu/How-Online-Reviews-Influence-Sales) found that a product with **five reviews** is **270% more likely to be purchased** than a product with none.
 
 Among review platforms, **Judge.me** stands out as the highest-rated Shopify review app because it provides automated email requests, photo and video collection, and Google Rich Snippet schema even on its free plan.
 

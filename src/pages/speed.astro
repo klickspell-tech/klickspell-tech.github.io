@@ -191,6 +191,15 @@ const schemas = [webAppSchema, breadcrumbSchema];
             </div>
           </div>
 
+          <!-- SCANNER ERROR (shown when Google PageSpeed can't return a result) -->
+          <div id="scannerErrorBox" class="scanner-error-box" role="alert" style="display:none;">
+            <div class="scanner-error-info">
+              <p id="scannerErrorTitle" class="scanner-error-title">Google PageSpeed couldn't test this store.</p>
+              <p id="scannerErrorReason" class="scanner-error-reason"></p>
+            </div>
+            <button type="button" id="scannerRetryBtn" class="scanner-retry-btn">Try again</button>
+          </div>
+
           <!-- SCANNER RESULTS DASHBOARD -->
           <div id="scannerResultsCard" class="scanner-results-card" style="display:none;">
             <div class="scanner-results-grid">
@@ -246,7 +255,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
             <!-- CTA ROW FOR AUDITED STORE -->
             <div class="scanner-cta-bar">
               <div class="scanner-cta-text">
-                <h4>Want Atul to fix these bottlenecks and guarantee a 90+ score?</h4>
+                <h4>Want Atul to fix these bottlenecks and get you to 90+?</h4>
                 <p>We decouple heavy third-party scripts from the critical mobile paint without breaking your tracking or marketing stack.</p>
               </div>
               <div class="scanner-cta-actions">
@@ -414,7 +423,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
             </div>
 
             <div class="estimator-penalty-box" id="estSummaryText">
-              💡 <strong>Industry Benchmark:</strong> According to Google and Deloitte research, every 100ms of mobile latency reduces retail conversion rates by <strong>1.0%</strong>.
+              💡 <strong>Industry Benchmark:</strong> In a Deloitte study for Google across 37 brands, a 0.1s faster mobile site lifted retail conversions by <strong>8.4%</strong> (<a href="https://web.dev/case-studies/milliseconds-make-millions" target="_blank" rel="noopener">source</a>).
             </div>
 
             <a 
@@ -470,7 +479,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
             <h3>You don't need to delete your apps.<br><em>You need intelligent scheduling.</em></h3>
             <p>Most speed agencies tell you to remove Klaviyo, Judge.me, or Recharge because they don't know how to optimize front-end code. We keep 100% of your marketing and tracking stack fully functioning while decoupling their execution from the critical mobile paint.</p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <a href="/services/shopify-speed-optimization" class="btn-primary">Learn About Our 90+ Guarantee →</a>
+              <a href="/services/shopify-speed-optimization" class="btn-primary">How Our Speed Sprint Works →</a>
               <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">Read 99 PageSpeed Case Study ↗</a>
             </div>
           </div>
@@ -544,7 +553,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
           tbtEl.className = 'estimator-meter-val';
           scoreEl.className = 'estimator-meter-val';
           convEl.className = 'estimator-meter-val';
-          summaryBox.innerHTML = '💡 <strong>Industry Benchmark:</strong> According to Google & Deloitte research, every 100ms of mobile latency reduces retail conversion rates by <strong>1.0%</strong>.';
+          summaryBox.innerHTML = '💡 <strong>Industry Benchmark:</strong> In a Deloitte study for Google across 37 brands, a 0.1s faster mobile site lifted retail conversions by <strong>8.4%</strong> (<a href="https://web.dev/case-studies/milliseconds-make-millions" target="_blank" rel="noopener">source</a>).';
         } else if (totalTbt < 450) {
           titleEl.textContent = 'Moderate Performance Impact';
           subEl.textContent = `Your ${count} selected apps introduce noticeable delay on 4G mobile devices.`;
@@ -673,6 +682,11 @@ const schemas = [webAppSchema, breadcrumbSchema];
       const statusBox = document.getElementById('scannerStatusBox');
       const statusStep = document.getElementById('scannerStatusStep');
       const resultsCard = document.getElementById('scannerResultsCard');
+      const errorBox = document.getElementById('scannerErrorBox');
+      const errorTitle = document.getElementById('scannerErrorTitle');
+      const errorReason = document.getElementById('scannerErrorReason');
+      const retryBtn = document.getElementById('scannerRetryBtn');
+      let lastAuditDomain = '';
 
       // Results Elements
       const scoreGauge = document.getElementById('scoreGaugeEl');
@@ -719,6 +733,8 @@ const schemas = [webAppSchema, breadcrumbSchema];
       async function runAudit(rawDomain, isLive = false) {
         let clean = rawDomain.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
         const targetUrl = 'https://' + clean;
+        lastAuditDomain = clean;
+        errorBox.style.display = 'none';
 
         // If pill was clicked and we have a saved verified benchmark, show it instantly
         if (!isLive && demoBenchmarks[clean]) {
@@ -755,33 +771,53 @@ const schemas = [webAppSchema, breadcrumbSchema];
         }, 13500);
 
         let apiData = null;
+        let failure = null; // { title, reason } when Google can't give us a real result
+        const TIMEOUT_MS = 60000;
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 25000);
+          const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
-          const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&strategy=mobile&category=PERFORMANCE`;
+          // Browser key, restricted in Google Cloud to klickspell.com and the PageSpeed Insights API only
+          const PSI_KEY = 'AIzaSyDj-bSQDeiQmMPjAbYLBWzMDPYT5upCxG8';
+          const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&strategy=mobile&category=PERFORMANCE&key=${PSI_KEY}`;
           const res = await fetch(apiUrl, { signal: controller.signal });
           clearTimeout(timeoutId);
 
-          if (res.ok) {
-            apiData = await res.json();
+          const body = await res.json().catch(() => null);
+          if (res.ok && body) {
+            apiData = body;
+          } else {
+            failure = describeApiError(res.status, body?.error?.message);
           }
         } catch (err) {
-          // PageSpeed API call failed or timed out
+          failure = err.name === 'AbortError'
+            ? { title: 'Google PageSpeed took too long to respond.', reason: `No result after ${TIMEOUT_MS / 1000} seconds. Heavy stores sometimes time out on Google's side.` }
+            : { title: "Couldn't reach Google PageSpeed Insights.", reason: `Check your internet connection or any ad blocker. (${err.message})` };
         } finally {
           clearTimeout(step1);
           clearTimeout(step2);
           clearTimeout(step3);
         }
 
+        // Lighthouse can return 200 but still fail to load the page
+        const lhResult = apiData?.lighthouseResult;
+        if (!failure && (!lhResult || lhResult.runtimeError || lhResult.categories?.performance?.score == null)) {
+          failure = {
+            title: `Google couldn't load ${clean} for testing.`,
+            reason: lhResult?.runtimeError?.message || 'Google returned no performance score for this page.'
+          };
+        }
+
         try {
-          if (apiData && apiData.lighthouseResult) {
-            const lh = apiData.lighthouseResult;
-            const score = Math.round((lh.categories?.performance?.score || 0.5) * 100);
-            const tbtVal = lh.audits?.['total-blocking-time']?.displayValue || '0 ms';
-            const lcpVal = lh.audits?.['largest-contentful-paint']?.displayValue || '1.4 s';
-            const fcpVal = lh.audits?.['first-contentful-paint']?.displayValue || '1.2 s';
-            const clsVal = lh.audits?.['cumulative-layout-shift']?.displayValue || '0.00';
+          if (failure) {
+            showError(failure);
+          } else {
+            const lh = lhResult;
+            const score = Math.round(lh.categories.performance.score * 100);
+            const tbtVal = lh.audits?.['total-blocking-time']?.displayValue || '–';
+            const lcpVal = lh.audits?.['largest-contentful-paint']?.displayValue || '–';
+            const fcpVal = lh.audits?.['first-contentful-paint']?.displayValue || '–';
+            const clsVal = lh.audits?.['cumulative-layout-shift']?.displayValue || '–';
             
             // Extract detected third parties
             const thirdPartyItems = lh.audits?.['third-party-summary']?.details?.items || [];
@@ -811,37 +847,40 @@ const schemas = [webAppSchema, breadcrumbSchema];
               verdict: clean === 'klickspell.com'
                 ? `Live Google PageSpeed Result: ${score}/100 · ${tbtVal} Total Blocking Time · Sub-Second Loading`
                 : (score >= 90 ? `Live Google PageSpeed: ${score}/100 · Optimal Mobile Core Web Vitals` : `Live Google PageSpeed: ${score}/100 · Performance Bottlenecks Detected`),
-              apps: clean === 'klickspell.com' ? [] : (matchedApps.length > 0 ? matchedApps : ['klaviyo', 'judgeme', 'pagefly']),
-              scripts: clean === 'klickspell.com'
-                ? (scriptNames.length > 0 ? scriptNames : ['Self-Hosted Variable Fonts', 'Inlined Critical CSS', 'Zero Blocking Trackers'])
-                : (scriptNames.length > 0 ? scriptNames : ['Klaviyo', 'Judge.me', 'Google Tag Manager', 'Meta Pixel'])
-            });
-          } else if (demoBenchmarks[clean]) {
-            // High-confidence fallback for studio benchmark if Google API rate-limits
-            renderResults(clean, demoBenchmarks[clean]);
-          } else {
-            // Fallback realistic benchmark for third-party stores if Google API rate-limits
-            const hash = clean.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-            const simulatedScore = 42 + (hash % 26); // realistic Shopify score range 42-68
-            const simulatedTbt = 450 + (hash % 380); // 450-830ms
-            const simulatedLcp = (3.2 + (hash % 15) / 10).toFixed(1) + ' s';
-
-            renderResults(clean, {
-              score: simulatedScore,
-              tbt: `${simulatedTbt} ms`,
-              lcp: simulatedLcp,
-              fcp: '2.3 s',
-              cls: '0.11',
-              status: simulatedScore >= 50 ? 'average' : 'poor',
-              verdict: `Estimated Mobile Range for ${clean} · Click 'View on Google PageSpeed' for direct cloud audit`,
-              apps: ['klaviyo', 'judgeme', 'recharge', 'pagefly'],
-              scripts: ['Klaviyo Email', 'Judge.me Reviews', 'PageFly Builder', 'Meta Pixel', 'Google Tag Manager']
+              apps: matchedApps,
+              scripts: scriptNames
             });
           }
         } finally {
           finishLoading();
         }
       }
+
+      // Turn Google's error into a plain reason, keeping Google's own message
+      function describeApiError(status, googleMessage) {
+        const raw = googleMessage ? ` Google said: "${googleMessage}"` : '';
+        if (status === 429 || /quota/i.test(googleMessage || '')) {
+          return { title: "Google's free daily testing limit has been reached.", reason: `Please try again in a little while.${raw}` };
+        }
+        if (status === 400) {
+          return { title: "Google couldn't test that address.", reason: `Check the store URL is correct and publicly reachable.${raw}` };
+        }
+        if (status >= 500) {
+          return { title: 'Google PageSpeed had a problem on its side.', reason: `This is usually temporary.${raw}` };
+        }
+        return { title: "Google PageSpeed couldn't test this store.", reason: `Error ${status}.${raw}` };
+      }
+
+      function showError({ title, reason }) {
+        resultsCard.style.display = 'none';
+        errorTitle.textContent = title;
+        errorReason.textContent = reason;
+        errorBox.style.display = 'flex';
+      }
+
+      retryBtn.addEventListener('click', () => {
+        if (lastAuditDomain) runAudit(lastAuditDomain, true);
+      });
 
       function renderResults(domain, data) {
         scoreGauge.className = `scanner-score-gauge ${data.status}`;
@@ -883,9 +922,9 @@ const schemas = [webAppSchema, breadcrumbSchema];
         if (ctaTitle && ctaSub) {
           if (domain === 'klickspell.com') {
             ctaTitle.textContent = "Want your website to achieve this exact 96+ mobile speed?";
-            ctaSub.textContent = "We eliminate render-blocking CSS, self-host variable fonts, and optimize third-party tags to guarantee sub-second mobile loading for your brand.";
+            ctaSub.textContent = "We eliminate render-blocking CSS, self-host variable fonts, and optimize third-party tags to get your store loading fast on mobile.";
           } else {
-            ctaTitle.textContent = "Want Atul to fix these bottlenecks and guarantee a 90+ score?";
+            ctaTitle.textContent = "Want Atul to fix these bottlenecks and get you to 90+?";
             ctaSub.textContent = "We decouple heavy third-party scripts from the critical mobile paint without breaking your tracking or marketing stack.";
           }
         }

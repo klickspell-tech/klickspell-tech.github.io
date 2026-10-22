@@ -3,6 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 
+// Partnership start (Feb 2025); duration is also refreshed client-side below
+const partnerSince = '2025-02-01';
+function partnerDuration(startIso: string, today = new Date()) {
+  const start = new Date(startIso);
+  let months = (today.getFullYear() - start.getFullYear()) * 12 + today.getMonth() - start.getMonth();
+  if (today.getDate() < start.getDate()) months--;
+  const y = Math.floor(months / 12), m = months % 12;
+  const parts = [];
+  if (y) parts.push(`${y} year${y > 1 ? 's' : ''}`);
+  if (m) parts.push(`${m} month${m > 1 ? 's' : ''}`);
+  return parts.join(' and ') || 'less than a month';
+}
+const duration = partnerDuration(partnerSince);
+
 const schema = [
   {
     "@context": "https://schema.org",
@@ -85,6 +99,18 @@ const schema = [
           <p>Built a dual-login system spanning Shopify and Recharge accounts, rewrote copy across login and subscription-management flows, and rebuilt the customer portal, recovering login and rewards functionality that had been lost during an earlier theme upgrade.</p>
         </div>
         <div class="cs-feature">
+          <h3>Theme upgrade &amp; loyalty program</h3>
+          <p>Moved the store onto the latest Prestige theme, then built the loyalty layer on top: rewards tiers and points on the customer account, a dedicated rewards page, subscriber-rewards sections, and a clearer subscription picker on product pages.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Promotions engine</h3>
+          <p>Tiered free gifts in the cart, gifts unlocked by specific products with an inventory cut-off, scheduled sitewide discounts with blackout dates, and flash-sale countdowns. The marketing team runs campaigns from theme settings, without a developer.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Quiz, guides &amp; conversion features</h3>
+          <p>A skin quiz that adds its recommendations straight to the cart, shoppable editorial guides with products placed next to each tip, Shop the Look, Back in Stock alerts, and gift cards with recipient details.</p>
+        </div>
+        <div class="cs-feature">
           <h3>Affiliate &amp; attribution infrastructure</h3>
           <p>Migrated affiliate tracking from ShareASale to Awin: stripped out the legacy code, stood up the new integration, and tested it end-to-end so revenue attribution didn't drop during the switch.</p>
         </div>
@@ -112,14 +138,14 @@ const schema = [
       <h2>Still their Shopify partner, today.</h2>
       <div class="cs-testimonial-wrap">
         <div class="testimonial-card featured">
-          <p class="testimonial-quote">Working with Atul was always a delight. His exceptional communication skills, timely delivery of great work, and strong skills made him a pleasure to collaborate with. His curiosity and willingness to step outside his expertise made him a valuable asset to any project.</p>
+          <p class="testimonial-quote">Atul has been a great support for my business. He's quick, responsive and always available to help.</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar"><img src="/assets/testimonials/jen-yu.webp" alt="Jen Yu" loading="lazy" decoding="async"></div>
             <div><p class="testimonial-name">Jen Yu</p><p class="testimonial-role">CEO &amp; Co-Founder, Jaxon Lane · ex-Google</p></div>
           </div>
         </div>
       </div>
-      <p style="margin-top:2rem">More than a year into the relationship, Klickspell remains Jaxon Lane's go-to Shopify developer for urgent bug fixes, migrations, and new feature builds.</p>
+      <p style="margin-top:2rem"><span class="jl-duration">{duration}</span> into the relationship, Klickspell remains Jaxon Lane's go-to Shopify developer for urgent bug fixes, migrations, and new feature builds.</p>
     </div>
 
     <div class="cs-section reveal" style="max-width:none">
@@ -149,4 +175,18 @@ const schema = [
   </main>
 
   <Footer />
+
+  <script is:inline define:vars={{ partnerSince }}>
+    // Keep the partnership duration current between site builds
+    const start = new Date(partnerSince);
+    const today = new Date();
+    let months = (today.getFullYear() - start.getFullYear()) * 12 + today.getMonth() - start.getMonth();
+    if (today.getDate() < start.getDate()) months--;
+    const y = Math.floor(months / 12), m = months % 12;
+    const parts = [];
+    if (y) parts.push(y + ' year' + (y > 1 ? 's' : ''));
+    if (m) parts.push(m + ' month' + (m > 1 ? 's' : ''));
+    const text = parts.join(' and ') || 'less than a month';
+    document.querySelectorAll('.jl-duration').forEach(el => { el.textContent = text; });
+  </script>
 </BaseLayout>

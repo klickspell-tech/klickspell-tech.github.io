@@ -23,7 +23,7 @@ Fortunately, with official multi-arch Docker images, running ERPNext natively on
 ## Why Native ARM64 Beats x86 Emulation (Rosetta)
 
 Running x86 Docker images through Rosetta or QEMU translation causes:
-- 40% to 60% slower bench command execution.
+- Noticeably slower bench commands (in my experience, by a big margin).
 - High CPU usage and battery drain.
 - Random segfaults during Node/wkhtmltopdf compilation.
 

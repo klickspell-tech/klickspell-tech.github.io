@@ -12,7 +12,9 @@ readingTime: "6 min read"
   <iframe src="https://www.youtube-nocookie.com/embed/jXFdB45rn6k" title="Fix Oracle Cloud 'Out of Host Capacity' Error for Free Tier (2026)" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
-Oracle Cloud Infrastructure (OCI) offers arguably the most generous Always Free cloud tier in the world: **up to 4 OCPU cores and 24 GB of RAM** on enterprise-grade **Ampere Altra ARM processors**.
+Oracle Cloud Infrastructure (OCI) offers arguably the most generous Always Free cloud tier in the world: **up to 2 OCPU cores and 12 GB of RAM** on **Ampere A1 ARM processors** ([Oracle's Always Free resources page](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm)).
+
+> **Update (October 2026):** This used to be 4 OCPUs and 24 GB of RAM. Oracle has since cut the free Ampere allowance to 2 OCPUs and 12 GB, so I've updated the numbers below.
 
 Because of this unmatched value, thousands of developers attempt to spin up free ARM instances every single day. The result? You click "Create Instance" and immediately run into the dreaded message:
 > **Out of host capacity.**  
@@ -36,11 +38,11 @@ This is the single most effective "secret" to bypassing the capacity lock:
 
 1. In your Oracle Cloud console, go to **Billing & Cost Management → Upgrade and Payment**.
 2. Click **Upgrade to Pay As You Go (PAYG)**.
-3. Oracle will run a small temporary authorization hold (around $100, refunded within days) to verify your card.
+3. Oracle will run a small temporary authorization hold on your card to verify it (it's released after verification).
 
 ### Why this works:
 - PAYG accounts gain priority access over pure free-tier accounts.
-- **The Always Free allowance remains 100% free forever!** As long as your total usage stays within **4 OCPUs, 24 GB RAM, and 200 GB block storage**, your monthly bill is **$0.00**.
+- **The Always Free allowance remains 100% free forever!** As long as your total usage stays within **2 OCPUs, 12 GB RAM, and 200 GB block storage**, your monthly bill is **$0.00**.
 
 ---
 
@@ -93,10 +95,10 @@ done
 
 ---
 
-## Strategy 4: Start with a Smaller Slice (e.g., 2 OCPU / 12 GB)
+## Strategy 4: Start with a Smaller Slice (e.g., 1 OCPU / 6 GB)
 
-Instead of claiming the maximum 4 cores / 24 GB all at once:
-1. Launch an instance with **1 OCPU and 6 GB RAM** (or 2 OCPU / 12 GB).
+Instead of claiming the full 2 cores / 12 GB all at once:
+1. Launch an instance with **1 OCPU and 6 GB RAM**.
 2. Smaller flex allocations are vastly easier for Oracle's hypervisor to schedule into fragmented host memory.
 3. Once provisioned, you can edit and scale up the shape in the console as more capacity opens up!
 
@@ -104,6 +106,6 @@ Instead of claiming the maximum 4 cores / 24 GB all at once:
 
 ## Summary
 
-Don't abandon your free enterprise cloud server. Upgrading to PAYG or running a simple OCI CLI retry loop will unlock your free 24 GB RAM Ampere instance reliably.
+Don't abandon your free enterprise cloud server. Upgrading to PAYG or running a simple OCI CLI retry loop will unlock your free Ampere instance reliably.
 
 *Need scalable cloud architecture, high-availability deployments, or automated DevOps? [Talk to the cloud engineers at Klickspell](https://klickspell.com/#contact).*

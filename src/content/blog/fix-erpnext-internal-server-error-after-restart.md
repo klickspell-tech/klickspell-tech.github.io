@@ -131,6 +131,6 @@ sudo systemctl enable nginx
 
 ## Summary
 
-Following this diagnostic checklist will resolve 95% of post-reboot ERPNext 500 errors in under 3 minutes.
+In my experience, this checklist fixes almost every post-reboot ERPNext 500 error I've run into, usually in a few minutes.
 
 *Need proactive 24/7 server monitoring, automated database backups, or custom ERPNext maintenance retainers? [Talk to the DevOps team at Klickspell](https://klickspell.com/#contact).*

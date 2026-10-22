@@ -20,10 +20,15 @@
 
 Klickspell is a **web engineering and digital product studio** based in Rudrapur, Uttarakhand.
 
+**Legal entity:** KlickSpell Private Limited, incorporated 25 May 2026 (RoC Kanpur, CIN U62090UP2026PTC248355). Directors: Atul Bhatt and Vivek Bhatt.
+- Verified source (public MCA data): https://www.falconebiz.com/company/KLICKSPELL-PRIVATE-LIMITED-U62090UP2026PTC248355 (status Active, RoC Uttar Pradesh, registered office Bilaspur, Rampur, UP).
+- Use "KlickSpell Private Limited" only where the legal name belongs (footer copyright, schema `legalName`). Everywhere else the brand is "Klickspell".
+- The "years experience" stat counts from Atul's career start (June 2020), not the company. Never present 2020 as the founding year.
+
 **Core positioning:**
 - We build custom Shopify stores, Webflow marketing sites, Medusa.js headless commerce, and tailored web applications.
 - Every section is fully editable by the client without developer dependency.
-- We advise on tech stacks and app integrations honestly — based on client needs and budget, not referral kickbacks.
+- We advise on tech stacks and app integrations honestly — based on client needs and budget, not referral kickbacks. Klickspell is a disclosed referral partner of GoKwik, Razorpay and Cashfree; always say so where those tools are recommended, and recommend on fit only.
 - We build for client independence, not dependency.
 
 **Primary stamp (never change this):**
@@ -100,7 +105,7 @@ Klickspell is a **web engineering and digital product studio** based in Rudrapur
 | Cove & Lane | https://coveandlane.in/ | Shopify | Fashion & Apparel |
 | Mogra Media | https://mogramedia.com/ | Landing & Brand | Lead Generation Landing Page |
 | Pragya Vijh | https://pragyavijh.com/in | Headless & Custom | Medusa.js + Cal.com Integration |
-| Bambrew | https://www.bambrew.in/ | Shopify | Sustainable Packaging · Shark Tank |
+| Bambrew | https://www.bambrew.in/ | Shopify | Sustainable Packaging · VC-backed (Blume Ventures) — NOT on Shark Tank |
 | Nuva Gurukul | https://nuvagurukul.com/ | Landing & Brand | Education & Student Enrollment |
 | Noukai Tokyo | https://noukaitokyo.com/ | Headless & Custom | Shopify Hydrogen · Japan |
 | Easy Rugs | https://easyrugs.in/ | Shopify | Home Decor · Shark Tank India |
@@ -272,3 +277,4 @@ When working on this project:
 8. **When adding new sections** — follow the existing section pattern: eyebrow → title → content
 9. **When adding new colors** — add to `:root` as a CSS variable, never hardcode
 10. **When unsure about copy** — refer to BRAND_COPY.md, never invent new brand language
+11. **When writing or editing a blog post** — follow BLOG_WRITING_GUIDE.md: write in Atul's own human, first-person style, never generic AI style

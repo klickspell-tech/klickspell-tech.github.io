@@ -17,7 +17,7 @@ When launching or auditing a Shopify store, technical elements like themes and p
 However, missing or outdated **store policy pages** can stall your business before you even launch:
 - **Payment Gateways** (Stripe, PayPal, Shopify Payments, Razorpay) regularly suspend merchant payouts if return and privacy policies are missing.
 - **Ad Platforms** (Google Merchant Center, Meta Ads) will reject and suspend product feeds if policies lack transparent business contact details and refund timelines.
-- **Customer Conversion:** Up to 67% of online shoppers check a brand's return policy before completing a first-time purchase.
+- **Customer Conversion:** In my experience, a lot of shoppers check a brand's return policy before buying from it for the first time, especially from a store they don't know yet.
 
 Here is how to create, customize, and display legally compliant policy pages directly inside Shopify.
 

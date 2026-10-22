@@ -128,10 +128,10 @@ Once you have cleaned your duplicate theme, preview it:
 
 ## Want Us to Clean Your Store's Codebase?
 
-If you don't feel comfortable editing theme Liquid files or want a guaranteed sub-second mobile store, our engineers can handle it for you.
+If you don't feel comfortable editing theme Liquid files or want a faster mobile store, our engineers can handle it for you.
 
-We provide full theme code refactoring, zombie app purging, and guaranteed 90+ Mobile Core Web Vitals with zero risk to your active marketing stack:
+We provide full theme code refactoring, zombie app purging, and an agreed 90+ mobile target with zero risk to your active marketing stack:
 
 - [Explore our Shopify Speed Optimization Service](/services/shopify-speed-optimization)
 - [Calculate your current app bloat on our free Speed Estimator](/speed)
-- [Schedule a 15-minute diagnostic walkthrough with Atul Bhatt](https://cal.com/atul-bhatt-klickspell/30min)
+- [Schedule a free 30-minute diagnostic walkthrough with Atul Bhatt](https://cal.com/atul-bhatt-klickspell/30min)

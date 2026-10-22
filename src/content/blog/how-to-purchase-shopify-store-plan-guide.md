@@ -26,13 +26,13 @@ With multiple tiers, varying credit card transaction rates, and billing options,
 | :--- | :--- | :--- | :--- | :--- |
 | **Shopify Starter** | $5 / month | Social selling & lightweight links | 5% | No full online store; link-in-bio checkout only |
 | **Basic Shopify** | $39 / mo ($29/mo billed yearly) | **New stores, DTC startups & boutiques** | 2.0% | Full online store, unlimited products, 2 staff accounts |
-| **Shopify** | $105 / mo ($79/mo billed yearly) | Growing brands doing $10k–$50k/mo | 1.0% | Lower credit card rates, 5 staff accounts, custom reports |
+| **Grow** (formerly "Shopify") | $105 / mo ($79/mo billed yearly) | Growing brands doing $10k–$50k/mo | 1.0% | Lower credit card rates, 5 staff accounts, custom reports |
 | **Advanced** | $399 / mo ($299/mo billed yearly) | Scaling high-volume brands ($50k+/mo) | 0.6% | Lowest transaction fees, custom report builder, duties & import taxes |
 
 *\*Third-party fees only apply if you do NOT use Shopify Payments (e.g., using standalone external gateways).*
 
 ### The 25% Annual Billing Rule
-If you commit to paying annually instead of monthly, Shopify offers a **25% discount** across all standard tiers. For example, on the Basic plan, paying yearly drops your equivalent cost from $39/mo to $29/mo, saving you $120 every year.
+If you commit to paying annually instead of monthly, Shopify offers a **25% discount** across all standard tiers (see [Shopify's pricing page](https://www.shopify.com/pricing); prices vary by country). For example, on the Basic plan, paying yearly drops your equivalent cost from $39/mo to $29/mo, saving you $120 every year.
 
 ---
 
@@ -84,7 +84,7 @@ Purchasing a plan immediately unlocks critical launch capabilities:
 No. Shopify honors the remaining days of your free trial. Your paid billing cycle only triggers once the trial window ends.
 
 ### Can I upgrade or downgrade later?
-Yes. Shopify handles upgrades with automatic prorated invoicing. When your monthly revenue exceeds $15k–$20k, upgrading to the **Shopify** plan often pays for itself through lower card processing rates.
+Yes. Shopify handles upgrades with automatic prorated invoicing. When your monthly revenue exceeds $15k–$20k, upgrading to the **Grow** plan often pays for itself through lower card processing rates.
 
 ---
 

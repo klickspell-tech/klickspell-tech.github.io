@@ -20,17 +20,17 @@ We already wrote a fact-checked [GoKwik vs Razorpay Magic Checkout comparison](/
 
 ## Address prefill: GoKwik's network is larger, Cashfree claims better accuracy
 
-- **GoKwik**: 200M+ shoppers in network, 85-90%+ address prefill.
-- **Cashfree**: 120M+ verified saved addresses, with a specifically claimed **95% accuracy rate**.
+- **GoKwik**: 220M+ network for Kwik Pass (the same page also says 50M+ shoppers) and 85%+ address prefill ([gokwik.co](https://www.gokwik.co/), checked 22 Oct 2026).
+- **Cashfree**: 120M+ verified profiles, with a specifically claimed **95% accuracy rate** ([cashfree.com/one-click-checkout](https://www.cashfree.com/one-click-checkout/), checked 22 Oct 2026).
 
 GoKwik's network is larger on paper. Cashfree is the only one of the three that publishes an accuracy figure rather than just a prefill rate — worth asking both vendors directly what "accuracy" actually measures (correct address vs. just pre-filled) before taking either number at face value.
 
-## RTO handling: both real, GoKwik's claimed reduction is higher
+## RTO handling: both real, neither publishes a comparable number
 
-- **GoKwik**: risk-tiered COD, partial-COD-upfront, COD surcharging, 70+ configurable interventions, claims **40% RTO reduction**.
-- **Cashfree**: AI-driven RTO prediction trained on **2.5B+ logistics data points**, real-time COD controls (allow/block/partial), targeted COD masking for risky shoppers, claims **up to 30% RTO reduction**.
+- **GoKwik**: risk-tiered COD, partial-COD-upfront, COD surcharging, 70+ configurable interventions. GoKwik doesn't publish a headline RTO-reduction percentage on its site.
+- **Cashfree**: AI-driven RTO prediction trained on **2.5B+ logistics data points**, real-time COD controls (allow/block/partial), targeted COD masking for risky shoppers. Its page quotes a **90%+ RTO reduction** reported by a customer ([cashfree.com/one-click-checkout](https://www.cashfree.com/one-click-checkout/), checked 22 Oct 2026).
 
-Both are prevention-focused rather than reimbursement-focused (unlike Razorpay, which also offers an RTO Protection reimbursement product). The claimed-reduction gap (40% vs 30%) is worth validating against your own order data rather than assuming it'll transfer directly — RTO reduction is highly category- and AOV-dependent, and these are each vendor's own best-case published number.
+Both are prevention-focused rather than reimbursement-focused (unlike Razorpay, which also offers an RTO Protection reimbursement product). There's no like-for-like number to compare: Cashfree's 90%+ is one customer's result, and GoKwik doesn't publish one. RTO reduction is highly category- and AOV-dependent, so validate against your own order data.
 
 ## Discounting: Cashfree covers the same ground Razorpay does
 
@@ -43,10 +43,10 @@ What we could **not** find public evidence of for Cashfree: native A/B testing o
 GoKwik lists an actual entry-tier rate card on its own pricing page, not just a custom quote:
 
 - **GoKwik**: **Emerging Plan** ([gokwik.co/pricing](https://www.gokwik.co/pricing)) — ₹3,000/month + 3.5% COD fee + applicable PA charges, for stores doing 0–2,000 orders/month. Above that, Enterprise/custom pricing, contact sales. It's an order-count cap, not a sales-value cap — a lower-AOV, high-order-count store hits the ceiling faster than a high-AOV one.
-- **Razorpay Magic Checkout**: still enterprise-only, contact sales for the checkout layer itself — on top of Razorpay's standard 2% gateway fee ([razorpay.com/pricing](https://razorpay.com/pricing/)), which currently also runs a time-limited new-merchant promo (0% for the first 90 days, under ₹5L/month). The gateway fee has a promo like Cashfree's; Magic Checkout's own incremental fee is still completely unpublished either way.
+- **Razorpay Magic Checkout**: still enterprise-only, contact sales for the checkout layer itself — on top of Razorpay's standard 2% gateway fee ([razorpay.com/pricing](https://razorpay.com/pricing/)), which currently also runs a new-merchant offer: 0% platform fee for a new merchant's first 90 days or first ₹5L in transactions, whichever comes first, for accounts activated on or after 1 July 2026 ([offer terms](https://razorpay.com/terms/90-day-free-pg-offer/), checked 22 Oct 2026). The gateway fee has a promo like Cashfree's; Magic Checkout's own incremental fee is still completely unpublished either way.
 - **Cashfree**: standard/permanent rate is a flat **1.95% + applicable taxes** on domestic transactions ([cashfree.com/payment-gateway-charges](https://www.cashfree.com/payment-gateway-charges/)), with Checkout 360 appearing included rather than a separate line item. There's also a **limited-time new-merchant promo** — 0% platform fee up to ₹20L GMV, through 31 March 2027 or the GMV cap, whichever hits first — but that's a promotional offer for merchants who sign up during the campaign window, not the standing rate.
 
-We'd still confirm all three directly before assuming they hold at your volume — enterprise-tier features sometimes get gated even when the base product is self-serve, and it's worth asking GoKwik whether that 3.5% COD fee applies to COD orders only or all transactions, since their own page doesn't make that fully explicit. On permanent standing rates, Cashfree (1.95%) is cheaper than Razorpay (2%), and GoKwik's flat ₹3,000/month plus 3.5% COD fee is a different shape entirely. Razorpay and Cashfree both currently layer a time-limited 0% promo on top of their standing rate for new/lower-volume merchants — GoKwik's Emerging Plan is the odd one out in a good way here, since it's a standing published rate for that segment, not a promo that reverts after a few months.
+We'd still confirm all three directly before assuming they hold at your volume — enterprise-tier features sometimes get gated even when the base product is self-serve, and note that GoKwik's pricing page now says the 3.5% fee applies to all transactions, not only COD orders. On permanent standing rates, Cashfree (1.95%) is cheaper than Razorpay (2%), and GoKwik's flat ₹3,000/month plus 3.5% COD fee is a different shape entirely. Razorpay and Cashfree both currently layer a time-limited 0% promo on top of their standing rate for new/lower-volume merchants — GoKwik's Emerging Plan is the odd one out in a good way here, since it's a standing published rate for that segment, not a promo that reverts after a few months.
 
 ## Who each is actually built for
 
@@ -71,4 +71,4 @@ Already leaning GoKwik? Checkout is one of 10 products they now sell — [take t
 
 ### Not sure which fits your store?
 
-Pricing model, COD mix, and whether you need engagement/support bundled in all change the answer. [Configure a project scope](/quote) and mention checkout in your notes, or [book a 20-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll look at your actual numbers before recommending one.
+Pricing model, COD mix, and whether you need engagement/support bundled in all change the answer. [Configure a project scope](/quote) and mention checkout in your notes, or [book a 30-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll look at your actual numbers before recommending one.

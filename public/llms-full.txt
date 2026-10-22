@@ -1,6 +1,6 @@
 # Klickspell — Complete Technical & Business Knowledge Base
 
-> The craft in every click. Independent web engineering studio specializing in high-performance Shopify stores, custom Headless commerce, Webflow sites, and web applications with guaranteed 90+ mobile Core Web Vitals.
+> The craft in every click. Independent web engineering studio specializing in high-performance Shopify stores, custom Headless commerce, Webflow sites, and web applications built for fast mobile Core Web Vitals.
 
 ## Executive Summary
 
@@ -35,7 +35,7 @@
 - **URL:** https://klickspell.com/services/shopify-speed-optimization
 - **The Problem:** High-growth Shopify stores accumulate dozens of third-party apps, tracking tags, and unoptimized assets that freeze mobile processors and degrade conversion rates.
 - **The Solution:** 
-  - Contractual 90+ Mobile Google PageSpeed guarantee.
+  - 90+ mobile PageSpeed target agreed in writing after a free audit; if our work misses it, we keep optimizing at no extra cost.
   - Critical CSS inlining and elimination of render-blocking asset waterfalls.
   - Batch conversion of raster assets to modern WebP with responsive `srcset` and explicit dimensional attributes.
   - Non-blocking script scheduling via `requestIdleCallback` and intent-driven hydration for tracking tags (Meta Pixel, TikTok, Klaviyo, Google Tag Manager).
@@ -95,7 +95,7 @@
 ### Skillbridge (EdTech & Career Acceleration)
 - **URL:** https://klickspell.com/work/skillbridge
 - **Client Site:** https://skillbridge.net
-- **Founder:** Rajesh Durai (ex-VP upGrad, ex-HP)
+- **Founder:** Rajesh Durai (ex-VP upGrad)
 - **Scope:** Custom modular frontend architecture, interactive curriculum syllabus modules, frictionless admissions inquiry routing, and zero third-party page-builder bloat.
 
 ### DealShare (E-Commerce Unicorn Corporate & Investor Portal)

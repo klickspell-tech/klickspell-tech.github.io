@@ -14,7 +14,7 @@ Cash-on-delivery drives a huge share of orders for Indian D2C brands — but it 
 
 On top of that, Shopify's native checkout — built for a US/EU, card-first market — doesn't do much to help. No COD risk scoring. No address-prefill network. No India-specific payment nudges. It just... checks out.
 
-This is the exact problem we now solve for clients by implementing **[GoKwik](https://gokwik.co)** — a checkout and post-purchase platform built specifically for Indian D2C, already running on 15,000+ stores including boAt, Mamaearth, Levi's India, and Noise.
+This is the exact problem we now solve for clients by implementing **[GoKwik](https://gokwik.co)** — a checkout and post-purchase platform built specifically for Indian D2C. GoKwik says it's [used by 20,000+ brands](https://www.gokwik.co/), including boAt, Mamaearth and Levi's.
 
 **Want the short version instead of reading all of this?** [Take our 2-minute checkout quiz](/checkout-quiz) — answer 5 questions about your COD mix and priorities, get an instant recommendation between GoKwik, Razorpay Magic Checkout, and Cashfree Checkout 360.
 
@@ -31,7 +31,7 @@ None of this shows up cleanly in your P&L as "RTO" — it shows up as thinner ma
 
 ## What GoKwik actually changes
 
-GoKwik isn't a single app — it's a connected stack covering the whole post-click journey, built on a shared network of **200M+ verified Indian shoppers**. The two pieces that matter most for RTO and conversion:
+GoKwik isn't a single app — it's a connected stack covering the whole post-click journey, built on a shared shopper network. GoKwik's site puts it at **220M+** for its identity product (Kwik Pass), though the same page also says **50M+ shoppers** ([gokwik.co](https://www.gokwik.co/), checked 22 Oct 2026). The two pieces that matter most for RTO and conversion:
 
 ### Kwik Checkout
 A 1-click checkout that replaces Shopify's default flow:
@@ -39,7 +39,7 @@ A 1-click checkout that replaces Shopify's default flow:
 - **85-90%+ address prefill** for returning network shoppers via OTP/SSO — no more re-typing a full address on a cramped mobile keyboard.
 - **RTO risk scoring with 70+ intervention types** — block COD for high-risk shoppers, require partial prepaid, add CAPTCHA/OTP friction only where it's actually needed.
 - **Zero-cost payment offers** from Paytm, CRED, Amazon Pay, MobiKwik and others — funded by the payment partners, not you, so it's pure conversion lift.
-- Published results: **40% conversion uplift, 85%+ address prefill, 40% reduction in RTO.**
+- GoKwik's own published claims: **up to 40% higher conversion** and **85%+ address prefill** ([gokwik.co](https://www.gokwik.co/), checked 22 Oct 2026). GoKwik doesn't publish a headline RTO-reduction percentage on its site. These are vendor numbers, not ours.
 
 ### Kwik Ship + Return Prime
 - AI-based carrier selection and NDR (non-delivery report) management via WhatsApp and automated calling — so a failed delivery attempt gets resolved instead of silently becoming an RTO.
@@ -48,15 +48,13 @@ A 1-click checkout that replaces Shopify's default flow:
 ### Kwik Engage (the easy add-on)
 This one's undersold by calling it just "cart recovery WhatsApp flows" — it's an omnichannel engagement *and* support platform (WhatsApp, Email, SMS, Instagram, Facebook, RCS, all in one inbox), with an AI chatbot that resolves **80%+ of customer queries autonomously**, plus AI voice calling for COD/cart/failed-payment recovery. Published numbers: **85% open rates**, **20%+ recovered carts**, 90% message delivery via AI-powered retries. No checkout changes required, which is usually where we start with clients who want to see results before touching their core checkout flow.
 
-One real result, not just a published benchmark: True Elements' Co-Founder & CEO Puru Gupta on Kwik Engage — *"it has helped us solve many of our pressing issues. In just a couple of months, we've seen a jump of 134% in abandonment cart recovery rate."*
-
 ## How this compares to the alternatives
 
 Against Shopify's own native checkout, the comparison is clean and not seriously contestable:
 
 | Capability | Kwik Checkout | Shopify (native) |
 | :--- | :---: | :---: |
-| 200M+ network address prefill | ✅ | ❌ |
+| Network address prefill (85%+ claimed) | ✅ | ❌ |
 | COD risk scoring & RTO interventions | ✅ (70+) | ❌ |
 | India-specific payment nudges (COD → prepaid) | ✅ | ❌ |
 | WhatsApp/Email engagement suite bundled | ✅ (Kwik Engage) | ❌ |
@@ -75,7 +73,7 @@ Worth being upfront about, since it's easy to assume GoKwik is a drop-in free la
 
 None of this changes the conversion/RTO math above — it just means the honest pitch is "a checkout layer plus platform fee on top of what you already pay your gateway," not "replace your payment stack for free."
 
-**One real saving that offsets some of this, though:** Shopify charges its own transaction fee (2% on the Basic plan, scaling down to 0.5-0.6% on Advanced) whenever you use a payment gateway other than Shopify Payments — and Shopify Payments isn't available in India at all. Quick-checkout tools like Kwik Checkout sidestep this entirely: the order gets injected into Shopify via API as a "draft order marked as paid," which Shopify's own fee policy classifies as a manual payment method and exempts. On a ₹10L/month store on Shopify Basic, that's roughly **₹20,000/month (₹2.4L/year)** in Shopify fees you're not paying — on top of whatever RTO and conversion benefit the checkout itself delivers. Worth knowing this mechanism exists and isn't unique to GoKwik — Razorpay Magic Checkout and Cashfree Checkout 360 get the same exemption the same way.
+**One real saving that offsets some of this, though:** Shopify charges its own transaction fee (2% on the Basic plan, scaling down to 0.5-0.6% on Advanced) whenever you use a payment gateway other than Shopify Payments — and Shopify Payments isn't available in India at all. Quick-checkout tools like Kwik Checkout sidestep this entirely: the order gets injected into Shopify via API as a "draft order marked as paid," which Shopify's own fee policy classifies as a manual payment method and exempts ([Shopify Help Center](https://help.shopify.com/manual/orders/create-orders/get-paid)). On a ₹10L/month store on Shopify Basic, that's roughly **₹20,000/month (₹2.4L/year)** in Shopify fees you're not paying — on top of whatever RTO and conversion benefit the checkout itself delivers. Worth knowing this mechanism exists and isn't unique to GoKwik — Razorpay Magic Checkout and Cashfree Checkout 360 get the same exemption the same way.
 
 ## Who this makes sense for
 
@@ -97,6 +95,6 @@ As a Shopify development agency, our job in this is the implementation: integrat
 
 ### Curious what this would look like for your store?
 
-If you're running meaningful COD volume and have never measured your actual RTO rate, that's the first thing worth finding out. [Configure a project scope](/quote) and mention checkout/RTO in your notes, or [book a 20-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll walk through your numbers directly.
+If you're running meaningful COD volume and have never measured your actual RTO rate, that's the first thing worth finding out. [Configure a project scope](/quote) and mention checkout/RTO in your notes, or [book a 30-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll walk through your numbers directly.
 
-GoKwik sells 10 products now, not just checkout — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the others (Engage, Return Prime, Cart, and more) actually fit your store, and which to skip for now.
+GoKwik sells 10 products now, not just checkout (the 9 listed on [gokwik.co](https://www.gokwik.co/) plus its lending arm, Kwik Finance) — [take the GoKwik product fit quiz](/gokwik-product-quiz) to see which of the others (Engage, Return Prime, Cart, and more) actually fit your store, and which to skip for now.

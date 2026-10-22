@@ -23,7 +23,7 @@ Here are the findings from our benchmark study.
 1. **The Average DTC Store Carries 2.8 MB of Third-Party JavaScript**: A clean Shopify Dawn theme weighs approximately 180 KB. The average merchant running 8–12 standard marketing apps increases client-side JavaScript weight by **over 1,400%**.
 2. **Page Builders Are the Heaviest Offenders**: Page builder tools inject an average of **650 KB to 950 KB** of uncompressed vendor runtime scripts, adding **700ms to 1,200ms of Total Blocking Time (TBT)** before any product images even begin rendering.
 3. **Review Widgets Should Never Load on the Homepage**: Loading photo review apps globally on the homepage wastes an average of **450 KB of JavaScript** and delays Largest Contentful Paint (LCP) by 850ms on mobile devices.
-4. **The Latency-to-Revenue Tradeoff**: According to Google and Deloitte research, every 100ms improvement in mobile load time increases checkout conversion by up to 1%. An average store running 8 unoptimized apps sacrifices an estimated **7% to 14% of gross revenue** in bounce-offs.
+4. **The Latency-to-Revenue Tradeoff**: In [Deloitte's study for Google](https://web.dev/case-studies/milliseconds-make-millions) across 37 brands, a 0.1-second faster mobile site lifted retail conversions by 8.4%. An average store running 8 unoptimized apps sacrifices an estimated **7% to 14% of gross revenue** in bounce-offs.
 
 ---
 
@@ -109,4 +109,4 @@ You do not have to delete your marketing stack to pass Core Web Vitals. The solu
 2. **Purge Zombie Code**: Remove orphaned Liquid snippets left behind by uninstalled apps ([read our step-by-step zombie code removal guide](/blog/how-to-remove-zombie-shopify-app-code)).
 3. **Guard Against Bot Cloaking**: Avoid cheap Fiverr speed gigs that fake scores with bot-sniffing scripts instead of fixing real user latency.
 
-If you want our engineering team to audit and optimize your store with a contractual 90+ Mobile Core Web Vitals guarantee, [explore our Shopify Speed Optimization service](/services/shopify-speed-optimization) or [book a 15-minute diagnostic call with Atul Bhatt](https://cal.com/atul-bhatt-klickspell/30min).
+If you want our engineering team to audit and optimize your store with a 90+ mobile target agreed in writing, [explore our Shopify Speed Optimization service](/services/shopify-speed-optimization) or [book a 30-minute diagnostic call with Atul Bhatt](https://cal.com/atul-bhatt-klickspell/30min).

@@ -284,4 +284,4 @@ Performance isn't an afterthought or a plugin you toggle on at the end; it’s a
 
 Want to inspect your mobile Core Web Vitals under realistic 4G throttling and identify third-party script bloat? Test your live URL using our free [Website Speed & App Bloat Estimator](/speed).
 
-If you manage a high-traffic Shopify store or marketing website and want a guaranteed 90+ mobile PageSpeed score without sacrificing your analytics, pixels, or conversion apps, explore our [Shopify Speed Optimization Sprint](/services/shopify-speed-optimization) or [schedule a discovery call](https://cal.com/atul-bhatt-klickspell/30min).
+If you manage a high-traffic Shopify store or marketing website and want a 90+ mobile PageSpeed score, with the target agreed in writing after a free audit, without sacrificing your analytics, pixels, or conversion apps, explore our [Shopify Speed Optimization Sprint](/services/shopify-speed-optimization) or [schedule a discovery call](https://cal.com/atul-bhatt-klickspell/30min).

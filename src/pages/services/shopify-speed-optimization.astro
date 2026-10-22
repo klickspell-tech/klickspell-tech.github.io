@@ -15,7 +15,7 @@ const serviceSchema = {
     "name": "Klickspell",
     "url": "https://klickspell.com/"
   },
-  "description": "Guaranteed 90+ Mobile Google PageSpeed scores, sub-second LCP, zero layout shifts, and 0ms main-thread blocking for high-growth Shopify and DTC brands.",
+  "description": "A 90+ mobile PageSpeed target agreed after a free audit, passing Core Web Vitals, minimal layout shift and main-thread blocking for high-growth Shopify and DTC brands.",
   "areaServed": "Global",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -41,7 +41,7 @@ const faqSchema = {
       "name": "Do you guarantee a 90+ Mobile PageSpeed score?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. For stores running custom or standard themes without unremovable third-party vendor hard-locks, we provide a contractual 90+ Mobile Google PageSpeed guarantee or we continue optimizing at zero additional cost until achieved."
+        "text": "Not blindly. Some apps, embeds and third-party scripts set a ceiling that no one can engineer past. What we do guarantee is the target we agree after auditing your store: it's written into the proposal, and if we miss it because of our code or recommendations, we keep optimizing at no extra cost. We also measure real-user Core Web Vitals, not just the lab score."
       }
     },
     {
@@ -65,7 +65,7 @@ const faqSchema = {
       "name": "How long does a Shopify speed sprint take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A standard speed sprint takes 7 to 14 business days from initial diagnostic audit to final production theme handover."
+        "text": "A standard speed sprint takes 2 to 3 weeks from initial diagnostic audit to final production theme handover."
       }
     }
   ]
@@ -86,7 +86,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
 
 <BaseLayout
   title="Shopify Speed Optimization — 90+ Mobile PageSpeed | Klickspell"
-  description="We engineer sluggish Shopify stores into sub-second revenue engines. Guaranteed 90+ Mobile Core Web Vitals, 0ms main-thread blocking, and zero app breaks."
+  description="We engineer sluggish Shopify stores into sub-second revenue engines. A 90+ mobile target agreed in writing, passing Core Web Vitals, and zero app breaks."
   canonical={canonical}
   ogImage="https://klickspell.com/assets/og-card.png"
   schema={schemas}
@@ -100,11 +100,11 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
       
       <div class="service-badge reveal">
         <span class="service-badge-dot"></span>
-        Guaranteed 90+ Mobile PageSpeed · 0ms Blocking
+        90+ Mobile Target · Passing Core Web Vitals
       </div>
 
       <h1 class="service-hero-title reveal reveal-delay-1">
-        Slow stores lose 40% of sales.<br>
+        A 1-second store converts 2.5x better than a 5-second one.<br>
         We fix the <em>code</em>, not just the symptoms.
       </h1>
 
@@ -134,18 +134,18 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
       <!-- METRICS STRIP -->
       <div class="service-metrics-bar reveal reveal-delay-3">
         <div class="service-metric-item">
-          <p class="metric-label">Mobile Guarantee</p>
+          <p class="metric-label">Mobile Target</p>
           <p class="metric-val">90+ / 100</p>
-          <p class="metric-note">Contractual benchmark or we keep optimizing</p>
+          <p class="metric-note">Agreed after audit, or we keep optimizing</p>
         </div>
         <div class="service-metric-item">
           <p class="metric-label">Total Blocking Time</p>
-          <p class="metric-val">&lt; 50 ms</p>
-          <p class="metric-note">Smooth scrolling with zero main-thread freeze</p>
+          <p class="metric-val">&lt; 200 ms</p>
+          <p class="metric-note">Our aim: Lighthouse's "good" range</p>
         </div>
         <div class="service-metric-item">
           <p class="metric-label">Delivery Timeline</p>
-          <p class="metric-val">7–14 Days</p>
+          <p class="metric-val">2–3 Weeks</p>
           <p class="metric-note">Staged duplicate theme with zero live downtime</p>
         </div>
         <div class="service-metric-item">
@@ -183,7 +183,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
           <div class="service-deliverable-card">
             <p class="service-card-num">03 · CRITICAL CSS &amp; DOM</p>
             <h3 class="service-card-title">Eliminating Render-Blocking Chains</h3>
-            <p class="service-card-text">We extract and inline critical above-the-fold CSS styles, prune unused vendor styles, and streamline bloated DOM nesting so mobile browsers paint your hero section in under 1.2 seconds.</p>
+            <p class="service-card-text">We extract and inline critical above-the-fold CSS styles, prune unused vendor styles, and streamline bloated DOM nesting so mobile browsers can paint your hero section much sooner.</p>
           </div>
 
           <div class="service-deliverable-card">
@@ -204,6 +204,32 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
             <p class="service-card-text">We provide a video walkthrough of every change and a checklist for your marketing team on how to upload future banners and install new apps without hurting your hard-earned 90+ score.</p>
           </div>
         </div>
+      </section>
+
+      <!-- THE NUMBERS (every figure links to its source) -->
+      <section class="reveal speed-numbers" aria-labelledby="speed-numbers-title">
+        <div class="service-section-header">
+          <p class="section-eyebrow">Why speed matters</p>
+          <h2 id="speed-numbers-title">The numbers behind<br><em>the decision.</em></h2>
+          <p>Every figure here links to its source, so you can check it yourself.</p>
+        </div>
+        <ul class="speed-stats">
+          <li class="speed-stat">
+            <p class="speed-stat-val">2.5x</p>
+            <p class="speed-stat-text">higher e-commerce conversion rate for sites that load in 1 second than for sites that load in 5 seconds.</p>
+            <a class="speed-source" href="https://www.portent.com/blog/analytics/research-site-speed-hurting-everyone.htm" target="_blank" rel="noopener">Portent, 2022 (100M+ page views)</a>
+          </li>
+          <li class="speed-stat">
+            <p class="speed-stat-val">+8.4%</p>
+            <p class="speed-stat-text">retail conversions from a 0.1-second faster mobile site, across 37 brands.</p>
+            <a class="speed-source" href="https://web.dev/case-studies/milliseconds-make-millions" target="_blank" rel="noopener">Deloitte &amp; Google, Milliseconds Make Millions</a>
+          </li>
+          <li class="speed-stat">
+            <p class="speed-stat-val">+8%</p>
+            <p class="speed-stat-text">sales for Vodafone after improving Largest Contentful Paint by 31% in an A/B test.</p>
+            <a class="speed-source" href="https://web.dev/case-studies/vodafone" target="_blank" rel="noopener">web.dev, Vodafone case study</a>
+          </li>
+        </ul>
       </section>
 
       <!-- PROOF OF WORK CALLOUT -->
@@ -273,7 +299,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
         <div class="service-section-header">
           <p class="section-eyebrow">Frequently Asked Questions</p>
           <h2>Everything you need to know<br><em>before we start.</em></h2>
-          <p>Clear, direct answers about guarantees, app safety, and project workflows.</p>
+          <p>Clear, direct answers about speed targets, app safety, and project workflows.</p>
         </div>
 
         <div class="faq-list">
@@ -283,7 +309,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
               <span class="faq-icon">+</span>
             </summary>
             <div class="faq-answer">
-              Yes. For stores running custom or standard Shopify themes, we provide a contractual 90+ Mobile Google PageSpeed guarantee. If a store has unremovable third-party vendor restrictions, we identify the exact culprits and optimize everything within engineering control.
+              Not blindly. Some apps, embeds and third-party scripts set a ceiling that no one can engineer past. What we do guarantee is the target we agree after auditing your store: it's written into the proposal, and if we miss it because of our code or recommendations, we keep optimizing at no extra cost. We also measure real-user Core Web Vitals, not just the lab score.
             </div>
           </details>
 
@@ -323,7 +349,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
               <span class="faq-icon">+</span>
             </summary>
             <div class="faq-answer">
-              A standard speed sprint takes between 7 to 14 business days from initial diagnostic audit to final production theme handover.
+              A standard speed sprint takes 2 to 3 weeks from initial diagnostic audit to final production theme handover.
             </div>
           </details>
 
@@ -342,7 +368,7 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
       <!-- CONVERSION CTA BOX -->
       <section class="service-box-cta reveal">
         <h2>Ready for a store that loads instantly?<br><em>Let's audit your speed.</em></h2>
-        <p>Book a 15-minute diagnostic call with lead engineer Atul Bhatt. We will inspect your live store, identify your biggest bottlenecks, and give you an exact speed roadmap.</p>
+        <p>Book a free 30-minute diagnostic call with lead engineer Atul Bhatt. We will inspect your live store, identify your biggest bottlenecks, and give you an exact speed roadmap.</p>
         <div class="service-box-cta-actions">
           <a 
             href="https://cal.com/atul-bhatt-klickspell/30min" 
@@ -365,3 +391,15 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .speed-numbers { margin-bottom:5rem; }
+  .speed-stats { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+  .speed-stat { background:var(--white); border:.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; gap:.6rem; }
+  .speed-stat-val { font-family:'Instrument Serif',serif; font-size:clamp(38px,4vw,48px); line-height:1; color:var(--accent); }
+  .speed-stat-text { font-size:14.5px; color:var(--text-mid); line-height:1.6; flex:1; }
+  .speed-source { color:var(--accent-hover); font-size:12.5px; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+  .speed-source:hover { color:var(--accent); }
+  @media (max-width:980px) { .speed-stats { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:680px) { .speed-stats { grid-template-columns:1fr; } }
+</style>

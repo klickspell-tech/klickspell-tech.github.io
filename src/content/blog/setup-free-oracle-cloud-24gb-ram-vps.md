@@ -1,6 +1,6 @@
 ---
-title: "Free Oracle Cloud ARM VPS: 4 Cores & 24 GB RAM Setup Guide"
-description: "How to set up a forever free cloud VPS with 4 OCPU cores, 24 GB RAM, and 200 GB SSD storage on Oracle Cloud Infrastructure Ampere ARM architecture."
+title: "Free Oracle Cloud ARM VPS: Always Free Ampere Setup Guide"
+description: "How to set up a forever free cloud VPS with 2 OCPU cores, 12 GB RAM, and 200 GB block storage on Oracle Cloud Infrastructure Ampere ARM architecture."
 pubDate: 2026-08-19T00:00:00.000Z
 author: "Atul Bhatt"
 tags: ["Oracle Cloud", "VPS", "DevOps", "Linux", "Cloud", "Tutorial"]
@@ -14,14 +14,16 @@ readingTime: "6 min read"
 
 Most cloud providers (AWS, Google Cloud, DigitalOcean) offer free tiers that expire after 12 months or limit you to 1 GB of RAM and 1 tiny vCPU, which is barely enough to compile a modern Node.js application.
 
-Oracle Cloud Infrastructure (OCI) completely disrupts the industry with their **Always Free Tier**:
-- **4 OCPU Cores** on high-frequency Ampere Altra ARM processors.
-- **24 GB of RAM**.
-- **200 GB of NVMe-backed Block Storage**.
-- **Up to 4 separate instances** (you can run 1 monster 24 GB server or split it across multiple smaller VMs).
+Oracle Cloud Infrastructure (OCI) completely disrupts the industry with their **Always Free Tier** ([Oracle's Always Free resources page](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm)):
+- **2 OCPU Cores** on Ampere A1 ARM processors (1,500 OCPU hours a month).
+- **12 GB of RAM** (9,000 GB hours a month).
+- **200 GB of Block Storage** in total, shared between boot and block volumes.
+- **Up to 2 separate instances** (one 2 OCPU / 12 GB server, or two 1 OCPU / 6 GB VMs).
 - **10 TB of outbound data transfer** per month.
 
-Here is the complete step-by-step tutorial to provisioning and hardening your forever-free 24 GB RAM cloud server.
+> **Update (October 2026):** When I recorded the video above, the free Ampere allowance was 4 OCPUs and 24 GB of RAM across up to 4 instances. Oracle has since cut it to 2 OCPUs and 12 GB, so the numbers in this post are the current ones. The setup steps themselves haven't changed.
+
+Here is the complete step-by-step tutorial to provisioning and hardening your forever-free Ampere cloud server.
 
 ---
 
@@ -98,11 +100,11 @@ sudo netfilter-persistent save
 
 ---
 
-## What Can You Run on a 24 GB RAM Server?
+## What Can You Run on a 12 GB RAM Server?
 
-With 24 GB of RAM and 4 ARM cores, you can comfortably run:
-- A full production **ERPNext + MariaDB + Redis stack**.
-- Multi-container Docker workloads running Next.js, Postgres, and Celery workers.
+With 12 GB of RAM and 2 ARM cores, you can comfortably run:
+- A small **ERPNext + MariaDB + Redis stack** for a handful of users.
+- A few Docker containers running Next.js and Postgres.
 - Self-hosted developer tools (Gitea, Jenkins, N8N, Portainer).
 - High-concurrency WebSockets and backend microservices.
 

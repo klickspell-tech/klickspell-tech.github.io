@@ -8,7 +8,7 @@ const schema = [
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Mogra Media Case Study — Editorial-Grade Digital Flagship with Astro v7, Tailwind CSS v4 & Lenis",
-    "description": "How we built Mogra Media's sub-second editorial website in Astro for the award-winning film studio behind work for Deloitte, Himalaya and Apple TV+.",
+    "description": "How we built Mogra Media's editorial website in Astro for the film studio behind work for Deloitte, Himalaya and documentaries on Apple TV+.",
     "url": "https://klickspell.com/work/mogra-media",
     "image": "https://klickspell.com/assets/projects/mogra-media.png",
     "datePublished": "2026-09-02",
@@ -30,7 +30,7 @@ const schema = [
 
 <BaseLayout
   title="Mogra Media Case Study — Astro Editorial Website | Klickspell"
-  description="How we built Mogra Media's sub-second editorial website in Astro for the award-winning film studio behind work for Deloitte, Himalaya and Apple TV+."
+  description="How we built Mogra Media's editorial website in Astro for the film studio behind work for Deloitte, Himalaya and documentaries on Apple TV+."
   canonical="https://klickspell.com/work/mogra-media"
   ogImage="https://klickspell.com/assets/projects/mogra-media.png"
   ogType="article"
@@ -44,7 +44,7 @@ const schema = [
     <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Mogra Media</p>
     <p class="section-eyebrow reveal">Case Study · Creative Studio &amp; Film Production</p>
     <h1 class="cs-title reveal reveal-delay-1">Stories that bloom on screen —<br>an <em>editorial-grade digital flagship.</em></h1>
-    <p class="cs-sub reveal reveal-delay-2">Mogra Media crafts films for Deloitte, Himalaya Wellness, and global feature films on Apple TV+ and Prime Video. We engineered a tailored, sub-second digital flagship using Astro v7, Tailwind CSS v4, and Lenis smooth scrolling that communicates their "editorial-first" production mastery.</p>
+    <p class="cs-sub reveal reveal-delay-2">Mogra Media crafts films for Deloitte, Himalaya Wellness, and documentaries streaming on Apple TV+ and Prime Video. We engineered a tailored digital flagship using Astro v7, Tailwind CSS v4, and Lenis smooth scrolling that communicates their "editorial-first" production mastery.</p>
     <div class="cs-actions reveal reveal-delay-2">
       <a href="https://mogramedia.com/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
       <a href="#architecture" class="btn-ghost">Explore engineering ↓</a>
@@ -70,8 +70,8 @@ const schema = [
       <p>Using Astro's Island architecture and selective client hydration, we combined high-resolution video embeds, inertia-driven smooth scrolling, and asymmetrical editorial grids while keeping the layout footprint zero-JS by default.</p>
       <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
         <div class="stat"><p class="stat-num">Astro</p><p class="stat-label">Zero-JS island architecture by default</p></div>
-        <div class="stat"><p class="stat-num">&lt;35<span>KB</span></p><p class="stat-label">Ultra-lean client JavaScript runtime</p></div>
-        <div class="stat"><p class="stat-num">60<span> FPS</span></p><p class="stat-label">Cinematic Lenis inertia scroll feel</p></div>
+        <div class="stat"><p class="stat-num">~25<span>KB</span></p><p class="stat-label">First-party JavaScript</p></div>
+        <div class="stat"><p class="stat-num">100<span>/100</span></p><p class="stat-label">Lighthouse SEO score</p></div>
       </div>
     </div>
 
@@ -97,13 +97,13 @@ const schema = [
     <div class="cs-section reveal" id="architecture" style="max-width:none">
       <p class="section-eyebrow">Technical Architecture</p>
       <h2 style="max-width:700px">Astro v7 Island Architecture — Zero JS by default.</h2>
-      <p style="max-width:700px; margin-bottom:2rem">We engineered the platform on <strong>Astro v7</strong> with isolated client islands, guaranteeing sub-second load times and silky smooth frame rates:</p>
+      <p style="max-width:700px; margin-bottom:2rem">We engineered the platform on <strong>Astro v7</strong> with isolated client islands, keeping layouts static and scrolling smooth:</p>
 
       <div class="cs-feature-grid" style="margin-top:1.5rem">
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Core Architecture</div>
           <h3>Astro v7 Island Engine</h3>
-          <p>Static HTML output with zero JavaScript footprint for layouts and typography. Client-side JS is strictly isolated to interactive components (Alpine.js accordions and Slick sliders), keeping total bundle size under 35 KB.</p>
+          <p>Static HTML output with zero JavaScript footprint for layouts and typography. Client-side JS is strictly isolated to interactive components (Alpine.js accordions and Slick sliders), keeping our own JavaScript to about 25 KB. (Slick, jQuery and Fancybox load separately from a CDN.)</p>
         </div>
         <div class="cs-feature">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem;">Motion &amp; Feel</div>
@@ -142,15 +142,15 @@ const schema = [
         </div>
         <div class="cs-feature">
           <h3>📝 High-Conversion Brief Intake Engine</h3>
-          <p>A streamlined project inquiry engine categorizing timeline expectations, project scopes, and production formats, generating structured creative briefs that cut onboarding time in half.</p>
+          <p>A streamlined project inquiry engine categorizing timeline expectations, project scopes, and production formats, generating structured creative briefs before the first call.</p>
         </div>
         <div class="cs-feature">
           <h3>🌿 Botanical-Luxury Design Tokens</h3>
           <p>Tailwind CSS v4 design tokens built around Deep Mogra Green (<code>#007937</code>), Electric Leaf (<code>#92F85B</code>), and Warm Alabaster (<code>#FBF6EC</code>), paired with Fraunces display serif typography.</p>
         </div>
         <div class="cs-feature">
-          <h3>⚡ 100/100 SEO &amp; Accessibility Score</h3>
-          <p>Full semantic HTML5 structure, explicit ARIA attributes, structured JSON-LD organization schema, and contrast ratios tuned for effortless readability across all lighting environments.</p>
+          <h3>⚡ 100/100 Lighthouse SEO Score</h3>
+          <p>Full semantic HTML5 structure, explicit ARIA attributes, and structured JSON-LD organization schema, so search engines understand the studio, its work and its people.</p>
         </div>
       </div>
     </div>

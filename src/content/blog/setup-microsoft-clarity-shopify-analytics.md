@@ -17,7 +17,7 @@ Most e-commerce analytics platforms tell you *what* happened on your Shopify sto
 What they don't tell you is **why** visitors abandoned their carts or where they got frustrated.
 
 **Microsoft Clarity** solves this problem completely:
-- 100% free with **zero traffic limits or sample caps**.
+- 100% free with **zero traffic limits or sample caps** ([Clarity FAQ](https://learn.microsoft.com/clarity/faq)).
 - High-fidelity **session recordings** showing exact mouse movements, taps, and scrolls.
 - Dynamic **heatmaps** on desktop and mobile.
 - Automated detection of **rage clicks**, **dead clicks**, and **excessive scrolling**.

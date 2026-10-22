@@ -124,7 +124,7 @@ def execute_skill(skill_name: str, user_query: str):
 ## Benefits of Multi-Skill Design
 
 1. **Zero Hallucination:** The model only sees 2–3 tools at a time instead of 40 conflicting functions.
-2. **Token Efficiency:** Saves up to 75% in context window tokens by leaving unused tool definitions on disk.
+2. **Token Efficiency:** Saves a good chunk of context window tokens in my experience, because unused tool definitions stay on disk instead of in the prompt.
 3. **Team Scalability:** Individual engineers can build, test, and version individual skills independently without breaking the core orchestrator.
 
 ---

@@ -174,4 +174,4 @@ _If you have come this far, I hope and believe you enjoyed this post and got to 
 
 _In my next post, I’ll reveal more about what steps we as a developer can take to optimize the web application or site we are building, and hence improve the web performance._
 
-Curious about where your site currently stands? Run a real-time mobile audit using our free [Website Speed & App Bloat Estimator](/speed), or discover how our [Shopify Speed Optimization](/services/shopify-speed-optimization) service guarantees sub-second load times.
+Curious about where your site currently stands? Run a real-time mobile audit using our free [Website Speed & App Bloat Estimator](/speed), or discover how our [Shopify Speed Optimization](/services/shopify-speed-optimization) service can speed up your store.

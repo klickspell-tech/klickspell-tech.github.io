@@ -18,22 +18,22 @@ Rounding out the comparisons we keep getting asked about — [GoKwik vs Razorpay
 
 This is the most concrete, verifiable difference between the two:
 
-- **Razorpay**: standard/permanent rate is a flat **2% per transaction** ([Razorpay pricing](https://razorpay.com/pricing/)), no setup or annual maintenance fee. Razorpay is also currently running its own **limited-time new-merchant promo** — 0% platform fee for the first 90 days, for merchants under ₹5L/month (above that, custom/Enterprise pricing — contact sales). Magic Checkout itself is separately enterprise-priced regardless of which rate the base gateway is on — contact sales.
+- **Razorpay**: standard/permanent rate is a flat **2% per transaction** ([Razorpay pricing](https://razorpay.com/pricing/)), no setup or annual maintenance fee. Razorpay is also currently running its own **limited-time new-merchant promo** — 0% platform fee for a new merchant's first 90 days or first ₹5L in transactions, whichever comes first, for accounts activated on or after 1 July 2026 ([offer terms](https://razorpay.com/terms/90-day-free-pg-offer/), checked 22 Oct 2026). Magic Checkout itself is separately enterprise-priced regardless of which rate the base gateway is on — contact sales.
 - **Cashfree**: standard/permanent rate is a flat **1.95% + applicable taxes** on domestic transactions ([Cashfree pricing](https://www.cashfree.com/payment-gateway-charges/)), and Checkout 360 appears to be included in standard pricing rather than gated behind a separate enterprise quote. Cashfree is also currently running its own **limited-time new-merchant promo** — 0% platform fee up to ₹20L cumulative GMV — through 31 March 2027 or until the GMV cap is hit, whichever comes first.
 
 Both promos are for merchants signing up during the respective campaign windows, not the standing rate — build your pricing model around the permanent rates (Razorpay 2%, Cashfree 1.95%), not either promo, since both have expiry conditions (Razorpay's is time-based under a volume threshold, Cashfree's is GMV-capped with a hard date) that aren't guaranteed to still apply by the time you're reading this. On the permanent rates, Cashfree is slightly cheaper (1.95% vs 2%), though the gap is narrow. Which promo (if either) actually applies to a given store depends on its volume and signup timing — re-confirm both are still live before factoring either into a pitch.
 
 ## Address prefill and network size
 
-- **Razorpay Magic Checkout**: 200M+ saved addresses, auto-fill from its shopper identity network.
+- **Razorpay Magic Checkout**: pre-saved addresses from a network "trained on 100M+ shoppers" ([razorpay.com/magic-checkout](https://razorpay.com/magic-checkout/), checked 22 Oct 2026).
 - **Cashfree Checkout 360**: 120M+ verified saved addresses, with a specifically claimed 95% accuracy rate.
 
-Razorpay's network is larger by the numbers both companies publish. Cashfree is the only one making an explicit accuracy claim rather than just a coverage number — worth asking both what exactly "accuracy" measures before treating either figure as directly comparable.
+Cashfree's published number is slightly larger (120M+ vs 100M+), and Cashfree is also the only one making an explicit accuracy claim rather than just a coverage number — worth asking both what exactly "accuracy" measures before treating either figure as directly comparable.
 
 ## RTO and COD handling
 
-- **Razorpay**: prepay nudges, differential COD fees by risk tier, COD disabled for high-risk shoppers, plus an **RTO Protection** product that automates reimbursement when a delivery actually fails — a backstop on top of prevention, not just prevention.
-- **Cashfree**: AI-driven RTO prediction trained on 2.5B+ logistics data points, real-time COD allow/block/partial controls, targeted COD masking, claims up to 30% RTO reduction.
+- **Razorpay**: prepay nudges, differential COD fees by risk tier, COD disabled for high-risk shoppers, plus an [**RTO Protection**](https://razorpay.com/magic-checkout/) product that automates reimbursement when a delivery actually fails — a backstop on top of prevention, not just prevention.
+- **Cashfree**: AI-driven RTO prediction trained on 2.5B+ logistics data points, real-time COD allow/block/partial controls, targeted COD masking. Its page quotes a 90%+ RTO reduction reported by a customer ([cashfree.com/one-click-checkout](https://www.cashfree.com/one-click-checkout/), checked 22 Oct 2026).
 
 Razorpay is the only one of the two with an actual reimbursement/insurance-style product for when prevention fails. If pure prevention is all you need, both have comparable real tooling; if you want a financial backstop on top, that's specifically a Razorpay feature.
 
@@ -51,7 +51,7 @@ Neither publicly documents native A/B testing on discount variants the way GoKwi
 | | Razorpay Magic Checkout | Cashfree Checkout 360 |
 |---|---|---|
 | Best fit | Higher-volume stores, want a financial backstop on RTO | Lower/mid-volume stores, want transparent pricing from day one |
-| Gateway pricing | Flat 2% standard (+ time-limited 0%-for-90-days promo, under ₹5L/mo) | Flat 1.95% standard (+ time-limited 0%-to-₹20L new-merchant promo through Mar 2027) |
+| Gateway pricing | Flat 2% standard (+ [0% for a new merchant's first 90 days or ₹5L](https://razorpay.com/terms/90-day-free-pg-offer/)) | Flat 1.95% standard (+ time-limited 0%-to-₹20L new-merchant promo through Mar 2027) |
 | Checkout layer pricing | Separate enterprise quote | Appears bundled into standard pricing |
 | RTO safety net | RTO Protection (reimbursement) | Prevention only |
 
@@ -65,4 +65,4 @@ See all three platforms side by side in [one table](/blog/gokwik-vs-razorpay-vs-
 
 ### Choosing a gateway for a new or existing store?
 
-The right answer depends on your current volume, growth trajectory, and what's already wired into your accounting/ops stack — not just the checkout feature list. [Configure a project scope](/quote) or [book a 20-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll help you think it through.
+The right answer depends on your current volume, growth trajectory, and what's already wired into your accounting/ops stack — not just the checkout feature list. [Configure a project scope](/quote) or [book a 30-minute call](https://cal.com/atul-bhatt-klickspell/30min) and we'll help you think it through.

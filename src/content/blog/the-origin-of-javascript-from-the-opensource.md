@@ -32,7 +32,7 @@ You probably heard about Unix. It’s an operating system and it’s still used 
 
 Unix was again developed at Bell Labs by Ken Thompson and Dennis Ritchie along with some more of their colleagues.
 
-> _Ken Thompson initially started developing B to port the Unix operating system to a DEC PDP-7 minicomputer._
+> _Ken Thompson developed B around 1969–70 as a systems language for the early Unix running on a DEC PDP-7 minicomputer ([Dennis Ritchie, The Development of the C Language](https://www.bell-labs.com/usr/dmr/www/chist.html))._
 
 The earlier version of Unix, called Unics (later renamed to Unix), was written in assembly language, which made it difficult to port to different hardware platforms. Thompson wanted to create a higher-level language that could be used to rewrite Unix and make it more portable across different systems.
 
@@ -76,9 +76,9 @@ Initially JavaScript was not open source. The source code for the JavaScript imp
 
 ### JS, ECMA and Open-Source
 
-Netscape took steps towards making JavaScript more open and standardized. In 1996, Netscape submitted the JavaScript language to the European Computer Manufacturers Association (ECMA) for standardization. This led to the creation of the ECMAScript standard, which provided a standardized specification for JavaScript and other implementations based on the language.
+Netscape took steps towards making JavaScript more open and standardized. In November 1996, Netscape submitted the JavaScript language to the European Computer Manufacturers Association (ECMA) for standardization ([Brendan Eich & Allen Wirfs-Brock, JavaScript: The First 20 Years](https://dl.acm.org/doi/10.1145/3386327)). This led to the creation of the ECMAScript standard, which provided a standardized specification for JavaScript and other implementations based on the language.
 
-In 2002, Netscape, then under AOL ownership, made the decision to release the source code of their JavaScript engine as open source. This led to the creation of the Mozilla project, which developed the open-source browser Firefox.
+In 1998, Netscape announced it would release the source code of its browser, Communicator, including its JavaScript engine (later known as SpiderMonkey). That release started the Mozilla project, which went on to build the open-source browser Firefox in 2004 ([Mozilla's history](https://www.mozilla.org/en-US/about/history/)).
 
 The open sourcing of the JavaScript engine by Netscape played a significant role in the further development and widespread adoption of JavaScript. It allowed developers and other browser vendors to contribute to the improvement of the language and its implementation, leading to the growth of the JavaScript ecosystem we see today.
 
@@ -98,4 +98,4 @@ Bell Labs built B and C because they needed the Unix operating system to run acr
 
 Netscape created JavaScript because they needed to defend their browser against Microsoft and create an interactive platform users couldn't find anywhere else. Releasing the engine’s source code opened the door to global contributions and standard bodies like ECMAScript.
 
-The history of JavaScript shows how practical commercial pressure can unintentionally spark open-source ecosystems. Netscape was fighting for browser survival, but the tool they rushed out in ten days ended up shaping how the modern web runs today.
+The history of JavaScript shows how practical commercial pressure can unintentionally spark open-source ecosystems. Netscape was fighting for browser survival, but the tool Brendan Eich wrote in ten days in May 1995 ended up shaping how the modern web runs today.

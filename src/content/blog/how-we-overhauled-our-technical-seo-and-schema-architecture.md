@@ -12,7 +12,7 @@ When most agencies talk about "improving SEO," they usually mean writing more ke
 
 Yet underneath the surface, thousands of websites are bleeding organic visibility because of **fundamental technical decay**: broken Schema.org structured data, render-blocking stylesheets, cumulative layout shifts (CLS) caused by unsized images, missing canonical tags, accessibility contrast failures, and complete invisibility to modern AI search engines like Perplexity, ChatGPT, and Claude.
 
-Over the past week, we undertook an exhaustive, end-to-end technical overhaul of [Klickspell](https://klickspell.com). We didn't want superficial scores or third-party marketing plugins. We wanted a mathematically airtight foundation: **162 validated Schema.org structured data blocks, 98–99 Mobile PageSpeed, 0ms Total Blocking Time, and full compliance with the 2026 AI search specification (`llms.txt`)**.
+Over the past week, we undertook an exhaustive, end-to-end technical overhaul of [Klickspell](https://klickspell.com). We didn't want superficial scores or third-party marketing plugins. We wanted a mathematically airtight foundation: **162 validated Schema.org structured data blocks, 98–99 Mobile PageSpeed, 0ms Total Blocking Time, and an `llms.txt` file for AI crawlers**. (`llms.txt` is a [community proposal](https://llmstxt.org/), not an official standard, but it's cheap to add.)
 
 Here is the exact engineering playbook, code architecture, and step-by-step methodology we implemented.
 
@@ -78,7 +78,7 @@ This reduced our **First Contentful Paint (FCP)** to under 0.6 seconds on mobile
 ### C. Self-Hosted Variable Typography
 Third-party font services like Google Fonts introduce external DNS lookups, preconnect delays, and layout shifts when fonts swap.
 
-We eliminated external font dependencies entirely by self-hosting local variable WOFF2 files for **Outfit** (headings) and **Inter** (body), declaring `@font-face` with `font-display: swap` and preloading the primary latin weights in `<head>`.
+We eliminated external font dependencies entirely by self-hosting local WOFF2 files for **Instrument Serif** (headings), **Manrope** (body, as one variable font) and **DM Mono** (labels), declaring `@font-face` with `font-display: swap` and preloading the primary latin weights in `<head>`.
 
 ---
 
@@ -97,7 +97,8 @@ Crawl budget and link equity are frequently wasted by sloppy routing: redirect c
 Accessibility is both an ethical requirement and a concrete ranking factor: search crawlers rely on semantic landmarks, descriptive labels, and structured heading hierarchies to index pages accurately.
 
 Using Chrome DevTools accessibility audits, we overhauled our design tokens to guarantee full **WCAG AA compliance (minimum 4.5:1 contrast ratio)**:
-* Upgraded our primary accent colors on dark backgrounds from low-contrast emeralds to high-luminance lime/emerald tokens (`#84cc16` / `#10b981`).
+* Added a lighter accent token for dark sections (`--accent-on-dark: #7B98FF`), because our primary blue (`#3A5BE0`) didn't have enough contrast on the dark footer and "Why Klickspell" section.
+* Raised white text on dark backgrounds from 30–60% opacity to 70–85%.
 * Increased contrast on secondary metadata text (`--text-light` and `--text-mid`).
 * Added accessible semantic landmarks: `<main id="main-content">`, `<nav aria-label="Main Navigation">`, `<section>`, and `<header>`.
 * Injected a hidden **Skip to main content** link for keyboard navigation and screen-reader accessibility.
@@ -124,7 +125,7 @@ Publishing great code is meaningless if search engine crawlers don't know it exi
 
 We deployed an automated GitHub Actions CI/CD pipeline (`.github/workflows/sync-and-index.yml`) that runs on every commit to `main`:
 1. **Automated Verification**: Runs `npm run build` and `npm run audit:schemas` to guarantee zero build errors and 100% schema validity.
-2. **Search Engine Ping**: Automatically pings Google, Bing, and IndexNow endpoints with our updated `sitemap.xml` whenever new articles or case studies are pushed.
+2. **IndexNow Ping**: Automatically submits changed URLs to the [IndexNow](https://www.indexnow.org/) API (used by Bing, Yandex and others) whenever new articles or case studies are pushed. Google doesn't support IndexNow and [retired its sitemap ping endpoint in 2023](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping), so for Google we rely on the sitemap in Search Console and accurate `lastmod` dates.
 3. **Instant Cache Purging**: Keeps edge CDN endpoints synchronized with our latest static builds.
 
 ---
