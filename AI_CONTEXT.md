@@ -20,6 +20,8 @@
 
 Klickspell is a **web engineering and digital product studio** based in Rudrapur, Uttarakhand.
 
+**The team is fully remote.** Never describe the team as based in Uttarakhand (or any one place). Atul, Rohit and Vivek are in Uttarakhand; Kunal, Krishna and Ankit work from elsewhere.
+
 **Legal entity:** KlickSpell Private Limited, incorporated 25 May 2026 (RoC Kanpur, CIN U62090UP2026PTC248355). Directors: Atul Bhatt and Vivek Bhatt.
 - Verified source (public MCA data): https://www.falconebiz.com/company/KLICKSPELL-PRIVATE-LIMITED-U62090UP2026PTC248355 (status Active, RoC Uttar Pradesh, registered office Bilaspur, Rampur, UP).
 - Use "KlickSpell Private Limited" only where the legal name belongs (footer copyright, schema `legalName`). Everywhere else the brand is "Klickspell".

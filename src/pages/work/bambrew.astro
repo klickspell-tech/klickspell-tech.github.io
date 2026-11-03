@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bambrew Shopify Case Study — A Custom Theme for a Plastic-Free Packaging Brand",
+    "description": "How we built Bambrew's Shopify store on a custom theme: 15 brand sections, a comparison slider, coming-soon products and live Judge.me reviews, in about two and a half weeks.",
+    "url": "https://klickspell.com/work/bambrew",
+    "image": "https://klickspell.com/assets/projects/bambrew.png",
+    "datePublished": "2026-11-03",
+    "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
+    "about": { "@type": "Organization", "name": "Bambrew", "url": "https://www.bambrew.in/" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://klickspell.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://klickspell.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Bambrew", "item": "https://klickspell.com/work/bambrew" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Bambrew Case Study — Custom Shopify Theme | Klickspell"
+  description="How we built Bambrew's Shopify store on a custom theme: 15 brand sections, a comparison slider, coming-soon products and live Judge.me reviews, in about two and a half weeks."
+  canonical="https://klickspell.com/work/bambrew"
+  ogImage="https://klickspell.com/assets/projects/bambrew.png"
+  ogType="article"
+  schema={schema}
+>
+  <Nav />
+
+  <main id="main-content">
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Bambrew</p>
+    <p class="section-eyebrow reveal">Case Study · Sustainable Packaging</p>
+    <h1 class="cs-title reveal reveal-delay-1">A plastic-free brand,<br>on a <em>custom</em> Shopify theme.</h1>
+    <p class="cs-sub reveal reveal-delay-2">Bambrew makes plant-based packaging that replaces plastic: compostable films, mailer bags and garment bags. We built their Shopify store on a custom theme, with 15 sections made for the brand, and the core build took about two and a half weeks.</p>
+    <div class="cs-actions reveal reveal-delay-2">
+      <a href="https://www.bambrew.in/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
+    </div>
+    <div class="cs-meta-strip reveal reveal-delay-3">
+      <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Sustainable Packaging</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Region</p><p class="cs-meta-value">India</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Platform</p><p class="cs-meta-value">Shopify (custom theme on Dawn)</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Built</p><p class="cs-meta-value">February 2026</p></div>
+    </div>
+    <div class="cs-hero-image reveal reveal-delay-3">
+      <img src="/assets/projects/bambrew.webp" alt="Bambrew Shopify store built by Klickspell" decoding="async">
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-body">
+
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The challenge</p>
+      <h2>A new material needs explaining.</h2>
+      <p>Bambrew is a Blume Ventures-backed company making packaging from plant-based materials. Most people visiting the site have never seen a compostable mailer bag, so the store has to do more than list products. It has to show what the material is, how it compares with plastic, and where it can be used, and then make it easy to buy.</p>
+      <p>A stock theme wasn't going to carry that story. Bambrew needed its own look, with its own fonts, pages for its mission and impact, and a way to show products that weren't on sale yet.</p>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <div class="about-stats" style="border-top:none; padding-top:0; justify-content:space-between; flex-wrap:wrap;">
+        <div class="stat"><p class="stat-num">15</p><p class="stat-label">Custom theme sections built for the brand</p></div>
+        <div class="stat"><p class="stat-num">17<span> days</span></p><p class="stat-label">Core build, 2 to 18 February 2026</p></div>
+        <div class="stat"><p class="stat-num">3</p><p class="stat-label">Klickspell engineers on the build</p></div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <p class="section-eyebrow">What we built</p>
+      <h2 style="max-width:700px">A theme made for the brand, section by section.</h2>
+      <div class="cs-feature-grid" style="margin-top:2.5rem">
+        <div class="cs-feature">
+          <h3>Header, footer &amp; type</h3>
+          <p>A transparent header that turns solid as you scroll and switches to dark text on the lighter pages, with desktop hover menus. Bambrew's Cabinet Grotesk fonts are loaded into the theme, and the footer carries their menus, social links and LinkedIn.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Storytelling homepage</h3>
+          <p>A slideshow with typewriter headings, a mission banner, image and text splits, an icon grid and a differentiation section. Each one animates in as you scroll, and the typewriter effect reserves its space up front so the page doesn't jump while it types.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Comparison slider</h3>
+          <p>A drag-to-compare slider for showing Bambrew's material against plastic. It takes separate images for mobile and desktop, so each screen size loads a picture made for it.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Products, including coming soon</h3>
+          <p>A product listing grid that pulls from any collection the team picks. Products that aren't out yet get a "coming soon" badge and a dimmed card that doesn't link through, so the range can be shown before it's on sale.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Product page</h3>
+          <p>A custom gallery with vertical thumbnails, variant details in the product title, and descriptions pulled from a metafield. Long descriptions sit below the buy buttons with a Read More toggle, so the buttons stay in view.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>Reviews, impact &amp; about</h3>
+          <p>A reviews section that shows live reviews from the Judge.me API, or reviews the team adds by hand. Plus dedicated About and Impact page templates, a contact page and a newsletter popup.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The result</p>
+      <h2>A store the team can run themselves.</h2>
+      <p>Every section comes with its own settings in the Shopify theme editor: headings, images, separate mobile images, layout, column counts and whether buttons show. Bambrew's team can change the homepage, add products to the coming soon list or build a new page without waiting on a developer.</p>
+      <p>Product images carry explicit sizes and load lazily, and the animations are built so they don't shift the layout, which keeps the pages fast and steady as they load.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">In person</p>
+      <h2>Meeting the Bambrew team.</h2>
+      <figure class="cs-photo">
+        <img src="/assets/partners/atul-bambrew.webp" alt="Atul Bhatt with Raskin and Ajay from Bambrew in their office" width="1600" height="901" loading="lazy" decoding="async" />
+        <figcaption>Atul with Raskin and Ajay from Bambrew.</figcaption>
+      </figure>
+    </div>
+
+    <div class="cs-section reveal" style="max-width:none">
+      <div class="cs-next">
+        <div>
+          <p class="cs-next-label">See more work</p>
+          <p class="cs-next-title">Explore the full portfolio</p>
+        </div>
+        <a href="/#work" class="btn-secondary">Back to Work ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Need a store that<br>tells your <em>story?</em></h2>
+      <h2 class="cta-title-mobile">Need a store that<br>tells your <em>story?</em></h2>
+      <p class="cta-sub">Let's start with a free 30-minute discovery call to discuss your store, timeline, and budget.</p>
+      <p class="cta-sub-mobile">Free 30-min call · Discuss scope &amp; budget</p>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
+      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:none">💬 Chat on WhatsApp</a>
+      <p class="cta-stamp">The craft in every click.</p>
+    </div>
+  </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .cs-photo { margin:1.5rem 0 0; }
+  .cs-photo img { width:100%; height:auto; display:block; border-radius:var(--radius); border:.5px solid var(--border); }
+  .cs-photo figcaption { font-family:var(--font-mono); font-size:11px; letter-spacing:.04em; color:var(--text-light); margin-top:.75rem; }
+</style>

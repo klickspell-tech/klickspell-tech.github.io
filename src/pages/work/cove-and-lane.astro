@@ -3,15 +3,44 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 
+const timeline = [
+  {
+    date: "Early June 2025",
+    title: "The code we needed didn't exist",
+    body: "The homepage ran on a custom React build, but the source code wasn't available to us, only the compiled output. Nobody can safely work on that. The theme from before React was there, and it turned out to be even slower. So we made a plan: fix that theme, bring over everything the React version had, and keep rebuilding it properly from there."
+  },
+  {
+    date: "Mid June 2025",
+    title: "From about 20 to about 55",
+    body: "We set up a separate development store so the team could open previews without a password, and started on images, scripts and the legacy analytics setup. Within two weeks the new theme's performance score went from about 20 to about 55."
+  },
+  {
+    date: "19 June 2025",
+    title: "Live, in the afternoon",
+    body: "Evenings are Cove & Lane's busiest sales hours, so we published in the afternoon instead. We checked Google Tag Manager with their marketing agency, and Adit placed a real order end to end before we called it done."
+  },
+  {
+    date: "June to September 2025",
+    title: "Their priority list, one item at a time",
+    body: "Every request went into a shared Notion board with time estimates, and the team picked what came next. Two weeks after launch they told us their bounce rate had dropped."
+  },
+  {
+    date: "October to December 2025",
+    title: "Back for the festive season",
+    body: "After a pause in the contract we picked the store back up, reconnected it to GitHub, and shipped a Buy 2 Get 1 sale, product reviews, a new size selector and a round of app and script clean-up. In December we broke their new redesign down into a build plan for development."
+  }
+];
+
 const schema = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Cove & Lane Shopify Migration Case Study — From a React Workaround to Native Shopify, Core Web Vitals Fixed",
-    "description": "How we moved Cove & Lane off a bolted-on React workaround onto native Shopify, rebuilt every design and took Core Web Vitals from Failed to Passed.",
+    "headline": "Cove & Lane Shopify Case Study — From a React Workaround to a Native Shopify Theme",
+    "description": "How we moved Cove & Lane off a React workaround onto a native Shopify theme in 15 days, then worked through their store's priority list for seven months.",
     "url": "https://klickspell.com/work/cove-and-lane",
     "image": "https://klickspell.com/assets/projects/cove-and-lane.png",
     "datePublished": "2026-07-07",
+    "dateModified": "2026-11-03",
     "author": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
     "publisher": { "@type": "Organization", "name": "Klickspell", "url": "https://klickspell.com/" },
     "about": { "@type": "Organization", "name": "Cove & Lane", "url": "https://coveandlane.in/" }
@@ -30,7 +59,7 @@ const schema = [
 
 <BaseLayout
   title="Cove & Lane Case Study — React to Shopify Migration | Klickspell"
-  description="How we moved Cove & Lane off a bolted-on React workaround onto native Shopify, rebuilt every design and took Core Web Vitals from Failed to Passed."
+  description="How we moved Cove & Lane off a React workaround onto a native Shopify theme in 15 days, then worked through their store's priority list for seven months."
   canonical="https://klickspell.com/work/cove-and-lane"
   ogImage="https://klickspell.com/assets/projects/cove-and-lane.png"
   ogType="article"
@@ -43,8 +72,8 @@ const schema = [
   <div class="cs-hero">
     <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/#work">Work</a> / Cove &amp; Lane</p>
     <p class="section-eyebrow reveal">Case Study · Fashion &amp; Apparel</p>
-    <h1 class="cs-title reveal reveal-delay-1">From a bolted-on React workaround<br>to a <em>fast, native</em> Shopify.</h1>
-    <p class="cs-sub reveal reveal-delay-2">Cove &amp; Lane's previous developers had embedded a single React/HTML file directly into the store instead of building on Shopify's own architecture. We migrated it onto native Shopify the right way, rebuilt every approved design, and built the custom store functionality that came next.</p>
+    <h1 class="cs-title reveal reveal-delay-1">From a bolted-on React workaround<br>to a <em>native</em> Shopify theme.</h1>
+    <p class="cs-sub reveal reveal-delay-2">Cove &amp; Lane's homepage ran on a React build that nobody could edit, and the store was slow. We moved them onto a native Shopify theme in 15 days, without taking the store offline, then spent the next seven months working through their priority list.</p>
     <div class="cs-actions reveal reveal-delay-2">
       <a href="https://coveandlane.in/" target="_blank" rel="noopener" class="btn-primary">Visit live site ↗</a>
       <a href="#" onclick="event.preventDefault();openYTModal('Ufh6W6h4Kqo')" class="btn-ghost">Watch video walkthrough ▶</a>
@@ -53,7 +82,7 @@ const schema = [
       <div class="cs-meta-item"><p class="cs-meta-label">Industry</p><p class="cs-meta-value">Fashion &amp; Apparel</p></div>
       <div class="cs-meta-item"><p class="cs-meta-label">Region</p><p class="cs-meta-value">India</p></div>
       <div class="cs-meta-item"><p class="cs-meta-label">Platform</p><p class="cs-meta-value">Shopify (migrated from React)</p></div>
-      <div class="cs-meta-item"><p class="cs-meta-label">Partner since</p><p class="cs-meta-value">May 2025</p></div>
+      <div class="cs-meta-item"><p class="cs-meta-label">Worked together</p><p class="cs-meta-value">June – December 2025</p></div>
     </div>
     <div class="cs-hero-image reveal reveal-delay-3">
       <img src="/assets/projects/cove-and-lane.webp" alt="Cove &amp; Lane Shopify store built and maintained by Klickspell" decoding="async">
@@ -66,60 +95,73 @@ const schema = [
     <div class="cs-section reveal">
       <p class="section-eyebrow">How it started</p>
       <h2>The same referral, months later.</h2>
-      <p>Karan Dubey, who'd already introduced us to Jaxon Lane through Tealbox Digital, connected us with Cove &amp; Lane's team in May 2025, noting that he'd worked with us extensively and trusted our execution. A few weeks later we were signed on to migrate and optimize their store.</p>
+      <p>Karan Dubey, who'd already introduced us to Jaxon Lane through Tealbox Digital, connected us with Cove &amp; Lane's founders, Sanya and Adit. They wanted three things: a faster store, a store their own team could edit without calling a developer, and a site that matched their Figma designs. We started in early June 2025, signed on 18 June, and worked month to month.</p>
     </div>
 
     <div class="cs-section reveal">
       <p class="section-eyebrow">The challenge</p>
       <h2>A workaround, not an architecture.</h2>
-      <p>Cove &amp; Lane's storefront wasn't running on Shopify Hydrogen or any deliberate headless setup. A previous team of developers had embedded a single React/HTML file directly into the Shopify store instead of building a proper theme, using a stack they were comfortable with rather than Shopify's own standards. It looked fine on the surface, but the store couldn't be edited through Shopify's native customizer, couldn't cleanly use the app ecosystem, and was failing Core Web Vitals outright.</p>
-      <p>They needed someone to migrate it onto Shopify the right way: preserving their approved design while shipping the functional improvements that come with running a growing fashion brand.</p>
-      <p>The migration itself wasn't simple: the existing implementation was undocumented and full of hardcoded values, so the first job was reverse-engineering how it actually worked before anything could move, all while balancing live-site fixes with core performance work.</p>
+      <p>A previous team had replaced the homepage with a custom React build sitting inside the Shopify store. It looked fine, but adding a new category or a blog post meant going back to a developer. The React source code was never handed over, so we couldn't work on it either.</p>
+      <p>Speed was the other problem, and a lot of it came from third-party apps. We tested this directly: a fresh Dawn theme with nothing installed scored 95 to 99. Adding just one login app took it to 63 to 67. So every app on the store had to earn its place.</p>
     </div>
 
     <div class="cs-section reveal" style="max-width:none">
       <div class="about-stats" style="border-top:none; padding-top:0; justify-content:space-between; flex-wrap:wrap;">
-        <div class="stat"><p class="stat-num">Shopify 2.0</p><p class="stat-label">Rebuilt natively from embedded React/HTML</p></div>
-        <div class="stat"><p class="stat-num">2025</p><p class="stat-label">Ongoing development partner since May</p></div>
-        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Native customizer control for client team</p></div>
+        <div class="stat"><p class="stat-num">15<span> days</span></p><p class="stat-label">From first look to the new theme going live</p></div>
+        <div class="stat"><p class="stat-num">20<span>→</span>55</p><p class="stat-label">Performance score in the first two weeks</p></div>
+        <div class="stat"><p class="stat-num">1.27<span>GB</span>→48<span>MB</span></p><p class="stat-label">One batch of product photos, compressed for the store</p></div>
       </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The journey</p>
+      <h2>Seven months, in order.</h2>
+      <ol class="cl-timeline">
+        {timeline.map(t => (
+          <li>
+            <p class="cl-timeline-date">{t.date}</p>
+            <h3>{t.title}</h3>
+            <p>{t.body}</p>
+          </li>
+        ))}
+      </ol>
     </div>
 
     <div class="cs-section reveal" style="max-width:none">
       <p class="section-eyebrow">What we built</p>
-      <h2 style="max-width:700px">A migration, a performance fix, and everything after.</h2>
+      <h2 style="max-width:700px">A migration, then everything the store needed next.</h2>
       <div class="cs-feature-grid" style="margin-top:2.5rem">
         <div class="cs-feature">
-          <h3>Platform migration</h3>
-          <p>Rebuilt every client-approved design natively in Shopify. This moved Cove &amp; Lane off the bolted-on React/HTML embed and onto a platform they could extend with apps, themes, and their own team going forward. Version-controlled on GitHub with branch-based theme previews, so every change shipped with a clear commit history.</p>
+          <h3>Native theme the team can edit</h3>
+          <p>The store moved off the React build onto a native Shopify theme, version-controlled on GitHub with a preview link for every change. We built separate collection templates for men and women, so the team can add a new category or drop without asking us.</p>
         </div>
         <div class="cs-feature">
-          <h3>Asset &amp; layout optimization</h3>
-          <p>Optimized image assets, cleaned up third-party scripts, and restructured the Slick Carousel library powering the storefront. Eliminated the forced layout shifts and render-blocking scripts caused by the previous embed, keeping the storefront fast and stable as new commercial sections were introduced.</p>
+          <h3>Speed work</h3>
+          <p>Compressed and resized images, separate mobile and desktop images for banners, and a "You May Also Like" section rebuilt without the heavy Swiper library. We also removed unused apps and leftover checkout scripts from a provider the store no longer used.</p>
         </div>
         <div class="cs-feature">
-          <h3>Speed &amp; conversion improvements</h3>
-          <p>Added clickable sliding banners on the homepage, a "Notify Me" flow for back-in-stock and coming-soon products, and sticky Buy Now / Add to Cart buttons, plus a Price Drop alert link with customizable styling, aimed squarely at reducing checkout drop-off.</p>
+          <h3>Notify me, by phone</h3>
+          <p>A "notify me" button for sold-out and coming-soon products, connected to Kwik Engage. Logged-in shoppers are recognised automatically, and everyone else can leave a phone number or an email address.</p>
         </div>
         <div class="cs-feature">
-          <h3>Commerce &amp; retention capabilities</h3>
-          <p>Shipped a testimonials section, out-of-stock email notifications, product reviews and ratings, a referral integration, wishlist functionality, Buy-X-Get-Y promotions, order tracking, and a gift box email template.</p>
+          <h3>Product page &amp; listings</h3>
+          <p>A reordered product page with sticky Add to Bag and Buy Now buttons, offers with codes you can tap to copy, breadcrumbs, a recently viewed section, and filters that only show gender when a collection has both.</p>
         </div>
         <div class="cs-feature">
-          <h3>Navigation &amp; UX improvements</h3>
-          <p>Added breadcrumb navigation across collection and product pages, brought feature badges to the desktop view, enlarged product listing cards with smoother carousel behavior, added a dedicated offers section to the product page, and recreated the blog section that had gone missing in the migration.</p>
+          <h3>Sales &amp; promotions</h3>
+          <p>A Price Drop menu, a tag system for Best Seller, Final Sale, Limited Sizes, Last Chance, New Arrivals and Buy 2 Get 1, a free gift once the cart passes a set value, and Buy 2 Get 1 collection pages for men and women, ready in time for their November sale.</p>
         </div>
         <div class="cs-feature">
-          <h3>Compliance, control &amp; ongoing capacity</h3>
-          <p>Implemented cookie consent to meet Cove &amp; Lane's compliance deadline, made sections customizable from the theme editor so the team isn't locked into calling a developer for routine updates, and stayed on as their monthly development capacity: running performance audits and picking up new requests within 24 hours.</p>
+          <h3>Orders, reviews &amp; sizing</h3>
+          <p>An order page with tracking and returns, Judge.me reviews that only show on the right product, a gift card email for their best customers, and a size selector showing numeric sizes and garment measurements from product metafields.</p>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
       <p class="section-eyebrow">The result</p>
-      <h2>A store that is faster and easier to run.</h2>
-      <p>The speed and UX work removed the friction points we found between product page and checkout, and the team can now ship new sections and campaigns without waiting on a developer.</p>
+      <h2>A store the team can run themselves.</h2>
+      <p>Cove &amp; Lane moved off a workaround nobody could maintain and onto a theme their team edits every day. They add collections, blog posts, tags and banners themselves, with a library of short video tutorials we recorded for each one. When something does need a developer, there's a GitHub history of every change.</p>
       <div class="cs-testimonial-wrap">
         <div class="testimonial-card">
           <p class="testimonial-quote">It's been great working with Atul on our website maintenance and daily management! Thanks Atul.</p>
@@ -129,7 +171,7 @@ const schema = [
           </div>
         </div>
       </div>
-      <p style="margin-top:2rem">Cove &amp; Lane moved off a hacked-together workaround, passed Core Web Vitals, and gained a suite of commerce capabilities in the process, without ever taking the site offline.</p>
+      <p style="margin-top:2rem">Speed is never finished on a store like this. With checkout, login and messaging all running through third-party apps, the biggest gains came from testing each one and removing what wasn't used.</p>
     </div>
 
     <div class="cs-section reveal" style="max-width:none">
@@ -160,3 +202,13 @@ const schema = [
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .cl-timeline { list-style:none; margin:2rem 0 0; padding:0; border-left:1px solid var(--border); }
+  .cl-timeline li { position:relative; padding:0 0 2rem 1.75rem; }
+  .cl-timeline li:last-child { padding-bottom:0; }
+  .cl-timeline li::before { content:''; position:absolute; left:-5px; top:.35rem; width:9px; height:9px; border-radius:50%; background:var(--accent); }
+  .cl-timeline-date { font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.35rem; }
+  .cl-timeline h3 { font-size:18px; font-weight:700; color:var(--text); margin-bottom:.4rem; }
+  .cl-timeline p:not(.cl-timeline-date) { font-size:15.5px; line-height:1.75; color:var(--text-mid); }
+</style>

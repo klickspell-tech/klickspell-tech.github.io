@@ -78,7 +78,13 @@ const schema = [
     <section class="pb-body">
       <div class="pb-block">
         <h2 class="pb-heading">About Look Beyond</h2>
+        <div>
         <p class="pb-prose">Look Beyond is an AI consultancy in Singapore, led by Managing Director Julien Look (<a href="https://lookbeyond.sg/imprint" target="_blank" rel="noopener">company details</a>). They take companies from the first workflow review to AI systems running in production. When a project needs specialist skills, they bring in <a href="https://lookbeyond.sg/partners" target="_blank" rel="noopener">partners</a> for AI operations, document processing, app delivery and, with us, ERP and workflow systems.</p>
+          <figure class="pb-photo">
+            <img src="/assets/partners/atul-julien-look-beyond.webp" alt="Atul Bhatt of Klickspell and Julien Look of Look Beyond smiling at a shared desk" width="1000" height="1333" loading="lazy" decoding="async" />
+            <figcaption>Atul (front) and Julien, working side by side.</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="pb-block">
@@ -181,6 +187,10 @@ const schema = [
   .pb-steps { list-style:none; display:flex; flex-direction:column; gap:1rem; }
   .pb-steps li { display:grid; grid-template-columns:44px 1fr; gap:1rem; align-items:baseline; font-size:17px; line-height:1.7; color:var(--text-mid); }
   .pb-step-num { font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--accent); }
+
+  .pb-photo { margin:2rem 0 0; max-width:420px; }
+  .pb-photo img { width:100%; height:auto; display:block; border-radius:var(--radius); border:.5px solid var(--border); }
+  .pb-photo figcaption { font-family:var(--font-mono); font-size:11px; letter-spacing:.04em; color:var(--text-light); margin-top:.75rem; }
 
   @media (max-width:900px) {
     .pb-meta { grid-template-columns:repeat(2, minmax(0,1fr)); }

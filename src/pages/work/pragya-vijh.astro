@@ -67,10 +67,10 @@ const schema = [
     <div class="cs-section reveal">
       <p class="section-eyebrow">Key Deliverables</p>
       <h2>Engineering performance that powers dual-revenue growth.</h2>
-      <p>By replacing brittle WordPress plugins with custom event-driven TypeScript modules and a Next.js 14 App Router frontend, we engineered a resilient headless architecture and eliminated 100% of manual booking overhead.</p>
+      <p>We replaced brittle WordPress plugins with custom event-driven TypeScript modules and a Next.js 14 App Router frontend. Booking a session, paying for it, getting the Google Meet link and the WhatsApp reminders now happen without anyone on Pragya's team doing it by hand.</p>
       <div class="about-stats" style="border-top:none; padding-top:1.5rem; justify-content:space-between; flex-wrap:wrap;">
         <div class="stat"><p class="stat-num">0</p><p class="stat-label">Monolithic WordPress plugin dependencies</p></div>
-        <div class="stat"><p class="stat-num">100<span>%</span></p><p class="stat-label">Automated booking &amp; meet scheduling</p></div>
+        <div class="stat"><p class="stat-num">3</p><p class="stat-label">WhatsApp messages per booking: confirmation, then reminders 1 hour and 15 minutes before</p></div>
         <div class="stat"><p class="stat-num">1<span> unified</span></p><p class="stat-label">Checkout for retail + live consultations</p></div>
       </div>
       <p class="section-eyebrow" style="margin-top:2.5rem">First six months live (Apr – Oct 2026)</p>
@@ -101,7 +101,46 @@ const schema = [
       <p><strong>Severe Plugin Bloat &amp; Maintenance Drag:</strong> With dozens of third-party plugins competing for PHP execution and database queries, server response times suffered, plugin updates frequently broke checkout flows, and routine maintenance turned into high-risk firefighting.</p>
       <p><strong>Disjointed Consultation &amp; Product Silos:</strong> The WordPress booking plugins couldn't cleanly integrate with physical product carts. Customers had to make separate purchases for crystals and consultations on disconnected third-party pages.</p>
       <p><strong>Rigid Content vs. Custom Logic:</strong> The editorial team struggled with slow admin dashboards, while developers were hamstrung by monolithic theme constraints when implementing custom promotional gift rules and automated PDF tax invoices.</p>
-      <p>The brand didn't need another WordPress band-aid — they needed to decouple their entire stack onto a clean, modular headless architecture.</p>
+      <p>The brand didn't need another WordPress band-aid. They needed to decouple their entire stack onto a clean, modular headless architecture.</p>
+    </div>
+
+    <!-- 3b. THE JOURNEY -->
+    <div class="cs-section reveal">
+      <p class="section-eyebrow">The Journey</p>
+      <h2>Launch week, and the months after.</h2>
+      <p>Jaskirat Oberoi introduced us to Pragya and stayed close to the project throughout, keeping her team and ours in step on priorities.</p>
+      <ol class="pv-timeline">
+        <li>
+          <p class="pv-timeline-date">April 2026 · final week before launch</p>
+          <h3>Getting the details right</h3>
+          <p>Every session's price and duration went into one shared sheet that Pragya signed off. We mapped HSN codes by category so GST invoices come out right (18% for tarot readings, 3% for crystals). Sessions can only be booked between 12 pm and 10 pm with a buffer between them, and multi-day healing packages are paid upfront with no date to pick.</p>
+        </li>
+        <li>
+          <p class="pv-timeline-date">27 April 2026</p>
+          <h3>Launch</h3>
+          <p>The new site went live with its campaigns already running. The next morning Pragya messaged to say she really liked the new interface.</p>
+        </li>
+        <li>
+          <p class="pv-timeline-date">30 April 2026</p>
+          <h3>Gift hampers that add themselves</h3>
+          <p>For a giveaway campaign, the cart now adds a gift hamper automatically once an order crosses ₹3,999, with bigger hampers at ₹7,999 and ₹15,000. We had it ready in the backend and switched it on the moment Pragya gave the word.</p>
+        </li>
+        <li>
+          <p class="pv-timeline-date">May 2026</p>
+          <h3>Sessions and crystals in one cart</h3>
+          <p>Customers wanted to combine a reading with crystals to reach a hamper, but sessions were booked separately. We moved sessions into the cart, with the booking details collected first, so one checkout covers both.</p>
+        </li>
+        <li>
+          <p class="pv-timeline-date">May – June 2026</p>
+          <h3>WhatsApp, tracking and the hard bugs</h3>
+          <p>We connected WhatsApp through Interakt for order and booking confirmations, reminders and an auto-reply menu, and set up Meta Pixel and Google Analytics. Some bookings weren't getting their confirmation, and only for some customers. We traced it to a buffer set in Cal.com that the slot picker on the site didn't know about, and synced the two.</p>
+        </li>
+        <li>
+          <p class="pv-timeline-date">July 2026</p>
+          <h3>Online courses launch, and reminders that keep time</h3>
+          <p>Pragya wanted to sell four recorded courses. Private YouTube videos can only be shared with 32 people each, so we built course access on the Google Drive API instead and launched the courses on the site: buyers get access automatically, and the videos can't be downloaded or passed on. We also fixed reminders that were going out at the wrong time, and they now tell the customer the actual time left before their session instead of a fixed "15 minutes".</p>
+        </li>
+      </ol>
     </div>
 
     <!-- 4. THE ARCHITECTURE -->
@@ -162,6 +201,14 @@ const schema = [
         <div class="cs-feature">
           <h3>🌍 URL-Based Global Localization</h3>
           <p>Configured edge-ready routing (<code>/in/en</code>, <code>/us/en</code>) with automatic geo-detection, currency conversions, and country-specific tax rules for international clients seeking Vedic astrology readings.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>💬 WhatsApp Booking Flow via Interakt</h3>
+          <p>Every order and booking sends a WhatsApp confirmation with the Meet link, then reminders 1 hour and 15 minutes before the session. New chats get a numbered menu (tarot, kundli, crystals, combined sessions) that links straight to the right page, and international numbers get the right country code.</p>
+        </div>
+        <div class="cs-feature">
+          <h3>🧾 GST-Ready Invoices &amp; Revenue Report</h3>
+          <p>HSN codes mapped per product category so every invoice carries the right tax rate, plus a revenue report the team can hand to their accountant for monthly GST returns.</p>
         </div>
       </div>
     </div>
@@ -245,7 +292,7 @@ const schema = [
     <div class="cs-section reveal">
       <p class="section-eyebrow">Conclusion</p>
       <h2>Freedom, performance, and complete brand control.</h2>
-      <p>Pragya Vijh shows how headless commerce unlocks unmatched operational flexibility and technical speed. By decoupling the presentation layer from backend business logic and editorial workflows, the brand achieved 100% automated service booking and full autonomy over their ongoing content marketing. In its first six months live, the store took 273 paid orders at an average of ₹1,082, and 15% of customers came back to buy again.</p>
+      <p>Pragya Vijh shows how headless commerce unlocks unmatched operational flexibility and technical speed. By decoupling the presentation layer from backend business logic and editorial workflows, the brand now runs session booking, payment and reminders without manual work, and edits its own content in the CMS. In its first six months live, the store took 273 paid orders at an average of ₹1,082, and 15% of customers came back to buy again.</p>
     </div>
 
     <div class="cs-section reveal" style="max-width:none">
@@ -276,3 +323,13 @@ const schema = [
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .pv-timeline { list-style:none; margin:2rem 0 0; padding:0; border-left:1px solid var(--border); }
+  .pv-timeline li { position:relative; padding:0 0 2rem 1.75rem; }
+  .pv-timeline li:last-child { padding-bottom:0; }
+  .pv-timeline li::before { content:''; position:absolute; left:-5px; top:.35rem; width:9px; height:9px; border-radius:50%; background:var(--accent); }
+  .pv-timeline-date { font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.35rem; }
+  .pv-timeline h3 { font-size:18px; font-weight:700; color:var(--text); margin-bottom:.4rem; }
+  .pv-timeline p:not(.pv-timeline-date) { font-size:15.5px; line-height:1.75; color:var(--text-mid); }
+</style>

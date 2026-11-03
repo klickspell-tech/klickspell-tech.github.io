@@ -801,6 +801,14 @@ footer { background:var(--text); padding:3rem 2rem; }
 .team-pill-link { color:var(--accent); text-decoration:none; background:var(--accent-light); border-color:rgba(58,91,224,0.22); transition:background .2s, border-color .2s, transform .2s, color .2s; font-weight:500; display:inline-flex; align-items:center; }
 .team-pill-link:hover { background:rgba(58,91,224,0.16); border-color:var(--accent); color:var(--accent-hover); transform:translateY(-1px); }
 
+/* TEAM TRIP */
+.team-trip { max-width:1200px; margin:0 auto; padding:0 2rem 6rem; }
+.team-trip-head { margin-bottom:2rem; }
+.team-trip-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem; }
+.team-trip-photo { margin:0; border-radius:var(--radius); overflow:hidden; border:.5px solid var(--border); background:var(--bg-card); aspect-ratio:16/9; }
+.team-trip-photo-wide { grid-column:span 2; }
+.team-trip-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+
 /* TEAM PRINCIPLES */
 .principles-section { background:var(--text); color:var(--white); padding:6rem 2rem; }
 .principles-inner { max-width:1200px; margin:0 auto; }
@@ -824,6 +832,9 @@ footer { background:var(--text); padding:3rem 2rem; }
 @media (max-width:640px) {
   .team-hero { padding:7rem 1.5rem 2rem; }
   .team-grid { grid-template-columns:1fr; padding:0 1.5rem 4rem; }
+  .team-trip { padding:0 1.5rem 4rem; }
+  .team-trip-grid { grid-template-columns:1fr; }
+  .team-trip-photo-wide { grid-column:span 1; }
   .principles-grid { grid-template-columns:1fr; }
 }
 
