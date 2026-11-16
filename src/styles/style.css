@@ -76,6 +76,7 @@ img { max-width: 100%; height: auto; }
   --accent-on-dark: #7B98FF;
   --font-display: 'Plus Jakarta Sans', 'Manrope', sans-serif;
   --line: #E1E1E1; /* hairline borders on inputs and dividers (Figma) */
+  --bg-soft: #FAFBFC; /* soft off-white section background (Figma FAQ, footer) */
 }
 html { scroll-behavior: auto; }
 body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
@@ -113,9 +114,26 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .nav-links a:hover::after { width:100%; }
 .nav-links a.active { color:var(--text); font-weight:700; }
 .nav-links a.active::after { width:100%; background:var(--accent); height:1.5px; }
-.nav-cta { background:var(--text) !important; color:var(--white) !important; padding:.55rem 1.25rem !important; border-radius:100px !important; font-weight:600 !important; transition:background .25s, transform .2s, box-shadow .25s !important; }
+.nav-cta { background:var(--text) !important; color:var(--white) !important; padding:.55rem 1.1rem !important; border-radius:100px !important; font-weight:600 !important; transition:background .25s, transform .2s, box-shadow .25s !important; display:inline-flex !important; align-items:center !important; gap:8px; }
+.nav-cta-icon { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; flex-shrink:0; border-radius:6px; background:rgba(255,255,255,0.16); color:var(--white); }
+.nav-cta-dot { width:6px; height:6px; border-radius:50%; background:var(--white); flex-shrink:0; margin-top:1px; }
 .nav-cta::after { display:none !important; }
 .nav-cta:hover { background:var(--accent) !important; transform:translateY(-1px) !important; box-shadow:0 4px 16px rgba(58,91,224,0.25) !important; }
+/* Text swipe: a duplicate line sits above the visible one, clipped out of view;
+   on hover both slide down one line-height so the duplicate swipes in from the
+   top into the center while the original exits toward the bottom. */
+.nav-cta-mask { position:relative; display:block; overflow:hidden; height:18px; line-height:18px; }
+.nav-cta-line {
+  display:block; line-height:18px; transition:transform .4s var(--ease);
+  backface-visibility:hidden; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.nav-cta-line:first-child { transform:translateY(0) translateZ(0); }
+.nav-cta-line:last-child { position:absolute; top:0; left:0; transform:translateY(-18px) translateZ(0); }
+.nav-cta:hover .nav-cta-line:first-child { transform:translateY(18px) translateZ(0); }
+.nav-cta:hover .nav-cta-line:last-child { transform:translateY(0) translateZ(0); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta-line { transition:none; }
+}
 
 /* NAV DROPDOWN */
 .nav-dropdown-item { position:relative; display:flex; align-items:center; height:68px; }

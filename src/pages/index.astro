@@ -4,6 +4,9 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Contact from '../components/Contact.astro';
+import FreeResources from '../components/FreeResources.astro';
+import Faq from '../components/Faq.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 // Dynamic career experience calculation (Started June 2020 at SheThink)
 const careerStartDate = new Date('2020-06-01');
@@ -437,68 +440,7 @@ const schema = [
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <div class="testimonials-section">
-    <div class="testimonials-inner">
-      <div class="reveal"><p class="section-eyebrow">Client words</p><h2 class="section-title">Don't take<br><em>our word for it.</em></h2></div>
-      <div class="testimonials-masonry reveal reveal-delay-1">
-
-        <div class="testimonial-card featured">
-          <span class="testimonial-source"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
-          <p class="testimonial-quote">I brought Atul onboard my pre-seed startup as a contract frontend developer. He more than made up for his early career stage with his drive, efficiency, reliability, and a positive attitude. Atul always delivered — generally with the level of quality you'd expect from someone with more grey hairs.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/saswat-panda.webp" alt="Saswat Panda" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Saswat Panda</p><p class="testimonial-role">Founder, stealth AI startup · ex-Microsoft · Harvard Business School</p></div>
-          </div>
-        </div>
-
-        <div class="testimonial-card featured">
-          <span class="testimonial-source"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></span>
-          <p class="testimonial-quote">Working with Atul was always a delight. His exceptional communication skills, timely delivery of great work, and strong skills made him a pleasure to collaborate with. His curiosity and willingness to step outside his expertise made him a valuable asset to any project.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/eden-vidal.webp" alt="Eden Vidal" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Eden Vidal</p><p class="testimonial-role">Co-founder, Under</p></div>
-          </div>
-        </div>
-
-        <div class="testimonial-card featured">
-          <span class="testimonial-source"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></span>
-          <p class="testimonial-quote">We hired Atul for one of our web-based projects. He took the time to understand my needs and provided a customized solution that exceeded my expectations. I would highly recommend working with Atul for any web-related project.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/rajesh-durai.webp" alt="Rajesh Durai" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Rajesh Durai</p><p class="testimonial-role">Founder, Skillbridge · ex-VP upGrad</p></div>
-          </div>
-        </div>
-
-        <div class="testimonial-card featured">
-          <span class="testimonial-source"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
-          <p class="testimonial-quote">Atul has been a great support for my business. He's quick, responsive and always available to help.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/jen-yu.webp" alt="Jen Yu" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Jen Yu</p><p class="testimonial-role">CEO &amp; Co-Founder, Jaxon Lane · ex-Google</p></div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <p class="testimonial-quote">We reached out to Atul for our website and the entire process of handover was very smooth. He committed to a timeline of around 7 days and I had the website in 3 days.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/karan-dubey.webp" alt="Karan Dubey" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Karan Dubey</p><p class="testimonial-role">ex-Tealbox Digital</p></div>
-          </div>
-        </div>
-
-        <div class="testimonial-card featured">
-          <span class="testimonial-source"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
-          <p class="testimonial-quote">It's been great working with Atul on our website maintenance and daily management! Thanks Atul.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="/assets/testimonials/sanya-pradhan.webp" alt="Sanya Pradhan" loading="lazy" decoding="async"></div>
-            <div><p class="testimonial-name">Sanya Pradhan</p><p class="testimonial-role">Co-Founder, Cove &amp; Lane</p></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <Testimonials />
 
   <!-- PROCESS -->
   <div class="process-section">
@@ -540,63 +482,9 @@ const schema = [
     </div>
   </section>
 
-  <!-- TUTORIALS -->
-  <div class="tutorials-section" id="tutorials">
-    <div class="tutorials-inner">
-      <div class="tutorials-header reveal">
-        <div><p class="section-eyebrow">Free Resources</p><h2 class="section-title">12+ free tutorials<br><em>for builders &amp; merchants.</em></h2></div>
-        <div><a href="/blog" class="btn-secondary">Explore all articles ↗</a></div>
-      </div>
-      <div class="tutorials-grid reveal reveal-delay-1">
-        <a href="/blog/shopify-product-packages-dynamic-shipping-rates" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">How to Create Product Packages and Setting Dynamic Shipping Rates In Shopify</p></a>
-        <a href="/blog/how-to-add-style-judgeme-widgets-shopify" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">How to Add Judge.me widgets and style them in Shopify</p></a>
-        <a href="/blog/setup-microsoft-clarity-shopify-analytics" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">Shopify Tutorial: Setup Microsoft Clarity in Minutes (2026 Edition)</p></a>
-        <a href="/blog/how-to-import-shopify-theme-from-github" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">How to Import a Shopify Theme from GitHub (Step-by-Step Tutorial)</p></a>
-        <a href="/blog/shopify-collaborator-access-guide" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">Shopify Collaborator Access Explained: Requesting &amp; Giving Access Easily</p></a>
-        <a href="/blog/how-to-purchase-shopify-store-plan-guide" class="tutorial-card"><div class="tutorial-icon">▶</div><p class="tutorial-title">How to Purchase a Store Plan in Shopify | Basic Plan Step-by-Step</p></a>
-      </div>
-    </div>
-  </div>
+  <FreeResources />
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="section">
-      <div class="reveal">
-        <p class="section-eyebrow">Questions</p>
-        <h2 class="section-title">Straight answers,<br><em>before you commit.</em></h2>
-      </div>
-      <div class="faq-list reveal reveal-delay-1">
-        <details class="faq-item">
-          <summary><p class="faq-question">What platforms and stacks does Klickspell specialize in?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">We engineer across five primary verticals: Custom Shopify theme and Hydrogen headless development, Webflow for SaaS &amp; marketing sites, Headless Commerce (Medusa.js + Cal.com integrations), High-Converting Lead Landing Pages, and Custom Web Applications / ERP Systems (Frappe/ERPNext).</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">How long does a project take?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">High-converting landing pages typically go live in 7–14 days and full Webflow sites in 2–4 weeks. Custom Shopify stores take 3–6 weeks from approved designs, and headless or full-stack builds 6–10 weeks, depending on complexity. You'll receive a committed milestone timeline in your scope proposal.</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">How much does a project cost?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">Every project is scoped and quoted individually based on what you actually need, with no rigid packages or surprise invoices. You'll know the complete cost before we write a single line of code.</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">Will I be able to edit the site myself after launch?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">Yes, that is central to how we build. Whether on Shopify, Webflow, or a custom CMS, all sections are built to be easily editable (text, imagery, layout blocks) by non-technical team members without developer calls.</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">Can you build custom headless commerce or custom integrations (like Medusa.js &amp; Cal.com)?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">Yes. When off-the-shelf platforms are too restrictive, we build headless commerce backends with Medusa.js, integrate Cal.com scheduling workflows, and create custom APIs tailored to your exact business logic.</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">Do you offer support after the site goes live?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">Yes. Every project ends with full documentation and a recorded walkthrough. If you'd like ongoing peace of mind, we also provide maintenance retainers and day-to-day store/site management.</p>
-        </details>
-        <details class="faq-item">
-          <summary><p class="faq-question">Do you work with clients outside India?</p><div class="faq-icon">+</div></summary>
-          <p class="faq-answer">Yes. We've shipped products for brands across the US, UK, Israel, Japan, and India. We operate asynchronously with high communication fidelity and align calls with your local timezone.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  <Faq />
 
   <Contact />
 
