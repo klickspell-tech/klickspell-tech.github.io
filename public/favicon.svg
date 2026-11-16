@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      /* 3D Y-axis rotation: scaleX goes 1 → 0 → -1 → 0 → 1
+         giving the illusion of a 3D left-to-right flip */
+      @keyframes spin3d {
+        0%   { transform: perspective(120px) rotateY(0deg); }
+        100% { transform: perspective(120px) rotateY(360deg); }
+      }
+      .face {
+        transform-box: fill-box;
+        transform-origin: center center;
+        animation: spin3d 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      }
+    </style>
+  </defs>
+  <g class="face">
+    <!-- Shadow / depth layer for 3D feel -->
+    <rect width="64" height="64" rx="16" fill="#2444c7" transform="translate(2,2)"/>
+    <!-- Main face -->
+    <rect width="64" height="64" rx="16" fill="#3A5BE0"/>
+    <!-- Highlight shine top-left -->
+    <rect width="64" height="64" rx="16" fill="url(#shine)" opacity="0.25"/>
+    <text
+      x="50%"
+      y="54%"
+      font-family="Georgia,serif"
+      font-style="italic"
+      font-size="38"
+      fill="white"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-weight="bold"
+    >K</text>
+  </g>
+  <defs>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="60%" y2="60%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
