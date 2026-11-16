@@ -213,7 +213,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     }
     // Bind to all booking CTAs so Cal loads ahead of time when user points at or clicks them
     function initCalTriggers() {
-      document.querySelectorAll('[data-cal-link], .nav-cta, #hero-cta-d, a[href*="cal.com"]').forEach(el => {
+      document.querySelectorAll('[data-cal-link], .nav-cta, #hero-cta, a[href*="cal.com"]').forEach(el => {
         el.addEventListener('pointerenter', loadCal, { once: true, passive: true });
         el.addEventListener('touchstart', loadCal, { once: true, passive: true });
         el.addEventListener('focus', loadCal, { once: true, passive: true });

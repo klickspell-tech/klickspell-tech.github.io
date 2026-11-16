@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import Hero from '../components/Hero.astro';
+import Contact from '../components/Contact.astro';
 
 // Dynamic career experience calculation (Started June 2020 at SheThink)
 const careerStartDate = new Date('2020-06-01');
@@ -147,62 +148,7 @@ const schema = [
   <Nav isHome={true} />
 
   <main id="main-content">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-arc hero-arc-1"></div>
-    <div class="hero-arc hero-arc-2"></div>
-    <div class="hero-arc hero-arc-3"></div>
-    <div class="hero-arc hero-arc-4"></div>
-    <div class="floating-cards">
-      <div class="float-card fc-1"><div class="fc-dot"></div>Shopify &amp; Headless</div>
-      <div class="float-card fc-2"><div class="fc-dot"></div>Webflow &amp; SaaS</div>
-      <div class="float-card fc-3"><div class="fc-dot"></div>Medusa &amp; Custom Web</div>
-      <div class="float-card fc-4"><div class="fc-dot"></div>20+ Projects shipped</div>
-    </div>
-    <div class="hero-eyebrow">Web Engineering &amp; Digital Products Studio</div>
-    <h1 class="hero-headline">We build the web products<br>you <span class="accent">actually</span><br><span class="dim">imagined.</span></h1>
-    <p class="hero-headline-mobile" role="heading" aria-level="1">Your product,<br><span class="accent">truly</span> yours.</p>
-    <p class="hero-sub">Custom Shopify stores, high-converting Webflow sites, Medusa.js headless commerce, and tailored web applications. Built for your independence, not our dependency.</p>
-    <p class="hero-sub-mobile">Custom Shopify stores, Webflow sites, and web apps built for your independence. No templates. No dependency.</p>
-    <div class="hero-actions">
-      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="hero-cta-d">Book a free 30-min call →</a>
-      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="hero-cta-m" style="display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-        <WhatsAppIcon size={18} fill="#fff" />
-        <span>Chat on WhatsApp</span>
-      </a>
-      <a href="#work" class="btn-ghost">See our work</a>
-    </div>
-    <p class="hero-note"><a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' style="color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;cursor:pointer">Schedule a free 30-min call</a> · No commitment</p>
-    <p class="hero-note-mobile">Free 30-min call · No commitment</p>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="clients">
-    <p class="clients-label">Brands &amp; Teams We've Built For</p>
-    <div class="marquee-track">
-      <span class="marquee-item">Skillbridge</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Tealbox Digital</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">CallSara AI</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">DealShare</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Mogra Media</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Jaxon Lane</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Cove &amp; Lane</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Bambrew</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Pragya Vijh</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Nuva Gurukul</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Easy Rugs</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">ARBC</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">SourceBae</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Bounce Back Drinks</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Noukai Tokyo</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Under Design</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Haycure Wellness</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Taarz</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Skillbridge</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">Tealbox Digital</span><span class="marquee-item marquee-dot">·</span>
-      <span class="marquee-item">CallSara AI</span>
-    </div>
-  </div>
+  <Hero />
 
   <!-- SERVICES -->
   <section id="services">
@@ -652,47 +598,8 @@ const schema = [
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section">
-      <div class="reveal">
-        <p class="section-eyebrow">Get in Touch</p>
-        <h2 class="section-title">Have a project<br><em>in mind?</em></h2>
-        <p class="section-sub">Send a few details and we'll get back within one business day — or book a call directly below.</p>
-      </div>
-      <form id="contactForm" class="contact-form reveal reveal-delay-1">
-        <div class="contact-form-row">
-          <input type="text" id="contactName" name="first_name" placeholder="Your name" aria-label="Your name" required />
-          <input type="email" id="contactEmail" name="email" placeholder="Work email" aria-label="Work email" required />
-        </div>
-        <input type="text" id="contactOrg" name="organization" placeholder="Company (optional)" aria-label="Company" />
-        <textarea id="contactMessage" name="message" placeholder="Tell us about your project..." aria-label="Message" rows="4"></textarea>
-        <input type="text" id="contactCompanyUrl" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button type="submit" id="contactSubmitBtn" class="btn-primary">
-          <span id="contactBtnText">Send message →</span>
-          <span id="contactBtnSpinner" class="scanner-spinner" style="display:none;"></span>
-        </button>
-        <div id="contactSuccess" class="video-audit-success" style="display:none;">Thanks — we'll be in touch within one business day.</div>
-        <div id="contactErrorBox" class="contact-error" style="display:none;">Something went wrong. Please try WhatsApp or email instead.</div>
-      </form>
-    </div>
-  </section>
+  <Contact />
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-inner reveal">
-      <h2 class="cta-title">Ready to build<br>the digital product you <em>actually</em><br>imagined?</h2>
-      <h2 class="cta-title-mobile">Let's build<br>your product <em>right.</em></h2>
-      <p class="cta-sub">Book a free 30-minute discovery call. We'll talk through your ideas, timeline, and budget.</p>
-      <p class="cta-sub-mobile">Free 30-min call · Discuss scope &amp; budget</p>
-      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" id="cta-d" style="font-size:16px;padding:1rem 2rem;cursor:pointer">Book your free call →</a>
-      <a href="https://wa.me/919259598769" class="btn-primary" target="_blank" id="cta-m" style="font-size:16px;padding:1rem 2rem;display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-        <WhatsAppIcon size={18} fill="#fff" />
-        <span>Chat on WhatsApp</span>
-      </a>
-      <p class="cta-stamp">The craft in every click.</p>
-    </div>
-  </section>
   </main>
 
   <Footer isHome={true} />

@@ -35,6 +35,35 @@
   src: url('/assets/fonts/dm-mono-500.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/assets/fonts/wix-madefor-display-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/plus-jakarta-sans-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/plus-jakarta-sans-500-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/plus-jakarta-sans-600.woff2') format('woff2');
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 img { max-width: 100%; height: auto; }
 :root {
@@ -45,6 +74,8 @@ img { max-width: 100%; height: auto; }
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', Menlo, Monaco, Consolas, 'DM Mono', monospace;
   --accent-on-dark: #7B98FF;
+  --font-display: 'Plus Jakarta Sans', 'Manrope', sans-serif;
+  --line: #E1E1E1; /* hairline borders on inputs and dividers (Figma) */
 }
 html { scroll-behavior: auto; }
 body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
@@ -527,17 +558,6 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .cta-stamp { display:inline-block; font-family: var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-mid); margin-top:2rem; }
 
 /* FOOTER */
-footer { background:var(--text); padding:3rem 2rem; }
-.footer-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
-.footer-logo { display:block; height:30px; width:auto; }
-.footer-stamp { font-family:'Instrument Serif',serif; font-size:15px; font-style:italic; color:rgba(255,255,255,0.85); }
-.footer-links { display:flex; gap:2rem; list-style:none; }
-.footer-links a { font-size:13px; color:rgba(255,255,255,0.85); text-decoration:none; position:relative; transition:color .2s; }
-.footer-links a::after { content:''; position:absolute; bottom:-1px; left:0; width:0; height:1px; background:var(--accent-on-dark); transition:width .25s var(--ease); }
-.footer-links a:hover { color:var(--white); }
-.footer-links a:hover::after { width:100%; }
-.footer-bottom { max-width:1200px; margin:2rem auto 0; padding-top:1.5rem; border-top:.5px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-.footer-copy { font-size:12px; color:rgba(255,255,255,0.75); }
 
 /* ANIMATIONS */
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
@@ -585,9 +605,6 @@ footer { background:var(--text); padding:3rem 2rem; }
   .cta-title-mobile em { font-style:italic; color:var(--accent); }
   .cta-sub { display:none; }
   .cta-sub-mobile { display:block; font-size:15px; color:var(--text-mid); margin-bottom:2rem; line-height:1.65; }
-  .footer-inner { flex-direction:column; align-items:flex-start; }
-  .footer-links { flex-wrap:wrap; gap:1rem; }
-  .footer-bottom { flex-direction:column; align-items:flex-start; }
   .cursor,.cursor-ring { display:none; }
   .tutorials-header,.portfolio-header { flex-direction:column; align-items:flex-start; }
 }
@@ -839,12 +856,12 @@ footer { background:var(--text); padding:3rem 2rem; }
 }
 
 /* RESPONSIVE CTA SWAP (ELIMINATES FORCED REFLOW JAVASCRIPT) */
-#hero-cta-d, #cta-d { display: inline-flex; }
-#hero-cta-m, #cta-m { display: none; }
+#cta-d { display: inline-flex; }
+#cta-m { display: none; }
 
 @media (max-width: 768px) {
-  #hero-cta-d, #cta-d { display: none !important; }
-  #hero-cta-m, #cta-m { display: inline-flex !important; }
+  #cta-d { display: none !important; }
+  #cta-m { display: inline-flex !important; }
 }
 
 /* ==========================================================================
