@@ -21,6 +21,11 @@ const {
   schema
 } = Astro.props;
 
+// Staging builds set PUBLIC_STAGING=true (in the staging workflow only, never committed
+// to config) so the preview site can't be indexed. Production leaves it unset.
+const isStaging = import.meta.env.PUBLIC_STAGING === 'true';
+const robotsContent = isStaging ? 'noindex, nofollow' : robots;
+
 const canonicalUrl = canonical.startsWith('http') ? canonical : new URL(canonical, Astro.site || 'https://klickspell.com').href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site || 'https://klickspell.com').href;
 ---
@@ -32,7 +37,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="robots" content={robots} />
+  <meta name="robots" content={robotsContent} />
   <link rel="canonical" href={canonicalUrl} />
   <meta name="theme-color" content="#F2F0EC" />
 
