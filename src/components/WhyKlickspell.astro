@@ -1,0 +1,89 @@
+---
+// Figma: klickspell › "Why us" (desktop 1:109). Built from a saved render of the frame
+// (Figma API limit hit), so measurements are accurate to a few px; mobile is a responsive
+// interpretation. Copy is the site's existing wording; item 3 keeps the referral-partner
+// disclosure that the Figma draft leaves out.
+const items = [
+  { n: '01', name: 'Vision first: no cookie-cutter templates', desc: 'We start with your unique product requirements and design aspirations, building exactly what fits your business model.' },
+  { n: '02', name: 'Modular, editable architecture', desc: 'Whether on Shopify, Webflow, or a custom CMS, you get full control over text, media, and layout blocks without code.' },
+  { n: '03', name: 'Unbiased tech stack advisory', desc: "We recommend platforms and third-party tools based strictly on your performance needs and budget, never referral kickbacks. Where we're a partner of a tool, we tell you up front, and it never changes what we recommend." },
+  { n: '04', name: 'Direct access to the engineer', desc: 'You collaborate directly with the lead engineer building your product. No account managers or lost-in-translation briefs.' },
+];
+---
+
+<section id="why" class="wy">
+  <div class="wy-inner">
+    <div class="wy-left">
+      <p class="wy-eyebrow"><span class="wy-rule" aria-hidden="true"></span>Why Klickspell</p>
+      <h2 class="wy-title">Built to hand<br />over. <em>Fully.</em></h2>
+      <p class="wy-sub">Most agencies build dependency so you're locked into endless retainers. We engineer for your autonomy. Every project ends with clean code, documentation, and you in complete control.</p>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="wy-btn">Book a discovery call →</a>
+    </div>
+
+    <ol class="wy-list">
+      {items.map((i) => (
+        <li class="wy-item">
+          <span class="wy-num">{i.n}</span>
+          <div>
+            <h3 class="wy-name">{i.name}</h3>
+            <p class="wy-desc">{i.desc}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .wy { --pad: clamp(24px, 6.25vw, 90px); background: var(--text); color: var(--white); }
+  .wy-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; }
+
+  .wy-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--white);
+  }
+  .wy-rule { display: block; width: 24px; height: 1px; background: var(--white); }
+  .wy-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px; /* 40px on a 420px phone */
+    color: var(--white);
+    margin: 16px 0 20px;
+  }
+  .wy-title em { font-style: italic; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .wy-sub { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.7); max-width: 585px; }
+  .wy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 40px; margin-top: 40px; padding: 8px 12px;
+    border-radius: 100px; background: var(--accent); color: var(--white);
+    font-size: 12px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .wy-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(58,91,224,0.35); }
+  .wy-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+  .wy-list { list-style: none; margin: 0; padding: 0; }
+  .wy-item {
+    display: grid; grid-template-columns: 40px minmax(0, 1fr);
+    padding: 23px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .wy-item:last-child { padding-bottom: 0; border-bottom: 0; }
+  .wy-num { margin-top: 5px; font-size: 11px; line-height: 16px; letter-spacing: .5px; color: var(--accent-on-dark); }
+  .wy-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 24px; letter-spacing: 0; color: var(--white); }
+  .wy-desc { margin-top: 12px; font-size: 16px; line-height: 1.4; color: rgba(255,255,255,0.7); }
+
+  @media (min-width: 641px) {
+    .wy-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
+    .wy-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .wy-sub { font-size: clamp(17px, 1.39vw, 20px); }
+    .wy-item { grid-template-columns: 56px minmax(0, 1fr); }
+  }
+  /* Desktop: copy left (585px), numbered list right (560px), as in the Figma */
+  @media (min-width: 1000px) {
+    .wy-inner { grid-template-columns: minmax(0, 585px) minmax(0, 560px); justify-content: space-between; column-gap: 48px; align-items: start; }
+    .wy-list { margin-top: 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .wy-btn, .wy-btn:hover { transition: none; transform: none; } }
+</style>

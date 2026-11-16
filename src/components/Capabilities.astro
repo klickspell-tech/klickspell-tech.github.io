@@ -1,0 +1,146 @@
+---
+// Figma: klickspell › "Capabilities" (desktop 6:14). Built from a saved render of the frame
+// (Figma API limit hit), so measurements are accurate to a few px; mobile is a responsive
+// interpretation. Copy is the site's existing wording (the Figma draft makes stronger claims,
+// e.g. "Guaranteed 90+ Mobile PageSpeed scores", which we don't use).
+const cards = [
+  {
+    n: '01',
+    name: 'Shopify & E-Commerce',
+    desc: 'Custom Shopify stores built from scratch: custom Liquid themes, Hydrogen headless setups, and customizer sections your team can edit without developer help.',
+    href: '/services/custom-shopify-development',
+    link: 'Explore Custom Shopify',
+  },
+  {
+    n: '02',
+    name: 'Shopify Speed Optimization',
+    desc: 'A <strong>90+ mobile PageSpeed target</strong> agreed in writing after a free audit, and passing Core Web Vitals, without breaking your analytics, pixels, or essential apps.',
+    href: '/services/shopify-speed-optimization',
+    link: 'Explore Speed Optimization',
+  },
+  {
+    n: '03',
+    name: 'Headless & Custom Commerce',
+    desc: 'Modular commerce powered by <strong>Medusa.js, Next.js, and custom APIs.</strong> Integrated with Cal.com booking flows and tailored checkout experiences.',
+    href: '/services/headless-commerce',
+    link: 'Explore Headless Architecture',
+  },
+  {
+    n: '04',
+    name: 'Webflow & Visual Development',
+    desc: 'World-class Webflow marketing sites for B2B SaaS, tech startups, and agencies. <strong>Fast load speeds, dynamic CMS architecture, and silky interactions.</strong>',
+  },
+  {
+    n: '05',
+    name: 'Custom Web Apps & ERP Systems',
+    desc: 'Full-stack web applications, Frappe & ERPNext business workflow automations, third-party API integrations, and reliable cloud DevOps.',
+  },
+];
+---
+
+<section id="services" class="cp">
+  <div class="cp-inner">
+    <p class="cp-eyebrow"><span class="cp-rule" aria-hidden="true"></span>Our Capabilities</p>
+    <h2 class="cp-title">Built for your vision, <span class="cp-dim">not our convenience.</span></h2>
+    <p class="cp-sub">Every project is engineered around your specific goals, performance benchmarks, and budget. You'll know the full scope and cost before we write a single line of code.</p>
+
+    <div class="cp-grid">
+      {cards.map((c) => (
+        <article class="cp-card">
+          <p class="cp-num">{c.n} —</p>
+          <h3 class="cp-name" set:html={c.name.replace('&', '&amp;')} />
+          <p class="cp-desc" set:html={c.desc.replace(/&(?!amp;)/g, '&amp;')} />
+          {c.href && <a href={c.href} class="cp-link">{c.link} →</a>}
+        </article>
+      ))}
+
+      <div class="cp-card cp-cta">
+        <p class="cp-cta-title">Not sure which stack or service fits?</p>
+        <p class="cp-cta-sub">Let's scope it together.</p>
+        <button type="button" class="cp-cta-btn" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a free 30-min call</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cp { --pad: clamp(24px, 6.25vw, 90px); background: var(--white); }
+  .cp-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
+
+  .cp-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .cp-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .cp-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px; /* 40px on a 420px phone */
+    color: var(--text);
+    max-width: 810px;
+    margin: 16px 0 20px;
+  }
+  .cp-dim { color: var(--text-light); }
+  .cp-sub { font-size: 16px; line-height: 1.5; color: var(--text-light); max-width: 775px; margin-bottom: 40px; } /* breaks after "benchmarks," like the Figma */
+
+  /* Hairline grid: the container's background shows through the 1px gaps and the outer border. */
+  .cp-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+  }
+  .cp-card {
+    position: relative;
+    display: flex; flex-direction: column;
+    padding: 32px;
+    background: var(--white);
+    transition: background .3s var(--ease);
+  }
+  .cp-card:not(.cp-cta):hover { background: var(--bg-soft); }
+  .cp-num { font-size: 11px; line-height: 17px; letter-spacing: .5px; color: var(--text); }
+  .cp-name {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 500; line-height: 1.2; letter-spacing: 0;
+    color: var(--text);
+    margin-top: 16px;
+  }
+  .cp-desc { font-size: 16px; line-height: 1.5; color: var(--text-light); margin-top: 9px; }
+  .cp-desc :global(strong) { font-weight: 600; color: var(--text); }
+  .cp-link {
+    margin-top: auto; margin-bottom: -6px; padding-top: 16px; /* link text sits 26px above the card bottom in the Figma */
+    font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: .72px; text-transform: uppercase;
+    color: var(--accent); text-decoration: none;
+    transition: letter-spacing .25s var(--ease);
+  }
+  .cp-link:hover { letter-spacing: 1px; }
+  .cp-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  /* Blue CTA cell: content vertically centred, as in the Figma */
+  .cp-cta { justify-content: center; background: linear-gradient(100deg, #4A68E3 0%, var(--accent) 100%); color: var(--white); }
+  .cp-cta-title { font-family: var(--font-display); font-size: 24px; font-weight: 500; line-height: 1.25; letter-spacing: 0; color: var(--white); max-width: 300px; }
+  .cp-cta-sub { margin-top: 6px; font-size: 16px; line-height: 24px; color: rgba(255,255,255,0.8); }
+  .cp-cta-btn {
+    align-self: flex-start; margin-top: 24px;
+    height: 40px; padding: 8px 12px;
+    border: 0; border-radius: 100px;
+    background: var(--white); color: var(--accent);
+    font-family: inherit; font-size: 12px; font-weight: 500; line-height: normal; white-space: nowrap;
+    cursor: pointer;
+    transition: transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .cp-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(20,20,18,0.18); }
+  .cp-cta-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+  @media (min-width: 641px) {
+    .cp-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
+    .cp-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .cp-sub { font-size: clamp(17px, 1.39vw, 20px); margin-bottom: 48px; }
+    .cp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cp-card { min-height: 260px; }
+  }
+  @media (min-width: 1000px) {
+    .cp-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cp-card, .cp-link, .cp-cta-btn { transition: none; }
+  }
+</style>

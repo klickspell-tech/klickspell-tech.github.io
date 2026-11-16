@@ -7,6 +7,13 @@ import Contact from '../components/Contact.astro';
 import FreeResources from '../components/FreeResources.astro';
 import Faq from '../components/Faq.astro';
 import Testimonials from '../components/Testimonials.astro';
+import Capabilities from '../components/Capabilities.astro';
+import WhyKlickspell from '../components/WhyKlickspell.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+
+// The "About" section ("Built in the mountains of Uttarakhand.") is hidden for now.
+// Flip to true to render it again; the markup is kept below.
+const SHOW_ABOUT = false;
 
 // Dynamic career experience calculation (Started June 2020 at SheThink)
 const careerStartDate = new Date('2020-06-01');
@@ -153,292 +160,11 @@ const schema = [
   <main id="main-content">
   <Hero />
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section">
-      <div class="reveal">
-        <p class="section-eyebrow">Our Capabilities</p>
-        <h2 class="section-title">Built for your vision,<br><em>not our convenience.</em></h2>
-        <p class="section-sub">Every project is engineered around your specific goals, performance benchmarks, and budget. You'll know the full scope and cost before we write a single line of code.</p>
-      </div>
-      <div class="services-grid reveal reveal-delay-1">
-        <div class="service-card">
-          <p class="service-num">01</p>
-          <p class="service-name">Shopify &amp; E-Commerce</p>
-          <p class="service-desc">Custom Shopify stores built from scratch: custom Liquid themes, Hydrogen headless setups, and customizer sections your team can edit without developer help.</p>
-          <a href="/services/custom-shopify-development" class="service-learn-more">Explore Custom Shopify →</a>
-        </div>
-        <div class="service-card">
-          <p class="service-num">02 —</p>
-          <p class="service-name">Shopify Speed Optimization</p>
-          <p class="service-desc">A <strong>90+ mobile PageSpeed target</strong> agreed in writing after a free audit, and passing Core Web Vitals, without breaking your analytics, pixels, or essential apps.</p>
-          <a href="/services/shopify-speed-optimization" class="service-learn-more">Explore Speed Optimization →</a>
-        </div>
-        <div class="service-card">
-          <p class="service-num">03 —</p>
-          <p class="service-name">Headless &amp; Custom Commerce</p>
-          <p class="service-desc">Modular commerce powered by <strong>Medusa.js, Next.js, and custom APIs.</strong> Integrated with Cal.com booking flows and tailored checkout experiences.</p>
-          <a href="/services/headless-commerce" class="service-learn-more">Explore Headless Architecture →</a>
-        </div>
-        <div class="service-card">
-          <p class="service-num">04 —</p>
-          <p class="service-name">Webflow &amp; Visual Development</p>
-          <p class="service-desc">World-class Webflow marketing sites for B2B SaaS, tech startups, and agencies. <strong>Fast load speeds, dynamic CMS architecture, and silky interactions.</strong></p>
-        </div>
-        <div class="service-card">
-          <p class="service-num">05</p>
-          <p class="service-name">Custom Web Apps &amp; ERP Systems</p>
-          <p class="service-desc">Full-stack web applications, Frappe &amp; ERPNext business workflow automations, third-party API integrations, and reliable cloud DevOps.</p>
-        </div>
-        <div class="service-cta-card">
-          <p class="service-cta-text">Not sure which stack or service fits?<br><em>Let's scope it together.</em></p>
-          <button class="service-cta-btn" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a free call →</button>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 2.5rem;" class="reveal">
-        <a href="/services" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 8px;">
-          <span>Explore All Services, Retainers &amp; Delivery Standards</span>
-          <span>→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <Capabilities />
 
-  <!-- DIFFERENTIATORS -->
-  <div class="diff-section">
-    <div class="diff-inner">
-      <div class="diff-left reveal">
-        <p class="section-eyebrow">Why Klickspell</p>
-        <h2 class="section-title">Built to hand<br>over. <em>Fully.</em></h2>
-        <p class="section-sub">Most agencies build dependency so you're locked into endless retainers. We engineer for your autonomy. Every project ends with clean code, documentation, and you in complete control.</p>
-        <div style="margin-top:2.5rem"><a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="cursor:pointer">Book a discovery call →</a></div>
-      </div>
-      <div class="diff-list reveal reveal-delay-1">
-        <div class="diff-item"><span class="diff-num">01</span><div><p class="diff-name">Vision first: no cookie-cutter templates</p><p class="diff-desc">We start with your unique product requirements and design aspirations, building exactly what fits your business model.</p></div></div>
-        <div class="diff-item"><span class="diff-num">02</span><div><p class="diff-name">Modular, editable architecture</p><p class="diff-desc">Whether on Shopify, Webflow, or a custom CMS, you get full control over text, media, and layout blocks without code.</p></div></div>
-        <div class="diff-item"><span class="diff-num">03</span><div><p class="diff-name">Unbiased tech stack advisory</p><p class="diff-desc">We recommend platforms and third-party tools based strictly on your performance needs and budget, never referral kickbacks. Where we're a partner of a tool, we tell you up front, and it never changes what we recommend.</p></div></div>
-        <div class="diff-item"><span class="diff-num">04</span><div><p class="diff-name">Direct access to the engineer</p><p class="diff-desc">You collaborate directly with the lead engineer building your product. No account managers or lost-in-translation briefs.</p></div></div>
-      </div>
-    </div>
-  </div>
+  <WhyKlickspell />
 
-  <!-- PORTFOLIO -->
-  <section id="work">
-    <div class="section">
-      <div class="portfolio-header reveal">
-        <div>
-          <p class="section-eyebrow">Selected Work</p>
-          <h2 class="section-title">19+ projects.<br><em>Built across modern stacks.</em></h2>
-        </div>
-        <div class="portfolio-filters">
-          <button class="filter-btn active" data-filter="all">All (19)</button>
-          <button class="filter-btn" data-filter="shopify">Shopify (9)</button>
-          <button class="filter-btn" data-filter="webflow">Webflow (2)</button>
-          <button class="filter-btn" data-filter="headless">Headless &amp; Custom (3)</button>
-          <button class="filter-btn" data-filter="landing">Landing &amp; Brand (6)</button>
-        </div>
-      </div>
-
-      <div class="portfolio-grid" id="portfolioGrid">
-        <!-- 1. JAXON LANE (Shopify Featured) -->
-        <a href="/work/jaxon-lane" class="project-card featured reveal" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('mRuKJxc2r5Y')">
-              <img src="/assets/projects/jaxon-lane.webp" alt="Jaxon Lane" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Shopify · US Skincare</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Jaxon Lane</p><p class="project-niche">Shopify Custom Theme · US Brand</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 2. TEALBOX DIGITAL (Webflow) -->
-        <a href="https://tealbox.digital/" target="_blank" rel="noopener" class="project-card regular reveal reveal-delay-1" data-category="webflow">
-          <div class="project-thumb">
-            <img src="/assets/projects/tealbox.webp" alt="Tealbox Digital" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Webflow · Agency</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Tealbox Digital</p><p class="project-niche">Webflow · Performance Marketing Agency</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 3. SKILLBRIDGE (Landing & Brand / EdTech) -->
-        <a href="/work/skillbridge" class="project-card featured reveal" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/skillbridge.webp" alt="Skillbridge" loading="lazy" decoding="async">
-            <span class="project-niche-tag">EdTech &amp; Career Platform</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Skillbridge</p><p class="project-niche">EdTech Platform · Custom Web Application</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 4. DEALSHARE (Landing & Brand) -->
-        <a href="/work/dealshare" class="project-card regular reveal reveal-delay-1" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/dealshare.webp" alt="DealShare Corporate" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Corporate &amp; Investor Portfolio</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">DealShare</p><p class="project-niche">Corporate Portfolio · E-Grocery Unicorn</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 5. KLICKSPELL ONLINE (In-House Studio Product / Headless & Custom) -->
-        <a href="/work/klickspell-online" class="project-card featured reveal" data-category="headless">
-          <div class="project-thumb">
-            <img src="/assets/projects/klickspell-online.webp" alt="Klickspell Online" loading="lazy" decoding="async">
-            <span class="project-niche-tag" style="background:rgba(58,91,224,0.12); color:var(--accent); font-weight:700;">★ Studio Product · Local Discovery</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Klickspell Online</p><p class="project-niche">Fast Digital Menus &amp; Local Business Catalogues</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 6. CALLSARA AI (Webflow) -->
-        <a href="/work/callsara-ai" class="project-card regular reveal reveal-delay-1" data-category="webflow">
-          <div class="project-thumb">
-            <img src="/assets/projects/callsara.webp" alt="CallSara AI" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Webflow · AI SaaS</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">CallSara AI</p><p class="project-niche">Webflow · Voice AI Agent Platform</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 7. COVE & LANE (Shopify) -->
-        <a href="/work/cove-and-lane" class="project-card featured reveal" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('Ufh6W6h4Kqo')">
-              <img src="/assets/projects/cove-and-lane.webp" alt="Cove &amp; Lane" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Shopify · Apparel</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Cove &amp; Lane</p><p class="project-niche">Shopify Theme &amp; Daily Store Management</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 8. MOGRA MEDIA (Landing Page & Brand Flagship) -->
-        <a href="/work/mogra-media" class="project-card regular reveal reveal-delay-1" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/mogra-media.webp" alt="Mogra Media" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Astro v7 · Film &amp; Creative Studio</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Mogra Media</p><p class="project-niche">Editorial Brand Flagship &amp; Cinematic Experience</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 7. PRAGYA VIJH (Headless & Custom Medusa) -->
-        <a href="/work/pragya-vijh" class="project-card half reveal" data-category="headless">
-          <div class="project-thumb">
-            <img src="/assets/projects/pragya-vijh.webp" alt="Pragya Vijh" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Headless · Next.js + Medusa</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Pragya Vijh</p><p class="project-niche">Headless Commerce &amp; Cal.com Booking Ecosystem</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 8. BAMBREW (Shopify) -->
-        <a href="/work/bambrew" class="project-card half reveal reveal-delay-1" data-category="shopify">
-          <div class="project-thumb">
-            <img src="/assets/projects/bambrew.webp" alt="Bambrew" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Sustainability</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Bambrew</p><p class="project-niche">Shopify E-Commerce · Sustainable Packaging</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 9. NUVA GURUKUL (Landing & Brand) -->
-        <a href="https://nuvagurukul.com/" target="_blank" rel="noopener" class="project-card half reveal" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/nuva-gurukul.webp" alt="Nuva Gurukul" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Education &amp; Lead Gen</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Nuva Gurukul</p><p class="project-niche">Education &amp; Student Enrollment Platform</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 10. NOUKAI TOKYO (Headless Shopify Hydrogen) -->
-        <a href="/work/noukai-tokyo" class="project-card half reveal reveal-delay-1" data-category="headless">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('sMlf7cl_L-o')">
-              <img src="/assets/projects/noukai-tokyo.webp" alt="Noukai Tokyo" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Shopify Hydrogen</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Noukai Tokyo</p><p class="project-niche">Headless Hydrogen &amp; 3D Rituals · Japan</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 11. EASY RUGS (Shopify Shark Tank) -->
-        <a href="https://easyrugs.in/" target="_blank" rel="noopener" class="project-card half reveal" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('s1FYKKLfmbA')">
-              <img src="/assets/projects/easy-rugs.webp" alt="Easy Rugs" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">🦈 Shark Tank India</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Easy Rugs</p><p class="project-niche">Home Decor · <span style="color:var(--accent);font-weight:700;">Shark Tank India Featured</span></p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 12. SOURCEBAE (Landing & Brand) -->
-        <a href="https://sourcebae.com/" target="_blank" rel="noopener" class="project-card half reveal reveal-delay-1" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/sourcebae.webp" alt="SourceBae" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Talent Marketplace</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">SourceBae</p><p class="project-niche">Talent Marketplace Platform · Seed Stage</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 13. ARBC (Landing & Brand) -->
-        <a href="https://www.arbc.in/" target="_blank" rel="noopener" class="project-card half reveal" data-category="landing">
-          <div class="project-thumb">
-            <img src="/assets/projects/arbc.webp" alt="ARBC" loading="lazy" decoding="async">
-            <span class="project-niche-tag">Enterprise &amp; Consulting</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">ARBC</p><p class="project-niche">Corporate Portfolio · Business Consulting</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 14. BOUNCE BACK DRINKS (Shopify) -->
-        <a href="https://bouncebackdrinks.com/" target="_blank" rel="noopener" class="project-card half reveal reveal-delay-1" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('XZEMgipm2EQ')">
-              <img src="/assets/projects/bounce-back-drinks.webp" alt="Bounce Back Drinks" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Shopify · UK</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Bounce Back Drinks</p><p class="project-niche">Shopify E-Commerce · UK Brand</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 17. UNDER DESIGN (Shopify) -->
-        <div class="project-card third reveal is-offline" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('4NaWXprt2Zo')">
-              <img src="/assets/projects/store-weareunder.webp" alt="Under Design" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Creative Merch · Israel</span>
-            <span class="project-offline-badge">Site Offline · Watch Video</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Under Design</p><p class="project-niche">Custom Shopify Store · Israel Brand</p></div><div class="project-arrow">–</div></div>
-        </div>
-
-        <!-- 18. HAYCURE WELLNESS (Shopify) -->
-        <a href="https://haycurewellness.com/" target="_blank" rel="noopener" class="project-card third reveal reveal-delay-1" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('PyUQr6Zfiu8')">
-              <img src="/assets/projects/haycure-wellness.webp" alt="Haycure Wellness" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Wellness &amp; Beauty</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Haycure Wellness</p><p class="project-niche">Shopify E-Commerce · Wellness &amp; Beauty</p></div><div class="project-arrow">↗</div></div>
-        </a>
-
-        <!-- 19. TAARZ (Shopify) -->
-        <div class="project-card third reveal is-offline" data-category="shopify">
-          <div class="project-thumb">
-            <div class="yt-facade" onclick="event.preventDefault();openYTModal('JF39xGGsWcA')">
-              <img src="/assets/projects/taarz.webp" alt="Taarz" loading="lazy" decoding="async">
-              <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <span class="project-niche-tag">Fashion</span>
-            <span class="project-offline-badge">Site Offline · Watch Video</span>
-          </div>
-          <div class="project-body"><div><p class="project-name">Taarz</p><p class="project-niche">Shopify Custom Theme · Fashion &amp; Apparel</p></div><div class="project-arrow">–</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <SelectedWork />
 
   <Testimonials />
 
@@ -455,7 +181,8 @@ const schema = [
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <!-- ABOUT: hidden for now. Set SHOW_ABOUT = true in the frontmatter to bring it back. -->
+  {SHOW_ABOUT && (
   <section id="about">
     <div class="section">
       <div class="about-inner">
@@ -481,6 +208,7 @@ const schema = [
       </div>
     </div>
   </section>
+  )}
 
   <FreeResources />
 
@@ -492,30 +220,9 @@ const schema = [
 
   <Footer isHome={true} />
 
-  <!-- Interactive Portfolio Filter Script -->
+  <!-- Portfolio filtering now lives in components/SelectedWork.astro -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const filter = btn.getAttribute('data-filter');
-
-          projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            if (filter === 'all' || category === filter) {
-              card.classList.remove('is-hidden');
-            } else {
-              card.classList.add('is-hidden');
-            }
-          });
-        });
-      });
-
       // Dynamic Years of Experience update (June 2020)
       const expEl = document.getElementById('expYears');
       if (expEl) {
