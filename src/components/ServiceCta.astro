@@ -1,0 +1,60 @@
+---
+// Services page › closing CTA band (from the Figma screenshot): blue band, copy + black
+// booking button on the left, faint grid + 30-min call illustration on the right.
+const art = '/assets/Service%20Page';
+---
+
+<section class="scta">
+  <div class="scta-inner">
+    <div class="scta-copy">
+      <h2 class="scta-title">Ready to build the store you actually imagined?</h2>
+      <p class="scta-sub">Book a 30-minute discovery call with our lead engineer. We'll review your current tech stack, scope out your requirements, and give you an honest appraisal before you commit.</p>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="scta-btn" style="cursor:pointer">Book a 30-Min Discovery Call →</a>
+    </div>
+
+    <div class="scta-art" aria-hidden="true">
+      <img class="scta-grid" src={`${art}/cta-grid.webp`} alt="" width="385" height="467" loading="lazy" decoding="async" />
+      <img class="scta-illu" src={`${art}/calendar-call.webp`} alt="" width="494" height="370" loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .scta { --pad: clamp(24px, 6.25vw, 90px); position: relative; overflow: hidden; background: var(--accent); color: var(--white); }
+  .scta-inner { position: relative; max-width: 1440px; margin: 0 auto; padding: 48px 20px 32px; display: grid; gap: 24px; }
+
+  .scta-copy { position: relative; z-index: 1; }
+  .scta-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px;
+    color: var(--white);
+  }
+  .scta-sub { margin-top: 16px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.8); max-width: 600px; }
+  .scta-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; margin-top: 32px; padding: 0 20px;
+    border-radius: 100px; background: var(--text); color: var(--white);
+    font-size: 14px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .scta-btn:hover { background: #2A2A28; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,20,18,0.3); }
+  .scta-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+  .scta-art { position: relative; justify-self: center; width: min(100%, 420px); }
+  .scta-illu { position: relative; display: block; width: 100%; height: auto; }
+  .scta-grid { position: absolute; left: 50%; top: 50%; width: 110%; height: auto; translate: -50% -50%; pointer-events: none; }
+
+  @media (min-width: 641px) {
+    .scta-inner { padding: 64px var(--pad); }
+    .scta-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .scta-sub { font-size: clamp(16px, 1.25vw, 18px); }
+  }
+  /* Desktop: copy left, artwork right */
+  @media (min-width: 1000px) {
+    .scta-inner { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 48px; min-height: 490px; padding-block: 72px; }
+    .scta-title { max-width: 620px; }
+    .scta-art { justify-self: end; width: clamp(360px, 32vw, 460px); margin-right: clamp(0px, 4vw, 60px); }
+    .scta-grid { left: auto; right: -60%; top: -30%; width: 120%; translate: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .scta-btn, .scta-btn:hover { transition: none; transform: none; } }
+</style>
