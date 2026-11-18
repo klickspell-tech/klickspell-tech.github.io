@@ -10,10 +10,10 @@ import Testimonials from '../components/Testimonials.astro';
 import Capabilities from '../components/Capabilities.astro';
 import WhyKlickspell from '../components/WhyKlickspell.astro';
 import SelectedWork from '../components/SelectedWork.astro';
+import { SHOW_ABOUT } from '../lib/site-flags';
 
 // The "About" section ("Built in the mountains of Uttarakhand.") is hidden for now.
 // Flip to true to render it again; the markup is kept below.
-const SHOW_ABOUT = false;
 
 // Dynamic career experience calculation (Started June 2020 at SheThink)
 const careerStartDate = new Date('2020-06-01');
@@ -181,7 +181,7 @@ const schema = [
     </div>
   </div>
 
-  <!-- ABOUT: hidden for now. Set SHOW_ABOUT = true in the frontmatter to bring it back. -->
+  <!-- ABOUT: hidden for now. Set SHOW_ABOUT = true in src/lib/site-flags.ts to bring it back (its nav/footer links come back with it). -->
   {SHOW_ABOUT && (
   <section id="about">
     <div class="section">

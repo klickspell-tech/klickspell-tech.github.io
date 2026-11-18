@@ -1,0 +1,76 @@
+---
+// Service detail pages › "Client Case Study" callout (from the Jaxon Lane screenshot):
+// soft background, primary eyebrow, title with an italic grey second part, copy, a black
+// pill + outline pill, and the store screenshot on the right (under the copy on phones).
+interface Props {
+  title: string;
+  titleEm: string;
+  text: string;
+  caseHref: string;
+  liveHref: string;
+  img: { src: string; alt: string; width: number; height: number };
+}
+const { title, titleEm, text, caseHref, liveHref, img } = Astro.props;
+---
+
+<section class="csx">
+  <div class="csx-inner">
+    <div class="csx-copy">
+      <p class="csx-eyebrow"><span class="csx-rule" aria-hidden="true"></span>Client Case Study</p>
+      <h2 class="csx-title">{title}<br /><em>{titleEm}</em></h2>
+      <p class="csx-text">{text}</p>
+      <div class="csx-actions">
+        <a href={caseHref} class="csx-btn csx-btn-dark">Read Full Case Study →</a>
+        <a href={liveHref} class="csx-btn csx-btn-outline" target="_blank" rel="noopener">Visit Live Store →</a>
+      </div>
+    </div>
+    <div class="csx-media">
+      <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .csx { --pad: clamp(24px, 6.25vw, 90px); background: var(--bg-soft); }
+  .csx-inner { max-width: 1440px; margin: 0 auto; padding: 28px 20px; display: grid; gap: 40px; }
+
+  .csx-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
+  .csx-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .csx-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 10.4vw, 44px); font-weight: 500; line-height: 1.23; letter-spacing: -0.02em;
+    color: var(--text); margin: 12px 0 18px;
+  }
+  .csx-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+  .csx-text { font-size: 17px; line-height: 1.45; color: var(--text-light); }
+
+  .csx-actions { display: flex; flex-direction: column; align-items: stretch; gap: 15px; margin-top: 40px; }
+  .csx-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 56px; padding: 0 16px; border-radius: 100px;
+    font-size: 17px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .csx-btn-dark { background: var(--text); color: var(--white); }
+  .csx-btn-dark:hover { background: #2A2A28; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,20,18,0.2); }
+  .csx-btn-outline { color: var(--text); border: 1px solid var(--text); }
+  .csx-btn-outline:hover { background: var(--white); transform: translateY(-1px); }
+  .csx-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .csx-media img { display: block; width: 100%; height: auto; }
+
+  @media (min-width: 641px) {
+    .csx-inner { padding: 80px var(--pad); }
+    .csx-actions { flex-direction: row; align-items: center; }
+  }
+  /* Desktop: copy left, screenshot right (top-aligned, as in the mock) */
+  @media (min-width: 1000px) {
+    .csx-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 38.1vw); align-items: start; gap: clamp(32px, 3.2vw, 46px); padding: 88px clamp(24px, 2.8vw, 40px) 100px var(--pad); }
+    .csx-media { max-width: 549px; margin-top: 17px; }
+    .csx-copy { max-width: 640px; }
+    .csx-title { font-size: clamp(44px, 4.44vw, 60px); line-height: 1.2; margin: 18px 0 26px; }
+    .csx-text { font-size: clamp(17px, 1.59vw, 20px); }
+    .csx-actions { margin-top: 38px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .csx-btn, .csx-btn:hover { transition: none; transform: none; } }
+</style>

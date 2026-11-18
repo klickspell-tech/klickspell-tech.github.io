@@ -1,0 +1,123 @@
+---
+// Services page › "The Klickspell Standard" comparison (from the Figma screenshots).
+// Blue #3A5BE0 band, white table card, Klickspell column in #152E92. On phones the table
+// scrolls sideways with a scroll indicator under it, as in the mobile design.
+const rows = [
+  { label: 'Code', us: 'Custom Liquid themes and native sections', agency: 'Bought themes plus PageFly', freelance: 'Patchwork code and copied snippets' },
+  { label: 'Speed', us: 'Agreed 90+ mobile target', agency: 'Speed is fine on desktop', freelance: 'Rarely measured on mobile' },
+  { label: 'Editing', us: 'Everything editable in the customizer', agency: 'Pay per section change', freelance: 'Breaks on theme updates' },
+  { label: 'App advice', us: 'Unbiased, any partnerships disclosed', agency: 'Apps chosen for referral fees', freelance: 'Whatever is fastest to install' },
+  { label: 'Handover', us: 'Git repo plus recorded video training', agency: 'Agency keeps the repo', freelance: 'Zip file, no documentation' },
+];
+---
+
+<section class="cm">
+  <span class="cm-orb cm-orb-1" aria-hidden="true"></span>
+  <span class="cm-orb cm-orb-2" aria-hidden="true"></span>
+  <div class="cm-inner">
+    <p class="cm-eyebrow"><span class="cm-rule" aria-hidden="true"></span>The Klickspell Standard</p>
+    <h2 class="cm-title">How we compare to<br /><em>typical agencies.</em></h2>
+    <p class="cm-sub">We succeed when you don't need us for basic updates.</p>
+
+    <div class="cm-scroll" tabindex="0" role="region" aria-label="Comparison table, scroll sideways for more">
+      <table class="cm-table">
+        <thead>
+          <tr>
+            <th scope="col" class="cm-c-label">Standard</th>
+            <th scope="col" class="cm-c-us">Klickspell</th>
+            <th scope="col">Traditional Agencies</th>
+            <th scope="col">Freelance Marketplaces</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <th scope="row" class="cm-c-label">{r.label}</th>
+              <td class="cm-c-us">{r.us}</td>
+              <td>{r.agency}</td>
+              <td>{r.freelance}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="cm-track" aria-hidden="true"><span class="cm-thumb"></span></div>
+  </div>
+</section>
+
+<script>
+  // Mobile scroll indicator: thumb width/position follow the table's horizontal scroll.
+  document.querySelectorAll<HTMLElement>('.cm').forEach((cm) => {
+    const sc = cm.querySelector<HTMLElement>('.cm-scroll');
+    const thumb = cm.querySelector<HTMLElement>('.cm-thumb');
+    if (!sc || !thumb) return;
+    const update = () => {
+      const ratio = sc.clientWidth / sc.scrollWidth;
+      const max = sc.scrollWidth - sc.clientWidth;
+      thumb.style.width = `${ratio * 100}%`;
+      thumb.style.transform = `translateX(${max > 0 ? (sc.scrollLeft / max) * ((1 - ratio) / ratio) * 100 : 0}%)`;
+      cm.classList.toggle('is-scrollable', max > 1);
+    };
+    sc.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
+
+<style>
+  .cm { --pad: clamp(24px, 6.25vw, 90px); --us: #152E92; position: relative; overflow: hidden; background: #3A5BE0; color: var(--white); }
+  .cm-orb { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.06); pointer-events: none; }
+  .cm-orb-1 { width: 320px; height: 320px; top: -110px; right: -60px; }
+  .cm-orb-2 { width: 260px; height: 260px; top: 40px; right: -150px; background: rgba(255,255,255,0.05); }
+  .cm-inner { position: relative; max-width: 1440px; margin: 0 auto; padding: 48px 20px; }
+
+  .cm-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+  .cm-rule { display: block; width: 24px; height: 1px; background: rgba(255,255,255,0.85); }
+  .cm-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px;
+    color: var(--white); margin: 16px 0 16px;
+  }
+  .cm-title em { font-style: italic; font-weight: 500; }
+  .cm-sub { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.88); }
+
+  /* Table card */
+  .cm-scroll { margin-top: 32px; overflow-x: auto; border-radius: 12px; background: var(--white); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .cm-scroll::-webkit-scrollbar { display: none; }
+  .cm-scroll:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+  .cm-table { width: 100%; min-width: max-content; border-collapse: collapse; text-align: left; color: var(--text); }
+  .cm-table th, .cm-table td { padding: 16px 18px; font-size: 15px; line-height: 1.4; white-space: nowrap; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .cm-table tbody tr:last-child > * { border-bottom: 0; }
+  .cm-table thead th { height: 64px; background: #F3F4F8; font-weight: 500; font-size: 15px; color: var(--text); }
+  .cm-table thead th.cm-c-label { font-size: 13px; }
+  .cm-table tbody th { font-weight: 500; }
+  .cm-table td { color: var(--text-light); }
+  .cm-table .cm-c-label { width: 96px; min-width: 96px; padding-left: 16px; }
+  .cm-table tbody th, .cm-table tbody td { padding-top: 19px; padding-bottom: 19px; }
+  /* The Klickspell column */
+  .cm-table thead .cm-c-us { background: var(--us); color: var(--white); font-family: var(--font-display); font-size: 20px; font-weight: 500; }
+  .cm-table tbody .cm-c-us { background: #EEF1FD; color: var(--us); font-weight: 500; }
+
+  /* Mobile scroll indicator (only shown when the table actually scrolls) */
+  .cm-track { display: none; position: relative; height: 6px; margin-top: 16px; border-radius: 100px; background: rgba(255,255,255,0.18); overflow: hidden; }
+  .cm-thumb { display: block; height: 100%; border-radius: 100px; background: rgba(255,255,255,0.55); }
+  .cm.is-scrollable .cm-track { display: block; }
+
+  @media (min-width: 641px) {
+    .cm-inner { padding: clamp(56px, 5.56vw, 80px) var(--pad); }
+    .cm-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .cm-sub { font-size: clamp(16px, 1.25vw, 18px); }
+    .cm-scroll { margin-top: 64px; }
+    .cm-table th, .cm-table td { padding: 22px 24px; font-size: 16px; }
+    .cm-table thead th { height: 76px; }
+    .cm-table thead .cm-c-us { font-size: 22px; }
+    .cm-table .cm-c-label { width: 18%; padding-left: 24px; }
+    .cm-table tbody th, .cm-table tbody td { padding-top: 22px; padding-bottom: 22px; }
+  }
+  @media (min-width: 1000px) {
+    .cm-table { min-width: 0; }
+    .cm-table th, .cm-table td { white-space: normal; }
+    .cm-orb-1 { width: 380px; height: 380px; top: -150px; right: 120px; }
+    .cm-orb-2 { width: 300px; height: 300px; top: -20px; right: 40px; }
+  }
+</style>

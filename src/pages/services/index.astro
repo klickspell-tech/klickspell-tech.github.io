@@ -8,6 +8,7 @@ import ServiceProcess from '../../components/ServiceProcess.astro';
 import Faq from '../../components/Faq.astro';
 import ServiceCta from '../../components/ServiceCta.astro';
 import ServiceTools from '../../components/ServiceTools.astro';
+import ServiceCompare from '../../components/ServiceCompare.astro';
 
 const canonical = "https://klickspell.com/services";
 
@@ -94,69 +95,14 @@ const schemas = [serviceCatalogSchema, breadcrumbSchema];
     <!-- PROCESS / HOW WE DELIVER -->
     <ServiceProcess />
 
-    <div class="service-body-wrap">
-
-      <!-- COMPARISON SECTION -->
-      <div class="services-compare-section reveal">
-        <div class="service-section-header">
-          <p class="section-eyebrow">The Klickspell Standard</p>
-          <h2>How we compare to <em>typical agencies.</em></h2>
-          <p>We built Klickspell around one founding principle: we succeed when you don't need us for basic updates.</p>
-        </div>
-
-        <div class="compare-table-wrapper">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th>Standard</th>
-                <th class="highlight-col">Klickspell</th>
-                <th>Traditional Agencies</th>
-                <th>Freelance Marketplaces</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Code Architecture</strong></td>
-                <td class="highlight-col">Custom Liquid themes &amp; native sections</td>
-                <td>Pre-bought bloated themes + PageFly</td>
-                <td>Patchwork code &amp; copied snippets</td>
-              </tr>
-              <tr>
-                <td><strong>Speed Benchmark</strong></td>
-                <td class="highlight-col"><span class="table-tag-green">Agreed 90+ mobile target</span></td>
-                <td>"Speed is fine on desktop"</td>
-                <td>Rarely measured on mobile</td>
-              </tr>
-              <tr>
-                <td><strong>Client Autonomy</strong></td>
-                <td class="highlight-col">100% editable in native Customizer</td>
-                <td>Locked down — pay per section change</td>
-                <td>Unclear code, breaks on theme updates</td>
-              </tr>
-              <tr>
-                <td><strong>Third-Party App Advice</strong></td>
-                <td class="highlight-col">Honest, unbiased (zero kickbacks; any partnerships disclosed up front)</td>
-                <td>Apps chosen based on partner referral cuts</td>
-                <td>Whatever app solves the issue fastest</td>
-              </tr>
-              <tr>
-                <td><strong>Handover Process</strong></td>
-                <td class="highlight-col">Clean Git repo + recorded Loom video training</td>
-                <td>Agency holds repo &amp; assets hostage</td>
-                <td>Zip file with zero documentation</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- FAQ: same component as the home page -->
-    <Faq />
+    <!-- COMPARISON -->
+    <ServiceCompare />
 
     <!-- FREE TOOLS -->
     <ServiceTools />
+
+    <!-- FAQ: same component as the home page -->
+    <Faq />
 
     <!-- CLOSING CTA -->
     <ServiceCta />

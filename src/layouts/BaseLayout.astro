@@ -225,7 +225,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         modal.classList.add('open');
-        window._lenis?.stop();
       }
     };
     window.closeYTModal = function() {
@@ -234,7 +233,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = '';
         modal.classList.remove('open');
-        window._lenis?.start();
       }
     };
 
@@ -259,31 +257,20 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         el.addEventListener('mouseenter', () => document.body.classList.add('hovering'), { passive: true });
         el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'), { passive: true });
       });
-
-      // Lazy load Lenis asynchronously on desktop
-      import('/assets/js/lenis.mjs').then(({ default: Lenis }) => {
-        const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-        window._lenis = lenis;
-        lenis.on('scroll', () => {
-          const nav = document.getElementById('nav');
-          if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
-        });
-        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
-      }).catch(() => {});
-    } else {
-      // Mobile touch screens: requestAnimationFrame-throttled scroll listener (prevents forced reflow)
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const nav = document.getElementById('nav');
-            if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
     }
+
+    // Native scrolling everywhere; requestAnimationFrame-throttled listener for the nav state
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const nav = document.getElementById('nav');
+          if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Mobile menu
     const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
@@ -318,11 +305,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         const t = document.querySelector(href);
         if (t) {
           e.preventDefault();
-          if (window._lenis) {
-            window._lenis.scrollTo(t, { offset: 0, duration: 1.2 });
-          } else {
-            t.scrollIntoView({ behavior: 'smooth' });
-          }
+          t.scrollIntoView({ behavior: 'smooth' });
         }
       }
     }));

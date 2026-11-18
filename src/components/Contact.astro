@@ -2,6 +2,11 @@
 // Figma: klickspell › Get in touch (desktop 85:832, mobile 135:818)
 // The form keeps the ids/names the submit script in pages/index.astro relies on.
 const art = '/assets/contact';
+
+// 12 columns x 8 rows = 96 interactive grid boxes
+// Accent pre-filled boxes matching the original Figma composition
+const accentIndices = new Set([24, 31, 37, 39, 66]);
+const gridCells = Array.from({ length: 96 });
 ---
 
 <section id="contact" class="ct">
@@ -45,7 +50,14 @@ const art = '/assets/contact';
     </form>
 
     <div class="ct-art" aria-hidden="true">
-      <div class="ct-grid"></div>
+      <div class="ct-grid" id="ctGrid">
+        {gridCells.map((_, i) => (
+          <div
+            class={`ct-grid-cell${accentIndices.has(i) ? ' is-accent' : ''}`}
+            data-index={i}
+          />
+        ))}
+      </div>
       <div class="ct-illu">
         <img src={`${art}/illustration.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async" />
       </div>
@@ -53,14 +65,66 @@ const art = '/assets/contact';
   </div>
 </section>
 
-<script>
+<script is:inline>
+  // Interactive grid touch trail for mobile & tablet screens
+  (function() {
+    const grid = document.getElementById('ctGrid');
+    if (!grid) return;
+    let activeCell = null;
+    let clearTimer = null;
+
+    function lightCell(cell) {
+      if (!cell || cell === activeCell) return;
+      if (activeCell) activeCell.classList.remove('is-lit');
+      activeCell = cell;
+      cell.classList.add('is-lit');
+      clearTimeout(clearTimer);
+      clearTimer = setTimeout(function() {
+        if (activeCell) {
+          activeCell.classList.remove('is-lit');
+          activeCell = null;
+        }
+      }, 700);
+    }
+
+    grid.addEventListener('touchstart', function(e) {
+      const t = e.touches[0];
+      if (!t) return;
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      const cell = el ? el.closest('.ct-grid-cell') : null;
+      if (cell) lightCell(cell);
+    }, { passive: true });
+
+    grid.addEventListener('touchmove', function(e) {
+      const t = e.touches[0];
+      if (!t) return;
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      const cell = el ? el.closest('.ct-grid-cell') : null;
+      if (cell) lightCell(cell);
+    }, { passive: true });
+
+    grid.addEventListener('touchend', function() {
+      clearTimeout(clearTimer);
+      clearTimer = setTimeout(function() {
+        if (activeCell) {
+          activeCell.classList.remove('is-lit');
+          activeCell = null;
+        }
+      }, 500);
+    }, { passive: true });
+  })();
+
   // The message box is one line tall like the Figma, then grows as people type.
-  // (CSS `field-sizing: content` does this in newer browsers; this covers the rest.)
-  const msg = document.getElementById('contactMessage') as HTMLTextAreaElement | null;
-  if (msg && !CSS.supports('field-sizing', 'content')) {
-    const grow = () => { msg.style.height = 'auto'; msg.style.height = Math.min(msg.scrollHeight + 2, 220) + 'px'; };
-    msg.addEventListener('input', grow);
-  }
+  (function() {
+    const msg = document.getElementById('contactMessage');
+    if (msg && !CSS.supports('field-sizing', 'content')) {
+      const grow = function() {
+        msg.style.height = 'auto';
+        msg.style.height = Math.min(msg.scrollHeight + 2, 220) + 'px';
+      };
+      msg.addEventListener('input', grow);
+    }
+  })();
 </script>
 
 <style>
@@ -152,7 +216,7 @@ const art = '/assets/contact';
   .ct-send:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .ct-card :global(.video-audit-success), .ct-card :global(.contact-error) { margin-top: 16px; }
 
-  /* Artwork: translucent grid + illustration (both from the Figma crop) */
+  /* Artwork: interactive translucent grid + 3D illustration */
   .ct-art {
     position: relative;
     z-index: 1;
@@ -165,19 +229,89 @@ const art = '/assets/contact';
   .ct-grid {
     position: absolute; left: 0; top: 0;
     width: calc(436.458 * var(--u)); height: calc(300.188 * var(--u));
-    background: var(--white);
-    opacity: .3;
-    -webkit-mask: url('/assets/contact/grid-mobile.webp') 0 0 / calc(420 * var(--u)) calc(300.269 * var(--u)) no-repeat;
-            mask: url('/assets/contact/grid-mobile.webp') 0 0 / calc(420 * var(--u)) calc(300.269 * var(--u)) no-repeat;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: auto;
+    z-index: 1;
+    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 45% 45%, #000 55%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+            mask-image: radial-gradient(ellipse 95% 85% at 45% 45%, #000 55%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
   }
+  .ct-grid-cell {
+    position: relative;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    pointer-events: auto;
+    cursor: default;
+    border-radius: 0;
+    transform: scale(1);
+    z-index: 1;
+    transition: 
+      background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.8s ease,
+      transform 0.6s ease,
+      border-radius 0.6s ease;
+  }
+
+  /* Accent pre-filled cells matching original composition */
+  .ct-grid-cell.is-accent {
+    background: rgba(255, 255, 255, 0.14);
+    animation: ctBoxBreathe 6s ease-in-out infinite;
+  }
+  .ct-grid-cell.is-accent:nth-child(even) {
+    animation-delay: 3s;
+  }
+
+  @keyframes ctBoxBreathe {
+    0%, 100% {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+    50% {
+      background: rgba(255, 255, 255, 0.22);
+      box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  /* Interactive white box hover animation */
+  .ct-grid-cell:hover,
+  .ct-grid-cell.is-lit {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: rgba(255, 255, 255, 1) !important;
+    border-radius: 4px;
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.9),
+      0 0 40px rgba(255, 255, 255, 0.5),
+      inset 0 0 12px #ffffff !important;
+    transform: scale(1.05);
+    z-index: 10;
+    animation: none !important;
+    transition: 
+      background 0.03s ease,
+      box-shadow 0.03s ease,
+      border-color 0.03s ease,
+      transform 0.03s ease,
+      border-radius 0.03s ease;
+  }
+
   .ct-illu {
     position: absolute; left: 0; top: calc(77 * var(--u));
     width: calc(418.764 * var(--u)); height: calc(323 * var(--u));
     overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
   }
   .ct-illu img {
     position: absolute; top: 0; left: -19.07%;
     width: 119.07%; height: 102.91%; max-width: none;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   /* Narrow phones: stack the Name / Email fields */
@@ -207,8 +341,6 @@ const art = '/assets/contact';
     .ct-grid {
       left: calc(697 * var(--u)); top: calc(171 * var(--u));
       width: calc(678.813 * var(--u)); height: calc(466.876 * var(--u));
-      -webkit-mask: url('/assets/contact/grid-desktop.webp') 0 0 / calc(653.216 * var(--u)) calc(467 * var(--u)) no-repeat;
-              mask: url('/assets/contact/grid-desktop.webp') 0 0 / calc(653.216 * var(--u)) calc(467 * var(--u)) no-repeat;
     }
     .ct-illu { left: calc(789 * var(--u)); top: calc(295 * var(--u)); width: calc(561.454 * var(--u)); height: calc(433.059 * var(--u)); }
   }

@@ -6,6 +6,7 @@ interface Props {
 const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
 const art = '/assets/footer';
+import { SHOW_ABOUT } from '../lib/site-flags';
 ---
 
 <!-- Figma: klickspell › footer (desktop 85:933, mobile 135:902) -->
@@ -51,7 +52,7 @@ const art = '/assets/footer';
           <ul>
             <li><a href="/blog">Blog</a></li>
             <li><a href={`${prefix}#work`}>Our Work</a></li>
-            <li><a href={`${prefix}#about`}>About Us</a></li>
+            {SHOW_ABOUT && <li><a href={`${prefix}#about`}>About Us</a></li>}
             <li><a href={`${prefix}#faq`}>FAQ</a></li>
           </ul>
         </div>
@@ -61,11 +62,8 @@ const art = '/assets/footer';
     <div class="ft-mark" aria-hidden="true"><span class="ft-mark-bold">Klick</span><span class="ft-mark-reg">spell</span></div>
 
     <div class="ft-bottom">
-      <div class="ft-legal-left">
-        <p class="ft-copy">© 2026 KlickSpell Private Limited · Rudrapur, Uttarakhand, India</p>
-        <p class="ft-cin">CIN U62090UP2026PTC248355 · Registered office: C/o Ramesh Chandra Bhati, Sody Colony, Bilaspur, Rampur, Uttar Pradesh 244921, India</p>
-      </div>
-      <p class="ft-copy">Privacy Center • Terms &amp; Conditions</p>
+      <p class="ft-copy">© 2026 Klickspell · Rudrapur, Uttarakhand, India</p>
+      <p class="ft-copy ft-legal">Privacy Center • Terms &amp; Conditions</p>
     </div>
   </div>
 </footer>
@@ -83,7 +81,7 @@ const art = '/assets/footer';
     position: relative;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 40px 20px 40px;
+    padding: 40px 20px 26px;
   }
   .ft a { text-decoration: none; }
   .ft a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
@@ -144,10 +142,7 @@ const art = '/assets/footer';
   /* Bottom bar */
   .ft-bottom { margin-top: 23px; display: flex; flex-direction: column; gap: 24px; }
   .ft-copy { font-size: 12px; line-height: normal; color: var(--text); }
-  .ft-cin { font-size: 11px; line-height: 1.5; color: var(--text-light); margin-top: 6px; max-width: 640px; }
-  /* Phone: copyright and Privacy line stay where the Figma puts them; the registered-office line goes last */
-  .ft-legal-left { display: contents; }
-  .ft-cin { order: 3; margin-top: -8px; }
+  .ft-legal { display: none; } /* phones: only the copyright line, as in the mobile design */
 
   /* Tablet: columns sit side by side under the brand block */
   @media (min-width: 641px) {
@@ -156,10 +151,9 @@ const art = '/assets/footer';
     .ft-mark { --wm: min(18.567vw, 267.357px); margin: 32px 0 0 0; }
     .ft-bottom { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 24px; margin-top: 16px; }
     .ft-copy { font-size: 16px; }
+    .ft-legal { display: block; }
     .ft-social { margin-top: 0; }
-    .ft-legal-left { display: block; }
     .ft-bottom > .ft-copy { white-space: nowrap; flex-shrink: 0; }
-    .ft-cin { order: 0; margin-top: 6px; }
   }
 
   /* Desktop: Figma 1440px frame, everything anchored from the top */

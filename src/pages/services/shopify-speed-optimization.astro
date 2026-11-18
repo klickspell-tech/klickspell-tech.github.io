@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
 
 const canonical = "https://klickspell.com/services/shopify-speed-optimization";
 
@@ -95,66 +96,21 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
 
   <main id="main-content">
     <!-- HERO SECTION -->
-    <header class="service-page-hero">
-      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/services">Services</a> / Shopify Speed Optimization</p>
-      
-      <div class="service-badge reveal">
-        <span class="service-badge-dot"></span>
-        90+ Mobile Target · Passing Core Web Vitals
-      </div>
+    <ServiceDetailHero
+      crumb="Shopify Speed Optimization"
+      copyMax={480}
+      title="Speed that sells.<br />Performance that scales."
+      sub="Custom Shopify optimization built to deliver lightning-fast experiences and higher conversions."
+      primary={{ label: 'Book A Speed Audit →' }}
+      secondary={{ label: 'Read Case Study →', href: '/blog/how-we-achieved-99-pagespeed-score-case-study' }}
+      stats={[
+        { label: 'Mobile Target', value: '90+ / 100', note: 'Agreed after audit, or we keep optimizing' },
+        { label: 'Total Blocking Time', value: '< 200 ms', note: "Our aim: Lighthouse's \"good\" range" },
+        { label: 'Delivery Timeline', value: '2–3 Weeks', note: 'Staged duplicate theme with zero live downtime' },
+        { label: 'Safety Guarantee', value: '100% Intact', note: 'Analytics, tracking, and vital apps preserved' },
+      ]}
+    />
 
-      <h1 class="service-hero-title reveal reveal-delay-1">
-        A 1-second store converts 2.5x better than a 5-second one.<br>
-        We fix the <em>code</em>, not just the symptoms.
-      </h1>
-
-      <p class="service-hero-sub reveal reveal-delay-2">
-        Most speed "experts" install another optimizer app that makes your store slower. We dive directly into your Liquid templates, vendor scripts, and render trees to deliver lightning-fast paint times, zero layout shifts, and measurable conversion lifts.
-      </p>
-
-      <div class="service-hero-actions reveal reveal-delay-2">
-        <a 
-          href="https://cal.com/atul-bhatt-klickspell/30min" 
-          data-cal-link="atul-bhatt-klickspell/30min" 
-          data-cal-namespace="30min" 
-          data-cal-config='{"layout":"month_view"}' 
-          class="btn-primary"
-          style="cursor:pointer"
-        >
-          Book a Free Speed Audit →
-        </a>
-        <a href="/speed" class="btn-ghost" style="border-color:rgba(58,91,224,0.3); color:var(--accent);">
-          ⚡ Calculate Your App Bloat
-        </a>
-        <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">
-          Read Case Study ↗
-        </a>
-      </div>
-
-      <!-- METRICS STRIP -->
-      <div class="service-metrics-bar reveal reveal-delay-3">
-        <div class="service-metric-item">
-          <p class="metric-label">Mobile Target</p>
-          <p class="metric-val">90+ / 100</p>
-          <p class="metric-note">Agreed after audit, or we keep optimizing</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Total Blocking Time</p>
-          <p class="metric-val">&lt; 200 ms</p>
-          <p class="metric-note">Our aim: Lighthouse's "good" range</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Delivery Timeline</p>
-          <p class="metric-val">2–3 Weeks</p>
-          <p class="metric-note">Staged duplicate theme with zero live downtime</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Safety Guarantee</p>
-          <p class="metric-val">100% Intact</p>
-          <p class="metric-note">Analytics, tracking, and vital apps preserved</p>
-        </div>
-      </div>
-    </header>
 
     <!-- CONTENT BODY -->
     <div class="service-body-wrap">
