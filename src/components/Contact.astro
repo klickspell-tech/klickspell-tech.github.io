@@ -153,7 +153,15 @@ const gridCells = Array.from({ length: 96 });
   }
 
   /* Heading */
-  .ct-head { position: relative; z-index: 2; max-width: 810px; }
+  .ct-head {
+    position: relative;
+    z-index: 2;
+    max-width: 810px;
+    pointer-events: none;
+  }
+  .ct-head * {
+    pointer-events: none;
+  }
   .ct-eyebrow {
     display: flex; align-items: center; gap: 8px;
     font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
@@ -236,8 +244,6 @@ const gridCells = Array.from({ length: 96 });
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     pointer-events: auto;
     z-index: 1;
-    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 45% 45%, #000 55%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
-            mask-image: radial-gradient(ellipse 95% 85% at 45% 45%, #000 55%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
   }
   .ct-grid-cell {
     position: relative;
