@@ -336,6 +336,12 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     }
   </script>
 
+  <!-- Arrow buttons ("… →") stretch on hover -->
+  <script>
+    import { arrowButtons } from '../lib/arrow-buttons';
+    arrowButtons();
+  </script>
+
   <!-- Service Worker for offline asset caching and instant repeat font/asset delivery -->
   <script is:inline>
     if ('serviceWorker' in navigator && window.location.protocol === 'https:') {

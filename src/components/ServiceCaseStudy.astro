@@ -1,6 +1,6 @@
 ---
 // Service detail pages › case-study callout. Two looks from Figma:
-//  - default (Custom Shopify "Client Case Study"): full-width soft background
+//  - default (Custom Shopify "Client Case Study"): full-width soft background (inset box on phones)
 //  - boxed   (Speed "Proven Authority"): white section with an inset soft box
 // Primary eyebrow, title with an italic grey part, copy, a black pill + outline pill,
 // and the store screenshot on the right (under the copy on phones).
@@ -86,16 +86,24 @@ const ext = liveExternal ? { target: '_blank', rel: 'noopener' } : {};
 
   .csx-media img { display: block; width: 100%; height: auto; }
 
-  /* Boxed on phones (Figma mobile): white section, soft box 20px in from the edges, 20px inside */
-  .csx.is-boxed { background: var(--white); }
-  .csx.is-boxed .csx-inner { padding: 40px 20px; }
-  .csx.is-boxed .csx-box { background: var(--bg-soft); padding: 20px; }
+  /* Phones, both looks (the Custom Shopify and Speed mobile frames are the same): white section,
+     soft box 20px in from the edges, 20px inside */
+  @media (max-width: 640px) {
+    .csx { background: var(--white); }
+    .csx-inner { padding: 40px 20px; }
+    .csx-box { background: var(--bg-soft); padding: 20px; }
+    .csx-title { font-size: clamp(32px, 9.524vw, 40px); line-height: 1.2; margin: 24px 0 16px; }
+    .csx-text { font-size: 16px; line-height: 1.5; }
+    .csx-actions { gap: 13px; }
+    .csx-btn { font-size: 16px; }
+    /* straight after the capability cards (one Figma frame): no second gap above the box */
+    :global(.sf) + .csx .csx-inner { padding-top: 0; }
+  }
+  /* boxed keeps the phone type sizes on tablets */
   .csx.is-boxed .csx-title { font-size: clamp(32px, 9.524vw, 40px); line-height: 1.2; margin: 24px 0 16px; }
   .csx.is-boxed .csx-text { font-size: 16px; line-height: 1.5; }
   .csx.is-boxed .csx-actions { gap: 13px; }
   .csx.is-boxed .csx-btn { font-size: 16px; }
-  /* straight after the capability cards (one Figma frame): no second gap above the box */
-  :global(.sf) + .csx.is-boxed .csx-inner { padding-top: 0; }
 
   @media (min-width: 641px) {
     .csx-inner { padding: 80px var(--pad); }

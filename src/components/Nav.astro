@@ -10,6 +10,10 @@ const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
 const pathname = Astro.url.pathname;
 const isServicesActive = pathname.startsWith('/services') || pathname.startsWith('/speed') || pathname.startsWith('/checkout-quiz');
+// Marks the menu entry for the page you're on (highlighted in the Services menu and the mobile menu).
+// Builds use format 'file', so the path may end in .html.
+const here = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const current = (href: string) => (here === href ? { 'aria-current': 'page' as const } : {});
 ---
 
 <nav id="nav">
@@ -44,7 +48,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
               </div>
 
               <div class="dropdown-services-list">
-                <a href="/services/custom-shopify-development" class="dropdown-service-item" role="menuitem">
+                <a href="/services/custom-shopify-development" class="dropdown-service-item" role="menuitem" {...current("/services/custom-shopify-development")}>
                   <span class="service-item-num">01</span>
                   <div class="service-item-info">
                     <div class="service-item-title">Custom Shopify Themes</div>
@@ -52,7 +56,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
                   </div>
                 </a>
 
-                <a href="/services/shopify-speed-optimization" class="dropdown-service-item" role="menuitem">
+                <a href="/services/shopify-speed-optimization" class="dropdown-service-item" role="menuitem" {...current("/services/shopify-speed-optimization")}>
                   <span class="service-item-num">02</span>
                   <div class="service-item-info">
                     <div class="service-item-title">
@@ -63,7 +67,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
                   </div>
                 </a>
 
-                <a href="/services/headless-commerce" class="dropdown-service-item" role="menuitem">
+                <a href="/services/headless-commerce" class="dropdown-service-item" role="menuitem" {...current("/services/headless-commerce")}>
                   <span class="service-item-num">03</span>
                   <div class="service-item-info">
                     <div class="service-item-title">Headless &amp; Custom Commerce</div>
@@ -71,7 +75,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
                   </div>
                 </a>
 
-                <a href="/services/performance-accessibility-retainer" class="dropdown-service-item" role="menuitem">
+                <a href="/services/performance-accessibility-retainer" class="dropdown-service-item" role="menuitem" {...current("/services/performance-accessibility-retainer")}>
                   <span class="service-item-num">04</span>
                   <div class="service-item-info">
                     <div class="service-item-title">Performance &amp; Retainers</div>
@@ -88,7 +92,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
               </div>
 
               <div class="dropdown-tools-list">
-                <a href="/speed" class="dropdown-tool-item" role="menuitem">
+                <a href="/speed" class="dropdown-tool-item" role="menuitem" {...current("/speed")}>
                   <span class="tool-icon">⚡</span>
                   <div class="tool-item-info">
                     <div class="tool-item-title">App &amp; Speed Estimator</div>
@@ -96,7 +100,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
                   </div>
                 </a>
 
-                <a href="/checkout-quiz" class="dropdown-tool-item" role="menuitem">
+                <a href="/checkout-quiz" class="dropdown-tool-item" role="menuitem" {...current("/checkout-quiz")}>
                   <span class="tool-icon">🛒</span>
                   <div class="tool-item-info">
                     <div class="tool-item-title">Checkout Recommender</div>
@@ -168,23 +172,23 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
         <span>All Services Overview</span>
         <span class="mobile-arrow">→</span>
       </a>
-      <a href="/services/custom-shopify-development" class="mobile-link mobile-sublink">
+      <a href="/services/custom-shopify-development" class="mobile-link mobile-sublink" {...current("/services/custom-shopify-development")}>
         <span>Custom Shopify Themes</span>
         <span class="mobile-pill">Liquid</span>
       </a>
-      <a href="/services/shopify-speed-optimization" class="mobile-link mobile-sublink">
+      <a href="/services/shopify-speed-optimization" class="mobile-link mobile-sublink" {...current("/services/shopify-speed-optimization")}>
         <span>Shopify Speed Optimization</span>
         <span class="mobile-pill">90+ CWV</span>
       </a>
-      <a href="/services/headless-commerce" class="mobile-link mobile-sublink">
+      <a href="/services/headless-commerce" class="mobile-link mobile-sublink" {...current("/services/headless-commerce")}>
         <span>Headless &amp; Custom Commerce</span>
         <span class="mobile-pill">Medusa / Next</span>
       </a>
-      <a href="/services/performance-accessibility-retainer" class="mobile-link mobile-sublink">
+      <a href="/services/performance-accessibility-retainer" class="mobile-link mobile-sublink" {...current("/services/performance-accessibility-retainer")}>
         <span>Performance &amp; Retainers</span>
         <span class="mobile-pill">Care</span>
       </a>
-      <a href="/speed" class="mobile-link mobile-sublink">
+      <a href="/speed" class="mobile-link mobile-sublink" {...current("/speed")}>
         <span>⚡ Speed &amp; App Estimator</span>
       </a>
     </div>

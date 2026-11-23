@@ -169,6 +169,18 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
   .nav-pill-indicator { transition:none !important; }
 }
 .nav-links a { text-decoration:none !important; }
+
+/* Buttons ending in "→" stretch on hover: the arrow slides out and the button widens
+   (the arrow is wrapped by src/lib/arrow-buttons.ts) */
+.btn-arrow {
+  display:inline-block; margin-left:var(--arw-base, 0px);
+  transition:margin-left .4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-stretch:hover .btn-arrow,
+  .btn-stretch:focus-visible .btn-arrow { margin-left:calc(var(--arw-base, 0px) + 12px); }
+}
+@media (prefers-reduced-motion: reduce) { .btn-arrow { transition:none; } }
 .nav-cta {
   background:var(--text) !important;
   color:var(--white) !important;
@@ -284,6 +296,13 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .service-item-desc {
   font-size:11.5px; color:var(--text-mid); line-height:1.35; margin-top:2px;
 }
+/* The page you're on: primary-tinted pill so you can see where you are */
+.dropdown-service-item[aria-current="page"] {
+  background:rgba(58, 91, 224, 0.08);
+  box-shadow:inset 0 0 0 1px rgba(58, 91, 224, 0.22);
+  transform:none;
+}
+.dropdown-service-item[aria-current="page"] .service-item-title { color:var(--accent); }
 
 .dropdown-col-side {
   background:var(--bg); border:1px solid var(--border);
@@ -308,6 +327,11 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
   font-size:12px; font-weight:700; color:var(--text); line-height:1.3;
 }
 .dropdown-tool-item:hover .tool-item-title { color:var(--accent); }
+.dropdown-tool-item[aria-current="page"] {
+  background:#F5F7FD; border-color:rgba(58, 91, 224, 0.4);
+  box-shadow:inset 0 0 0 .5px rgba(58, 91, 224, 0.4);
+}
+.dropdown-tool-item[aria-current="page"] .tool-item-title { color:var(--accent); }
 .tool-item-desc {
   font-size:10.5px; color:var(--text-mid); line-height:1.3; margin-top:1px;
 }
@@ -361,6 +385,10 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 }
 .mobile-menu a.mobile-link:hover {
   background:rgba(58, 91, 224, 0.06); color:var(--accent);
+}
+.mobile-menu a.mobile-sublink[aria-current="page"] {
+  background:rgba(58, 91, 224, 0.08); color:var(--accent);
+  box-shadow:inset 0 0 0 1px rgba(58, 91, 224, 0.22);
 }
 .mobile-all-services {
   font-weight:700 !important; color:var(--accent) !important;

@@ -16,9 +16,15 @@ interface Props {
   /** desktop artwork placement: centred on the copy (default) or top-aligned with the title,
    *  at its natural width (lgW), as in the Speed page Figma */
   artAlign?: 'center' | 'top';
+  /** phones: space above and below the artwork in px (the mobile designs differ per page; default 56 / 56) */
+  artGapSm?: [number, number];
 }
-const { crumb, title, sub, primary, secondary, art, stats, copyMax, artAlign = 'center' } = Astro.props;
-const vars = [copyMax ? `--copy-max: ${copyMax}px` : '', art ? `--art-w: ${art.lgW}px` : ''].filter(Boolean).join('; ') || undefined;
+const { crumb, title, sub, primary, secondary, art, stats, copyMax, artAlign = 'center', artGapSm } = Astro.props;
+const vars = [
+  copyMax ? `--copy-max: ${copyMax}px` : '',
+  art ? `--art-w: ${art.lgW}px` : '',
+  artGapSm ? `--art-mt: ${artGapSm[0]}px; --art-mb: ${artGapSm[1]}px` : '',
+].filter(Boolean).join('; ') || undefined;
 ---
 
 <header class:list={['sd', { 'art-top': artAlign === 'top' }]} style={vars}>
@@ -81,6 +87,7 @@ const vars = [copyMax ? `--copy-max: ${copyMax}px` : '', art ? `--art-w: ${art.l
     font-size: clamp(32px, 9.524vw, 40px); font-weight: 500; line-height: 1.25; letter-spacing: -0.03em;
     color: var(--text);
     margin-bottom: 20px;
+    max-width: 343px; /* the Figma mobile title box: wraps to three lines on a 420px phone */
   }
   .sd-sub { font-size: 16px; line-height: 1.5; color: var(--text-light); margin-bottom: 40px; }
 
@@ -98,11 +105,11 @@ const vars = [copyMax ? `--copy-max: ${copyMax}px` : '', art ? `--art-w: ${art.l
   .sd-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* Phones/tablets: artwork under the buttons */
-  .sd-art { display: block; margin-top: 56px; }
+  .sd-art { display: block; margin-top: var(--art-mt, 56px); }
   .sd-art img { display: block; width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
 
   /* Stats strip */
-  .sd-strip { margin-top: 56px; max-width: 1209px; }
+  .sd-strip { margin-top: var(--art-mb, 56px); max-width: 1209px; }
   .sd-strip-label {
     display: flex; align-items: center; gap: 16px;
     font-size: 14px; font-weight: 600; line-height: 19px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text);
@@ -123,11 +130,12 @@ const vars = [copyMax ? `--copy-max: ${copyMax}px` : '', art ? `--art-w: ${art.l
   @media (min-width: 641px) {
     .sd-inner { padding: 112px var(--pad) 56px; }
     .sd-top { margin-top: 48px; }
-    .sd-title { font-size: clamp(44px, 4.44vw, 64px); }
+    .sd-title { font-size: clamp(44px, 4.44vw, 64px); max-width: none; }
     .sd-sub { font-size: clamp(17px, 1.39vw, 20px); margin-bottom: 40px; }
     .sd-actions { flex-direction: row; align-items: center; gap: 13px; }
     .sd-btn-primary { padding-inline: 48px; }
     .sd-btn-outline { padding-inline: 17px; }
+    .sd-art { margin-top: 56px; }
     .sd-art img { max-width: 420px; }
     .sd-strip { margin-top: 64px; }
     /* tablets: 2 x 2, desktop overrides to one row of four */

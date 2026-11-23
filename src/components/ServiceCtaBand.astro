@@ -1,26 +1,35 @@
 ---
 // Service detail pages › centred closing CTA (Figma Speed page "cta", 1440 frame): primary blue
 // band with a faint square grid (a few lighter cells at the sides), white title + copy and a
-// black booking pill.
+// black booking pill. The grid is interactive like the home page "Get in touch" grid: cells
+// light up under the pointer (or finger) and fade out, and the lighter cells breathe.
 interface Props {
   title: string;
   sub: string;
   label?: string;
 }
 const { title, sub, label = 'Book a 30-Min Discovery Call →' } = Astro.props;
-// Lighter grid cells from the design: [left px from the 1440 frame's left edge, row, strength]
+
+// Grid: 56 x 62px cells, lines at centre - 680px + n*56 (x = 40 on the 1440 frame) and from 82px
+// down. Columns n = -11..35 cover screens up to 2560px wide; 9 rows cover the tallest band (~534px).
+const CW = 56, CH = 62, C0 = -11, COLS = 47, ROWS = 9;
+// Lighter cells from the design: [left px on the 1440 frame, row, strength]
 const cells: [number, number, number][] = [
   [152, 0, 2], [152, 1, 2], [376, 1, 1], [1048, 0, 1], [1328, 0, 2], [1328, 1, 2],
   [-16, 3, 2], [208, 3, 1], [1048, 3, 2], [1160, 3, 2], [1384, 3, 1],
   [208, 4, 2], [1384, 4, 2], [96, 5, 1], [1272, 5, 1],
 ];
+const accent = new Map(cells.map(([x, r, s]) => [r * COLS + (x - 40) / CW - C0, s]));
+const gridVars = `--cols: ${COLS}; --rows: ${ROWS}; --x0: ${680 - C0 * CW}px`;
 ---
 
 <section class="cb">
-  <div class="cb-grid" aria-hidden="true">
-    {cells.map(([x, r, s]) => (
-      <span class={`cb-cell cb-cell-${s}`} style={`--x:${x}px; --r:${r}`}></span>
-    ))}
+  <div class="cb-bg" aria-hidden="true">
+    <div class="cb-grid" style={gridVars}>
+      {Array.from({ length: COLS * ROWS }, (_, i) => (
+        <span class:list={['cb-c', accent.has(i) && `is-accent-${accent.get(i)}`]}></span>
+      ))}
+    </div>
   </div>
   <div class="cb-inner">
     <h2 class="cb-title">{title}</h2>
@@ -29,27 +38,78 @@ const cells: [number, number, number][] = [
   </div>
 </section>
 
+<script>
+  import { gridTrail } from '../lib/grid-trail';
+  gridTrail('.cb', '.cb-c');
+</script>
+
 <style>
-  .cb { --cw: 56px; --ch: 62px; position: relative; overflow: hidden; background: var(--accent); color: var(--white); }
-  /* Grid: lines every 56 x 62px, anchored to the centre so it sits like the 1440 frame at any width */
-  .cb-grid {
+  .cb { position: relative; overflow: hidden; background: var(--accent); color: var(--white); }
+
+  /* Grid layer: faded at the top and bottom as in the design */
+  .cb-bg {
     position: absolute; inset: 0; pointer-events: none;
-    /* lines at centre - 680px + n*56 (x = 40 on the 1440 frame); a % position is taken of
-       (width - tile), hence 50% - 680 + 28 */
-    --ox: calc(50% - 652px);
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.13) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.13) 1px, transparent 1px);
-    background-size: var(--cw) var(--ch);
-    background-position: var(--ox) 82px;
     -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000 24%, #000 70%, transparent 90%);
             mask-image: linear-gradient(to bottom, transparent 10%, #000 24%, #000 70%, transparent 90%);
   }
-  .cb-cell { position: absolute; left: calc(50% - 720px + var(--x)); top: calc(82px + var(--r) * var(--ch)); width: var(--cw); height: var(--ch); }
-  .cb-cell-1 { background: rgba(255,255,255,0.05); }
-  .cb-cell-2 { background: rgba(255,255,255,0.1); }
+  .cb-grid {
+    position: absolute; top: 82px; left: calc(50% - var(--x0));
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 56px);
+    grid-template-rows: repeat(var(--rows), 62px);
+    border-top: 1px solid rgba(255,255,255,0.13);
+    border-left: 1px solid rgba(255,255,255,0.13);
+    pointer-events: auto;
+  }
+  .cb-c {
+    position: relative; z-index: 1;
+    border-right: 1px solid rgba(255,255,255,0.13);
+    border-bottom: 1px solid rgba(255,255,255,0.13);
+    transform: scale(1);
+    transition:
+      background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.8s ease,
+      transform 0.6s ease,
+      border-radius 0.6s ease;
+  }
 
-  .cb-inner { position: relative; max-width: 1182px; margin: 0 auto; padding: 40px 20px 48px; text-align: center; }
+  /* Lighter cells from the design, gently breathing */
+  .cb-c.is-accent-1 { --lo: 0.03; --hi: 0.1; }
+  .cb-c.is-accent-2 { --lo: 0.06; --hi: 0.2; }
+  .cb-c.is-accent-1, .cb-c.is-accent-2 { background: rgba(255,255,255,var(--lo)); animation: cbBreathe 6s ease-in-out infinite; }
+  .cb-c:nth-child(even) { animation-delay: 3s; }
+  @keyframes cbBreathe {
+    0%, 100% { background: rgba(255,255,255,var(--lo)); box-shadow: none; }
+    50% { background: rgba(255,255,255,var(--hi)); box-shadow: inset 0 0 10px rgba(255,255,255,var(--hi)); }
+  }
+
+  /* Lit cell: instant white glow under the pointer, fades out over 0.8s once it moves on */
+  .cb-c.is-lit {
+    background: rgba(255,255,255,0.94);
+    border-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5), inset 0 0 12px #FFFFFF;
+    transform: scale(1.05);
+    z-index: 10;
+    animation: none;
+    transition: background .03s ease, box-shadow .03s ease, border-color .03s ease, transform .03s ease, border-radius .03s ease;
+  }
+  @media (hover: hover) {
+    .cb-c:hover {
+      background: rgba(255,255,255,0.94);
+      border-color: #FFFFFF;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5), inset 0 0 12px #FFFFFF;
+      transform: scale(1.05);
+      z-index: 10;
+      animation: none;
+      transition: background .03s ease, box-shadow .03s ease, border-color .03s ease, transform .03s ease, border-radius .03s ease;
+    }
+  }
+
+  /* Copy sits above the grid but lets the pointer through to it (the button stays clickable) */
+  .cb-inner { position: relative; max-width: 1182px; margin: 0 auto; padding: 40px 20px 48px; text-align: center; pointer-events: none; }
   .cb-title {
     font-family: var(--font-display);
     font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -0.03em;
@@ -57,6 +117,7 @@ const cells: [number, number, number][] = [
   }
   .cb-sub { max-width: 1062px; margin: 16px auto 0; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.8); }
   .cb-btn {
+    position: relative; z-index: 1; pointer-events: auto;
     display: flex; width: 100%; align-items: center; justify-content: center;
     height: 56px; margin-top: 40px; padding: 0 16px; border-radius: 100px;
     background: #000; color: var(--white);
@@ -72,5 +133,9 @@ const cells: [number, number, number][] = [
     .cb-sub { font-size: clamp(16px, 1.39vw, 20px); }
     .cb-btn { display: inline-flex; width: auto; }
   }
-  @media (prefers-reduced-motion: reduce) { .cb-btn, .cb-btn:hover { transition: none; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .cb-c, .cb-c.is-lit, .cb-c:hover { transition: none; transform: none; }
+    .cb-c.is-accent-1, .cb-c.is-accent-2 { animation: none; }
+    .cb-btn, .cb-btn:hover { transition: none; transform: none; }
+  }
 </style>
