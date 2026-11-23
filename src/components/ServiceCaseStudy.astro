@@ -1,38 +1,61 @@
 ---
-// Service detail pages › "Client Case Study" callout (from the Jaxon Lane screenshot):
-// soft background, primary eyebrow, title with an italic grey second part, copy, a black
-// pill + outline pill, and the store screenshot on the right (under the copy on phones).
+// Service detail pages › case-study callout. Two looks from Figma:
+//  - default (Custom Shopify "Client Case Study"): full-width soft background
+//  - boxed   (Speed "Proven Authority"): white section with an inset soft box
+// Primary eyebrow, title with an italic grey part, copy, a black pill + outline pill,
+// and the store screenshot on the right (under the copy on phones).
 interface Props {
-  title: string;
-  titleEm: string;
-  text: string;
+  eyebrow?: string;
+  /** plain title + italic grey second line ... */
+  title?: string;
+  titleEm?: string;
+  /** ... or full title markup (use <em> for the grey part, <i> inside it for italics) */
+  titleHtml?: string;
+  text?: string;
+  /** copy markup, e.g. with <strong> highlights */
+  textHtml?: string;
   caseHref: string;
+  caseLabel?: string;
   liveHref: string;
+  liveLabel?: string;
+  /** open the second button in a new tab (true for external store links) */
+  liveExternal?: boolean;
   img: { src: string; alt: string; width: number; height: number };
+  boxed?: boolean;
 }
-const { title, titleEm, text, caseHref, liveHref, img } = Astro.props;
+const {
+  eyebrow = 'Client Case Study', title, titleEm, titleHtml, text, textHtml,
+  caseHref, caseLabel = 'Read Full Case Study →',
+  liveHref, liveLabel = 'Visit Live Store →', liveExternal = true,
+  img, boxed = false,
+} = Astro.props;
+const heading = titleHtml ?? `${title ?? ''}<br /><em>${titleEm ?? ''}</em>`;
+const ext = liveExternal ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
-<section class="csx">
+<section class:list={['csx', { 'is-boxed': boxed }]}>
   <div class="csx-inner">
-    <div class="csx-copy">
-      <p class="csx-eyebrow"><span class="csx-rule" aria-hidden="true"></span>Client Case Study</p>
-      <h2 class="csx-title">{title}<br /><em>{titleEm}</em></h2>
-      <p class="csx-text">{text}</p>
-      <div class="csx-actions">
-        <a href={caseHref} class="csx-btn csx-btn-dark">Read Full Case Study →</a>
-        <a href={liveHref} class="csx-btn csx-btn-outline" target="_blank" rel="noopener">Visit Live Store →</a>
+    <div class="csx-box">
+      <div class="csx-copy">
+        <p class="csx-eyebrow"><span class="csx-rule" aria-hidden="true"></span>{eyebrow}</p>
+        <h2 class="csx-title" set:html={heading} />
+        {textHtml ? <p class="csx-text" set:html={textHtml} /> : <p class="csx-text">{text}</p>}
+        <div class="csx-actions">
+          <a href={caseHref} class="csx-btn csx-btn-dark">{caseLabel}</a>
+          <a href={liveHref} class="csx-btn csx-btn-outline" {...ext}>{liveLabel}</a>
+        </div>
       </div>
-    </div>
-    <div class="csx-media">
-      <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" decoding="async" />
+      <div class="csx-media">
+        <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" decoding="async" />
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .csx { --pad: clamp(24px, 6.25vw, 90px); background: var(--bg-soft); }
-  .csx-inner { max-width: 1440px; margin: 0 auto; padding: 28px 20px; display: grid; gap: 40px; }
+  .csx-inner { max-width: 1440px; margin: 0 auto; padding: 28px 20px; }
+  .csx-box { display: grid; gap: 40px; }
 
   .csx-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
   .csx-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
@@ -41,8 +64,12 @@ const { title, titleEm, text, caseHref, liveHref, img } = Astro.props;
     font-size: clamp(34px, 10.4vw, 44px); font-weight: 500; line-height: 1.23; letter-spacing: -0.02em;
     color: var(--text); margin: 12px 0 18px;
   }
-  .csx-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+  .csx-title :global(em) { font-style: italic; font-weight: 500; color: var(--text-light); }
+  /* titleHtml: <em>We <i>engineer it daily.</i></em> — grey line, italic only inside <i> */
+  .csx-title :global(em:has(i)) { font-style: normal; }
+  .csx-title :global(em i) { font-style: italic; }
   .csx-text { font-size: 17px; line-height: 1.45; color: var(--text-light); }
+  .csx-text :global(strong) { font-weight: 700; }
 
   .csx-actions { display: flex; flex-direction: column; align-items: stretch; gap: 15px; margin-top: 40px; }
   .csx-btn {
@@ -59,18 +86,49 @@ const { title, titleEm, text, caseHref, liveHref, img } = Astro.props;
 
   .csx-media img { display: block; width: 100%; height: auto; }
 
+  /* Boxed on phones (Figma mobile): white section, soft box 20px in from the edges, 20px inside */
+  .csx.is-boxed { background: var(--white); }
+  .csx.is-boxed .csx-inner { padding: 40px 20px; }
+  .csx.is-boxed .csx-box { background: var(--bg-soft); padding: 20px; }
+  .csx.is-boxed .csx-title { font-size: clamp(32px, 9.524vw, 40px); line-height: 1.2; margin: 24px 0 16px; }
+  .csx.is-boxed .csx-text { font-size: 16px; line-height: 1.5; }
+  .csx.is-boxed .csx-actions { gap: 13px; }
+  .csx.is-boxed .csx-btn { font-size: 16px; }
+  /* straight after the capability cards (one Figma frame): no second gap above the box */
+  :global(.sf) + .csx.is-boxed .csx-inner { padding-top: 0; }
+
   @media (min-width: 641px) {
     .csx-inner { padding: 80px var(--pad); }
     .csx-actions { flex-direction: row; align-items: center; }
+    /* Boxed: white section, inset soft box */
+    .csx.is-boxed { background: var(--white); }
+    .csx.is-boxed .csx-inner { padding: 64px var(--pad); }
+    :global(.sf) + .csx.is-boxed .csx-inner { padding-top: 0; }
+    .csx.is-boxed .csx-box { background: var(--bg-soft); padding: 56px clamp(24px, 5.56vw, 80px); }
   }
   /* Desktop: copy left, screenshot right (top-aligned, as in the mock) */
   @media (min-width: 1000px) {
-    .csx-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 38.1vw); align-items: start; gap: clamp(32px, 3.2vw, 46px); padding: 88px clamp(24px, 2.8vw, 40px) 100px var(--pad); }
+    .csx-inner { padding: 88px clamp(24px, 2.8vw, 40px) 100px var(--pad); }
+    .csx-box { grid-template-columns: minmax(0, 1fr) minmax(0, 38.1vw); align-items: start; gap: clamp(32px, 3.2vw, 46px); }
     .csx-media { max-width: 549px; margin-top: 17px; }
     .csx-copy { max-width: 640px; }
     .csx-title { font-size: clamp(44px, 4.44vw, 60px); line-height: 1.2; margin: 18px 0 26px; }
     .csx-text { font-size: clamp(17px, 1.59vw, 20px); }
     .csx-actions { margin-top: 38px; }
+
+    /* Boxed (Figma Speed "Proven Authority", 1440 frame): box 90px in from the edges,
+       80px inside, 615px copy + 480px screenshot */
+    .csx.is-boxed .csx-inner { padding: 76px var(--pad); }
+    :global(.sf) + .csx.is-boxed .csx-inner { padding-top: 0; }
+    .csx.is-boxed .csx-box {
+      grid-template-columns: minmax(0, 615px) minmax(0, 480px); justify-content: space-between;
+      gap: 32px; padding: 80px clamp(24px, 2.43vw, 35px) 80px clamp(32px, 5.56vw, 80px);
+    }
+    .csx.is-boxed .csx-copy { max-width: 615px; }
+    .csx.is-boxed .csx-media { max-width: 480px; margin-top: 55px; }
+    .csx.is-boxed .csx-title { font-size: clamp(40px, 3.889vw, 56px); margin: 16px 0 24px; }
+    .csx.is-boxed .csx-text { font-size: clamp(17px, 1.39vw, 20px); line-height: 1.5; }
+    .csx.is-boxed .csx-actions { margin-top: 40px; gap: 13px; }
   }
   @media (prefers-reduced-motion: reduce) { .csx-btn, .csx-btn:hover { transition: none; transform: none; } }
 </style>

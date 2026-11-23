@@ -2,7 +2,12 @@
 // Figma: klickspell › FAQ "Questions" (desktop 82:752). Built from a saved render of the
 // frame (Figma API limit hit), so measurements are accurate to a few px.
 // Questions/answers are the same as before and match the FAQPage JSON-LD in pages/index.astro.
-const faqs = [
+interface Props {
+  /** page-specific questions; defaults to the general list below (home and services pages) */
+  items?: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+const defaultFaqs = [
   {
     q: 'What platforms and stacks does Klickspell specialize in?',
     a: 'We engineer across five primary verticals: Custom Shopify theme and Hydrogen headless development, Webflow for SaaS & marketing sites, Headless Commerce (Medusa.js + Cal.com integrations), High-Converting Lead Landing Pages, and Custom Web Applications / ERP Systems (Frappe/ERPNext).',
@@ -32,6 +37,7 @@ const faqs = [
     a: "Yes. We've shipped products for brands across the US, UK, Israel, Japan, and India. We operate asynchronously with high communication fidelity and align calls with your local timezone.",
   },
 ];
+const faqs = items ?? defaultFaqs;
 ---
 
 <section id="faq" class="fq">
@@ -85,7 +91,7 @@ const faqs = [
   .fq-item summary {
     list-style: none;
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    padding: 18px 18px; /* + 1px border; gives the Figma's 60px collapsed row */
+    padding: 15px 24px; /* + 1px border: 16px inside, as in the Figma mobile frame */
     cursor: pointer;
   }
   .fq-item summary::-webkit-details-marker { display: none; }
@@ -94,15 +100,15 @@ const faqs = [
 
   .fq-q {
     font-family: var(--font-display);
-    font-size: 15px; font-weight: 500; line-height: 22px; letter-spacing: 0;
+    font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: 0;
     color: var(--text);
   }
   .fq-chevron { flex-shrink: 0; color: var(--text); transition: transform .3s var(--ease); }
   .fq-item[open] .fq-chevron { transform: rotate(180deg); }
 
   .fq-a {
-    padding: 0 18px 18px;
-    font-size: 13px; line-height: 1.5; color: var(--text-light);
+    padding: 2px 24px 16px;
+    font-size: 14px; line-height: 19px; color: var(--text-light);
   }
   .fq-item[open] .fq-a { animation: fq-in .3s var(--ease); }
   @keyframes fq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
@@ -111,8 +117,12 @@ const faqs = [
     .fq-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
     .fq-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
     .fq-item summary { padding-inline: 22px; }
-    .fq-q { font-size: 16px; }
     .fq-a { padding-inline: 22px; }
+  }
+  @media (min-width: 1000px) {
+    .fq-item summary { padding-block: 15px; }
+    .fq-item[open] summary { padding-bottom: 6px; }
+    .fq-a { padding-top: 0; padding-bottom: 20px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .fq-item[open] .fq-a { animation: none; }

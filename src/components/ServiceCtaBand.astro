@@ -1,0 +1,76 @@
+---
+// Service detail pages › centred closing CTA (Figma Speed page "cta", 1440 frame): primary blue
+// band with a faint square grid (a few lighter cells at the sides), white title + copy and a
+// black booking pill.
+interface Props {
+  title: string;
+  sub: string;
+  label?: string;
+}
+const { title, sub, label = 'Book a 30-Min Discovery Call →' } = Astro.props;
+// Lighter grid cells from the design: [left px from the 1440 frame's left edge, row, strength]
+const cells: [number, number, number][] = [
+  [152, 0, 2], [152, 1, 2], [376, 1, 1], [1048, 0, 1], [1328, 0, 2], [1328, 1, 2],
+  [-16, 3, 2], [208, 3, 1], [1048, 3, 2], [1160, 3, 2], [1384, 3, 1],
+  [208, 4, 2], [1384, 4, 2], [96, 5, 1], [1272, 5, 1],
+];
+---
+
+<section class="cb">
+  <div class="cb-grid" aria-hidden="true">
+    {cells.map(([x, r, s]) => (
+      <span class={`cb-cell cb-cell-${s}`} style={`--x:${x}px; --r:${r}`}></span>
+    ))}
+  </div>
+  <div class="cb-inner">
+    <h2 class="cb-title">{title}</h2>
+    <p class="cb-sub">{sub}</p>
+    <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="cb-btn" style="cursor:pointer">{label}</a>
+  </div>
+</section>
+
+<style>
+  .cb { --cw: 56px; --ch: 62px; position: relative; overflow: hidden; background: var(--accent); color: var(--white); }
+  /* Grid: lines every 56 x 62px, anchored to the centre so it sits like the 1440 frame at any width */
+  .cb-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    /* lines at centre - 680px + n*56 (x = 40 on the 1440 frame); a % position is taken of
+       (width - tile), hence 50% - 680 + 28 */
+    --ox: calc(50% - 652px);
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.13) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.13) 1px, transparent 1px);
+    background-size: var(--cw) var(--ch);
+    background-position: var(--ox) 82px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000 24%, #000 70%, transparent 90%);
+            mask-image: linear-gradient(to bottom, transparent 10%, #000 24%, #000 70%, transparent 90%);
+  }
+  .cb-cell { position: absolute; left: calc(50% - 720px + var(--x)); top: calc(82px + var(--r) * var(--ch)); width: var(--cw); height: var(--ch); }
+  .cb-cell-1 { background: rgba(255,255,255,0.05); }
+  .cb-cell-2 { background: rgba(255,255,255,0.1); }
+
+  .cb-inner { position: relative; max-width: 1182px; margin: 0 auto; padding: 40px 20px 48px; text-align: center; }
+  .cb-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -0.03em;
+    color: var(--white);
+  }
+  .cb-sub { max-width: 1062px; margin: 16px auto 0; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.8); }
+  .cb-btn {
+    display: flex; width: 100%; align-items: center; justify-content: center;
+    height: 56px; margin-top: 40px; padding: 0 16px; border-radius: 100px;
+    background: #000; color: var(--white);
+    font-size: 16px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .cb-btn:hover { background: #1F1F1D; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,20,18,0.3); }
+  .cb-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+  @media (min-width: 641px) {
+    .cb-inner { padding: 111px 40px 95px; }
+    .cb-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .cb-sub { font-size: clamp(16px, 1.39vw, 20px); }
+    .cb-btn { display: inline-flex; width: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cb-btn, .cb-btn:hover { transition: none; transform: none; } }
+</style>

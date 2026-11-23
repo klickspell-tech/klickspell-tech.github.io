@@ -33,39 +33,42 @@ const { eyebrow = 'Our Capabilities', title, titleEm, sub, items } = Astro.props
 
 <style>
   .sf { --pad: clamp(24px, 6.25vw, 90px); background: #FFFFFF; }
-  .sf-inner { max-width: 1440px; margin: 0 auto; padding: 48px 20px; }
+  .sf-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
 
   .sf-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
   .sf-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
   .sf-title {
     font-family: var(--font-display);
     font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -0.03em;
-    color: var(--text); margin: 16px 0 16px;
+    color: var(--text); margin: 16px 0 20px;
   }
   .sf-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
-  .sf-sub { font-size: 16px; line-height: 1.5; color: var(--text-light); max-width: 620px; }
+  .sf-sub { font-size: 16px; line-height: 1.5; color: var(--text-light); max-width: 785px; }
 
   /* Bordered grid: 1px gaps over the line colour draw the inner dividers */
   .sf-grid {
     display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px;
-    margin-top: 32px; background: var(--line); border: 1px solid var(--line);
+    margin-top: 40px; background: var(--line); border: 1px solid var(--line);
   }
-  .sf-card { padding: 20px 16px 24px; background: #FFFFFF; }
-  .sf-tag { font-size: 11px; line-height: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
-  .sf-name { margin-top: 14px; font-family: var(--font-display); font-size: 19px; font-weight: 500; line-height: 1.3; color: var(--text); }
-  .sf-text { margin-top: 10px; font-size: 14px; line-height: 1.6; color: var(--text-light); }
+  .sf-card { padding: 20px; background: #FFFFFF; }
+  .sf-tag { font-size: 12px; line-height: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+  .sf-name { margin-top: 16px; font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1.25; color: var(--text); }
+  .sf-text { margin-top: 9px; font-size: 16px; line-height: 1.5; color: var(--text-light); }
 
   @media (min-width: 641px) {
     .sf-inner { padding: clamp(56px, 5.56vw, 80px) var(--pad); }
     .sf-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
-    .sf-sub { font-size: clamp(16px, 1.25vw, 18px); }
+    .sf-sub { font-size: clamp(16px, 1.39vw, 20px); }
     .sf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 56px; }
     .sf-card { padding: 32px 28px; }
-    .sf-name { font-size: 18px; }
+    .sf-text { font-size: 15px; }
   }
+  /* Desktop: Figma 1440 frame — 20px titles, 16/24 body, 32px padding, 80px under the header */
   @media (min-width: 1000px) {
-    .sf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 72px; }
-    .sf-card { padding: 34px 28px 40px; }
-    .sf-text { font-size: 14px; }
+    .sf-title { margin-bottom: 20px; }
+    .sf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 80px; }
+    .sf-card { padding: 32px 32px 40px; }
+    .sf-name { margin-top: 16px; font-size: clamp(18px, 1.39vw, 20px); line-height: 1.25; }
+    .sf-text { margin-top: 9px; font-size: clamp(15px, 1.11vw, 16px); line-height: 1.5; }
   }
 </style>
