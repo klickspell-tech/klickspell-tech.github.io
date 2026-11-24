@@ -84,19 +84,27 @@ const ogImageIs1200x630 = /klickspell\.com\/assets\/(og-card\.png|og-atul-bhatt\
     )
   )}
 
-  <!-- Animated 3D rotating favicon (works across Chrome, Edge, and Firefox) -->
+  <!-- Animated 3D rotating favicon (works across Chrome, Edge, and Firefox).
+       Kept cheap so it doesn't slow page load (Core Web Vitals / PageSpeed):
+       - willReadFrequently gives a CPU canvas: on a GPU canvas the first toDataURL took ~600 ms
+       - starts only once the page has loaded and the browser is idle
+       - each of the 52 frames is drawn once, then the cached image is reused
+       - reduced-motion users keep the static favicon.svg -->
   <script is:inline>
   (function () {
     try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var cvs = document.createElement('canvas');
       cvs.width = 64;
       cvs.height = 64;
-      var ctx = cvs.getContext('2d');
+      var ctx = cvs.getContext('2d', { willReadFrequently: true });
       if (!ctx) return;
 
       var DURATION = 2600; // ms for full 360-degree rotation
       var lastDraw = 0;
-      var FRAME_INTERVAL = 50; // ~20 fps: smooth rotation with negligible CPU overhead
+      var FRAME_INTERVAL = 50; // ~20 fps
+      var FRAMES = Math.round(DURATION / FRAME_INTERVAL); // 52
+      var cache = [];
 
       function drawRoundedRect(x, y, w, h, r) {
         if (w <= 0 || h <= 0) return;
@@ -114,7 +122,7 @@ const ogImageIs1200x630 = /klickspell\.com\/assets\/(og-card\.png|og-atul-bhatt\
         ctx.closePath();
       }
 
-      function render(angle) {
+      function draw(angle) {
         ctx.clearRect(0, 0, 64, 64);
 
         var cos = Math.cos(angle);
@@ -170,8 +178,13 @@ const ogImageIs1200x630 = /klickspell\.com\/assets\/(og-card\.png|og-atul-bhatt\
           ctx.restore();
         }
 
-        // 5. Update Favicon via replaceChild to force Chrome & Firefox to repaint
-        var dataUrl = cvs.toDataURL('image/png');
+        return cvs.toDataURL('image/png');
+      }
+
+      function render(frame) {
+        var dataUrl = cache[frame] || (cache[frame] = draw((frame / FRAMES) * Math.PI * 2));
+
+        // Update Favicon via replaceChild to force Chrome & Firefox to repaint
         var oldLink = document.getElementById('app-favicon') || document.querySelector("link[rel*='icon']");
         var newLink = document.createElement('link');
         newLink.id = 'app-favicon';
@@ -191,14 +204,18 @@ const ogImageIs1200x630 = /klickspell\.com\/assets\/(og-card\.png|og-atul-bhatt\
         if (!start) start = timestamp;
         if (!document.hidden && (timestamp - lastDraw >= FRAME_INTERVAL)) {
           lastDraw = timestamp;
-          var progress = ((timestamp - start) % DURATION) / DURATION;
-          var angle = progress * Math.PI * 2;
-          render(angle);
+          render(Math.floor(((timestamp - start) % DURATION) / FRAME_INTERVAL) % FRAMES);
         }
         requestAnimationFrame(tick);
       }
 
-      requestAnimationFrame(tick);
+      function begin() {
+        var go = function () { requestAnimationFrame(tick); };
+        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 4000 });
+        else setTimeout(go, 1500);
+      }
+      if (document.readyState === 'complete') begin();
+      else window.addEventListener('load', begin, { once: true });
     } catch (e) {
       // Graceful fallback to static favicon
     }

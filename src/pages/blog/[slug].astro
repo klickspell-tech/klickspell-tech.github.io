@@ -362,7 +362,9 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
             ticking = true;
           }
         }, { passive: true });
-        updateProgress();
+        // First update on the next frame: calling it now forced a full layout of the article
+        // in the middle of parsing (~400 ms long task in PageSpeed traces).
+        window.requestAnimationFrame(updateProgress);
       }
 
       // Audio Player ("Listen to this article")
