@@ -17,5 +17,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeResponsiveTables]
   },
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  // Hide the Astro dev toolbar pill on localhost (it never ships to staging/production anyway)
+  devToolbar: { enabled: false }
 });

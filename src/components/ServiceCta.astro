@@ -1,0 +1,139 @@
+---
+// Services page › closing CTA band (from the Figma screenshot): blue band, copy + black
+// booking button on the left, faint grid + 30-min call illustration on the right.
+const art = '/assets/Service%20Page';
+// The grid is interactive like the home page "Get in touch" grid: hover cells laid exactly over the
+// artwork's lines (every 112px of the 770 x 934 export, from x 65 / y 149), 8 columns (one partial
+// at each side) x the 6 visible rows. The lighter cells in the artwork breathe: [cell, delay s].
+const CELLS = 48;
+const breathe = new Map([[6, 0], [14, 3], [25, 1.5], [27, 4.5], [39, 2], [45, 5]]);
+---
+
+<section class="scta">
+  <div class="scta-inner">
+    <div class="scta-copy">
+      <h2 class="scta-title">Ready to build the store you actually imagined?</h2>
+      <p class="scta-sub">Book a 30-minute discovery call with our lead engineer. We'll review your current tech stack, scope out your requirements, and give you an honest appraisal before you commit.</p>
+      <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="scta-btn" style="cursor:pointer">Book a 30-Min Discovery Call →</a>
+    </div>
+
+    <div class="scta-art" aria-hidden="true">
+      <div class="scta-grid">
+        <img src={`${art}/cta-grid.webp`} alt="" width="385" height="467" loading="lazy" decoding="async" />
+        <div class="scta-cells">
+          {Array.from({ length: CELLS }, (_, i) => (
+            breathe.has(i)
+              ? <span class="scta-c is-breathe" style={`animation-delay: ${breathe.get(i)}s`}></span>
+              : <span class="scta-c"></span>
+          ))}
+        </div>
+      </div>
+      <img class="scta-illu" src={`${art}/calendar-call.webp`} alt="" width="494" height="370" loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .scta { --pad: clamp(24px, 6.25vw, 90px); position: relative; overflow: hidden; background: var(--accent); color: var(--white); }
+  .scta-inner { position: relative; max-width: 1440px; margin: 0 auto; padding: 48px 20px 32px; display: grid; gap: 24px; }
+
+  .scta-copy { position: relative; z-index: 1; }
+  .scta-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px;
+    color: var(--white);
+  }
+  .scta-sub { margin-top: 16px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.8); max-width: 600px; }
+  .scta-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; margin-top: 32px; padding: 0 20px;
+    border-radius: 100px; background: var(--text); color: var(--white);
+    font-size: 14px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease);
+  }
+  .scta-btn:hover { background: #2A2A28; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,20,18,0.3); }
+  .scta-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+  .scta-art { position: relative; justify-self: center; width: min(100%, 420px); }
+  .scta-illu { position: relative; display: block; width: 100%; height: auto; pointer-events: none; }
+  .scta-grid { position: absolute; left: 50%; top: 50%; width: 110%; translate: -50% -50%; pointer-events: none; }
+  .scta-grid img { display: block; width: 100%; height: auto; }
+
+  /* Hover cells over the artwork's grid (the illustration lets the pointer through) */
+  .scta-cells {
+    position: absolute; left: -6.104%; top: 15.953%; width: 116.364%; height: 71.949%;
+    display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(6, 1fr);
+    pointer-events: auto;
+    /* softer at the top and bottom rows, where the artwork's lines fade out */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.4), #000 22%, #000 78%, rgba(0,0,0,0.4));
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.4), #000 22%, #000 78%, rgba(0,0,0,0.4));
+  }
+  .scta-c {
+    position: relative; z-index: 1;
+    transform: scale(1);
+    transition:
+      background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s ease,
+      border-radius 0.6s ease;
+  }
+  .scta-c.is-breathe { animation: sctaBreathe 6s ease-in-out infinite; }
+  @keyframes sctaBreathe {
+    0%, 100% { background: rgba(255,255,255,0); box-shadow: none; }
+    50% { background: rgba(255,255,255,0.12); box-shadow: inset 0 0 10px rgba(255,255,255,0.18); }
+  }
+  /* Lit cell: instant white glow, fades out over 0.8s once the pointer moves on */
+  .scta-c.is-lit {
+    background: rgba(255,255,255,0.94);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5), inset 0 0 12px #FFFFFF;
+    transform: scale(1.05);
+    z-index: 10;
+    animation: none;
+    transition: background .03s ease, box-shadow .03s ease, transform .03s ease, border-radius .03s ease;
+  }
+  @media (hover: hover) {
+    .scta-c:hover {
+      background: rgba(255,255,255,0.94);
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5), inset 0 0 12px #FFFFFF;
+      transform: scale(1.05);
+      z-index: 10;
+      animation: none;
+      transition: background .03s ease, box-shadow .03s ease, transform .03s ease, border-radius .03s ease;
+    }
+  }
+
+  /* Phones (Figma mobile CTA banner, services + Custom Shopify frames): 40px rhythm, 20/30 copy,
+     full-width 56px button, artwork edge to edge */
+  @media (max-width: 640px) {
+    .scta-inner { padding: 40px 20px; gap: 40px; }
+    .scta-sub { margin-top: 20px; font-size: 20px; line-height: 30px; }
+    .scta-btn { display: flex; width: 100%; height: 56px; margin-top: 40px; font-size: 16px; }
+    /* full bleed (419px on the 420 frame), capped at 460px on larger phones */
+    .scta-art { justify-self: stretch; width: auto; margin-inline: max(-20px, calc((100% - 460px) / 2)); }
+  }
+
+  @media (min-width: 641px) {
+    .scta-inner { padding: 64px var(--pad); }
+    .scta-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .scta-sub { font-size: clamp(16px, 1.25vw, 18px); }
+  }
+  /* Desktop: copy left, artwork right */
+  @media (min-width: 1000px) {
+    .scta-inner { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 48px; min-height: 490px; padding-block: 72px; }
+    .scta-title { max-width: 620px; }
+    .scta-art { justify-self: end; width: clamp(360px, 32vw, 460px); margin-right: clamp(0px, 4vw, 60px); }
+    .scta-grid { left: auto; right: -60%; top: -30%; width: 120%; translate: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scta-btn, .scta-btn:hover { transition: none; transform: none; }
+    .scta-c, .scta-c.is-lit, .scta-c:hover { transition: none; transform: none; }
+    .scta-c.is-breathe { animation: none; }
+  }
+</style>
+
+<script>
+  import { gridTrail } from '../lib/grid-trail';
+  gridTrail('.scta', '.scta-c');
+</script>

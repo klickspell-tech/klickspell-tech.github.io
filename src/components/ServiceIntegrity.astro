@@ -1,0 +1,105 @@
+---
+// Service detail pages › "Engineering Integrity" (Figma Speed page, 1440 frame): white section,
+// header, then a white "bad practice" card overlapped by a raised primary-blue "our standard"
+// card. Stacked on phones/tablets.
+interface Point { label: string; text: string }
+interface Props {
+  eyebrow: string;
+  title: string;
+  titleEm: string;
+  sub: string;
+  bad: { title: string; points: Point[] };
+  good: { title: string; points: Point[] };
+}
+const { eyebrow, title, titleEm, sub, bad, good } = Astro.props;
+---
+
+<section class="si">
+  <div class="si-inner">
+    <p class="si-eyebrow"><span class="si-rule" aria-hidden="true"></span>{eyebrow}</p>
+    <h2 class="si-title">{title}<br /><em>{titleEm}</em></h2>
+    <p class="si-sub">{sub}</p>
+
+    <div class="si-cards">
+      <div class="si-card si-bad">
+        <h3 class="si-card-title"><span aria-hidden="true">❌</span>{bad.title}</h3>
+        <ul class="si-list">
+          {bad.points.map((p) => <li><strong>{p.label}:</strong> {p.text}</li>)}
+        </ul>
+      </div>
+      <div class="si-card si-good">
+        <span class="si-orb si-orb-1" aria-hidden="true"></span>
+        <span class="si-orb si-orb-2" aria-hidden="true"></span>
+        <h3 class="si-card-title"><span aria-hidden="true">✅</span>{good.title}</h3>
+        <ul class="si-list">
+          {good.points.map((p) => <li><strong>{p.label}:</strong> {p.text}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .si { --pad: clamp(24px, 6.25vw, 90px); --red: #FF383C; background: var(--white); }
+  .si-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
+
+  .si-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+  .si-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .si-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -0.03em;
+    color: var(--text); margin: 16px 0 20px;
+  }
+  .si-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+  .si-sub { font-size: 16px; line-height: 1.5; color: var(--text-light); max-width: 972px; }
+
+  .si-cards { display: grid; gap: 20px; margin-top: 40px; }
+  .si-card { position: relative; overflow: hidden; padding: 24px 20px; }
+  .si-card-title {
+    display: flex; align-items: flex-start; gap: 6px;
+    font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1.5;
+  }
+  .si-card-title span { font-size: 0.95em; line-height: 1.5; }
+  .si-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 16px; }
+  .si-list li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.5; }
+  .si-list li::before { content: ''; position: absolute; left: 2px; top: 0.66em; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  .si-list strong { font-weight: 500; }
+
+  /* Bad practice: white card, red labels and bullets */
+  .si-bad { background: var(--white); border: 1px solid var(--line); border-radius: 12px; }
+  .si-bad .si-card-title { color: var(--text); }
+  .si-bad .si-list li { color: var(--text-light); }
+  .si-bad .si-list li::before { background: var(--red); }
+  .si-bad .si-list strong { color: var(--red); }
+
+  /* Our standard: raised primary card with faint orbs */
+  .si-good { background: var(--accent); border-radius: 8px; box-shadow: 0 30px 60px -20px rgba(20,20,18,0.25); color: var(--white); }
+  .si-good .si-card-title, .si-good .si-list { position: relative; z-index: 1; }
+  .si-good .si-list li { color: rgba(255,255,255,0.78); }
+  .si-good .si-list li::before { background: var(--white); }
+  .si-good .si-list strong { color: var(--white); font-weight: 600; }
+  .si-orb { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+  .si-orb-1 { width: 270px; height: 270px; left: -2px; top: -190px; }
+  .si-orb-2 { width: 380px; height: 380px; right: -150px; top: -60px; box-shadow: inset 0 0 0 22px rgba(255,255,255,0.03); }
+
+  @media (min-width: 641px) {
+    .si-inner { padding: clamp(56px, 5.56vw, 80px) var(--pad); }
+    .si-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .si-sub { font-size: clamp(16px, 1.39vw, 20px); }
+    .si-cards { margin-top: 56px; gap: 24px; }
+    .si-card { padding: 40px; }
+    .si-card-title { font-size: 22px; }
+    .si-list li { font-size: 18px; }
+  }
+  /* Desktop: the blue card overlaps the white one and stands taller (Figma: 590 + 670 of 1260) */
+  @media (min-width: 1000px) {
+    .si-cards { grid-template-columns: minmax(0, 590fr) minmax(0, 670fr); align-items: center; gap: 0; margin-top: 62px; margin-bottom: 11px; }
+    .si-bad { margin-right: -19px; padding: 40px 34px 40px 40px; }
+    .si-good { z-index: 1; padding: clamp(56px, 6.46vw, 93px) 40px; }
+    .si-card-title { font-size: 24px; }
+    .si-list { margin-top: 28px; }
+    .si-list li { font-size: clamp(17px, 1.39vw, 20px); padding-left: 20px; }
+    .si-bad .si-list { padding-left: 10px; }
+    .si-good .si-list { padding-left: 10px; margin-top: 24px; }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import WhatsAppIcon from './WhatsAppIcon.astro';
+import { SHOW_ABOUT } from '../lib/site-flags';
 
 interface Props {
   isHome?: boolean;
@@ -9,132 +10,153 @@ const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
 const pathname = Astro.url.pathname;
 const isServicesActive = pathname.startsWith('/services') || pathname.startsWith('/speed') || pathname.startsWith('/checkout-quiz');
+// Marks the menu entry for the page you're on (highlighted in the Services menu and the mobile menu).
+// Builds use format 'file', so the path may end in .html.
+const here = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const current = (href: string) => (here === href ? { 'aria-current': 'page' as const } : {});
 ---
 
 <nav id="nav">
   <a href="/" class="nav-logo" aria-label="Klickspell home"><img src="/assets/klickspell-logo.webp" alt="Klickspell" width="564" height="128" /></a>
-  <ul class="nav-links">
-    <!-- SERVICES DROPDOWN -->
-    <li class="nav-dropdown-item">
-      <a 
-        href="/services" 
-        class={`nav-link-dropdown ${isServicesActive ? "active" : ""}`}
-        id="servicesDropdownTrigger"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        <span>Services</span>
-        <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+  <div class="nav-links">
+    <!-- PILL TRACK (Tabs with moving active indicator) -->
+    <div class="nav-pill-track" id="navPillTrack">
+      <span class="nav-pill-indicator" id="navPillIndicator" aria-hidden="true"></span>
 
-      <div class="nav-dropdown-menu" id="servicesDropdownMenu" role="menu" aria-labelledby="servicesDropdownTrigger">
-        <div class="nav-dropdown-grid">
-          <!-- Main Services Column -->
-          <div class="dropdown-col-main">
-            <div class="dropdown-section-header">
-              <span class="dropdown-label">Engineering Capabilities</span>
-              <a href="/services" class="dropdown-view-all">All Services Hub →</a>
-            </div>
+      <!-- SERVICES DROPDOWN -->
+      <div class="nav-dropdown-item">
+        <a 
+          href="/services" 
+          class={`nav-tab-link nav-link-dropdown ${isServicesActive ? "active" : ""}`}
+          id="servicesDropdownTrigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span>Services</span>
+          <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
 
-            <div class="dropdown-services-list">
-              <a href="/services/custom-shopify-development" class="dropdown-service-item" role="menuitem">
-                <span class="service-item-num">01</span>
-                <div class="service-item-info">
-                  <div class="service-item-title">Custom Shopify Themes</div>
-                  <div class="service-item-desc">Bespoke Liquid architecture &amp; native customizer sections</div>
-                </div>
-              </a>
+        <div class="nav-dropdown-menu" id="servicesDropdownMenu" role="menu" aria-labelledby="servicesDropdownTrigger">
+          <div class="nav-dropdown-grid">
+            <!-- Main Services Column -->
+            <div class="dropdown-col-main">
+              <div class="dropdown-section-header">
+                <span class="dropdown-label">Engineering Capabilities</span>
+                <a href="/services" class="dropdown-view-all">All Services Hub →</a>
+              </div>
 
-              <a href="/services/shopify-speed-optimization" class="dropdown-service-item" role="menuitem">
-                <span class="service-item-num">02</span>
-                <div class="service-item-info">
-                  <div class="service-item-title">
-                    <span>Shopify Speed Optimization</span>
-                    <span class="dropdown-pill">90+ Target</span>
+              <div class="dropdown-services-list">
+                <a href="/services/custom-shopify-development" class="dropdown-service-item" role="menuitem" {...current("/services/custom-shopify-development")}>
+                  <span class="service-item-num">01</span>
+                  <div class="service-item-info">
+                    <div class="service-item-title">Custom Shopify Themes</div>
+                    <div class="service-item-desc">Bespoke Liquid architecture &amp; native customizer sections</div>
                   </div>
-                  <div class="service-item-desc">Sub-second LCP, 0ms blocking &amp; app bloat removal</div>
-                </div>
-              </a>
+                </a>
 
-              <a href="/services/headless-commerce" class="dropdown-service-item" role="menuitem">
-                <span class="service-item-num">03</span>
-                <div class="service-item-info">
-                  <div class="service-item-title">Headless &amp; Custom Commerce</div>
-                  <div class="service-item-desc">Hydrogen, Medusa.js, Next.js &amp; bespoke API logic</div>
-                </div>
-              </a>
+                <a href="/services/shopify-speed-optimization" class="dropdown-service-item" role="menuitem" {...current("/services/shopify-speed-optimization")}>
+                  <span class="service-item-num">02</span>
+                  <div class="service-item-info">
+                    <div class="service-item-title">
+                      <span>Shopify Speed Optimization</span>
+                      <span class="dropdown-pill">90+ Target</span>
+                    </div>
+                    <div class="service-item-desc">Sub-second LCP, 0ms blocking &amp; app bloat removal</div>
+                  </div>
+                </a>
 
-              <a href="/services/performance-accessibility-retainer" class="dropdown-service-item" role="menuitem">
-                <span class="service-item-num">04</span>
-                <div class="service-item-info">
-                  <div class="service-item-title">Performance &amp; Retainers</div>
-                  <div class="service-item-desc">Monthly Core Web Vitals &amp; WCAG 2.2 AA accessibility</div>
-                </div>
-              </a>
-            </div>
-          </div>
+                <a href="/services/headless-commerce" class="dropdown-service-item" role="menuitem" {...current("/services/headless-commerce")}>
+                  <span class="service-item-num">03</span>
+                  <div class="service-item-info">
+                    <div class="service-item-title">Headless &amp; Custom Commerce</div>
+                    <div class="service-item-desc">Hydrogen, Medusa.js, Next.js &amp; bespoke API logic</div>
+                  </div>
+                </a>
 
-          <!-- Free Tools & Scoping Side Column -->
-          <div class="dropdown-col-side">
-            <div class="dropdown-section-header">
-              <span class="dropdown-label">Free Studio Tools</span>
-            </div>
-
-            <div class="dropdown-tools-list">
-              <a href="/speed" class="dropdown-tool-item" role="menuitem">
-                <span class="tool-icon">⚡</span>
-                <div class="tool-item-info">
-                  <div class="tool-item-title">App &amp; Speed Estimator</div>
-                  <div class="tool-item-desc">Calculate your real third-party script bloat</div>
-                </div>
-              </a>
-
-              <a href="/checkout-quiz" class="dropdown-tool-item" role="menuitem">
-                <span class="tool-icon">🛒</span>
-                <div class="tool-item-info">
-                  <div class="tool-item-title">Checkout Recommender</div>
-                  <div class="tool-item-desc">5-question stack &amp; flow recommendation</div>
-                </div>
-              </a>
+                <a href="/services/performance-accessibility-retainer" class="dropdown-service-item" role="menuitem" {...current("/services/performance-accessibility-retainer")}>
+                  <span class="service-item-num">04</span>
+                  <div class="service-item-info">
+                    <div class="service-item-title">Performance &amp; Retainers</div>
+                    <div class="service-item-desc">Monthly Core Web Vitals &amp; WCAG 2.2 AA accessibility</div>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            <div class="dropdown-side-box">
-              <span class="side-box-hint">Not sure which stack fits?</span>
-              <a 
-                href="https://cal.com/atul-bhatt-klickspell/30min" 
-                data-cal-link="atul-bhatt-klickspell/30min" 
-                data-cal-namespace="30min" 
-                data-cal-config='{"layout":"month_view"}' 
-                class="dropdown-scoping-btn"
-              >
-                Book a scoping call →
-              </a>
+            <!-- Free Tools & Scoping Side Column -->
+            <div class="dropdown-col-side">
+              <div class="dropdown-section-header">
+                <span class="dropdown-label">Free Studio Tools</span>
+              </div>
+
+              <div class="dropdown-tools-list">
+                <a href="/speed" class="dropdown-tool-item" role="menuitem" {...current("/speed")}>
+                  <span class="tool-icon">⚡</span>
+                  <div class="tool-item-info">
+                    <div class="tool-item-title">App &amp; Speed Estimator</div>
+                    <div class="tool-item-desc">Calculate your real third-party script bloat</div>
+                  </div>
+                </a>
+
+                <a href="/checkout-quiz" class="dropdown-tool-item" role="menuitem" {...current("/checkout-quiz")}>
+                  <span class="tool-icon">🛒</span>
+                  <div class="tool-item-info">
+                    <div class="tool-item-title">Checkout Recommender</div>
+                    <div class="tool-item-desc">5-question stack &amp; flow recommendation</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="dropdown-side-box">
+                <span class="side-box-hint">Not sure which stack fits?</span>
+                <a 
+                  href="https://cal.com/atul-bhatt-klickspell/30min" 
+                  data-cal-link="atul-bhatt-klickspell/30min" 
+                  data-cal-namespace="30min" 
+                  data-cal-config='{"layout":"month_view"}' 
+                  class="dropdown-scoping-btn"
+                >
+                  Book a scoping call →
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </li>
 
-    <!-- PRIMARY NAV LINKS -->
-    <li><a href={`${prefix}#work`}>Work</a></li>
-    <li><a href={`${prefix}#about`}>About</a></li>
-    <li><a href="/team" class={pathname.startsWith('/team') ? "active" : ""}>Team</a></li>
-    <li><a href="/blog" class={pathname.startsWith('/blog') ? "active" : ""}>Blog</a></li>
-    <li>
-      <a 
-        href="https://cal.com/atul-bhatt-klickspell/30min" 
-        data-cal-link="atul-bhatt-klickspell/30min" 
-        data-cal-namespace="30min" 
-        data-cal-config='{"layout":"month_view"}' 
-        class="nav-cta" 
-        style="cursor:pointer"
-      >
-        Book a call
-      </a>
-    </li>
-  </ul>
+      <!-- PRIMARY NAV LINKS -->
+      <a href={`${prefix}#work`} class="nav-tab-link">Work</a>
+      {SHOW_ABOUT && <a href={`${prefix}#about`} class="nav-tab-link">About</a>}
+      <a href="/team" class={`nav-tab-link ${pathname.startsWith('/team') ? "active" : ""}`}>Team</a>
+      <a href="/blog" class={`nav-tab-link ${pathname.startsWith('/blog') ? "active" : ""}`}>Blog</a>
+    </div>
+
+    <!-- BOOK A CALL CTA -->
+    <a 
+      href="https://cal.com/atul-bhatt-klickspell/30min" 
+      data-cal-link="atul-bhatt-klickspell/30min" 
+      data-cal-namespace="30min" 
+      data-cal-config='{"layout":"month_view"}' 
+      class="nav-cta"
+      style="cursor:pointer"
+    >
+      <span class="nav-cta-icon" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="16" rx="2.5"></rect>
+          <line x1="16" y1="3" x2="16" y2="7"></line>
+          <line x1="8" y1="3" x2="8" y2="7"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+      </span>
+      <span class="nav-cta-mask">
+        <span class="nav-cta-line">Book a call</span>
+        <span class="nav-cta-line" aria-hidden="true">Book a call</span>
+      </span>
+      <span class="nav-cta-dot" aria-hidden="true"></span>
+    </a>
+  </div>
 
   <button class="nav-burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -150,23 +172,23 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
         <span>All Services Overview</span>
         <span class="mobile-arrow">→</span>
       </a>
-      <a href="/services/custom-shopify-development" class="mobile-link mobile-sublink">
+      <a href="/services/custom-shopify-development" class="mobile-link mobile-sublink" {...current("/services/custom-shopify-development")}>
         <span>Custom Shopify Themes</span>
         <span class="mobile-pill">Liquid</span>
       </a>
-      <a href="/services/shopify-speed-optimization" class="mobile-link mobile-sublink">
+      <a href="/services/shopify-speed-optimization" class="mobile-link mobile-sublink" {...current("/services/shopify-speed-optimization")}>
         <span>Shopify Speed Optimization</span>
         <span class="mobile-pill">90+ CWV</span>
       </a>
-      <a href="/services/headless-commerce" class="mobile-link mobile-sublink">
+      <a href="/services/headless-commerce" class="mobile-link mobile-sublink" {...current("/services/headless-commerce")}>
         <span>Headless &amp; Custom Commerce</span>
         <span class="mobile-pill">Medusa / Next</span>
       </a>
-      <a href="/services/performance-accessibility-retainer" class="mobile-link mobile-sublink">
+      <a href="/services/performance-accessibility-retainer" class="mobile-link mobile-sublink" {...current("/services/performance-accessibility-retainer")}>
         <span>Performance &amp; Retainers</span>
         <span class="mobile-pill">Care</span>
       </a>
-      <a href="/speed" class="mobile-link mobile-sublink">
+      <a href="/speed" class="mobile-link mobile-sublink" {...current("/speed")}>
         <span>⚡ Speed &amp; App Estimator</span>
       </a>
     </div>
@@ -174,7 +196,7 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
 
   <div class="mobile-menu-section mobile-main-nav">
     <a href={`${prefix}#work`} class="mobile-link">Work</a>
-    <a href={`${prefix}#about`} class="mobile-link">About</a>
+    {SHOW_ABOUT && <a href={`${prefix}#about`} class="mobile-link">About</a>}
     <a href="/team" class={`mobile-link ${pathname.startsWith('/team') ? "active" : ""}`}>Team</a>
     <a href="/blog" class={`mobile-link ${pathname.startsWith('/blog') ? "active" : ""}`}>Blog</a>
     <a href={`${prefix}#tutorials`} class="mobile-link mobile-muted-link">Tutorials</a>
@@ -197,5 +219,169 @@ const isServicesActive = pathname.startsWith('/services') || pathname.startsWith
     </a>
   </div>
 </div>
+
+<script is:inline>
+(function() {
+  function initNavPill() {
+    var track = document.getElementById('navPillTrack');
+    var indicator = document.getElementById('navPillIndicator');
+    if (!track || !indicator) return;
+
+    var links = Array.from(track.querySelectorAll('.nav-tab-link'));
+    if (!links.length) return;
+
+    var activeLink = null;
+    var serverActive = track.querySelector('.nav-tab-link.active');
+
+    function movePillTo(element, animate) {
+      if (!element) {
+        indicator.style.opacity = '0';
+        return;
+      }
+      var trackRect = track.getBoundingClientRect();
+      var elRect = element.getBoundingClientRect();
+
+      if (elRect.width === 0) return;
+
+      var left = elRect.left - trackRect.left - track.clientLeft;
+      var top = elRect.top - trackRect.top - track.clientTop;
+      var width = elRect.width;
+      var height = elRect.height;
+
+      if (!animate) {
+        indicator.style.transition = 'none';
+      } else {
+        // iPhone segmented control spring physics: snappy acceleration with elastic overshoot settle
+        indicator.style.transition = 'transform 0.38s cubic-bezier(0.34, 1.45, 0.64, 1), width 0.32s cubic-bezier(0.25, 1, 0.5, 1), height 0.32s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease';
+      }
+
+      indicator.style.transform = 'translate3d(' + left + 'px, ' + top + 'px, 0)';
+      indicator.style.width = width + 'px';
+      indicator.style.height = height + 'px';
+      indicator.style.opacity = '1';
+
+      if (!animate) {
+        void indicator.offsetWidth;
+        indicator.style.transition = 'transform 0.38s cubic-bezier(0.34, 1.45, 0.64, 1), width 0.32s cubic-bezier(0.25, 1, 0.5, 1), height 0.32s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease';
+      }
+    }
+
+    function setActiveTab(link, animate) {
+      activeLink = link;
+      links.forEach(function(l) { l.classList.remove('active'); });
+      if (link) {
+        link.classList.add('active');
+        movePillTo(link, animate);
+      } else {
+        indicator.style.opacity = '0';
+      }
+    }
+
+    function findActiveFromURL() {
+      var hash = window.location.hash;
+      var matched = null;
+      if (hash) {
+        matched = links.find(function(l) { return (l.getAttribute('href') || '').endsWith(hash); });
+      }
+      if (!matched) {
+        matched = track.querySelector('.nav-tab-link.active');
+      }
+      return matched;
+    }
+
+    // 1. Initial positioning without delay
+    var initial = findActiveFromURL();
+    if (initial) {
+      setActiveTab(initial, false);
+    } else {
+      indicator.style.opacity = '0';
+    }
+
+    // 2. Re-sync after web fonts finish loading to ensure sub-pixel accuracy
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function() {
+        if (activeLink) movePillTo(activeLink, false);
+      });
+    }
+
+    // 3. Tab Click with iPhone Spring Move Animation
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href') || '';
+        setActiveTab(link, true);
+
+        // If clicking same-page section hash link (#work, #about), let smooth-scroll run
+        if (href.startsWith('#')) {
+          return;
+        }
+
+        // If clicking a new page link, briefly show the spring move before navigating
+        if (href && !href.startsWith('http') && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          e.preventDefault();
+          setTimeout(function() {
+            window.location.href = href;
+          }, 180);
+        }
+      });
+    });
+
+    // 4. Window resize
+    window.addEventListener('resize', function() {
+      if (activeLink) movePillTo(activeLink, false);
+    }, { passive: true });
+
+    // 5. Scroll spy on the home page: the pill sits on Work/About only while that section
+    //    crosses the line 40% down the viewport, and clears everywhere else.
+    var pathname = window.location.pathname;
+    var isHome = pathname === '/' || pathname === '' || pathname === '/index.html';
+    var spySections = [];
+    if (isHome) {
+      spySections = ['work', 'about'].map(function(id) {
+        return {
+          el: document.getElementById(id),
+          link: links.find(function(l) { return (l.getAttribute('href') || '').endsWith('#' + id); })
+        };
+      }).filter(function(s) { return s.el && s.link; });
+    }
+    var spyLock = 0; // ignore the spy while a clicked tab's smooth scroll is running
+    function runSpy() {
+      if (!spySections.length || Date.now() < spyLock) return;
+      var line = window.innerHeight * 0.4;
+      var hit = null;
+      spySections.forEach(function(s) {
+        var r = s.el.getBoundingClientRect();
+        if (r.top <= line && r.bottom > line) hit = s.link;
+      });
+      if (hit !== activeLink) setActiveTab(hit, true);
+    }
+    if (spySections.length) {
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() { ticking = false; runSpy(); });
+      }, { passive: true });
+      spySections.forEach(function(s) {
+        s.link.addEventListener('click', function() { spyLock = Date.now() + 1200; setTimeout(runSpy, 1250); });
+      });
+      runSpy();
+    }
+
+    // 6. Back/forward cache: a restored page keeps the pill where the last click moved it,
+    //    so put it back on the tab that belongs to this page.
+    window.addEventListener('pageshow', function(e) {
+      if (!e.persisted) return;
+      if (spySections.length) { setActiveTab(null, false); runSpy(); }
+      else setActiveTab(serverActive, false);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavPill);
+  } else {
+    initNavPill();
+  }
+})();
+</script>
 
 

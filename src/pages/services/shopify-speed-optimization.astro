@@ -2,6 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import ServiceDetailHero from '../../components/ServiceDetailHero.astro';
+import ServiceFeatures from '../../components/ServiceFeatures.astro';
+import ServiceCaseStudy from '../../components/ServiceCaseStudy.astro';
+import ServiceStats from '../../components/ServiceStats.astro';
+import ServiceIntegrity from '../../components/ServiceIntegrity.astro';
+import ServiceCtaBand from '../../components/ServiceCtaBand.astro';
+import Faq from '../../components/Faq.astro';
 
 const canonical = "https://klickspell.com/services/shopify-speed-optimization";
 
@@ -32,43 +39,41 @@ const serviceSchema = {
   }
 };
 
+const faqs = [
+  {
+    "q": "Do you guarantee a 90+ Mobile PageSpeed score?",
+    "a": "Not blindly. Some apps, embeds and third-party scripts set a ceiling that no one can engineer past. What we do guarantee is the target we agree after auditing your store: it's written into the proposal, and if we miss it because of our code or recommendations, we keep optimizing at no extra cost. We also measure real-user Core Web Vitals, not just the lab score."
+  },
+  {
+    "q": "How does Klickspell differ from cheap '90+ speed' optimization gigs on Fiverr?",
+    "a": "Cheap speed services often use bot cloaking scripts that detect Google Lighthouse bots and hide all apps from testing tools while real human visitors still experience 5+ seconds of lag. Klickspell never uses bot tricks: we refactor Liquid directly, purge zombie app scripts, conditionally load assets, and measure success through real-user Chrome UX Report (CrUX) Core Web Vitals."
+  },
+  {
+    "q": "Will optimizing store speed break our marketing or tracking apps?",
+    "a": "No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we schedule third-party scripts to run during idle time or after key user interactions, keeping analytics accurate while freeing up the main thread."
+  },
+  {
+    "q": "Do you work on our live production store?",
+    "a": "Never. All engineering, refactoring, and benchmarking is executed in an unpublished duplicate preview theme. Your live customers and checkout will experience zero downtime or disruption until you personally test and approve the speed improvements."
+  },
+  {
+    "q": "How long does a Shopify speed sprint take?",
+    "a": "A standard speed sprint takes 2 to 3 weeks from initial diagnostic audit to final production theme handover."
+  },
+  {
+    "q": "Why shouldn't I just use a Shopify speed optimization app?",
+    "a": "Speed optimizer apps typically inject heavy JavaScript that hides DOM elements or preloads resources indiscriminately. They often \"trick\" desktop synthetic tests while worsening real-world mobile CPU load and charging you a monthly subscription. We fix the underlying source code cleanly with zero recurring app fees."
+  }
+];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do you guarantee a 90+ Mobile PageSpeed score?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not blindly. Some apps, embeds and third-party scripts set a ceiling that no one can engineer past. What we do guarantee is the target we agree after auditing your store: it's written into the proposal, and if we miss it because of our code or recommendations, we keep optimizing at no extra cost. We also measure real-user Core Web Vitals, not just the lab score."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will optimizing store speed break our marketing or tracking apps?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we use intelligent script scheduling (requestIdleCallback and intersection-based delayed hydration) so tracking fires accurately without blocking the initial paint."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work on our live production store?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Never. All performance engineering, code refactoring, and benchmarking is executed in an unpublished duplicate preview theme. Your live customers and checkout will experience zero downtime or disruption until you personally inspect and approve the speed improvements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does a Shopify speed sprint take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A standard speed sprint takes 2 to 3 weeks from initial diagnostic audit to final production theme handover."
-      }
-    }
-  ]
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
 };
 
 const breadcrumbSchema = {
@@ -95,298 +100,104 @@ const schemas = [serviceSchema, faqSchema, breadcrumbSchema];
 
   <main id="main-content">
     <!-- HERO SECTION -->
-    <header class="service-page-hero">
-      <p class="cs-breadcrumb reveal"><a href="/">Home</a> / <a href="/services">Services</a> / Shopify Speed Optimization</p>
-      
-      <div class="service-badge reveal">
-        <span class="service-badge-dot"></span>
-        90+ Mobile Target · Passing Core Web Vitals
-      </div>
+    <ServiceDetailHero
+      crumb="Shopify Speed Optimization"
+      copyMax={634}
+      artAlign="top"
+      art={{
+        lg: '/assets/speed/speedometer.webp', lgW: 588, lgH: 404,
+        sm: '/assets/speed/speedometer.webp', smW: 588, smH: 404,
+      }}
+      title="Speed that sells.<br />Performance that scales."
+      sub="Custom Shopify optimization built to deliver lightning-fast experiences and higher conversions."
+      primary={{ label: 'Book A Speed Audit →' }}
+      secondary={{ label: 'Read Case Study →', href: '/blog/how-we-achieved-99-pagespeed-score-case-study' }}
+      stats={[
+        { label: 'Mobile Target', value: '90+ / 100', note: 'Agreed after audit, or we keep optimizing' },
+        { label: 'Total Blocking Time', value: '< 200 ms', note: "Our aim: Lighthouse's \"good\" range" },
+        { label: 'Delivery Timeline', value: '2–3 Weeks', note: 'Staged duplicate theme with zero live downtime' },
+        { label: 'Safety Guarantee', value: '100% Intact', note: 'Analytics, tracking, and vital apps preserved' },
+      ]}
+    />
 
-      <h1 class="service-hero-title reveal reveal-delay-1">
-        A 1-second store converts 2.5x better than a 5-second one.<br>
-        We fix the <em>code</em>, not just the symptoms.
-      </h1>
 
-      <p class="service-hero-sub reveal reveal-delay-2">
-        Most speed "experts" install another optimizer app that makes your store slower. We dive directly into your Liquid templates, vendor scripts, and render trees to deliver lightning-fast paint times, zero layout shifts, and measurable conversion lifts.
-      </p>
+    <!-- THE ENGINEERING SPRINT -->
+    <ServiceFeatures
+      eyebrow="The Engineering Sprint"
+      title="What it takes to make"
+      titleEm="your store faster."
+      sub="We fix the code slowing your store down for faster browsing and smoother checkouts."
+      items={[
+        { tag: 'Asset & Font Tuning', title: 'Next-Gen Media & Local Fonts', text: 'We convert oversized raster assets to modern WebP formats, eliminate layout shifts with explicit aspect ratios, and replace external render-blocking Google Font chains with self-hosted, preloaded variable fonts.' },
+        { tag: 'Script Rescheduling', title: 'App Bloat & Pixel Decoupling', text: 'Klaviyo, Gorgias, reviews, and ad pixels freeze mobile CPUs. We implement intelligent script scheduling that delays non-critical tags until user engagement, keeping tracking 100% accurate while freeing the main thread.' },
+        { tag: 'Critical CSS & DOM', title: 'Eliminating Render-Blocking Chains', text: 'We extract and inline critical above-the-fold CSS styles, prune unused vendor styles, and streamline bloated DOM nesting so mobile browsers can paint your hero section much sooner.' },
+        { tag: 'Layout Shift Eradication', title: 'CLS Zeroing & Fluid Typography', text: "Unexpected jumps during page load destroy user trust and fail Google's Core Web Vitals. We reserve space for banners, popups, and dynamic app widgets so the layout remains rock-solid." },
+        { tag: 'Zero Downtime Testing', title: 'Staged QA & Device Testing', text: 'Every change is implemented in an isolated theme environment. We audit your checkout, cart drawers, currency converters, and subscription flows on physical iOS and Android devices before anything touches production.' },
+        { tag: 'Handover & Monitoring', title: 'Full Autonomy & Long-Term Maintenance', text: 'We provide a video walkthrough of every change and a checklist for your marketing team on how to upload future banners and install new apps without hurting your hard-earned 90+ score.' },
+      ]}
+    />
 
-      <div class="service-hero-actions reveal reveal-delay-2">
-        <a 
-          href="https://cal.com/atul-bhatt-klickspell/30min" 
-          data-cal-link="atul-bhatt-klickspell/30min" 
-          data-cal-namespace="30min" 
-          data-cal-config='{"layout":"month_view"}' 
-          class="btn-primary"
-          style="cursor:pointer"
-        >
-          Book a Free Speed Audit →
-        </a>
-        <a href="/speed" class="btn-ghost" style="border-color:rgba(58,91,224,0.3); color:var(--accent);">
-          ⚡ Calculate Your App Bloat
-        </a>
-        <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">
-          Read Case Study ↗
-        </a>
-      </div>
+    <!-- PROVEN AUTHORITY -->
+    <ServiceCaseStudy
+      boxed
+      eyebrow="Proven Authority"
+      titleHtml="We don't preach speed.<br /><em>We <i>engineer it daily.</i></em>"
+      textHtml="We recently audited and optimized Klickspell itself from the low 70s to a flawless <strong>98/100 on Mobile</strong> and <strong>99/100 on Desktop</strong> with 0ms Total Blocking Time and zero third-party dependencies.<br />The exact same principles applied to California skincare brand <strong>Jaxon Lane</strong> and modern DTC brands are deployed to supercharge your store."
+      caseHref="/work/jaxon-lane"
+      caseLabel="Read Full Case Study →"
+      liveHref="/blog/how-we-achieved-99-pagespeed-score-case-study"
+      liveLabel="Read Technical Playbook →"
+      liveExternal={false}
+      img={{ src: '/assets/projects/jaxon-lane.webp', alt: 'Jaxon Lane Shopify store optimized by Klickspell', width: 2994, height: 2046 }}
+    />
 
-      <!-- METRICS STRIP -->
-      <div class="service-metrics-bar reveal reveal-delay-3">
-        <div class="service-metric-item">
-          <p class="metric-label">Mobile Target</p>
-          <p class="metric-val">90+ / 100</p>
-          <p class="metric-note">Agreed after audit, or we keep optimizing</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Total Blocking Time</p>
-          <p class="metric-val">&lt; 200 ms</p>
-          <p class="metric-note">Our aim: Lighthouse's "good" range</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Delivery Timeline</p>
-          <p class="metric-val">2–3 Weeks</p>
-          <p class="metric-note">Staged duplicate theme with zero live downtime</p>
-        </div>
-        <div class="service-metric-item">
-          <p class="metric-label">Safety Guarantee</p>
-          <p class="metric-val">100% Intact</p>
-          <p class="metric-note">Analytics, tracking, and vital apps preserved</p>
-        </div>
-      </div>
-    </header>
+    <!-- WHY SPEED MATTERS (every figure links to its source) -->
+    <ServiceStats
+      eyebrow="Why speed matters"
+      title="The numbers behind"
+      titleEm="the decision."
+      stats={[
+        { value: '2.5×', text: 'higher e-commerce conversion rate for sites that load in 1 second than for sites that load in 5 seconds.', source: 'Portent, 2022 (100M+ page views)', href: 'https://www.portent.com/blog/analytics/research-site-speed-hurting-everyone.htm' },
+        { value: '+8.4%', text: 'retail conversions from a 0.1-second faster mobile site, across 37 brands.', source: 'Deloitte & Google, Milliseconds Make Millions', href: 'https://web.dev/case-studies/milliseconds-make-millions' },
+        { value: '+8%', text: 'sales for Vodafone after improving Largest Contentful Paint by 31% in an A/B test.', source: 'web.dev, Vodafone case study', href: 'https://web.dev/case-studies/vodafone' },
+      ]}
+      cta={{ label: 'Calculate Your App Bloat →', href: '/speed' }}
+    />
 
-    <!-- CONTENT BODY -->
-    <div class="service-body-wrap">
-      
-      <!-- DELIVERABLES SECTION -->
-      <section class="reveal">
-        <div class="service-section-header">
-          <p class="section-eyebrow">The Engineering Sprint</p>
-          <h2>What actually happens during<br><em>your speed optimization.</em></h2>
-          <p>No band-aids. We systematically deconstruct and refactor the front-end bottlenecks that drag down mobile user experience and checkout completion.</p>
-        </div>
+    <!-- ENGINEERING INTEGRITY -->
+    <ServiceIntegrity
+      eyebrow="Engineering Integrity"
+      title="Real core web vitals vs."
+      titleEm="Cheap “90+ score” Cloaking scams"
+      sub="Many speed optimizers game performance scores instead of fixing real issues. Here's how to spot the difference."
+      bad={{
+        title: 'What Cheap "90+ Speed" Services Do',
+        points: [
+          { label: 'Bot Cloaking', text: 'Injects scripts that detect Google Lighthouse bots and disable Klaviyo, Meta Pixel, and apps exclusively during synthetic tests.' },
+          { label: 'Zero Real Speed', text: 'Real shoppers on 4G mobile devices still wait 5 to 8 seconds for pages to render.' },
+          { label: 'Broken Tracking', text: 'Often causes severe tracking drop-offs, misattributed revenue, and broken Meta/TikTok pixel events.' },
+          { label: 'CrUX Failure', text: "Fails Google's real-user field data (Chrome UX Report), failing search ranking boosts." },
+        ],
+      }}
+      good={{
+        title: 'The Klickspell Architectural Standard',
+        points: [
+          { label: 'Direct Code Refactoring', text: 'Purges orphaned "zombie" Liquid snippets and dead asset requests left by uninstalled apps.' },
+          { label: 'Conditional Scheduling', text: 'Loads review widgets and chat widgets only on pages and interaction moments when needed.' },
+          { label: '100% Tracking Integrity', text: 'All marketing pixels and analytics fire accurately without blocking critical initial paint.' },
+          { label: 'Passed Real-User CrUX', text: 'Delivers sub-second LCP and near-zero TBT for actual human customers on real mobile devices.' },
+        ],
+      }}
+    />
 
-        <div class="service-grid-3">
-          <div class="service-deliverable-card">
-            <p class="service-card-num">01 · ASSET &amp; FONT TUNING</p>
-            <h3 class="service-card-title">Next-Gen Media &amp; Local Fonts</h3>
-            <p class="service-card-text">We convert oversized raster assets to modern WebP formats, eliminate layout shifts with explicit aspect ratios, and replace external render-blocking Google Font chains with self-hosted, preloaded variable fonts.</p>
-          </div>
+    <!-- FAQ: shared design, this page's questions -->
+    <Faq items={faqs} />
 
-          <div class="service-deliverable-card">
-            <p class="service-card-num">02 · SCRIPT RESCHEDULING</p>
-            <h3 class="service-card-title">App Bloat &amp; Pixel Decoupling</h3>
-            <p class="service-card-text">Klaviyo, Gorgias, reviews, and ad pixels freeze mobile CPUs. We implement intelligent script scheduling that delays non-critical tags until user engagement, keeping tracking 100% accurate while freeing the main thread.</p>
-          </div>
-
-          <div class="service-deliverable-card">
-            <p class="service-card-num">03 · CRITICAL CSS &amp; DOM</p>
-            <h3 class="service-card-title">Eliminating Render-Blocking Chains</h3>
-            <p class="service-card-text">We extract and inline critical above-the-fold CSS styles, prune unused vendor styles, and streamline bloated DOM nesting so mobile browsers can paint your hero section much sooner.</p>
-          </div>
-
-          <div class="service-deliverable-card">
-            <p class="service-card-num">04 · LAYOUT SHIFT ERADICATION</p>
-            <h3 class="service-card-title">CLS Zeroing &amp; Fluid Typography</h3>
-            <p class="service-card-text">Unexpected jumps during page load destroy user trust and fail Google's Core Web Vitals. We reserve space for banners, popups, and dynamic app widgets so the layout remains rock-solid.</p>
-          </div>
-
-          <div class="service-deliverable-card">
-            <p class="service-card-num">05 · ZERO DOWNTIME TESTING</p>
-            <h3 class="service-card-title">Staged QA &amp; Device Testing</h3>
-            <p class="service-card-text">Every change is implemented in an isolated theme environment. We audit your checkout, cart drawers, currency converters, and subscription flows on physical iOS and Android devices before anything touches production.</p>
-          </div>
-
-          <div class="service-deliverable-card">
-            <p class="service-card-num">06 · HANDOVER &amp; MONITORING</p>
-            <h3 class="service-card-title">Full Autonomy &amp; Long-Term Maintenance</h3>
-            <p class="service-card-text">We provide a video walkthrough of every change and a checklist for your marketing team on how to upload future banners and install new apps without hurting your hard-earned 90+ score.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- THE NUMBERS (every figure links to its source) -->
-      <section class="reveal speed-numbers" aria-labelledby="speed-numbers-title">
-        <div class="service-section-header">
-          <p class="section-eyebrow">Why speed matters</p>
-          <h2 id="speed-numbers-title">The numbers behind<br><em>the decision.</em></h2>
-          <p>Every figure here links to its source, so you can check it yourself.</p>
-        </div>
-        <ul class="speed-stats">
-          <li class="speed-stat">
-            <p class="speed-stat-val">2.5x</p>
-            <p class="speed-stat-text">higher e-commerce conversion rate for sites that load in 1 second than for sites that load in 5 seconds.</p>
-            <a class="speed-source" href="https://www.portent.com/blog/analytics/research-site-speed-hurting-everyone.htm" target="_blank" rel="noopener">Portent, 2022 (100M+ page views)</a>
-          </li>
-          <li class="speed-stat">
-            <p class="speed-stat-val">+8.4%</p>
-            <p class="speed-stat-text">retail conversions from a 0.1-second faster mobile site, across 37 brands.</p>
-            <a class="speed-source" href="https://web.dev/case-studies/milliseconds-make-millions" target="_blank" rel="noopener">Deloitte &amp; Google, Milliseconds Make Millions</a>
-          </li>
-          <li class="speed-stat">
-            <p class="speed-stat-val">+8%</p>
-            <p class="speed-stat-text">sales for Vodafone after improving Largest Contentful Paint by 31% in an A/B test.</p>
-            <a class="speed-source" href="https://web.dev/case-studies/vodafone" target="_blank" rel="noopener">web.dev, Vodafone case study</a>
-          </li>
-        </ul>
-      </section>
-
-      <!-- PROOF OF WORK CALLOUT -->
-      <section class="service-proof-box reveal">
-        <div class="service-proof-inner">
-          <div class="service-proof-text">
-            <p class="section-eyebrow">Proven Authority</p>
-            <h3>We don't preach speed.<br><em>We engineer it daily.</em></h3>
-            <p>We recently audited and optimized Klickspell itself from the low 70s to a flawless <strong>98/100 on Mobile</strong> and <strong>99/100 on Desktop</strong> with 0ms Total Blocking Time and zero third-party dependencies.</p>
-            <p>The exact same principles applied to California skincare brand <strong>Jaxon Lane</strong> and modern DTC brands are deployed to supercharge your store.</p>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <a href="/work/jaxon-lane" class="btn-primary">View Jaxon Lane Case Study →</a>
-              <a href="/blog/how-we-achieved-99-pagespeed-score-case-study" class="btn-ghost">Read Technical Playbook ↗</a>
-            </div>
-          </div>
-          <div class="service-proof-media">
-            <div class="browser-mockup-bar">
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-              <span class="browser-url">jaxonlane.com · High-Performance Shopify Architecture</span>
-            </div>
-            <img src="/assets/projects/jaxon-lane.webp" alt="Jaxon Lane Shopify performance case study" width="2994" height="2046" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </section>
-
-      <!-- REAL CORE WEB VITALS VS CLOAKING SCAMS -->
-      <section class="reveal" style="margin-bottom:5rem;">
-        <div class="service-section-header">
-          <p class="section-eyebrow">Engineering Integrity</p>
-          <h2>Real Core Web Vitals vs.<br><em>Cheap "90+ Score" Cloaking Scams</em></h2>
-          <p>A rampant issue on freelance marketplaces is speed "optimizers" who trick synthetic test bots rather than fixing actual store latency. Here is how to tell the difference:</p>
-        </div>
-
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem;">
-          <div style="background:#FFF8F8; border:1px solid rgba(220,38,38,0.2); border-radius:var(--radius); padding:2.25rem;">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:1.25rem;">
-              <span style="font-size:16px;">❌</span>
-              <h3 style="font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#DC2626; margin:0; font-weight:600;">What Cheap "90+ Speed" Services Do</h3>
-            </div>
-            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem; font-size:14px; color:var(--text-mid); line-height:1.6;">
-              <li><strong style="color:#DC2626;">Bot Cloaking:</strong> Injects scripts that detect Google Lighthouse bots and disable Klaviyo, Meta Pixel, and apps exclusively during synthetic tests.</li>
-              <li><strong style="color:#DC2626;">Zero Real Speed:</strong> Real shoppers on 4G mobile devices still wait 5 to 8 seconds for pages to render.</li>
-              <li><strong style="color:#DC2626;">Broken Tracking:</strong> Often causes severe tracking drop-offs, misattributed revenue, and broken Meta/TikTok pixel events.</li>
-              <li><strong style="color:#DC2626;">CrUX Failure:</strong> Fails Google's real-user field data (Chrome UX Report), failing search ranking boosts.</li>
-            </ul>
-          </div>
-
-          <div style="background:#F4FDF7; border:1px solid rgba(12,206,107,0.3); border-radius:var(--radius); padding:2.25rem;">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:1.25rem;">
-              <span style="font-size:16px;">✅</span>
-              <h3 style="font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#16A34A; margin:0; font-weight:600;">The Klickspell Architectural Standard</h3>
-            </div>
-            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem; font-size:14px; color:var(--text-mid); line-height:1.6;">
-              <li><strong style="color:#16A34A;">Direct Code Refactoring:</strong> Purges orphaned "zombie" Liquid snippets and dead asset requests left by uninstalled apps.</li>
-              <li><strong style="color:#16A34A;">Conditional Scheduling:</strong> Loads review widgets and chat widgets only on pages and interaction moments when needed.</li>
-              <li><strong style="color:#16A34A;">100% Tracking Integrity:</strong> All marketing pixels and analytics fire accurately without blocking critical initial paint.</li>
-              <li><strong style="color:#16A34A;">Passed Real-User CrUX:</strong> Delivers sub-second LCP and near-zero TBT for actual human customers on real mobile devices.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ SECTION -->
-      <section class="reveal">
-        <div class="service-section-header">
-          <p class="section-eyebrow">Frequently Asked Questions</p>
-          <h2>Everything you need to know<br><em>before we start.</em></h2>
-          <p>Clear, direct answers about speed targets, app safety, and project workflows.</p>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">Do you guarantee a 90+ Mobile PageSpeed score?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              Not blindly. Some apps, embeds and third-party scripts set a ceiling that no one can engineer past. What we do guarantee is the target we agree after auditing your store: it's written into the proposal, and if we miss it because of our code or recommendations, we keep optimizing at no extra cost. We also measure real-user Core Web Vitals, not just the lab score.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">How does Klickspell differ from cheap '90+ speed' optimization gigs on Fiverr?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              Cheap speed services often use bot cloaking scripts that detect Google Lighthouse bots and hide all apps from testing tools while real human visitors still experience 5+ seconds of lag. Klickspell never uses bot tricks: we refactor Liquid directly, purge zombie app scripts, conditionally load assets, and measure success through real-user Chrome UX Report (CrUX) Core Web Vitals.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">Will optimizing store speed break our marketing or tracking apps?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              No. We never delete essential tracking scripts like Meta Pixel, TikTok Pixel, Klaviyo, or Google Analytics. Instead, we schedule third-party scripts to run during idle time or after key user interactions, keeping analytics accurate while freeing up the main thread.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">Do you work on our live production store?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              Never. All engineering, refactoring, and benchmarking is executed in an unpublished duplicate preview theme. Your live customers and checkout will experience zero downtime or disruption until you personally test and approve the speed improvements.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">How long does a Shopify speed sprint take?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              A standard speed sprint takes 2 to 3 weeks from initial diagnostic audit to final production theme handover.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span class="faq-question">Why shouldn't I just use a Shopify speed optimization app?</span>
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-answer">
-              Speed optimizer apps typically inject heavy JavaScript that hides DOM elements or preloads resources indiscriminately. They often "trick" desktop synthetic tests while worsening real-world mobile CPU load and charging you a monthly subscription. We fix the underlying source code cleanly with zero recurring app fees.
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <!-- CONVERSION CTA BOX -->
-      <section class="service-box-cta reveal">
-        <h2>Ready for a store that loads instantly?<br><em>Let's audit your speed.</em></h2>
-        <p>Book a free 30-minute diagnostic call with lead engineer Atul Bhatt. We will inspect your live store, identify your biggest bottlenecks, and give you an exact speed roadmap.</p>
-        <div class="service-box-cta-actions">
-          <a 
-            href="https://cal.com/atul-bhatt-klickspell/30min" 
-            data-cal-link="atul-bhatt-klickspell/30min" 
-            data-cal-namespace="30min" 
-            data-cal-config='{"layout":"month_view"}' 
-            class="btn-primary"
-            style="background:#3A5BE0; color:#fff;"
-          >
-            Book Free Speed Audit →
-          </a>
-          <a href="https://wa.me/919259598769" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.25);">
-            💬 Quick Chat on WhatsApp
-          </a>
-        </div>
-      </section>
-
-    </div>
+    <!-- CLOSING CTA -->
+    <ServiceCtaBand
+      title="Ready for a store that loads instantly? Let's audit your speed."
+      sub="Book a free 30-minute diagnostic call with lead engineer Atul Bhatt. We will inspect your live store, identify your biggest bottlenecks, and give you an exact speed roadmap."
+    />
   </main>
 
   <Footer />

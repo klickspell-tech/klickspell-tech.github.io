@@ -5,39 +5,164 @@ interface Props {
 
 const { isHome = false } = Astro.props;
 const prefix = isHome ? "" : "/";
+const art = '/assets/footer';
+import { SHOW_ABOUT } from '../lib/site-flags';
 ---
 
-<footer>
-  <div class="footer-inner">
-    <img class="footer-logo" src="/assets/klickspell-logo-dark.webp" alt="Klickspell" width="564" height="128" loading="lazy" />
-    <span class="footer-stamp">The craft in every click.</span>
-    <ul class="footer-links">
-      <li><a href="/services">Services</a></li>
-      <li><a href={`${prefix}#work`}>Work</a></li>
-      <li><a href={`${prefix}#about`}>About</a></li>
-      <li><a href="/team">Team</a></li>
-      <li><a href="/partners">Partners</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href={`${prefix}#faq`}>FAQ</a></li>
-      <li><a href="https://wa.me/919259598769" target="_blank" rel="noopener">Contact</a></li>
-      <li><a href="https://in.linkedin.com/in/mratulbhatt" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/playlist?list=PL1p7vprQFvmus468rKCaHoQvHmaHopMyo" target="_blank" rel="noopener">YouTube</a></li>
-    </ul>
+<!-- Figma: klickspell › footer (desktop 85:933, mobile 135:902) -->
+<footer class="ft">
+  <div class="ft-wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-brand-text">
+          <a href="/" class="ft-logo" aria-label="Klickspell home">
+            <img src={`${art}/logo-mark.webp`} alt="" width="60" height="40" loading="lazy" decoding="async" />
+            <span class="ft-wordmark"><b>Klick</b>spell</span>
+          </a>
+          <p class="ft-desc">Klickspell is a custom web development agency building high-performance websites and digital experiences.</p>
+        </div>
+        <a href="https://wa.me/919259598769" class="ft-talk" target="_blank" rel="noopener">Let’s Talk →</a>
+        <div class="ft-social">
+          <span>Social links</span>
+          <a href="https://in.linkedin.com/in/mratulbhatt" target="_blank" rel="noopener" aria-label="Klickspell on LinkedIn"><img src={`${art}/linkedin.svg`} alt="" width="24" height="24" loading="lazy" /></a>
+          <a href="https://www.youtube.com/playlist?list=PL1p7vprQFvmus468rKCaHoQvHmaHopMyo" target="_blank" rel="noopener" aria-label="Klickspell on YouTube"><img src={`${art}/youtube.svg`} alt="" width="24" height="24" loading="lazy" /></a>
+          <a href="https://www.instagram.com/klickspell" target="_blank" rel="noopener" aria-label="Klickspell on Instagram"><img src={`${art}/instagram.svg`} alt="" width="24" height="24" loading="lazy" /></a>
+        </div>
+      </div>
 
-    <div style="width:100%; display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center; margin-top:1.25rem; padding-top:1.25rem; border-top:.5px solid rgba(255,255,255,0.12); font-size:12px;">
-      <span style="color:rgba(255,255,255,0.75); text-transform:uppercase; font-family:var(--font-mono); letter-spacing:.08em;">Services &amp; Tools:</span>
-      <a href="/services/shopify-speed-optimization" style="color:rgba(255,255,255,0.85); text-decoration:none; transition:color .2s;">Shopify Speed Optimization ↗</a>
-      <a href="/services/custom-shopify-development" style="color:rgba(255,255,255,0.85); text-decoration:none; transition:color .2s;">Custom Shopify Themes ↗</a>
-      <a href="/services/headless-commerce" style="color:rgba(255,255,255,0.85); text-decoration:none; transition:color .2s;">Headless Commerce ↗</a>
-      <a href="/services/performance-accessibility-retainer" style="color:rgba(255,255,255,0.85); text-decoration:none; transition:color .2s;">Performance &amp; Accessibility Retainer ↗</a>
-      <a href="/speed" style="color:var(--accent-on-dark, #7B98FF); font-weight:600; text-decoration:none; transition:color .2s;">⚡ App Speed Estimator</a>
-      <a href="/checkout-quiz" style="color:var(--accent-on-dark, #7B98FF); font-weight:600; text-decoration:none; transition:color .2s;">🛒 Checkout Recommender</a>
-      <a href="https://klickspell.online/?utm_source=klickspell_com&utm_medium=footer&utm_campaign=studio_ecosystem" target="_blank" rel="noopener" style="color:var(--accent-on-dark, #7B98FF); font-weight:600; text-decoration:none; transition:color .2s;">🌐 Klickspell Online (Local Directory) ↗</a>
+      <div class="ft-cols" role="navigation" aria-label="Footer">
+        <div class="ft-col">
+          <h2 class="ft-h">Tools</h2>
+          <ul>
+            <li><a href="/speed">App &amp; Speed Estimator</a></li>
+            <li><a href="/checkout-quiz">Checkout Recommender</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h2 class="ft-h">Service</h2>
+          <ul>
+            <li><a href="/services/custom-shopify-development">Custom Shopify Themes</a></li>
+            <li><a href="/services/shopify-speed-optimization">Shopify Speed Optimization</a></li>
+            <li><a href="/services/headless-commerce">Headless &amp; Custom Commerce</a></li>
+            <li><a href="/services/performance-accessibility-retainer">Performance &amp; Retainers</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h2 class="ft-h">Company</h2>
+          <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href={`${prefix}#work`}>Our Work</a></li>
+            {SHOW_ABOUT && <li><a href={`${prefix}#about`}>About Us</a></li>}
+            <li><a href={`${prefix}#faq`}>FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-mark" aria-hidden="true"><span class="ft-mark-bold">Klick</span><span class="ft-mark-reg">spell</span></div>
+
+    <div class="ft-bottom">
+      <p class="ft-copy">© 2026 Klickspell · Rudrapur, Uttarakhand, India</p>
+      <p class="ft-copy ft-legal">Privacy Center • Terms &amp; Conditions</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2026 KlickSpell Private Limited · Rudrapur, Uttarakhand, India</p>
-    <p class="footer-copy">CIN U62090UP2026PTC248355 · Registered office: C/o Ramesh Chandra Bhati, Sody Colony, Bilaspur, Rampur, Uttar Pradesh 244921, India</p>
-    <p class="footer-copy">klickspell.com</p>
-  </div>
 </footer>
+
+<style>
+  .ft {
+    --pad: clamp(24px, 6.25vw, 90px);
+    --wm: min(18.567vw, 267.357px); /* watermark font-size: 267.357px on the 1440px frame */
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-soft);
+    color: var(--text);
+  }
+  .ft-wrap {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 20px 26px;
+  }
+  .ft a { text-decoration: none; }
+  .ft a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .ft-top { display: flex; flex-direction: column; gap: 40px; }
+
+  /* Brand block */
+  .ft-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; width: 100%; max-width: 413px; }
+  .ft-brand-text { display: flex; flex-direction: column; gap: 22px; }
+  .ft-logo { display: inline-flex; align-items: center; gap: 4px; color: var(--text); }
+  .ft-logo img { display: block; width: 60px; height: 40px; object-fit: cover; }
+  .ft-wordmark { font-family: 'Wix Madefor Display', var(--font-display); font-size: 32px; line-height: 32px; font-weight: 400; color: var(--text); white-space: nowrap; }
+  .ft-wordmark b { font-weight: 800; }
+  .ft-desc { font-size: 16px; line-height: 24px; color: var(--text-light); }
+  .ft-talk {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 40px; padding: 8px 20px; border-radius: 100px;
+    background: var(--text); color: var(--white);
+    font-size: 12px; font-weight: 500; line-height: normal; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease);
+  }
+  .ft-talk:hover { background: #2A2A28; transform: translateY(-1px); }
+  .ft-social { display: flex; align-items: center; gap: 14px; margin-top: -8px; /* 16px under the button on mobile */ }
+  .ft-social span { font-size: 16px; color: var(--text-light); line-height: normal; }
+  .ft-social a { display: inline-flex; margin-left: 2px; transition: transform .2s var(--ease), opacity .2s; }
+  .ft-social a:hover { transform: translateY(-2px); opacity: .85; }
+  .ft-social img { display: block; width: 24px; height: 24px; }
+
+  /* Link columns */
+  .ft-cols { display: flex; flex-direction: column; gap: 40px; }
+  .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ft-h {
+    font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 600; line-height: normal;
+    letter-spacing: 0; color: var(--text); margin: 0 0 24px;
+  }
+  .ft-col a { display: block; font-size: 16px; line-height: normal; color: var(--text-light); white-space: nowrap; transition: color .2s var(--ease); }
+  .ft-col a:hover { color: var(--accent); }
+
+  /* Watermark */
+  .ft-mark {
+    --wm: 23.03vw; /* 96.74px on the 420px mobile frame */
+    margin: 27px 0 0 -4.48vw;
+    font-family: 'Wix Madefor Display', var(--font-display);
+    font-size: var(--wm);
+    line-height: 1.6;
+    height: 1.6em;
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+    color: transparent;
+    background-image: linear-gradient(to top, rgba(0,0,0,0.1) 0%, rgba(250,251,252,0.1) 62.617%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .ft-mark-bold { font-weight: 800; }
+  .ft-mark-reg { font-weight: 400; }
+
+  /* Bottom bar */
+  .ft-bottom { margin-top: 23px; display: flex; flex-direction: column; gap: 24px; }
+  .ft-copy { font-size: 12px; line-height: normal; color: var(--text); }
+  .ft-legal { display: none; } /* phones: only the copyright line, as in the mobile design */
+
+  /* Tablet: columns sit side by side under the brand block */
+  @media (min-width: 641px) {
+    .ft-wrap { padding: 56px var(--pad) 40px; }
+    .ft-cols { flex-direction: row; gap: clamp(40px, 5.56vw, 80px); }
+    .ft-mark { --wm: min(18.567vw, 267.357px); margin: 32px 0 0 0; }
+    .ft-bottom { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 24px; margin-top: 16px; }
+    .ft-copy { font-size: 16px; }
+    .ft-legal { display: block; }
+    .ft-social { margin-top: 0; }
+    .ft-bottom > .ft-copy { white-space: nowrap; flex-shrink: 0; }
+  }
+
+  /* Desktop: Figma 1440px frame, everything anchored from the top */
+  @media (min-width: 1200px) {
+    .ft-wrap { padding: 80px var(--pad) 0; min-height: calc(var(--wm) * 2.551 + 24px); }
+    .ft-top { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 48px; }
+    .ft-brand { flex: 0 1 413px; }
+    .ft-cols { flex: 0 0 auto; }
+    .ft-mark { position: absolute; left: var(--pad); top: calc(var(--wm) * 0.778); margin: 0; }
+    .ft-bottom { position: absolute; left: var(--pad); right: var(--pad); top: calc(var(--wm) * 2.379); margin: 0; }
+  }
+</style>

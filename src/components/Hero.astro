@@ -1,0 +1,219 @@
+---
+// Figma: klickspell › hero section (desktop 138:948, mobile 135:47)
+const brands = [
+  'Skillbridge', 'Tealbox Digital', 'CallSara AI', 'DealShare', 'Mogra Media',
+  'Jaxon Lane', 'Cove & Lane', 'Bambrew', 'Pragya Vijh', 'Nuva Gurukul',
+  'Easy Rugs', 'ARBC', 'SourceBae', 'Bounce Back Drinks', 'Noukai Tokyo',
+  'Under Design', 'Haycure Wellness', 'Taarz',
+];
+// List is doubled so the -50% marquee loop is seamless.
+const track = [...brands, ...brands];
+const art = '/assets/Hero-Section-Desktop-image';
+---
+
+<section class="hx">
+  <div class="hx-stage">
+    <picture class="hx-visual" aria-hidden="true">
+      <source media="(max-width: 900px)" srcset={`${art}/hero-section-mb.svg`} width="380" height="403" />
+      <img src={`${art}/hero-section-lg.svg`} alt="" width="1201" height="801" fetchpriority="high" decoding="async" />
+    </picture>
+
+    <div class="hx-copy">
+      <p class="hx-eyebrow">
+        <span class="hx-eyebrow-icon"><img src={`${art}/eyebrow-chevron.svg`} alt="" width="11" height="6" /></span>
+        <span>Web Engineering &amp; Digital Products Studio</span>
+      </p>
+
+      <h1 class="hx-title">We turn your ideas<br />into products that work.</h1>
+
+      <p class="hx-sub">Custom Shopify stores, high-converting Webflow sites, Medusa.js headless commerce, and tailored web applications built to give you control, flexibility, and room to grow.</p>
+
+      <div class="hx-actions">
+        <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="hx-btn hx-btn-primary" id="hero-cta">
+          <span class="hx-ico" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"></rect><line x1="16" y1="3" x2="16" y2="7"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </span>
+          <span>Book a free 30-min call</span>
+        </a>
+        <a href="#work" class="hx-btn hx-btn-link">
+          <span class="hx-ico" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"></rect><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"></rect></svg>
+          </span>
+          <span>See our work →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hx-brands">
+      <p class="hx-brands-label">Brands &amp; Teams We've Built For</p>
+      <div class="hx-marquee">
+        <div class="hx-track">
+          {track.map((name) => (
+            <>
+              <span class="hx-brand">{name}</span>
+              <span class="hx-brand hx-dot" aria-hidden="true">·</span>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hx {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .hx-stage {
+    position: relative;
+    max-width: 1440px;
+    min-height: 900px;
+    margin: 0 auto;
+    padding: 170px clamp(24px, 6.25vw, 90px) 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 3D artwork: sits behind the copy, bleeding off the right edge */
+  .hx-visual {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 83.4375%; /* 1201.5px of the 1440px frame */
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+  }
+  .hx-visual img { display: block; width: 100%; height: auto; }
+
+  .hx-copy {
+    position: relative;
+    z-index: 1;
+    max-width: min(705px, 50vw); /* 705px at 1440; narrower below so copy never runs over the artwork */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hx-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 14px; /* Figma: 14px between the eyebrow box (incl. its 12px padding) and the headline */
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1.65px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    line-height: 16px;
+  }
+  .hx-eyebrow-icon {
+    width: 16px; height: 16px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .hx-eyebrow-icon img { transform: rotate(-90deg); width: 11px; height: 6px; display: block; }
+
+  .hx-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 4.45vw, 64px);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.03125em; /* -2px at 64px */
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hx-sub {
+    font-size: clamp(17px, 1.39vw, 20px);
+    line-height: 1.5;
+    color: var(--text-light);
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hx-actions { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+  .hx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 56px;
+    padding: 13px 16px;
+    border-radius: 100px;
+    font-size: 16px;
+    line-height: normal;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s var(--ease), transform .2s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease);
+  }
+  /* Icon badge, same treatment as the navbar "Book a call" button */
+  .hx-ico { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 8px; transition: transform .25s var(--ease); }
+  .hx-btn-primary .hx-ico { background: rgba(255,255,255,0.18); color: var(--white); }
+  .hx-btn-link .hx-ico { background: var(--accent-light); color: var(--accent); }
+  .hx-btn:hover .hx-ico { transform: scale(1.08) rotate(-4deg); }
+  .hx-btn-primary { background: var(--accent); color: var(--white); font-weight: 500; padding-left: 12px; }
+  .hx-btn-link { padding-left: 12px; }
+  .hx-btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,91,224,0.3); }
+  .hx-btn-link { color: var(--accent); font-weight: 600; border: 1px solid var(--accent); }
+  .hx-btn-link:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+  /* Brands strip */
+  .hx-brands { position: relative; z-index: 1; margin-top: auto; padding-top: 48px; display: flex; flex-direction: column; gap: 31px; }
+  .hx-brands-label {
+    font-size: 12px; font-weight: 600; line-height: 16px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--text);
+  }
+  .hx-marquee { overflow: hidden; }
+  .hx-track {
+    display: flex; align-items: center; gap: 24px;
+    width: max-content;
+    animation: hx-marquee 40s linear infinite;
+  }
+  .hx-marquee:hover .hx-track { animation-play-state: paused; }
+  .hx-brand { display: flex; align-items: center; height: 18px; font-size: 13.5px; font-weight: 600; line-height: 21.6px; color: var(--text-light); white-space: nowrap; }
+  .hx-dot { color: var(--accent); }
+  @keyframes hx-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .hx-track { animation: none; } }
+
+  /* Tablet + mobile (Figma mobile frame, 420px): copy, artwork, brands stacked and left-aligned */
+  @media (max-width: 900px) {
+    .hx-stage { min-height: 0; padding: 112px 32px 40px; }
+    .hx-copy { max-width: 640px; width: 100%; }
+    .hx-eyebrow { padding: 12px 0; }
+    .hx-title { font-size: clamp(36px, 6vw, 52px); letter-spacing: -2px; }
+    .hx-visual { position: relative; top: auto; right: auto; width: min(100%, 420px); margin: 40px auto 0; order: 2; }
+    .hx-copy { order: 1; }
+    .hx-brands { order: 3; margin-top: 0; padding-top: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .hx-stage { padding-inline: 20px; }
+    .hx-eyebrow { font-size: 10px; }
+    .hx-title { font-size: clamp(30px, 9.524vw, 40px); } /* 40px on the 420px Figma frame */
+    .hx-sub { font-size: 16px; }
+    .hx-actions { width: 100%; }
+    .hx-btn-primary { flex: 0 0 auto; }
+    .hx-btn-link { flex: 1 1 auto; text-decoration: underline; text-underline-position: from-font; }
+    .hx-visual { width: 100%; }
+  }
+
+  /* Narrow phones: tighten padding so both buttons stay on one row down to 390px,
+     then stack at equal full width below that */
+  @media (max-width: 400px) {
+    .hx-actions { gap: 8px; }
+    .hx-btn { padding-inline: 12px; }
+  }
+  @media (max-width: 540px) {
+    .hx-actions { gap: 12px; }
+    .hx-btn { padding-inline: 16px; }
+    .hx-btn-primary, .hx-btn-link { flex: 1 1 100%; }
+  }
+  @media (max-width: 360px) {
+    .hx-eyebrow { white-space: normal; }
+  }
+</style>

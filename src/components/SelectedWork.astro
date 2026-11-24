@@ -1,0 +1,270 @@
+---
+// Figma: klickspell › "Project" / Selected work (desktop 46:84). Built from a saved render
+// of the frame (Figma API limit hit), so measurements are accurate to a few px.
+// The Figma shows two full-bleed bands of project cards cut off at both edges and offset
+// from each other; they're built as two auto-scrolling rows (opposite directions, pause on
+// hover/focus). Filters re-split the matching projects across the two rows.
+// Without JS, or with reduced motion, the rows are plain horizontal scrollers.
+type Project = {
+  name: string; niche: string; highlight?: string; cat: 'shopify' | 'webflow' | 'headless' | 'landing';
+  img: string; href?: string; external?: boolean; yt?: string; offline?: boolean;
+};
+const a = '/assets/projects';
+const projects: Project[] = [
+  { name: 'Jaxon Lane', niche: 'Shopify Custom Theme · US Brand', cat: 'shopify', img: `${a}/jaxon-lane.webp`, href: '/work/jaxon-lane', yt: 'mRuKJxc2r5Y' },
+  { name: 'Tealbox Digital', niche: 'Webflow · Performance Marketing Agency', cat: 'webflow', img: `${a}/tealbox.webp`, href: 'https://tealbox.digital/', external: true },
+  { name: 'Skillbridge', niche: 'EdTech Platform · Custom Web Application', cat: 'landing', img: `${a}/skillbridge.webp`, href: '/work/skillbridge' },
+  { name: 'DealShare', niche: 'Corporate Portfolio · E-Grocery Unicorn', cat: 'landing', img: `${a}/dealshare.webp`, href: '/work/dealshare' },
+  { name: 'Klickspell Online', niche: 'Fast Digital Menus & Local Business Catalogues', cat: 'headless', img: `${a}/klickspell-online.webp`, href: '/work/klickspell-online' },
+  { name: 'CallSara AI', niche: 'Webflow · Voice AI Agent Platform', cat: 'webflow', img: `${a}/callsara.webp`, href: '/work/callsara-ai' },
+  { name: 'Cove & Lane', niche: 'Shopify Theme & Daily Store Management', cat: 'shopify', img: `${a}/cove-and-lane.webp`, href: '/work/cove-and-lane', yt: 'Ufh6W6h4Kqo' },
+  { name: 'Mogra Media', niche: 'Editorial Brand Flagship & Cinematic Experience', cat: 'landing', img: `${a}/mogra-media.webp`, href: '/work/mogra-media' },
+  { name: 'Pragya Vijh', niche: 'Headless Commerce & Cal.com Booking Ecosystem', cat: 'headless', img: `${a}/pragya-vijh.webp`, href: '/work/pragya-vijh' },
+  { name: 'Bambrew', niche: 'Shopify E-Commerce · Sustainable Packaging', cat: 'shopify', img: `${a}/bambrew.webp`, href: '/work/bambrew' },
+  { name: 'Nuva Gurukul', niche: 'Education & Student Enrollment Platform', cat: 'landing', img: `${a}/nuva-gurukul.webp`, href: 'https://nuvagurukul.com/', external: true },
+  { name: 'Noukai Tokyo', niche: 'Headless Hydrogen & 3D Rituals · Japan', cat: 'headless', img: `${a}/noukai-tokyo.webp`, href: '/work/noukai-tokyo', yt: 'sMlf7cl_L-o' },
+  { name: 'Easy Rugs', niche: 'Home Decor ·', highlight: 'Shark Tank India Featured', cat: 'shopify', img: `${a}/easy-rugs.webp`, href: 'https://easyrugs.in/', external: true, yt: 's1FYKKLfmbA' },
+  { name: 'SourceBae', niche: 'Talent Marketplace Platform · Seed Stage', cat: 'landing', img: `${a}/sourcebae.webp`, href: 'https://sourcebae.com/', external: true },
+  { name: 'ARBC', niche: 'Corporate Portfolio · Business Consulting', cat: 'landing', img: `${a}/arbc.webp`, href: 'https://www.arbc.in/', external: true },
+  { name: 'Bounce Back Drinks', niche: 'Shopify E-Commerce · UK Brand', cat: 'shopify', img: `${a}/bounce-back-drinks.webp`, href: 'https://bouncebackdrinks.com/', external: true, yt: 'XZEMgipm2EQ' },
+  { name: 'Under Design', niche: 'Custom Shopify Store · Israel Brand', cat: 'shopify', img: `${a}/store-weareunder.webp`, yt: '4NaWXprt2Zo', offline: true },
+  { name: 'Haycure Wellness', niche: 'Shopify E-Commerce · Wellness & Beauty', cat: 'shopify', img: `${a}/haycure-wellness.webp`, href: 'https://haycurewellness.com/', external: true, yt: 'PyUQr6Zfiu8' },
+  { name: 'Taarz', niche: 'Shopify Custom Theme · Fashion & Apparel', cat: 'shopify', img: `${a}/taarz.webp`, yt: 'JF39xGGsWcA', offline: true },
+];
+const pad2 = (n: number) => String(n).padStart(2, '0');
+const count = (c: Project['cat']) => projects.filter((p) => p.cat === c).length;
+const filters = [
+  { key: 'all', label: `All ${projects.length}` },
+  { key: 'shopify', label: `Shopify (${pad2(count('shopify'))})` },
+  { key: 'webflow', label: `Webflow (${pad2(count('webflow'))})` },
+  { key: 'headless', label: `Headless & Custom (${pad2(count('headless'))})` },
+  { key: 'landing', label: `Landing & Brand (${pad2(count('landing'))})` },
+];
+// Server-render every project once, alternating between the two rows.
+const rows = [projects.map((p, i) => ({ p, i })).filter((x) => x.i % 2 === 0), projects.map((p, i) => ({ p, i })).filter((x) => x.i % 2 === 1)];
+const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<section id="work" class="sw">
+  <div class="sw-head">
+    <p class="sw-eyebrow"><span class="sw-rule" aria-hidden="true"></span>Selected Work</p>
+    <h2 class="sw-title">{projects.length}+ projects.<br />Built across <em>modern stacks.</em></h2>
+    <div class="sw-filters" role="group" aria-label="Filter projects">
+      {filters.map((f, i) => (
+        <button type="button" class="sw-pill" data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+      ))}
+    </div>
+  </div>
+
+  <div class="sw-rows">
+    {rows.map((row, r) => (
+      <div class={`sw-row sw-row-${r}`}>
+        <div class="sw-track">
+          {row.map(({ p, i }) => (
+            <article class="sw-card" data-cat={p.cat} data-i={i}>
+              {p.yt ? (
+                <button type="button" class="sw-media" data-yt={p.yt} aria-label={`Play ${p.name} video`}>
+                  <img src={p.img} alt="" width="840" height="440" loading="lazy" decoding="async" />
+                  <span class="sw-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></span>
+                  {p.offline && <span class="sw-badge">Site offline · Watch video</span>}
+                </button>
+              ) : (
+                <a href={p.href} class="sw-media" tabindex="-1" aria-hidden="true" {...ext(p)}>
+                  <img src={p.img} alt="" width="840" height="440" loading="lazy" decoding="async" />
+                </a>
+              )}
+              <div class="sw-body">
+                {p.href ? <a href={p.href} class="sw-name" {...ext(p)}>{p.name}</a> : <span class="sw-name">{p.name}</span>}
+                <p class="sw-niche">{p.niche}{p.highlight && <strong> {p.highlight}</strong>}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.sw');
+  if (root) {
+    const tracks = [...root.querySelectorAll<HTMLElement>('.sw-track')];
+    const pills = [...root.querySelectorAll<HTMLButtonElement>('.sw-pill')];
+    // Keep pristine copies of every card in their original order.
+    const originals = [...root.querySelectorAll<HTMLElement>('.sw-card')]
+      .sort((x, y) => Number(x.dataset.i) - Number(y.dataset.i))
+      .map((c) => c.cloneNode(true) as HTMLElement);
+    const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SPEED = 40; // px per second
+    let current = 'all';
+
+    // Decorative repeats: hidden from assistive tech and out of the tab order (still clickable).
+    const decorative = (node: HTMLElement) => {
+      node.setAttribute('aria-hidden', 'true');
+      node.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+      return node;
+    };
+
+    const build = () => {
+      const list = originals.filter((c) => current === 'all' || c.dataset.cat === current);
+      const split: HTMLElement[][] = [[], []];
+      list.forEach((c, i) => split[i % 2].push(c));
+      tracks.forEach((track, r) => {
+        const row = track.parentElement as HTMLElement;
+        const cards = split[r];
+        track.replaceChildren(...cards.map((c) => c.cloneNode(true) as HTMLElement));
+        row.hidden = cards.length === 0;
+        if (!motion || !cards.length) { track.style.removeProperty('--dur'); return; }
+        // Repeat the row until one sequence is wider than the viewport, then append a full
+        // copy so translateX(-50%) loops seamlessly.
+        const unit = track.offsetWidth;
+        const reps = Math.max(1, Math.ceil((row.clientWidth + 1) / unit));
+        for (let k = 1; k < reps; k++) cards.forEach((c) => track.append(decorative(c.cloneNode(true) as HTMLElement)));
+        [...track.children].forEach((n) => track.append(decorative(n.cloneNode(true) as HTMLElement)));
+        track.style.setProperty('--dur', `${(unit * reps) / SPEED}s`);
+      });
+    };
+
+    pills.forEach((pill) => pill.addEventListener('click', () => {
+      current = pill.dataset.filter || 'all';
+      pills.forEach((p) => p.setAttribute('aria-pressed', String(p === pill)));
+      build();
+    }));
+
+    // Media with a video opens the site-wide YouTube modal (defined in BaseLayout).
+    root.addEventListener('click', (e) => {
+      const media = (e.target as HTMLElement).closest<HTMLElement>('[data-yt]');
+      if (!media) return;
+      e.preventDefault();
+      (window as any).openYTModal?.(media.dataset.yt);
+    });
+
+    if (motion) root.classList.add('is-marquee');
+    build();
+    let lastW = window.innerWidth, t: number | undefined;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      clearTimeout(t);
+      t = window.setTimeout(build, 200);
+    });
+  }
+</script>
+
+<style>
+  .sw { --pad: clamp(24px, 6.25vw, 90px); --cw: clamp(280px, 31.944vw, 460px); --gap: 24px; background: var(--white); padding: 40px 0; }
+  .sw-head { max-width: 1440px; margin: 0 auto; padding: 0 20px; }
+
+  .sw-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .sw-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .sw-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px; /* 40px on a 420px phone */
+    color: var(--text);
+    margin: 16px 0 24px;
+  }
+  .sw-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+
+  /* Filter pills: one scrollable row on phones, wrapping row on larger screens */
+  .sw-filters {
+    display: flex; gap: 16px;
+    overflow-x: auto; scrollbar-width: none;
+    margin: 0 -20px; padding: 0 20px;
+  }
+  .sw-filters::-webkit-scrollbar { display: none; }
+  .sw-pill {
+    flex: 0 0 auto;
+    height: 40px; padding: 0 14px;
+    border: 1px solid var(--line); border-radius: 100px;
+    background: var(--white); color: var(--text);
+    font-family: inherit; font-size: 12px; font-weight: 400; line-height: normal; white-space: nowrap;
+    cursor: pointer;
+    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .sw-pill:hover { border-color: var(--text); }
+  .sw-pill[aria-pressed='true'] { background: var(--text); border-color: var(--text); color: var(--white); font-weight: 500; }
+  .sw-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Bands */
+  .sw-rows { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
+  .sw-row {
+    padding: 25px 0;
+    background: var(--bg-soft);
+    border-block: 1px solid rgba(20,20,18,0.05);
+    overflow-x: auto; scrollbar-width: none; /* no-JS / reduced-motion: swipe or scroll the row */
+  }
+  .sw-row::-webkit-scrollbar { display: none; }
+  .sw-row[hidden] { display: none; }
+  .sw-track { display: flex; width: max-content; padding-left: var(--gap); }
+  .sw.is-marquee .sw-row { overflow: hidden; }
+  .sw.is-marquee .sw-track { padding-left: 0; animation: sw-marquee var(--dur, 120s) linear infinite; }
+  .sw.is-marquee .sw-row-1 .sw-track { animation-direction: reverse; }
+  .sw.is-marquee .sw-row:hover .sw-track,
+  .sw.is-marquee .sw-row:focus-within .sw-track { animation-play-state: paused; }
+  @keyframes sw-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Card: 460 x 320 at 1440 (image 420 x 220) */
+  .sw-card {
+    position: relative;
+    flex: 0 0 var(--cw); width: var(--cw);
+    margin-right: var(--gap);
+    padding: 19px 19px 15px; /* + 1px border: 420x220 image in a 460x320 card */
+    background: var(--white);
+    border: 1px solid rgba(20,20,18,0.08);
+    border-radius: 12px;
+    transition: box-shadow .3s var(--ease), transform .3s var(--ease);
+  }
+  .sw-card:hover { box-shadow: 0 20px 40px -16px rgba(20,20,18,0.22); transform: translateY(-2px); }
+  .sw-media {
+    position: relative; z-index: 1; display: block; width: 100%;
+    aspect-ratio: 420 / 220; overflow: hidden;
+    padding: 0; border: 0; border-radius: 8px; background: var(--bg-card);
+    cursor: pointer;
+  }
+  .sw-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s var(--ease); }
+  .sw-card:hover .sw-media img { transform: scale(1.03); }
+  .sw-media:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .sw-play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.94); box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: transform .2s var(--ease);
+  }
+  .sw-play svg { width: 16px; height: 16px; fill: var(--text); margin-left: 2px; }
+  .sw-media:hover .sw-play { transform: translate(-50%, -50%) scale(1.08); }
+  .sw-badge {
+    position: absolute; left: 10px; bottom: 10px;
+    padding: 4px 10px; border-radius: 100px;
+    background: rgba(20,20,20,0.78); color: #fff;
+    font-size: 11px; font-weight: 600; line-height: 16px;
+  }
+
+  .sw-body { margin-top: 20px; }
+  .sw-name {
+    display: block;
+    font-family: var(--font-display); font-size: 16px; font-weight: 500; line-height: 22px;
+    color: var(--text); text-decoration: none;
+  }
+  /* The title link covers the whole card; the media (video / image link) sits above it. */
+  a.sw-name::after { content: ''; position: absolute; inset: 0; border-radius: 12px; }
+  a.sw-name:focus-visible { outline: none; }
+  a.sw-name:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sw-niche { margin-top: 4px; font-size: 12px; line-height: 18px; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sw-niche strong { color: var(--accent); font-weight: 700; }
+
+  @media (min-width: 641px) {
+    .sw { padding: clamp(48px, 5.56vw, 80px) 0; }
+    .sw-head { padding: 0 var(--pad); }
+    .sw-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+    .sw-filters { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sw-card, .sw-media img, .sw-play { transition: none; }
+    .sw-card:hover { transform: none; }
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+// Figma: klickspell › Testimonial "Client words" (desktop 66:405).
+// Built from a saved render of the frame (Figma API limit hit), so measurements are
+// accurate to a few px. Quotes, names and roles are the site's existing, verified text
+// (the Figma draft differs on some roles; see the note in the PR/summary).
+const avatar = '/assets/testimonials';
+// Three desktop columns (masonry); `o` keeps the reading order when they stack on small screens.
+const columns = [
+  [
+    {
+      o: 1,
+      quote: "I brought Atul onboard my pre-seed startup as a contract frontend developer. He more than made up for his early career stage with his drive, efficiency, reliability, and a positive attitude. Atul always delivered — generally with the level of quality you'd expect from someone with more grey hairs.",
+      name: 'Saswat Panda',
+      role: 'Founder, stealth AI startup · ex-Microsoft · Harvard Business School',
+      img: `${avatar}/saswat-panda.webp`,
+    },
+    {
+      o: 4,
+      quote: "Atul has been a great support for my business. He's quick, responsive and always available to help.",
+      name: 'Jen Yu',
+      role: 'CEO & Co-Founder, Jaxon Lane · ex-Google',
+      img: `${avatar}/jen-yu.webp`,
+    },
+  ],
+  [
+    {
+      o: 2,
+      quote: 'Working with Atul was always a delight. His exceptional communication skills, timely delivery of great work, and strong skills made him a pleasure to collaborate with. His curiosity and willingness to step outside his expertise made him a valuable asset to any project.',
+      name: 'Eden Vidal',
+      role: 'Co-founder, Under',
+      img: `${avatar}/eden-vidal.webp`,
+    },
+    {
+      o: 5,
+      quote: 'We reached out to Atul for our website and the entire process of handover was very smooth. He committed to a timeline of around 7 days and I had the website in 3 days.',
+      name: 'Karan Dubey',
+      role: 'ex-Tealbox Digital',
+      img: `${avatar}/karan-dubey.webp`,
+    },
+  ],
+  [
+    {
+      o: 3,
+      quote: 'We hired Atul for one of our web-based projects. He took the time to understand my needs and provided a customized solution that exceeded my expectations. I would highly recommend working with Atul for any web-related project.',
+      name: 'Rajesh Durai',
+      role: 'Founder, Skillbridge · ex-VP upGrad',
+      img: `${avatar}/rajesh-durai.webp`,
+    },
+    {
+      o: 6,
+      quote: "It's been great working with Atul on our website maintenance and daily management! Thanks Atul.",
+      name: 'Sanya Pradhan',
+      role: 'Co-Founder, Cove & Lane',
+      img: `${avatar}/sanya-pradhan.webp`,
+    },
+  ],
+];
+---
+
+<section id="testimonials" class="tm">
+  <div class="tm-inner">
+    <p class="tm-eyebrow"><span class="tm-rule" aria-hidden="true"></span>Client words</p>
+    <h2 class="tm-title">Don't take our word for it.</h2>
+
+    <div class="tm-cols">
+      {columns.map((col) => (
+        <div class="tm-col">
+          {col.map((t) => (
+            <figure class="tm-card" style={`--o:${t.o}`}>
+              <span class="tm-mark tm-open" aria-hidden="true"></span>
+              <blockquote class="tm-quote">{t.quote}</blockquote>
+              <span class="tm-mark tm-close" aria-hidden="true"></span>
+              <figcaption class="tm-author">
+                <img class="tm-avatar" src={t.img} alt="" width="80" height="80" loading="lazy" decoding="async" />
+                <span class="tm-who">
+                  <span class="tm-name">{t.name}</span>
+                  <span class="tm-role">{t.role}</span>
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tm { --pad: clamp(24px, 6.25vw, 90px); background: var(--white); }
+  .tm-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
+
+  .tm-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .tm-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .tm-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px; /* 40px on a 420px phone */
+    color: var(--text);
+    margin: 16px 0 40px;
+  }
+
+  /* Small screens: one column in reading order (the column wrappers disappear, `order` takes over) */
+  .tm-cols { display: flex; flex-direction: column; gap: 24px; max-width: 640px; }
+  .tm-col { display: contents; }
+  .tm-card { order: var(--o); }
+
+  .tm-card {
+    position: relative;
+    display: flex; flex-direction: column;
+    margin: 0;
+    padding: 110px 23px 23px; /* the quote text starts 111px below the card top in the Figma */
+    background: var(--bg-soft);
+    border: 1px solid rgba(20,20,18,0.05);
+    border-radius: 12px;
+  }
+  .tm-quote { font-size: 16px; line-height: 1.6; font-weight: 400; color: var(--text); }
+
+  /* The two big grey quote marks are Wix Madefor Display ExtraBold glyphs (already loaded for the
+     footer), clipped to their ink box. Manrope / Plus Jakarta draw blocky marks, not the round ones. */
+  .tm-mark {
+    position: relative; display: block; flex-shrink: 0;
+    width: 60px; height: 44px; overflow: hidden;
+    color: rgba(20,20,18,0.08);
+  }
+  .tm-mark::before {
+    position: absolute; top: -16px;
+    font-family: 'Wix Madefor Display', Georgia, serif; font-weight: 800; font-size: 136px; line-height: 1;
+  }
+  .tm-open { position: absolute; top: 34px; left: 24px; }
+  .tm-open::before { content: '\201C'; left: -6px; }
+  .tm-close { align-self: flex-end; margin: 36px 0 33px; }
+  .tm-close::before { content: '\201D'; right: -5px; }
+
+  .tm-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .tm-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; display: block; background: var(--bg-card); }
+  .tm-who { display: flex; flex-direction: column; min-width: 0; }
+  .tm-name { font-family: var(--font-display); font-size: 16px; font-weight: 500; line-height: 20px; color: var(--text); }
+  .tm-role { margin-top: 4px; font-size: 12px; font-weight: 400; line-height: 16px; color: var(--text-light); }
+
+  @media (min-width: 641px) {
+    .tm-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
+    .tm-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
+  }
+  /* Desktop: the three masonry columns from the Figma */
+  @media (min-width: 1000px) {
+    .tm-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; max-width: none; }
+    .tm-col { display: flex; flex-direction: column; gap: 24px; }
+    .tm-card { order: 0; }
+  }
+</style>

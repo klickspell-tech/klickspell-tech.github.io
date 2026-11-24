@@ -21,6 +21,11 @@ const {
   schema
 } = Astro.props;
 
+// Staging builds set PUBLIC_STAGING=true (in the staging workflow only, never committed
+// to config) so the preview site can't be indexed. Production leaves it unset.
+const isStaging = import.meta.env.PUBLIC_STAGING === 'true';
+const robotsContent = isStaging ? 'noindex, nofollow' : robots;
+
 const canonicalUrl = canonical.startsWith('http') ? canonical : new URL(canonical, Astro.site || 'https://klickspell.com').href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site || 'https://klickspell.com').href;
 ---
@@ -32,7 +37,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="robots" content={robots} />
+  <meta name="robots" content={robotsContent} />
   <link rel="canonical" href={canonicalUrl} />
   <meta name="theme-color" content="#F2F0EC" />
 
@@ -55,7 +60,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={fullOgImage} />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233A5BE0'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-style='italic' font-size='38' fill='white' text-anchor='middle' dominant-baseline='middle'%3EK%3C/text%3E%3C/svg%3E" />
+  <link id="app-favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate" type="application/rss+xml" title="Klickspell Blog RSS Feed" href="https://klickspell.com/rss.xml" />
 
   <!-- Preload Critical Self-Hosted Fonts -->
@@ -74,6 +79,127 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )
   )}
+
+  <!-- Animated 3D rotating favicon (works across Chrome, Edge, and Firefox) -->
+  <script is:inline>
+  (function () {
+    try {
+      var cvs = document.createElement('canvas');
+      cvs.width = 64;
+      cvs.height = 64;
+      var ctx = cvs.getContext('2d');
+      if (!ctx) return;
+
+      var DURATION = 2600; // ms for full 360-degree rotation
+      var lastDraw = 0;
+      var FRAME_INTERVAL = 50; // ~20 fps: smooth rotation with negligible CPU overhead
+
+      function drawRoundedRect(x, y, w, h, r) {
+        if (w <= 0 || h <= 0) return;
+        var radius = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + w - radius, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+        ctx.lineTo(x + w, y + h - radius);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+        ctx.lineTo(x + radius, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+      }
+
+      function render(angle) {
+        ctx.clearRect(0, 0, 64, 64);
+
+        var cos = Math.cos(angle);
+        var sin = Math.sin(angle);
+        var absCos = Math.max(0.04, Math.abs(cos));
+        var isFront = cos >= 0;
+
+        var baseWidth = 54;
+        var cardHeight = 54;
+        var cardY = 5;
+        var curWidth = baseWidth * absCos;
+        var cardX = 32 - curWidth / 2;
+
+        // 1. Draw 3D Depth Rim / Edge when turning
+        var depth = 3.5;
+        var edgeWidth = depth * Math.abs(sin);
+        if (edgeWidth > 0.8) {
+          var edgeX = sin > 0 ? (cardX + curWidth - edgeWidth * 0.3) : (cardX - edgeWidth * 0.7);
+          drawRoundedRect(edgeX, cardY, edgeWidth, cardHeight, 10 * absCos);
+          ctx.fillStyle = '#18308C';
+          ctx.fill();
+        }
+
+        // 2. Draw Main Card Face with lighting
+        drawRoundedRect(cardX, cardY, curWidth, cardHeight, 12 * absCos);
+        var shade = 0.82 + 0.18 * absCos;
+        ctx.fillStyle = isFront
+          ? 'rgb(' + Math.round(58 * shade) + ',' + Math.round(91 * shade) + ',' + Math.round(224 * shade) + ')'
+          : 'rgb(' + Math.round(38 * shade) + ',' + Math.round(68 * shade) + ',' + Math.round(200 * shade) + ')';
+        ctx.fill();
+
+        // 3. Subtle Gloss Gradient on Front Face
+        if (isFront && absCos > 0.25) {
+          var grad = ctx.createLinearGradient(cardX, cardY, cardX + curWidth, cardY + cardHeight);
+          grad.addColorStop(0, 'rgba(255, 255, 255, 0.28)');
+          grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.05)');
+          grad.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
+          drawRoundedRect(cardX, cardY, curWidth, cardHeight, 12 * absCos);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+
+        // 4. Letter "K" on BOTH front and back faces (readable on both sides!)
+        if (absCos > 0.12) {
+          ctx.save();
+          ctx.translate(32, 34);
+          ctx.scale(absCos, 1);
+          ctx.font = 'italic bold 35px Georgia, serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = isFront ? '#FFFFFF' : '#E6EEFF';
+          ctx.fillText('K', 0, 0);
+          ctx.restore();
+        }
+
+        // 5. Update Favicon via replaceChild to force Chrome & Firefox to repaint
+        var dataUrl = cvs.toDataURL('image/png');
+        var oldLink = document.getElementById('app-favicon') || document.querySelector("link[rel*='icon']");
+        var newLink = document.createElement('link');
+        newLink.id = 'app-favicon';
+        newLink.rel = 'icon';
+        newLink.type = 'image/png';
+        newLink.href = dataUrl;
+
+        if (oldLink && oldLink.parentNode) {
+          oldLink.parentNode.replaceChild(newLink, oldLink);
+        } else {
+          document.head.appendChild(newLink);
+        }
+      }
+
+      var start = null;
+      function tick(timestamp) {
+        if (!start) start = timestamp;
+        if (!document.hidden && (timestamp - lastDraw >= FRAME_INTERVAL)) {
+          lastDraw = timestamp;
+          var progress = ((timestamp - start) % DURATION) / DURATION;
+          var angle = progress * Math.PI * 2;
+          render(angle);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    } catch (e) {
+      // Graceful fallback to static favicon
+    }
+  })();
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -99,7 +225,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         modal.classList.add('open');
-        window._lenis?.stop();
       }
     };
     window.closeYTModal = function() {
@@ -108,7 +233,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
       if (iframe && modal) {
         iframe.src = '';
         modal.classList.remove('open');
-        window._lenis?.start();
       }
     };
 
@@ -133,31 +257,20 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         el.addEventListener('mouseenter', () => document.body.classList.add('hovering'), { passive: true });
         el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'), { passive: true });
       });
-
-      // Lazy load Lenis asynchronously on desktop
-      import('/assets/js/lenis.mjs').then(({ default: Lenis }) => {
-        const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-        window._lenis = lenis;
-        lenis.on('scroll', () => {
-          const nav = document.getElementById('nav');
-          if (nav) nav.classList.toggle('scrolled', lenis.scroll > 40);
-        });
-        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
-      }).catch(() => {});
-    } else {
-      // Mobile touch screens: requestAnimationFrame-throttled scroll listener (prevents forced reflow)
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const nav = document.getElementById('nav');
-            if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
     }
+
+    // Native scrolling everywhere; requestAnimationFrame-throttled listener for the nav state
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const nav = document.getElementById('nav');
+          if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Mobile menu
     const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
@@ -192,11 +305,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
         const t = document.querySelector(href);
         if (t) {
           e.preventDefault();
-          if (window._lenis) {
-            window._lenis.scrollTo(t, { offset: 0, duration: 1.2 });
-          } else {
-            t.scrollIntoView({ behavior: 'smooth' });
-          }
+          t.scrollIntoView({ behavior: 'smooth' });
         }
       }
     }));
@@ -213,7 +322,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     }
     // Bind to all booking CTAs so Cal loads ahead of time when user points at or clicks them
     function initCalTriggers() {
-      document.querySelectorAll('[data-cal-link], .nav-cta, #hero-cta-d, a[href*="cal.com"]').forEach(el => {
+      document.querySelectorAll('[data-cal-link], .nav-cta, #hero-cta, a[href*="cal.com"]').forEach(el => {
         el.addEventListener('pointerenter', loadCal, { once: true, passive: true });
         el.addEventListener('touchstart', loadCal, { once: true, passive: true });
         el.addEventListener('focus', loadCal, { once: true, passive: true });
@@ -225,6 +334,12 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
     } else {
       initCalTriggers();
     }
+  </script>
+
+  <!-- Arrow buttons ("… →") stretch on hover -->
+  <script>
+    import { arrowButtons } from '../lib/arrow-buttons';
+    arrowButtons();
   </script>
 
   <!-- Service Worker for offline asset caching and instant repeat font/asset delivery -->

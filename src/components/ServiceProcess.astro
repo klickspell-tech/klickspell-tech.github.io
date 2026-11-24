@@ -1,0 +1,68 @@
+---
+// Services page › "Delivery process" (from the Figma screenshot): heading + four phase cards.
+const phases = [
+  { n: '01', title: 'Discovery & Blueprint', text: 'We audit your stack, review designs, map the sections you need and agree performance targets in writing before any code.' },
+  { n: '02', title: 'Performance-first build', text: 'Clean Liquid, React or Medusa.js components with no unnecessary scripts and every setting wired into the customizer.' },
+  { n: '03', title: 'Device & speed QA', text: 'Testing on real iOS and Android devices, screen readers, checkout test orders and PageSpeed verification.' },
+  { n: '04', title: 'Complete handover', text: 'Production deploy, DNS cutover, Git transfer and recorded Loom tutorials so your team can run things on their own.' },
+];
+---
+
+<section class="sp" id="process">
+  <div class="sp-inner">
+    <p class="sp-eyebrow"><span class="sp-rule" aria-hidden="true"></span>Delivery Process</p>
+    <h2 class="sp-title">From scope to launch in<br /><em>four clear phases.</em></h2>
+
+    <ol class="sp-grid">
+      {phases.map((p) => (
+        <li class="sp-card">
+          <span class="sp-num">{p.n} —</span>
+          <h3 class="sp-name">{p.title}</h3>
+          <p class="sp-text">{p.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .sp { --pad: clamp(24px, 6.25vw, 90px); background: var(--bg-soft); }
+  .sp-inner { max-width: 1440px; margin: 0 auto; padding: 48px 20px; }
+
+  .sp-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+  .sp-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .sp-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px;
+    color: var(--text); margin: 16px 0 40px;
+  }
+  .sp-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+  @media (max-width: 640px) { .sp-title br { display: none; } }
+
+  .sp-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .sp-card {
+    position: relative;
+    padding: 24px 24px 28px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  /* thin dark rule along the card's top edge, as in the design */
+  .sp-card::before { content: ''; position: absolute; top: -1px; left: 20px; right: 20px; height: 1px; background: rgba(20,20,18,0.55); }
+  .sp-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -18px rgba(20,20,18,0.25); }
+  .sp-num { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 32px; color: var(--accent); }
+  .sp-name { margin-top: 36px; font-family: var(--font-display); font-size: 18px; font-weight: 500; line-height: 24px; color: var(--text); }
+  .sp-text { margin-top: 14px; font-size: 15px; line-height: 22px; color: var(--text-light); }
+
+  @media (min-width: 641px) {
+    .sp-inner { padding: clamp(56px, 5.56vw, 80px) var(--pad); }
+    .sp-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; margin-bottom: 56px; }
+    .sp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .sp-card { min-height: 290px; }
+  }
+  @media (min-width: 1100px) {
+    .sp-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) { .sp-card, .sp-card:hover { transition: none; transform: none; } }
+</style>

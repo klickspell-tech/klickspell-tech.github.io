@@ -1,0 +1,139 @@
+---
+// Figma: klickspell › "Course" section (desktop 71:570, mobile "Resource" 135:587).
+// Built from a saved render of the frame (Figma API limit hit), so measurements are
+// accurate to a few px; re-check against the frame when Figma access is back.
+const art = '/assets/resources';
+const cards = [
+  {
+    href: '/blog/shopify-product-packages-dynamic-shipping-rates',
+    title: 'How to Create Product Packages and Setting Dynamic Shipping Rates In Shopify',
+    img: `${art}/product-packages.webp`,
+  },
+  {
+    href: '/blog/how-to-add-style-judgeme-widgets-shopify',
+    title: 'How to Add Judge.me widgets and style them in Shopify',
+    img: `${art}/judgeme-widgets.webp`,
+  },
+  {
+    href: '/blog/setup-microsoft-clarity-shopify-analytics',
+    title: 'Shopify Tutorial: Setup Microsoft Clarity in Minutes (2026 Edition)',
+    img: `${art}/microsoft-clarity.webp`,
+  },
+];
+---
+
+<section id="tutorials" class="rs">
+  <div class="rs-inner">
+    <p class="rs-eyebrow"><span class="rs-rule" aria-hidden="true"></span>Free Resources</p>
+    <h2 class="rs-title">12+ free tutorials<br />for <em>builders &amp; merchants.</em></h2>
+
+    <div class="rs-grid">
+      {cards.map((c) => (
+        <a href={c.href} class="rs-card">
+          <div class="rs-top">
+            <span class="rs-pill">Shopify Tutorial</span>
+            <span class="rs-play" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="currentColor" />
+                <path d="M8 6.2v7.6L14 10 8 6.2Z" fill="#fff" />
+              </svg>
+            </span>
+          </div>
+          <h3 class="rs-card-title">{c.title}</h3>
+          <img class="rs-thumb" src={c.img} alt="" width="712" height="400" loading="lazy" decoding="async" />
+        </a>
+      ))}
+    </div>
+
+    <a href="/blog" class="rs-all">Explore All Courses →</a>
+  </div>
+</section>
+
+<style>
+  .rs { --pad: clamp(24px, 6.25vw, 90px); background: var(--white); }
+  .rs-inner { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
+
+  .rs-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; line-height: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .rs-rule { display: block; width: 24px; height: 1px; background: var(--accent); }
+  .rs-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 9.524vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1.16px; /* 40px on a 420px phone */
+    color: var(--text);
+    margin: 16px 0 40px;
+  }
+  .rs-title em { font-style: italic; font-weight: 500; color: var(--text-light); }
+
+  .rs-grid { display: grid; grid-template-columns: minmax(0, 560px); gap: 24px; }
+
+  .rs-card {
+    display: flex; flex-direction: column;
+    padding: 23px; /* + 1px border = the Figma's 24px inset */
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .rs-top { display: flex; align-items: center; justify-content: space-between; }
+  .rs-pill {
+    display: inline-flex; align-items: center;
+    height: 40px; padding: 0 14px;
+    border: 1px solid var(--line); border-radius: 100px;
+    background: var(--white);
+    font-size: 12px; font-weight: 400; line-height: normal; color: var(--text);
+    transition: background .3s var(--ease), border-color .3s var(--ease);
+  }
+  .rs-play {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-light); color: var(--accent);
+    transition: background .3s var(--ease);
+  }
+  .rs-card-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px; font-weight: 500; line-height: 1.4; letter-spacing: 0;
+    margin: 32px 0 40px;
+    transition: color .3s var(--ease);
+  }
+  .rs-thumb {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: 12px; margin-top: auto;
+  }
+
+  /* Hover / focus: the card turns accent blue (the blue middle card in the Figma) */
+  .rs-card:hover, .rs-card:focus-visible {
+    background: var(--accent); border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px -16px rgba(58,91,224,0.35);
+    outline: none;
+  }
+  .rs-card:hover .rs-card-title, .rs-card:focus-visible .rs-card-title { color: var(--white); }
+  .rs-card:hover .rs-pill, .rs-card:focus-visible .rs-pill { border-color: var(--white); }
+  .rs-card:hover .rs-play, .rs-card:focus-visible .rs-play { background: var(--white); }
+
+  .rs-all {
+    display: flex; align-items: center; justify-content: center;
+    width: fit-content; height: 40px; margin: 40px auto 0; padding: 8px 12px;
+    border-radius: 100px; background: var(--text); color: var(--white);
+    font-size: 12px; font-weight: 500; line-height: normal; text-decoration: none; white-space: nowrap;
+    transition: background .25s var(--ease), transform .2s var(--ease);
+  }
+  .rs-all:hover { background: #2A2A28; transform: translateY(-1px); }
+  .rs-all:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (min-width: 641px) {
+    .rs-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
+    .rs-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; margin-bottom: 40px; }
+  }
+  @media (min-width: 1000px) {
+    .rs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rs-card, .rs-card:hover, .rs-card:focus-visible { transform: none; transition: none; }
+  }
+</style>
