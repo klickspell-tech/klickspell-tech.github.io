@@ -11,6 +11,7 @@ import Capabilities from '../components/Capabilities.astro';
 import WhyKlickspell from '../components/WhyKlickspell.astro';
 import SelectedWork from '../components/SelectedWork.astro';
 import { SHOW_ABOUT } from '../lib/site-flags';
+import { defaultFaqs, faqPageSchema } from '../lib/faqs';
 
 // The "About" section ("Built in the mountains of Uttarakhand.") is hidden for now.
 // Flip to true to render it again; the markup is kept below.
@@ -28,12 +29,20 @@ const schema = [
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://klickspell.com/#organization",
     "name": "Klickspell",
     "legalName": "KlickSpell Private Limited",
     "foundingDate": "2026-05-25",
     "description": "Klickspell is a web engineering and digital product studio crafting high-performance Shopify stores, Webflow marketing sites, Medusa.js headless commerce, and custom business systems.",
     "url": "https://klickspell.com/",
-    "image": "https://klickspell.com/assets/projects/jaxon-lane.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://klickspell.com/assets/klickspell-logo.webp",
+      "width": 564,
+      "height": 128
+    },
+    "image": "https://klickspell.com/assets/og-card.png",
+    "telephone": "+91-9259598769",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
@@ -47,6 +56,8 @@ const schema = [
       "name": "Atul Bhatt"
     },
     "sameAs": [
+      "https://www.linkedin.com/company/klickspell",
+      "https://github.com/klickspell-tech",
       "https://klickspell.online/",
       "https://in.linkedin.com/in/mratulbhatt",
       "https://github.com/atulbhatt-system32",
@@ -100,51 +111,31 @@ const schema = [
             "name": "Headless Commerce & Custom Web Apps",
             "url": "https://klickspell.com/services/headless-commerce"
           }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Shopify Performance & Accessibility Retainer",
+            "url": "https://klickspell.com/services/performance-accessibility-retainer"
+          }
         }
       ]
     }
   },
+  // WebSite lets Google show "Klickspell" as the site name in results
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What services and platforms does Klickspell specialize in?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We build across five core pillars: Custom Shopify & Headless E-Commerce, Webflow Marketing & SaaS sites, Headless Commerce (Medusa.js with custom integrations like Cal.com), High-Converting Lead Landing Pages, and Custom Web Applications / ERP Systems (Frappe/ERPNext)." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does a project take?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Landing pages typically launch in 7–14 days and full Webflow sites in 2–4 weeks. Custom Shopify stores take 3–6 weeks from approved designs, and headless or full-stack builds 6–10 weeks, depending on scope. You'll get an exact date in your proposal after our discovery call." }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does a project cost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every project is scoped and quoted individually based on your requirements, without rigid packages or surprise fees. You'll know the complete investment before we write a single line of code." }
-      },
-      {
-        "@type": "Question",
-        "name": "Will I be able to edit and manage the site myself after launch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. That is our core engineering philosophy. Whether on Shopify, Webflow, or custom CMS, every section is designed to be fully editable by your team without needing developer help for everyday changes." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you build custom headless commerce (Medusa.js) or integrate booking engines?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We build custom commerce backends using Medusa.js and integrate custom workflows such as Cal.com booking flows, tailored checkouts, and APIs designed for your exact business model." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer post-launch support and maintenance?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every project ends with full documentation and a walkthrough. For teams that want ongoing peace of mind, we provide ongoing maintenance, optimization, and daily tech management." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you work with international clients outside India?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We have built and shipped products for brands across the US, UK, Israel, Japan, and India with clear async communication and flexible meeting hours." }
-      }
-    ]
-  }
+    "@type": "WebSite",
+    "@id": "https://klickspell.com/#website",
+    "name": "Klickspell",
+    "alternateName": "KlickSpell",
+    "url": "https://klickspell.com/",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://klickspell.com/#organization" }
+  },
+  // built from the same list as the FAQ section, so the markup always matches the page
+  faqPageSchema(defaultFaqs)
 ];
 ---
 
@@ -152,7 +143,7 @@ const schema = [
   title="Klickspell — The craft in every click."
   description="Klickspell is a web engineering studio building high-performance Shopify stores, Webflow sites, and Medusa.js headless commerce for ambitious brands."
   canonical="https://klickspell.com/"
-  ogImage="https://klickspell.com/assets/projects/jaxon-lane.png"
+  ogImage="https://klickspell.com/assets/og-card.png"
   schema={schema}
 >
   <Nav isHome={true} />

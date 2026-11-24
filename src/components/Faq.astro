@@ -1,42 +1,13 @@
 ---
 // Figma: klickspell › FAQ "Questions" (desktop 82:752). Built from a saved render of the
 // frame (Figma API limit hit), so measurements are accurate to a few px.
-// Questions/answers are the same as before and match the FAQPage JSON-LD in pages/index.astro.
+// The questions live in lib/faqs.ts, which also builds the FAQPage JSON-LD, so the two always match.
+import { defaultFaqs, type FaqItem } from "../lib/faqs";
 interface Props {
-  /** page-specific questions; defaults to the general list below (home and services pages) */
-  items?: { q: string; a: string }[];
+  /** page-specific questions; defaults to the general list (home and services pages) */
+  items?: FaqItem[];
 }
 const { items } = Astro.props;
-const defaultFaqs = [
-  {
-    q: 'What platforms and stacks does Klickspell specialize in?',
-    a: 'We engineer across five primary verticals: Custom Shopify theme and Hydrogen headless development, Webflow for SaaS & marketing sites, Headless Commerce (Medusa.js + Cal.com integrations), High-Converting Lead Landing Pages, and Custom Web Applications / ERP Systems (Frappe/ERPNext).',
-  },
-  {
-    q: 'How long does a project take?',
-    a: "High-converting landing pages typically go live in 7–14 days and full Webflow sites in 2–4 weeks. Custom Shopify stores take 3–6 weeks from approved designs, and headless or full-stack builds 6–10 weeks, depending on complexity. You'll receive a committed milestone timeline in your scope proposal.",
-  },
-  {
-    q: 'How much does a project cost?',
-    a: "Every project is scoped and quoted individually based on what you actually need, with no rigid packages or surprise invoices. You'll know the complete cost before we write a single line of code.",
-  },
-  {
-    q: 'Will I be able to edit the site myself after launch?',
-    a: 'Yes, that is central to how we build. Whether on Shopify, Webflow, or a custom CMS, all sections are built to be easily editable (text, imagery, layout blocks) by non-technical team members without developer calls.',
-  },
-  {
-    q: 'Can you build custom headless commerce or custom integrations (like Medusa.js & Cal.com)?',
-    a: 'Yes. When off-the-shelf platforms are too restrictive, we build headless commerce backends with Medusa.js, integrate Cal.com scheduling workflows, and create custom APIs tailored to your exact business logic.',
-  },
-  {
-    q: 'Do you offer support after the site goes live?',
-    a: "Yes. Every project ends with full documentation and a recorded walkthrough. If you'd like ongoing peace of mind, we also provide maintenance retainers and day-to-day store/site management.",
-  },
-  {
-    q: 'Do you work with clients outside India?',
-    a: "Yes. We've shipped products for brands across the US, UK, Israel, Japan, and India. We operate asynchronously with high communication fidelity and align calls with your local timezone.",
-  },
-];
 const faqs = items ?? defaultFaqs;
 ---
 
@@ -90,8 +61,8 @@ const faqs = items ?? defaultFaqs;
   .fq-item:hover { border-color: rgba(58,91,224,0.35); }
   .fq-item summary {
     list-style: none;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    padding: 15px 24px; /* + 1px border: 16px inside, as in the Figma mobile frame */
+    display: flex; align-items: center; justify-content: space-between; gap: 0;
+    padding: 15px 23px; /* + 1px border: 16 / 24px inside, as in the Figma mobile frame (316px question + chevron) */
     cursor: pointer;
   }
   .fq-item summary::-webkit-details-marker { display: none; }
@@ -107,7 +78,7 @@ const faqs = items ?? defaultFaqs;
   .fq-item[open] .fq-chevron { transform: rotate(180deg); }
 
   .fq-a {
-    padding: 2px 24px 16px;
+    padding: 2px 23px 16px;
     font-size: 14px; line-height: 19px; color: var(--text-light);
   }
   .fq-item[open] .fq-a { animation: fq-in .3s var(--ease); }
@@ -116,7 +87,7 @@ const faqs = items ?? defaultFaqs;
   @media (min-width: 641px) {
     .fq-inner { padding: clamp(48px, 5.56vw, 80px) var(--pad); }
     .fq-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
-    .fq-item summary { padding-inline: 22px; }
+    .fq-item summary { padding-inline: 22px; gap: 16px; }
     .fq-a { padding-inline: 22px; }
   }
   @media (min-width: 1000px) {

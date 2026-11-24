@@ -12,6 +12,8 @@ const webAppSchema = {
   "name": "GoKwik Product Fit Quiz",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
   "description": "GoKwik has 10 products, not just checkout. A 5-question quiz that maps your store's stage, COD mix, traffic, and pain points to which of GoKwik's products actually fit right now — and which to skip for now.",
   "url": canonical,
   "provider": {
@@ -36,7 +38,7 @@ const schemas = [webAppSchema, breadcrumbSchema];
 
 <BaseLayout
   title="Which GoKwik Products Does Your Store Actually Need? | Klickspell"
-  description="GoKwik has 10 products — Kwik Checkout, Kwik Engage, Kwik Pass, Return Prime, and more. Answer 5 quick questions to see which ones fit your store right now, and which to skip for later."
+  description="GoKwik has 10 products, from Kwik Checkout to Return Prime. Answer 5 quick questions to see which ones your store needs now and which can wait."
   canonical={canonical}
   ogImage="https://klickspell.com/assets/og-card.png"
   schema={schemas}

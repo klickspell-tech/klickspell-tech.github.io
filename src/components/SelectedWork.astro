@@ -90,10 +90,15 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
   if (root) {
     const tracks = [...root.querySelectorAll<HTMLElement>('.sw-track')];
     const pills = [...root.querySelectorAll<HTMLButtonElement>('.sw-pill')];
-    // Keep pristine copies of every card in their original order.
-    const originals = [...root.querySelectorAll<HTMLElement>('.sw-card')]
+    // Keep pristine copies of every card in their original order, as markup: cloning the live
+    // cards made the browser fetch every lazy screenshot (~3 MB) on page load, although the
+    // section is far down the page. Cards are only built (from an inert template) when placed.
+    type Card = { cat: string | undefined; html: string };
+    const originals: Card[] = [...root.querySelectorAll<HTMLElement>('.sw-card')]
       .sort((x, y) => Number(x.dataset.i) - Number(y.dataset.i))
-      .map((c) => c.cloneNode(true) as HTMLElement);
+      .map((c) => ({ cat: c.dataset.cat, html: c.outerHTML }));
+    const tpl = document.createElement('template');
+    const fresh = (c: Card) => { tpl.innerHTML = c.html; return tpl.content.firstElementChild as HTMLElement; };
     const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const SPEED = 40; // px per second
     let current = 'all';
@@ -106,21 +111,20 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
     };
 
     const build = () => {
-      const list = originals.filter((c) => current === 'all' || c.dataset.cat === current);
-      const split: HTMLElement[][] = [[], []];
+      const list = originals.filter((c) => current === 'all' || c.cat === current);
+      const split: Card[][] = [[], []];
       list.forEach((c, i) => split[i % 2].push(c));
       tracks.forEach((track, r) => {
         const row = track.parentElement as HTMLElement;
         const cards = split[r];
-        track.replaceChildren(...cards.map((c) => c.cloneNode(true) as HTMLElement));
+        track.replaceChildren(...cards.map(fresh));
         row.hidden = cards.length === 0;
         if (!motion || !cards.length) { track.style.removeProperty('--dur'); return; }
         // Repeat the row until one sequence is wider than the viewport, then append a full
-        // copy so translateX(-50%) loops seamlessly.
+        // second sequence so translateX(-50%) loops seamlessly (all repeats are decorative).
         const unit = track.offsetWidth;
         const reps = Math.max(1, Math.ceil((row.clientWidth + 1) / unit));
-        for (let k = 1; k < reps; k++) cards.forEach((c) => track.append(decorative(c.cloneNode(true) as HTMLElement)));
-        [...track.children].forEach((n) => track.append(decorative(n.cloneNode(true) as HTMLElement)));
+        for (let k = 1; k < reps * 2; k++) cards.forEach((c) => track.append(decorative(fresh(c))));
         track.style.setProperty('--dur', `${(unit * reps) / SPEED}s`);
       });
     };

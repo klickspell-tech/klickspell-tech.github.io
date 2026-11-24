@@ -77,9 +77,9 @@ const articleSchema = {
     "url": "https://klickspell.com/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://klickspell.com/assets/og-card.png",
-      "width": 1200,
-      "height": 630
+      "url": "https://klickspell.com/assets/klickspell-logo.webp",
+      "width": 564,
+      "height": 128
     }
   }
 };
@@ -253,7 +253,7 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
       {topic.slug === 'web-performance' ? (
         <div class="in-article-cta">
           <span class="in-article-cta-badge">Shopify Speed Optimization</span>
-          <h3 class="in-article-cta-title">Losing mobile orders to slow page loads?<br><em>We agree a 90+ target with you, in writing.</em></h3>
+          <h2 class="in-article-cta-title">Losing mobile orders to slow page loads?<br><em>We agree a 90+ target with you, in writing.</em></h2>
           <p class="in-article-cta-desc">Every 100ms of mobile latency costs conversions and revenue. We audit your JavaScript bloat, decouple marketing trackers, and optimize critical rendering paths without deleting the apps you rely on.</p>
           <div class="in-article-cta-actions">
             <a href="/speed" class="btn-primary">⚡ Test App Bloat Estimator</a>
@@ -263,7 +263,7 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
       ) : topic.slug === 'shopify' ? (
         <div class="in-article-cta">
           <span class="in-article-cta-badge">Custom Shopify Engineering</span>
-          <h3 class="in-article-cta-title">Scaling a high-growth Shopify brand?<br><em>Skip fragile apps. Build custom Liquid.</em></h3>
+          <h2 class="in-article-cta-title">Scaling a high-growth Shopify brand?<br><em>Skip fragile apps. Build custom Liquid.</em></h2>
           <p class="in-article-cta-desc">We engineer custom Shopify themes, tailored sections, and high-converting store architectures for brands that refuse to compromise on design, speed, or autonomy.</p>
           <div class="in-article-cta-actions">
             <a href="/services/custom-shopify-development" class="btn-primary">Explore Custom Shopify Dev →</a>
@@ -273,7 +273,7 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
       ) : (
         <div class="in-article-cta">
           <span class="in-article-cta-badge">Full-Stack Web Engineering</span>
-          <h3 class="in-article-cta-title">Need technical precision for your web stack?<br><em>Architected for performance &amp; scale.</em></h3>
+          <h2 class="in-article-cta-title">Need technical precision for your web stack?<br><em>Architected for performance &amp; scale.</em></h2>
           <p class="in-article-cta-desc">From modern headless commerce to enterprise infrastructure and clean frontend state systems, Klickspell delivers senior engineering craft without agency bloat.</p>
           <div class="in-article-cta-actions">
             <a href="https://cal.com/atul-bhatt-klickspell/30min" data-cal-link="atul-bhatt-klickspell/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="cursor:pointer">Book Free Technical Call →</a>
@@ -285,7 +285,7 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
       {relatedPosts.length > 0 && (
         <div style="margin-top:4rem; padding-top:2.5rem; border-top:.5px solid var(--border);">
           <p class="section-eyebrow" style="margin-bottom:.75rem">Keep Reading</p>
-          <h3 style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3.5vw,34px); font-weight:400; margin-bottom:1.5rem; color:var(--text)">Related Engineering Articles</h3>
+          <h2 style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3.5vw,34px); font-weight:400; margin-bottom:1.5rem; color:var(--text)">Related Engineering Articles</h2>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:2.5rem;">
             {relatedPosts.map((rPost) => (
               <a href={`/blog/${rPost.slug}`} class="blog-card" style="text-decoration:none; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
@@ -295,7 +295,7 @@ const pageTitle = brandedTitle.length <= 60 ? brandedTitle : post.data.title;
                       <span class="blog-tag">{tag}</span>
                     ))}
                   </div>
-                  <h4 class="blog-card-title" style="font-family:'Instrument Serif',serif; font-size:21px; line-height:1.25; margin-bottom:.5rem; color:var(--text);">{rPost.data.title}</h4>
+                  <h3 class="blog-card-title" style="font-family:'Instrument Serif',serif; font-size:21px; line-height:1.25; margin-bottom:.5rem; color:var(--text);">{rPost.data.title}</h3>
                   <p class="blog-card-desc" style="font-size:13px; color:var(--text-mid); line-height:1.6; margin-bottom:1rem;">{rPost.data.description}</p>
                 </div>
                 <div class="blog-card-meta" style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:11px; color:var(--text-light); padding-top:.75rem; border-top:.5px solid var(--border);">

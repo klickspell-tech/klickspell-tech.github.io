@@ -41,161 +41,161 @@ If you're not sure which to pick, **start with Dawn or Horizon**. Every other th
 
 <a href="https://themes.shopify.com/themes/dawn" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Dawn</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Dawn</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Fashion &amp; general-purpose: the fastest, most proven starting point.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/craft" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Craft</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Craft</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Handmade &amp; maker brands: airy layout, storytelling galleries.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/sense" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Sense</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Sense</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Beauty &amp; wellness: soft minimal design, strong search &amp; filtering.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/refresh" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Refresh</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Refresh</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Health, beauty, food &amp; drink: clean, bold, testimonial-friendly.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/origin" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Origin</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Origin</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Crafters &amp; artists: neutral palette, product tabs &amp; slideshows.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/studio" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Studio</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Studio</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Creators, artists, influencers: customizable galleries &amp; profiles.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/ride" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Ride</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Ride</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Sporting goods &amp; outdoor: dark background, bold typography.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/colorblock" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Colorblock</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Colorblock</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Luxury &amp; independent fashion designers: bold color, quick-buy, size charts.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/crave" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Crave</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Crave</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Food &amp; beverage: bold colors, mobile-first.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/taste" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Taste</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Taste</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Specialty food &amp; retail branding: industrial fonts, high contrast.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/spotlight" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Spotlight</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Spotlight</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Quick launches, photography, apparel: simple neutral gallery style.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/trade" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Trade</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Trade</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Wholesale &amp; B2B: quick order lists, bulk-purchase filtering.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/publisher" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Dawn family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Publisher</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Publisher</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Art, music, books: editorial storytelling layout.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/horizon" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Horizon</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Horizon</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Minimalist fashion &amp; general-purpose: sleek, fastest of the new family.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/savor" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Savor</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Savor</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Food, beverage &amp; culinary: bright, high-contrast product focus.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/ritual" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Ritual</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Ritual</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Luxury fashion, premium skincare, wellness: bold editorial lookbooks.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/fabric" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Fabric</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Fabric</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Fashion, lifestyle, home goods: bold edge-to-edge grids.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/heritage" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Heritage</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Heritage</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Jewelry, food &amp; drink, clothing: immersive craftsmanship storytelling.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/atelier" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Atelier</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Atelier</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Luxury &amp; artisan jewelry, food &amp; drink: calming, elegant, curated.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/tinker" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Tinker</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Tinker</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Versatile creative businesses: clean grids, video blocks.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/vessel" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Vessel</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Vessel</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Jewelry, food &amp; drink, home goods: airy, negative-space layout.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/pitch" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Pitch</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Pitch</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Beauty, food &amp; drink, jewelry: bright, bold, swatch-driven.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>
 
 <a href="https://themes.shopify.com/themes/dwell" target="_blank" rel="noopener" class="blog-card" style="text-decoration:none; padding:1.35rem 1.5rem; display:flex; flex-direction:column; justify-content:space-between; background:var(--white); border:.5px solid var(--border); border-radius:var(--radius-sm); transition:border-color .2s, transform .2s;">
 <div><span class="blog-tag">Horizon family</span>
-<h4 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Dwell</h4>
+<h3 style="font-family:'Instrument Serif',serif; font-size:19px; font-weight:400; color:var(--text); margin:.65rem 0 .4rem;">Dwell</h3>
 <p style="font-size:13px; color:var(--text-mid); line-height:1.55; margin:0;">Home décor, baby products, outdoor, calm fashion/beauty: cozy, soft.</p></div>
 <div class="blog-card-meta" style="margin-top:1rem; padding-top:.75rem;"><span>Official theme</span><span class="blog-card-arrow">View →</span></div>
 </a>

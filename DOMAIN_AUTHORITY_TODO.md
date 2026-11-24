@@ -1,5 +1,7 @@
 # Domain Authority & Backlink Acquisition Roadmap (klickspell.com)
 
+> **Working material** (profile copy, outreach email, client list, launch posts, tracker): [BACKLINK_KIT.md](BACKLINK_KIT.md).
+>
 > **Objective:** Systematically grow the Domain Authority (DA / DR) of `klickspell.com` to boost organic search rankings, domain trust, and inbound lead generation for Shopify & Headless Commerce engineering services.
 
 ---
@@ -13,7 +15,7 @@
 - [ ] **Ahrefs / Moz Webmaster Tools Setup**
   - [ ] Connect `klickspell.com` to Ahrefs Webmaster Tools (free) to monitor new/lost backlinks, broken backlinks, and competitor link gaps weekly.
 - [ ] **Verify Canonical URLs on Existing Syndicated Content**
-  - [ ] Complete canonical links on Dev.to and Medium (cross-reference [CANONICAL_URL_TODO.md](file:///Users/atul/Documents/Projects/KlickSpell-Site/CANONICAL_URL_TODO.md)) so all external article authority flows directly to `klickspell.com`.
+  - [ ] Complete canonical links on Dev.to and Medium *(24 Nov 2026: all 17 dev.to posts verified ✅; 9 Medium posts still to check by hand)* (cross-reference [CANONICAL_URL_TODO.md](file:///Users/atul/Documents/Projects/KlickSpell-Site/CANONICAL_URL_TODO.md)) so all external article authority flows directly to `klickspell.com`.
 
 ---
 
@@ -26,7 +28,7 @@
   - [x] Global footer link in `klickspell.com`: `🌐 Klickspell Online (Local Directory) ↗`.
   - [x] Connected Knowledge Graph entity schemas (`sameAs` & `owns: WebApplication`) declaring official corporate ownership and transferring brand authority.
 - [ ] **Client Store Footer Attribution Strategy**
-  - [ ] Audit all live client Shopify stores built or optimized by Klickspell.
+  - [x] Audit all live client Shopify stores built or optimized by Klickspell. *(24 Nov 2026: 0 of 18 client sites link to klickspell.com; outreach email + client list in BACKLINK_KIT.md §4)*
   - [ ] For active clients with contractual agreement, add a subtle footer link:
     - *Example Anchor:* `"E-commerce engineering by Klickspell"` or `"Crafted by Klickspell"`
     - *Target URL:* `https://klickspell.com` or `https://klickspell.com/services/shopify-development`
@@ -49,7 +51,7 @@
 - [ ] **B2B Agency Directories**
   - [x] **Clutch.co Profile Created & Submitted:** Profile submitted with 60% E-Commerce, 30% Web Dev, 10% SEO. *(Currently under review / awaiting client review completion).*
   - [ ] **Clutch.co Verification & Linking:** Once approved, add `https://clutch.co/profile/klickspell` into `sameAs` schemas.
-  - [ ] **GoodFirms:** Set up and claim Klickspell profile.
+  - [ ] **GoodFirms:** Set up and claim Klickspell profile. *(24 Nov 2026: no profile exists yet)*
   - [ ] **DesignRush:** Submit listing for e-commerce / Shopify agency categories.
 - [ ] **Design & Performance Awards Submission**
   - [ ] Submit high-aesthetic headless / custom Shopify builds to:
@@ -81,7 +83,7 @@
 ## 🎙️ Phase 5: Digital PR & Expert Thought Leadership
 
 - [ ] **Journalist & Media Source Pitching**
-  - [ ] Register for [Connectively (formerly HARO)](https://www.connectively.us/), [Featured.com](https://featured.com/), and [Qwoted](https://www.qwoted.com/).
+  - [ ] Register for [Featured.com](https://featured.com/) and [Qwoted](https://www.qwoted.com/). *(Connectively, the old HARO, has shut down.)*
   - [ ] Filter queries for: *E-commerce, Shopify, Black Friday / Cyber Monday site prep, Web Performance, Headless Commerce*.
   - [ ] Commit to answering 2–3 relevant journalist queries per week to earn editorial press backlinks.
 - [ ] **Podcast & Interview Guesting**

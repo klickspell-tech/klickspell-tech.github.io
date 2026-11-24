@@ -28,6 +28,9 @@ const robotsContent = isStaging ? 'noindex, nofollow' : robots;
 
 const canonicalUrl = canonical.startsWith('http') ? canonical : new URL(canonical, Astro.site || 'https://klickspell.com').href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site || 'https://klickspell.com').href;
+// Only our own share cards are known to be 1200x630; blog covers from dev.to/Medium are other sizes,
+// and declaring the wrong size makes some platforms crop or skip the preview.
+const ogImageIs1200x630 = /klickspell\.com\/assets\/(og-card\.png|og-atul-bhatt\.png|og\/)/.test(fullOgImage);
 ---
 
 <!DOCTYPE html>
@@ -48,8 +51,9 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astr
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={fullOgImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  {ogImageIs1200x630 && <meta property="og:image:width" content="1200" />}
+  {ogImageIs1200x630 && <meta property="og:image:height" content="630" />}
+  <meta property="og:image:alt" content={title} />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->

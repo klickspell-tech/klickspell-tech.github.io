@@ -15,6 +15,15 @@ Klickspell is an independent web engineering and digital product studio founded 
 - [Headless Commerce & Web Apps](https://klickspell.com/services/headless-commerce): Modular commerce powered by Medusa.js, Next.js, and custom APIs with tailored booking flows (Cal.com), multi-currency Stripe checkouts, and custom ERP workflows.
 - [Performance & Accessibility Retainer](https://klickspell.com/services/performance-accessibility-retainer): Monthly retainer keeping Shopify stores fast, WCAG 2.2 AA accessible and privacy-safe, with manual screen-reader testing (NVDA, VoiceOver), Core Web Vitals monitoring and an interactive plan builder with price ranges.
 - [Website Speed & App Bloat Estimator](https://klickspell.com/speed): Free interactive diagnostic tool that audits emulated 4G mobile Core Web Vitals and calculates performance penalties across 25+ third-party scripts.
+- [Get a Shopify Development Quote](https://klickspell.com/quote): Configure store requirements (theme, tracking, reviews, payments, shipping) and get an itemized quote within 24 hours.
+
+## Free Tools for Shopify Stores in India
+
+Klickspell is a disclosed referral partner of GoKwik, Razorpay and Cashfree; the tools recommend on fit only.
+
+- [Checkout Recommender](https://klickspell.com/checkout-quiz): 5 questions on COD mix, AOV and order volume, then an instant pick between GoKwik, Razorpay Magic Checkout and Cashfree 360.
+- [GoKwik Product Finder](https://klickspell.com/gokwik-product-quiz): 5 questions that show which of GoKwik's 10 products a store needs now and which can wait.
+- [Startup Benefits & Credits Checker](https://klickspell.com/startup-benefits-quiz): 5 questions on company entity, age and stack, then a roadmap of free cloud credits, DPIIT perks and MSME benefits.
 
 ## Client Case Studies & Work
 
@@ -26,6 +35,9 @@ Klickspell is an independent web engineering and digital product studio founded 
 - [Skillbridge Case Study](https://klickspell.com/work/skillbridge): Tailored modular EdTech learning platform engineered for founder Rajesh Durai (ex-VP upGrad) with clean curriculum UX and zero page-builder bloat.
 - [DealShare Case Study](https://klickspell.com/work/dealshare): Decoupled corporate and investor relations digital architecture for India's leading social e-commerce platform.
 - [CallSara AI Case Study](https://klickspell.com/work/callsara-ai): Interactive SaaS marketing experience with pre-buffered HTML5 audio phone call demos and direct CRM lead capture.
+- [Bambrew Case Study](https://klickspell.com/work/bambrew): Custom Shopify theme for an Indian plastic-free brand, built in about two and a half weeks: 15 brand sections, a comparison slider, coming-soon products and live Judge.me reviews.
+- [Klickspell Online Case Study](https://klickspell.com/work/klickspell-online): Lightweight server-rendered local business directory with sub-50ms TTFB, automatic JSON-LD schema and instant QR menus.
+- [Partners & Brands](https://klickspell.com/partners): Klickspell's partners (Look Beyond, OpenRipples) and the 18 brands we've built for.
 
 ## Technical Knowledge Base & Guides
 
@@ -34,11 +46,12 @@ Klickspell is an independent web engineering and digital product studio founded 
 - [Technical SEO Overhaul Guide](https://klickspell.com/blog/how-we-overhauled-our-technical-seo-and-schema-architecture): Comprehensive breakdown of engineering 162 valid Schema.org blocks, 99 PageSpeed, and llms.txt AI search readiness.
 - [React & Frontend Architecture](https://klickspell.com/blog/topic/react): Modern frontend development patterns, state management (Zustand vs Context), and bundle optimization.
 - [DevOps, Docker & Cloud Infrastructure](https://klickspell.com/blog/topic/devops): Production deployment guides for Docker, Frappe/ERPNext, and cloud infrastructure.
-- [All Engineering Articles](https://klickspell.com/blog): Complete catalog of 60 technical articles and case studies.
+- [All Engineering Articles](https://klickspell.com/blog): Complete catalog of 70+ technical articles and case studies.
 - [RSS Feed](https://klickspell.com/rss.xml): Real-time XML syndication feed for all technical publications.
 
 ## Engineering Leadership & Contact
 
+- [About Atul Bhatt](https://klickspell.com/atul-bhatt): Founder profile, background and expertise.
 - [Founder LinkedIn](https://in.linkedin.com/in/mratulbhatt): Atul Bhatt, Founder & Lead Web Engineer.
 - [GitHub Profile](https://github.com/atulbhatt-system32): Open source repositories, agentic AI tooling, and engineering contributions.
 - [Book a Discovery Call](https://cal.com/atul-bhatt-klickspell/30min): Schedule a free 30-minute technical consultation.

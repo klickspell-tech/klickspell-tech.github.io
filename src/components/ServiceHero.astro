@@ -1,7 +1,7 @@
 ---
 // Service page hero, from the desktop + mobile screenshots of the Figma frame.
-// Artwork: public/assets/Service Page/Futuristic-blue-lg.svg (desktop) and
-// futuristc-blue-sm.svg (mobile). The folder name has a space, so the URLs are encoded.
+// Artwork: public/assets/Service Page/futuristic-blue-lg.webp (desktop) and
+// futuristic-blue-sm.webp (mobile), rendered from the Figma SVG exports (PNG inside, ~1.9 MB each). The folder name has a space, so the URLs are encoded.
 const art = '/assets/Service%20Page';
 const stats = [
   { label: 'Mobile Performance', value: '90/100', note: 'Target agreed in writing after a free audit.' },
@@ -27,8 +27,8 @@ const stats = [
       </div>
 
       <picture class="sv-art" aria-hidden="true">
-        <source media="(max-width: 900px)" srcset={`${art}/futuristc-blue-sm.svg`} width="380" height="290" />
-        <img src={`${art}/Futuristic-blue-lg.svg`} alt="" width="471" height="360" fetchpriority="high" decoding="async" />
+        <source media="(max-width: 900px)" srcset={`${art}/futuristic-blue-sm.webp`} width="380" height="290" />
+        <img src={`${art}/futuristic-blue-lg.webp`} alt="" width="471" height="360" fetchpriority="high" decoding="async" />
       </picture>
     </div>
 

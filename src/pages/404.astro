@@ -17,6 +17,14 @@ const schema = {
   robots="noindex, follow"
   schema={schema}
 >
+  <script is:inline>
+    // GitHub Pages serves /services from services.html but 404s on /services/ (trailing slash).
+    // Send those visitors to the same path without the slash; it can't loop, as that URL has none.
+    (function () {
+      var p = location.pathname;
+      if (p.length > 1 && p.slice(-1) === '/') location.replace(p.replace(/\/+$/, '') + location.search + location.hash);
+    })();
+  </script>
   <Nav />
 
   <main id="main-content" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem 5rem;">
