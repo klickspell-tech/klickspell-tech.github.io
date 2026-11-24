@@ -66,6 +66,17 @@
   - Interactive Shopify App Bloat Estimator calculating estimated CPU delay, JavaScript payload weight, and conversion impact across 25+ popular apps (Klaviyo, Judge.me, Recharge, Yotpo, Hotjar, Gorgias, Lucky Orange, Loox, PageFly, etc.).
   - Programmatic WebMCP tool access: `audit_mobile_speed` and `calculate_app_bloat`.
 
+### 5. Shopify Performance & Accessibility Retainer
+- **URL:** https://klickspell.com/services/performance-accessibility-retainer
+- **What it is:** A monthly retainer that keeps a Shopify store fast, WCAG 2.2 AA accessible and privacy-safe after launch: manual screen-reader testing (NVDA, VoiceOver), Core Web Vitals monitoring and fix hours, with an interactive plan builder showing price ranges.
+
+### 6. Free Decision Tools for Indian Shopify Stores
+Klickspell is a disclosed referral partner of GoKwik, Razorpay and Cashfree; the tools recommend on fit only.
+- **Checkout Recommender:** https://klickspell.com/checkout-quiz (5 questions on COD mix, AOV and order volume; picks between GoKwik, Razorpay Magic Checkout and Cashfree 360)
+- **GoKwik Product Finder:** https://klickspell.com/gokwik-product-quiz (which of GoKwik's 10 products a store needs now, and which can wait)
+- **Startup Benefits & Credits Checker:** https://klickspell.com/startup-benefits-quiz (free cloud credits, DPIIT perks and MSME benefits based on entity, age and stack)
+- **Quote Configurator:** https://klickspell.com/quote (itemized Shopify development quote within 24 hours)
+
 ---
 
 ## Client Case Studies & Production Proof
@@ -108,11 +119,24 @@
 - **Client Site:** https://callsara.ai
 - **Scope:** High-converting B2B SaaS marketing site with pre-buffered HTML5 audio phone call demo player, interactive vertical industry workflows, and automated CRM lead capture.
 
+### Bambrew (Sustainable Packaging, India)
+- **URL:** https://klickspell.com/work/bambrew
+- **Client Site:** https://www.bambrew.in
+- **Scope:** Custom Shopify theme built in about two and a half weeks: 15 brand sections, a comparison slider, coming-soon products and live Judge.me reviews.
+
+### Klickspell Online (Digital Menus & Local Discovery)
+- **URL:** https://klickspell.com/work/klickspell-online
+- **Site:** https://klickspell.online
+- **Scope:** Lightweight server-rendered local business directory with sub-50ms TTFB, automatic JSON-LD schema and instant QR menus.
+
+### All Partners & Brands
+- **URL:** https://klickspell.com/partners (partners Look Beyond and OpenRipples, and the 18 brands Klickspell has built for)
+
 ---
 
 ## Technical Publications & Thought Leadership
 
-- **Full Catalog:** 60 in-depth technical guides available at https://klickspell.com/blog
+- **Full Catalog:** 70+ in-depth technical guides available at https://klickspell.com/blog
 - **Core Topics:**
   - **Shopify & Liquid:** https://klickspell.com/blog/topic/shopify
   - **Web Performance & Core Web Vitals:** https://klickspell.com/blog/topic/web-performance
@@ -129,3 +153,4 @@
 - **Founder LinkedIn:** https://in.linkedin.com/in/mratulbhatt
 - **GitHub Organization & Repositories:** https://github.com/atulbhatt-system32
 - **Team Page:** https://klickspell.com/team
+- **Founder Profile:** https://klickspell.com/atul-bhatt

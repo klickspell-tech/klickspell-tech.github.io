@@ -202,3 +202,55 @@
 
 ### Why
 - Enable readers to interactively test their specific company structure, age, and location to immediately see their exact eligibility and avoid application guesswork.
+
+---
+
+## 2026-11-23 · Claude
+
+### Changed (UI, pushed to staging as aa1cb72)
+- Custom Shopify page matched to the Figma mobile frame (hero title, art spacing, inset case-study box, CTA phone layout)
+- CTA grids on the Speed page band and the shared services CTA are interactive like the home "Get in touch" grid (`src/lib/grid-trail.ts` for touch)
+- Services menu and mobile menu highlight the page you are on (`aria-current`)
+- Buttons ending in an arrow stretch on hover (`src/lib/arrow-buttons.ts`)
+
+### SEO / Core Web Vitals
+- Hero artworks were Figma SVG exports wrapping a 1536x1024 PNG (1.6–1.9 MB each, and the LCP image on Home, Services and Custom Shopify). Rendered to WebP at 2x display size next to the originals (`hero-section-lg/mb.webp`, `futuristic-blue-lg/sm.webp`, `shopify/shopping-bag-lg/sm.webp`, 12–97 KB) and swapped in `Hero.astro`, `ServiceHero.astro` and the Custom Shopify page. Pixel difference vs the SVGs ~1/255. Production page weight: Services 2.8 MB → 0.2 MB, Custom Shopify 2.4 MB → 0.2–0.4 MB
+- `SelectedWork.astro`: the marquee cloned the live cards on load, which made the browser fetch all 19 lazy screenshots (~3 MB) immediately. Cards are now kept as markup and built from an inert template when placed, so screenshots load on scroll. Home page on load: 3.1 MB → 0.19 MB
+- Custom Shopify page: its own four FAQs (the ones in the Figma for this page, from the earlier page version) restored with FAQPage schema, driven from one `faqs` array
+- `Faq.astro` phone spacing: 23px padding + 1px border and no gap before the chevron, so questions get the Figma 316px width (items 211/88/88/88 vs Figma 210/88/88/88)
+- Blog post `breaking-down-npx-create-react-app…`: in-content `# Node Package Manager` demoted to `##` (page had two h1s)
+
+### Audit notes (no change needed)
+- All 102 pages: unique title + description, canonical, Open Graph, valid JSON-LD, no broken internal links, no images without alt, sitemap covers every indexable page; staging builds are noindex + Disallow
+- Remaining warnings are title/description length only (mostly blog posts whose own titles exceed 60 chars; the template already drops the brand suffix when it would not fit)
+
+---
+
+## 2026-11-24 · Claude
+
+### SEO: robots.txt, indexing, canonicals, sitemap, schema
+- Checked live (klickspell.com) and the staging build: robots.txt valid and allows all; all 101 sitemap URLs return 200, are self-canonical, `index, follow`, no X-Robots-Tag; http and www 301 to https://klickspell.com; `.html` variants canonicalise to the clean URL; unknown paths return a real 404
+- **Home FAQPage schema did not match the page** (5 questions not shown, 2 answers different), which Google treats as invalid markup. FAQ content moved to `src/lib/faqs.ts` (`defaultFaqs` + `faqPageSchema()`); `Faq.astro`, the home page, the Speed page and the Custom Shopify page all build from it, so markup and visible text can't drift again
+- Home `ProfessionalService`: added `@id` (`https://klickspell.com/#organization`), `logo` (the real logo, 564x128) and `telephone`
+- Blog posts: publisher logo was the social card (`og-card.png`); now the real logo
+- Free tools (`/speed`, `/checkout-quiz`, `/gokwik-product-quiz`, `/startup-benefits-quiz`): `WebApplication` gets `offers` (price 0) and `isAccessibleForFree`
+- Sitemap `<lastmod>` (astro.config.mjs `serialize`): blog posts from their frontmatter (`updatedDate` else `pubDate`), `/blog` from the newest post; other pages intentionally without a guessed date
+- Trailing slash: GitHub Pages 404s on `/services/`, `/blog/`, `/partners/`. The 404 page now sends any trailing-slash URL to the same path without it (cannot loop; the page keeps its 404 status and noindex). Redirect stubs (`services/index.html`) were tried and dropped: next to `services.html` they risk GitHub Pages redirecting `/services` to `/services/` and looping
+
+### SEO: on-page pass (titles, share images, headings, internal links, llms.txt)
+- Home: added `WebSite` schema (`@id` `#website`, publisher → `#organization`), which Google uses to show "Klickspell" as the site name in results. The retainer service added to the `hasOfferCatalog`
+- Share images: the home page shared a Jaxon Lane screenshot, and the case studies shared their 2994x2046 PNGs (~2.4 MB, too heavy for WhatsApp/LinkedIn previews) while declaring 1200x630. Home now uses `og-card.png`; each case study has a 1200x630 JPG cropped from the top of its screenshot (`public/assets/og/work-*.jpg`, 30–87 KB). `BaseLayout` only declares 1200x630 for our own cards (blog covers from dev.to/Medium are other sizes) and adds `og:image:alt`
+- Blog post bodies (`src/lib/rehype-blog-content.mjs`): heading levels in imported posts are normalised so the outline starts at h2 and never skips (25 posts had h1→h3/h4/h5 jumps); posts written with ## / ### render unchanged. Body images after the first get `loading="lazy"`, all get `decoding="async"` (old posts loaded every screenshot up front)
+- Blog template: in-article CTA title and "Related Engineering Articles" h3 → h2, related post titles h4 → h3 (posts without their own headings jumped h1 → h3). `free-shopify-themes`: raw `<h4>` theme names → `<h3>`. `/quote`: step headings h4 → h3. No visual change (all styled by class/inline)
+- Case study hero images: real `width`/`height` + `fetchpriority="high"` (it's the LCP image) and `height:auto` in `.cs-hero-image img`, so the page no longer shifts when the screenshot loads
+- Footer Tools column: added the GoKwik Product Finder and Startup Benefits Checker (both were linked from at most one page)
+- Meta descriptions over 160 chars shortened: `/gokwik-product-quiz` (185 → 143), `/work/bambrew` (174 → 140, page + Article schema), `/atul-bhatt` (164 → 154)
+- `llms.txt` / `llms-full.txt`: added the retainer, the three quiz tools (with the GoKwik/Razorpay/Cashfree referral-partner disclosure), the quote configurator, Bambrew and Klickspell Online case studies, partners and the founder page; article count 60 → 70+
+
+### Audit after this pass
+- 0 high / 0 medium issues; no heading skips on any page. Remaining: 37 blog titles over 60 chars and 31 descriptions over 160 (content, needs Atul), remote dev.to/Medium images in old posts without dimensions, and thin pages (`/work/callsara-ai`, `/work/dealshare`, `/work/skillbridge`, `/atul-bhatt` under 350 words)
+- Local builds cache rendered Markdown in `.astro/data-store.json`: after changing a rehype plugin without touching `astro.config.mjs`, run `npx astro sync --force` before building (CI builds start clean)
+
+### Cleanup: unused images removed
+- Deleted 35 images in `public/` that nothing references (checked by file name against the built site, `src`, `scripts` and public's own text files, so paths built in code count as used): the Figma SVG originals replaced by WebP (hero, service page, shopping bag, plus two unused service page SVGs), JPG/PNG originals of team and testimonial photos (WebP copies are used), PNG screenshots of clients without a case study (WebP copies are used), `blissful-soul` (case study removed), `founder.png/.webp`, `contact/grid-*.webp` (grid is now DOM cells) and `klickspell-logo-dark.webp`. `public/` 72 MB → 31 MB. All recoverable from git history
+- Kept: the case study PNGs still used as the Article schema `image` on each `/work` page

@@ -9,6 +9,7 @@ import ServiceStats from '../../components/ServiceStats.astro';
 import ServiceIntegrity from '../../components/ServiceIntegrity.astro';
 import ServiceCtaBand from '../../components/ServiceCtaBand.astro';
 import Faq from '../../components/Faq.astro';
+import { faqPageSchema } from '../../lib/faqs';
 
 const canonical = "https://klickspell.com/services/shopify-speed-optimization";
 
@@ -66,15 +67,7 @@ const faqs = [
   }
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map((f) => ({
-    "@type": "Question",
-    "name": f.q,
-    "acceptedAnswer": { "@type": "Answer", "text": f.a }
-  }))
-};
+const faqSchema = faqPageSchema(faqs);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

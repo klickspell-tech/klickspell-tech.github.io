@@ -739,7 +739,7 @@ nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
 .cs-meta-item .cs-meta-label { font-family: var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.4rem; }
 .cs-meta-item .cs-meta-value { font-size:14.5px; font-weight:600; color:var(--text); }
 .cs-hero-image { border-radius:var(--radius); overflow:hidden; border:.5px solid var(--border); box-shadow:0 30px 80px rgba(0,0,0,0.08); }
-.cs-hero-image img { width:100%; display:block; object-fit:cover; object-position:top center; }
+.cs-hero-image img { width:100%; height:auto; display:block; object-fit:cover; object-position:top center; }
 .cs-body { max-width:1200px; margin:0 auto; padding:5rem 2rem; }
 .cs-section { max-width:700px; margin:0 0 4rem; }
 .cs-section:last-child { margin-bottom:0; }
