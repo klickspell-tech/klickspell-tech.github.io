@@ -1,10 +1,10 @@
 ---
 // Figma: klickspell › "Project" / Selected work (desktop 46:84). Built from a saved render
 // of the frame (Figma API limit hit), so measurements are accurate to a few px.
-// The Figma shows two full-bleed bands of project cards cut off at both edges and offset
-// from each other; they're built as two auto-scrolling rows (opposite directions, pause on
-// hover/focus). Filters re-split the matching projects across the two rows.
-// Without JS, or with reduced motion, the rows are plain horizontal scrollers.
+// The Figma shows two full-bleed bands of project cards. They stay still (no auto-scroll),
+// start in line with the heading and run off the right edge; a row can be swiped or
+// trackpad-scrolled sideways to reach the rest. Filters re-split the matching projects
+// across the two rows.
 type Project = {
   name: string; niche: string; highlight?: string; cat: 'shopify' | 'webflow' | 'headless' | 'landing';
   img: string; href?: string; external?: boolean; yt?: string; offline?: boolean;
@@ -90,25 +90,16 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
   if (root) {
     const tracks = [...root.querySelectorAll<HTMLElement>('.sw-track')];
     const pills = [...root.querySelectorAll<HTMLButtonElement>('.sw-pill')];
-    // Keep pristine copies of every card in their original order, as markup: cloning the live
-    // cards made the browser fetch every lazy screenshot (~3 MB) on page load, although the
-    // section is far down the page. Cards are only built (from an inert template) when placed.
+    // Pristine copies of every card in their original order, kept as markup (built from an
+    // inert template only when placed, so a filter never makes the browser fetch every lazy
+    // screenshot at once). The server already renders the "All" split, so nothing runs on load.
     type Card = { cat: string | undefined; html: string };
     const originals: Card[] = [...root.querySelectorAll<HTMLElement>('.sw-card')]
       .sort((x, y) => Number(x.dataset.i) - Number(y.dataset.i))
       .map((c) => ({ cat: c.dataset.cat, html: c.outerHTML }));
     const tpl = document.createElement('template');
     const fresh = (c: Card) => { tpl.innerHTML = c.html; return tpl.content.firstElementChild as HTMLElement; };
-    const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const SPEED = 40; // px per second
     let current = 'all';
-
-    // Decorative repeats: hidden from assistive tech and out of the tab order (still clickable).
-    const decorative = (node: HTMLElement) => {
-      node.setAttribute('aria-hidden', 'true');
-      node.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
-      return node;
-    };
 
     const build = () => {
       const list = originals.filter((c) => current === 'all' || c.cat === current);
@@ -116,16 +107,9 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
       list.forEach((c, i) => split[i % 2].push(c));
       tracks.forEach((track, r) => {
         const row = track.parentElement as HTMLElement;
-        const cards = split[r];
-        track.replaceChildren(...cards.map(fresh));
-        row.hidden = cards.length === 0;
-        if (!motion || !cards.length) { track.style.removeProperty('--dur'); return; }
-        // Repeat the row until one sequence is wider than the viewport, then append a full
-        // second sequence so translateX(-50%) loops seamlessly (all repeats are decorative).
-        const unit = track.offsetWidth;
-        const reps = Math.max(1, Math.ceil((row.clientWidth + 1) / unit));
-        for (let k = 1; k < reps * 2; k++) cards.forEach((c) => track.append(decorative(fresh(c))));
-        track.style.setProperty('--dur', `${(unit * reps) / SPEED}s`);
+        track.replaceChildren(...split[r].map(fresh));
+        row.hidden = split[r].length === 0;
+        row.scrollLeft = 0;
       });
     };
 
@@ -143,20 +127,11 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
       (window as any).openYTModal?.(media.dataset.yt);
     });
 
-    if (motion) root.classList.add('is-marquee');
-    build();
-    let lastW = window.innerWidth, t: number | undefined;
-    window.addEventListener('resize', () => {
-      if (window.innerWidth === lastW) return;
-      lastW = window.innerWidth;
-      clearTimeout(t);
-      t = window.setTimeout(build, 200);
-    });
   }
 </script>
 
 <style>
-  .sw { --pad: clamp(24px, 6.25vw, 90px); --cw: clamp(280px, 31.944vw, 460px); --gap: 24px; background: var(--white); padding: 40px 0; }
+  .sw { --pad: clamp(24px, 6.25vw, 90px); --cw: clamp(280px, 31.944vw, 460px); --gap: 24px; --edge: 20px; background: var(--white); padding: 40px 0; }
   .sw-head { max-width: 1440px; margin: 0 auto; padding: 0 20px; }
 
   .sw-eyebrow {
@@ -199,17 +174,12 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
     padding: 25px 0;
     background: var(--bg-soft);
     border-block: 1px solid rgba(20,20,18,0.05);
-    overflow-x: auto; scrollbar-width: none; /* no-JS / reduced-motion: swipe or scroll the row */
+    overflow-x: auto; scrollbar-width: none; /* the row stays still; swipe or trackpad-scroll it */
   }
   .sw-row::-webkit-scrollbar { display: none; }
   .sw-row[hidden] { display: none; }
-  .sw-track { display: flex; width: max-content; padding-left: var(--gap); }
-  .sw.is-marquee .sw-row { overflow: hidden; }
-  .sw.is-marquee .sw-track { padding-left: 0; animation: sw-marquee var(--dur, 120s) linear infinite; }
-  .sw.is-marquee .sw-row-1 .sw-track { animation-direction: reverse; }
-  .sw.is-marquee .sw-row:hover .sw-track,
-  .sw.is-marquee .sw-row:focus-within .sw-track { animation-play-state: paused; }
-  @keyframes sw-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* First card lines up with the heading; the last card ends the same distance from the edge */
+  .sw-track { display: flex; width: max-content; padding: 0 max(0px, calc(var(--edge) - var(--gap))) 0 var(--edge); }
 
   /* Card: 460 x 320 at 1440 (image 420 x 220) */
   .sw-card {
@@ -262,7 +232,7 @@ const ext = (p: Project) => (p.external ? { target: '_blank', rel: 'noopener' } 
   .sw-niche strong { color: var(--accent); font-weight: 700; }
 
   @media (min-width: 641px) {
-    .sw { padding: clamp(48px, 5.56vw, 80px) 0; }
+    .sw { --edge: var(--pad); padding: clamp(48px, 5.56vw, 80px) 0; }
     .sw-head { padding: 0 var(--pad); }
     .sw-title { font-size: clamp(40px, 3.889vw, 56px); letter-spacing: -0.0207em; }
     .sw-filters { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }

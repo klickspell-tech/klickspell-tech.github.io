@@ -254,3 +254,13 @@
 ### Cleanup: unused images removed
 - Deleted 35 images in `public/` that nothing references (checked by file name against the built site, `src`, `scripts` and public's own text files, so paths built in code count as used): the Figma SVG originals replaced by WebP (hero, service page, shopping bag, plus two unused service page SVGs), JPG/PNG originals of team and testimonial photos (WebP copies are used), PNG screenshots of clients without a case study (WebP copies are used), `blissful-soul` (case study removed), `founder.png/.webp`, `contact/grid-*.webp` (grid is now DOM cells) and `klickspell-logo-dark.webp`. `public/` 72 MB → 31 MB. All recoverable from git history
 - Kept: the case study PNGs still used as the Article schema `image` on each `/work` page
+
+### Home: Selected Work rows no longer auto-scroll
+- `SelectedWork.astro`: removed the marquee (rows sliding left/right, the repeated decorative cards and the resize rebuild). Both rows now stay still, the first card lines up with the heading, and the rest of a row is reached by swiping or trackpad-scrolling sideways. Filters still re-split the matching projects across the two rows. Groundwork for a hover effect on the cards (to be designed)
+
+### Speed: favicon animation and blog progress bar (after the go-live check)
+- Live check after the merge: all 101 sitemap pages return 200, are indexable and self-canonical, have one h1, a unique title and description, valid JSON-LD and no heading skips; all 167 local assets and every internal link resolve; http/www redirect with 301; unknown URLs return 404. PageSpeed (Lighthouse mobile) was the weak spot: Performance 46–66, with 1.5–3.5 s of blocking time on every page
+- Cause: the animated 3D favicon (`BaseLayout.astro`). On a GPU canvas the first `toDataURL` took ~600 ms, it ran during page load, and then redrew 20 times a second forever. Now: `willReadFrequently` (CPU canvas, first export ~1 ms), starts after `load` when the browser is idle, each of the 52 frames is drawn once and reused, and reduced-motion users keep the static `favicon.svg`. Looks the same
+- Blog posts: the reading progress bar's first update forced a full layout of the article mid-parse (~400 ms task); it now runs on the next animation frame
+- Width/height on the team avatars and the testimonial avatars on Cove & Lane, Jaxon Lane and Skillbridge (Lighthouse "unsized images")
+- Measured locally (Lighthouse mobile, 2 runs, this machine is slower than Google's): home 46–63 → 76–98, team 58–61 → 73–77, blog post 63–66 → 70–71
